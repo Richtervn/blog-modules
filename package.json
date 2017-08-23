@@ -1,0 +1,14 @@
+{
+  "name": "blog-modules",
+  "version": "1.0.0",
+  "description": "my-blog",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm run start",
+    "server": "cd server && npm run start",
+    "start": "start npm run client && npm run server"
+  },
+  "author": "VuPham",
+  "license": "ISC"
+}
+
