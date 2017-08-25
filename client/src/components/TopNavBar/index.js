@@ -4,7 +4,7 @@ export default ({name, quote, author}) =>
   <div className="row blog-top-nav">
     <div className="col">
       <div className="row">
-        <i className="fa fa-database fa-2x blog-nav-icon" />
+        <i className="fa fa-server fa-2x blog-nav-icon" />
         <a className="blog-nav-name" href="/"><h5>{name}</h5></a>
       </div>
     </div>

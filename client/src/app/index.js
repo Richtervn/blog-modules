@@ -7,6 +7,9 @@ import store from './store';
 import TopNavBar from 'components/TopNavBar';
 import SideNavBar from 'containers/SideNavBar';
 import Navigation from './Navigation';
+import TimeLine from 'components/TimeLine';
+
+import Modal from 'containers/Modal';
 
 export default () =>
   <Provider store={store}>
@@ -19,8 +22,9 @@ export default () =>
       <div className="row">
         <SideNavBar />
         <div className="col blog-main-screen">
-          <Navigation/>
+          <TimeLine />
         </div>
       </div>
+      <Modal/>
     </div>
   </Provider>;

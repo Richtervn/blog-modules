@@ -1,5 +1,5 @@
 import React from 'react';
-import {defineMenuGroupIcon} from 'utilities';
+import { defineMenuGroupIcon } from 'utilities';
 
 export default ({ name, isGroupActive, items, setActiveGroup, setDeactiveGroup, setActiveItem, activeItem }) => {
   let groupIcon = defineMenuGroupIcon(name);
@@ -20,7 +20,6 @@ export default ({ name, isGroupActive, items, setActiveGroup, setDeactiveGroup, 
           </span>
         </div>
       </div>
-
       <div className={isGroupActive ? 'collapse show' : 'collapse'} id={`${name}Menu`}>
         {items.map(item =>
           <div
@@ -31,8 +30,11 @@ export default ({ name, isGroupActive, items, setActiveGroup, setDeactiveGroup, 
             <span><i className="fa fa-genderless group-icon" /></span>{item}
           </div>
         )}
+        {name == 'Flash Games' &&
+          <div className="text-center">
+            <button className="menu-item-button" data-toggle="modal" data-target="#test"><i className="fa fa-plus-square" /></button>
+          </div>}
       </div>
-
     </div>
   );
 };

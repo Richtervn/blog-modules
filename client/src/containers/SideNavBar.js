@@ -2,6 +2,7 @@ import SideNavBar from 'components/SideNavBar';
 import { connect } from 'react-redux';
 
 import { setActiveGroup, setDeactiveGroup, setActiveItem, getMenuTree } from 'modules/page';
+import {changeId} from 'modules/test';
 
 export default connect(
   ({ page }) => ({
@@ -21,6 +22,9 @@ export default connect(
     },
     getMenuTree(){
       dispatch(getMenuTree());
+    },
+    changeId(id){
+      dispatch(changeId(id));
     }
   })
 )(SideNavBar);
