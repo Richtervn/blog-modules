@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import page from './page';
+import page from 'modules/page';
 
 export default combineReducers({
   page

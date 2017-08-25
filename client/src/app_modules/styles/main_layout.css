@@ -1,7 +1,23 @@
 .blog-top-nav {
+  position: fixed;
   background-color: #000000;
   height: 45px;
   align-items: center;
+  width: 100%;
+}
+
+.blog-side-nav {
+  position: fixed;
+  margin-top: 45px;
+  width: 200px;
+  height: 736px;
+  background-color: #2E2F2F;
+}
+
+.blog-main-screen {
+  margin-top: 45px;
+  margin-left: 200px;
+  padding: 0 !important;
 }
 
 .blog-nav-name {
@@ -21,4 +37,45 @@
 
 .blog-nav-quote-author {
   color: #F5AD28;
+}
+
+.menu-group-name:hover {
+  background-color: #1995AD;
+}
+
+.menu-group-item {
+  color: #FFFFFF;
+  padding-left: 15px;
+}
+
+.menu-group-item:hover {
+  background-color: #68829E;
+}
+
+.menu-group-name {
+  color: #FFFFFF;
+  padding-left: 15px;
+}
+
+.group-icon {
+  padding-right: 10px;
+}
+
+.group-toggle-icon {
+  padding-right: 15px;
+}
+
+.noselect {
+  cursor: default;
+  user-select: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .blog-nav-quote {
+    display: none;
+  }
+
+  .blog-nav-quote-author {
+    display: none;
+  }
 }
