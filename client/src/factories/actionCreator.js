@@ -1,4 +1,4 @@
-export default (START, SUCCESS, FAIL, service) => {
+export default (START, SUCCESS, FAIL, service, ...serviceParams) => {
   const actionStart = () => ({type: START});
   const actionSuccess = data => ({type: SUCCESS, data});
   const actionError = error => ({type: FAIL, error: error.message});
@@ -7,7 +7,7 @@ export default (START, SUCCESS, FAIL, service) => {
     return async dispatch => {
       dispatch(actionStart());
       try {
-        const data = await service();
+        const data = await service(...serviceParams);
         if(data.message){
           return dispatch(actionError(data));
         }

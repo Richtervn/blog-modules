@@ -1,10 +1,12 @@
 import systemRouter from './system';
+import flashGamesRouter from './flashGames';
 
 const routes = (models, factories) => {
-  const { AppMenu } = models;
+  const { FlashGames } = models;
 
   return {
-    system: systemRouter(AppMenu, factories)
+    system: systemRouter(factories),
+    flash_games: flashGamesRouter(FlashGames, factories)
   };
 };
 

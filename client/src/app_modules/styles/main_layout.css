@@ -14,9 +14,12 @@
   background-color: #2E2F2F;
 }
 
-.blog-main-screen {
+.flash-game-main-screen {
   margin-top: 45px;
   margin-left: 200px;
+  background-color: #324851;
+  height: 736px;
+  width: 100%;
   padding: 0 !important;
 }
 
@@ -91,4 +94,21 @@
   .blog-nav-quote-author {
     display: none;
   }
+}
+
+.modal-header {
+  height: 45px;
+}
+
+.modal-footer {
+  height: 45px;
+}
+
+.modal-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.btn {
+  line-height: 0.75!important;
 }

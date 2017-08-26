@@ -1,9 +1,11 @@
 import { system } from 'services';
 import actionCreator from 'factories/actionCreator';
 
-const SET_ACTIVE_GROUP = 'page/SET_ACTIVE_GROUP';
-const SET_DEACTIVE_GROUP = 'page/SET_DEACTIVE_GROUP';
-const SET_ACTIVE_ITEM = 'page/SET_ACTIVE_ITEM';
+import { SUBMIT_ADD_FLASH_FORM_SUCCESS } from 'modules/forms';
+
+export const SET_ACTIVE_GROUP = 'page/SET_ACTIVE_GROUP';
+export const SET_DEACTIVE_GROUP = 'page/SET_DEACTIVE_GROUP';
+export const SET_ACTIVE_ITEM = 'page/SET_ACTIVE_ITEM';
 
 const GET_MENU_TREE_START = 'page/GET_MENU_TREE';
 const GET_MENU_TREE_SUCCESS = 'page/GET_MENU_TREE_SUCCESS';
@@ -20,21 +22,51 @@ export const getMenuTree = actionCreator(
   system.getMenu
 );
 
-export default (state = { activeGroup: null, activeItem: null, menuTree: null, modalId: null }, action) => {
+const addModalList = {
+  'Flash Games': 'addFlashGameModal'
+};
+
+const quotes = {
+  Home: {
+    quote: "There's no place like home. There's no place like HOME!!!",
+    author: 'Breaking Benjamin - Home'
+  },
+  'Flash Games': {
+    quote: 'You want to share what you have been through',
+    author: 'Linkin Park - Points of Authority'
+  }
+};
+
+export default (
+  state = {
+    activeGroup: null,
+    activeItem: null,
+    menuTree: null,
+    addModalId: null,
+    name: 'HOME',
+    quote: "There's no place like home. There's no place like HOME!!!",
+    quoteAuthor: 'Breaking Benjamin - Home'
+  },
+  action
+) => {
   switch (action.type) {
-    case SET_ACTIVE_GROUP: {
-      let modalId;
-      if (action.name == 'Flash Games') {
-        modalId = 'test';
-      }
-      return { ...state, activeGroup: action.name, modalId: modalId };
-    }
+    case SET_ACTIVE_GROUP:
+      return { ...state, activeGroup: action.name, addModalId: addModalList[action.name] };
     case SET_DEACTIVE_GROUP:
       return { ...state, activeGroup: null };
     case SET_ACTIVE_ITEM:
-      return { ...state, activeItem: action.name };
+      const {activeGroup} = state;
+      return {
+        ...state,
+        activeItem: action.name,
+        name: activeGroup.toUpperCase(),
+        quote: quotes[activeGroup].quote,
+        quoteAuthor: quotes[activeGroup].author
+      };
     case GET_MENU_TREE_SUCCESS:
       return { ...state, menuTree: action.data };
+    case SUBMIT_ADD_FLASH_FORM_SUCCESS:
+      return { ...state, menuTree: action.data.menu };
     default:
       return state;
   }

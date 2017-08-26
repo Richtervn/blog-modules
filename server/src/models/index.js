@@ -1,13 +1,13 @@
 import autoIncrement from 'mongoose-auto-increment';
 
-import AppMenu from './AppMenu';
+import FlashGames from './FlashGames';
 
 const models = db => {
-  AppMenu.plugin(autoIncrement.plugin, 'AppMenu');
-  const AppMenuSchema = db.model('AppMenu', AppMenu);
+  FlashGames.plugin(autoIncrement.plugin, 'FlashGames');
+  const FlashGamesSchema = db.model('FlashGames', FlashGames);
 
   return {
-    AppMenu: AppMenuSchema
+    FlashGames: FlashGamesSchema
   }
 }
 

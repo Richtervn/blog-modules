@@ -2,7 +2,7 @@ import express from 'express';
 
 import getMenu from './services/getMenu';
 
-export default (AppMenu, factories) => {
+export default (factories) => {
   const router = express.Router();
   const { readFile, wrap } = factories;
 
