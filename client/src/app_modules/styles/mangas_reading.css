@@ -1,0 +1,29 @@
+.mangas-reading-main-screen {
+  margin-top: 45px;
+  margin-left: 200px;
+  height: 736px;
+  width: 100%;
+  overflow-y: auto;
+  background-image: url("../../app_modules/images/backgrounds/dark_art.jpg");
+}
+
+.static-position {
+  position: static!important;
+}
+
+.no-row-margin {
+  margin: 0!important;
+  padding: 0!important;
+}
+
+.mr-control-panel {
+  background-color: white;
+  width: 90%;
+  margin-left: 5%;
+  height: 736px;
+}
+
+.mr-card-list {
+  height: 736px;
+  overflow-y: scroll;
+}

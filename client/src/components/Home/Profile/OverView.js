@@ -3,7 +3,7 @@ import React from 'react';
 export default () =>
   <div className="profile-overview text-center">
     <h5>OVER VIEW:</h5><br/>
-    <div className="row profile-container">
+    <div className="row profile-container no-row-margin">
       <div className="col text-right profile-container">
         <p><strong>Current Job:</strong></p>
         <p><strong>Current Company:</strong></p>
