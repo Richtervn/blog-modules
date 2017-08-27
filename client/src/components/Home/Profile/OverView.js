@@ -1,0 +1,26 @@
+import React from 'react';
+
+export default () =>
+  <div className="profile-overview text-center">
+    <h5>OVER VIEW:</h5><br/>
+    <div className="row profile-container">
+      <div className="col text-right profile-container">
+        <p><strong>Current Job:</strong></p>
+        <p><strong>Current Company:</strong></p>
+        <p><strong>Current Technology:</strong></p>
+        <p/>
+        <p/>
+        <p/>
+        <p><strong></strong></p>
+      </div>
+      <div className="col text-left profile-container">
+        <p>Software Devloper</p>
+        <p>Đồng Bát Company</p>
+        <p>&#9734; Node.Js</p>
+        <p>&#9734; React.Js</p>
+        <p>&#9734; ReactNative.Js</p>
+        <p>&#9734; MongoDB</p>
+      </div>
+    </div>
+
+  </div>;

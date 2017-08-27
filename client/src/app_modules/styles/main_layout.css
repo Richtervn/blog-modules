@@ -23,6 +23,13 @@
   padding: 0 !important;
 }
 
+.home-main-screen {
+  margin-top: 45px;
+  margin-left: 200px;
+  height: 736px;
+  width: 100%;
+}
+
 .blog-nav-name {
   padding-top: 5px;
   padding-left: 15px;
@@ -61,7 +68,7 @@
 }
 
 .group-icon {
-  padding-right: 10px;
+  padding-right: 15px;
 }
 
 .group-toggle-icon {
@@ -110,5 +117,11 @@
 }
 
 .btn {
-  line-height: 0.75!important;
+  line-height: 0.75 !important;
 }
+
+.nav>li>a.active,
+.nav>li>a:focus {
+  color: #2E2F2F!important;
+}
+

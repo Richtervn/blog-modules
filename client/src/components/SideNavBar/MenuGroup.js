@@ -12,7 +12,7 @@ export default ({ name, isGroupActive, items, setActiveGroup, setDeactiveGroup, 
         onClick={isGroupActive ? setDeactiveGroup : setActiveGroup}
         style={{ backgroundColor: isGroupActive ? '#1995AD' : '#021C1E' }}>
         <div className="menu-group-name noselect">
-          <i className={`fa ${groupIcon} group-icon`} />
+          <i className={`fa ${groupIcon} fa-fw group-icon`} />
           {name}
           <span className="pull-right group-toggle-icon">
             {!isGroupActive && <i className="fa fa-angle-left" />}

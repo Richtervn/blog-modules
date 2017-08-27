@@ -1,0 +1,41 @@
+.profile-container {
+  position: static!important;
+}
+
+.profile-panel {
+  background-color: #2E2F2F;
+  height: 650px;
+  margin-top: 15px;
+}
+
+.profile-view {
+  border: solid 1px;
+  height: 650px;
+  margin-top: 15px;
+  overflow-y: auto;
+  overflow-y: hidden;
+  background-image: url("../../app_modules/images/backgrounds/wood_highlight.jpg");
+}
+
+.profile-image {
+  width: 100%;
+}
+
+.profile-avatar {
+  width: 200px;
+  height: 200px;
+  margin-top: 28px;
+  margin-left: 28px;
+}
+
+.profile-channel {
+  height: 400px;
+  margin-top: 15px;
+  overflow-y: auto;
+}
+
+.profile-overview {
+  color: white;
+  margin-top: 15px;
+  margin-left: 15px;
+}
