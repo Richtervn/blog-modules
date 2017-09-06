@@ -20,7 +20,7 @@ export default ({ menu, activeGroup, activeItem, setActiveGroup, setDeactiveGrou
             setDeactiveGroup={setDeactiveGroup}
           />
         </div>
-        <div className="col-9 profile-container"> <ProfileView/></div>
+        <div className="col-9 profile-container"> <ProfileView activeItem={activeItem}/></div>
       </div>
     </div>
   );
