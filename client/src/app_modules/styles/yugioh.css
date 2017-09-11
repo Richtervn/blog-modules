@@ -1,0 +1,71 @@
+.ygo-main-screen {
+  margin-top: 45px;
+  margin-left: 200px;
+  height: 736px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.ygo-mod-pannel {
+  background-color: #1e434c;
+  width: 90%;
+  margin-left: 5%;
+  height: 736px;
+  overflow-y: auto;
+}
+
+.ygo-mod-card {
+  margin: auto;
+  margin-top: 5px;
+  cursor: pointer;
+  width: 95%;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: #021C1E;
+  color: white;
+}
+
+.ygo-add-mod-card {
+  margin:auto;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px dashed white;
+  cursor: pointer;
+  width: 95%;
+  height: 50px;
+}
+
+.dv-star-rating-star {
+  margin-bottom: 0!important;
+}
+
+.ygo-mod-card-content {
+  width: 75%;
+  margin-right: 5px;
+}
+
+.ygo-mod-card-img-col {
+  width: 20%;
+}
+
+.ygo-mod-card-icon {
+  margin-top: 8px;
+}
+
+.ygo-mod-card-rating {
+  line-height: 1;
+  margin-top: 5px;
+}
+
+.ygo-mod-card-name {
+  line-height: 1;
+}
+
+.ygo-add-mod-card-icon {
+  margin-top: 12px;
+}
+
+.ygo-add-mod-card-button {
+  color: rgba(255, 255, 255, 0.5);
+}

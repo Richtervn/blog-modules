@@ -18,7 +18,6 @@ export default id => {
   switch (id) {
     case 'addFlashGameModal':
       return {
-        ...modalDisplay,
         header: { icon: makeIcon('gamepad'), label: 'Add New Flash Game' },
         body: FormAddFlashGame
       };

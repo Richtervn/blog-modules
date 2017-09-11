@@ -1,17 +1,23 @@
 import React from 'react';
 
-import OverView from './OverView';
-import PersonalView from './PersonalView';
-import FamilyView from './FamilyView';
+import OverView from './Information/OverView';
+import PersonalView from './Information/PersonalView';
+import FamilyView from './Information/FamilyView';
 
-export default ({ activeItem }) => {
+import Schools from './Education/Schools';
+
+export default ({ activeItem, activeGroup }) => {
   let ProfileView = OverView;
-  switch (activeItem) {
-    case 'Personal':
+  const link = activeGroup + '/' + activeItem;
+  switch (link) {
+    case 'Information/Personal':
       ProfileView = PersonalView;
       break;
-    case 'Family':
+    case 'Information/Family':
       ProfileView = FamilyView;
+      break;
+    case 'Education/Schools':
+      ProfileView = Schools;
       break;
     default:
       break;

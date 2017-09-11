@@ -38,6 +38,10 @@ const quotes = {
   Collections: {
     quote: "You're in quest for more to find the core. Your journey still ain't over",
     author: 'Avantasia - In Quest For'
+  },
+  Games: {
+    quote: "Gaming is not a crime",
+    author: 'DJ GEX'
   }
 };
 

@@ -3,18 +3,22 @@ import _ from 'underscore';
 
 import FlashGame from 'containers/FlashGame';
 import MangasReading from 'containers/MangasReading';
+import YugiohPoc from 'containers/YugiohPoc';
 
 import Home from 'components/Home';
 
 export default ({ activeGroup, activeItem, menuTree }) => {
   let Navigation = Home;
-  if(menuTree && _.contains(menuTree['Flash Games'], activeItem)) Navigation = FlashGame;
-  switch(activeItem){
+  if (menuTree && _.contains(menuTree['Flash Games'], activeItem)) Navigation = FlashGame;
+  switch (activeItem) {
     case 'Mangas Reading':
       Navigation = MangasReading;
+      break;
+    case 'YugiOh! PoC':
+      Navigation = YugiohPoc;
       break;
     default:
       break;
   }
-  return (<Navigation/>);
+  return <Navigation />;
 };

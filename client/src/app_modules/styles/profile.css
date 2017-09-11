@@ -13,7 +13,6 @@
   height: 650px;
   margin-top: 15px;
   overflow-y: auto;
-  overflow-y: hidden;
   background-image: url("../../app_modules/images/backgrounds/wood_highlight.jpg");
 }
 

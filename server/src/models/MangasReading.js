@@ -4,7 +4,7 @@ const MangasReading = new Schema({
   Name: String,
   Aka: [String],
   Authors: [String],
-  Introduce: [String],
+  Introduce: String,
   Chapter: String,
   Genre: [String],
   Rating: Number,

@@ -11,7 +11,7 @@
   margin-top: 45px;
   width: 200px;
   height: 736px;
-  background-color: #2E2F2F;
+  background-color: #2e2f2f;
 }
 
 .flash-game-main-screen {
@@ -33,37 +33,37 @@
 .blog-nav-name {
   padding-top: 5px;
   padding-left: 15px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .blog-nav-icon {
   padding-left: 15px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .blog-nav-quote {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .blog-nav-quote-author {
-  color: #F5AD28;
+  color: #f5ad28;
 }
 
 .menu-group-name:hover {
-  background-color: #1995AD;
+  background-color: #1995ad;
 }
 
 .menu-group-item {
-  color: #FFFFFF;
+  color: #ffffff;
   padding-left: 15px;
 }
 
 .menu-group-item:hover {
-  background-color: #68829E;
+  background-color: #68829e;
 }
 
 .menu-group-name {
-  color: #FFFFFF;
+  color: #ffffff;
   padding-left: 15px;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .menu-item-button:hover {
-  background-color: #1995AD;
+  background-color: #1995ad;
 }
 
 @media only screen and (max-width: 900px) {
@@ -120,8 +120,21 @@
   line-height: 0.75 !important;
 }
 
-.nav>li>a.active,
-.nav>li>a:focus {
-  color: #2E2F2F!important;
+.nav > li > a.active,
+.nav > li > a:focus {
+  color: #2e2f2f !important;
 }
 
+.no-row-margin {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.no-col-margin {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.larger-star-rating {
+  font-size: xx-large;
+}
