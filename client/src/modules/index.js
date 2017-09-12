@@ -5,6 +5,7 @@ import forms from 'modules/forms';
 import flashGame from 'modules/flashGame';
 import profile from 'modules/profile';
 import mangasReading from 'modules/mangasReading';
+import yugiohPoc from 'modules/yugiohPoc';
 
 import test from 'modules/test';
 
@@ -14,6 +15,7 @@ export default combineReducers({
   flashGame,
   profile,
   mangasReading,
+  yugiohPoc,
   test
 });
 

@@ -1,8 +1,7 @@
-import React from 'react';
+import AddFlashGame from 'components/Forms/AddFlashGame';
 import { connect } from 'react-redux';
 
 import { changeAddFlashForm } from 'modules/forms';
-import AddFlashGame from 'components/Forms/AddFlashGame';
 
 export default connect(
   null,

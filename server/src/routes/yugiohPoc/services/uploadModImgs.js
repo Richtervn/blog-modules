@@ -2,7 +2,7 @@ import multer from 'multer';
 import Promise from 'bluebird';
 import moment from 'moment';
 
-const srcPath = './public/Yugioh Poc';
+const srcPath = './public/Yugioh Poc/mods';
 
 const fileFields = [
   { name: 'Icon', maxCount: 1 },
@@ -14,9 +14,9 @@ const storage = multer.diskStorage({
     cb(null, srcPath);
   },
   filename(req, file, cb) {
-    const name = moment().format('DDMMYYYYhhmmss') + '.jpg';
+    const name = moment().format('DDMMYYYYhhmmss') + file.fieldname + '.jpg';
     req.body[file.fieldname] = `${srcPath}/${name}`;
-    cb(null, `${saveName}_${file.fieldname}.jpg`);
+    cb(null, name);
   }
 });
 

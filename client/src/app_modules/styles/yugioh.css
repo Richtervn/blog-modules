@@ -26,6 +26,10 @@
   color: white;
 }
 
+.ygo-mod-card-active {
+  background-color: #6FB98F;
+}
+
 .ygo-add-mod-card {
   margin:auto;
   margin-top: 5px;

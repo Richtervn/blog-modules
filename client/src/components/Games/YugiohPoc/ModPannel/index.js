@@ -1,43 +1,20 @@
 import React from 'react';
 import ModCard from './ModCard';
 
-const $ = window.$;
-console.log($);
-console.log($.isArray([]));
+import FormModal from 'components/FormModal';
 
+// const $ = window.$;
+// console.log($);
+// console.log($.isArray([]));
 
-export default () => (
+export default ({ onModSubmit, addModFormState, modList, modFocus, onSelectMod }) => (
   <div className="text-center">
-    <ModCard />
-    <ModCard />
+    {modList.map(mod => <ModCard key={mod._id} mod={mod} onSelectMod={onSelectMod} isSelected={mod._id == modFocus._id}/>)}
     <div className="ygo-add-mod-card">
       <div className="ygo-add-mod-card-icon" data-toggle="modal" data-target="#addYgoModModal">
         <i className="fa fa-plus-circle ygo-add-mod-card-button" />
       </div>
     </div>
-    <div className="modal fade" id="addYgoModModal">
-      <div className="modal-dialog" role="document">
-        <div className="modal-content">
-          <div className="modal-header">
-            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div className="modal-body">dcm</div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-success"
-              onClick={() => $('#addYgoModModal').modal('hide')}
-              data-dismiss="modal">
-              Submit
-            </button>
-            <button type="button" className="btn btn-danger" data-dismiss="modal">
-              Close
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <FormModal id="addYgoModModal" onSubmit={onModSubmit} formBody={addModFormState} />
   </div>
 );

@@ -20,5 +20,13 @@ export default (YugiohPocMods, YugiohPocDecks, factories) => {
     })
   );
 
+  router.get(
+    '/mod_list',
+    wrap(async (req, res, next) => {
+      const mods = await commonService.getAll(YugiohPocMods);
+      res.send(mods);
+    })
+  );
+
   return router;
 };

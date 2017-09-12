@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormGroupRow from './FormGroupRow';
+import FormGroupRow from './Tools/AddModal/FormGroupRow';
 
 export default ({onChange}) =>
   <form className="text-right">
