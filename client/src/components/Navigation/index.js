@@ -4,6 +4,7 @@ import _ from 'underscore';
 import FlashGame from 'containers/FlashGame';
 import MangasReading from 'containers/MangasReading';
 import YugiohPoc from 'containers/YugiohPoc';
+import Music from 'containers/Music';
 
 import Home from 'components/Home';
 
@@ -16,6 +17,9 @@ export default ({ activeGroup, activeItem, menuTree }) => {
       break;
     case 'YugiOh! PoC':
       Navigation = YugiohPoc;
+      break;
+    case 'Music':
+      Navigation = Music;
       break;
     default:
       break;

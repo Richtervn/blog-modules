@@ -31,12 +31,12 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
+      factories: `${defaultSettings.srcPath}/factories`,
       containers: `${defaultSettings.srcPath}/containers/`,
       components: `${defaultSettings.srcPath}/components/`,
-      modules: `${defaultSettings.srcPath}/modules/`,
       services: `${defaultSettings.srcPath}/services/`,
+      modules: `${defaultSettings.srcPath}/modules/`,
       utilities: `${defaultSettings.srcPath}/utilities/`,
-      factories: `${defaultSettings.srcPath}/factories`,
       'react/lib/ReactMount': 'react-dom/lib/ReactMount'
     }
   },

@@ -4,7 +4,6 @@ import { defineAddModalDisplay } from 'utilities';
 export default ({ id, onSubmit, formBody }) => {
   const { header, body } = defineAddModalDisplay(id);
   const ModalBody = body;
-
   return (
     <div className="modal fade" id={id}>
       <div className="modal-dialog" role="document">

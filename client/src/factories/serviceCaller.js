@@ -1,4 +1,4 @@
-import { serviceWrapper } from 'utilities';
+import serviceWrapper from './serviceWrapper';
 
 export default {
   commonGet: serviceWrapper(async (link, params, query) => {

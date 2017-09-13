@@ -138,3 +138,7 @@
 .larger-star-rating {
   font-size: xx-large;
 }
+
+.no-z-index {
+  z-index: -1!important;
+}

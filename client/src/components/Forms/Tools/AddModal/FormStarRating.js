@@ -11,7 +11,7 @@ export default ({ formName, label, rating, onRating }) => {
         <StarRating
           className="larger-star-rating"
           name={`${formName}-star-rating`}
-          value={rating}
+          value={parseInt(rating)}
           onStarClick={value => onRating(formName, value)}
         />
       </div>

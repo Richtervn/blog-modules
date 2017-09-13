@@ -1,4 +1,4 @@
 export defineAddModalDisplay from './defineAddModalDisplay';
+export defineDeleteModalDisplay from './defineDeleteModalDisplay';
 export defineMenuGroupIcon from './defineMenuGroupIcon';
-export serviceWrapper from './serviceWrapper';
 export checkActiveChannel from './checkActiveChannel';

@@ -6,6 +6,7 @@ import AppDiary from './AppDiary';
 import PersonalDiary from './PersonalDiary';
 import YugiohPocMods from './YugiohPocMods';
 import YugiohPocDecks from './YugiohPocDecks';
+import Music from './Music';
 
 const models = db => {
   FlashGames.plugin(autoIncrement.plugin, 'FlashGames');
@@ -14,6 +15,7 @@ const models = db => {
   PersonalDiary.plugin(autoIncrement.plugin, 'PersonalDiary');
   YugiohPocMods.plugin(autoIncrement.plugin, 'YugiohPocMods');
   YugiohPocDecks.plugin(autoIncrement.plugin, 'YugiohPocDecks');
+  Music.plugin(autoIncrement.plugin, 'Music');
 
   const FlashGamesSchema = db.model('FlashGames', FlashGames);
   const MangasReadingSchema = db.model('MangasReading', MangasReading);
@@ -21,6 +23,7 @@ const models = db => {
   const PersonalDiarySchema = db.model('PersonalDiary', PersonalDiary);
   const YugiohPocModsSchema = db.model('YugiohPocMods', YugiohPocMods);
   const YugiohPocDecksSchema = db.model('YugiohPocDecks', YugiohPocDecks);
+  const MusicSchema = db.model('Music', Music);
 
   return {
     FlashGames: FlashGamesSchema,
@@ -28,7 +31,8 @@ const models = db => {
     AppDiary: AppDiarySchema,
     PersonalDiary: PersonalDiarySchema,
     YugiohPocMods: YugiohPocModsSchema,
-    YugiohPocDecks: YugiohPocDecksSchema
+    YugiohPocDecks: YugiohPocDecksSchema,
+    Music: MusicSchema
   };
 };
 

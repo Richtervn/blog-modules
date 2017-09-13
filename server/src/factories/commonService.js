@@ -13,5 +13,9 @@ export default {
     if (!doc) return { message: 'Not found' };
     await model.remove({ _id: id }).exec();
     return { _id: doc._id };
+  },
+  getByParam: async (model, field, param) => {
+    const docs = await model.find({ [field]: param });
+    return docs;
   }
 };

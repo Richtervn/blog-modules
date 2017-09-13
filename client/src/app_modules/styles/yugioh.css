@@ -22,16 +22,16 @@
   height: 50px;
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.5);
-  background-color: #021C1E;
+  background-color: #021c1e;
   color: white;
 }
 
 .ygo-mod-card-active {
-  background-color: #6FB98F;
+  background-color: #6fb98f;
 }
 
 .ygo-add-mod-card {
-  margin:auto;
+  margin: auto;
   margin-top: 5px;
   border-radius: 5px;
   border: 1px dashed white;
@@ -41,7 +41,7 @@
 }
 
 .dv-star-rating-star {
-  margin-bottom: 0!important;
+  margin-bottom: 0 !important;
 }
 
 .ygo-mod-card-content {
@@ -72,4 +72,55 @@
 
 .ygo-add-mod-card-button {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.ygo-tab-view {
+  margin-top: 5px;
+  height: 685px;
+  overflow-y: auto;
+}
+
+.ygo-tab-view-text {
+  text-align: justify;
+  text-justify: inter-word;
+  width: 800px;
+  margin: auto;
+}
+
+.ygo-tab-view-deck {
+  text-align: justify;
+  text-justify: inter-word;
+  width: 600px;
+  margin: auto;
+}
+
+.ygo-deck-compare-container {
+  justify-content: center;
+}
+
+.ygo-deck-compare-box {
+  border: 1px gray solid;
+  border-radius: 5px;
+}
+
+.ygo-deck-pros-box {
+  width: 290px;
+  padding-right: 5px;
+}
+
+.ygo-deck-cons-box {
+  width: 290px;
+  padding-left: 5px;
+}
+
+.ygo-deck-box-legend {
+  border: 1px gray solid;
+  width: 90px;
+  border-radius: 5px;
+  line-height: 1;
+  background-color: #021c1e;
+  color: white;
+  font-size: 1.2rem;
+  text-align: initial;
+  margin-left: 40px;
 }

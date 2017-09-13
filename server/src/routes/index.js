@@ -3,16 +3,18 @@ import flashGamesRouter from './flashGames';
 import mangasReadingRouter from './mangasReading';
 import profileRouter from './profile';
 import yugiohPocRouter from './yugiohPoc';
+import musicRouter from './music';
 
 const routes = (models, factories) => {
-  const { FlashGames, MangasReading, YugiohPocMods, YugiohPocDecks } = models;
+  const { FlashGames, MangasReading, YugiohPocMods, YugiohPocDecks, Music } = models;
 
   return {
     system: systemRouter(factories),
     flash_games: flashGamesRouter(FlashGames, factories),
     mangas_reading: mangasReadingRouter(MangasReading, factories),
     profile: profileRouter(factories),
-    yugioh_poc: yugiohPocRouter(YugiohPocMods, YugiohPocDecks, factories)
+    yugioh_poc: yugiohPocRouter(YugiohPocMods, YugiohPocDecks, factories),
+    music: musicRouter(Music, factories)
   };
 };
 
