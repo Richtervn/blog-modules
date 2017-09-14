@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-const availableOptions = ['Name', 'Artist', 'Genre'];
+const availableOptions = ['Artist', 'Name', 'Genre'];
 
 export default class ToolsBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      options: 'Name',
+      option: 'Artist',
       value: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -35,7 +35,7 @@ export default class ToolsBar extends Component {
             <i className="fa fa-search" />
           </span>
           <input
-            className="form-control add-manga-form-input no-z-index"
+            className="form-control add-manga-form-input"
             type="text"
             onChange={this.handleChange}
             name="value"

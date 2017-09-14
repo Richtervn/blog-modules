@@ -14,7 +14,8 @@ export default ({
   onLoopList,
   isLoopList,
   onShuffleList,
-  onRemoveSong
+  onRemoveSong,
+  onNewPlaylist
 }) => (
   <div>
     <MusicPlayer
@@ -35,6 +36,7 @@ export default ({
       onLoopList={onLoopList}
       onShuffleList={onShuffleList}
       onRemoveSong={onRemoveSong}
+      onNewPlaylist={onNewPlaylist}
     />
   </div>
 );

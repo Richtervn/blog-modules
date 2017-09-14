@@ -11,10 +11,11 @@ export default ({
   onLoopList,
   isLoopList,
   onShuffleList,
-  onRemoveSong
+  onRemoveSong,
+  onNewPlaylist
 }) => (
   <div className="music-playlist-container">
-    <div style={{ paddingTop: '10px', marginLeft: '10px' }}>
+    <div className="music-playlist-tools-bar">
       <button
         className={
           isLoopTrack ? (
@@ -46,8 +47,11 @@ export default ({
         onClick={onLoopList}>
         <i className="fa fa-retweet" />
       </button>
+      <button className="btn btn-secondary channel-button" onClick={onNewPlaylist}>
+        <i className="fa fa-file"/>
+      </button>
     </div>
-    <div style={{ paddingTop: '10px', color: 'white' }}>
+    <div className="music-playlist">
       {list.map((song, i) => (
         <div key={i} className={currentSong && song._id == currentSong._id ? 'music-pl-song-active' : ''}>
           <div className="music-pl-song-row">

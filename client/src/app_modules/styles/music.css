@@ -103,9 +103,22 @@
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  height: 510px;
+  height: 505px;
   background-color: #2e2f2f;
   border-radius: 5px;
+}
+
+.music-playlist-tools-bar {
+  padding-top: 10px;
+  margin-left: 10px;
+  overflow-y: auto;
+}
+
+.music-playlist {
+  margin-top: 10px;
+  color: white;
+  overflow-y: auto;
+  height: 455px;
 }
 
 .music-pl-song {}

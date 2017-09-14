@@ -1,6 +1,7 @@
 import express from 'express';
 
 import uploadMusic from './services/uploadMusic';
+import searchMusic from './services/searchMusic';
 
 export default (Music, factories) => {
   const router = express.Router();
@@ -19,6 +20,14 @@ export default (Music, factories) => {
     '/get_all',
     wrap(async (req, res, next) => {
       const songs = await commonService.getAll(Music);
+      res.send(songs);
+    })
+  );
+
+  router.get(
+    '/search',
+    wrap(async (req, res, next) => {
+      const songs = await searchMusic(Music, req.query);
       res.send(songs);
     })
   );

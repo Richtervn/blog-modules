@@ -11,6 +11,7 @@ export default ({
   currentSong,
   isStartPlay,
   isLoopTrack,
+  sort,
   onGetSongsList,
   onAddSongSubmit,
   onPlaySong,
@@ -20,7 +21,11 @@ export default ({
   onLoopList,
   isLoopList,
   onShuffleList,
-  onRemoveSong
+  onRemoveSong,
+  onAddPlaylist,
+  onNewPlaylist,
+  onSortSongList,
+  onSearchInput
 }) => {
   if (!songsList) {
     onGetSongsList();
@@ -31,7 +36,15 @@ export default ({
     <div className="music-main-screen static-position">
       <div className="row no-row-margin static-position">
         <div className="col-8 no-col-margin static-position music-song-list-pannel">
-          <SongListPannel songsList={songsList} addSongForm={addSongForm} onAddSongSubmit={onAddSongSubmit} />
+          <SongListPannel
+            songsList={songsList}
+            addSongForm={addSongForm}
+            onAddSongSubmit={onAddSongSubmit}
+            onAddPlaylist={onAddPlaylist}
+            sort={sort}
+            onSortSongList={onSortSongList}
+            onSearchInput={onSearchInput}
+          />
         </div>
         <div className="col-4 no-col-margin static-position music-player-pannel">
           <PlayerPannel
@@ -47,6 +60,7 @@ export default ({
             isLoopList={isLoopList}
             onShuffleList={onShuffleList}
             onRemoveSong={onRemoveSong}
+            onNewPlaylist={onNewPlaylist}
           />
         </div>
       </div>

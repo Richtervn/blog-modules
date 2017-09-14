@@ -10,7 +10,11 @@ import {
   previousTrack,
   setLoopList,
   shuffleList,
-  removeSong
+  removeSong,
+  addPlaylist,
+  newPlaylist,
+  sortSongList,
+  searchSong
 } from 'modules/music';
 
 export default connect(
@@ -21,7 +25,8 @@ export default connect(
     currentSong: music.currentSong,
     isStartPlay: music.isStartPlay,
     isLoopTrack: music.isLoopTrack,
-    isLoopList: music.isLoopList
+    isLoopList: music.isLoopList,
+    sort: music.sort
   }),
   dispatch => ({
     onGetSongsList() {
@@ -50,6 +55,18 @@ export default connect(
     },
     onRemoveSong(song){
       dispatch(removeSong(song));
+    },
+    onAddPlaylist(song){
+      dispatch(addPlaylist(song));
+    },
+    onNewPlaylist(){
+      dispatch(newPlaylist());
+    },
+    onSortSongList(name){
+      dispatch(sortSongList(name));
+    },
+    onSearchInput(option){
+      dispatch(searchSong(option));
     }
   })
 )(Music);
