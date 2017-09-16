@@ -4,9 +4,10 @@ import page from 'modules/page';
 import forms from 'modules/forms';
 import flashGame from 'modules/flashGame';
 import profile from 'modules/profile';
-import mangasReading from 'modules/mangasReading';
-import yugiohPoc from 'modules/yugiohPoc';
-import music from 'modules/music';
+import mangasReading from 'modules/Collections/mangasReading';
+import music from 'modules/Collections/music';
+import starcraft from 'modules/Games/starcraft';
+import yugiohPoc from 'modules/Games/yugiohPoc';
 
 export default combineReducers({
   page,
@@ -15,6 +16,7 @@ export default combineReducers({
   profile,
   mangasReading,
   yugiohPoc,
-  music
+  music,
+  starcraft
 });
 

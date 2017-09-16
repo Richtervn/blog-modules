@@ -1,18 +1,17 @@
 import multer from 'multer';
 import Promise from 'bluebird';
 
-const srcPath = './public/Music';
+const srcPath = './public/Starcraft/Maps';
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
     cb(null, srcPath);
   },
   filename(req, file, cb) {
-    const name = file.originalname + '.mp3';
-    const fragments = file.originalname.split('-');
-    req.body.Artist = fragments[0].trim();
-    req.body.Name = fragments[1].replace('.mp3', '').trim();
-    req.body.Url = `${srcPath}/${name}`;
+    const name = file.originalname;
+    const frags = name.split('.');
+    req.body.Name = frags[0].trim();
+    req.body.Uri = `${srcPath}/${name}`;
     cb(null, name);
   }
 });

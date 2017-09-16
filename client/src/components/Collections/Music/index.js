@@ -2,7 +2,6 @@ import React from 'react';
 
 import SongListPannel from './SongListPannel';
 import PlayerPannel from './PlayerPannel';
-// import ReactPlayer from 'react-player';
 
 export default ({
   songsList,

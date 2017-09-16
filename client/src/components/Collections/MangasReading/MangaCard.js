@@ -12,7 +12,7 @@ export default ({ manga, isFocus, onSelectManga }) => (
       <div className="col text-center static-position manga-card-content">
         <strong>{manga.Name}</strong>
         <br />
-        <StarRating name={manga.Name} value={manga.Rating} editing={false} />
+        <StarRating name={manga.Name} value={parseInt(manga.Rating)} editing={false} />
         <br />
         <strong>Chapter : {manga.Chapter}</strong>
         <br />

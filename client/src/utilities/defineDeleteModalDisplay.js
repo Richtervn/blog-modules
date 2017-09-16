@@ -17,6 +17,8 @@ export default id => {
       return { header: { icon: makeIcon('danger'), label: 'Delete Yugioh Mod' } };
     case 'deleteYgoDeckModal':
       return { header: { icon: makeIcon('danger'), label: 'Delete Yugioh Deck' } };
+    case 'deleteStarcraftMapModal':
+      return { header: { icon: makeIcon('danger'), label: 'Delete Starcraft Map' } };
     default:
       return modalDisplay;
   }

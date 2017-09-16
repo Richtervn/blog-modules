@@ -1,4 +1,5 @@
 import React from 'react';
+import shortenText from 'factories/shortenText'
 
 export default ({
   list,
@@ -57,7 +58,7 @@ export default ({
           <div className="music-pl-song-row">
             <span>
               <i className="fa fa-music" />
-            </span>&nbsp;&nbsp;{`${i + 1}.  ${song.Artist} - ${song.Name}`}
+            </span>&nbsp;&nbsp;{shortenText(`${i + 1}.  ${song.Artist} - ${song.Name}`, 45)}
             <span className="pull-right">
               <i className="fa fa-play-circle music-pl-play-btn" onClick={() => onPlaySong(song)} />
               <i className="fa fa-times music-pl-remove-btn" onClick={() => onRemoveSong(song)} />

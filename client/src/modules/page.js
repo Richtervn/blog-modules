@@ -1,7 +1,7 @@
 import { system } from 'services';
 import actionCreator from 'factories/actionCreator';
 
-import { SUBMIT_ADD_FLASH_FORM_SUCCESS } from 'modules/forms';
+import { SUBMIT_ADD_FLASH_FORM_SUCCESS } from 'modules/flashGame';
 
 export const SET_ACTIVE_GROUP = 'page/SET_ACTIVE_GROUP';
 export const SET_DEACTIVE_GROUP = 'page/SET_DEACTIVE_GROUP';

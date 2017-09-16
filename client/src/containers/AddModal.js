@@ -1,7 +1,7 @@
 import FormModal from 'components/FormModal';
 import { connect } from 'react-redux';
 
-import { submitAddFlashForm } from 'modules/forms';
+import { submitAddFlashForm } from 'modules/flashGame';
 
 export default connect(
   ({ page, forms }) => {

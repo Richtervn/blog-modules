@@ -1,9 +1,3 @@
-import {
-  SUBMIT_ADD_YUGIOH_MOD_FORM_SUCCESS,
-  SUBMIT_ADD_YUGIOH_DECK_FORM_SUCCESS,
-  SUBMIT_EDIT_YUGIOH_MOD_FORM_SUCCESS,
-  SUBMIT_EDIT_YUGIOH_DECK_FORM_SUCCESS
-} from 'modules/forms';
 import actionCreator from 'factories/actionCreator';
 import { yugiohPoc } from 'services';
 
@@ -25,6 +19,58 @@ const DELETE_MOD_FAIL = 'yugiohPoc/DELETE_MOD_FAIL';
 const DELETE_DECK_START = 'yugiohPoc/DELETE_DECK_START';
 const DELETE_DECK_SUCCESS = 'yugiohPoc/DELETE_DECK_SUCCESS';
 const DELETE_DECK_FAIL = 'yugiohPoc/DELETE_DECK_FAIL';
+
+const SUBMIT_ADD_YUGIOH_DECK_FORM_START = 'forms/SUBMIT_ADD_YUGIOH_DECK_FORM_START';
+export const SUBMIT_ADD_YUGIOH_DECK_FORM_SUCCESS = 'forms/SUBMIT_ADD_YUGIOH_DECK_FORM_SUCCESS';
+const SUBMIT_ADD_YUGIOH_DECK_FORM_FAIL = 'forms/SUBMIT_ADD_YUGIOH_DECK_FORM_FAIL';
+
+const SUBMIT_ADD_YUGIOH_MOD_FORM_START = 'forms/SUBMIT_ADD_YUGIOH_MOD_FORM_START';
+export const SUBMIT_ADD_YUGIOH_MOD_FORM_SUCCESS = 'forms/SUBMIT_ADD_YUGIOH_MOD_FORM_SUCCESS';
+const SUBMIT_ADD_YUGIOH_MOD_FORM_FAIL = 'forms/SUBMIT_ADD_FLASH_FORM_FAIL';
+
+const SUBMIT_EDIT_YUGIOH_MOD_FORM_START = 'forms/SUBMIT_EDIT_YUGIOH_MOD_FORM';
+export const SUBMIT_EDIT_YUGIOH_MOD_FORM_SUCCESS = 'forms/SUBMIT_EDIT_YUGIOH_MOD_FORM_SUCCESS';
+const SUBMIT_EDIT_YUGIOH_MOD_FORM_FAIL = 'forms/SUBMIT_EDIT_YUGIOH_MOD_FORM_FAIL';
+
+const SUBMIT_EDIT_YUGIOH_DECK_FORM_START = 'forms/SUBMIT_EDIT_YUGIOH_DECK_FORM';
+export const SUBMIT_EDIT_YUGIOH_DECK_FORM_SUCCESS = 'forms/SUBMIT_EDIT_YUGIOH_DECK_FORM_SUCCESS';
+const SUBMIT_EDIT_YUGIOH_DECK_FORM_FAIL = 'forms/SUBMIT_EDIT_YUGIOH_DECK_FORM_FAIL';
+
+export const submitYugiohModForm = formBody =>
+  actionCreator(
+    SUBMIT_ADD_YUGIOH_MOD_FORM_START,
+    SUBMIT_ADD_YUGIOH_MOD_FORM_SUCCESS,
+    SUBMIT_ADD_YUGIOH_MOD_FORM_FAIL,
+    yugiohPoc.addMod,
+    formBody
+  )();
+
+export const submitEditYugiohModForm = formBody =>
+  actionCreator(
+    SUBMIT_EDIT_YUGIOH_MOD_FORM_START,
+    SUBMIT_EDIT_YUGIOH_MOD_FORM_SUCCESS,
+    SUBMIT_EDIT_YUGIOH_MOD_FORM_FAIL,
+    yugiohPoc.editMod,
+    formBody
+  )();
+
+export const submitYugiohDeckForm = formBody =>
+  actionCreator(
+    SUBMIT_ADD_YUGIOH_DECK_FORM_START,
+    SUBMIT_ADD_YUGIOH_DECK_FORM_SUCCESS,
+    SUBMIT_ADD_YUGIOH_DECK_FORM_FAIL,
+    yugiohPoc.addDeck,
+    formBody
+  )();
+
+export const submitEditYugiohDeckForm = formBody =>
+  actionCreator(
+    SUBMIT_EDIT_YUGIOH_DECK_FORM_START,
+    SUBMIT_EDIT_YUGIOH_DECK_FORM_SUCCESS,
+    SUBMIT_EDIT_YUGIOH_DECK_FORM_FAIL,
+    yugiohPoc.editDeck,
+    formBody
+  )();
 
 export const getModList = actionCreator(
   GET_MOD_LIST_START,

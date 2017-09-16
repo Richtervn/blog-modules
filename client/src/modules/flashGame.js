@@ -7,6 +7,19 @@ const GET_GAME_START = 'flashGame/GET_GAME_START';
 const GET_GAME_SUCCESS = 'flashGame/GET_GAME_SUCCESS';
 const GET_GAME_FAIL = 'flashGame/GET_GAME_FAIL';
 
+const SUBMIT_ADD_FLASH_FORM_START = 'forms/SUBMIT_ADD_FLASH_FORM_START';
+export const SUBMIT_ADD_FLASH_FORM_SUCCESS = 'forms/SUBMIT_ADD_FLASH_FORM_SUCCESS';
+const SUBMIT_ADD_FLASH_FORM_FAIL = 'forms/SUBMIT_ADD_FLASH_FORM_FAIL';
+
+export const submitAddFlashForm = formBody =>
+  actionCreator(
+    SUBMIT_ADD_FLASH_FORM_START,
+    SUBMIT_ADD_FLASH_FORM_SUCCESS,
+    SUBMIT_ADD_FLASH_FORM_FAIL,
+    flashGames.addGame,
+    formBody
+  )();
+
 export const getGame = Name =>
   actionCreator(GET_GAME_START, GET_GAME_SUCCESS, GET_GAME_FAIL, flashGames.getGame, Name)();
 

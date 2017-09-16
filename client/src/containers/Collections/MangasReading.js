@@ -1,4 +1,4 @@
-import MangasReading from "components/MangasReading";
+import MangasReading from "components/Collections/MangasReading";
 import { connect } from "react-redux";
 
 import {
@@ -12,7 +12,7 @@ import {
   submitDeleteManga,
   searchManga,
   sortManga
-} from "modules/mangasReading";
+} from "modules/Collections/mangasReading";
 
 const mapStateToProps = ({ mangasReading }) => ({
   viewChannel: mangasReading.viewControl.viewChannel,

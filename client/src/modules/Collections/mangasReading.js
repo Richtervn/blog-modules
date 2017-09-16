@@ -157,8 +157,7 @@ export default (
       return {
         ...state,
         mangas: action.data.slice(0),
-        viewControl: { ...state.viewControl, viewChannel: 'Detail' },
-        focusManga: action.data[0]
+        viewControl: { ...state.viewControl, viewChannel: 'Detail' }
       };
     case SORT_MANGA_SUCCESS:
       return {

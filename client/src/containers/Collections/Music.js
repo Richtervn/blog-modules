@@ -1,7 +1,6 @@
-import Music from 'components/Music';
+import Music from 'components/Collections/Music';
 import { connect } from 'react-redux';
 
-import { submitAddMusicForm } from 'modules/forms';
 import {
   getAllSongs,
   setCurrentSong,
@@ -14,8 +13,9 @@ import {
   addPlaylist,
   newPlaylist,
   sortSongList,
-  searchSong
-} from 'modules/music';
+  searchSong,
+  submitAddMusicForm
+} from 'modules/Collections/music';
 
 export default connect(
   ({ music, forms }) => ({

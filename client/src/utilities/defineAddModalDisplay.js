@@ -1,9 +1,11 @@
-import FormAddFlashGame from 'containers/FormAddFlashGame';
-import FormAddYugiohMod from 'containers/FormAddYugiohMod';
-import FormAddYugiohDeck from 'containers/FormAddYugiohDeck';
-import FormEditYugiohMod from 'containers/FormEditYugiohMod';
-import FormEditYugiohDeck from 'containers/FormEditYugiohDeck';
-import FormAddMusic from 'containers/FormAddMusic';
+import FormAddFlashGame from 'containers/Forms/FormAddFlashGame';
+import FormAddYugiohMod from 'containers/Forms/FormAddYugiohMod';
+import FormAddYugiohDeck from 'containers/Forms/FormAddYugiohDeck';
+import FormEditYugiohMod from 'containers/Forms/FormEditYugiohMod';
+import FormEditYugiohDeck from 'containers/Forms/FormEditYugiohDeck';
+import FormAddMusic from 'containers/Forms/FormAddMusic';
+import FormAddStarcraftMap from 'containers/Forms/FormAddStarcraftMap';
+import FormEditStarcraftMap from 'containers/Forms/FormEditStarcraftMap';
 
 const makeIcon = (name, ext) => {
   const iconPath = 'app_modules/images/icons/';
@@ -43,14 +45,24 @@ export default id => {
       };
     case 'editYgoDeckModal':
       return {
-        header: {icon: makeIcon('gamepad'), label: 'Edit Yugioh Deck'},
+        header: { icon: makeIcon('gamepad'), label: 'Edit Yugioh Deck' },
         body: FormEditYugiohDeck
-      }
+      };
     case 'addMusicModal':
       return {
-        header: {icon: makeIcon('music'), label: 'Add New Song'},
+        header: { icon: makeIcon('music'), label: 'Add New Song' },
         body: FormAddMusic
-      }
+      };
+    case 'addStarcraftMapModal':
+      return {
+        header: { icon: makeIcon('starcraft'), label: 'Add Starcraft Map' },
+        body: FormAddStarcraftMap
+      };
+    case 'editStarcraftMapModal':
+      return {
+        header: { icon: makeIcon('starcraft'), label: 'Edit Starcraft Map' },
+        body: FormEditStarcraftMap
+      };
     default:
       return modalDisplay;
   }

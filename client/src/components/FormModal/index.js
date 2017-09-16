@@ -26,7 +26,9 @@ export default ({ id, onSubmit, formBody }) => {
               data-dismiss="modal">
               Submit
             </button>
-            <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="button" className="btn btn-danger" data-dismiss="modal">
+              Close
+            </button>
           </div>
         </div>
       </div>

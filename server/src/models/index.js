@@ -7,6 +7,7 @@ import PersonalDiary from './PersonalDiary';
 import YugiohPocMods from './YugiohPocMods';
 import YugiohPocDecks from './YugiohPocDecks';
 import Music from './Music';
+import StarcraftMaps from './StarcraftMaps';
 
 const models = db => {
   FlashGames.plugin(autoIncrement.plugin, 'FlashGames');
@@ -16,6 +17,7 @@ const models = db => {
   YugiohPocMods.plugin(autoIncrement.plugin, 'YugiohPocMods');
   YugiohPocDecks.plugin(autoIncrement.plugin, 'YugiohPocDecks');
   Music.plugin(autoIncrement.plugin, 'Music');
+  StarcraftMaps.plugin(autoIncrement.plugin, 'StarcraftMaps');
 
   const FlashGamesSchema = db.model('FlashGames', FlashGames);
   const MangasReadingSchema = db.model('MangasReading', MangasReading);
@@ -24,6 +26,7 @@ const models = db => {
   const YugiohPocModsSchema = db.model('YugiohPocMods', YugiohPocMods);
   const YugiohPocDecksSchema = db.model('YugiohPocDecks', YugiohPocDecks);
   const MusicSchema = db.model('Music', Music);
+  const StarcraftMapsSchema = db.model('StarcraftMaps', StarcraftMaps);
 
   return {
     FlashGames: FlashGamesSchema,
@@ -32,7 +35,8 @@ const models = db => {
     PersonalDiary: PersonalDiarySchema,
     YugiohPocMods: YugiohPocModsSchema,
     YugiohPocDecks: YugiohPocDecksSchema,
-    Music: MusicSchema
+    Music: MusicSchema,
+    StarcraftMaps: StarcraftMapsSchema
   };
 };
 

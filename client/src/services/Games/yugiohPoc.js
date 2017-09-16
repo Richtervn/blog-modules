@@ -1,4 +1,4 @@
-import serviceCaller from '../factories/serviceCaller';
+import serviceCaller from 'factories/serviceCaller';
 
 const { commonPostMultiplePart, commonPutMultiplePart, commonGet, commonPut, commonDelete } = serviceCaller;
 

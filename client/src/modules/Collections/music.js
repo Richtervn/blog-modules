@@ -2,8 +2,6 @@ import { music } from 'services';
 import _ from 'underscore';
 import actionCreator from 'factories/actionCreator';
 
-import { SUBMIT_ADD_MUSIC_FORM_SUCESS } from 'modules/forms';
-
 const shuffle = a => {
   for (let i = a.length; i; i--) {
     let j = Math.floor(Math.random() * i);
@@ -11,6 +9,10 @@ const shuffle = a => {
   }
   return a;
 };
+
+const SUBMIT_ADD_MUSIC_FORM_START = 'forms/SUBMIT_ADD_MUSIC_FORM_START';
+export const SUBMIT_ADD_MUSIC_FORM_SUCESS = 'forms/SUBMIT_ADD_MUSIC_FORM_SUCESS';
+const SUBMIT_ADD_MUSIC_FORM_FAIL = 'forms/SUBMIT_ADD_MUSIC_FORM_FAIL';
 
 const GET_ALL_SONGS_START = 'music/GET_ALL_SONGS_START';
 const GET_ALL_SONGS_SUCCESS = 'music/GET_ALL_SONGS_SUCCESS';
@@ -38,7 +40,17 @@ export const getAllSongs = actionCreator(
   music.getAll
 );
 
-export const searchSong = option => actionCreator(SEARCH_SONG_START, SEARCH_SONG_SUCCESS, SEARCH_SONG_FAIL, music.search, option)();
+export const submitAddMusicForm = formBody =>
+  actionCreator(
+    SUBMIT_ADD_MUSIC_FORM_START,
+    SUBMIT_ADD_MUSIC_FORM_SUCESS,
+    SUBMIT_ADD_MUSIC_FORM_FAIL,
+    music.add,
+    formBody
+  )();
+
+export const searchSong = option =>
+  actionCreator(SEARCH_SONG_START, SEARCH_SONG_SUCCESS, SEARCH_SONG_FAIL, music.search, option)();
 
 export const nextTrack = () => ({ type: NEXT_TRACK });
 export const previoustTrack = () => ({ type: PREVIOUS_TRACK });
@@ -68,7 +80,7 @@ export default (
     case GET_ALL_SONGS_SUCCESS:
       return { ...state, songsList: action.data, playList: action.data };
     case SEARCH_SONG_SUCCESS:
-      return {...state, songsList: action.data.slice(0)};
+      return { ...state, songsList: action.data.slice(0) };
     case SUBMIT_ADD_MUSIC_FORM_SUCESS:
       state.songsList.push(action.data);
       return { ...state, songsList: state.songsList.slice(0) };
@@ -78,6 +90,9 @@ export default (
       let nextSong;
       index = state.playList.findIndex(song => song._id == state.currentSong._id);
       nextSong = state.playList[index + 1];
+      if (state.isLoopTrack) {
+        nextSong = state.currentSong;
+      }
       if (state.isLoopList && !nextSong) {
         nextSong = state.playList[0];
       }

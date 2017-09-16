@@ -2,21 +2,18 @@ import YugiohPoc from 'components/Games/YugiohPoc';
 import { connect } from 'react-redux';
 
 import {
-  submitYugiohModForm,
-  submitYugiohDeckForm,
-  submitEditYugiohModForm,
-  submitEditYugiohDeckForm
-} from 'modules/forms';
-
-import {
   getModList,
   setFocusMod,
   getDeckList,
   setFocusDeck,
   changeTab,
   deleteMod,
-  deleteDeck
-} from 'modules/yugiohPoc';
+  deleteDeck,
+  submitYugiohModForm,
+  submitYugiohDeckForm,
+  submitEditYugiohModForm,
+  submitEditYugiohDeckForm
+} from 'modules/Games/yugiohPoc';
 
 export default connect(
   ({ forms, yugiohPoc }) => ({
