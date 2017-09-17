@@ -5,7 +5,7 @@ import StarRating from 'react-star-rating-component';
 import FormModal from 'components/FormModal';
 import DeleteModal from 'components/DeleteModal';
 
-export default ({ map, onEditMapSubmit, editMapFormState }) => {
+export default ({ map, onEditMapSubmit, editMapFormState, onDeleteMap }) => {
   if (!map.Name) return null;
   const { playerRaces, opponentRaces } = extractRaces(map.Matchup);
   return (
@@ -15,11 +15,15 @@ export default ({ map, onEditMapSubmit, editMapFormState }) => {
           <strong>{map.Name.toUpperCase()}</strong>
         </h3>
         <div className="sc-map-info-feature">
-          <button className="sc-map-feature-btn" data-toggle="modal" data-target="#editStarcraftMapModal"><i className="fa fa-pencil"/></button>
-          <button className="sc-map-feature-btn" data-toggle="modal" data-target="#deleteStarcraftMapModal"><i className="fa fa-times"/></button>
+          <button className="sc-map-feature-btn" data-toggle="modal" data-target="#editStarcraftMapModal">
+            <i className="fa fa-pencil" />
+          </button>
+          <button className="sc-map-feature-btn" data-toggle="modal" data-target="#deleteStarcraftMapModal">
+            <i className="fa fa-times" />
+          </button>
         </div>
         <div className="larger-star-rating">
-          <StarRating name={map.Name} value={parseInt(map.Rating)} editing={false}/>
+          <StarRating name={map.Name} value={parseInt(map.Rating)} editing={false} />
         </div>
         <div className="row no-row-margin">
           <div className="col no-col-margin">
@@ -48,8 +52,12 @@ export default ({ map, onEditMapSubmit, editMapFormState }) => {
           {map.Tipntrick.map((tnt, i) => <p key={i}>{tnt}</p>)}
         </div>
       </div>
-      <FormModal id="editStarcraftMapModal" formBody={editMapFormState} onSubmit={onEditMapSubmit}/>
-      <DeleteModal id="deleteStarcraftMapModal"/>
+      <FormModal id="editStarcraftMapModal" formBody={editMapFormState} onSubmit={onEditMapSubmit} />
+      <DeleteModal
+        id="deleteStarcraftMapModal"
+        text={`Hey man, make sure you want to delete ${map.Name}. The action can't be backed up`}
+        onSubmit={() => onDeleteMap(map._id)}
+      />
     </div>
   );
 };

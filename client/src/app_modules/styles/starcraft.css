@@ -66,6 +66,20 @@
   overflow-y: auto;
 }
 
+.sc-side-list-border-block::-webkit-scrollbar {
+  width: 20px;
+}
+
+.sc-side-list-border-block::-webkit-scrollbar-track {
+  border-radius: 5px;
+  border: solid 1px #800000;
+}
+
+.sc-side-list-border-block::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #800000;
+}
+
 .sc-side-list-border-block-inner {
   border: 1px solid #800000;
   border-radius: 5px;
@@ -87,7 +101,7 @@
 }
 
 .sc-race-icon {
-  width: 50px;
+  width: 40px;
 }
 
 .sc-versus-icon {

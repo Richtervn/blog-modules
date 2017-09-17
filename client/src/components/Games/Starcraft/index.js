@@ -12,7 +12,8 @@ export default ({
   onGetMapList,
   mapFocus,
   editMapFormState,
-  onSetMapFocus
+  onSetMapFocus,
+  onDeleteMap
 }) => (
   <div className="sc-main-screen static-position">
     <div className="sc-header-border-block">
@@ -33,7 +34,12 @@ export default ({
         />
       </div>
       <div className="col-8 no-col-margin">
-        <InformationScreen View={SideListView} mapFocus={mapFocus} editMapFormState={editMapFormState} />
+        <InformationScreen
+          View={SideListView}
+          mapFocus={mapFocus}
+          editMapFormState={editMapFormState}
+          onDeleteMap={onDeleteMap}
+        />
       </div>
     </div>
   </div>

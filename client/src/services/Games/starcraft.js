@@ -14,6 +14,10 @@ export default {
   editMap(formBody){
     const data = commonPutMultiplePart('starcraft/edit_map', formBody);
     return data;
+  },
+  deleteMap(id){
+    const data = commonDelete('starcraft/remove_map/' + id);
+    return data;
   }
   // addMod(formBody) {
   //   const data = commonPostMultiplePart('yugioh_poc/add_mod', formBody);

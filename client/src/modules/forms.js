@@ -21,6 +21,8 @@ const CHANGE_EDIT_YUGIOH_MOD_FORM = 'forms/CHANGE_EDIT_YUGIOH_MOD_FORM';
 const CHANGE_EDIT_YUGIOH_DECK_FORM = 'forms/CHANGE_EDIT_YUGIOH_DECK_FORM';
 const CHANGE_ADD_STARCRAFT_MAP_FORM = 'forms/CHANGE_ADD_STARCRAFT_MAP_FORM';
 const CHANGE_EDIT_STARCRAFT_MAP_FORM = 'forms/CHANGE_EDIT_STARCRAFT_MAP_FORM';
+const CHANGE_ADD_STARCRAFT_CAMPAIGN_FORM = 'forms/CHANGE_ADD_STARCRAFT_CAMPAIGN_FORM';
+const CHANGE_EDIT_STARCRAFT_CAMPAIGN_FORM = 'forms/CHANGE_EDIT_STARCRAFT_CAMPAIGN_FORM';
 
 const ADD_ARRAY_YUGIOH_MOD_FORM = 'forms/ADD_ARRAY_YUGIOH_MOD_FORM';
 const ADD_ARRAY_YUGIOH_DECK_FORM = 'forms/ADD_ARRAY_YUGIOH_DECK_FORM';
@@ -40,6 +42,8 @@ const CHANGE_FORM_RATING = 'forms/CHANGE_FORM_RATING';
 
 export const changeAddFlashForm = event => ({ type: CHANGE_ADD_FLASH_FORM, event });
 export const changeAddMusicForm = event => ({ type: CHANGE_ADD_MUSIC_FORM, event });
+export const changeAddStarcraftCampaignForm = event => ({type: CHANGE_ADD_STARCRAFT_CAMPAIGN_FORM, event});
+export const changeEditStarcraftCampaignForm = event => ({type: CHANGE_EDIT_STARCRAFT_CAMPAIGN_FORM, event});
 export const changeAddYugiohModForm = (event, index) => ({ type: CHANGE_ADD_YUGIOH_MOD_FORM, event, index });
 export const changeAddYugiohDeckForm = (event, index) => ({
   type: CHANGE_ADD_YUGIOH_DECK_FORM,
@@ -146,7 +150,14 @@ export default (
       Description: '',
       Tipntrick: ['']
     },
-    EditStarcraftMap: null
+    EditStarcraftMap: null,
+    AddStarcraftCampaign: {
+      Rating: 0,
+      Matchup: '',
+      Description: '',
+      Introduction: ''
+    },
+    EditStarcraftCampaign: null
   },
   action
 ) => {
@@ -155,6 +166,12 @@ export default (
     case CHANGE_ADD_FLASH_FORM:
       formValue = commonFormChange(state.AddFlashGame, action.event);
       return { ...state, AddFlashGame: formValue };
+    case CHANGE_ADD_STARCRAFT_CAMPAIGN_FORM:
+      formValue = commonFormChange(state.AddStarcraftCampaign, action.event);
+      return {...state, AddStarcraftCampaign: formValue};
+    case CHANGE_EDIT_STARCRAFT_CAMPAIGN_FORM:
+      formValue = commonFormChange(state.EditStarcraftCampaign, action.event);
+      return {...state, EditStarcraftCampaign: formValue};
     case CHANGE_ADD_MUSIC_FORM:
       formValue = commonFormChange(state.AddMusic, action.event);
       return { ...state, AddMusic: formValue };

@@ -6,6 +6,8 @@ import FormEditYugiohDeck from 'containers/Forms/FormEditYugiohDeck';
 import FormAddMusic from 'containers/Forms/FormAddMusic';
 import FormAddStarcraftMap from 'containers/Forms/FormAddStarcraftMap';
 import FormEditStarcraftMap from 'containers/Forms/FormEditStarcraftMap';
+import FormAddStarcraftCampaign from 'containers/Forms/FormAddStarcraftCampaign';
+import FormEditStarcraftCampaign from 'containers/Forms/FormEditStarcraftCampaign';
 
 const makeIcon = (name, ext) => {
   const iconPath = 'app_modules/images/icons/';
@@ -62,6 +64,16 @@ export default id => {
       return {
         header: { icon: makeIcon('starcraft'), label: 'Edit Starcraft Map' },
         body: FormEditStarcraftMap
+      };
+    case 'addStarcraftCampaignModal':
+      return {
+        header: { icon: makeIcon('starcraft'), label: 'Add Starcraft Campaign' },
+        body: FormAddStarcraftCampaign
+      };
+    case 'editStarcraftCampaignModal':
+      return {
+        header: { icon: makeIcon('starcraft'), label: 'Edit Starcraft Campaign' },
+        body: FormEditStarcraftCampaign
       };
     default:
       return modalDisplay;

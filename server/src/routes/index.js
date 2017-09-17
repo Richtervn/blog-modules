@@ -7,7 +7,15 @@ import musicRouter from './music';
 import starcraftRouter from './starcraft';
 
 const routes = (models, factories) => {
-  const { FlashGames, MangasReading, YugiohPocMods, YugiohPocDecks, Music, StarcraftMaps } = models;
+  const {
+    FlashGames,
+    MangasReading,
+    YugiohPocMods,
+    YugiohPocDecks,
+    Music,
+    StarcraftMaps,
+    StarcraftCampaigns
+  } = models;
 
   return {
     system: systemRouter(factories),
@@ -16,7 +24,7 @@ const routes = (models, factories) => {
     profile: profileRouter(factories),
     yugioh_poc: yugiohPocRouter(YugiohPocMods, YugiohPocDecks, factories),
     music: musicRouter(Music, factories),
-    starcraft: starcraftRouter(StarcraftMaps, factories)
+    starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, factories)
   };
 };
 

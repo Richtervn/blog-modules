@@ -7,7 +7,7 @@ export default ({ current, onNavigate }) => (
     {headers.map((header, i) => (
       <li key={i} className="sc-header-navigation-list-item">
         <a className="sc-header-navigation-link" href="#" onClick={() => onNavigate(header)} style={{color: current == header ? '#ddff66' : '#00cc00'}}>
-          {header}
+          <strong>{header.toUpperCase()}</strong>
         </a>
       </li>
     ))}

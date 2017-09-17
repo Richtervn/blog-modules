@@ -1,7 +1,7 @@
 import Starcraft from 'components/Games/Starcraft';
 import { connect } from 'react-redux';
 
-import { changeSideListView, getMapList, setMapFocus, submitAddStarcraftMapForm } from 'modules/Games/starcraft';
+import { changeSideListView, getMapList, setMapFocus, submitAddStarcraftMapForm, deleteMap } from 'modules/Games/starcraft';
 
 export default connect(
   ({ forms, starcraft }) => ({
@@ -23,6 +23,9 @@ export default connect(
     },
     onSetMapFocus(map) {
       dispatch(setMapFocus(map));
+    },
+    onDeleteMap(id){
+      dispatch(deleteMap(id));
     }
   })
 )(Starcraft);
