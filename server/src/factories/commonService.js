@@ -18,8 +18,8 @@ export default {
     const docs = await model.find({ [field]: param });
     return docs;
   },
-  getOne: async id => {
-    const doc = await model.find({ _id: id });
+  getOne: async (model, id) => {
+    const doc = await model.findOne({ _id: id });
     return doc;
   },
   update: async (model, body) => {

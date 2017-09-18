@@ -8,7 +8,7 @@ export default (START, SUCCESS, FAIL, service, ...serviceParams) => {
       dispatch(actionStart());
       try {
         const data = await service(...serviceParams);
-        if(data.message){
+        if(data && data.message){
           return dispatch(actionError(data));
         }
         dispatch(actionSuccess(data));

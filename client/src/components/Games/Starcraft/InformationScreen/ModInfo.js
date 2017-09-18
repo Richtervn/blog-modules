@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default ({ campaign, onEditCampaignSubmit, editCampaignFormState, onDeleteCampaign }) => {
-  if(!campaign.Name){
+export default ({ mod, onEditModSubmit, editModFormState, onDeleteMod }) => {
+  if(!mod.Name){
     return null;
   }
   return (

@@ -8,6 +8,8 @@ import FormAddStarcraftMap from 'containers/Forms/FormAddStarcraftMap';
 import FormEditStarcraftMap from 'containers/Forms/FormEditStarcraftMap';
 import FormAddStarcraftCampaign from 'containers/Forms/FormAddStarcraftCampaign';
 import FormEditStarcraftCampaign from 'containers/Forms/FormEditStarcraftCampaign';
+import FormAddStarcraftMod from 'containers/Forms/FormAddStarcraftMod';
+import FormEditStarcraftMod from 'containers/Forms/FormEditStarcraftMod';
 
 const makeIcon = (name, ext) => {
   const iconPath = 'app_modules/images/icons/';
@@ -74,6 +76,16 @@ export default id => {
       return {
         header: { icon: makeIcon('starcraft'), label: 'Edit Starcraft Campaign' },
         body: FormEditStarcraftCampaign
+      };
+    case 'addStarcraftModModal':
+      return {
+        header: { icon: makeIcon('starcraft'), label: 'Add Starcraft Mod' },
+        body: FormAddStarcraftMod
+      };
+    case 'editStarcraftModModal':
+      return {
+        header: { icon: makeIcon('starcraft'), label: 'Edit Starcraft Mod' },
+        body: FormEditStarcraftMod
       };
     default:
       return modalDisplay;
