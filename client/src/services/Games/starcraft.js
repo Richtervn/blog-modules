@@ -6,8 +6,7 @@ const {
   commonGet,
   commonPut,
   commonDelete,
-  commonPost,
-  commonBlob
+  commonPost
 } = serviceCaller;
 
 export default {
@@ -24,11 +23,11 @@ export default {
     return data;
   },
   getModDetail(id) {
-    const data = commonBlob('starcraft/mod', [id]);
+    const data = commonGet('starcraft/mod', [id]);
     return data;
   },
   getCampaignDetail(id) {
-    const data = commonBlob('starcraft/mod', [id]);
+    const data = commonGet('starcraft/campaign', [id]);
     return data;
   },
   addMap(formBody) {
@@ -40,7 +39,7 @@ export default {
     return data;
   },
   addCampaign(formBody) {
-    const data = commonPost('starcraft/add_campaign', formBody);
+    const data = commonPostMultiplePart('starcraft/add_campaign', formBody);
     return data;
   },
   editCampaign(formBody) {
