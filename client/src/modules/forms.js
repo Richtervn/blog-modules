@@ -155,7 +155,8 @@ export default (
       Rating: 0,
       Matchup: '',
       Description: '',
-      Introduction: ''
+      Introduction: '',
+      Version: ''
     },
     EditStarcraftCampaign: null
   },

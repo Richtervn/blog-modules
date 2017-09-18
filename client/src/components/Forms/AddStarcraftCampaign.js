@@ -10,5 +10,6 @@ export default ({formState, onChange, onRating}) => (
     <FormStarRating formName="AddStarcraftCampaign" rating={formState.Rating} onRating={onRating}/>
     <FormGroupArea name="Description" label="Description" onChange={onChange}/>
     <FormGroupArea name="Introduction" label="Introduction" onChange={onChange}/>
+    <FormGroupRow name="Version" type="text" label="Version" onChange={onChange}/>
   </form>
 )

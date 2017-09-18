@@ -17,5 +17,14 @@ export default {
   getByParam: async (model, field, param) => {
     const docs = await model.find({ [field]: param });
     return docs;
+  },
+  getOne: async id => {
+    const doc = await model.find({ _id: id });
+    return doc;
+  },
+  update: async (model, body) => {
+    let updateForm = { ...body };
+    await model.update({ _id: body._id }, { $set: updateForm });
+    return body;
   }
 };

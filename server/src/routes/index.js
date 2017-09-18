@@ -14,7 +14,8 @@ const routes = (models, factories) => {
     YugiohPocDecks,
     Music,
     StarcraftMaps,
-    StarcraftCampaigns
+    StarcraftCampaigns,
+    StarcraftMods
   } = models;
 
   return {
@@ -24,7 +25,7 @@ const routes = (models, factories) => {
     profile: profileRouter(factories),
     yugioh_poc: yugiohPocRouter(YugiohPocMods, YugiohPocDecks, factories),
     music: musicRouter(Music, factories),
-    starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, factories)
+    starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories)
   };
 };
 

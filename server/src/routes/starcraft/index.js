@@ -4,7 +4,7 @@ import addMap from './services/addMap';
 import updateMap from './services/updateMap';
 import uploadCampaign from './services/uploadCampaign';
 
-export default (StarcraftMaps, StarcraftCampaigns, factories) => {
+export default (StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories) => {
   const router = express.Router();
   const { wrap, commonService } = factories;
 
@@ -42,21 +42,36 @@ export default (StarcraftMaps, StarcraftCampaigns, factories) => {
     })
   );
 
-  router.get('/list_campaign', wrap(async(req, res, next) => {
-    const campaigns = await StarcraftCampaigns.find({}, {Description: false, Introduction: false, Uri: false});
-    res.send(campaigns);
-  }));
+  router.get(
+    '/list_campaign',
+    wrap(async (req, res, next) => {
+      const campaigns = await StarcraftCampaigns.find(
+        {},
+        { Description: false, Introduction: false, Uri: false }
+      );
+      res.send(campaigns);
+    })
+  );
 
-  router.get('/campaign/:id', wrap(async(req, res, next) => {
-    const campaign = await commonService.getOne(StarcraftCampaigns, req.params.id);
-    res.send(campaign);
-  }));
+  router.get(
+    '/campaign/:id',
+    wrap(async (req, res, next) => {
+      const campaign = await commonService.getOne(
+        StarcraftCampaigns,
+        req.params.id
+      );
+      res.send(campaign);
+    })
+  );
 
-  router.post('/add_campaign', wrap(async(req, res, next) => {
-    const body = await uploadCampaign(req, res);
-    const campaign = await commonService.create(body);
-    res.send(campaign)
-  }))
+  router.post(
+    '/add_campaign',
+    wrap(async (req, res, next) => {
+      const body = await uploadCampaign(req, res);
+      const campaign = await commonService.create(body);
+      res.send(campaign);
+    })
+  );
 
   return router;
 };
