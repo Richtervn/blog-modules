@@ -27,7 +27,7 @@ export default ({ campaign, isFocus, onSelect }) => {
           ))}
         </div>
         <div className="col-3 no-col-margin sc-map-rating">
-          <StarRating name={map.Name} editing={false} value={parseInt(map.Rating)} />
+          <StarRating name={campaign.Name} editing={false} value={parseInt(campaign.Rating)} />
         </div>
       </div>
     </div>

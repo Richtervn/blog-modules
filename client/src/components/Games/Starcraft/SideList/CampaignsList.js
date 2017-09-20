@@ -2,7 +2,7 @@ import React from 'react';
 
 import StarRating from 'react-star-rating-component';
 import FormModal from 'components/FormModal';
-import CampaignCard from 'components/CampaignCard';
+import CampaignCard from './CampaignCard';
 
 export default ({
   campaigns,
@@ -31,7 +31,7 @@ export default ({
         data-target="#addStarcraftCampaignModal">
         <i className="fa fa-plus-circle" />
       </div>
-      {CampaignCard.map((campaign, i) => (
+      {campaigns.map((campaign, i) => (
         <CampaignCard
           key={i}
           campaign={campaign}

@@ -5,12 +5,7 @@ import StarRating from 'react-star-rating-component';
 import FormModal from 'components/FormModal';
 import DeleteModal from 'components/DeleteModal';
 
-export default ({
-  campaign,
-  onEditCampaignSubmit,
-  editCampaignFormState,
-  onDeleteCampaign
-}) => {
+export default ({ campaign, onEditCampaignSubmit, editCampaignFormState, onDeleteCampaign }) => {
   if (!campaign.Name) {
     return null;
   }
@@ -23,10 +18,7 @@ export default ({
         <strong>{campaign.Name.toUpperCase()}</strong>
       </h3>
       <div className="sc-map-info-feature">
-        <button
-          className="sc-map-feature-btn"
-          data-toggle="modal"
-          data-target="#editStarcraftCampaignModal">
+        <button className="sc-map-feature-btn" data-toggle="modal" data-target="#editStarcraftCampaignModal">
           <i className="fa fa-pencil" />
         </button>
         <button
@@ -37,27 +29,19 @@ export default ({
         </button>
       </div>
       <div className="larger-star-rating">
-        <StarRating
-          name={campaign.Name}
-          value={parseInt(campaign.Rating)}
-          editing={false}
-        />
+        <StarRating name={campaign.Name} value={parseInt(campaign.Rating)} editing={false} />
       </div>
       <div className="row no-row-margin">
         <div className="col no-col-margin">
           <div className="sc-green-box">Player Races</div>
           <div className="sc-green-box">
-            {playerRaces.map((race, i) => (
-              <img key={i} src={`/app_modules/images/icons/${race}.png`} />
-            ))}
+            {playerRaces.map((race, i) => <img key={i} src={`/app_modules/images/icons/${race}.png`} />)}
           </div>
         </div>
         <div className="col no-col-margin">
           <div className="sc-green-box">Opponent Races</div>
           <div className="sc-green-box">
-            {opponentRaces.map((race, i) => (
-              <img key={i} src={`/app_modules/images/icons/${race}.png`} />
-            ))}
+            {opponentRaces.map((race, i) => <img key={i} src={`/app_modules/images/icons/${race}.png`} />)}
           </div>
         </div>
       </div>
@@ -91,7 +75,7 @@ export default ({
       <DeleteModal
         id="deleteStarcraftMapModal"
         text={`Hey man, make sure you want to delete ${campaign.Name}. The action can't be backed up`}
-        onSubmit={() => onDeleteMap(campaign._id)}
+        onSubmit={() => onDeleteCampaign(campaign._id)}
       />
     </div>
   );

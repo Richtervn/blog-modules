@@ -6,7 +6,10 @@ export default ({ map, isFocus, onSelect }) => {
   const { playerRaces, opponentRaces } = extractRaces(map.Matchup);
 
   return (
-    <div className="sc-add-map-btn" style={{color: isFocus ? '#ddff66' : '#00cc00'}} onClick={() => onSelect(map)}>
+    <div
+      className="sc-add-map-btn"
+      style={{ color: isFocus ? '#ddff66' : '#00cc00' }}
+      onClick={() => onSelect(map)}>
       <div>{map.Name}</div>
       <div className="row no-row-margin">
         <div className="col-9 no-col-margin">
