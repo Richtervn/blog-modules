@@ -65,5 +65,17 @@ export default {
   deleteCampaign(id) {
     const data = commonDelete('starcraft/remove_campaign/' + id);
     return data;
+  },
+  searchMap(text) {
+    const data = commonGet('starcraft/search_map', null, { Name: text });
+    return data;
+  },
+  searchMod(text) {
+    const data = commonGet('starcraft/search_mod', null, { Name: text });
+    return data;
+  },
+  searchCampaign(text) {
+    const data = commonGet('starcraft/search_campaign', null, { Name: text });
+    return data;
   }
 };

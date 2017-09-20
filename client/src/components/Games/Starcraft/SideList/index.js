@@ -24,7 +24,13 @@ export default ({
   campaignFocus,
   onSetMapFocus,
   onSetModFocus,
-  onSetCampaignFocus
+  onSetCampaignFocus,
+  onSearchMap,
+  onSearchMod,
+  onSearchCampaign,
+  onSortMod,
+  onSortMap,
+  onSortCampaign
 }) => (
   <div className="sc-side-list-border-block">
     <div className="sc-side-list-border-block-inner">
@@ -37,6 +43,8 @@ export default ({
           campaignFocus={campaignFocus}
           onGetCampaignDetail={onGetCampaignDetail}
           onSelect={onSetCampaignFocus}
+          onSort={onSortCampaign}
+          onSearch={onSearchCampaign}
         />
       )}
       {View == 'Mods' && (
@@ -47,6 +55,8 @@ export default ({
           onGetModList={onGetModList}
           modFocus={modFocus}
           onSelect={onSetModFocus}
+          onSort={onSortMod}
+          onSearch={onSearchMod}
         />
       )}
       {View == 'Maps' && (
@@ -58,6 +68,8 @@ export default ({
           onGetModDetail={onGetModDetail}
           mapFocus={mapFocus}
           onSelect={onSetMapFocus}
+          onSort={onSortMap}
+          onSearch={onSearchMap}
         />
       )}
     </div>

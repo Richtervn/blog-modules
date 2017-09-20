@@ -3,6 +3,7 @@ import React from 'react';
 import StarRating from 'react-star-rating-component';
 import FormModal from 'components/FormModal';
 import ModCard from './ModCard';
+import ToolsBar from './ToolsBar';
 
 export default ({
   mods,
@@ -11,7 +12,9 @@ export default ({
   onGetModList,
   modFocus,
   onSelect,
-  onGetModDetail
+  onGetModDetail,
+  onSort,
+  onSearch
 }) => {
   if (!mods) {
     onGetModList();
@@ -25,25 +28,11 @@ export default ({
 
   return (
     <div>
-      <div
-        className="sc-add-map-btn"
-        data-toggle="modal"
-        data-target="#addStarcraftModModal">
-        <i className="fa fa-plus-circle" />
-      </div>
+      <ToolsBar control="Mod" onSort={onSort} onSearch={onSearch} />
       {mods.map((mod, i) => (
-        <ModCard
-          key={i}
-          mod={mod}
-          onSelect={onSelect}
-          isFocus={mod._id == modFocus._id}
-        />
+        <ModCard key={i} mod={mod} onSelect={onSelect} isFocus={mod._id == modFocus._id} />
       ))}
-      <FormModal
-        id="addStarcraftModModal"
-        formBody={addModFormState}
-        onSubmit={onModSubmit}
-      />
+      <FormModal id="addStarcraftModModal" formBody={addModFormState} onSubmit={onModSubmit} />
     </div>
   );
 };

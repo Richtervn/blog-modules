@@ -3,17 +3,25 @@ import StarRating from 'react-star-rating-component';
 
 import FormModal from 'components/FormModal';
 import MapCard from './MapCard';
+import ToolsBar from './ToolsBar';
 
-export default ({ maps, addMapFormState, onMapSubmit, onGetMapList, mapFocus, onSelect }) => {
+export default ({
+  maps,
+  addMapFormState,
+  onMapSubmit,
+  onGetMapList,
+  mapFocus,
+  onSelect,
+  onSort,
+  onSearch
+}) => {
   if (!maps) {
     onGetMapList();
     return null;
   }
   return (
     <div>
-      <div className="sc-add-map-btn" data-toggle="modal" data-target="#addStarcraftMapModal">
-        <i className="fa fa-plus-circle" />
-      </div>
+      <ToolsBar control="Map" onSort={onSort} onSearch={onSearch} />
       {maps.map((map, i) => (
         <MapCard key={i} map={map} isFocus={map._id == mapFocus._id} onSelect={onSelect} />
       ))}

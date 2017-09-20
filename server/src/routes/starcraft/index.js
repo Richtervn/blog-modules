@@ -39,12 +39,6 @@ export default (StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories) => 
     '/campaign/:id',
     wrap(async (req, res, next) => {
       const campaign = await commonService.getOne(StarcraftCampaigns, req.params.id);
-      // res.write(campaign.Description);
-      // res.write(campaign.Version);
-      // for(let i = 0; i < campaign.Introduction.length; i+=60000){
-      //   res.write(campaign.Introduction.slice(i, i+60000))
-      // }
-      // res.end();
       res.send(JSON.stringify(campaign));
     })
   );
@@ -133,6 +127,37 @@ export default (StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories) => 
     wrap(async (req, res, next) => {
       const id = await commonService.delete(StarcraftCampaigns, req.params.id);
       res.send(id);
+    })
+  );
+
+  router.get(
+    '/search_map',
+    wrap(async (req, res, next) => {
+      const maps = await commonService.search(StarcraftMaps, 'Name', req.query.Name);
+      res.send(maps);
+    })
+  );
+
+  router.get(
+    '/search_mod',
+    wrap(async (req, res, next) => {
+      const mods = await commonService.search(StarcraftMods, 'Name', req.query.Name, [
+        'Description',
+        'Introduction'
+      ]);
+      res.send(mods);
+    })
+  );
+
+  router.get(
+    '/search_campaign',
+    wrap(async (req, res, next) => {
+      const maps = await commonService.search(StarcraftCampaigns, 'Name', req.query.Name, [
+        'Description',
+        'Introduction',
+        'Uri'
+      ]);
+      res.send(maps);
     })
   );
 

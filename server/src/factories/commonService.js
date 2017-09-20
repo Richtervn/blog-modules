@@ -26,5 +26,13 @@ export default {
     let updateForm = { ...body };
     await model.update({ _id: body._id }, { $set: updateForm });
     return body;
+  },
+  search: async (model, field, value, ignoreFields) => {
+    const ignore = {};
+    if (ignoreFields) {
+      ignoreFields.forEach(field => (ignore[field] = false));
+    }
+    const docs = await model.find({ [field]: { $regex: value } }, ignore);
+    return docs;
   }
 };

@@ -3,6 +3,7 @@ import React from 'react';
 import StarRating from 'react-star-rating-component';
 import FormModal from 'components/FormModal';
 import CampaignCard from './CampaignCard';
+import ToolsBar from './ToolsBar';
 
 export default ({
   campaigns,
@@ -11,7 +12,9 @@ export default ({
   onGetCampaignList,
   onGetCampaignDetail,
   campaignFocus,
-  onSelect
+  onSelect,
+  onSort,
+  onSearch
 }) => {
   if (!campaigns) {
     onGetCampaignList();
@@ -25,12 +28,7 @@ export default ({
 
   return (
     <div>
-      <div
-        className="sc-add-map-btn"
-        data-toggle="modal"
-        data-target="#addStarcraftCampaignModal">
-        <i className="fa fa-plus-circle" />
-      </div>
+      <ToolsBar control="Campaign" onSort={onSort} onSearch={onSearch} />
       {campaigns.map((campaign, i) => (
         <CampaignCard
           key={i}
@@ -39,11 +37,7 @@ export default ({
           onSelect={onSelect}
         />
       ))}
-      <FormModal
-        id="addStarcraftCampaignModal"
-        formBody={addCampaignFormState}
-        onSubmit={onCampaignSubmit}
-      />
+      <FormModal id="addStarcraftCampaignModal" formBody={addCampaignFormState} onSubmit={onCampaignSubmit} />
     </div>
   );
 };

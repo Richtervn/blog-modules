@@ -11,7 +11,12 @@ import {
   SET_FOCUS_DECK
 } from 'modules/Games/yugiohPoc';
 
-import { GET_MAP_LIST_SUCCESS, SET_MAP_FOCUS } from 'modules/Games/starcraft';
+import {
+  GET_MAP_LIST_SUCCESS,
+  SET_MAP_FOCUS,
+  GET_MOD_DETAIL_SUCCESS,
+  GET_CAMPAIGN_DETAIL_SUCCESS
+} from 'modules/Games/starcraft';
 
 const CHANGE_ADD_FLASH_FORM = 'forms/CHANGE_ADD_FLASH_FORM';
 const CHANGE_ADD_YUGIOH_MOD_FORM = 'forms/CHANGE_ADD_YUGIOH_MOD_FORM';
@@ -367,6 +372,19 @@ export default (
       return {
         ...state,
         EditStarcraftMap: action.map
+      };
+    case GET_MOD_DETAIL_SUCCESS:
+      return {
+        ...state,
+        EditStarcraftMod: { ...action.mod, Introduction: action.mod.Introduction.data.toString() }
+      };
+    case GET_CAMPAIGN_DETAIL_SUCCESS:
+      return {
+        ...state,
+        EditStarcraftCampaign: {
+          ...action.campaign,
+          Introduction: action.campaign.Introduction.data.toString()
+        }
       };
     default:
       return state;

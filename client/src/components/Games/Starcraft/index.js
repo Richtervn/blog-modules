@@ -34,7 +34,13 @@ export default ({
   onSetCampaignFocus,
   onDeleteMap,
   onDeleteMod,
-  onDeleteCampaign
+  onDeleteCampaign,
+  onSortMap,
+  onSortMod,
+  onSortCampaign,
+  onSearchMap,
+  onSearchMod,
+  onSearchCampaign
 }) => (
   <div className="sc-main-screen static-position">
     <div className="sc-header-border-block">
@@ -66,6 +72,12 @@ export default ({
           onSetMapFocus={onSetMapFocus}
           onSetModFocus={onSetModFocus}
           onSetCampaignFocus={onSetCampaignFocus}
+          onSortMap={onSortMap}
+          onSortMod={onSortMod}
+          onSortCampaign={onSortCampaign}
+          onSearchMap={onSearchMap}
+          onSearchMod={onSearchMod}
+          onSearchCampaign={onSearchCampaign}
         />
       </div>
       <div className="col-8 no-col-margin">

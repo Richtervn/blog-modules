@@ -19,7 +19,13 @@ import {
   submitEditStarcraftCampaignForm,
   deleteMap,
   deleteMod,
-  deleteCampaign
+  deleteCampaign,
+  sortMap,
+  sortMod,
+  sortCampaign,
+  searchMap,
+  searchMod,
+  searchCampaign
 } from 'modules/Games/starcraft';
 
 export default connect(
@@ -92,6 +98,24 @@ export default connect(
     },
     onDeleteMap(id) {
       dispatch(deleteMap(id));
+    },
+    onSearchMap(text) {
+      dispatch(searchMap(text));
+    },
+    onSearchMod(text) {
+      dispatch(searchMod(text));
+    },
+    onSearchCampaign(text) {
+      dispatch(searchCampaign(text));
+    },
+    onSortMap(query) {
+      dispatch(sortMap(query));
+    },
+    onSortMod(query) {
+      dispatch(sortMod(query));
+    },
+    onSortCampaign(query) {
+      dispatch(sortCampaign(query));
     }
   })
 )(Starcraft);

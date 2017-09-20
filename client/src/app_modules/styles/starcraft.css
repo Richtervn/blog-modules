@@ -164,3 +164,44 @@
 .sc-map-feature-btn:hover {
   color: #ddff99;
 }
+
+.sc-side-tools-bar {
+  margin: 5px;
+}
+
+.sc-side-feature-btn {
+  width: 30px;
+  height: 30px;
+  border: solid 1px;
+  color: #00cc00;
+  text-align: center;
+  margin: 5px;
+}
+
+.sc-side-feature-btn:hover {
+  color: #ddff99;
+}
+
+.sc-side-feature-active {
+  width: 30px;
+  height: 30px;
+  border: solid 1px;
+  color: #ddff66;
+  text-align: center;
+  margin: 5px;
+}
+
+.sc-side-feature-input {
+  margin: 5px;
+  width: 290px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: solid 1px #00cc00;
+  color: #00cc00;
+  padding-left: 5px;
+}
+
+.sc-side-feature-radio {
+  color: #00cc00;
+  margin-top: 8px;
+  margin-left: 5px;
+}
