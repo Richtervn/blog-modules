@@ -3,5 +3,6 @@ export flashGames from './flashGames';
 export profile from './profile';
 export mangasReading from './Collections/mangasReading';
 export music from './Collections/music';
+export gamingHistory from './Collections/gamingHistory';
 export yugiohPoc from './Games/yugiohPoc';
 export starcraft from './Games/starcraft';

@@ -6,14 +6,15 @@ export default ({ campaign, isFocus, onSelect }) => {
   const { playerRaces, opponentRaces } = extractRaces(campaign.Matchup);
 
   return (
-    <div className="sc-add-map-btn" style={{color: isFocus ? '#ddff66' : '#00cc00'}} onClick={() => onSelect(campaign)}>
+    <div
+      className="sc-add-map-btn"
+      style={{ color: isFocus ? '#ddff66' : '#00cc00' }}
+      onClick={() => onSelect(campaign)}>
       <div className="row no-row-margin">
-        <div className="col-9 no-col-margin">
-          {campaign.Name}
-        </div>
+        <div className="col-9 no-col-margin">{campaign.Name}</div>
         <div className="col-3 no-col-margin">
-          <img className="sc-launcher-icon" src='/app_modules/images/icons/sc_launcher.png'/>
-          {campaign.Version}
+          <img className="sc-launcher-icon" src="/app_modules/images/icons/sc_launcher.ico" />
+          <span>{campaign.Version}</span>
         </div>
       </div>
       <div className="row no-row-margin">

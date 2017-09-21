@@ -203,6 +203,7 @@ export default (
   },
   action
 ) => {
+
   switch (action.type) {
     case CHANGE_SIDE_LIST_VIEW:
       return { ...state, viewControl: { ...state.viewControl, SideList: action.header } };

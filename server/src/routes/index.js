@@ -5,6 +5,7 @@ import profileRouter from './profile';
 import yugiohPocRouter from './yugiohPoc';
 import musicRouter from './music';
 import starcraftRouter from './starcraft';
+import gamingHistoryRouter from './gamingHistory';
 
 const routes = (models, factories) => {
   const {
@@ -15,7 +16,8 @@ const routes = (models, factories) => {
     Music,
     StarcraftMaps,
     StarcraftCampaigns,
-    StarcraftMods
+    StarcraftMods,
+    GamingHistory
   } = models;
 
   return {
@@ -25,7 +27,8 @@ const routes = (models, factories) => {
     profile: profileRouter(factories),
     yugioh_poc: yugiohPocRouter(YugiohPocMods, YugiohPocDecks, factories),
     music: musicRouter(Music, factories),
-    starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories)
+    starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories),
+    gaming_history: gamingHistoryRouter(GamingHistory, factories)
   };
 };
 

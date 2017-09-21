@@ -10,7 +10,7 @@ export default ({ manga }) => (
       <StarRating
         className="larger-star-rating"
         name="manga-rating-view"
-        value={manga.Rating}
+        value={parseInt(manga.Rating)}
         editing={false}
       />
     </div>
@@ -20,7 +20,7 @@ export default ({ manga }) => (
     <p>
       <strong>Authors : </strong>
       {manga.Authors.map((author, i) => (
-        <span key={i} className="badge badge-default mr-genre-tag">
+        <span key={i} className="badge badge-success mr-genre-tag">
           {author}
         </span>
       ))}

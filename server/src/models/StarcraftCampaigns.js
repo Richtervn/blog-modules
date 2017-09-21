@@ -5,7 +5,7 @@ const StarcraftCampaigns = new Schema({
   Rating: String,
   Matchup: String,
   Description: String,
-  Introduction: Buffer,
+  Introduction: String,
   Version: String,
   Uri: String
 });

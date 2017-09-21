@@ -20,22 +20,30 @@ export default class ToolsBar extends Component {
     switch (name) {
       case 'option':
         nextState.option = value;
-        if (this.state.type) {
-          this.props.onSort({ [this.state.option]: this.state.type });
-        }
         break;
       case 'type':
         nextState.type = value;
-        if (this.state.option) {
-          this.props.onSort({ [this.state.option]: this.state.type });
-        }
         break;
       case 'search':
         nextState.text = value;
-        this.props.onSearch(value);
         break;
     }
     this.setState(nextState);
+    switch (name) {
+      case 'option':
+        if (nextState.type) {
+          this.props.onSort({ [nextState.option]: nextState.type });
+        }
+        break;
+      case 'type':
+        if (this.state.option) {
+          this.props.onSort({ [nextState.option]: nextState.type });
+        }
+        break;
+      case 'search':
+        this.props.onSearch(value);
+        break;
+    }
   }
 
   showSearch(e) {

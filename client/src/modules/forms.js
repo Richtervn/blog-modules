@@ -374,18 +374,9 @@ export default (
         EditStarcraftMap: action.map
       };
     case GET_MOD_DETAIL_SUCCESS:
-      return {
-        ...state,
-        EditStarcraftMod: { ...action.mod, Introduction: action.mod.Introduction.data.toString() }
-      };
+      return { ...state, EditStarcraftMod: { ...action.data } };
     case GET_CAMPAIGN_DETAIL_SUCCESS:
-      return {
-        ...state,
-        EditStarcraftCampaign: {
-          ...action.campaign,
-          Introduction: action.campaign.Introduction.data.toString()
-        }
-      };
+      return { ...state, EditStarcraftCampaign: { ...action.data } };
     default:
       return state;
   }

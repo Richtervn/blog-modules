@@ -10,6 +10,7 @@ import Music from './Music';
 import StarcraftMaps from './StarcraftMaps';
 import StarcraftCampaigns from './StarcraftCampaigns';
 import StarcraftMods from './StarcraftMods';
+import GamingHistory from './GamingHistory';
 
 const models = db => {
   FlashGames.plugin(autoIncrement.plugin, 'FlashGames');
@@ -22,6 +23,7 @@ const models = db => {
   StarcraftMaps.plugin(autoIncrement.plugin, 'StarcraftMaps');
   StarcraftCampaigns.plugin(autoIncrement.plugin, 'StarcraftCampaigns');
   StarcraftMods.plugin(autoIncrement.plugin, 'StarcraftMods');
+  GamingHistory.plugin(autoIncrement.plugin, 'GamingHistory');
 
   const FlashGamesSchema = db.model('FlashGames', FlashGames);
   const MangasReadingSchema = db.model('MangasReading', MangasReading);
@@ -33,6 +35,7 @@ const models = db => {
   const StarcraftMapsSchema = db.model('StarcraftMaps', StarcraftMaps);
   const StarcraftCampaignsSchema = db.model('StarcraftCampaigns', StarcraftCampaigns);
   const StarcraftModsSchema = db.model('StarcraftMods', StarcraftMods);
+  const GamingHistorySchema = db.model('GamingHistory', GamingHistory);
 
   return {
     FlashGames: FlashGamesSchema,
@@ -44,7 +47,8 @@ const models = db => {
     Music: MusicSchema,
     StarcraftMaps: StarcraftMapsSchema,
     StarcraftCampaigns: StarcraftCampaignsSchema,
-    StarcraftMods: StarcraftModsSchema
+    StarcraftMods: StarcraftModsSchema,
+    GamingHistory: GamingHistorySchema
   };
 };
 

@@ -6,6 +6,7 @@ import YugiohPoc from 'containers/Games/YugiohPoc';
 import Starcraft from 'containers/Games/Starcraft';
 import MangasReading from 'containers/Collections/MangasReading';
 import Music from 'containers/Collections/Music';
+import GamingHistory from 'containers/Collections/GamingHistory';
 
 import Home from 'components/Home';
 
@@ -24,6 +25,9 @@ export default ({ activeGroup, activeItem, menuTree }) => {
       break;
     case 'Music':
       Navigation = Music;
+      break;
+    case 'Gaming History':
+      Navigation = GamingHistory;
       break;
     default:
       break;
