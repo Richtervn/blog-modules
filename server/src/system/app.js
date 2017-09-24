@@ -4,7 +4,7 @@ import express from 'express';
 import expressWinston from 'express-winston';
 import winston from 'winston';
 
-export default (config, routes) => {
+export default (config, routes, MuRouter) => {
   const app = express();
 
   const logger = new winston.Logger({
@@ -42,6 +42,10 @@ export default (config, routes) => {
 
   for (let key in routes) {
     app.use(`/api/${key}`, routes[key]);
+  }
+
+  for (let key in MuRouter) {
+    app.use(`/api/mu/${key}`, MuRouter[key]);
   }
 
   app.use((req, res, next) => {

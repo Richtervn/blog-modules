@@ -11,6 +11,8 @@ import StarcraftMaps from './StarcraftMaps';
 import StarcraftCampaigns from './StarcraftCampaigns';
 import StarcraftMods from './StarcraftMods';
 import GamingHistory from './GamingHistory';
+import MuOnlineTools from './MuOnlineTools';
+import MuOnlineVersions from './MuOnlineVersions';
 
 const models = db => {
   FlashGames.plugin(autoIncrement.plugin, 'FlashGames');
@@ -24,31 +26,23 @@ const models = db => {
   StarcraftCampaigns.plugin(autoIncrement.plugin, 'StarcraftCampaigns');
   StarcraftMods.plugin(autoIncrement.plugin, 'StarcraftMods');
   GamingHistory.plugin(autoIncrement.plugin, 'GamingHistory');
-
-  const FlashGamesSchema = db.model('FlashGames', FlashGames);
-  const MangasReadingSchema = db.model('MangasReading', MangasReading);
-  const AppDiarySchema = db.model('AppDiary', AppDiary);
-  const PersonalDiarySchema = db.model('PersonalDiary', PersonalDiary);
-  const YugiohPocModsSchema = db.model('YugiohPocMods', YugiohPocMods);
-  const YugiohPocDecksSchema = db.model('YugiohPocDecks', YugiohPocDecks);
-  const MusicSchema = db.model('Music', Music);
-  const StarcraftMapsSchema = db.model('StarcraftMaps', StarcraftMaps);
-  const StarcraftCampaignsSchema = db.model('StarcraftCampaigns', StarcraftCampaigns);
-  const StarcraftModsSchema = db.model('StarcraftMods', StarcraftMods);
-  const GamingHistorySchema = db.model('GamingHistory', GamingHistory);
+  MuOnlineTools.plugin(autoIncrement.plugin, 'MuOnlineTools');
+  MuOnlineVersions.plugin(autoIncrement.plugin, 'MuOnlineVersions');
 
   return {
-    FlashGames: FlashGamesSchema,
-    MangasReading: MangasReadingSchema,
-    AppDiary: AppDiarySchema,
-    PersonalDiary: PersonalDiarySchema,
-    YugiohPocMods: YugiohPocModsSchema,
-    YugiohPocDecks: YugiohPocDecksSchema,
-    Music: MusicSchema,
-    StarcraftMaps: StarcraftMapsSchema,
-    StarcraftCampaigns: StarcraftCampaignsSchema,
-    StarcraftMods: StarcraftModsSchema,
-    GamingHistory: GamingHistorySchema
+    FlashGames: db.model('FlashGames', FlashGames),
+    MangasReading: db.model('MangasReading', MangasReading),
+    AppDiary: db.model('AppDiary', AppDiary),
+    PersonalDiary: db.model('PersonalDiary', PersonalDiary),
+    YugiohPocMods: db.model('YugiohPocMods', YugiohPocMods),
+    YugiohPocDecks: db.model('YugiohPocDecks', YugiohPocDecks),
+    Music: db.model('Music', Music),
+    StarcraftMaps: db.model('StarcraftMaps', StarcraftMaps),
+    StarcraftCampaigns: db.model('StarcraftCampaigns', StarcraftCampaigns),
+    StarcraftMods: db.model('StarcraftMods', StarcraftMods),
+    GamingHistory: db.model('GamingHistory', GamingHistory),
+    MuOnlineTools: db.model('MuOnlineTools', MuOnlineTools),
+    MuOnlineVersions: db.model('MuOnlineVersions', MuOnlineVersions)
   };
 };
 

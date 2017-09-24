@@ -1,0 +1,7 @@
+.ds9799-main-screen {
+  margin-top: 45px;
+  margin-left: 200px;
+  height: 736px;
+  width: 100%;
+  background-image: url('../../app_modules/images/backgrounds/jungle.jpg');
+}

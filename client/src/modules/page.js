@@ -41,7 +41,11 @@ const quotes = {
   },
   Games: {
     quote: "Gaming is not a crime",
-    author: 'DJ GEX'
+    author: 'DJ GEX - Gaming is not a crime'
+  },
+  'Mu Online': {
+    quote: "Take a look to the sky just before you die",
+    author: 'Metallica - For Whom The Bell Tolls'
   }
 };
 

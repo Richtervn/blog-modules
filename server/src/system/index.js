@@ -11,7 +11,7 @@ export default {
       func: config => config
     },
     app: {
-      require: ['config', 'routes'],
+      require: ['config', 'routes', 'MuRouter'],
       func: app
     },
     server: {

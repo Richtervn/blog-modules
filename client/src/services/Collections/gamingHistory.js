@@ -4,7 +4,7 @@ const { commonPostMultiplePart, commonPutMultiplePart, commonGet, commonPut, com
 
 export default {
   add(formBody) {
-    const data = commonPostMultiplePart('gaming_history/add_manga', formBody);
+    const data = commonPostMultiplePart('gaming_history/add_game', formBody);
     return data;
   },
   getAll() {

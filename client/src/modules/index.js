@@ -9,6 +9,7 @@ import gamingHistory from 'modules/Collections/gamingHistory';
 import music from 'modules/Collections/music';
 import starcraft from 'modules/Games/starcraft';
 import yugiohPoc from 'modules/Games/yugiohPoc';
+import muonline from 'modules/Games/muonline';
 
 export default combineReducers({
   page,
@@ -19,6 +20,7 @@ export default combineReducers({
   music,
   gamingHistory,
   yugiohPoc,
-  starcraft
+  starcraft,
+  muonline
 });
 

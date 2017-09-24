@@ -1,4 +1,5 @@
 {
   "port": 3000,
-  "mongodbUrl": "mongodb://localhost/BlogModules"
+  "mongodbUrl": "mongodb://localhost/BlogModules",
+  "muDatabase":"mssql://sa:123456@127.0.0.1:1433/MuOnline"
 }

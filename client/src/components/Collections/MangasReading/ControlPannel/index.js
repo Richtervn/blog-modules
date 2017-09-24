@@ -33,7 +33,7 @@ export default ({
       <div className="box-margin">
         <div className="card">
           <div className="card-header channel-bar">
-            <BasicPannel viewChannel={viewChannel} onChangeChannel={onChangeChannel} />
+            <BasicPannel viewChannel={viewChannel} onChangeChannel={onChangeChannel} name="MangasReadingChannel"/>
             <FeaturePannel activeTool={activeTool} onChangeActiveTool={onChangeActiveTool} />
           </div>
           <div className="card-content channel-bar">

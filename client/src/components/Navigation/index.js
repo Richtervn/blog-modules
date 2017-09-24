@@ -1,14 +1,18 @@
 import React from 'react';
 import _ from 'underscore';
 
+import Home from 'components/Home';
 import FlashGame from 'containers/FlashGame';
+
 import YugiohPoc from 'containers/Games/YugiohPoc';
 import Starcraft from 'containers/Games/Starcraft';
-import MangasReading from 'containers/Collections/MangasReading';
-import Music from 'containers/Collections/Music';
-import GamingHistory from 'containers/Collections/GamingHistory';
+import MuOnline from 'containers/Games/MuOnline';
 
-import Home from 'components/Home';
+import MangasReading from 'containers/Collections/MangasReading';
+import GamingHistory from 'containers/Collections/GamingHistory';
+import Music from 'containers/Collections/Music';
+
+import Darksteam97d99i from 'containers/MuOnline/Darksteam97d99i';
 
 export default ({ activeGroup, activeItem, menuTree }) => {
   let Navigation = Home;
@@ -28,6 +32,12 @@ export default ({ activeGroup, activeItem, menuTree }) => {
       break;
     case 'Gaming History':
       Navigation = GamingHistory;
+      break;
+    case 'Mu Online':
+      Navigation = MuOnline;
+      break;
+    case 'Darksteam 97d99i':
+      Navigation = Darksteam97d99i;
       break;
     default:
       break;

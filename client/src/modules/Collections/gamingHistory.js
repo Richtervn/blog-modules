@@ -67,6 +67,8 @@ export default (
   action
 ) => {
   switch (action.type) {
+    case CHANGE_ACTIVE_TOOL:
+      return { ...state, viewControl: { ...state.viewControl, activeTool: action.tool } };
     case GET_ALL_GAME_SUCCESS:
       return { ...state, games: action.data.slice(0), focusGame: action.data[0] || {} };
     case CHANGE_CHANNEL:

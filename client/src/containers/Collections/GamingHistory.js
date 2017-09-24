@@ -17,8 +17,8 @@ export default connect(
   ({ gamingHistory, forms }) => ({
     games: gamingHistory.games,
     focusGame: gamingHistory.focusGame,
-    activeTool: gamingHistory.activeTool,
-    viewChannel: gamingHistory.viewChannel
+    activeTool: gamingHistory.viewControl.activeTool,
+    viewChannel: gamingHistory.viewControl.viewChannel
   }),
   dispatch => ({
     onChangeChannel(channel) {
