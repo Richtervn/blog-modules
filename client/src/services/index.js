@@ -6,3 +6,4 @@ export music from './Collections/music';
 export gamingHistory from './Collections/gamingHistory';
 export yugiohPoc from './Games/yugiohPoc';
 export starcraft from './Games/starcraft';
+export muonline from './Games/muonline';

@@ -18,6 +18,11 @@ import {
   GET_CAMPAIGN_DETAIL_SUCCESS
 } from 'modules/Games/starcraft';
 
+import {
+  GET_TOOL_DETAIL_SUCCESS,
+  GET_VERSION_DETAIL_SUCCESS
+} from 'modules/Games/muonline';
+
 const CHANGE_ADD_FLASH_FORM = 'forms/CHANGE_ADD_FLASH_FORM';
 const CHANGE_ADD_YUGIOH_MOD_FORM = 'forms/CHANGE_ADD_YUGIOH_MOD_FORM';
 const CHANGE_ADD_YUGIOH_DECK_FORM = 'forms/CHANGE_ADD_YUGIOH_DECK_FORM';

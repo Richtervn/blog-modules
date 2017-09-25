@@ -3,8 +3,9 @@ import {Schema} from 'mongoose';
 const MuOnlineTools = new Schema({
   Name: String,
   Credits: [String],
-  Rating: Number,
+  IconUrl: String,
   ArchiveUri: String,
+  Rating: Number,
   Description: String,
   Introduce: String,
   Version: String
