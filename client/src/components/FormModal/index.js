@@ -5,7 +5,7 @@ export default ({ id, onSubmit, formBody }) => {
   const { header, body } = defineAddModalDisplay(id);
   const ModalBody = body;
   return (
-    <div className="modal fade" id={id}>
+    <div className="modal fade" id={id} style={{color: 'black'}}>
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">

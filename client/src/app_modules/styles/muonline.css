@@ -47,3 +47,9 @@
   overflow-y: auto;
   border-radius: 4px;
 }
+
+.mo-add-button {
+  border: dashed 1px;
+  margin: 5px;
+  padding: 5px;
+}

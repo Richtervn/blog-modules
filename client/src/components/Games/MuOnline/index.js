@@ -19,7 +19,11 @@ export default ({
   onEditToolSubmit,
   onEditVersionSubmit,
   onDeleteTool,
-  onDeleteVersion
+  onDeleteVersion,
+  addVersionFormState,
+  addToolFormState,
+  editVersionFormState,
+  editToolFormState
 }) => (
   <div className="mo-main-screen">
     <div className="mo-main-screen-background">
@@ -42,14 +46,14 @@ export default ({
             onEditVersionSubmit={onEditVersionSubmit}
             onDeleteTool={onDeleteTool}
             onDeleteVersion={onDeleteVersion}
+            addVersionFormState={addVersionFormState}
+            addToolFormState={addToolFormState}
+            editVersionFormState={editVersionFormState}
+            editToolFormState={editToolFormState}
           />
         </div>
         <div className="col-9 no-col-margin mo-full-screen">
-          <InformationScreen
-            focusTool={focusTool}
-            focusVersion={focusVersion}
-            activeView={activeView}
-          />
+          <InformationScreen focusTool={focusTool} focusVersion={focusVersion} activeView={activeView} />
         </div>
       </div>
     </div>

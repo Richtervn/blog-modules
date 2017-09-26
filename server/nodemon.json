@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "ignore": ["public/*", "src/features/muonline/darksteam97d99i/data/*"],
+  "execMap": {
+    "js": "babel-node src"
+  }
+}

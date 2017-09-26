@@ -15,7 +15,7 @@ export default (MuOnlineTools, MuOnlineVersions, factories) => {
     '/add_tool',
     wrap(async (req, res, next) => {
       const body = await uploadTool(req, res);
-      const tool = await addTool(body);
+      const tool = await addTool(MuOnlineTools, body);
       res.send(tool);
     })
   );
@@ -24,7 +24,7 @@ export default (MuOnlineTools, MuOnlineVersions, factories) => {
     '/add_version',
     wrap(async (req, res, next) => {
       const body = await uploadVersion(req, res);
-      const version = await addVersion(body);
+      const version = await addVersion(MuOnlineVersions, body);
       res.send(version);
     })
   );
@@ -33,7 +33,7 @@ export default (MuOnlineTools, MuOnlineVersions, factories) => {
     '/edit_tool',
     wrap(async (req, res, next) => {
       const body = await uploadTool(req, res);
-      const tool = await updateTool(body);
+      const tool = await updateTool(MuOnlineTools, body);
       res.send(tool);
     })
   );
@@ -42,7 +42,7 @@ export default (MuOnlineTools, MuOnlineVersions, factories) => {
     '/edit_version',
     wrap(async (req, res, next) => {
       const body = await updateVersion(req, res);
-      const version = await updateVersion(body);
+      const version = await updateVersion(MuOnlineVersions, body);
       res.send(version);
     })
   );
@@ -90,10 +90,7 @@ export default (MuOnlineTools, MuOnlineVersions, factories) => {
   router.get(
     '/version/:id',
     wrap(async (req, res, next) => {
-      const version = await commonService.getOne(
-        MuOnlineVersions,
-        req.params.id
-      );
+      const version = await commonService.getOne(MuOnlineVersions, req.params.id);
       res.send(version);
     })
   );

@@ -16,12 +16,16 @@ import {
 } from 'modules/Games/muonline';
 
 export default connect(
-  ({ muonline }) => ({
+  ({ forms, muonline }) => ({
     tools: muonline.tools,
     versions: muonline.versions,
     focusTool: muonline.focusTool,
     focusVersion: muonline.focusVersion,
-    activeView: muonline.viewControl.activeView
+    activeView: muonline.viewControl.activeView,
+    addToolFormState: forms.AddMuonlineTool,
+    addVersionFormState: forms.AddMuonlineVersion,
+    editToolFormState: forms.EditMuonlineTool,
+    editVersionFormState: forms.EditVersionFormState
   }),
   dispatch => ({
     onSwitchView(view) {

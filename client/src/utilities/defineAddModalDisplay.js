@@ -10,6 +10,10 @@ import FormAddStarcraftCampaign from 'containers/Forms/FormAddStarcraftCampaign'
 import FormEditStarcraftCampaign from 'containers/Forms/FormEditStarcraftCampaign';
 import FormAddStarcraftMod from 'containers/Forms/FormAddStarcraftMod';
 import FormEditStarcraftMod from 'containers/Forms/FormEditStarcraftMod';
+import FormAddMuonlineTool from 'containers/Forms/FormAddMuonlineTool';
+import FormAddMuonlineVersion from 'containers/Forms/FormAddMuonlineVersion';
+import FormEditMuonlineTool from 'containers/Forms/FormEditMuonlineTool';
+import FormEditMuonlineVersion from 'containers/Forms/FormEditMuonlineVersion';
 
 const makeIcon = (name, ext) => {
   const iconPath = 'app_modules/images/icons/';
@@ -86,6 +90,26 @@ export default id => {
       return {
         header: { icon: makeIcon('starcraft'), label: 'Edit Starcraft Mod' },
         body: FormEditStarcraftMod
+      };
+    case 'addMuonlineVersionModal':
+      return {
+        header: { icon: makeIcon('mulogo'), label: 'Add Mu Version' },
+        body: FormAddMuonlineVersion
+      };
+    case 'addMuonlineToolModal':
+      return {
+        header: { icon: makeIcon('mulogo'), label: 'Add Mu Tool' },
+        body: FormAddMuonlineTool
+      };
+    case 'editMuonlineVersionModal':
+      return {
+        header: { icon: makeIcon('mulogo'), label: 'Edit Mu Version' },
+        body: FormEditMuonlineVersion
+      };
+    case 'editMuonlineToolModal':
+      return {
+        header: { icon: makeIcon('mulogo'), label: 'Edit Mu Tool' },
+        body: FormEditMuonlineTool
       };
     default:
       return modalDisplay;

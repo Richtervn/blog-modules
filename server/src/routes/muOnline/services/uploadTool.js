@@ -7,6 +7,9 @@ const iconPath = './public/Mu Online/Tools/Icons';
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
+    let srcPath;
+    if(file.fieldname == 'Icon') srcPath = iconPath;
+    if(file.fieldname == 'Archive') srcPath = archivePath;
     cb(null, srcPath);
   },
   filename(req, file, cb) {
@@ -18,7 +21,7 @@ const storage = multer.diskStorage({
     if (file.fieldname == 'Archive') {
       name = file.originalname;
       req.body.Name = name;
-      req.body.ArchiveUri = `${srcPath}/${name}`;
+      req.body.ArchiveUri = `${archivePath}/${name}`;
     }
     cb(null, name);
   }
