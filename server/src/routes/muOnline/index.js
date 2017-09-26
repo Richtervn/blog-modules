@@ -1,9 +1,9 @@
 import express from 'express';
 
-import addTools from './services/addTools';
-import addVersions from './services/addVersions';
-import uploadTools from './services/uploadTools';
-import uploadVersions from './services/uploadVersions';
+import addTool from './services/addTool';
+import addVersion from './services/addVersion';
+import uploadTool from './services/uploadTool';
+import uploadVersion from './services/uploadVersion';
 import updateTool from './services/updateTool';
 import updateVersion from './services/updateVersion';
 
@@ -14,8 +14,8 @@ export default (MuOnlineTools, MuOnlineVersions, factories) => {
   router.post(
     '/add_tool',
     wrap(async (req, res, next) => {
-      const body = await uploadTools(req, res);
-      const tool = await addTools(body);
+      const body = await uploadTool(req, res);
+      const tool = await addTool(body);
       res.send(tool);
     })
   );
@@ -23,8 +23,8 @@ export default (MuOnlineTools, MuOnlineVersions, factories) => {
   router.post(
     '/add_version',
     wrap(async (req, res, next) => {
-      const body = await uploadVersions(req, res);
-      const version = await addVersions(body);
+      const body = await uploadVersion(req, res);
+      const version = await addVersion(body);
       res.send(version);
     })
   );
@@ -32,7 +32,7 @@ export default (MuOnlineTools, MuOnlineVersions, factories) => {
   router.put(
     '/edit_tool',
     wrap(async (req, res, next) => {
-      const body = await uploadTools(req, res);
+      const body = await uploadTool(req, res);
       const tool = await updateTool(body);
       res.send(tool);
     })

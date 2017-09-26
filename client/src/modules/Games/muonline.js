@@ -1,4 +1,4 @@
-import actionCreator from 'modules/actionCreator';
+import actionCreator from 'factories/actionCreator';
 import { muonline } from 'services';
 
 const CHANGE_ACTIVE_VIEW = 'muonline/CHANGE_ACTIVE_VIEW';
