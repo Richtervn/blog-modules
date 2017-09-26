@@ -32,6 +32,13 @@ export const SUBMIT_EDIT_VERSION_SUCCESS =
   'muonline/SUBMIT_EDIT_VERSION_SUCCESS';
 const SUBMIT_EDIT_VERSION_FAIL = 'muonline/SUBMIT_EDIT_VERSION_FAIL';
 
+const DELETE_TOOL_START = 'muonline/DELETE_TOOL_START';
+const DELETE_TOOL_SUCCESS = 'muonline/DELETE_TOOL_SUCCESS';
+const DELETE_TOOL_FAIL = 'muonline/DELETE_TOOL_FAIL';
+const DELETE_VERSION_START = 'muonline/DELETE_VERSION_START';
+const DELETE_VERSION_SUCCESS = 'muonline/DELETE_VERSION_SUCCESS';
+const DELETE_VERSION_FAIL = 'muonline/DELETE_VERSION_FAIL';
+
 export const changeActiveView = view => ({ type: CHANGE_ACTIVE_VIEW, view });
 
 export const getTools = actionCreator(
@@ -93,6 +100,22 @@ export const submitEditMuonlineVersion = formBody =>
     SUBMIT_EDIT_VERSION_FAIL,
     muonline.editVersion,
     formBody
+  )();
+export const deleteTool = id =>
+  actionCreator(
+    DELETE_TOOL_START,
+    DELETE_TOOL_SUCCESS,
+    DELETE_TOOL_FAIL,
+    muonline.deleteTool,
+    id
+  )();
+export const deleteVersion = id =>
+  actionCreator(
+    DELETE_VERSION_START,
+    DELETE_VERSION_SUCCESS,
+    DELETE_VERSION_FAIL,
+    muonline.deleteVersion,
+    id
   )();
 
 export default (
@@ -166,6 +189,18 @@ export default (
         ...state,
         versions: versions.slice(0),
         focusVersion: { ...action.data }
+      };
+    case DELETE_TOOL_SUCCESS:
+      return {
+        ...state,
+        tools: state.tools.filter(tool => tool._id != action.data._id).slice(0)
+      };
+    case DELETE_VERSION_SUCCESS:
+      return {
+        ...state,
+        versions: state.versions
+          .filter(version => version._id != action.data._id)
+          .slice(0)
       };
     default:
       return state;

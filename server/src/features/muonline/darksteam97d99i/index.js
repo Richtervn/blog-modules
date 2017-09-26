@@ -1,12 +1,12 @@
 import express from 'express';
-import models from './models';
+import dbModels from './models';
 import * as routes from './routes';
 
 const muApp = async (factories, config) => {
-  const sequelize = await models(config);
+  const models = await dbModels(config);
   const router = express.Router();
   for (let key in routes) {
-    routes[key](sequelize.models, router, factories);
+    routes[key](models, router, factories);
   }
   return router;
 };
