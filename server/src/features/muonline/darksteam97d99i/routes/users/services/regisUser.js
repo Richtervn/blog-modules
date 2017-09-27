@@ -1,148 +1,80 @@
-// router.post('/register', function(req, res, next) {
+import Promise from 'bluebird';
 
-//   var name = req.body.Name;
-//   var mail = req.body.Mail;
-//   var username = req.body.Username;
-//   var password = req.body.Password;
-//   var password2 = req.body.Password2;
+export default async (MembInfo, ViCurInfo, MembCredit, Banking, body, helpers, appConfigs) => {
+  console.log(body);
+  const { makeSmallDateTime, makeSnoNumber } = helpers;
+  const { GameSetting } = appConfigs;
 
-//   req.checkBody('Name', 'Name is required').notEmpty();
-//   req.checkBody('Mail', 'Email is required').notEmpty();
-//   req.checkBody('Mail', 'Email is incorrect').isEmail();
-//   req.checkBody('Username', 'Username is required').notEmpty();
-//   req.checkBody('Password', "Password is required").notEmpty();
-//   req.checkBody('Password2', "Password does not match").equals(req.body.Password);
-//   req.checkBody("Name", "Name can not contain special characters").isAlphanumeric();
-//   req.checkBody("Username", "Username can not contain special characters").isAlphanumeric();
-//   req.checkBody("Password", "Password can not contain special characters").isAlphanumeric();
+  const checkExistUsername = async () => {
+    let isExist = false;
+    try {
+      const info = await MembInfo.findOne({ where: { memb___id: body.Username } });
+      if (info) isExist = true;
+      return isExist;
+    } catch (e) {
+      return false;
+    }
+  };
 
-//   var errors = req.validationErrors() || [];
+  const checkExistEmail = async () => {
+    let isExist = false;
+    try {
+      const info = await MembInfo.findOne({ where: { mail_addr: body.Email } });
+      if (info) isExist = true;
+      return isExist;
+    } catch (e) {
+      return false;
+    }
+  };
 
-//   if (!req.body.Username || req.body.Username.length < 6) {
-//     errors.push({
-//       param: 'Username',
-//       msg: 'Username must be longer than 6 character',
-//       value: 'undefined'
-//     });
-//   }
+  try {
+    const [isUsernameExist, isEmailExist] = [await checkExistUsername(), await checkExistEmail()];
+    if (isUsernameExist) return { error: 'Username is already exist' };
+    if (isEmailExist) return { error: 'Email is already used' };
 
-//   if (!req.body.Password || req.body.Password.length < 6) {
-//     errors.push({
-//       param: 'Password',
-//       msg: 'Password must be longer than 6 character',
-//       value: 'undefined'
-//     });
-//   }
+    const appl_days = makeSmallDateTime();
+    const sno__numb = makeSnoNumber(body.BirthDay);
 
-//   async.waterfall([
+    const account = await MembInfo.create({
+      memb___id: body.Username,
+      memb__pwd: body.Password,
+      memb_name: body.Name,
+      mail_addr: body.EMail,
+      sno__numb: sno__numb,
+      appl_days: appl_days,
+      bloc_code: '0',
+      ctl1_code: '0'
+    });
 
-//     function(nextFunc) {
+    ViCurInfo.create({
+      ends_days: '2005',
+      chek_code: '1',
+      used_time: 1234,
+      memb___id: account.memb___id,
+      memb_name: account.memb_name,
+      memb_guid: account.memb_guid,
+      sno__numb: account.sno__numb,
+      Bill_Section: 6,
+      Bill_Value: 3,
+      Bill_Hour: 6,
+      Surplus_Point: 6,
+      Increase_Days: 0
+    });
 
-//       async.parallel([
-//           (callback) => {
-//             Membinfo.findOne({
-//               where: {
-//                 memb___id: req.body.Username
-//               }
-//             }).then(tmp => {
-//               if (tmp) {
-//                 errors.push({
-//                   param: 'Username',
-//                   msg: 'Username has already been used',
-//                   value: 'undefined'
-//                 });
-//               }
-//             }).catch(err => {
-//               callback(err)
-//             }).done(callback)
-//           },
-//           (callback) => {
-//             Membinfo.findOne({
-//               where: {
-//                 mail_addr: req.body.Mail
-//               }
-//             }).then(tmp => {
-//               if (tmp) {
-//                 errors.push({
-//                   param: 'Password',
-//                   msg: 'Email has already been used',
-//                   value: 'undefined'
-//                 });
-//               }
-//             }).catch(err => {
-//               callback(err)
-//             }).done(callback)
-//           }
-//         ],
+    Banking.create({
+      memb___id: body.Username,
+      zen_balance: GameSetting.NEW_REGISTER_ZEN.toString(),
+      loan_money: 0
+    });
 
-//         (err, result) => {
-//           if (err) return nextFunc(err);
-//           nextFunc();
-//         })
-//     },
+    MembCredit.create({
+      memb___id: body.Username,
+      credits: GameSetting.NEW_REGISTER_CREDIT
+    });
+  } catch(e){
+    console.log(e);
+    return false;
+  }
 
-//     function(nextFunc) {
-//       if (errors.length > 0) {
-//         return res.send(errors);
-//       } else {
-//         async.parallel([
-
-//           (callback) => {
-//             var appl = getSmallDateTime();
-//             Membinfo.create({
-//               memb___id: req.body.Username,
-//               memb__pwd: req.body.Password,
-//               memb_name: req.body.Name,
-//               mail_addr: req.body.Mail,
-//               sno__numb: makesno_numb(req.body.Birthday),
-//               appl_days: appl,
-//               bloc_code: '0',
-//               ctl1_code: '0'
-//             }).then(mem => {
-//               getDefaultAvatar(mem);
-//               ViCurInfo.create({
-//                 ends_days: '2005',
-//                 chek_code: '1',
-//                 used_time: 1234,
-//                 memb___id: mem.memb___id,
-//                 memb_name: mem.memb_name,
-//                 memb_guid: mem.memb_guid,
-//                 sno__numb: mem.sno__numb,
-//                 Bill_Section: 6,
-//                 Bill_Value: 3,
-//                 Bill_Hour: 6,
-//                 Surplus_Point: 6,
-//                 Increase_Days: 0
-//               })
-//               callback();
-//             })
-//           },
-
-//           (callback) => {
-//             bank.create({
-//               memb___id: req.body.Username,
-//               zen_balance: '0',
-//               loan_money: 0
-//             })
-//             callback();
-//           },
-
-//           (callback) => {
-//             Credit.create({
-//               memb___id: req.body.Username,
-//               credits: 0
-//             })
-//             callback();
-//           }
-
-//         ], (err, result) => {
-//           if (err) return nextFunc(err);
-//           nextFunc();
-//         })
-//       }
-//     }
-//   ], (err) => {
-//     if(err) return next(err);
-//     res.sendStatus(200);
-//   })
-// });
+  return account;
+};

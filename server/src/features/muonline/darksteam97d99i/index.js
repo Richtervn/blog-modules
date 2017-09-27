@@ -1,14 +1,21 @@
 import express from 'express';
 import dbModels from './models';
 import * as routes from './routes';
+import * as helpers from './helpers';
+import * as appConfigs from './appConfigs';
 
 const muApp = async (factories, config) => {
-  const models = await dbModels(config);
   const router = express.Router();
-  for (let key in routes) {
-    routes[key](models, router, factories);
+  try {
+    const models = await dbModels(config);
+    for (let key in routes) {
+      routes[key](models, router, factories, helpers, appConfigs);
+    }
+    return router;
+  } catch(e){
+    console.log('[ERR-MUAPP] Darksteam97d99i database is not active')
+    return router;
   }
-  return router;
 };
 
 export default muApp;

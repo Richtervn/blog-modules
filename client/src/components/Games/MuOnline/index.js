@@ -42,18 +42,22 @@ export default ({
             onGetVersionDetail={onGetVersionDetail}
             onAddToolSubmit={onAddToolSubmit}
             onAddVersionSubmit={onAddVersionSubmit}
+            addVersionFormState={addVersionFormState}
+            addToolFormState={addToolFormState}
+          />
+        </div>
+        <div className="col-9 no-col-margin mo-full-screen">
+          <InformationScreen
+            focusTool={focusTool}
+            focusVersion={focusVersion}
+            activeView={activeView}
             onEditToolSubmit={onEditToolSubmit}
             onEditVersionSubmit={onEditVersionSubmit}
             onDeleteTool={onDeleteTool}
             onDeleteVersion={onDeleteVersion}
-            addVersionFormState={addVersionFormState}
-            addToolFormState={addToolFormState}
             editVersionFormState={editVersionFormState}
             editToolFormState={editToolFormState}
           />
-        </div>
-        <div className="col-9 no-col-margin mo-full-screen">
-          <InformationScreen focusTool={focusTool} focusVersion={focusVersion} activeView={activeView} />
         </div>
       </div>
     </div>

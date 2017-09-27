@@ -1,0 +1,1 @@
+export GameSetting from './GameSetting';

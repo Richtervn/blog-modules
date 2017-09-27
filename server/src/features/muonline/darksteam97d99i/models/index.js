@@ -12,7 +12,6 @@ const models = async config => {
   }
 
   console.log('[MUAPP] Connect database successfully');
-  await sequelize.sync();
 
   const MembInfo = sequelize.import('./MembInfo');
   const AccountCharacter = sequelize.import('./AccountCharacter');
@@ -20,6 +19,12 @@ const models = async config => {
   const MembCredits = sequelize.import('./MembCredits');
   const Banking = sequelize.import('./Banking');
   const ViCurInfo = sequelize.import('./ViCurInfo');
+
+  try {
+    await sequelize.sync();
+  } catch(e){
+    console.log(e);
+  }
 
   return {
     MembInfo,

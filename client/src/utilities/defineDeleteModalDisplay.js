@@ -19,6 +19,14 @@ export default id => {
       return { header: { icon: makeIcon('danger'), label: 'Delete Yugioh Deck' } };
     case 'deleteStarcraftMapModal':
       return { header: { icon: makeIcon('danger'), label: 'Delete Starcraft Map' } };
+    case 'deleteStarcraftModModal':
+      return { header: { icon: makeIcon('danger'), label: 'Delete Starcraft Mod' } };
+    case 'deleteStarcraftCampaignModal':
+      return { header: { icon: makeIcon('danger'), label: 'Delete Starcraft Campaign' } };
+    case 'deleteMuonlineToolModal':
+      return { header: { icon: makeIcon('danger'), label: 'Delete Mu Tool' } };
+    case 'deleteMuonlineVersionModal':
+      return { header: { icon: makeIcon('danger'), label: 'Delete Mu Version' } };
     default:
       return modalDisplay;
   }

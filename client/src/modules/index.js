@@ -10,6 +10,7 @@ import music from 'modules/Collections/music';
 import starcraft from 'modules/Games/starcraft';
 import yugiohPoc from 'modules/Games/yugiohPoc';
 import muonline from 'modules/Games/muonline';
+import darksteam97d99i from 'modules/MuOnline/darksteam97d99i';
 
 export default combineReducers({
   page,
@@ -21,6 +22,7 @@ export default combineReducers({
   gamingHistory,
   yugiohPoc,
   starcraft,
-  muonline
+  muonline,
+  darksteam97d99i
 });
 

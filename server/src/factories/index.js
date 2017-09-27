@@ -1,10 +1,11 @@
+import clearExtension from './clearExtension';
 import readFile from './readFile';
 import writeFile from './writeFile';
 import wrap from './wrap';
 import commonService from './commonService';
 import jsonReader from './jsonReader';
 
-const factories = () => ({ readFile, wrap, writeFile, commonService, jsonReader });
+const factories = () => ({ readFile, wrap, writeFile, commonService, jsonReader, clearExtension });
 
 export default {
   name: 'App Factory',

@@ -5,3 +5,50 @@
   width: 100%;
   background-image: url('../../app_modules/images/backgrounds/jungle.jpg');
 }
+
+.ds9799-top-nav {
+  height: 60px;
+  border: solid 1px #4c6177;
+  display: flex;
+  align-items: center;
+}
+
+.ds9799-logo-container {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.ds9799-logo {
+  height: 50px;
+}
+
+.ds9799-top-nav-pannel {
+  align-items: center;
+  border-radius: 3px;
+  border: solid 1px #1e5637;
+  margin: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.ds9799-top-nav-pannel-active {
+  background-color: #366d4e;
+}
+
+.ds9799-user-sidenav {
+  border: solid 1px #4c6177;
+  display: flex;
+  justify-content: center;
+  height: 676px;
+}
+
+.ds9799-sidenav-form {
+  margin-top: 15px;
+  width: 90%;
+}
+
+.ds979-sidenav-form-input {
+  border: solid 1px #80c391;
+}

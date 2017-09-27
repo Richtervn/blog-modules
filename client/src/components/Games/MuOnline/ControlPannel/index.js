@@ -17,14 +17,8 @@ export default ({
   onGetVersionDetail,
   onAddToolSubmit,
   onAddVersionSubmit,
-  onEditToolSubmit,
-  onEditVersionSubmit,
-  onDeleteTool,
-  onDeleteVersion,
   addVersionFormState,
-  addToolFormState,
-  editVersionFormState,
-  editToolFormState
+  addToolFormState
 }) => {
   return (
     <div>
@@ -42,23 +36,20 @@ export default ({
         </div>
         {activeView == 'Versions' && (
           <ListPannel
+            type="Version"
             cards={versions}
             onGetCards={onGetVersions}
             onGetCardDetail={onGetVersionDetail}
             focusCard={focusVersion}
-            onAddCardSubmit={onAddVersionSubmit}
-            onEditCardSubmit={onEditVersionSubmit}
-            onDeleteCard={onDeleteVersion}
           />
         )}
         {activeView == 'Tools' && (
           <ListPannel
+            type="Tool"
             cards={tools}
             onGetCards={onGetTools}
             onGetCardDetail={onGetToolDetail}
             focusCard={focusTool}
-            onEditCardSubmit={onEditToolSubmit}
-            onDeleteCard={onDeleteTool}
           />
         )}
       </div>
@@ -70,11 +61,7 @@ export default ({
         />
       )}
       {activeView == 'Tools' && (
-        <FormModal
-          id="addMuonlineToolModal"
-          formBody={addToolFormState}
-          onSubmit={onAddToolSubmit}
-        />
+        <FormModal id="addMuonlineToolModal" formBody={addToolFormState} onSubmit={onAddToolSubmit} />
       )}
     </div>
   );

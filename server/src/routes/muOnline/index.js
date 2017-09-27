@@ -9,12 +9,13 @@ import updateVersion from './services/updateVersion';
 
 export default (MuOnlineTools, MuOnlineVersions, factories) => {
   const router = express.Router();
-  const { wrap, commonService } = factories;
+  const { wrap, commonService, clearExtension } = factories;
 
   router.post(
     '/add_tool',
     wrap(async (req, res, next) => {
       const body = await uploadTool(req, res);
+      body.Name = clearExtension(body.Name);
       const tool = await addTool(MuOnlineTools, body);
       res.send(tool);
     })
@@ -24,6 +25,7 @@ export default (MuOnlineTools, MuOnlineVersions, factories) => {
     '/add_version',
     wrap(async (req, res, next) => {
       const body = await uploadVersion(req, res);
+      body.Name = clearExtension(body.Name);
       const version = await addVersion(MuOnlineVersions, body);
       res.send(version);
     })
@@ -33,6 +35,7 @@ export default (MuOnlineTools, MuOnlineVersions, factories) => {
     '/edit_tool',
     wrap(async (req, res, next) => {
       const body = await uploadTool(req, res);
+      if(body.Name) body.Name = clearExtension(body.Name);
       const tool = await updateTool(MuOnlineTools, body);
       res.send(tool);
     })
@@ -42,6 +45,7 @@ export default (MuOnlineTools, MuOnlineVersions, factories) => {
     '/edit_version',
     wrap(async (req, res, next) => {
       const body = await updateVersion(req, res);
+      if(body.Name) body.Name = clearExtension(body.Name);
       const version = await updateVersion(MuOnlineVersions, body);
       res.send(version);
     })
