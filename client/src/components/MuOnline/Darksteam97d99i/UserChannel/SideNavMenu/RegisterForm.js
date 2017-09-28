@@ -35,7 +35,7 @@ class RegisterForm extends Component {
           <input
             name="Name"
             type="text"
-            className="form-control ds979-sidenav-form-input"
+            className="form-control ds9799-sidenav-form-input"
             placeholder="Your Name"
             value={this.state.Name}
             onChange={this.handleChange}
@@ -49,7 +49,7 @@ class RegisterForm extends Component {
           <input
             name="Email"
             type="email"
-            className="form-control ds979-sidenav-form-input"
+            className="form-control ds9799-sidenav-form-input"
             placeholder="Email Address"
             value={this.state.Email}
             onChange={this.handleChange}
@@ -63,7 +63,7 @@ class RegisterForm extends Component {
           <input
             name="Username"
             type="text"
-            className="form-control ds979-sidenav-form-input"
+            className="form-control ds9799-sidenav-form-input"
             placeholder="Username"
             value={this.state.Username}
             onChange={this.handleChange}
@@ -77,7 +77,7 @@ class RegisterForm extends Component {
           <input
             type="password"
             name="Password"
-            className="form-control ds979-sidenav-form-input"
+            className="form-control ds9799-sidenav-form-input"
             placeholder="Password"
             value={this.state.Password}
             onChange={this.handleChange}
@@ -91,7 +91,7 @@ class RegisterForm extends Component {
           <input
             type="password"
             name="PasswordRepeat"
-            className="form-control ds979-sidenav-form-input"
+            className="form-control ds9799-sidenav-form-input"
             placeholder="Repeat Password"
             value={this.state.PasswordRepeat}
             onChange={this.handleChange}
@@ -105,7 +105,7 @@ class RegisterForm extends Component {
           <input
             type="date"
             name="BirthDay"
-            className="form-control ds979-sidenav-form-input"
+            className="form-control ds9799-sidenav-form-input"
             placeholder="Your Birth Day"
             value={this.state.BirthDay}
             onChange={this.handleChange}

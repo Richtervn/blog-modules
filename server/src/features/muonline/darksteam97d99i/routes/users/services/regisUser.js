@@ -29,8 +29,8 @@ export default async (MembInfo, ViCurInfo, MembCredit, Banking, body, helpers, a
 
   try {
     const [isUsernameExist, isEmailExist] = [await checkExistUsername(), await checkExistEmail()];
-    if (isUsernameExist) return { error: 'Username is already exist' };
-    if (isEmailExist) return { error: 'Email is already used' };
+    if (isUsernameExist) return { message: 'Username is already exist' };
+    if (isEmailExist) return { message: 'Email is already used' };
 
     const appl_days = makeSmallDateTime();
     const sno__numb = makeSnoNumber(body.BirthDay);
@@ -39,7 +39,7 @@ export default async (MembInfo, ViCurInfo, MembCredit, Banking, body, helpers, a
       memb___id: body.Username,
       memb__pwd: body.Password,
       memb_name: body.Name,
-      mail_addr: body.EMail,
+      mail_addr: body.Email,
       sno__numb: sno__numb,
       appl_days: appl_days,
       bloc_code: '0',

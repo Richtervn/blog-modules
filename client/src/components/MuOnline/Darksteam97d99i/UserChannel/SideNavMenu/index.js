@@ -2,10 +2,12 @@ import React from 'react';
 
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
+import UserMenu from './UserMenu';
 
-export default ({user, activeForm, onChangeActiveForm, onRegister}) => (
+export default ({user, activeForm, onChangeActiveForm, onRegister, onLogin, onLogout}) => (
   <div className="ds9799-user-sidenav">
-    {!user && activeForm == 'Login' && <LoginForm onChangeActiveForm={onChangeActiveForm}/>}
+    {!user && activeForm == 'Login' && <LoginForm onChangeActiveForm={onChangeActiveForm} onLogin={onLogin}/>}
     {!user && activeForm == 'Register' && <RegisterForm onChangeActiveForm={onChangeActiveForm} onRegister={onRegister}/>}
+    {user && <UserMenu user={user} onLogout={onLogout}/>}
   </div>
 );

@@ -16,7 +16,7 @@ class LoginForm extends Component {
   }
 
   render() {
-    const {onChangeActiveForm} = this.props;
+    const { onChangeActiveForm, onLogin } = this.props;
     return (
       <div className="form-group ds9799-sidenav-form">
         <div className="input-group" style={{ paddingTop: '5px' }}>
@@ -26,7 +26,7 @@ class LoginForm extends Component {
           <input
             name="Username"
             type="text"
-            className="form-control ds979-sidenav-form-input"
+            className="form-control ds9799-sidenav-form-input"
             placeholder="Username"
             value={this.state.Username}
             onChange={this.handleChange}
@@ -39,14 +39,17 @@ class LoginForm extends Component {
           <input
             type="password"
             name="Password"
-            className="form-control ds979-sidenav-form-input"
+            className="form-control ds9799-sidenav-form-input"
             placeholder="Password"
             value={this.state.Password}
             onChange={this.handleChange}
           />
         </div>
         <div style={{ paddingTop: '5px' }} className="pull-right">
-          <button className="btn btn-primary" style={{marginRight: '5px'}}>
+          <button
+            className="btn btn-primary"
+            style={{ marginRight: '5px' }}
+            onClick={() => onLogin(this.state)}>
             <span>
               <i className="fa fa-sign-in fa-fw" />
             </span>Login

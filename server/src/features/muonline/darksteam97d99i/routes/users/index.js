@@ -1,5 +1,6 @@
 import regisUser from './services/regisUser';
 import loginUser from './services/loginUser';
+import editProfile from './services/editProfile';
 
 export default (models, router, factories, helpers, appConfigs) => {
   const { wrap, commonService } = factories;
@@ -24,14 +25,18 @@ export default (models, router, factories, helpers, appConfigs) => {
   router.post(
     '/users/login',
     wrap(async (req, res, next) => {
-      const account = await loginUser(MembInfo, req.body);
+      const account = await loginUser(MembInfo, ViCurInfo, Banking, MembCredits, req.body);
       res.send(account);
     })
   );
 
-  router.get('/test', (req, res, next) => {
-
-  })
+  router.put(
+    '/users/profile',
+    wrap(async (req, res, next) => {
+      const account = await editProfile(MembInfo, req.body, helpers);
+      res.send(account);
+    })
+  );
 
   return router;
 };

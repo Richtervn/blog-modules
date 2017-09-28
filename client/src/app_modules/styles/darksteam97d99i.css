@@ -49,6 +49,57 @@
   width: 90%;
 }
 
-.ds979-sidenav-form-input {
+.ds9799-sidenav-form-input {
   border: solid 1px #80c391;
+}
+
+.ds9799-user-menu {
+  width: 95%;
+  margin-top: 10px;
+}
+
+.ds9799-user-card {
+  color: #1e5637;
+  border: solid 1px #4c6177;
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.ds9799-user-card-header {
+  background-color: #4c6177;
+  color: white;
+  padding: 5px;
+}
+
+.ds9799-user-card-content {
+  padding: 5px !important;
+}
+
+.ds9799-dashboard-container {
+  margin: 10px;
+}
+
+.ds9799-profile-card {
+  border: solid 1px #4c6177;
+  height: 656px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.ds9799-profile-card-header {
+  background-color: #4c6177;
+  color: white;
+  height: 40px;
+  padding: 5px;
+}
+
+.ds9799-profile-card-content {
+  width: 90%;
+  padding-top: 20px;
+  margin: auto;
+}
+
+.ds9799-margin-bottom {
+  margin-bottom: 15px;
 }
