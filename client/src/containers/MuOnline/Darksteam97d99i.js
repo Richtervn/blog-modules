@@ -1,7 +1,14 @@
 import Darksteam97d99i from 'components/MuOnline/Darksteam97d99i';
 import { connect } from 'react-redux';
 
-import { changeActiveChannel, changeActiveSideForm, register, login, logout } from 'modules/MuOnline/darksteam97d99i';
+import {
+  changeActiveChannel,
+  changeActiveSideForm,
+  register,
+  login,
+  logout,
+  editProfile
+} from 'modules/MuOnline/darksteam97d99i';
 
 export default connect(
   ({ darksteam97d99i }) => ({
@@ -16,17 +23,20 @@ export default connect(
     onChangeActiveChannel(channel) {
       dispatch(changeActiveChannel(channel));
     },
-    onChangeActiveSideForm(form){
+    onChangeActiveSideForm(form) {
       dispatch(changeActiveSideForm(form));
     },
-    onRegister(formBody){
+    onRegister(formBody) {
       dispatch(register(formBody));
     },
-    onLogin(formBody){
+    onLogin(formBody) {
       dispatch(login(formBody));
     },
-    onLogout(){
+    onLogout() {
       dispatch(logout());
+    },
+    onEditProfile(formBody){
+      dispatch(editProfile(formBody));
     }
   })
 )(Darksteam97d99i);

@@ -14,7 +14,8 @@ export default ({
   errorRegister,
   errorLogin,
   userPage,
-  onLogout
+  onLogout,
+  onEditProfile
 }) => (
   <div className="ds9799-main-screen">
     <div className="mo-main-screen-background">
@@ -28,6 +29,7 @@ export default ({
           user={user}
           userPage={userPage}
           onLogout={onLogout}
+          onEditProfile={onEditProfile}
         />
       )}
       {!user && errorRegister && <div className="alert alert-danger">{errorRegister}</div>}

@@ -11,6 +11,9 @@ const REGISTER_FAIL = 'darksteam97d99i/REGISTER_FAIL';
 const LOGIN_START = 'darksteam97d99i/LOGIN_START';
 const LOGIN_SUCCESS = 'darksteam97d99i/LOGIN_SUCCESS';
 const LOGIN_FAIL = 'darksteam97d99i/LOGIN_FAIL';
+const EDIT_PROFILE_START = 'darksteam97d99i/EDIT_PROFILE_START';
+const EDIT_PROFILE_FAIL = 'darksteam97d99i/EDIT_PROFILE_FAIL';
+const EDIT_PROFILE_SUCCESS = 'darksteam97d99i/EDIT_PROFILE_SUCCESS';
 
 export const changeActiveChannel = channel => ({ type: CHANGE_ACTIVE_CHANNEL, channel });
 export const changeActiveSideForm = form => ({ type: CHANGE_ACTIVE_SIDE_FORM, form });
@@ -19,6 +22,14 @@ export const register = formBody =>
   actionCreator(REGISTER_START, REGISTER_SUCCESS, REGISTER_FAIL, darksteam97d99i.register, formBody)();
 export const login = formBody =>
   actionCreator(LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, darksteam97d99i.login, formBody)();
+export const editProfile = formBody =>
+  actionCreator(
+    EDIT_PROFILE_START,
+    EDIT_PROFILE_SUCCESS,
+    EDIT_PROFILE_FAIL,
+    darksteam97d99i.editProfile,
+    formBody
+  )();
 
 export default (
   state = {
@@ -55,6 +66,8 @@ export default (
         viewControl: { ...state.viewControl, userPage: 'Introduction' },
         error: { Register: null, Login: null }
       };
+    case EDIT_PROFILE_SUCCESS:
+      return { ...state, user: { ...state.user, ...action.data } };
     default:
       return state;
   }

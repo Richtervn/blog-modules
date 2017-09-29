@@ -3,5 +3,6 @@ module.exports = [
   './models',
   './routes',
   './features/muonline',
+  './features/lineage2',
   './system'
 ]

@@ -1,6 +1,6 @@
 import serviceCaller from 'factories/serviceCaller';
 
-const { commonPost, commonGet } = serviceCaller;
+const { commonPost, commonGet, commonPut } = serviceCaller;
 
 export default {
   register(formBody){
@@ -9,6 +9,10 @@ export default {
   },
   login(formBody){
     const data = commonPost('mu/darksteam97d99i/users/login', formBody);
+    return data;
+  },
+  editProfile(formBody){
+    const data = commonPut('mu/darksteam97d99i/users/profile', formBody);
     return data;
   }
 };

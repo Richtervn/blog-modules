@@ -1,6 +1,7 @@
 {
-  "Collections": ["Mangas Reading", "Music","Gaming History"],
+  "Collections": ["Mangas Reading", "Music", "Gaming History"],
   "Games": ["Starcraft Broodwar", "YugiOh! PoC", "Mu Online"],
-  "Flash Games": ["Sonny 1", "Sonny 2", "Stormy Castle", "Kingdom Rush"],
-  "Mu Online": ["Darksteam 97d99i"]
+  "Flash Games": ["Sonny 1", "Sonny 2", "Stormy Castle", "Kingdom Rush", "Kingdom Rush 2"],
+  "Mu Online": ["Darksteam 97d99i"],
+  "Lineage II": ["Freya Portable"]
 }

@@ -3,7 +3,16 @@ import React from 'react';
 import SideNavMenu from './SideNavMenu';
 import UserPages from './UserPages';
 
-export default ({ user, userPage, activeSideForm, onChangeActiveSideForm, onRegister, onLogin, onLogout }) => (
+export default ({
+  user,
+  userPage,
+  activeSideForm,
+  onChangeActiveSideForm,
+  onRegister,
+  onLogin,
+  onLogout,
+  onEditProfile
+}) => (
   <div className="row no-row-margin">
     <div className="col-3 no-col-margin">
       <SideNavMenu
@@ -16,7 +25,7 @@ export default ({ user, userPage, activeSideForm, onChangeActiveSideForm, onRegi
       />
     </div>
     <div className="col-9 no-col-margin">
-      <UserPages user={user} page={userPage}/>
+      <UserPages user={user} page={userPage} onEditProfile={onEditProfile}/>
     </div>
   </div>
 );

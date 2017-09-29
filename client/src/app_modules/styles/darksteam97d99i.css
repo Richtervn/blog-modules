@@ -103,3 +103,12 @@
 .ds9799-margin-bottom {
   margin-bottom: 15px;
 }
+
+.ds9799-dashboard-banking-card {
+  border: solid 1px #4c6177;
+  height: 200px;
+  border-radius: 5px;
+  background-color: white;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}

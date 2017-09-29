@@ -7,6 +7,7 @@ export default (app, config) => {
 
   server.on('error', err => {
     if (err.syscall !== 'listen') throw err;
+    const port = config.port;
     const bindErr = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
     switch (err.code) {

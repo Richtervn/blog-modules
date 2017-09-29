@@ -6,17 +6,18 @@ class ProfileCard extends Component {
     const { user } = this.props;
     this.state = {
       value: {
+        MembGuid: user.memb_guid,
         Name: user.memb_name,
         User: user.memb___id,
-        MailAddr: user.mail_addr,
-        PostCode: user.post_code,
-        AddrInfo: user.addr_info,
-        AddrDeta: user.addr_deta,
-        TelNumb: user.tel__numb,
-        PhonNumb: user.phon_numb,
-        FpasQues: user.fpas_ques,
-        FpasAnsw: user.fpas_answ,
-        JobCode: user.job__code
+        MailAddr: user.mail_addr || '',
+        PostCode: user.post_code || undefined,
+        AddrInfo: user.addr_info || '',
+        AddrDeta: user.addr_deta || '',
+        TelNumb: user.tel__numb || undefined,
+        PhonNumb: user.phon_numb || undefined,
+        FpasQues: user.fpas_ques || '',
+        FpasAnsw: user.fpas_answ || '',
+        JobCode: user.job__code || undefined
       },
       editing: false
     };
@@ -31,12 +32,15 @@ class ProfileCard extends Component {
   }
 
   save() {
+    this.props.onEditProfile(this.state.value);
     this.setState({ editing: false });
   }
 
   handleChange(event) {
     const { name, value } = event.target;
-    this.setState({ [name]: value });
+    const nextState = {...this.state};
+    nextState.value[name] = value;
+    this.setState(nextState);
   }
 
   render() {
