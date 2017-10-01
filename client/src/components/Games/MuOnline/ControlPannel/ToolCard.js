@@ -7,7 +7,7 @@ export default ({ tool, onSelectTool, isSelected }) => (
     onClick={() => onSelectTool(tool._id)}>
     <div className="row no-row-margin">
       <div className="ygo-mod-card-img-col">
-        <img className="ygo-mod-card-icon" src={tool.IconUrl.replace('./public', 'http://localhost:3000')} />
+        <img className="ygo-mod-card-icon" src={tool.IconUrl.replace('./public', 'http://localhost:3000')} style={{height: '35px'}}/>
       </div>
       <div className="ygo-mod-card-content">
         <div className="ygo-mod-card-rating">

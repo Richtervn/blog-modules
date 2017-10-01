@@ -12,6 +12,8 @@ import MangasReading from 'containers/Collections/MangasReading';
 import GamingHistory from 'containers/Collections/GamingHistory';
 import Music from 'containers/Collections/Music';
 
+import FreyaPortable from 'containers/LineageII/FreyaPortable';
+
 import Darksteam97d99i from 'containers/MuOnline/Darksteam97d99i';
 
 export default ({ activeGroup, activeItem, menuTree }) => {
@@ -38,6 +40,9 @@ export default ({ activeGroup, activeItem, menuTree }) => {
       break;
     case 'Darksteam 97d99i':
       Navigation = Darksteam97d99i;
+      break;
+    case 'Freya Portable':
+      Navigation = FreyaPortable;
       break;
     default:
       break;

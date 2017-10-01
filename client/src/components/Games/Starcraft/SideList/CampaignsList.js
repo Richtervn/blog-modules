@@ -33,8 +33,9 @@ export default ({
         <CampaignCard
           key={i}
           campaign={campaign}
-          isFocus={campaign._id == campaignFocus}
+          isFocus={campaign._id == campaignFocus._id}
           onSelect={onSelect}
+          onGetCampaignDetail={onGetCampaignDetail}
         />
       ))}
       <FormModal id="addStarcraftCampaignModal" formBody={addCampaignFormState} onSubmit={onCampaignSubmit} />

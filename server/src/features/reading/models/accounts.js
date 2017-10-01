@@ -15,12 +15,12 @@ module.exports = function(sequelize, DataTypes) {
     lastactive: {
       type: DataTypes.BIGINT,
       allowNull: false,
-      defaultValue: '0'
+      defaultValue: 0
     },
     accessLevel: {
       type: DataTypes.INTEGER(4),
       allowNull: false,
-      defaultValue: '0'
+      defaultValue: 0
     },
     lastIP: {
       type: DataTypes.CHAR(15),
@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
     lastServer: {
       type: DataTypes.INTEGER(4),
       allowNull: true,
-      defaultValue: '1'
+      defaultValue: 1
     },
     userIP: {
       type: DataTypes.CHAR(15),

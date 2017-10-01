@@ -112,3 +112,98 @@
   margin-left: 10px;
   margin-bottom: 10px;
 }
+
+.ds9799-user-menu-item {
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: solid 1px #4c6177;
+  cursor: pointer;
+}
+
+.ds9799-user-menu-item-active {
+  background-color: #366d4e;
+}
+
+.ds9799-user-menu-item:hover {
+  background-color: #366d4e;
+}
+
+.ds9799-user-menu-item-label {
+  padding-left: 20px;
+}
+
+.ds9799-user-menu-item-icon {
+  padding-right: 35px;
+}
+
+.ds9799-character-card {
+  border: solid 1px #4c6177;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 10px;
+  width: 100%;
+  height: 123px;
+  cursor: pointer;
+}
+
+.ds9799-character-card-active {
+  background-color: #366d4e;
+}
+
+.ds9799-character-card:hover {
+  background-color: #366d4e;
+}
+
+.ds9799-character-card-icon {
+  height: 110px;
+}
+
+.ds9799-character-info {
+  border: solid 1px #4c6177;
+  margin: 10px;
+  margin-left: 20px;
+  border-radius: 5px;
+  height: 655px;
+}
+
+.ds9799-character-info-content {
+  margin-top: 10px;
+  margin-left: 100px;
+  margin-right: 100px;
+  border: solid 2px #4c6177;
+  height: 590px;
+  border-radius: 10px;
+  color: black;
+  background-color: ghostwhite;
+}
+
+.ds9799-character-info-box {
+  border: solid 2px #366d4e;
+  margin: 5px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.ds9799-character-input-group {
+  position: relative;
+  display: flex;
+  margin: 5px;
+}
+
+.ds9799-character-button{
+  font-size: 40px;
+  margin-left: 10px;
+  color: #dc3545;
+  cursor: pointer;
+}
+
+.ds9799-character-button:hover {
+  color: #c82333;
+}
+
+.ds9799-character-command-button {
+  margin: 5px;
+}

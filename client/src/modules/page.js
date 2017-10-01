@@ -46,6 +46,10 @@ const quotes = {
   'Mu Online': {
     quote: "Take a look to the sky just before you die",
     author: 'Metallica - For Whom The Bell Tolls'
+  },
+  'Lineage II': {
+    quote: "You're the ghost haunting through her heart",
+    author: 'Within Temptation - Restless'
   }
 };
 

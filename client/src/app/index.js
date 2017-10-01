@@ -10,10 +10,6 @@ import SideNavBar from 'containers/SideNavBar';
 import AddModal from 'containers/AddModal';
 import Navigation from 'containers/Navigation';
 
-import $ from 'jQuery';
-window.$ = $;
-window.jQuery = $;
-
 export default () =>
   <Provider store={store}>
     <div className="container-fluid">

@@ -2,14 +2,16 @@ import React from 'react';
 import extractRaces from 'factories/extractRaces';
 import StarRating from 'react-star-rating-component';
 
-export default ({ campaign, isFocus, onSelect }) => {
+export default ({ campaign, isFocus, onSelect, onGetCampaignDetail }) => {
   const { playerRaces, opponentRaces } = extractRaces(campaign.Matchup);
-
   return (
     <div
       className="sc-add-map-btn"
       style={{ color: isFocus ? '#ddff66' : '#00cc00' }}
-      onClick={() => onSelect(campaign)}>
+      onClick={() => {
+        onSelect(campaign);
+        onGetCampaignDetail(campaign._id);
+      }}>
       <div className="row no-row-margin">
         <div className="col-9 no-col-margin">{campaign.Name}</div>
         <div className="col-3 no-col-margin">

@@ -5,6 +5,8 @@ import UserChannel from './UserChannel';
 
 export default ({
   user,
+  characters,
+  focusCharacter,
   activeChannel,
   onChangeActiveChannel,
   activeSideForm,
@@ -15,7 +17,12 @@ export default ({
   errorLogin,
   userPage,
   onLogout,
-  onEditProfile
+  onEditProfile,
+  onChangeUserPage,
+  onGetCharacters,
+  onSetFocusCharacter,
+  onAddPoint,
+  errorAddPoint
 }) => (
   <div className="ds9799-main-screen">
     <div className="mo-main-screen-background">
@@ -27,9 +34,16 @@ export default ({
           onRegister={onRegister}
           onLogin={onLogin}
           user={user}
+          characters={characters}
+          focusCharacter={focusCharacter}
           userPage={userPage}
           onLogout={onLogout}
           onEditProfile={onEditProfile}
+          onChangeUserPage={onChangeUserPage}
+          onGetCharacters={onGetCharacters}
+          onSetFocusCharacter={onSetFocusCharacter}
+          onAddPoint={onAddPoint}
+          errorAddPoint={errorAddPoint}
         />
       )}
       {!user && errorRegister && <div className="alert alert-danger">{errorRegister}</div>}

@@ -5,13 +5,20 @@ import UserPages from './UserPages';
 
 export default ({
   user,
+  characters,
+  focusCharacter,
   userPage,
   activeSideForm,
   onChangeActiveSideForm,
   onRegister,
   onLogin,
   onLogout,
-  onEditProfile
+  onEditProfile,
+  onChangeUserPage,
+  onSetFocusCharacter,
+  onGetCharacters,
+  onAddPoint,
+  errorAddPoint
 }) => (
   <div className="row no-row-margin">
     <div className="col-3 no-col-margin">
@@ -22,10 +29,22 @@ export default ({
         onRegister={onRegister}
         onLogin={onLogin}
         onLogout={onLogout}
+        onChangeUserPage={onChangeUserPage}
+        userPage={userPage}
       />
     </div>
     <div className="col-9 no-col-margin">
-      <UserPages user={user} page={userPage} onEditProfile={onEditProfile}/>
+      <UserPages
+        user={user}
+        page={userPage}
+        onEditProfile={onEditProfile}
+        onSetFocusCharacter={onSetFocusCharacter}
+        onGetCharacters={onGetCharacters}
+        characters={characters}
+        focusCharacter={focusCharacter}
+        onAddPoint={onAddPoint}
+        errorAddPoint={errorAddPoint}
+      />
     </div>
   </div>
 );

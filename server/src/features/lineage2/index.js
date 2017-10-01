@@ -8,10 +8,10 @@ export default {
   name: 'Lineage II Webportals',
   description: 'Lineage II Web Portals for many versions',
   services: {
-    MuRouter: {
+    L2Router: {
       require: ['factories', 'config'],
       func: l2Apps
     }
   },
-  exports: ['MuRouter']
+  exports: ['L2Router']
 };

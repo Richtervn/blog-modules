@@ -7,16 +7,23 @@ import {
   register,
   login,
   logout,
-  editProfile
+  editProfile,
+  changeUserPage,
+  getCharacters,
+  setFocusCharacter,
+  addPoint
 } from 'modules/MuOnline/darksteam97d99i';
 
 export default connect(
   ({ darksteam97d99i }) => ({
     user: darksteam97d99i.user,
+    characters: darksteam97d99i.characters,
+    focusCharacter: darksteam97d99i.focusCharacter,
     activeChannel: darksteam97d99i.viewControl.activeChannel,
     activeSideForm: darksteam97d99i.viewControl.activeSideForm,
     errorRegister: darksteam97d99i.error.Register,
     errorLogin: darksteam97d99i.error.Login,
+    errorAddPoint: darksteam97d99i.error.AddPoint,
     userPage: darksteam97d99i.viewControl.userPage
   }),
   dispatch => ({
@@ -37,6 +44,18 @@ export default connect(
     },
     onEditProfile(formBody){
       dispatch(editProfile(formBody));
+    },
+    onChangeUserPage(page){
+      dispatch(changeUserPage(page));
+    },
+    onGetCharacters(id){
+      dispatch(getCharacters(id));
+    },
+    onSetFocusCharacter(character){
+      dispatch(setFocusCharacter(character));
+    },
+    onAddPoint(query){
+      dispatch(addPoint(query));
     }
   })
 )(Darksteam97d99i);

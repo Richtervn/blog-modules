@@ -37,6 +37,7 @@ module.exports = {
       services: `${defaultSettings.srcPath}/services/`,
       modules: `${defaultSettings.srcPath}/modules/`,
       utilities: `${defaultSettings.srcPath}/utilities/`,
+      app_modules: `${defaultSettings.srcPath}/app_modules`,
       'react/lib/ReactMount': 'react-dom/lib/ReactMount'
     }
   },
