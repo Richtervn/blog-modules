@@ -22,7 +22,11 @@ export default ({
   onGetCharacters,
   onSetFocusCharacter,
   onAddPoint,
-  errorAddPoint
+  onReset,
+  errorAddPoint,
+  errorReset,
+  onClearAddPointError,
+  onClearResetError
 }) => (
   <div className="ds9799-main-screen">
     <div className="mo-main-screen-background">
@@ -43,7 +47,11 @@ export default ({
           onGetCharacters={onGetCharacters}
           onSetFocusCharacter={onSetFocusCharacter}
           onAddPoint={onAddPoint}
+          onReset={onReset}
           errorAddPoint={errorAddPoint}
+          errorReset ={errorReset}
+          onClearAddPointError={onClearAddPointError}
+          onClearResetError={onClearResetError}
         />
       )}
       {!user && errorRegister && <div className="alert alert-danger">{errorRegister}</div>}

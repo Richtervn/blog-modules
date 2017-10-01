@@ -7,5 +7,15 @@
   "RESET_MAX_LEVEL": 350,
   "FIRST_RESET_POINT": 500,
   "NEXT_4_RESET_POINT": 400,
-  "RESET_POINTS": 300
+  "RESET_POINTS": 300,
+  "RESET_AWARD_CREDITS": 100,
+  "RESET_LEVEL_GAP": 10,
+  "RESET_FEE": 50000000,
+  "BASE_STATS": {
+    "DK": { "Strength": 28, "Dexterity": 20, "Vitality": 25, "Energy": 10 },
+    "DW": { "Strength": 18, "Dexterity": 18, "Vitality": 15, "Energy": 30 },
+    "MG": { "Strength": 26, "Dexterity": 26, "Vitality": 26, "Energy": 16 },
+    "ELF": { "Strength": 22, "Dexterity": 25, "Vitality": 20, "Energy": 15 }
+  },
+  "GRAND_RESET_POINTS":1000
 }

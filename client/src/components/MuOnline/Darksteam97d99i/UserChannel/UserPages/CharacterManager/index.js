@@ -3,7 +3,19 @@ import React from 'react';
 import CharacterCard from './CharacterCard';
 import CharacterInfo from './CharacterInfo';
 
-export default ({ user, characters, onSetFocusCharacter, focusCharacter, onGetCharacters, onAddPoint, errorAddPoint }) => {
+export default ({
+  user,
+  characters,
+  onSetFocusCharacter,
+  focusCharacter,
+  onGetCharacters,
+  onAddPoint,
+  errorAddPoint,
+  onClearAddPointError,
+  onReset,
+  errorReset,
+  onClearResetError
+}) => {
   if (!characters) {
     onGetCharacters(user.memb___id);
     return null;
@@ -22,7 +34,16 @@ export default ({ user, characters, onSetFocusCharacter, focusCharacter, onGetCh
         ))}
       </div>
       <div className="col-8 no-col-margin">
-        <CharacterInfo user={user} character={focusCharacter} onAddPoint={onAddPoint} errorAddPoint={errorAddPoint} />
+        <CharacterInfo
+          user={user}
+          character={focusCharacter}
+          onAddPoint={onAddPoint}
+          errorAddPoint={errorAddPoint}
+          onClearAddPointError={onClearAddPointError}
+          onReset={onReset}
+          errorReset={errorReset}
+          onClearResetError={onClearResetError}
+        />
       </div>
     </div>
   );

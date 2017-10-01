@@ -1,5 +1,6 @@
 import getCharacters from './services/getCharacters';
 import addPoints from './services/addPoints';
+import reset from './services/reset';
 
 export default (models, router, factories, helpers, appConfigs, methods) => {
   const { wrap, commonService } = factories;
@@ -21,74 +22,13 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
     })
   );
 
+  router.get('/characters/reset', wrap(async(req, res, next) => {
+    const result = await reset(Character, Banking, MembCredits, req.query, appConfigs.GameSetting, methods);
+    res.send(result);
+  }))
+
   return router;
 };
-
-// //import modules
-// var express = require('express');
-// var router = express.Router();
-// var _ = require('underscore');
-// var async = require('async');
-
-// //import models
-// var char = require('../config/initdb').Character;
-// var cred = require('../config/initdb').MEMB_CREDITS;
-// var bank = require('../config/initdb').BANKING;
-// var AccChar = require('../config/initdb').AccountCharacter
-
-// //check user session
-// router.all('*', function(req, res, next) {
-//   if (req.session.user) {
-//     return next();
-//   }
-// })
-
-// //init default base stats for classes
-// var baseDW = { 'Strength': 18, 'Dexterity': 18, 'Vitality': 15, 'Energy': 30 };
-// var baseDK = { 'Strength': 28, 'Dexterity': 20, 'Vitality': 25, 'Energy': 10 };
-// var baseMG = { 'Strength': 26, 'Dexterity': 26, 'Vitality': 26, 'Energy': 16 };
-// var baseELF = { 'Strength': 22, 'Dexterity': 25, 'Vitality': 20, 'Energy': 15 };
-
-// //init reset formular
-// function initResetFormular(Character, useBank) {
-
-//   var resetFormular = {}
-
-//   //load base stats
-//   if (_.contains([0, 1], Character.Class)) {
-//     resetFormular = baseDW;
-//   }
-
-//   if (_.contains([16, 17], Character.Class)) {
-//     resetFormular = baseDK;
-//   }
-
-//   if (_.contains([32, 33], Character.Class)) {
-//     resetFormular = baseDK;
-//   }
-
-//   if (_.contains([48], Character.Class)) {
-//     resetFormular = baseMG;
-//   }
-
-//   //load former reset stats
-//   if (Character.cLevel >= 300 + Character.Resets * 10 && Character.cLevel < 350) {
-//     resetFormular.LevelUpPoint = ((Character.Resets + 1) * 300 + Character.GrandResets * 1000);
-//   } else if (Character.cLevel >= 350) {
-//     resetFormular.LevelUpPoint = ((Character.Resets - 3) * 400 + 4 * 300 + Character.GrandResets * 1000);
-//   }
-
-//   //reset level to 1 and increase resets
-//   resetFormular.cLevel = 1;
-//   resetFormular.Resets = Character.Resets + 1;
-
-//   //load options for bank using
-//   if (useBank === 'false') {
-//     resetFormular.Money = Character.Money - 1000000000;
-//   }
-
-//   return resetFormular;
-// }
 
 // //init grand reset formular
 // function initGrandResetFormular(Character) {
@@ -129,136 +69,7 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
 // }
 
 // //service reset character
-// router.get('/reset', function(req, res, next) {
 
-//   //catch request params
-//   var characterName = req.query.Name;
-//   var accountId = req.query.AccountID;
-//   var useBank = req.query.UseBank;
-//   var resErr = [];
-
-//   //find this character
-//   char.findOne({
-
-//     attributes: [
-//       'AccountID',
-//       'Name',
-//       'cLevel',
-//       'Class',
-//       'LevelUpPoint',
-//       'Strength',
-//       'Dexterity',
-//       'Vitality',
-//       'Energy',
-//       'Resets',
-//       'GrandResets',
-//       'Money'
-//     ],
-
-//     where: {
-//       AccountID: accountId,
-//       Name: characterName
-//     }
-
-//   }).then(function(character) {
-//     var curbalance = null;
-
-//     async.waterfall([
-
-//       //check character level
-//       function(nextFunc) {
-
-//         if (character.cLevel < 300 + character.Resets * 10 && character.cLevel) {
-//           resErr.push({ msg: 'This character does not have enough level' });
-//           return res.send(resErr);
-//         } else {
-//           nextFunc()
-//         }
-
-//       },
-
-//       //check zen required 1,000,000,000
-//       function(nextFunc) {
-
-//         //check zen in inventory
-//         if (character.Money < 1000000000 && useBank === 'false') {
-//           resErr.push({ msg: 'Reset require 1,000,000,000 Zen' });
-//           return res.send(resErr);
-//         } else {
-
-//           //check zen in bank
-//           bank.findOne({
-//             where: {
-//               'memb___id': accountId
-//             }
-//           }).then(function(acc) {
-
-//             //set current balance
-//             curbalance = parseInt(acc.zen_balance)
-
-//             //check current balance
-//             if (curbalance < 1000000000 && useBank === 'true') {
-//               resErr.push({ msg: 'Your balance is not enough' });
-//               return res.send(resErr);
-//             } else {
-//               nextFunc();
-//             }
-
-//           })
-//         }
-
-//       },
-
-//     ], function() {
-
-//       //Create reset formular by calling initResetFormular function
-//       var formular = initResetFormular(character, useBank);
-
-//       //Update character acording to formular
-//       char.update(formular, {
-//         where: {
-//           AccountID: accountId,
-//           Name: characterName
-//         }
-//       })
-
-//       if (useBank === 'true') {
-
-//         bank.update({
-//           zen_balance: curbalance - 1000000000
-//         }, {
-//           where: {
-//             'memb___id': accountId
-//           }
-//         })
-
-//         cred.findOne({
-//           where: {
-//             memb___id: accountId
-//           }
-//         }).then(function(acc) {
-//           cred.update({
-//             credits: acc.credits + 10
-//           }, {
-//             where: {
-//               memb___id: accountId
-//             }
-//           })
-//         })
-
-//         data = formular;
-//         data.zen_balance = curbalance - 1000000000;
-//         res.send(data);
-
-//       } else {
-//         res.send(formular);
-//       }
-
-//     })
-
-//   })
-
-// })
 
 // router.get('/grandreset', function(req, res, next) {
 

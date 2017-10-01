@@ -13,7 +13,11 @@ export default ({
   onGetCharacters,
   onSetFocusCharacter,
   onAddPoint,
-  errorAddPoint
+  errorAddPoint,
+  onClearAddPointError,
+  onReset,
+  errorReset,
+  onClearResetError
 }) => {
   switch (page) {
     case 'Introduction':
@@ -30,6 +34,10 @@ export default ({
           onGetCharacters={onGetCharacters}
           onAddPoint={onAddPoint}
           errorAddPoint={errorAddPoint}
+          onClearAddPointError={onClearAddPointError}
+          onReset={onReset}
+          errorReset={errorReset}
+          onClearResetError={onClearResetError}
         />
       );
     default:

@@ -11,7 +11,10 @@ import {
   changeUserPage,
   getCharacters,
   setFocusCharacter,
-  addPoint
+  addPoint,
+  clearAddPointError,
+  reset,
+  clearResetError
 } from 'modules/MuOnline/darksteam97d99i';
 
 export default connect(
@@ -24,6 +27,7 @@ export default connect(
     errorRegister: darksteam97d99i.error.Register,
     errorLogin: darksteam97d99i.error.Login,
     errorAddPoint: darksteam97d99i.error.AddPoint,
+    errorReset: darksteam97d99i.error.Reset,
     userPage: darksteam97d99i.viewControl.userPage
   }),
   dispatch => ({
@@ -42,20 +46,29 @@ export default connect(
     onLogout() {
       dispatch(logout());
     },
-    onEditProfile(formBody){
+    onEditProfile(formBody) {
       dispatch(editProfile(formBody));
     },
-    onChangeUserPage(page){
+    onChangeUserPage(page) {
       dispatch(changeUserPage(page));
     },
-    onGetCharacters(id){
+    onGetCharacters(id) {
       dispatch(getCharacters(id));
     },
-    onSetFocusCharacter(character){
+    onSetFocusCharacter(character) {
       dispatch(setFocusCharacter(character));
     },
-    onAddPoint(query){
+    onAddPoint(query) {
       dispatch(addPoint(query));
+    },
+    onClearAddPointError() {
+      dispatch(clearAddPointError());
+    },
+    onReset(query) {
+      dispatch(reset(query));
+    },
+    onClearResetError() {
+      dispatch(clearResetError());
     }
   })
 )(Darksteam97d99i);

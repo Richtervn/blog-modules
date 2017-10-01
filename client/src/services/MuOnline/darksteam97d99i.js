@@ -22,5 +22,9 @@ export default {
   addPoint(query){
     const data = commonGet('mu/darksteam97d99i/characters/add_point', null, query);
     return data;
+  },
+  reset(query){
+    const data = commonGet('mu/darksteam97d99i/characters/reset', null, query);
+    return data;
   }
 };

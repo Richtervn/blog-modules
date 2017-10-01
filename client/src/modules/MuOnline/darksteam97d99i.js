@@ -6,6 +6,8 @@ const CHANGE_ACTIVE_SIDE_FORM = 'darksteam97d99i/CHANGE_ACTIVE_SIDE_FORM';
 const LOGOUT = 'darksteam97d99i/LOGOUT';
 const CHANGE_USER_PAGE = 'darksteam97d99i/CHANGE_USER_PAGE';
 const SET_FOCUS_CHARACTER = 'darksteam97d99i/SET_FOCUS_CHARACTER';
+const CLEAR_ADD_POINT_ERROR = 'darksteam97d99i/CLEAR_ADD_POINT_ERROR';
+const CLEAR_RESET_ERROR = 'darksteam97d99i/CLEAR_RESET_ERROR';
 
 const REGISTER_START = 'darksteam97d99i/REGISTER_START';
 const REGISTER_SUCCESS = 'darksteam97d99i/REGISTER_SUCCESS';
@@ -22,12 +24,18 @@ const GET_CHARACTERS_FAIL = 'darksteam97d99i/GET_CHARACTERS_FAIL';
 const ADD_POINT_START = 'darksteam97d99i/ADD_POINT_START';
 const ADD_POINT_SUCCESS = 'darksteam97d99i/ADD_POINT_SUCCESS';
 const ADD_POINT_FAIL = 'darksteam97d99i/ADD_POINT_FAIL';
+const RESET_START = 'darksteam97d99i/RESET_START';
+const RESET_SUCCESS = 'darksteam97d99i/RESET_SUCCESS';
+const RESET_FAIL = 'darksteam97d99i/RESET_FAIL';
 
 export const changeActiveChannel = channel => ({ type: CHANGE_ACTIVE_CHANNEL, channel });
 export const changeActiveSideForm = form => ({ type: CHANGE_ACTIVE_SIDE_FORM, form });
 export const logout = () => ({ type: LOGOUT });
 export const changeUserPage = page => ({ type: CHANGE_USER_PAGE, page });
 export const setFocusCharacter = character => ({ type: SET_FOCUS_CHARACTER, character });
+export const clearAddPointError = () => ({ type: CLEAR_ADD_POINT_ERROR });
+export const clearResetError = () => ({ type: CLEAR_RESET_ERROR });
+
 export const register = formBody =>
   actionCreator(REGISTER_START, REGISTER_SUCCESS, REGISTER_FAIL, darksteam97d99i.register, formBody)();
 export const login = formBody =>
@@ -50,6 +58,8 @@ export const getCharacters = id =>
   )();
 export const addPoint = query =>
   actionCreator(ADD_POINT_START, ADD_POINT_SUCCESS, ADD_POINT_FAIL, darksteam97d99i.addPoint, query)();
+export const reset = query =>
+  actionCreator(RESET_START, RESET_SUCCESS, RESET_FAIL, darksteam97d99i.reset, query)();
 
 export default (
   state = {
@@ -64,7 +74,8 @@ export default (
     error: {
       Register: null,
       Login: null,
-      AddPoint: null
+      AddPoint: null,
+      Reset: null
     }
   },
   action
@@ -90,17 +101,19 @@ export default (
       return { ...state, characters: action.data, focusCharacter: action.data[0] };
     case SET_FOCUS_CHARACTER:
       return { ...state, focusCharacter: action.character };
-    case ADD_POINT_SUCCESS:
+    case ADD_POINT_SUCCESS: {
       const nextState = { ...state };
       nextState.focusCharacter[action.data.type] = action.data[action.data.type];
+      nextState.focusCharacter.LevelUpPoint = action.data.LevelUpPoint;
       if (action.data.isUseBank) {
         nextState.user.Banking.zen_balance = action.data.zen_balance;
       } else {
         nextState.focusCharacter.Money = action.data.Money;
       }
-      nextState.characters.map(character => {
+      nextState.characters = nextState.characters.map(character => {
         if (character.Name == state.focusCharacter.Name) {
           character[action.data.type] = action.data[action.data.type];
+          character.LevelUpPoint = action.data.LevelUpPoint;
         }
         if (!action.data.isUseBank) {
           character.Money = action.data.Money;
@@ -109,12 +122,55 @@ export default (
       });
       return {
         ...nextState,
+        user: { ...nextState.user, Banking: { ...nextState.user.Banking } },
         focusCharacter: { ...nextState.focusCharacter },
         characters: nextState.characters.slice(0),
-        error: {...state.error, AddPoint: null}
+        error: { ...state.error, AddPoint: null }
       };
+    }
+    case RESET_SUCCESS: {
+      const nextState = { ...state };
+      const changedCharacter = { ...state.focusCharacter };
+      if (action.data.isUseBank) {
+        nextState.user.Banking.zen_balance = action.data.zen_balance;
+      } else {
+        changedCharacter.Money = action.data.Money;
+      }
+      nextState.user.MembCredits.credits = action.data.credits;
+      if (action.data.Strength) changedCharacter.Strength = action.data.Strength;
+      if (action.data.Dexterity) changedCharacter.Dexterity = action.data.Dexterity;
+      if (action.data.Vitality) changedCharacter.Vitality = action.data.Vitality;
+      if (action.data.Energy) changedCharacter.Energy = action.data.Energy;
+      if (action.data.LevelUpPoint) changedCharacter.LevelUpPoint = action.data.LevelUpPoint;
+      changedCharacter.Resets = action.data.Resets;
+      changedCharacter.cLevel = action.data.cLevel;
+      nextState.characters = nextState.characters.map(character => {
+        if (character.Name == state.focusCharacter.Name) {
+          return { ...changedCharacter };
+        }
+        return character;
+      });
+      return {
+        ...nextState,
+        user: {
+          ...nextState.user,
+          Banking: { ...nextState.user.Banking },
+          MembCredits: { ...nextState.user.MembCredits }
+        },
+        focusCharacter: { ...changedCharacter },
+        characters: nextState.characters.slice(0),
+        error: { ...state.error, Reset: null }
+      };
+    }
+    case RESET_FAIL: {
+      return { ...state, error: { ...state.error, Reset: action.error } };
+    }
     case ADD_POINT_FAIL:
       return { ...state, error: { ...state.error, AddPoint: action.error } };
+    case CLEAR_ADD_POINT_ERROR:
+      return { ...state, error: { ...state.error, AddPoint: null } };
+    case CLEAR_RESET_ERROR:
+      return { ...state, error: { ...state.error, Reset: null } };
     case LOGOUT:
       return {
         ...state,

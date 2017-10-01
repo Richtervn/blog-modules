@@ -15,6 +15,7 @@ export default class CharacterInfo extends Component {
       Energy: 0
     };
     this.addPoint = this.addPoint.bind(this);
+    this.reset = this.reset.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -29,7 +30,6 @@ export default class CharacterInfo extends Component {
         nextState[name] = value;
         break;
     }
-    console.log(nextState);
     this.setState(nextState);
   }
 
@@ -43,12 +43,26 @@ export default class CharacterInfo extends Component {
     this.props.onAddPoint(query);
   }
 
+  reset() {
+    const query = {
+      name: this.props.character.Name,
+      isUseBank: this.state.isUseBank
+    };
+    this.props.onReset(query);
+  }
+
   render() {
-    const { character, errorAddPoint } = this.props;
+    const { character, errorAddPoint, onClearAddPointError, errorReset, onClearResetError } = this.props;
     const charClass = decodeMuClass(character.Class);
 
     if (errorAddPoint) {
       $('#darksteam97d99iAddPointErr').modal('show');
+      $('#darksteam97d99iAddPointErr').on('hide.bs.modal', onClearAddPointError);
+    }
+
+    if (errorReset) {
+      $('#darksteam97d99iResetErr').modal('show');
+      $('#darksteam97d99ResetErr').on('hide.bs.modal', onClearResetError);
     }
 
     return (
@@ -169,7 +183,9 @@ export default class CharacterInfo extends Component {
             </div>
           </div>
           <div className="ds9799-character-command-button">
-            <button className="btn btn-danger btn-block">Reset</button>
+            <button className="btn btn-danger btn-block" onClick={() => this.reset()}>
+              Reset
+            </button>
           </div>
           <div className="ds9799-character-command-button">
             <button className="btn btn-danger btn-block">Grand Reset</button>
@@ -179,7 +195,8 @@ export default class CharacterInfo extends Component {
           </div>
         </div>
 
-        <ErrorModal id="darksteam97d99iAddPointErr" text={errorAddPoint}/>
+        <ErrorModal id="darksteam97d99iAddPointErr" text={errorAddPoint} />
+        <ErrorModal id="darksteam97d99iResetErr" text={errorReset} />
       </div>
     );
   }

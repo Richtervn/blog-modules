@@ -18,7 +18,11 @@ export default ({
   onSetFocusCharacter,
   onGetCharacters,
   onAddPoint,
-  errorAddPoint
+  onReset,
+  errorReset,
+  errorAddPoint,
+  onClearAddPointError,
+  onClearResetError
 }) => (
   <div className="row no-row-margin">
     <div className="col-3 no-col-margin">
@@ -44,6 +48,10 @@ export default ({
         focusCharacter={focusCharacter}
         onAddPoint={onAddPoint}
         errorAddPoint={errorAddPoint}
+        onClearAddPointError={onClearAddPointError}
+        onReset={onReset}
+        errorReset={errorReset}
+        onClearResetError={onClearResetError}
       />
     </div>
   </div>
