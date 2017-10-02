@@ -7,7 +7,6 @@ import * as appConfigs from './appConfigs';
 
 const muApp = async (factories, config) => {
   const router = express.Router();
-
   try {
     let models = await dbModels(config);
     for (let key in routes) {

@@ -1,7 +1,10 @@
 import React from 'react';
 
 import TopNavBar from './TopNavBar';
+
 import UserChannel from './UserChannel';
+import AdminChannel from './AdminChannel';
+import ServerChannel from './ServerChannel';
 
 export default ({
   user,
@@ -54,6 +57,8 @@ export default ({
           onClearResetError={onClearResetError}
         />
       )}
+      {activeChannel == 'Server' && (<ServerChannel/>)}
+      {activeChannel == 'Admin' && (<AdminChannel/>)}
       {!user && errorRegister && <div className="alert alert-danger">{errorRegister}</div>}
       {!user && errorLogin && <div className="alert alert-danger">{errorLogin}</div>}
     </div>

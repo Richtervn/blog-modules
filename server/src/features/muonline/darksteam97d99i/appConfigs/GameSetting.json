@@ -17,5 +17,22 @@
     "MG": { "Strength": 26, "Dexterity": 26, "Vitality": 26, "Energy": 16 },
     "ELF": { "Strength": 22, "Dexterity": 25, "Vitality": 20, "Energy": 15 }
   },
-  "GRAND_RESET_POINTS":1000
+  "GRAND_RESET_POINTS":1000,
+  "BANKING_DEPOSIT_FEE": {
+    "isPercentage": true,
+    "charge": 0.01
+  },
+  "BANKING_WITHDRAW_FEE": {
+    "isPercentage": false,
+    "charge": 10000
+  },
+  "BANKING_LOAN_SETTING": {
+    "maxValue": 10000000000,
+    "isPercentage": true,
+    "charge": 0.01
+  },
+  "BANKING_TRANSFER_FEE": {
+    "isPercentage": false,
+    "charge": 10000
+  }
 }

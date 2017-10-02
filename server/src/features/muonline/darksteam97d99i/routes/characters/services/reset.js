@@ -83,12 +83,15 @@ export default async (Character, Banking, MembCredits, query, GameSetting, metho
     const membCredit = await MembCredits.findOne({
       memb___id: character.AccountID
     });
-    membCredit.update({credits: membCredit.credits + RESET_AWARD_CREDITS});
-    resp.credits = membCredit.credits + RESET_AWARD_CREDITS
+    const totalCredits = membCredit.credits + RESET_AWARD_CREDITS
+    membCredit.update({credits: totalCredits});
+    resp.credits = totalCredits
   }
 
   await character.update(updateForm);
+  console.log(resp);
   resp = {...resp, ...updateForm};
+  console.log(resp);
 
   return resp;
 };

@@ -22,14 +22,25 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
     })
   );
 
-  router.get('/characters/reset', wrap(async(req, res, next) => {
-    const result = await reset(Character, Banking, MembCredits, req.query, appConfigs.GameSetting, methods);
-    res.send(result);
-  }))
+  router.get(
+    '/characters/reset',
+    wrap(async (req, res, next) => {
+      const result = await reset(Character, Banking, MembCredits, req.query, appConfigs.GameSetting, methods);
+      res.send(result);
+    })
+  );
+
+  router.get(
+    '/characters/test',
+    wrap(async (req, res, next) => {
+      const result = await Character.findAll({ attributes: ['Quest'] });
+      res.send(result);
+    })
+  );
 
   return router;
 };
-
+// [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 // //init grand reset formular
 // function initGrandResetFormular(Character) {
 
@@ -69,7 +80,6 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
 // }
 
 // //service reset character
-
 
 // router.get('/grandreset', function(req, res, next) {
 

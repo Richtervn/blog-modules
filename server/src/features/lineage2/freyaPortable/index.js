@@ -25,7 +25,7 @@ const l2App = async (factories, config) => {
   try {
     const models = await dbModels(config);
   } catch (e) {
-    console.log(e);
+    // console.log(e);
     console.log('[ERR-L2APP] Freya Portable database is not active');
   }
   return router;

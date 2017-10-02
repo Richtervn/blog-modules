@@ -1,8 +1,10 @@
 import React from 'react';
 
 import Introduction from './Introduction';
+
 import Dashboard from './Dashboard';
 import CharacterManager from './CharacterManager';
+import BankingManager from './BankingManager';
 
 export default ({
   user,
@@ -38,6 +40,15 @@ export default ({
           onReset={onReset}
           errorReset={errorReset}
           onClearResetError={onClearResetError}
+        />
+      );
+    case 'Banking Manager':
+      return (
+        <BankingManager
+          user={user}
+          characters={characters}
+          onSetFocusCharacter={onSetFocusCharacter}
+          focusCharacter={focusCharacter}
         />
       );
     default:
