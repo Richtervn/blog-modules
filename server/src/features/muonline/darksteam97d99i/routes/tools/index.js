@@ -4,4 +4,5 @@ export default (models, router, factories, helpers, appConfigs) => {
   router.get('/tools', (req, res, next) => {
     // res.send(MuData);
   })
+  return router;
 }

@@ -14,13 +14,17 @@ import {
   addPoint,
   clearAddPointError,
   reset,
-  clearResetError
+  clearResetError,
+  getGameSetting,
+  getServerInfo
 } from 'modules/MuOnline/darksteam97d99i';
 
 export default connect(
   ({ darksteam97d99i }) => ({
     user: darksteam97d99i.user,
     characters: darksteam97d99i.characters,
+    gameSetting: darksteam97d99i.gameSetting,
+    serverInfo: darksteam97d99i.serverInfo,
     focusCharacter: darksteam97d99i.focusCharacter,
     activeChannel: darksteam97d99i.viewControl.activeChannel,
     activeSideForm: darksteam97d99i.viewControl.activeSideForm,
@@ -69,6 +73,12 @@ export default connect(
     },
     onClearResetError() {
       dispatch(clearResetError());
+    },
+    onGetGameSetting(){
+      dispatch(getGameSetting());
+    },
+    onGetServerInfo(){
+      dispatch(getServerInfo());
     }
   })
 )(Darksteam97d99i);

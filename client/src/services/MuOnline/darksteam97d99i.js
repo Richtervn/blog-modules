@@ -26,5 +26,29 @@ export default {
   reset(query){
     const data = commonGet('mu/darksteam97d99i/characters/reset', null, query);
     return data;
+  },
+  deposit(query){
+    const data = commonGet('mu/darksteam97d99i/banking/deposit', null, query);
+    return data;
+  },
+  withdraw(query){
+    const data = commonGet('mu/darksteam97d99i/banking/withdraw', null, query);
+    return data;
+  },
+  loan(query){
+    const data = commonGet('mu/darksteam97d99i/banking/loan', null, query);
+    return data;
+  },
+  transfer(query){
+    const data = commonGet('mu/darksteam97d99i/banking/transfer', null, query);
+    return data;
+  },
+  getGameSetting(){
+    const data = commonGet('mu/darksteam97d99i/system/game_setting');
+    return data;
+  },
+  getServerInfo(){
+    const data = commonGet('mu/darksteam97d99i/system/server_info');
+    return data;
   }
 };

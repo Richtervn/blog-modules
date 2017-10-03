@@ -18,7 +18,7 @@ class LoginForm extends Component {
   render() {
     const { onChangeActiveForm, onLogin } = this.props;
     return (
-      <div className="form-group ds9799-sidenav-form">
+      <div className="form-group">
         <div className="input-group" style={{ paddingTop: '5px' }}>
           <span className="input-group-addon">
             <i className="fa fa-user-o fa-fw" />

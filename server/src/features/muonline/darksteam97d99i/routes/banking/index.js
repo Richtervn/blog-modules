@@ -1,4 +1,5 @@
 import deposit from './services/deposit';
+import loan from './services/loan';
 
 export default (models, router, factories, helpers, appConfigs) => {
   const { wrap } = factories;
@@ -8,7 +9,15 @@ export default (models, router, factories, helpers, appConfigs) => {
   router.get(
     '/banking/deposit',
     wrap(async (req, res, next) => {
-      const result = await deposit(Banking, Character, query, appConfigs.GameSetting, bankLogger);
+      const result = await deposit(Banking, Character, req.query, appConfigs.GameSetting, bankLogger);
+      res.send(result);
+    })
+  );
+
+  router.get(
+    '/banking/loan',
+    wrap(async (req, res, next) => {
+      const result = await loan(Banking, Character, req.query, appConfigs.GameSetting, bankLogger);
       res.send(result);
     })
   );
@@ -82,45 +91,6 @@ export default (models, router, factories, helpers, appConfigs) => {
 //       char_money: newmoney
 //     }
 //     res.send(data);
-//   })
-// })
-
-// router.get('/loan_money', function(req, res, next){
-//   var accid = req.query.memb___id;
-//   var loanmoney = parseInt(req.query.loanmoney);
-//   var errors = [];
-
-//   bank.findOne({
-//     where: {
-//       memb___id: accid
-//     }
-//   }).then(function(banks){
-//     var newloan = loanmoney + banks.loan_money
-//     if(newloan > 10000000000){
-//       errors.push({
-//         'params': 'loanmoney',
-//         'msg': "You can't loan more than 10,000,000,000 Zen. Please, pay your dept first!",
-//         'value': 'undefined',
-//       })
-//       res.send(errors);
-//     } else {
-//       var newbalance = parseInt(banks.zen_balance) + loanmoney
-//       bank.update({
-//         zen_balance: newbalance,
-//         loan_money: newloan
-//       }, {
-//         where: {
-//           memb___id: accid
-//         }
-//       }).then(function(){
-//         var result = {
-//           memb___id: accid,
-//           zen_balance: newbalance,
-//           loan_money: newloan
-//         }
-//         res.send(result);
-//       })
-//     }
 //   })
 // })
 

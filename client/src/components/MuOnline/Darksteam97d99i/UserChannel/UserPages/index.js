@@ -19,11 +19,12 @@ export default ({
   onClearAddPointError,
   onReset,
   errorReset,
-  onClearResetError
+  onClearResetError,
+  gameSetting
 }) => {
   switch (page) {
     case 'Introduction':
-      return <Introduction />;
+      return <Introduction/>;
     case 'Dash Board':
       return <Dashboard user={user} onEditProfile={onEditProfile} />;
     case 'Character Manager':
@@ -48,7 +49,9 @@ export default ({
           user={user}
           characters={characters}
           onSetFocusCharacter={onSetFocusCharacter}
+          onGetCharacters={onGetCharacters}
           focusCharacter={focusCharacter}
+          gameSetting={gameSetting}
         />
       );
     default:

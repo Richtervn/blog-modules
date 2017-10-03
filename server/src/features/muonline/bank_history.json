@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "AccountID": "Richter",
+    "CharName": "DS97_Jevel",
+    "Amount": 15000000,
+    "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "DS97_Jevel",
+    "Amount": 15000000,
+    "Type": "Loan"
+  }
+]

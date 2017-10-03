@@ -22,7 +22,9 @@ export default ({
   errorReset,
   errorAddPoint,
   onClearAddPointError,
-  onClearResetError
+  onClearResetError,
+  serverInfo,
+  gameSetting
 }) => (
   <div className="row no-row-margin">
     <div className="col-3 no-col-margin">
@@ -35,6 +37,8 @@ export default ({
         onLogout={onLogout}
         onChangeUserPage={onChangeUserPage}
         userPage={userPage}
+        serverInfo={serverInfo}
+        gameSetting={gameSetting}
       />
     </div>
     <div className="col-9 no-col-margin">
@@ -52,6 +56,7 @@ export default ({
         onReset={onReset}
         errorReset={errorReset}
         onClearResetError={onClearResetError}
+        gameSetting={gameSetting}
       />
     </div>
   </div>

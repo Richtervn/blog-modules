@@ -27,6 +27,24 @@ const ADD_POINT_FAIL = 'darksteam97d99i/ADD_POINT_FAIL';
 const RESET_START = 'darksteam97d99i/RESET_START';
 const RESET_SUCCESS = 'darksteam97d99i/RESET_SUCCESS';
 const RESET_FAIL = 'darksteam97d99i/RESET_FAIL';
+const DEPOSIT_START = 'darksteam97d99i/DEPOSIT_START';
+const DEPOSIT_SUCCESS = 'darksteam97d99i/DEPOSIT_SUCCESS';
+const DEPOSIT_FAIL = 'darksteam97d99i/DEPOSIT_FAIL';
+const WITHDRAW_START = 'darksteam97d99i/WITHDRAW_START';
+const WITHDRAW_SUCCESS = 'darksteam97d99i/WITHDRAW_SUCCESS';
+const WITHDRAW_FAIL = 'darksteam97d99i/WITHDRAW_FAIL';
+const LOAN_START = 'darksteam97d99i/LOAN_START';
+const LOAN_SUCCESS = 'darksteam97d99i/LOAN_SUCCESS';
+const LOAN_FAIL = 'darksteam97d99i/LOAN_FAIL';
+const TRANSFER_START = 'darksteam97d99i/TRANSFER_START';
+const TRANSFER_SUCCESS = 'darksteam97d99i/TRANSFER_SUCCESS';
+const TRANSFER_FAIL = 'darksteam97d99i/TRANSFER_FAIL';
+const GET_GAME_SETTING_START = 'darksteam97d99i/GET_GAME_SETTING_START';
+const GET_GAME_SETTING_SUCCESS = 'darksteam97d99i/GET_GAME_SETTING_SUCCESS';
+const GET_GAME_SETTING_FAIL = 'darksteam97d99i/GET_GAME_SETTING_FAIL';
+const GET_SERVER_INFO_START = 'darksteam97d99i/GET_SERVER_INFO_START';
+const GET_SERVER_INFO_SUCCESS = 'darksteam97d99i/GET_SERVER_INFO_SUCCESS';
+const GET_SERVER_INFO_FAIL = 'darksteam97d99i/GET_SERVER_INFO_FAIL';
 
 export const changeActiveChannel = channel => ({ type: CHANGE_ACTIVE_CHANNEL, channel });
 export const changeActiveSideForm = form => ({ type: CHANGE_ACTIVE_SIDE_FORM, form });
@@ -60,11 +78,25 @@ export const addPoint = query =>
   actionCreator(ADD_POINT_START, ADD_POINT_SUCCESS, ADD_POINT_FAIL, darksteam97d99i.addPoint, query)();
 export const reset = query =>
   actionCreator(RESET_START, RESET_SUCCESS, RESET_FAIL, darksteam97d99i.reset, query)();
+export const getGameSetting = actionCreator(
+  GET_GAME_SETTING_START,
+  GET_GAME_SETTING_SUCCESS,
+  GET_GAME_SETTING_FAIL,
+  darksteam97d99i.getGameSetting
+);
+export const getServerInfo = actionCreator(
+  GET_SERVER_INFO_START,
+  GET_SERVER_INFO_SUCCESS,
+  GET_SERVER_INFO_FAIL,
+  darksteam97d99i.getServerInfo
+);
 
 export default (
   state = {
     user: null,
     characters: null,
+    gameSetting: null,
+    serverInfo: null,
     focusCharacter: {},
     viewControl: {
       activeChannel: 'User',
@@ -105,7 +137,7 @@ export default (
       const nextState = { ...state };
       nextState.focusCharacter[action.data.type] = action.data[action.data.type];
       nextState.focusCharacter.LevelUpPoint = action.data.LevelUpPoint;
-      if (action.data.isUseBank) {
+      if (action.data.isUseBank == 'true') {
         nextState.user.Banking.zen_balance = action.data.zen_balance;
       } else {
         nextState.focusCharacter.Money = action.data.Money;
@@ -131,7 +163,7 @@ export default (
     case RESET_SUCCESS: {
       const nextState = { ...state };
       const changedCharacter = { ...state.focusCharacter };
-      if (action.data.isUseBank) {
+      if (action.data.isUseBank == 'true') {
         nextState.user.Banking.zen_balance = action.data.zen_balance;
       } else {
         changedCharacter.Money = action.data.Money;
@@ -171,6 +203,10 @@ export default (
       return { ...state, error: { ...state.error, AddPoint: null } };
     case CLEAR_RESET_ERROR:
       return { ...state, error: { ...state.error, Reset: null } };
+    case GET_GAME_SETTING_SUCCESS:
+      return { ...state, gameSetting: { ...action.data } };
+    case GET_SERVER_INFO_SUCCESS:
+      return { ...state, serverInfo: { ...action.data } };
     case LOGOUT:
       return {
         ...state,
