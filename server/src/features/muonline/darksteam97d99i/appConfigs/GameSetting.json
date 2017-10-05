@@ -34,5 +34,9 @@
   "BANKING_TRANSFER_FEE": {
     "isPercentage": false,
     "charge": 10000
+  },
+  "CREDIT_PRICE": {
+    "buy": 300000,
+    "sell": 200000
   }
 }

@@ -15,11 +15,18 @@ export default ({
   onGetCharacters,
   onSetFocusCharacter,
   onAddPoint,
-  errorAddPoint,
-  onClearAddPointError,
   onReset,
+  onDeposit,
+  onWithdraw,
+  onLoan,
+  onTransfer,
+  onBuyCredit,
+  errorAddPoint,
   errorReset,
+  errorBanking,
+  onClearAddPointError,
   onClearResetError,
+  onClearBankingError,
   gameSetting
 }) => {
   switch (page) {
@@ -52,6 +59,13 @@ export default ({
           onGetCharacters={onGetCharacters}
           focusCharacter={focusCharacter}
           gameSetting={gameSetting}
+          errorBanking={errorBanking}
+          onClearBankingError={onClearBankingError}
+          onDeposit={onDeposit}
+          onLoan={onLoan}
+          onWithdraw={onWithdraw}
+          onTransfer={onTransfer}
+          onBuyCredit={onBuyCredit}
         />
       );
     default:

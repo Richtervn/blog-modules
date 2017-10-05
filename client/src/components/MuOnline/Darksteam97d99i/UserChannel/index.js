@@ -23,8 +23,15 @@ export default ({
   errorAddPoint,
   onClearAddPointError,
   onClearResetError,
+  onClearBankingError,
   serverInfo,
-  gameSetting
+  gameSetting,
+  errorBanking,
+  onBuyCredit,
+  onLoan,
+  onDeposit,
+  onWithdraw,
+  onTransfer
 }) => (
   <div className="row no-row-margin">
     <div className="col-3 no-col-margin">
@@ -51,11 +58,18 @@ export default ({
         characters={characters}
         focusCharacter={focusCharacter}
         onAddPoint={onAddPoint}
-        errorAddPoint={errorAddPoint}
-        onClearAddPointError={onClearAddPointError}
         onReset={onReset}
+        onLoan={onLoan}
+        onWithdraw={onWithdraw}
+        onDeposit={onDeposit}
+        onTransfer={onTransfer}
+        onBuyCredit={onBuyCredit}
+        errorAddPoint={errorAddPoint}
         errorReset={errorReset}
+        errorBanking={errorBanking}
+        onClearAddPointError={onClearAddPointError}
         onClearResetError={onClearResetError}
+        onClearBankingError={onClearBankingError}
         gameSetting={gameSetting}
       />
     </div>

@@ -17,9 +17,9 @@ export default ({ gameSetting }) => {
 
   let withdrawRule;
   if (BANKING_WITHDRAW_FEE.isPercentage) {
-    withdrawRule = `Withdraw zen cost you ${BANKING_DEPOSIT_FEE.charge * 100}% of your withdraw amount`;
+    withdrawRule = `Withdraw zen cost you ${BANKING_WITHDRAW_FEE.charge * 100}% of your withdraw amount`;
   } else {
-    withdrawRule = `Withdraw zen cost you ${BANKING_DEPOSIT_FEE.charge} Zen`;
+    withdrawRule = `Withdraw zen cost you ${BANKING_WITHDRAW_FEE.charge} Zen`;
   }
 
   let loanMax = `You can't loan more then ${BANKING_LOAN_SETTING.maxValue} Zen`;

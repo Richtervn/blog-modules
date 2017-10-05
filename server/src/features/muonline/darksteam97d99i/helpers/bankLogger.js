@@ -15,14 +15,26 @@ const writeFile = (link, content) =>
 export default async (record, profit, indept) => {
   const historyFile = './src/features/muonline/bank_history.json';
   const profitFile = './src/features/muonline/bank_profit.json';
+
   const profitForm = {};
-  profitForm.profit = currentProfit.profit + profit;
-  profitForm.indept = currentProfit.indept;
-  if (indept) profitForm.indept = currentProfit.indept + indept;
-  history.push(record)
-  [
-    await writeFile(historyFile, JSON.stringify(history, null, 2)),
-    await writeFile(profitFile, JSON.stringify(profitForm, null, 2))
-  ];
+  if (profit) {
+    profitForm.profit = currentProfit.profit + profit;
+    profitForm.indept = currentProfit.indept;
+  }
+  if (indept) {
+    if(record.type == 'Loan'){
+      profitForm.indept = currentProfit.indept + indept;
+    }
+    if(record.type == 'Deposit'){
+      profitForm.indept = currentProfit.indept - indept;
+    }
+  }
+
+  history.push(record);
+  await writeFile(historyFile, JSON.stringify(history, null, 2));
+
+  if (profit || indept) {
+    await writeFile(profitFile, JSON.stringify(profitForm, null, 2));
+  }
   return;
 };

@@ -6,34 +6,44 @@ export default async (Banking, Character, query, GameSetting, bankLogger) => {
   let profit = 0;
 
   const character = await Character.findOne({
-    attributes: ['Money', 'AccountID'],
+    attributes: ['Money', 'AccountID', 'Name'],
     where: { Name: name }
   });
 
   const banking = await Banking.findOne({
     where: { memb___id: character.AccountID }
   });
+
   banking.zen_balance = parseInt(banking.zen_balance);
   banking.loan_money = parseInt(banking.loan_money);
 
   if (!isPercentage && amount < BANKING_DEPOSIT_FEE) {
-    return { message: 'Character do not have enough Zen' };
+    return { message: `Deposit amount is not enough to pay the fee` };
   }
 
   if (character.Money < amount) {
-    return { message: 'Character do not have enough Zen' };
+    return { message: `${name} do not have enough Zen` };
   }
 
   let charged = 0;
   charged = isPercentage ? amount * charge : charge;
 
   let realDeposit = amount - charged;
-  let updateBankForm = {}
-  if(banking.loan_money > 0 && banking.loan_money <= realDeposit){
-    updateBankForm.loan_money = '0';
-    updateBankForm.zen_balance = (realDeposit - banking.loan_money).toString();
+  let updateBankForm = {};
+  let indeptPaid = null;
+
+  if (banking.loan_money > 0) {
+    if (banking.loan_money <= realDeposit) {
+      updateBankForm.loan_money = 0;
+      updateBankForm.zen_balance = (realDeposit - banking.loan_money).toString();
+      indeptPaid = banking.loan_money;
+    } else {
+      updateBankForm.zen_balance = banking.zen_balance;
+      updateBankForm.loan_money = banking.loan_money - realDeposit;
+      indeptPaid = amount;
+    }
   } else {
-    updateBankForm.zen_balance = (updateBankForm.zen_balance + realDeposit).toString();
+    updateBankForm.zen_balance = (banking.zen_balance + realDeposit).toString();
   }
 
   const Money = character.Money - amount;
@@ -43,10 +53,11 @@ export default async (Banking, Character, query, GameSetting, bankLogger) => {
     Amount: amount,
     Type: 'Deposit'
   };
+
   [
-    await banking.update({ zen_balance: zen_balance.toString() }),
+    await banking.update(updateBankForm),
     await character.update({ Money: Money }),
-    await bankLogger(record, charged)
+    await bankLogger(record, charged, indeptPaid)
   ];
 
   return {

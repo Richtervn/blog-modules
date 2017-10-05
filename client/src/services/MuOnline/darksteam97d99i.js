@@ -43,6 +43,10 @@ export default {
     const data = commonGet('mu/darksteam97d99i/banking/transfer', null, query);
     return data;
   },
+  buyCredit(query){
+    const data = commonGet('mu/darksteam97d99i/banking/buy_credit', null, query);
+    return data;
+  },
   getGameSetting(){
     const data = commonGet('mu/darksteam97d99i/system/game_setting');
     return data;

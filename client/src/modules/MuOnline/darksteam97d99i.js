@@ -8,6 +8,7 @@ const CHANGE_USER_PAGE = 'darksteam97d99i/CHANGE_USER_PAGE';
 const SET_FOCUS_CHARACTER = 'darksteam97d99i/SET_FOCUS_CHARACTER';
 const CLEAR_ADD_POINT_ERROR = 'darksteam97d99i/CLEAR_ADD_POINT_ERROR';
 const CLEAR_RESET_ERROR = 'darksteam97d99i/CLEAR_RESET_ERROR';
+const CLEAR_BANKING_ERROR = 'darksteam97d99i/CLEAR_BANKING_ERROR';
 
 const REGISTER_START = 'darksteam97d99i/REGISTER_START';
 const REGISTER_SUCCESS = 'darksteam97d99i/REGISTER_SUCCESS';
@@ -39,6 +40,9 @@ const LOAN_FAIL = 'darksteam97d99i/LOAN_FAIL';
 const TRANSFER_START = 'darksteam97d99i/TRANSFER_START';
 const TRANSFER_SUCCESS = 'darksteam97d99i/TRANSFER_SUCCESS';
 const TRANSFER_FAIL = 'darksteam97d99i/TRANSFER_FAIL';
+const BUY_CREDIT_START = 'darksteam97d99i/BUY_CREDIT_START';
+const BUY_CREDIT_SUCCESS = 'darksteam97d99i/BUY_CREDIT_SUCCESS';
+const BUY_CREDIT_FAIL = 'darksteam97d99i/BUY_CREDIT_FAIL';
 const GET_GAME_SETTING_START = 'darksteam97d99i/GET_GAME_SETTING_START';
 const GET_GAME_SETTING_SUCCESS = 'darksteam97d99i/GET_GAME_SETTING_SUCCESS';
 const GET_GAME_SETTING_FAIL = 'darksteam97d99i/GET_GAME_SETTING_FAIL';
@@ -53,6 +57,7 @@ export const changeUserPage = page => ({ type: CHANGE_USER_PAGE, page });
 export const setFocusCharacter = character => ({ type: SET_FOCUS_CHARACTER, character });
 export const clearAddPointError = () => ({ type: CLEAR_ADD_POINT_ERROR });
 export const clearResetError = () => ({ type: CLEAR_RESET_ERROR });
+export const clearBankingError = () => ({ type: CLEAR_BANKING_ERROR });
 
 export const register = formBody =>
   actionCreator(REGISTER_START, REGISTER_SUCCESS, REGISTER_FAIL, darksteam97d99i.register, formBody)();
@@ -90,6 +95,16 @@ export const getServerInfo = actionCreator(
   GET_SERVER_INFO_FAIL,
   darksteam97d99i.getServerInfo
 );
+export const deposit = query =>
+  actionCreator(DEPOSIT_START, DEPOSIT_SUCCESS, DEPOSIT_FAIL, darksteam97d99i.deposit, query)();
+export const withdraw = query =>
+  actionCreator(WITHDRAW_START, WITHDRAW_SUCCESS, WITHDRAW_FAIL, darksteam97d99i.withdraw, query)();
+export const loan = query =>
+  actionCreator(LOAN_START, LOAN_SUCCESS, LOAN_FAIL, darksteam97d99i.loan, query)();
+export const transfer = query =>
+  actionCreator(TRANSFER_START, TRANSFER_SUCCESS, TRANSFER_FAIL, darksteam97d99i.transfer, query)();
+export const buyCredit = query =>
+  actionCreator(BUY_CREDIT_START, BUY_CREDIT_SUCCESS, BUY_CREDIT_FAIL, darksteam97d99i.buyCredit, query)();
 
 export default (
   state = {
@@ -107,7 +122,8 @@ export default (
       Register: null,
       Login: null,
       AddPoint: null,
-      Reset: null
+      Reset: null,
+      Banking: null
     }
   },
   action
@@ -207,6 +223,79 @@ export default (
       return { ...state, gameSetting: { ...action.data } };
     case GET_SERVER_INFO_SUCCESS:
       return { ...state, serverInfo: { ...action.data } };
+    case DEPOSIT_SUCCESS: {
+      const nextState = { ...state };
+      nextState.user.Banking.zen_balance = action.data.zen_balance;
+      nextState.user.Banking.loan_money = action.data.loan_money;
+      const changedCharacter = { ...state.focusCharacter, Money: action.data.Money };
+      nextState.characters = state.characters.map(character => {
+        if (character.Name == changedCharacter.Name) {
+          return changedCharacter;
+        }
+        return character;
+      });
+      return {
+        ...nextState,
+        characters: nextState.characters.slice(0),
+        user: { ...nextState.user, Banking: { ...nextState.user.Banking } }
+      };
+    }
+    case WITHDRAW_SUCCESS: {
+      const nextState = { ...state };
+      nextState.user.Banking.zen_balance = action.data.zen_balance;
+      const changedCharacter = { ...state.focusCharacter, Money: action.data.Money };
+      nextState.characters = state.characters.map(character => {
+        if (character.Name == changedCharacter.Name) {
+          return changedCharacter;
+        }
+        return character;
+      });
+      return {
+        ...nextState,
+        characters: nextState.characters.slice(0),
+        user: { ...nextState.user, Banking: { ...nextState.user.Banking } }
+      };
+    }
+    case LOAN_SUCCESS: {
+      const nextState = { ...state };
+      nextState.user.Banking.zen_balance = action.data.zen_balance;
+      const changedCharacter = { ...state.focusCharacter, Money: action.data.Money };
+      nextState.characters = state.characters.map(character => {
+        if (character.Name == changedCharacter.Name) {
+          return changedCharacter;
+        }
+        return character;
+      });
+      return {
+        ...nextState,
+        characters: nextState.characters.slice(0),
+        user: { ...nextState.user, Banking: { ...nextState.user.Banking } }
+      };
+    }
+    case TRANSFER_SUCCESS:
+      return {
+        ...state,
+        user: { ...state.user, Banking: { ...state.user.Banking, zen_balance: action.data.zen_balance } }
+      };
+    case BUY_CREDIT_SUCCESS:
+      return {
+        ...state,
+        user: { ...state.user, Credits: { ...state.user.MembCredits, credits: action.data.credits } }
+      };
+    case DEPOSIT_FAIL:
+      return { ...state, error: { ...state.error, Banking: action.error } };
+    case WITHDRAW_FAIL:
+      return { ...state, error: { ...state.error, Banking: action.error } };
+    case TRANSFER_FAIL:
+      return { ...state, error: { ...state.error, Banking: action.error } };
+    case LOAN_FAIL:
+      return { ...state, error: { ...state.error, Banking: action.error } };
+    case BUY_CREDIT_FAIL:
+      return { ...state, error: { ...state.error, Banking: action.error } };
+    case LOGIN_FAIL:
+      return { ...state, error: { ...state.error, Login: action.error } };
+    case CLEAR_BANKING_ERROR:
+      return { ...state, error: { ...state.error, Banking: null } };
     case LOGOUT:
       return {
         ...state,

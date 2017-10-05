@@ -12,11 +12,17 @@ import {
   getCharacters,
   setFocusCharacter,
   addPoint,
-  clearAddPointError,
   reset,
+  clearAddPointError,
   clearResetError,
+  clearBankingError,
   getGameSetting,
-  getServerInfo
+  getServerInfo,
+  deposit,
+  loan,
+  withdraw,
+  transfer,
+  buyCredit
 } from 'modules/MuOnline/darksteam97d99i';
 
 export default connect(
@@ -32,6 +38,7 @@ export default connect(
     errorLogin: darksteam97d99i.error.Login,
     errorAddPoint: darksteam97d99i.error.AddPoint,
     errorReset: darksteam97d99i.error.Reset,
+    errorBanking: darksteam97d99i.error.Banking,
     userPage: darksteam97d99i.viewControl.userPage
   }),
   dispatch => ({
@@ -74,11 +81,29 @@ export default connect(
     onClearResetError() {
       dispatch(clearResetError());
     },
-    onGetGameSetting(){
+    onGetGameSetting() {
       dispatch(getGameSetting());
     },
-    onGetServerInfo(){
+    onGetServerInfo() {
       dispatch(getServerInfo());
+    },
+    onClearBankingError() {
+      dispatch(clearBankingError());
+    },
+    onDeposit(query) {
+      dispatch(deposit(query));
+    },
+    onWithdraw(query) {
+      dispatch(withdraw(query));
+    },
+    onLoan(query) {
+      dispatch(loan(query));
+    },
+    onTransfer(query) {
+      dispatch(transfer(query));
+    },
+    onBuyCredit(query) {
+      dispatch(buyCredit(query));
     }
   })
 )(Darksteam97d99i);

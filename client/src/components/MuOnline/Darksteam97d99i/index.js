@@ -32,8 +32,15 @@ export default ({
   errorReset,
   onClearAddPointError,
   onClearResetError,
+  onClearBankingError,
   onGetGameSetting,
-  onGetServerInfo
+  onGetServerInfo,
+  errorBanking,
+  onDeposit,
+  onWithDraw,
+  onLoan,
+  onTransfer,
+  onBuyCredit
 }) => {
   if (!serverInfo) {
     onGetServerInfo();
@@ -72,6 +79,13 @@ export default ({
             errorReset={errorReset}
             onClearAddPointError={onClearAddPointError}
             onClearResetError={onClearResetError}
+            errorBanking={errorBanking}
+            onDeposit={onDeposit}
+            onWithDraw={onWithDraw}
+            onLoan={onLoan}
+            onTransfer={onTransfer}
+            onBuyCredit={onBuyCredit}
+            onClearBankingError={onClearBankingError}
           />
         )}
         {activeChannel == 'Server' && <ServerChannel />}
