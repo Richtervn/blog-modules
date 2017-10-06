@@ -24,7 +24,7 @@ export default ({
     <div>
       <div className="mo-control-pannel">
         <RowNavigationBar
-          headers={['Versions', 'Tools']}
+          headers={['Versions', 'Tools', 'Character']}
           activeView={activeView}
           onSwitchView={onSwitchView}
         />

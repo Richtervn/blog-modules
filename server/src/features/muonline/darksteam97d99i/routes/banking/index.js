@@ -55,4 +55,6 @@ export default (models, router, factories, helpers, appConfigs) => {
       res.send(result);
     })
   );
+
+  return router;
 };

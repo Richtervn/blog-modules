@@ -54,5 +54,21 @@ export default {
   getServerInfo(){
     const data = commonGet('mu/darksteam97d99i/system/server_info');
     return data;
+  },
+  adminGetAccounts(query){
+    const data = commonGet('mu/darksteam97d99i/admin/memb_info', null , query);
+    return data;
+  },
+  adminGetCharacters(query){
+    const data = commonGet('mu/darksteam97d99i/admin/character', null, query);
+    return data;
+  },
+  adminGetBanks(query){
+    const data = commonGet('mu/darksteam97d99i/admin/banking', null, query);
+    return data;
+  },
+  adminGetCredits(query){
+    const data = commonGet('mu/darksteam97d99i/admin/credits', null, query);
+    return data;
   }
 };

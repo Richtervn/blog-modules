@@ -21,9 +21,14 @@ export default ({
   errorRegister,
   errorLogin,
   userPage,
+  adminPage,
+  serverPage,
+  adminAccounts,
   onLogout,
   onEditProfile,
   onChangeUserPage,
+  onChangeAdminPage,
+  onChangeServerPage,
   onGetCharacters,
   onSetFocusCharacter,
   onAddPoint,
@@ -40,14 +45,15 @@ export default ({
   onWithDraw,
   onLoan,
   onTransfer,
-  onBuyCredit
+  onBuyCredit,
+  onAdminGetAccounts
 }) => {
   if (!serverInfo) {
     onGetServerInfo();
     return null;
   }
 
-  if(!gameSetting){
+  if (!gameSetting) {
     onGetGameSetting();
     return null;
   }
@@ -88,8 +94,15 @@ export default ({
             onClearBankingError={onClearBankingError}
           />
         )}
-        {activeChannel == 'Server' && <ServerChannel />}
-        {activeChannel == 'Admin' && <AdminChannel />}
+        {activeChannel == 'Server' && <ServerChannel page={serverPage} onChangePage={onChangeServerPage} />}
+        {activeChannel == 'Admin' && (
+          <AdminChannel
+            onGetAccounts={onAdminGetAccounts}
+            accounts={adminAccounts}
+            page={adminPage}
+            onChangePage={onChangeAdminPage}
+          />
+        )}
         {!user && errorRegister && <div className="alert alert-danger">{errorRegister}</div>}
         {!user && errorLogin && <div className="alert alert-danger">{errorLogin}</div>}
       </div>

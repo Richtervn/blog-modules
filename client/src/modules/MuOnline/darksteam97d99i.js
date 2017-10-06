@@ -5,6 +5,8 @@ const CHANGE_ACTIVE_CHANNEL = 'darksteam97d99i/CHANGE_ACTIVE_CHANNEL';
 const CHANGE_ACTIVE_SIDE_FORM = 'darksteam97d99i/CHANGE_ACTIVE_SIDE_FORM';
 const LOGOUT = 'darksteam97d99i/LOGOUT';
 const CHANGE_USER_PAGE = 'darksteam97d99i/CHANGE_USER_PAGE';
+const CHANGE_ADMIN_PAGE = 'darksteam97d99i/CHANGE_ADMIN_PAGE';
+const CHANGE_SERVER_PAGE = 'darksteam97d99i/CHANGE_SERVER_PAGE';
 const SET_FOCUS_CHARACTER = 'darksteam97d99i/SET_FOCUS_CHARACTER';
 const CLEAR_ADD_POINT_ERROR = 'darksteam97d99i/CLEAR_ADD_POINT_ERROR';
 const CLEAR_RESET_ERROR = 'darksteam97d99i/CLEAR_RESET_ERROR';
@@ -50,10 +52,16 @@ const GET_SERVER_INFO_START = 'darksteam97d99i/GET_SERVER_INFO_START';
 const GET_SERVER_INFO_SUCCESS = 'darksteam97d99i/GET_SERVER_INFO_SUCCESS';
 const GET_SERVER_INFO_FAIL = 'darksteam97d99i/GET_SERVER_INFO_FAIL';
 
+const ADMIN_GET_ACCOUNTS_START = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_START';
+const ADMIN_GET_ACCOUNTS_SUCCESS = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_SUCCESS';
+const ADMIN_GET_ACCOUNTS_FAIL = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_FAIL';
+
 export const changeActiveChannel = channel => ({ type: CHANGE_ACTIVE_CHANNEL, channel });
 export const changeActiveSideForm = form => ({ type: CHANGE_ACTIVE_SIDE_FORM, form });
 export const logout = () => ({ type: LOGOUT });
 export const changeUserPage = page => ({ type: CHANGE_USER_PAGE, page });
+export const changeAdminPage = page => ({ type: CHANGE_ADMIN_PAGE, page });
+export const changeServerPage = page => ({ type: CHANGE_SERVER_PAGE, page });
 export const setFocusCharacter = character => ({ type: SET_FOCUS_CHARACTER, character });
 export const clearAddPointError = () => ({ type: CLEAR_ADD_POINT_ERROR });
 export const clearResetError = () => ({ type: CLEAR_RESET_ERROR });
@@ -106,6 +114,15 @@ export const transfer = query =>
 export const buyCredit = query =>
   actionCreator(BUY_CREDIT_START, BUY_CREDIT_SUCCESS, BUY_CREDIT_FAIL, darksteam97d99i.buyCredit, query)();
 
+export const adminGetAccounts = query =>
+  actionCreator(
+    ADMIN_GET_ACCOUNTS_START,
+    ADMIN_GET_ACCOUNTS_SUCCESS,
+    ADMIN_GET_ACCOUNTS_FAIL,
+    darksteam97d99i.adminGetAccounts,
+    query
+  )();
+
 export default (
   state = {
     user: null,
@@ -116,7 +133,9 @@ export default (
     viewControl: {
       activeChannel: 'User',
       activeSideForm: 'Login',
-      userPage: 'Introduction'
+      userPage: 'Introduction',
+      adminPage: 'Accounts Manager',
+      serverPage: 'Monster Set Base'
     },
     error: {
       Register: null,
@@ -124,7 +143,8 @@ export default (
       AddPoint: null,
       Reset: null,
       Banking: null
-    }
+    },
+    adminAccounts: null
   },
   action
 ) => {
@@ -145,6 +165,10 @@ export default (
       return { ...state, user: { ...state.user, ...action.data } };
     case CHANGE_USER_PAGE:
       return { ...state, viewControl: { ...state.viewControl, userPage: action.page } };
+    case CHANGE_SERVER_PAGE:
+      return { ...state, viewControl: { ...state.viewControl, serverPage: action.page } };
+    case CHANGE_ADMIN_PAGE:
+      return { ...state, viewControl: { ...state.viewControl, adminPage: action.page } };
     case GET_CHARACTERS_SUCCESS:
       return { ...state, characters: action.data, focusCharacter: action.data[0] };
     case SET_FOCUS_CHARACTER:
@@ -305,6 +329,12 @@ export default (
         viewControl: { ...state.viewControl, userPage: 'Introduction' },
         error: { Register: null, Login: null }
       };
+
+    case ADMIN_GET_ACCOUNTS_SUCCESS:
+      return {
+        ...state,
+        adminAccounts: action.data
+      }
     default:
       return state;
   }

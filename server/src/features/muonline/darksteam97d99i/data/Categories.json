@@ -1,0 +1,19 @@
+[
+  { "_id": 0, "Name": "Swords" },
+  { "_id": 1, "Name": "Axes" },
+  { "_id": 2, "Name": "Maces" },
+  { "_id": 3, "Name": "Spears" },
+  { "_id": 4, "Name": "Bows" },
+  { "_id": 5, "Name": "Staffs" },
+  { "_id": 6, "Name": "Shields" },
+  { "_id": 7, "Name": "Helms" },
+  { "_id": 8, "Name": "Armors" },
+  { "_id": 9, "Name": "Pants" },
+  { "_id": 10, "Name": "Gloves" },
+  { "_id": 11, "Name": "Boots" },
+  { "_id": 12, "Name": "Wings" },
+  { "_id": 13, "Name": "Pets" },
+  { "_id": 14, "Name": "Misc" },
+  { "_id": 15, "Name": "Scrolls" },
+  { "_id": 16, "Name": "Sets" }
+]

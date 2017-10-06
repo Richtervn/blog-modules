@@ -9,6 +9,8 @@ import {
   logout,
   editProfile,
   changeUserPage,
+  changeAdminPage,
+  changeServerPage,
   getCharacters,
   setFocusCharacter,
   addPoint,
@@ -22,7 +24,8 @@ import {
   loan,
   withdraw,
   transfer,
-  buyCredit
+  buyCredit,
+  adminGetAccounts
 } from 'modules/MuOnline/darksteam97d99i';
 
 export default connect(
@@ -39,7 +42,10 @@ export default connect(
     errorAddPoint: darksteam97d99i.error.AddPoint,
     errorReset: darksteam97d99i.error.Reset,
     errorBanking: darksteam97d99i.error.Banking,
-    userPage: darksteam97d99i.viewControl.userPage
+    userPage: darksteam97d99i.viewControl.userPage,
+    serverPage: darksteam97d99i.viewControl.serverPage,
+    adminPage: darksteam97d99i.viewControl.adminPage,
+    adminAccounts: darksteam97d99i.adminAccounts
   }),
   dispatch => ({
     onChangeActiveChannel(channel) {
@@ -62,6 +68,12 @@ export default connect(
     },
     onChangeUserPage(page) {
       dispatch(changeUserPage(page));
+    },
+    onChangeServerPage(page) {
+      dispatch(changeServerPage(page));
+    },
+    onChangeAdminPage(page) {
+      dispatch(changeAdminPage(page));
     },
     onGetCharacters(id) {
       dispatch(getCharacters(id));
@@ -104,6 +116,9 @@ export default connect(
     },
     onBuyCredit(query) {
       dispatch(buyCredit(query));
+    },
+    onAdminGetAccounts(query) {
+      dispatch(adminGetAccounts(query));
     }
   })
 )(Darksteam97d99i);
