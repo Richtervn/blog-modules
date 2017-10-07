@@ -7,6 +7,7 @@ import AdminChannel from './AdminChannel';
 import ServerChannel from './ServerChannel';
 
 export default ({
+  data,
   user,
   characters,
   gameSetting,
@@ -46,7 +47,8 @@ export default ({
   onLoan,
   onTransfer,
   onBuyCredit,
-  onAdminGetAccounts
+  onAdminGetAccounts,
+  onGetData
 }) => {
   if (!serverInfo) {
     onGetServerInfo();
@@ -94,7 +96,14 @@ export default ({
             onClearBankingError={onClearBankingError}
           />
         )}
-        {activeChannel == 'Server' && <ServerChannel page={serverPage} onChangePage={onChangeServerPage} />}
+        {activeChannel == 'Server' && (
+          <ServerChannel
+            page={serverPage}
+            onChangePage={onChangeServerPage}
+            data={data}
+            onGetData={onGetData}
+          />
+        )}
         {activeChannel == 'Admin' && (
           <AdminChannel
             onGetAccounts={onAdminGetAccounts}

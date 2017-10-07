@@ -1,4 +1,5 @@
 import syncItems from './tools/syncItems';
+import syncMonsters from './tools/syncMonsters';
 
 export default (models, router, factories, helpers, appConfigs) => {
   const { readFile, writeFile, wrap } = factories;
@@ -16,6 +17,14 @@ export default (models, router, factories, helpers, appConfigs) => {
     '/system/sync_items',
     wrap(async (req, res, next) => {
       await syncItems(factories);
+      res.sendStatus(200);
+    })
+  );
+
+  router.get(
+    '/system/sync_monsters',
+    wrap(async (req, res, next) => {
+      await syncMonsters(factories);
       res.sendStatus(200);
     })
   );

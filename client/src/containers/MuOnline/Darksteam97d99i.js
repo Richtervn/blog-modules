@@ -25,7 +25,8 @@ import {
   withdraw,
   transfer,
   buyCredit,
-  adminGetAccounts
+  adminGetAccounts,
+  getData
 } from 'modules/MuOnline/darksteam97d99i';
 
 export default connect(
@@ -45,7 +46,8 @@ export default connect(
     userPage: darksteam97d99i.viewControl.userPage,
     serverPage: darksteam97d99i.viewControl.serverPage,
     adminPage: darksteam97d99i.viewControl.adminPage,
-    adminAccounts: darksteam97d99i.adminAccounts
+    adminAccounts: darksteam97d99i.adminAccounts,
+    data: darksteam97d99i.data
   }),
   dispatch => ({
     onChangeActiveChannel(channel) {
@@ -119,6 +121,9 @@ export default connect(
     },
     onAdminGetAccounts(query) {
       dispatch(adminGetAccounts(query));
+    },
+    onGetData(file) {
+      dispatch(getData(file));
     }
   })
 )(Darksteam97d99i);

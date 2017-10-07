@@ -70,5 +70,9 @@ export default {
   adminGetCredits(query){
     const data = commonGet('mu/darksteam97d99i/admin/credits', null, query);
     return data;
+  },
+  getMuData(file){
+    const data = commonGet('mu/darksteam97d99i/tools/data', [file]);
+    return data;
   }
 };

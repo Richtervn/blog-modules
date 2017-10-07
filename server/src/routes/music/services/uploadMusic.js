@@ -8,8 +8,8 @@ const storage = multer.diskStorage({
     cb(null, srcPath);
   },
   filename(req, file, cb) {
-    const name = file.originalname + '.mp3';
-    const fragments = file.originalname.split('-');
+    const name = file.originalname;
+    const fragments = file.originalname.split(' - ');
     req.body.Artist = fragments[0].trim();
     req.body.Name = fragments[1].replace('.mp3', '').trim();
     req.body.Url = `${srcPath}/${name}`;

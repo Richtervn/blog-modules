@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import express from 'express';
 
 import uploadMusic from './services/uploadMusic';
@@ -20,7 +21,7 @@ export default (Music, factories) => {
     '/get_all',
     wrap(async (req, res, next) => {
       const songs = await commonService.getAll(Music);
-      res.send(songs);
+      res.send(_.sortBy(songs, 'Artist'));
     })
   );
 

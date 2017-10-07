@@ -150,3 +150,7 @@
 .mgt-15 {
   margin-top: 15px;
 }
+
+.flex-center {
+  justify-content: center
+}

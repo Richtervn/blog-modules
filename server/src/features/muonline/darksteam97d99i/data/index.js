@@ -5,6 +5,7 @@ export Bows from './Bows';
 export Categories from './Categories';
 export Gloves from './Gloves';
 export Helms from './Helms';
+export EventItemBagList from './EventItemBagList';
 export Maces from './Maces';
 export Maps from './Maps';
 export Misc from './Misc';

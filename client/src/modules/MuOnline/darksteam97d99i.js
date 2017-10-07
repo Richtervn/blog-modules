@@ -51,6 +51,9 @@ const GET_GAME_SETTING_FAIL = 'darksteam97d99i/GET_GAME_SETTING_FAIL';
 const GET_SERVER_INFO_START = 'darksteam97d99i/GET_SERVER_INFO_START';
 const GET_SERVER_INFO_SUCCESS = 'darksteam97d99i/GET_SERVER_INFO_SUCCESS';
 const GET_SERVER_INFO_FAIL = 'darksteam97d99i/GET_SERVER_INFO_FAIL';
+const GET_DATA_START = 'darksteam97d99i/GET_DATA_START';
+const GET_DATA_SUCCESS = 'darksteam97d99i/GET_DATA_SUCCESS';
+const GET_DATA_FAIL = 'darksteam97d99i/GET_DATA_FAIL';
 
 const ADMIN_GET_ACCOUNTS_START = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_START';
 const ADMIN_GET_ACCOUNTS_SUCCESS = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_SUCCESS';
@@ -123,6 +126,22 @@ export const adminGetAccounts = query =>
     query
   )();
 
+export const getData = file => {
+  const getDataStart = () => ({ type: GET_DATA_START });
+  const getDataSuccess = (file, data) => ({ type: GET_DATA_SUCCESS, file, data });
+  const getDataFail = error => ({ type: GET_DATA_FAIL, error: error.message });
+  return async dispatch => {
+    dispatch(getDataStart());
+    try {
+      const data = await darksteam97d99i.getMuData(file);
+      if (data.message) dispatch(getDataFail(data));
+      dispatch(getDataSuccess(file, data));
+    } catch (e) {
+      dispatch(getDataFail(e));
+    }
+  };
+};
+
 export default (
   state = {
     user: null,
@@ -144,11 +163,18 @@ export default (
       Reset: null,
       Banking: null
     },
-    adminAccounts: null
+    adminAccounts: null,
+    data: {}
   },
   action
 ) => {
+  console.log(action.type);
   switch (action.type) {
+    case GET_DATA_SUCCESS:
+      return { ...state, data: { ...state.data, [action.file]: action.data } };
+    case GET_DATA_FAIL:
+      console.log(action);
+      return state;
     case CHANGE_ACTIVE_CHANNEL:
       return { ...state, viewControl: { ...state.viewControl, activeChannel: action.channel } };
     case CHANGE_ACTIVE_SIDE_FORM:
@@ -334,7 +360,7 @@ export default (
       return {
         ...state,
         adminAccounts: action.data
-      }
+      };
     default:
       return state;
   }
