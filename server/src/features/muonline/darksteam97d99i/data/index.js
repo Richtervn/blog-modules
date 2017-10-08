@@ -14,6 +14,7 @@ export Pets from './Pets';
 export Scrolls from './Scrolls';
 export Sets from './Sets';
 export Shields from './Shields';
+export ShopList from './ShopList';
 export Spears from './Spears';
 export Staffs from './Staffs';
 export Swords from './Swords';

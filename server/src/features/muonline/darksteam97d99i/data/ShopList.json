@@ -1,0 +1,54 @@
+[
+  {
+    "File": "shop0.txt",
+    "Name": "[Lorencia] Hans The Blacksmith"
+  },
+  {
+    "File": "shop1.txt",
+    "Name": "[Lorencia] Liaman The Barmaid"
+  },
+  {
+    "File": "shop2.txt",
+    "Name": "[Lorencia] Pasi the wizard"
+  },
+  {
+    "File": "shop3.txt",
+    "Name": "[Lorencia] Peddler ( lorencia exit )"
+  },
+  {
+    "File": "shop4.txt",
+    "Name": "[Lorencia] Peddler ( near the river )"
+  },
+  {
+    "File": "shop5.txt",
+    "Name": "[Lorencia] Potion Girl"
+  },
+  {
+    "File": "shop6.txt",
+    "Name": "[Davias] Davias barmaid"
+  },
+  {
+    "File": "shop7.txt",
+    "Name": "[Davias] Davias wizard shop"
+  },
+  {
+    "File": "shop8.txt",
+    "Name": "[Davias] Davias Weapon merchant"
+  },
+  {
+    "File": "shop9.txt",
+    "Name": "[Noria] Yoda a.k.a. the weapon shop in noria"
+  },
+  {
+    "File": "shop10.txt",
+    "Name": "[Noria] The other lady shop in noria"
+  },
+  {
+    "File": "shop11.txt",
+    "Name": "[Unknow] Unknow"
+  },
+  {
+    "File": "shop12.txt",
+    "Name": "[Unknow] Unknow"
+  }
+]

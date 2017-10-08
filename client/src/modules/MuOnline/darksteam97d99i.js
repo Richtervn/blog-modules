@@ -168,13 +168,9 @@ export default (
   },
   action
 ) => {
-  console.log(action.type);
   switch (action.type) {
     case GET_DATA_SUCCESS:
       return { ...state, data: { ...state.data, [action.file]: action.data } };
-    case GET_DATA_FAIL:
-      console.log(action);
-      return state;
     case CHANGE_ACTIVE_CHANNEL:
       return { ...state, viewControl: { ...state.viewControl, activeChannel: action.channel } };
     case CHANGE_ACTIVE_SIDE_FORM:
