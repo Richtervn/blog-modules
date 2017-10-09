@@ -24,7 +24,6 @@ export default ({ onChangeCheck, category, exc, itemId }) => {
   }
 
   if (_.contains(['Wings'], category)) {
-    console.log(itemId);
     if (_.contains(['3', '4', '5', '6'], itemId)) {
       excOpt1 = 'Life +125 Increased';
       excOpt2 = 'Mana +125 Increased';
@@ -33,13 +32,6 @@ export default ({ onChangeCheck, category, exc, itemId }) => {
       excOpt5 = 'Increase Attacking(wizardry) Speed +5';
     }
   }
-
-  //   if (Newquest.RW_ExcOpt6) QuestStr.RW_Exc += 1;
-  // if (Newquest.RW_ExcOpt5) QuestStr.RW_Exc += 2;
-  // if (Newquest.RW_ExcOpt4) QuestStr.RW_Exc += 4;
-  // if (Newquest.RW_ExcOpt3) QuestStr.RW_Exc += 8;
-  // if (Newquest.RW_ExcOpt2) QuestStr.RW_Exc += 16;
-  // if (Newquest.RW_ExcOpt1) QuestStr.RW_Exc += 32;
 
   if (!excOpt1) return null;
 

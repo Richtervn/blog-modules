@@ -89,9 +89,7 @@ export default async (Character, Banking, MembCredits, query, GameSetting, metho
   }
 
   await character.update(updateForm);
-  console.log(resp);
   resp = {...resp, ...updateForm};
-  console.log(resp);
 
   return resp;
 };

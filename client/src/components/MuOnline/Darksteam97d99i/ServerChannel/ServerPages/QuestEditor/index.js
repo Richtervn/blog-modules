@@ -9,3 +9,5 @@ class QuestEditor extends Component {
     return null;
   }
 }
+
+export default QuestEditor;

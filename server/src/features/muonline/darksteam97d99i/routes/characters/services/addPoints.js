@@ -33,6 +33,6 @@ export default async (Character, Banking, query, appConfigs, methods) => {
 
   const result = await character.update(updateForm);
   resp[type] = result[type];
-  console.log(resp);
+
   return resp;
 };
