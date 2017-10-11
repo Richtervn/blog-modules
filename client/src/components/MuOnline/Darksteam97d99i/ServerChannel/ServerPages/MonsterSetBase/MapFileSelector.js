@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ data, onGetData, onSelect, mapId }) => {
+export default ({ data, onGetData, onSelect, mapId, onChooseCoordinate, onSetCoordinate }) => {
   if (!data.Maps) {
     onGetData('Maps');
     return null;
@@ -16,8 +16,9 @@ export default ({ data, onGetData, onSelect, mapId }) => {
       </select>
       <img
         src={`/app_modules/images/muonline/map/${mapId}.jpg`}
-        style={{ width: '380px' }}
-        onMouseMove={e => console.log(e.nativeEvent.offsetX)}
+        style={{ width: '500px' }}
+        onMouseMove={onChooseCoordinate}
+        onClick={onSetCoordinate}
       />
     </div>
   );

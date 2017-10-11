@@ -152,5 +152,17 @@
 }
 
 .flex-center {
-  justify-content: center
+  justify-content: center;
+}
+
+.border-darkgrey {
+  border-color: darkgray;
+}
+
+.border-lawngreen {
+  border-color: lawngreen;
+}
+
+.sm-padding {
+  padding: 5px;
 }

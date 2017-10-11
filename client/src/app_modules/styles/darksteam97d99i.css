@@ -310,3 +310,14 @@
   height: 655px;
   overflow-y: auto;
 }
+
+.ds9799-msb-box {
+  border: solid 1px #4c6177;
+  width: 500px;
+  height: 350px;
+  border-radius: 5px;
+  padding: 5px;
+  overflow: auto;
+  background-color: white;
+  color: black;
+}
