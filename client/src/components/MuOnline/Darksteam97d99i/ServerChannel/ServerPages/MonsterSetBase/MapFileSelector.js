@@ -14,7 +14,11 @@ export default ({ data, onGetData, onSelect, mapId }) => {
           </option>
         ))}
       </select>
-      <img src={`/app_modules/images/muonline/map/${mapId}.jpg`} style={{width: '380px'}} onMouseMove={e => console.log(e.nativeEvent.offsetX)}/>
+      <img
+        src={`/app_modules/images/muonline/map/${mapId}.jpg`}
+        style={{ width: '380px' }}
+        onMouseMove={e => console.log(e.nativeEvent.offsetX)}
+      />
     </div>
   );
 };

@@ -9,6 +9,7 @@ export EventItemBagList from './EventItemBagList';
 export Maces from './Maces';
 export Maps from './Maps';
 export Misc from './Misc';
+export Monsters from './Monsters';
 export Pants from './Pants';
 export Pets from './Pets';
 export Scrolls from './Scrolls';
