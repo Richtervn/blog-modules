@@ -8,7 +8,8 @@ const MangasReading = new Schema({
   Chapter: String,
   Genre: [String],
   Rating: Number,
-  CoverUri: String
+  CoverUri: String,
+  ReadingUrl: String
 });
 
 export default MangasReading;

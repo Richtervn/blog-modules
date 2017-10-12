@@ -321,3 +321,14 @@
   background-color: white;
   color: black;
 }
+
+.ds9799-quest-box {
+  border: solid 1px #4c6177;
+  width: 500px;
+  border-radius: 5px;
+  padding: 5px;
+  overflow: auto;
+  background-color: white;
+  color: black;
+  height: 180px;
+}

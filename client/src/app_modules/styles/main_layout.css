@@ -143,6 +143,10 @@
   z-index: -1!important;
 }
 
+.mgt-5 {
+  margin-top: 5px;
+}
+
 .mgt-10 {
   margin-top: 10px;
 }
@@ -165,4 +169,8 @@
 
 .sm-padding {
   padding: 5px;
+}
+
+.sm-mg {
+  margin: 5px;
 }

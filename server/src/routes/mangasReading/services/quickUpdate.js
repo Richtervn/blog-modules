@@ -27,7 +27,8 @@ export default async (MangasReading, body) => {
 
   let manga = await MangasReading.findOne({ Aka: mangaName });
   if (!manga) return { message: 'Not found' };
-  await MangasReading.update({ _id: manga._id }, { $set: { Chapter: chapter } });
+  await MangasReading.update({ _id: manga._id }, { $set: { Chapter: chapter, ReadingUrl: url } });
   manga.Chapter = chapter;
+  manga.ReadingUrl = url;
   return manga;
 };
