@@ -291,6 +291,7 @@ class QuestEditor extends Component {
                 itemId={reqItemId}
                 onSelectCategory={e => this.selectReqItemCategory(e.target.value)}
                 onSelectItem={e => this.selectReqItem(e.target.value)}
+                itemLvl={reqItemLvl}
               />
             </div>
             <div className="row no-row-margin">
@@ -388,6 +389,7 @@ class QuestEditor extends Component {
                 itemId={rewItemId}
                 onSelectCategory={e => this.selectRewItemCategory(e.target.value)}
                 onSelectItem={e => this.selectRewItem(e.target.value)}
+                itemLvl={rewItemLvl}
               />
               <BasicItemOptions
                 luck={rewItemLuck}

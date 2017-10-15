@@ -19,11 +19,17 @@ export default ({
   onGetCharacters,
   onAddPoint,
   onReset,
+  onGrandReset,
+  onResetQuest,
   errorReset,
   errorAddPoint,
+  errorGrandReset,
+  errorResetQuest,
   onClearAddPointError,
   onClearResetError,
   onClearBankingError,
+  onClearGrandResetError,
+  onClearResetQuestError,
   serverInfo,
   gameSetting,
   errorBanking,
@@ -67,10 +73,16 @@ export default ({
         errorAddPoint={errorAddPoint}
         errorReset={errorReset}
         errorBanking={errorBanking}
+        errorGrandReset={errorGrandReset}
+        errorResetQuest={errorResetQuest}
         onClearAddPointError={onClearAddPointError}
         onClearResetError={onClearResetError}
         onClearBankingError={onClearBankingError}
         gameSetting={gameSetting}
+        onGrandReset={onGrandReset}
+        onResetQuest={onResetQuest}
+        onClearGrandResetError={onClearGrandResetError}
+        onClearResetQuestError={onClearResetQuestError}
       />
     </div>
   </div>

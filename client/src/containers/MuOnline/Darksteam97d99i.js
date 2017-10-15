@@ -15,9 +15,13 @@ import {
   setFocusCharacter,
   addPoint,
   reset,
+  grandReset,
+  resetQuest,
   clearAddPointError,
   clearResetError,
   clearBankingError,
+  clearGrandResetError,
+  clearResetQuestError,
   getGameSetting,
   getServerInfo,
   deposit,
@@ -26,7 +30,8 @@ import {
   transfer,
   buyCredit,
   adminGetAccounts,
-  getData
+  getData,
+  adminSetActiveAccount
 } from 'modules/MuOnline/darksteam97d99i';
 
 export default connect(
@@ -43,11 +48,14 @@ export default connect(
     errorAddPoint: darksteam97d99i.error.AddPoint,
     errorReset: darksteam97d99i.error.Reset,
     errorBanking: darksteam97d99i.error.Banking,
+    errorGrandReset: darksteam97d99i.error.GrandReset,
+    errorResetQuest: darksteam97d99i.error.ResetQuest,
     userPage: darksteam97d99i.viewControl.userPage,
     serverPage: darksteam97d99i.viewControl.serverPage,
     adminPage: darksteam97d99i.viewControl.adminPage,
-    adminAccounts: darksteam97d99i.adminAccounts,
-    data: darksteam97d99i.data
+    adminAccounts: darksteam97d99i.allAccounts,
+    data: darksteam97d99i.data,
+    adminActiveAccount: darksteam97d99i.adminFocusAccount
   }),
   dispatch => ({
     onChangeActiveChannel(channel) {
@@ -104,6 +112,12 @@ export default connect(
     onClearBankingError() {
       dispatch(clearBankingError());
     },
+    onClearGrandResetError() {
+      dispatch(clearGrandResetError());
+    },
+    onClearResetQuestError() {
+      dispatch(clearResetQuestError());
+    },
     onDeposit(query) {
       dispatch(deposit(query));
     },
@@ -124,6 +138,15 @@ export default connect(
     },
     onGetData(file) {
       dispatch(getData(file));
+    },
+    onGrandReset(query) {
+      dispatch(grandReset(query));
+    },
+    onResetQuest(query) {
+      dispatch(resetQuest(query));
+    },
+    onAdminSetActiveAccount(account) {
+      dispatch(adminSetActiveAccount(account));
     }
   })
 )(Darksteam97d99i);

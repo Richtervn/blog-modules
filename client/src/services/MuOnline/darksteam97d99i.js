@@ -27,6 +27,14 @@ export default {
     const data = commonGet('mu/darksteam97d99i/characters/reset', null, query);
     return data;
   },
+  grandReset(query){
+    const data = commonGet('mu/darksteam97d99i/characters/grand_reset', null, query);
+    return data;
+  },
+  resetQuest(query){
+    const data = commonGet('mu/darksteam97d99i/characters/quest_reset', null, query);
+    return data;
+  },
   deposit(query){
     const data = commonGet('mu/darksteam97d99i/banking/deposit', null, query);
     return data;

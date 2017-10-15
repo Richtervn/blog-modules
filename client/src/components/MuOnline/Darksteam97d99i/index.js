@@ -34,10 +34,16 @@ export default ({
   onSetFocusCharacter,
   onAddPoint,
   onReset,
+  onGrandReset,
+  onResetQuest,
   errorAddPoint,
   errorReset,
+  errorGrandReset,
+  errorResetQuest,
   onClearAddPointError,
   onClearResetError,
+  onClearGrandResetError,
+  onClearResetQuestError,
   onClearBankingError,
   onGetGameSetting,
   onGetServerInfo,
@@ -47,8 +53,10 @@ export default ({
   onLoan,
   onTransfer,
   onBuyCredit,
+  onGetData,
   onAdminGetAccounts,
-  onGetData
+  onAdminSetActiveAccount,
+  adminActiveAccount
 }) => {
   if (!serverInfo) {
     onGetServerInfo();
@@ -85,8 +93,12 @@ export default ({
             onReset={onReset}
             errorAddPoint={errorAddPoint}
             errorReset={errorReset}
+            errorGrandReset={errorGrandReset}
+            errorResetQuest={errorResetQuest}
             onClearAddPointError={onClearAddPointError}
             onClearResetError={onClearResetError}
+            onClearGrandResetError={onClearGrandResetError}
+            onClearResetQuestError={onClearResetQuestError}
             errorBanking={errorBanking}
             onDeposit={onDeposit}
             onWithDraw={onWithDraw}
@@ -94,6 +106,8 @@ export default ({
             onTransfer={onTransfer}
             onBuyCredit={onBuyCredit}
             onClearBankingError={onClearBankingError}
+            onGrandReset={onGrandReset}
+            onResetQuest={onResetQuest}
           />
         )}
         {activeChannel == 'Server' && (
@@ -110,6 +124,8 @@ export default ({
             accounts={adminAccounts}
             page={adminPage}
             onChangePage={onChangeAdminPage}
+            onSetActiveAccount={onAdminSetActiveAccount}
+            focusAccount={adminActiveAccount}
           />
         )}
         {!user && errorRegister && <div className="alert alert-danger">{errorRegister}</div>}

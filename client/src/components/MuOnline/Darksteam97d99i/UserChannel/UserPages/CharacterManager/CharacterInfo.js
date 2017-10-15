@@ -17,6 +17,8 @@ export default class CharacterInfo extends Component {
     this.addPoint = this.addPoint.bind(this);
     this.reset = this.reset.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.grandReset = this.grandReset.bind(this);
+    this.resetQuest = this.resetQuest.bind(this);
   }
 
   handleChange(event) {
@@ -51,8 +53,34 @@ export default class CharacterInfo extends Component {
     this.props.onReset(query);
   }
 
+  grandReset() {
+    const query = {
+      name: this.props.character.Name,
+      isUseBank: this.state.isUseBank
+    };
+    this.props.onGrandReset(query);
+  }
+
+  resetQuest() {
+    const query = {
+      name: this.props.character.Name,
+      isUseBank: this.state.isUseBank
+    };
+    this.props.onResetQuest(query);
+  }
+
   render() {
-    const { character, errorAddPoint, onClearAddPointError, errorReset, onClearResetError } = this.props;
+    const {
+      character,
+      errorAddPoint,
+      onClearAddPointError,
+      errorReset,
+      onClearResetError,
+      errorResetQuest,
+      onClearResetQuestError,
+      errorGrandReset,
+      onClearGrandResetError
+    } = this.props;
     const charClass = decodeMuClass(character.Class);
 
     if (errorAddPoint) {
@@ -62,7 +90,17 @@ export default class CharacterInfo extends Component {
 
     if (errorReset) {
       $('#darksteam97d99iResetErr').modal('show');
-      $('#darksteam97d99ResetErr').on('hide.bs.modal', onClearResetError);
+      $('#darksteam97d99iResetErr').on('hide.bs.modal', onClearResetError);
+    }
+
+    if (errorGrandReset) {
+      $('#darksteam97d99iGrandResetErr').modal('show');
+      $('#darksteam97d99iGrandResetErr').on('hide.bs.modal', onClearGrandResetError);
+    }
+
+    if (errorResetQuest) {
+      $('#darksteam97d99iResetQuestErr').modal('show');
+      $('#darksteam97d99iResetQuestErr').on('hide.bs.modal', onClearResetQuestError);
     }
 
     return (
@@ -188,15 +226,21 @@ export default class CharacterInfo extends Component {
             </button>
           </div>
           <div className="ds9799-character-command-button">
-            <button className="btn btn-danger btn-block">Grand Reset</button>
+            <button className="btn btn-danger btn-block" onClick={() => this.grandReset()}>
+              Grand Reset
+            </button>
           </div>
           <div className="ds9799-character-command-button">
-            <button className="btn btn-danger btn-block">Change Name</button>
+            <button className="btn btn-danger btn-block" onClick={() => this.resetQuest()}>
+              Reset Quest
+            </button>
           </div>
         </div>
 
         <ErrorModal id="darksteam97d99iAddPointErr" text={errorAddPoint} />
         <ErrorModal id="darksteam97d99iResetErr" text={errorReset} />
+        <ErrorModal id="darksteam97d99iResetQuestErr" text={errorResetQuest} />
+        <ErrorModal id="darksteam97d99iGrandResetErr" text={errorGrandReset} />
       </div>
     );
   }

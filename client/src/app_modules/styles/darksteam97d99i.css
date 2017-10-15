@@ -332,3 +332,13 @@
   color: black;
   height: 180px;
 }
+
+.ds9799-admin-acc-list {
+  margin: 10px;
+  height: 654px;
+  overflow-y: auto;
+}
+
+.ds9799-acc-list-container {
+  border: solid 1px #4c6177;
+}

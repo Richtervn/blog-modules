@@ -17,7 +17,7 @@ export default ({ manga }) => (
     <p>
       <strong>Reading Chapter : {manga.Chapter}</strong>
     </p>
-    {manga.ReadingUrl && <p><a href={manga.ReadingUrl}>Continue reading</a></p>}
+    {manga.ReadingUrl && <p><a href={manga.ReadingUrl} target="_blank">Continue reading</a></p>}
     <p>
       <strong>Authors : </strong>
       {manga.Authors.map((author, i) => (

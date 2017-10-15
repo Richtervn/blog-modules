@@ -16,6 +16,8 @@ export default ({
   onSetFocusCharacter,
   onAddPoint,
   onReset,
+  onGrandReset,
+  onResetQuest,
   onDeposit,
   onWithdraw,
   onLoan,
@@ -24,14 +26,18 @@ export default ({
   errorAddPoint,
   errorReset,
   errorBanking,
+  errorGrandReset,
+  errorResetQuest,
   onClearAddPointError,
   onClearResetError,
   onClearBankingError,
+  onClearGrandResetError,
+  onClearResetQuestError,
   gameSetting
 }) => {
   switch (page) {
     case 'Introduction':
-      return <Introduction/>;
+      return <Introduction />;
     case 'Dash Board':
       return <Dashboard user={user} onEditProfile={onEditProfile} />;
     case 'Character Manager':
@@ -48,6 +54,12 @@ export default ({
           onReset={onReset}
           errorReset={errorReset}
           onClearResetError={onClearResetError}
+          onGrandReset={onGrandReset}
+          onResetQuest={onResetQuest}
+          errorGrandReset={errorGrandReset}
+          errorResetQuest={errorResetQuest}
+          onClearGrandResetError={onClearGrandResetError}
+          onClearResetQuestError={onClearResetQuestError}
         />
       );
     case 'Banking Manager':

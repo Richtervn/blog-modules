@@ -11,6 +11,9 @@ const SET_FOCUS_CHARACTER = 'darksteam97d99i/SET_FOCUS_CHARACTER';
 const CLEAR_ADD_POINT_ERROR = 'darksteam97d99i/CLEAR_ADD_POINT_ERROR';
 const CLEAR_RESET_ERROR = 'darksteam97d99i/CLEAR_RESET_ERROR';
 const CLEAR_BANKING_ERROR = 'darksteam97d99i/CLEAR_BANKING_ERROR';
+const CLEAR_GRAND_RESET_ERROR = 'darksteam97d99i/CLEAR_GRAND_RESET_ERROR';
+const CLEAR_RESET_QUEST_ERROR = 'darksteam97d99i/CLEAR_RESET_QUEST_ERROR';
+const ADMIN_SET_ACTIVE_ACCOUNT = 'darksteam97d99i/ADMIN_SET_ACTIVE_ACCOUNT';
 
 const REGISTER_START = 'darksteam97d99i/REGISTER_START';
 const REGISTER_SUCCESS = 'darksteam97d99i/REGISTER_SUCCESS';
@@ -30,6 +33,12 @@ const ADD_POINT_FAIL = 'darksteam97d99i/ADD_POINT_FAIL';
 const RESET_START = 'darksteam97d99i/RESET_START';
 const RESET_SUCCESS = 'darksteam97d99i/RESET_SUCCESS';
 const RESET_FAIL = 'darksteam97d99i/RESET_FAIL';
+const GRAND_RESET_START = 'darksteam97d99i/GRAND_RESET_START';
+const GRAND_RESET_SUCCESS = 'darksteam97d99i/GRAND_RESET_SUCCESS';
+const GRAND_RESET_FAIL = 'darksteam97d99i/GRAND_RESET_FAIL';
+const RESET_QUEST_START = 'darksteam97d99i/RESET_QUEST_START';
+const RESET_QUEST_SUCCESS = 'darksteam97d99i/RESET_QUEST_SUCCESS';
+const RESET_QUEST_FAIL = 'darksteam97d99i/RESET_QUEST_FAIL';
 const DEPOSIT_START = 'darksteam97d99i/DEPOSIT_START';
 const DEPOSIT_SUCCESS = 'darksteam97d99i/DEPOSIT_SUCCESS';
 const DEPOSIT_FAIL = 'darksteam97d99i/DEPOSIT_FAIL';
@@ -69,6 +78,8 @@ export const setFocusCharacter = character => ({ type: SET_FOCUS_CHARACTER, char
 export const clearAddPointError = () => ({ type: CLEAR_ADD_POINT_ERROR });
 export const clearResetError = () => ({ type: CLEAR_RESET_ERROR });
 export const clearBankingError = () => ({ type: CLEAR_BANKING_ERROR });
+export const clearGrandResetError = () => ({ type: CLEAR_GRAND_RESET_ERROR });
+export const clearResetQuestError = () => ({ type: CLEAR_RESET_QUEST_ERROR });
 
 export const register = formBody =>
   actionCreator(REGISTER_START, REGISTER_SUCCESS, REGISTER_FAIL, darksteam97d99i.register, formBody)();
@@ -94,6 +105,24 @@ export const addPoint = query =>
   actionCreator(ADD_POINT_START, ADD_POINT_SUCCESS, ADD_POINT_FAIL, darksteam97d99i.addPoint, query)();
 export const reset = query =>
   actionCreator(RESET_START, RESET_SUCCESS, RESET_FAIL, darksteam97d99i.reset, query)();
+export const grandReset = query =>
+  actionCreator(
+    GRAND_RESET_START,
+    GRAND_RESET_SUCCESS,
+    GRAND_RESET_FAIL,
+    darksteam97d99i.grandReset,
+    query
+  )();
+
+export const resetQuest = query =>
+  actionCreator(
+    RESET_QUEST_START,
+    RESET_QUEST_SUCCESS,
+    RESET_QUEST_FAIL,
+    darksteam97d99i.resetQuest,
+    query
+  )();
+
 export const getGameSetting = actionCreator(
   GET_GAME_SETTING_START,
   GET_GAME_SETTING_SUCCESS,
@@ -116,6 +145,7 @@ export const transfer = query =>
   actionCreator(TRANSFER_START, TRANSFER_SUCCESS, TRANSFER_FAIL, darksteam97d99i.transfer, query)();
 export const buyCredit = query =>
   actionCreator(BUY_CREDIT_START, BUY_CREDIT_SUCCESS, BUY_CREDIT_FAIL, darksteam97d99i.buyCredit, query)();
+export const adminSetActiveAccount = account => ({ type: ADMIN_SET_ACTIVE_ACCOUNT, account });
 
 export const adminGetAccounts = query =>
   actionCreator(
@@ -161,9 +191,12 @@ export default (
       Login: null,
       AddPoint: null,
       Reset: null,
-      Banking: null
+      Banking: null,
+      GrandReset: null,
+      ResetQuest: null
     },
-    adminAccounts: null,
+    allAccounts: null,
+    adminFocusAccount: {},
     data: {}
   },
   action
@@ -256,15 +289,58 @@ export default (
         error: { ...state.error, Reset: null }
       };
     }
-    case RESET_FAIL: {
-      return { ...state, error: { ...state.error, Reset: action.error } };
+    case GRAND_RESET_SUCCESS: {
+      const nextState = { ...state };
+      const changedCharacter = { ...state.focusCharacter };
+      if (action.data.isUseBank == 'true') {
+        nextState.user.Banking.zen_balance = action.data.zen_balance;
+      } else {
+        changedCharacter.Money = action.data.Money;
+      }
+      nextState.user.MembCredits.credits = action.data.credits;
+      if (action.data.Strength) changedCharacter.Strength = action.data.Strength;
+      if (action.data.Dexterity) changedCharacter.Dexterity = action.data.Dexterity;
+      if (action.data.Vitality) changedCharacter.Vitality = action.data.Vitality;
+      if (action.data.Energy) changedCharacter.Energy = action.data.Energy;
+      if (action.data.LevelUpPoint) changedCharacter.LevelUpPoint = action.data.LevelUpPoint;
+      changedCharacter.GrandResets = action.data.GrandResets;
+      changedCharacter.cLevel = action.data.cLevel;
+      nextState.characters = nextState.characters.map(character => {
+        if (character.Name == state.focusCharacter.Name) {
+          return { ...changedCharacter };
+        }
+        return character;
+      });
+      return {
+        ...nextState,
+        user: {
+          ...nextState.user,
+          Banking: { ...nextState.user.Banking },
+          MembCredits: { ...nextState.user.MembCredits }
+        },
+        focusCharacter: { ...changedCharacter },
+        characters: nextState.characters.slice(0),
+        error: { ...state.error, Reset: null }
+      };
     }
+    case RESET_FAIL:
+      return { ...state, error: { ...state.error, Reset: action.error } };
+    case GRAND_RESET_FAIL:
+      return { ...state, error: { ...state.error, GrandReset: action.error } };
+    case RESET_QUEST_FAIL:
+      return { ...state, error: { ...state.error, ResetQuest: action.error } };
     case ADD_POINT_FAIL:
       return { ...state, error: { ...state.error, AddPoint: action.error } };
     case CLEAR_ADD_POINT_ERROR:
       return { ...state, error: { ...state.error, AddPoint: null } };
     case CLEAR_RESET_ERROR:
       return { ...state, error: { ...state.error, Reset: null } };
+    case CLEAR_BANKING_ERROR:
+      return { ...state, error: { ...state.error, Banking: null } };
+    case CLEAR_GRAND_RESET_ERROR:
+      return { ...state, error: { ...state.error, GrandReset: null } };
+    case CLEAR_RESET_QUEST_ERROR:
+      return { ...state, error: { ...state.error, ResetQuest: null } };
     case GET_GAME_SETTING_SUCCESS:
       return { ...state, gameSetting: { ...action.data } };
     case GET_SERVER_INFO_SUCCESS:
@@ -340,8 +416,6 @@ export default (
       return { ...state, error: { ...state.error, Banking: action.error } };
     case LOGIN_FAIL:
       return { ...state, error: { ...state.error, Login: action.error } };
-    case CLEAR_BANKING_ERROR:
-      return { ...state, error: { ...state.error, Banking: null } };
     case LOGOUT:
       return {
         ...state,
@@ -351,11 +425,16 @@ export default (
         viewControl: { ...state.viewControl, userPage: 'Introduction' },
         error: { Register: null, Login: null }
       };
-
     case ADMIN_GET_ACCOUNTS_SUCCESS:
       return {
         ...state,
-        adminAccounts: action.data
+        allAccounts: action.data,
+        adminFocusAccount: action.data[0]
+      };
+    case ADMIN_SET_ACTIVE_ACCOUNT:
+      return {
+        ...state,
+        adminFocusAccount: action.account
       };
     default:
       return state;

@@ -116,7 +116,7 @@ export default (sequelize, DataTypes) => {
       allowNull: true
     },
     Quest: {
-      type: 'VARBINARY',
+      type: DataTypes.BLOB,
       allowNull: true
     },
     Resets: {

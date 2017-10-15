@@ -33,7 +33,7 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
   );
 
   router.get(
-    '/character/grand_reset',
+    '/characters/grand_reset',
     wrap(async (req, res, next) => {
       const result = await grandReset(Character, Banking, MembCredits, req.query, appConfigs, methods);
       res.send(result);
@@ -41,9 +41,10 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
   );
 
   router.get(
-    '/character/quest_reset',
+    '/characters/quest_reset',
     wrap(async (req, res, next) => {
-      const result = await questReset(Character, Banking, MembCredits, req.query, appConfigs, methods);
+      const result = await questReset(Character, Banking, req.query, appConfigs, methods);
+      res.send(result);
     })
   );
 

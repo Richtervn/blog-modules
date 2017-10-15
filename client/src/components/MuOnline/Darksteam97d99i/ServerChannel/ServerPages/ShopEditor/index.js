@@ -132,6 +132,7 @@ class ShopEditor extends Component {
               category={this.state.category}
               onSelectItem={e => this.selectItem(e.target.value)}
               itemId={this.state.itemId}
+              itemLvl={this.state.level}
             />
             <BasicItemOptions
               luck={this.state.luck}

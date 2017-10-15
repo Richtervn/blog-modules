@@ -13,8 +13,14 @@ export default ({
   errorAddPoint,
   onClearAddPointError,
   onReset,
+  onGrandReset,
+  onResetQuest,
+  errorGrandReset,
+  errorResetQuest,
   errorReset,
-  onClearResetError
+  onClearResetError,
+  onClearGrandResetError,
+  onClearResetQuestError
 }) => {
   if (!characters) {
     onGetCharacters(user.memb___id);
@@ -41,8 +47,14 @@ export default ({
           errorAddPoint={errorAddPoint}
           onClearAddPointError={onClearAddPointError}
           onReset={onReset}
+          onGrandReset={onGrandReset}
+          onResetQuest={onResetQuest}
           errorReset={errorReset}
           onClearResetError={onClearResetError}
+          errorResetQuest={errorResetQuest}
+          errorGrandReset={errorGrandReset}
+          onClearGrandResetError={onClearGrandResetError}
+          onClearResetQuestError={onClearResetQuestError}
         />
       </div>
     </div>
