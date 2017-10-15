@@ -15,6 +15,12 @@ export default ({ item, isActive, onSelect }) => {
     case 'Vip Manager':
       icon = 'fa-credit-card';
       break;
+    case 'Web Shop':
+      icon = 'fa-shopping-cart';
+      break;
+    case 'Web Quest':
+      icon = 'fa-diamond';
+      break;
     default:
       break;
   }

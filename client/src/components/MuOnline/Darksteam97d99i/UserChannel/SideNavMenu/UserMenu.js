@@ -1,7 +1,7 @@
 import React from 'react';
 import MenuItem from './MenuItem';
 
-const menuItems = ['Dash Board', 'Character Manager', 'Banking Manager', 'Vip Manager'];
+const menuItems = ['Dash Board', 'Character Manager', 'Banking Manager', 'Vip Manager', 'Web Shop', 'Web Quest'];
 
 export default ({ user, onLogout, activeItem, onSelectItem }) => (
   <div className="ds9799-user-menu">

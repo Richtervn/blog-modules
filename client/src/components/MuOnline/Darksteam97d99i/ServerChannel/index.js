@@ -3,7 +3,7 @@ import React from 'react';
 import SideNavMenu from '../AdminChannel/SideNavMenu';
 import ServerPages from './ServerPages';
 
-const menuList = ['Monster Set Base', 'Shop Editor', 'Bag Items Editor', 'Quest Editor'];
+const menuList = ['Monster Set Base', 'Shop Editor', 'Bag Items Editor', 'Quest Editor', 'Server Info'];
 
 export default ({ page, onChangePage, data, onGetData }) => (
   <div className="row no-row-margin">

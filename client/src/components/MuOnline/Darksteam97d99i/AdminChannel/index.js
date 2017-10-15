@@ -7,7 +7,8 @@ const menuList = [
   'Accounts Manager',
   'Characters Manager',
   'Members Banking Manager',
-  'Members Credits Manager'
+  'Members Credits Manager',
+  'Game Setting Manager'
 ];
 
 export default ({ page, accounts, onGetAccounts, onChangePage, onSetActiveAccount, focusAccount }) => (
