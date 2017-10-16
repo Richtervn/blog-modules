@@ -1,7 +1,16 @@
 import React from 'react';
 import MenuItem from './MenuItem';
 
-const menuItems = ['Dash Board', 'Character Manager', 'Banking Manager', 'Vip Manager', 'Web Shop', 'Web Quest'];
+const menuItems = [
+  'Dash Board',
+  'Character Manager',
+  'Banking Manager',
+  'Vip Manager',
+  'Web Shop',
+  'Web Quest',
+  'Vip Upgrade Items',
+  'Luxury Shop'
+];
 
 export default ({ user, onLogout, activeItem, onSelectItem }) => (
   <div className="ds9799-user-menu">
@@ -28,7 +37,9 @@ export default ({ user, onLogout, activeItem, onSelectItem }) => (
         </div>
       </div>
     </div>
-    {menuItems.map((item, i) => (<MenuItem key={i} item={item} isActive={item == activeItem} onSelect={onSelectItem}/>))}
+    {menuItems.map((item, i) => (
+      <MenuItem key={i} item={item} isActive={item == activeItem} onSelect={onSelectItem} />
+    ))}
     <button className="btn btn-danger btn-block" onClick={onLogout}>
       <span>
         <i className="fa fa-fw fa-sign-out" />

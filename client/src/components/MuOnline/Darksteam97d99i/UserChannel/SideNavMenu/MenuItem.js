@@ -21,6 +21,11 @@ export default ({ item, isActive, onSelect }) => {
     case 'Web Quest':
       icon = 'fa-diamond';
       break;
+    case 'Vip Upgrade Items':
+      icon = 'fa-flash';
+      break;
+    case 'Luxury Shop':
+      icon = 'fa-magic';
     default:
       break;
   }
