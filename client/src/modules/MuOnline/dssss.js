@@ -1,8 +1,5 @@
-import actionCreator from 'factories/actionCreator';
-import { darksteam97d99i } from 'services';
 
-const CHANGE_ACTIVE_CHANNEL = 'darksteam97d99i/CHANGE_ACTIVE_CHANNEL';
-const CHANGE_ACTIVE_SIDE_FORM = 'darksteam97d99i/CHANGE_ACTIVE_SIDE_FORM';
+
 const LOGOUT = 'darksteam97d99i/LOGOUT';
 const CHANGE_USER_PAGE = 'darksteam97d99i/CHANGE_USER_PAGE';
 const CHANGE_ADMIN_PAGE = 'darksteam97d99i/CHANGE_ADMIN_PAGE';
@@ -15,12 +12,7 @@ const CLEAR_GRAND_RESET_ERROR = 'darksteam97d99i/CLEAR_GRAND_RESET_ERROR';
 const CLEAR_RESET_QUEST_ERROR = 'darksteam97d99i/CLEAR_RESET_QUEST_ERROR';
 const ADMIN_SET_ACTIVE_ACCOUNT = 'darksteam97d99i/ADMIN_SET_ACTIVE_ACCOUNT';
 
-const REGISTER_START = 'darksteam97d99i/REGISTER_START';
-const REGISTER_SUCCESS = 'darksteam97d99i/REGISTER_SUCCESS';
-const REGISTER_FAIL = 'darksteam97d99i/REGISTER_FAIL';
-const LOGIN_START = 'darksteam97d99i/LOGIN_START';
-const LOGIN_SUCCESS = 'darksteam97d99i/LOGIN_SUCCESS';
-const LOGIN_FAIL = 'darksteam97d99i/LOGIN_FAIL';
+
 const EDIT_PROFILE_START = 'darksteam97d99i/EDIT_PROFILE_START';
 const EDIT_PROFILE_FAIL = 'darksteam97d99i/EDIT_PROFILE_FAIL';
 const EDIT_PROFILE_SUCCESS = 'darksteam97d99i/EDIT_PROFILE_SUCCESS';
@@ -68,8 +60,7 @@ const ADMIN_GET_ACCOUNTS_START = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_START';
 const ADMIN_GET_ACCOUNTS_SUCCESS = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_SUCCESS';
 const ADMIN_GET_ACCOUNTS_FAIL = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_FAIL';
 
-export const changeActiveChannel = channel => ({ type: CHANGE_ACTIVE_CHANNEL, channel });
-export const changeActiveSideForm = form => ({ type: CHANGE_ACTIVE_SIDE_FORM, form });
+
 export const logout = () => ({ type: LOGOUT });
 export const changeUserPage = page => ({ type: CHANGE_USER_PAGE, page });
 export const changeAdminPage = page => ({ type: CHANGE_ADMIN_PAGE, page });
@@ -181,7 +172,7 @@ export default (
     focusCharacter: {},
     viewControl: {
       activeChannel: 'User',
-      activeSideForm: 'Login',
+
       userPage: 'Introduction',
       adminPage: 'Accounts Manager',
       serverPage: 'Monster Set Base'
@@ -204,8 +195,6 @@ export default (
   switch (action.type) {
     case GET_DATA_SUCCESS:
       return { ...state, data: { ...state.data, [action.file]: action.data } };
-    case CHANGE_ACTIVE_CHANNEL:
-      return { ...state, viewControl: { ...state.viewControl, activeChannel: action.channel } };
     case CHANGE_ACTIVE_SIDE_FORM:
       return { ...state, viewControl: { ...state.viewControl, activeSideForm: action.form } };
     case REGISTER_SUCCESS:

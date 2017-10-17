@@ -1,8 +1,6 @@
 import React from 'react';
 
-const channels = ['User', 'Server', 'Admin'];
-
-export default ({ activeChannel, onChangeActiveChannel }) => (
+export default ({channels, activeChannel, onChangeActiveChannel }) => (
   <div className="row no-row-margin ds9799-top-nav">
     <div className="col-5 no-col-margin">
       <div className="ds9799-logo-container">

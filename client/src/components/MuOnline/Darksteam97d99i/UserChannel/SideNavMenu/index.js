@@ -7,6 +7,7 @@ import ServerInfoCard from './ServerInfoCard';
 import NewAccInfoCard from './NewAccInfoCard';
 
 export default ({
+  pages,
   user,
   activeForm,
   onChangeActiveForm,
@@ -34,7 +35,7 @@ export default ({
       </div>
     )}
     {user && (
-      <UserMenu user={user} onLogout={onLogout} activeItem={userPage} onSelectItem={onChangeUserPage} />
+      <UserMenu pages={pages} user={user} onLogout={onLogout} activeItem={userPage} onSelectItem={onChangeUserPage} />
     )}
   </div>
 );
