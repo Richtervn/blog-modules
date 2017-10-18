@@ -1,8 +1,8 @@
 import React from 'react';
 
 import TopNavBar from './TopNavBar';
+import UserChannel from './UserChannel';
 
-import UserChannel from 'containers/MuOnline/Darksteam97d99i/UserChannel';
 // import AdminChannel from './AdminChannel';
 // import ServerChannel from './ServerChannel';
 

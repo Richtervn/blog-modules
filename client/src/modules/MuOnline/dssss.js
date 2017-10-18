@@ -1,7 +1,3 @@
-
-
-const LOGOUT = 'darksteam97d99i/LOGOUT';
-const CHANGE_USER_PAGE = 'darksteam97d99i/CHANGE_USER_PAGE';
 const CHANGE_ADMIN_PAGE = 'darksteam97d99i/CHANGE_ADMIN_PAGE';
 const CHANGE_SERVER_PAGE = 'darksteam97d99i/CHANGE_SERVER_PAGE';
 const SET_FOCUS_CHARACTER = 'darksteam97d99i/SET_FOCUS_CHARACTER';
@@ -13,9 +9,7 @@ const CLEAR_RESET_QUEST_ERROR = 'darksteam97d99i/CLEAR_RESET_QUEST_ERROR';
 const ADMIN_SET_ACTIVE_ACCOUNT = 'darksteam97d99i/ADMIN_SET_ACTIVE_ACCOUNT';
 
 
-const EDIT_PROFILE_START = 'darksteam97d99i/EDIT_PROFILE_START';
-const EDIT_PROFILE_FAIL = 'darksteam97d99i/EDIT_PROFILE_FAIL';
-const EDIT_PROFILE_SUCCESS = 'darksteam97d99i/EDIT_PROFILE_SUCCESS';
+
 const GET_CHARACTERS_START = 'darksteam97d99i/GET_CHARACTERS_START';
 const GET_CHARACTERS_SUCCESS = 'darksteam97d99i/GET_CHARACTERS_SUCCESS';
 const GET_CHARACTERS_FAIL = 'darksteam97d99i/GET_CHARACTERS_FAIL';
@@ -46,12 +40,7 @@ const TRANSFER_FAIL = 'darksteam97d99i/TRANSFER_FAIL';
 const BUY_CREDIT_START = 'darksteam97d99i/BUY_CREDIT_START';
 const BUY_CREDIT_SUCCESS = 'darksteam97d99i/BUY_CREDIT_SUCCESS';
 const BUY_CREDIT_FAIL = 'darksteam97d99i/BUY_CREDIT_FAIL';
-const GET_GAME_SETTING_START = 'darksteam97d99i/GET_GAME_SETTING_START';
-const GET_GAME_SETTING_SUCCESS = 'darksteam97d99i/GET_GAME_SETTING_SUCCESS';
-const GET_GAME_SETTING_FAIL = 'darksteam97d99i/GET_GAME_SETTING_FAIL';
-const GET_SERVER_INFO_START = 'darksteam97d99i/GET_SERVER_INFO_START';
-const GET_SERVER_INFO_SUCCESS = 'darksteam97d99i/GET_SERVER_INFO_SUCCESS';
-const GET_SERVER_INFO_FAIL = 'darksteam97d99i/GET_SERVER_INFO_FAIL';
+
 const GET_DATA_START = 'darksteam97d99i/GET_DATA_START';
 const GET_DATA_SUCCESS = 'darksteam97d99i/GET_DATA_SUCCESS';
 const GET_DATA_FAIL = 'darksteam97d99i/GET_DATA_FAIL';
@@ -61,7 +50,7 @@ const ADMIN_GET_ACCOUNTS_SUCCESS = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_SUCCESS';
 const ADMIN_GET_ACCOUNTS_FAIL = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_FAIL';
 
 
-export const logout = () => ({ type: LOGOUT });
+
 export const changeUserPage = page => ({ type: CHANGE_USER_PAGE, page });
 export const changeAdminPage = page => ({ type: CHANGE_ADMIN_PAGE, page });
 export const changeServerPage = page => ({ type: CHANGE_SERVER_PAGE, page });
@@ -72,18 +61,8 @@ export const clearBankingError = () => ({ type: CLEAR_BANKING_ERROR });
 export const clearGrandResetError = () => ({ type: CLEAR_GRAND_RESET_ERROR });
 export const clearResetQuestError = () => ({ type: CLEAR_RESET_QUEST_ERROR });
 
-export const register = formBody =>
-  actionCreator(REGISTER_START, REGISTER_SUCCESS, REGISTER_FAIL, darksteam97d99i.register, formBody)();
-export const login = formBody =>
-  actionCreator(LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, darksteam97d99i.login, formBody)();
-export const editProfile = formBody =>
-  actionCreator(
-    EDIT_PROFILE_START,
-    EDIT_PROFILE_SUCCESS,
-    EDIT_PROFILE_FAIL,
-    darksteam97d99i.editProfile,
-    formBody
-  )();
+
+
 export const getCharacters = id =>
   actionCreator(
     GET_CHARACTERS_START,
@@ -114,18 +93,7 @@ export const resetQuest = query =>
     query
   )();
 
-export const getGameSetting = actionCreator(
-  GET_GAME_SETTING_START,
-  GET_GAME_SETTING_SUCCESS,
-  GET_GAME_SETTING_FAIL,
-  darksteam97d99i.getGameSetting
-);
-export const getServerInfo = actionCreator(
-  GET_SERVER_INFO_START,
-  GET_SERVER_INFO_SUCCESS,
-  GET_SERVER_INFO_FAIL,
-  darksteam97d99i.getServerInfo
-);
+
 export const deposit = query =>
   actionCreator(DEPOSIT_START, DEPOSIT_SUCCESS, DEPOSIT_FAIL, darksteam97d99i.deposit, query)();
 export const withdraw = query =>
@@ -195,16 +163,8 @@ export default (
   switch (action.type) {
     case GET_DATA_SUCCESS:
       return { ...state, data: { ...state.data, [action.file]: action.data } };
-    case CHANGE_ACTIVE_SIDE_FORM:
-      return { ...state, viewControl: { ...state.viewControl, activeSideForm: action.form } };
-    case REGISTER_SUCCESS:
-      return { ...state, viewControl: { ...state.viewControl, activeSideForm: 'Login' } };
-    case REGISTER_FAIL:
-      return { ...state, error: { ...state.error, Register: action.error } };
-    case LOGIN_SUCCESS:
-      return { ...state, user: action.data, viewControl: { ...state.viewControl, userPage: 'Dash Board' } };
-    case LOGIN_FAIL:
-      return { ...state, error: { ...state.error, Login: action.error } };
+
+
     case EDIT_PROFILE_SUCCESS:
       return { ...state, user: { ...state.user, ...action.data } };
     case CHANGE_USER_PAGE:
@@ -330,10 +290,7 @@ export default (
       return { ...state, error: { ...state.error, GrandReset: null } };
     case CLEAR_RESET_QUEST_ERROR:
       return { ...state, error: { ...state.error, ResetQuest: null } };
-    case GET_GAME_SETTING_SUCCESS:
-      return { ...state, gameSetting: { ...action.data } };
-    case GET_SERVER_INFO_SUCCESS:
-      return { ...state, serverInfo: { ...action.data } };
+
     case DEPOSIT_SUCCESS: {
       const nextState = { ...state };
       nextState.user.Banking.zen_balance = action.data.zen_balance;
