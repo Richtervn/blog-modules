@@ -4,7 +4,7 @@ import Introduction from './Introduction';
 
 import Dashboard from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/Dashboard';
 import CharacterManager from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/CharacterManager';
-// import BankingManager from './BankingManager';
+import BankingManager from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/BankingManager';
 
 export default ({page}) => {
   switch(page){
@@ -14,6 +14,8 @@ export default ({page}) => {
       return <Dashboard/>
     case 'Character Manager':
       return <CharacterManager/>
+    case 'Banking Manager':
+      return <BankingManager/>
     default:
       return <Introduction/>
   }
@@ -59,21 +61,7 @@ export default ({page}) => {
 //       );
 //     case 'Banking Manager':
 //       return (
-//         <BankingManager
-//           user={user}
-//           characters={characters}
-//           onSetFocusCharacter={onSetFocusCharacter}
-//           onGetCharacters={onGetCharacters}
-//           focusCharacter={focusCharacter}
-//           gameSetting={gameSetting}
-//           errorBanking={errorBanking}
-//           onClearBankingError={onClearBankingError}
-//           onDeposit={onDeposit}
-//           onLoan={onLoan}
-//           onWithdraw={onWithdraw}
-//           onTransfer={onTransfer}
-//           onBuyCredit={onBuyCredit}
-//         />
+
 //       );
 //     default:
 //       return <Introduction />;

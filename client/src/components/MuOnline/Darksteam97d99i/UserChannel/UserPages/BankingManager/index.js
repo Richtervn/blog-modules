@@ -18,6 +18,7 @@ export default ({
   onTransfer,
   onBuyCredit
 }) => {
+
   if (!characters) {
     onGetCharacters(user.memb___id);
     return null;

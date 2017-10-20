@@ -10,6 +10,7 @@ const CLEAR_ADD_POINT_ERROR = 'darksteam97d99i/CLEAR_ADD_POINT_ERROR';
 const CLEAR_RESET_ERROR = 'darksteam97d99i/CLEAR_RESET_ERROR';
 const CLEAR_GRAND_RESET_ERROR = 'darksteam97d99i/CLEAR_GRAND_RESET_ERROR';
 const CLEAR_RESET_QUEST_ERROR = 'darksteam97d99i/CLEAR_RESET_QUEST_ERROR';
+const CLEAR_BANKING_ERROR = 'darksteam97d99i/CLEAR_BANKING_ERROR';
 
 const ADD_POINT_START = 'darksteam97d99i/ADD_POINT_START';
 export const ADD_POINT_SUCCESS = 'darksteam97d99i/ADD_POINT_SUCCESS';
@@ -27,6 +28,26 @@ const RESET_QUEST_START = 'darksteam97d99i/RESET_QUEST_START';
 export const RESET_QUEST_SUCCESS = 'darksteam97d99i/RESET_QUEST_SUCCESS';
 const RESET_QUEST_FAIL = 'darksteam97d99i/RESET_QUEST_FAIL';
 
+const DEPOSIT_START = 'darksteam97d99i/DEPOSIT_START';
+export const DEPOSIT_SUCCESS = 'darksteam97d99i/DEPOSIT_SUCCESS';
+const DEPOSIT_FAIL = 'darksteam97d99i/DEPOSIT_FAIL';
+
+const WITHDRAW_START = 'darksteam97d99i/WITHDRAW_START';
+export const WITHDRAW_SUCCESS = 'darksteam97d99i/WITHDRAW_SUCCESS';
+const WITHDRAW_FAIL = 'darksteam97d99i/WITHDRAW_FAIL';
+
+const LOAN_START = 'darksteam97d99i/LOAN_START';
+export const LOAN_SUCCESS = 'darksteam97d99i/LOAN_SUCCESS';
+const LOAN_FAIL = 'darksteam97d99i/LOAN_FAIL';
+
+const TRANSFER_START = 'darksteam97d99i/TRANSFER_START';
+export const TRANSFER_SUCCESS = 'darksteam97d99i/TRANSFER_SUCCESS';
+const TRANSFER_FAIL = 'darksteam97d99i/TRANSFER_FAIL';
+
+const BUY_CREDIT_START = 'darksteam97d99i/BUY_CREDIT_START';
+export const BUY_CREDIT_SUCCESS = 'darksteam97d99i/BUY_CREDIT_SUCCESS';
+const BUY_CREDIT_FAIL = 'darksteam97d99i/BUY_CREDIT_FAIL';
+
 export const getCharacters = id =>
   actionCreator(
     GET_CHARACTERS_START,
@@ -41,6 +62,18 @@ export const clearAddPointError = () => ({ type: CLEAR_ADD_POINT_ERROR });
 export const clearResetError = () => ({ type: CLEAR_RESET_ERROR });
 export const clearGrandResetError = () => ({ type: CLEAR_GRAND_RESET_ERROR });
 export const clearResetQuestError = () => ({ type: CLEAR_RESET_QUEST_ERROR });
+export const clearBankingError = () => ({ type: CLEAR_BANKING_ERROR });
+
+export const deposit = query =>
+  actionCreator(DEPOSIT_START, DEPOSIT_SUCCESS, DEPOSIT_FAIL, darksteam97d99i.deposit, query)();
+export const withdraw = query =>
+  actionCreator(WITHDRAW_START, WITHDRAW_SUCCESS, WITHDRAW_FAIL, darksteam97d99i.withdraw, query)();
+export const loan = query =>
+  actionCreator(LOAN_START, LOAN_SUCCESS, LOAN_FAIL, darksteam97d99i.loan, query)();
+export const transfer = query =>
+  actionCreator(TRANSFER_START, TRANSFER_SUCCESS, TRANSFER_FAIL, darksteam97d99i.transfer, query)();
+export const buyCredit = query =>
+  actionCreator(BUY_CREDIT_START, BUY_CREDIT_SUCCESS, BUY_CREDIT_FAIL, darksteam97d99i.buyCredit, query)();
 
 export const addPoint = query =>
   actionCreator(ADD_POINT_START, ADD_POINT_SUCCESS, ADD_POINT_FAIL, darksteam97d99i.addPoint, query)();
@@ -70,7 +103,8 @@ export default (
     errorAddPoint: null,
     errorReset: null,
     errorGrandReset: null,
-    errorResetQuest: null
+    errorResetQuest: null,
+    errorBanking: null
   },
   action
 ) => {
@@ -132,6 +166,39 @@ export default (
       };
     }
 
+    case DEPOSIT_SUCCESS: {
+      const nextState = { ...state };
+      const changedCharacter = { ...state.focusCharacter, Money: action.data.Money };
+      nextState.characters = state.characters.map(character => {
+        if (character.Name == changedCharacter.Name) {
+          return changedCharacter;
+        }
+        return character;
+      });
+      return {
+        ...nextState,
+        characters: nextState.characters.slice(0),
+        focusCharacter: {...changedCharacter}
+      };
+    }
+
+    case LOAN_SUCCESS:
+    case WITHDRAW_SUCCESS: {
+      const nextState = { ...state };
+      const changedCharacter = { ...state.focusCharacter, Money: action.data.Money };
+      nextState.characters = state.characters.map(character => {
+        if (character.Name == changedCharacter.Name) {
+          return changedCharacter;
+        }
+        return character;
+      });
+      return {
+        ...nextState,
+        characters: nextState.characters.slice(0),
+        focusCharacter: {...changedCharacter}
+      };
+    }
+
     case RESET_FAIL:
       return { ...state, errorReset: action.error };
     case GRAND_RESET_FAIL:
@@ -140,6 +207,12 @@ export default (
       return { ...state, errorResetQuest: action.error };
     case ADD_POINT_FAIL:
       return { ...state, errorAddPoint: action.error };
+    case DEPOSIT_FAIL:
+    case WITHDRAW_FAIL:
+    case TRANSFER_FAIL:
+    case LOAN_FAIL:
+    case BUY_CREDIT_FAIL:
+      return { ...state, errorBanking: action.error };
     case CLEAR_ADD_POINT_ERROR:
       return { ...state, errorAddPoint: null };
     case CLEAR_RESET_ERROR:
@@ -148,6 +221,8 @@ export default (
       return { ...state, errorGrandReset: null };
     case CLEAR_RESET_QUEST_ERROR:
       return { ...state, errorResetQuest: null };
+    case CLEAR_BANKING_ERROR:
+      return { ...state, errorBanking: null };
     default:
       return state;
   }

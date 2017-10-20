@@ -5,11 +5,14 @@ import { changeActiveChannel } from 'modules/MuOnline/darksteam97d99i/navigator'
 import { getServerInfo, getGameSetting } from 'modules/MuOnline/darksteam97d99i/info';
 
 export default connect(
-  ({ ds9799_navigator, ds9799_info }) => ({
+  ({ ds9799_user, ds9799_navigator, ds9799_info }) => ({
+    user: ds9799_user.user,
     channels: ds9799_navigator.channels,
     activeChannel: ds9799_navigator.activeChannel,
     serverInfo: ds9799_info.serverInfo,
-    gameSetting: ds9799_info.gameSetting
+    gameSetting: ds9799_info.gameSetting,
+    errorRegister: ds9799_user.errorRegister,
+    errorLogin: ds9799_user.errorLogin
   }),
   dispatch => ({
     onChangeActiveChannel(channel) {
