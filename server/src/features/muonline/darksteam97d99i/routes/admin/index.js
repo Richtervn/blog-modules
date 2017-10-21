@@ -1,3 +1,6 @@
+import getMembers from './services/getMembers';
+import getCharacters from './services/getCharacters'
+
 export default (models, router, factories, helpers, appConfigs) => {
   const { wrap } = factories;
   const { MembInfo, AccountCharacter, Character, MembCredits, Banking, ViCurInfo } = models;
@@ -5,8 +8,7 @@ export default (models, router, factories, helpers, appConfigs) => {
   router.get(
     '/admin/memb_info',
     wrap(async (req, res, next) => {
-      const options = { where: { ...req.query } };
-      const accounts = await MembInfo.findAll(options);
+      const accounts = await getMembers(MembInfo, req.query);
       res.send(accounts);
     })
   );
@@ -14,33 +16,7 @@ export default (models, router, factories, helpers, appConfigs) => {
   router.get(
     '/admin/character',
     wrap(async (req, res, next) => {
-      const options = { where: { ...req.query } };
-      options.attributes = [
-        'AccountID',
-        'Name',
-        'cLevel',
-        'LevelUpPoint',
-        'Class',
-        'Strength',
-        'Dexterity',
-        'Vitality',
-        'Energy',
-        'Money',
-        'MapNumber',
-        'MapPosX',
-        'MapPosY',
-        'CtlCode',
-        'Resets',
-        'GrandResets',
-        'IsMarried',
-        'MarryName',
-        'QuestNumber',
-        'QuestMonsters',
-        'SkyEventWins',
-        'IsVip',
-        'VipExpirationTime'
-      ];
-      const characters = await Character.findAll(options);
+      const characters = await getCharacters(Character, req.query);
       res.send(characters);
     })
   );

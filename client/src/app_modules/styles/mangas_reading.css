@@ -62,6 +62,12 @@
   margin-left: 2px;
 }
 
+.mr-aka-tag {
+  max-width: 260px;
+  overflow: hidden;
+  margin-left: 2px;
+}
+
 .manga-card {
   width: 95%;
   cursor: pointer;

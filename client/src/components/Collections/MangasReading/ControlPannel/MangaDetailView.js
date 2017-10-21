@@ -41,7 +41,7 @@ export default ({ manga }) => (
     <p>
       <strong>Aka : </strong>
       {manga.Aka.map((aka, i) => (
-        <span key={i} className="badge badge-warning mr-genre-tag">
+        <span key={i} className="badge badge-warning mr-aka-tag">
           {aka}
         </span>
       ))}
