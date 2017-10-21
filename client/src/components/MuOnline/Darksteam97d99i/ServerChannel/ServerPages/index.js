@@ -1,20 +1,20 @@
 import React from 'react';
 
-import BagItemsEditor from './BagItemsEditor';
-import ShopEditor from './ShopEditor';
-import QuestEditor from './QuestEditor';
-import MonsterSetBase from './MonsterSetBase';
+import BagItemsEditor from 'containers/MuOnline/Darksteam97d99i/ServerChannel/ServerPages/BagItemsEditor';
+import ShopEditor from 'containers/MuOnline/Darksteam97d99i/ServerChannel/ServerPages/ShopEditor';
+import QuestEditor from 'containers/MuOnline/Darksteam97d99i/ServerChannel/ServerPages/QuestEditor';
+import MonsterSetBase from 'containers/MuOnline/Darksteam97d99i/ServerChannel/ServerPages/MonsterSetBase';
 
-export default ({ page, data, onGetData }) => {
+export default ({ page }) => {
   switch (page) {
     case 'Monster Set Base':
-      return <MonsterSetBase data={data} onGetData={onGetData}/>;
+      return <MonsterSetBase/>;
     case 'Bag Items Editor':
-      return <BagItemsEditor data={data} onGetData={onGetData}/>;
+      return <BagItemsEditor/>;
     case 'Shop Editor':
-      return <ShopEditor data={data} onGetData={onGetData}/>
+      return <ShopEditor/>
     case 'Quest Editor':
-      return <QuestEditor data={data} onGetData={onGetData}/>
+      return <QuestEditor/>
     default:
       return null;
   }

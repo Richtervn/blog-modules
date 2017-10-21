@@ -1,17 +1,15 @@
 import React from 'react';
 
-import SideNavMenu from '../AdminChannel/SideNavMenu';
-import ServerPages from './ServerPages';
+import SideNavMenu from 'containers/MuOnline/Darksteam97d99i/ServerChannel/SideNavMenu';
+import ServerPages from 'containers/MuOnline/Darksteam97d99i/ServerChannel/ServerPages';
 
-const menuList = ['Monster Set Base', 'Shop Editor', 'Bag Items Editor', 'Quest Editor', 'Server Info'];
-
-export default ({ page, onChangePage, data, onGetData }) => (
+export default () => (
   <div className="row no-row-margin">
     <div className="col-3 no-col-margin">
-      <SideNavMenu items={menuList} activeItem={page} onSelectItem={onChangePage} />
+      <SideNavMenu/>
     </div>
     <div className="col-9 no-col-margin">
-      <ServerPages page={page} data={data} onGetData={onGetData} />
+      <ServerPages/>
     </div>
   </div>
 );
