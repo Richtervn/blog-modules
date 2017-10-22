@@ -342,3 +342,27 @@
 .ds9799-acc-list-container {
   border: solid 1px #4c6177;
 }
+
+.ds9799-system-card {
+  border: solid 1px #4c6177;
+  height: 120px;
+  border-radius: 5px;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.ds9799-system-card-content {
+  width: 90%;
+  margin: auto;
+  color: black;
+  padding-left: 20px;
+}
+
+.ds9799-vip-system-add-btn {
+  border: dashed 1px;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 120px;
+}

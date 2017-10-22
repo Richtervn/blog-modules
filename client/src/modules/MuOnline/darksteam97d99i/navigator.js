@@ -29,7 +29,14 @@ export default (
       'Luxury Shop'
     ],
     userPage: null,
-    serverPages: ['Monster Set Base', 'Shop Editor', 'Bag Items Editor', 'Quest Editor', 'Server Info'],
+    serverPages: [
+      'Monster Set Base',
+      'Shop Editor',
+      'Bag Items Editor',
+      'Quest Editor',
+      'Server Info',
+      'Vip System'
+    ],
     serverPage: 'Monster Set Base',
     adminPages: [
       'Accounts Manager',

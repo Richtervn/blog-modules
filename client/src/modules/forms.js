@@ -18,6 +18,8 @@ import {
   GET_CAMPAIGN_DETAIL_SUCCESS
 } from 'modules/Games/starcraft';
 
+import { GET_VIP_SYSTEMS_SUCCESS, SET_FOCUS_VIP_SYSTEM } from 'modules/MuOnline/darksteam97d99i/data';
+
 import { GET_TOOL_DETAIL_SUCCESS, GET_VERSION_DETAIL_SUCCESS } from 'modules/Games/muonline';
 
 const CHANGE_ADD_FLASH_FORM = 'forms/CHANGE_ADD_FLASH_FORM';
@@ -33,9 +35,11 @@ const CHANGE_EDIT_STARCRAFT_CAMPAIGN_FORM = 'forms/CHANGE_EDIT_STARCRAFT_CAMPAIG
 const CHANGE_ADD_STARCRAFT_MOD_FORM = 'forms/CHANGE_ADD_STARCRAFT_MOD_FORM';
 const CHANGE_EDIT_STARTCRAFT_MOD_FORM = 'forms/CHANGE_EDIT_STARTCRAFT_MOD_FORM';
 const CHANGE_ADD_MUONLINE_TOOL_FORM = 'forms/CHANGE_ADD_MUONLINE_TOOL_FORM';
-const CHANGE_ADD_MUONLINE_VERSION_FORM = 'forms/CHANGE_ADD_MUONLINE_VERSION_FORM';
 const CHANGE_EDIT_MUONLINE_TOOL_FORM = 'forms/CHANGE_EDIT_MUONLINE_TOOL_FORM';
+const CHANGE_ADD_MUONLINE_VERSION_FORM = 'forms/CHANGE_ADD_MUONLINE_VERSION_FORM';
 const CHANGE_EDIT_MUONLINE_VERSION_FORM = 'forms/CHANGE_EDIT_MUONLINE_VERSION_FORM';
+const CHANGE_ADD_DS9799_VIP_SYSTEM_FORM = 'forms/CHANGE_ADD_DS9799_VIP_SYSTEM_FORM';
+const CHANGE_EDIT_DS9799_VIP_SYSTEM_FORM = 'forms/CHANGE_EDIT_DS9799_VIP_SYSTEM_FORM';
 
 const ADD_ARRAY_YUGIOH_MOD_FORM = 'forms/ADD_ARRAY_YUGIOH_MOD_FORM';
 const ADD_ARRAY_YUGIOH_DECK_FORM = 'forms/ADD_ARRAY_YUGIOH_DECK_FORM';
@@ -61,6 +65,8 @@ const REMOVE_ARRAY_MUONLINE_EDIT_VERSION_FORM = 'forms/REMOVE_ARRAY_MUONLINE_EDI
 
 const CHANGE_FORM_RATING = 'forms/CHANGE_FORM_RATING';
 
+export const changeAddDs9799VipSystemForm = event => ({ type: CHANGE_ADD_DS9799_VIP_SYSTEM_FORM, event });
+export const changeEditDs9799VipSystemForm = event => ({ type: CHANGE_EDIT_DS9799_VIP_SYSTEM_FORM, event });
 export const changeAddFlashForm = event => ({ type: CHANGE_ADD_FLASH_FORM, event });
 export const changeAddMusicForm = event => ({ type: CHANGE_ADD_MUSIC_FORM, event });
 export const changeAddStarcraftModForm = event => ({ type: CHANGE_ADD_STARCRAFT_MOD_FORM, event });
@@ -245,7 +251,14 @@ export default (
       Introduce: '',
       Version: ''
     },
-    EditMuonlineVersion: null
+    EditMuonlineVersion: null,
+    AddDS9799VipSystem: {
+      name: '',
+      price: 0,
+      duration: 0,
+      type: 'Account'
+    },
+    EditDS9799VipSystem: null
   },
   action
 ) => {
@@ -335,6 +348,12 @@ export default (
     case CHANGE_EDIT_MUONLINE_VERSION_FORM:
       formValue = commonFormChange(state.EditMuonlineVersion, action.event, action.index, ['Credits']);
       return { ...state, EditMuonlineVersion: { ...formValue } };
+    case CHANGE_ADD_DS9799_VIP_SYSTEM_FORM:
+      formValue = commonFormChange(state.AddDS9799VipSystem, action.event);
+      return { ...state, AddDS9799VipSystem: { ...formValue } };
+    case CHANGE_EDIT_DS9799_VIP_SYSTEM_FORM:
+      formValue = commonFormChange(state.EditDS9799VipSystem, action.event);
+      return { ...state, EditDS9799VipSystem: { ...formValue } };
     case ADD_ARRAY_YUGIOH_MOD_FORM:
       state.AddYugiohMod[action.name].push('');
       return {
@@ -544,6 +563,10 @@ export default (
       return { ...state, EditMuonlineTool: { ...action.data } };
     case GET_VERSION_DETAIL_SUCCESS:
       return { ...state, EditMuonlineVersion: { ...action.data } };
+    case SET_FOCUS_VIP_SYSTEM:
+      return { ...state, EditDS9799VipSystem: { ...action.system } };
+    case GET_VIP_SYSTEMS_SUCCESS:
+      return { ...state, EditDS9799VipSystem: action.data[0] };
     default:
       return state;
   }

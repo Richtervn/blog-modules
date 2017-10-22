@@ -43,7 +43,9 @@ export default async (MembInfo, ViCurInfo, MembCredit, Banking, body, helpers, a
       sno__numb: sno__numb,
       appl_days: appl_days,
       bloc_code: '0',
-      ctl1_code: '0'
+      ctl1_code: '0',
+      IsVip: 0,
+      VipExpirationTime: 0
     });
 
     ViCurInfo.create({

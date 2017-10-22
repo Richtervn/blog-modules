@@ -14,6 +14,8 @@ import FormAddMuonlineTool from 'containers/Forms/FormAddMuonlineTool';
 import FormAddMuonlineVersion from 'containers/Forms/FormAddMuonlineVersion';
 import FormEditMuonlineTool from 'containers/Forms/FormEditMuonlineTool';
 import FormEditMuonlineVersion from 'containers/Forms/FormEditMuonlineVersion';
+import FormAddDs9799VipSystem from 'containers/Forms/FormAddDs9799VipSystem';
+import FormEditDs9799VipSystem from 'containers/Forms/FormEditDs9799VipSystem';
 
 const makeIcon = (name, ext) => {
   const iconPath = 'app_modules/images/icons/';
@@ -110,6 +112,16 @@ export default id => {
       return {
         header: { icon: makeIcon('mulogo'), label: 'Edit Mu Tool' },
         body: FormEditMuonlineTool
+      };
+    case 'addDs9799VipSystemModal':
+      return {
+        header: { icon: makeIcon('mulogo'), label: 'Add Vip System' },
+        body: FormAddDs9799VipSystem
+      };
+    case 'editDs9799VipSystemModal':
+      return {
+        header: { icon: makeIcon('mulogo'), label: 'Edit Vip System' },
+        body: FormEditDs9799VipSystem
       };
     default:
       return modalDisplay;

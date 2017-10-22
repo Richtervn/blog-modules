@@ -19,6 +19,7 @@ const models = async config => {
   const MembCredits = sequelize.import('./MembCredits');
   const Banking = sequelize.import('./Banking');
   const ViCurInfo = sequelize.import('./ViCurInfo');
+  const VipSystem = sequelize.import('./VipSystem');
 
   try {
     await sequelize.sync();
@@ -32,7 +33,8 @@ const models = async config => {
     Character,
     MembCredits,
     Banking,
-    ViCurInfo
+    ViCurInfo,
+    VipSystem
   };
 };
 

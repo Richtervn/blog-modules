@@ -85,6 +85,14 @@ export default (sequelize, DataTypes) => {
     ctl1_code: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    IsVip: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    VipExpirationTime: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     tableName: 'MEMB_INFO',

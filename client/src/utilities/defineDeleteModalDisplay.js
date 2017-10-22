@@ -27,6 +27,8 @@ export default id => {
       return { header: { icon: makeIcon('danger'), label: 'Delete Mu Tool' } };
     case 'deleteMuonlineVersionModal':
       return { header: { icon: makeIcon('danger'), label: 'Delete Mu Version' } };
+    case 'deleteDs9799VipSystemModal':
+      return { header: { icon: makeIcon('danger'), label: 'Delete VIP System' } };
     default:
       return modalDisplay;
   }

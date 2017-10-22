@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 import regisUser from './services/regisUser';
 import loginUser from './services/loginUser';
 import editProfile from './services/editProfile';

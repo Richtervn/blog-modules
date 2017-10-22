@@ -4,3 +4,4 @@ export tools from './tools';
 export banking from './banking';
 export admin from './admin';
 export system from './system';
+export vipSystem from './vipSystem';

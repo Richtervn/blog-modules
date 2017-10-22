@@ -1,6 +1,6 @@
 import serviceCaller from 'factories/serviceCaller';
 
-const { commonPost, commonGet, commonPut } = serviceCaller;
+const { commonPost, commonGet, commonPut, commonDelete } = serviceCaller;
 
 export default {
   register(formBody){
@@ -81,6 +81,22 @@ export default {
   },
   getMuData(file){
     const data = commonGet('mu/darksteam97d99i/tools/data', [file]);
+    return data;
+  },
+  getVipSystems(){
+    const data = commonGet('mu/darksteam97d99i/vip_system/get_all');
+    return data;
+  },
+  addVipSystem(formBody){
+    const data = commonPost('mu/darksteam97d99i/vip_system/add', formBody);
+    return data;
+  },
+  editVipSystem(formBody){
+    const data = commonPut('mu/darksteam97d99i/vip_system/update', formBody);
+    return data;
+  },
+  deleteVipSystem(id){
+    const data = commonDelete('mu/darksteam97d99i/vip_system/' + id);
     return data;
   }
 };
