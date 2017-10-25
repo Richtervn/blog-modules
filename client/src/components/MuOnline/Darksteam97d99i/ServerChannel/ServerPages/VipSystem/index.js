@@ -37,12 +37,16 @@ export default ({
         ))}
       </div>
       <FormModal id="addDs9799VipSystemModal" formBody={addFormBody} onSubmit={onAddVipSystem} />
-      <DeleteModal
-        id="deleteDs9799VipSystemModal"
-        text={`Are you sure want to delete package ${focusVipSystem.name} ?`}
-        onSubmit={() => onDeleteVipSystem(focusVipSystem.id)}
-      />
-      <FormModal id="editDs9799VipSystemModal" formBody={editFormBody} onSubmit={onEditVipSystem} />
+      {focusVipSystem && (
+        <DeleteModal
+          id="deleteDs9799VipSystemModal"
+          text={`Are you sure want to delete package ${focusVipSystem.name} ?`}
+          onSubmit={() => onDeleteVipSystem(focusVipSystem.id)}
+        />
+      )}
+      {editFormBody && (
+        <FormModal id="editDs9799VipSystemModal" formBody={editFormBody} onSubmit={onEditVipSystem} />
+      )}
     </div>
   );
 };
