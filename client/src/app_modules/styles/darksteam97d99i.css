@@ -367,3 +367,29 @@
   height: 120px;
   cursor: pointer;
 }
+
+.ds9799-vip-shop {
+  border: solid 1px #4c6177;
+  margin-top: 10px;
+  margin-left: 20px;
+  height: 654px;
+  border-radius: 4px;
+  overflow-y: auto;
+}
+
+.ds9799-vip-shop-header {
+  background-color: #4c6177;
+  color: white;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ds9799-vip-package {
+  border: solid 2px #c88f3a;
+  background-color: antiquewhite;
+  color: black;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 3px;
+}

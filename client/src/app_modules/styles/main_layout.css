@@ -174,3 +174,8 @@
 .sm-mg {
   margin: 5px;
 }
+
+.btn-full {
+  width: 100%;
+  height: 100%;
+}
