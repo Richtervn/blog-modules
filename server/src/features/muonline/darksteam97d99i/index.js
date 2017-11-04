@@ -1,6 +1,6 @@
 import express from 'express';
 import dbModels from './models';
-import * as methods from './methods';
+import initMethods from './methods';
 import * as routes from './routes';
 import * as helpers from './helpers';
 import * as appConfigs from './appConfigs';
@@ -8,7 +8,9 @@ import * as appConfigs from './appConfigs';
 const muApp = async (factories, config) => {
   const router = express.Router();
   try {
-    let models = await dbModels(config);
+    const models = await dbModels(config);
+    const methods = initMethods(models, helpers); 
+
     for (let key in routes) {
       routes[key](models, router, factories, helpers, appConfigs, methods);
     }

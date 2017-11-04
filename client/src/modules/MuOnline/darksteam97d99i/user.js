@@ -25,14 +25,12 @@ const EDIT_PROFILE_START = 'darksteam97d99i/user/EDIT_PROFILE_START';
 const EDIT_PROFILE_FAIL = 'darksteam97d99i/user/EDIT_PROFILE_FAIL';
 const EDIT_PROFILE_SUCCESS = 'darksteam97d99i/user/EDIT_PROFILE_SUCCESS';
 
+const BUY_VIP_START = 'darksteam97d99i/user/BUY_VIP_START';
+export const BUY_VIP_SUCCESS = 'darksteam97d99i/user/BUY_VIP_SUCCESS';
+const BUY_VIP_FAIL = 'darksteam97d99i/user/BUY_VIP_FAIL';
+
 export const editProfile = formBody =>
-  actionCreator(
-    EDIT_PROFILE_START,
-    EDIT_PROFILE_SUCCESS,
-    EDIT_PROFILE_FAIL,
-    darksteam97d99i.editProfile,
-    formBody
-  )();
+  actionCreator(EDIT_PROFILE_START, EDIT_PROFILE_SUCCESS, EDIT_PROFILE_FAIL, darksteam97d99i.editProfile, formBody)();
 
 const LOGOUT = 'darksteam97d99i/LOGOUT';
 
@@ -41,11 +39,24 @@ export const register = formBody =>
   actionCreator(REGISTER_START, REGISTER_SUCCESS, REGISTER_FAIL, darksteam97d99i.register, formBody)();
 export const login = formBody =>
   actionCreator(LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, darksteam97d99i.login, formBody)();
+export const buyVip = (vipPackage, user, focusCharacter) =>
+  actionCreator(
+    BUY_VIP_START,
+    BUY_VIP_SUCCESS,
+    BUY_VIP_FAIL,
+    darksteam97d99i.buyVip,
+    vipPackage,
+    user,
+    focusCharacter
+  )();
 
 const initialState = { user: null, errorLogin: null, errorRegister: null };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case BUY_VIP_FAIL:
+      console.log(action)
+      return state;
     case RESET_QUEST_SUCCESS:
     case ADD_POINT_SUCCESS:
       if (action.data.isUseBank == 'true') {

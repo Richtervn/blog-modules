@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { getCharacters, setFocusCharacter } from 'modules/MuOnline/darksteam97d99i/character';
 import { getVipSystems } from 'modules/MuOnline/darksteam97d99i/data';
+import { buyVip } from 'modules/MuOnline/darksteam97d99i/user';
 
 export default connect(
   ({ ds9799_user, ds9799_character, ds9799_data }) => ({
@@ -18,8 +19,11 @@ export default connect(
     onSetFocusCharacter(character) {
       dispatch(setFocusCharacter(character));
     },
-    onGetVipSystems(){
+    onGetVipSystems() {
       dispatch(getVipSystems());
+    },
+    onBuyVip(vipPackage, user, focusCharacter) {
+      dispatch(buyVip(vipPackage, user, focusCharacter));
     }
   })
 )(VipManager);

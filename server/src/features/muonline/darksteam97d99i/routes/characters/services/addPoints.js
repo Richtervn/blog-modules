@@ -21,7 +21,7 @@ export default async (Character, Banking, query, appConfigs, methods) => {
   const resp = { LevelUpPoint: character.LevelUpPoint - point, isUseBank: isUseBank, type: type };
 
   if (isUseBank == 'true') {
-    charged = await payByBank(character.AccountID, appConfigs.GameSetting.ADD_POINT_FEE, Banking);
+    charged = await payByBank(character.AccountID, appConfigs.GameSetting.ADD_POINT_FEE);
     if (charged.message) return charged;
     resp.zen_balance = charged.zen_balance;
   } else {

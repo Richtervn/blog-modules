@@ -1,14 +1,11 @@
 import React from 'react';
 
-// import AccountsManager from './AccountsManager';
-// , accounts, onGetAccounts, onSetActiveAccount, activeAccount
+import AccountsManager from 'containers/MuOnline/Darksteam97d99i/AdminChannel/AdminPages/AccountsManager';
 
 export default ({ page }) => {
   switch (page) {
     case 'Accounts Manager':
-      // return (
-      //   <AccountsManager/>
-      // );
+      return <AccountsManager/>;
     case 'Characters Manager':
       return null;
     case 'Members Banking Manager':

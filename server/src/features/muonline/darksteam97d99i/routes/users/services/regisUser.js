@@ -1,7 +1,7 @@
 import Promise from 'bluebird';
 
 export default async (MembInfo, ViCurInfo, MembCredit, Banking, body, helpers, appConfigs) => {
-  console.log(body);
+
   const { makeSmallDateTime, makeSnoNumber } = helpers;
   const { GameSetting } = appConfigs;
 
@@ -73,10 +73,11 @@ export default async (MembInfo, ViCurInfo, MembCredit, Banking, body, helpers, a
       memb___id: body.Username,
       credits: GameSetting.NEW_REGISTER_CREDIT
     });
+
+    return account;
+
   } catch(e){
     console.log(e);
     return false;
   }
-
-  return account;
 };

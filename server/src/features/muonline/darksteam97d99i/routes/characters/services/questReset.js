@@ -19,7 +19,7 @@ export default async (Character, Banking, query, appConfigs, methods) => {
   const resp = { isUseBank: isUseBank };
 
   if (isUseBank == 'true') {
-    charged = await payByBank(character.AccountID, appConfigs.GameSetting.QUEST_RESET_FEE, Banking);
+    charged = await payByBank(character.AccountID, appConfigs.GameSetting.QUEST_RESET_FEE);
     if (charged.message) return charged;
     resp.zen_balance = charged.zen_balance;
   } else {

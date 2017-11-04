@@ -28,6 +28,7 @@ export default combineReducers({
   ds9799_user: darksteam97d99i.user,
   ds9799_info: darksteam97d99i.info,
   ds9799_character: darksteam97d99i.character,
-  ds9799_data: darksteam97d99i.data
+  ds9799_data: darksteam97d99i.data,
+  ds9799_admin: darksteam97d99i.admin
 });
 

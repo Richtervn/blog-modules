@@ -1,6 +1,7 @@
-export default (models, router, factories, helpers, appConfigs) => {
+export default (models, router, factories, helpers, appConfigs, methods) => {
   const { wrap } = factories;
   const { VipSystem } = models;
+  const { buyVipAccount, buyVipCharacter } = methods;
 
   router.get(
     '/vip_system/get_all',
@@ -32,6 +33,22 @@ export default (models, router, factories, helpers, appConfigs) => {
     wrap(async (req, res, next) => {
       await VipSystem.destroy({ where: { id: req.params.id } });
       res.send({ id: req.params.id });
+    })
+  );
+
+  router.get(
+    '/vip_system/buy',
+    wrap(async (req, res, next) => {
+      const { packageId, userId, characterId } = req.query;
+      const vipSystem = await VipSystem.findOne({ where: { id: packageId } });
+      let result;
+      if (vipSystem.type == 'Character') {
+        result = await buyVipCharacter(vipSystem, characterId);
+      }
+      if (vipSystem.type == 'Account') {
+        result = await buyVipAccount(vipSystem, userId);
+      }
+      res.send(result);
     })
   );
 

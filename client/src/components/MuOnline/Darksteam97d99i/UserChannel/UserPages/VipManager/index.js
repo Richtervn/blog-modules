@@ -3,13 +3,22 @@ import React from 'react';
 import CharacterCard from '../CharacterManager/CharacterCard';
 import VipCard from './VipCard';
 
-export default ({ user, characters, onGetCharacters, focusCharacter, onSetFocusCharacter, vipSystems, onGetVipSystems }) => {
+export default ({
+  user,
+  characters,
+  onGetCharacters,
+  focusCharacter,
+  onSetFocusCharacter,
+  vipSystems,
+  onGetVipSystems,
+  onBuyVip
+}) => {
   if (!characters) {
     onGetCharacters(user.memb___id);
     return null;
   }
 
-  if(!vipSystems) {
+  if (!vipSystems) {
     onGetVipSystems();
     return null;
   }
@@ -31,7 +40,9 @@ export default ({ user, characters, onGetCharacters, focusCharacter, onSetFocusC
           <div className="ds9799-vip-shop-header text-center">Buy Character VIP</div>
           {vipSystems
             .filter(item => item.type == 'Character')
-            .map((item, i) => <VipCard key={i} item={item} />)}
+            .map((item, i) => (
+              <VipCard key={i} item={item} onBuyVip={vipPackage => onBuyVip(vipPackage, user, focusCharacter)} />
+            ))}
         </div>
       </div>
       <div className="col-4 no-col-margin">
@@ -39,7 +50,9 @@ export default ({ user, characters, onGetCharacters, focusCharacter, onSetFocusC
           <div className="ds9799-vip-shop-header text-center">Buy Account VIP</div>
           {vipSystems
             .filter(item => item.type == 'Account')
-            .map((item, i) => <VipCard key={i} item={item} />)}
+            .map((item, i) => (
+              <VipCard key={i} item={item} onBuyVip={vipPackage => onBuyVip(vipPackage, user, focusCharacter)} />
+            ))}
         </div>
       </div>
     </div>

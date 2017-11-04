@@ -78,6 +78,8 @@
 
 .ds9799-dashboard-container {
   margin: 10px;
+  overflow-y: auto;
+  max-height: 656px;
 }
 
 .ds9799-profile-card {
@@ -392,4 +394,30 @@
   padding: 5px;
   margin: 10px;
   border-radius: 3px;
+}
+
+.ds9799-admin-account-card {
+  border: solid 1px #4c6177;
+  height: 656px;
+  border-radius: 5px;
+  background-color: white;
+  margin: 10px;
+}
+
+.ds9799-admin-account-card-header {
+  background-color: #4c6177;
+  color: white;
+  height: 40px;
+  padding: 5px;
+}
+
+.ds9799-admin-account-card-content {
+  width: 90%;
+  padding-top: 20px;
+  color: black;
+  margin: auto;
+}
+
+.ds9799-admin-account-form-control {
+  margin-bottom: 5px;
 }

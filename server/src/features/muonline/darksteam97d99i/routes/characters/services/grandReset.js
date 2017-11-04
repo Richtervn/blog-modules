@@ -52,7 +52,7 @@ export default async (Character, Banking, query, appConfigs, methods) => {
 
   let charged;
   if (isUseBank == 'true') {
-    charged = await payByBank(character.AccountID, RESET_FEE, Banking);
+    charged = await payByBank(character.AccountID, RESET_FEE);
     if (charged.message) return charged;
     resp.zen_balance = charged.zen_balance;
   } else {
