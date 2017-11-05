@@ -35,12 +35,14 @@ class AccountInfo extends Component {
 		this.enableEditing = this.enableEditing.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.save = this.save.bind(this);
+		this.test = this.test.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
 		const { account } = nextProps;
 		this.setState({
 			value: {
+				memb_name: account.memb_name,
 				IsVip: account.IsVip ? true : false,
 				VipExpirationTime: account.VipExpirationTime,
 				addr_deta: account.addr_deta || '',
@@ -56,7 +58,6 @@ class AccountInfo extends Component {
 				memb___id: account.memb___id,
 				memb__pwd: account.memb__pwd,
 				memb_guid: account.memb_guid,
-				memb_name: account.memb_name,
 				modi_days: account.modi_days || undefined,
 				out__days: account.out__days || undefined,
 				phon_numb: account.phon_numb || 0,
@@ -69,6 +70,10 @@ class AccountInfo extends Component {
 		});
 	}
 
+	test(e) {
+		console.log(e.target.value);
+	}
+
 	enableEditing() {
 		this.setState({ editing: true });
 	}
@@ -77,6 +82,12 @@ class AccountInfo extends Component {
 
 	handleChange(event) {
 		const { name, value } = event.target;
+		const nextStateValue = { ...this.state.value };
+		switch (name) {
+			default:
+				nextStateValue[name] = value;
+		}
+		this.setState({ value: nextStateValue });
 	}
 
 	render() {
@@ -99,140 +110,325 @@ class AccountInfo extends Component {
 					<div className="row no-row-margin">
 						<div className="col-4">
 							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
+								<b>Memb Guid :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="text"
+									value={this.state.value.memb_guid}
+									disabled
+									name="memb_guid"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>Real Name :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="text"
+									value={this.state.value.memb_name}
+									disabled={!this.state.editing}
+									name="memb_name"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>SNO Number :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="number"
+									value={this.state.value.sno__numb}
+									disabled={!this.state.editing}
+									name="sno__numb"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>Email Address :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="email"
+									value={this.state.value.mail_addr}
+									disabled={!this.state.editing}
+									name="mail_addr"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>Address Info :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="date"
+									value={this.state.value.addr_info}
+									disabled={!this.state.editing}
+									name="addr_info"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>Address Deta :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="date"
+									value={this.state.value.addr_deta}
+									disabled={!this.state.editing}
+									name="addr_deta"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>Username :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="text"
+									value={this.state.value.memb___id}
+									disabled={!this.state.editing}
+									name="memb___id"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>Password :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="text"
+									value={this.state.value.memb__pwd}
+									disabled={!this.state.editing}
+									name="memb__pwd"
+									onChange={this.handleChange}
+								/>
 							</div>
 						</div>
 						<div className="col-4">
 							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
+								<b>Control Code :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="number"
+									value={this.state.value.ctl1_code}
+									disabled={!this.state.editing}
+									name="ctl1_code"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>Secret Question :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="text"
+									value={this.state.value.fpas_ques}
+									disabled={!this.state.editing}
+									name="fpas_ques"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>Secret Answer :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="text"
+									value={this.state.value.fpas_answ}
+									disabled={!this.state.editing}
+									name="fpas_answ"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>Job Code :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="number"
+									value={this.state.value.job__code}
+									disabled={!this.state.editing}
+									name="job__code"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>Phone Number :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="number"
+									value={this.state.value.phon_numb}
+									disabled={!this.state.editing}
+									name="phon_numb"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>Telephone Number :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="number"
+									value={this.state.value.tel__numb}
+									disabled={!this.state.editing}
+									name="tel__numb"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>Post Code :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="number"
+									value={this.state.value.post_code}
+									disabled={!this.state.editing}
+									name="post_code"
+									onChange={this.handleChange}
+								/>
+							</div>
+						</div>
+
+						<div className="col-4">
+							<div>
+								<b>Block Code :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="number"
+									value={this.state.value.bloc_code}
+									disabled={!this.state.editing}
+									name="bloc_code"
+									onChange={this.handleChange}
+								/>
 							</div>
 						</div>
 						<div className="col-4">
 							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
+								<b>Out Day :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="date"
+									value={this.state.value.out__days}
+									disabled={!this.state.editing}
+									name="out__days"
+									onChange={this.handleChange}
+								/>
 							</div>
 						</div>
+
 						<div className="col-4">
 							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
+								<b>Modification Day :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="date"
+									value={this.state.value.modi_days}
+									disabled={!this.state.editing}
+									name="modi_days"
+									onChange={this.handleChange}
+								/>
 							</div>
 						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
+
+						<div className="col-4 form-inline">
+							<div className="form-check">
+								<label className="form-check-label">
+									<input
+										className="form-check-input"
+										type="checkbox"
+										value={this.state.value.IsVip}
+										disabled={!this.state.editing}
+										name="IsVip"
+										onChange={this.handleChange}
+									/>
+									<b>Is Vip</b>
+								</label>
 							</div>
 						</div>
+
 						<div className="col-4">
 							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
+								<b>Vip Expiration Time :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="date"
+									value={this.state.value.VipExpirationTime}
+									disabled={!this.state.editing}
+									name="VipExpirationTime"
+									onChange={this.handleChange}
+								/>
 							</div>
 						</div>
+
 						<div className="col-4">
 							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
+								<b>Apply Day :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="date"
+									value={this.state.value.appl_days}
+									disabled={!this.state.editing}
+									name="appl_days"
+									onChange={this.handleChange}
+								/>
 							</div>
 						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
+
+						<div className="col-4 form-inline">
+							<div className="form-check">
+								<label className="form-check-label">
+									<input
+										className="form-check-input"
+										type="checkbox"
+										value={this.state.value.mail_chek}
+										disabled={!this.state.editing}
+										name="mail_chek"
+										onChange={this.handleChange}
+									/>
+									<b>Checked Mail</b>
+								</label>
 							</div>
 						</div>
+
 						<div className="col-4">
 							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
-							</div>
-						</div>
-						<div className="col-4">
-							<div>
-								<b>DCM:</b>
-								<input className="ds9799-admin-account-form-control form-control" type="text" />
+								<b>True Day :</b>
+								<input
+									className="ds9799-admin-account-form-control form-control"
+									type="date"
+									value={this.state.value.true_days}
+									disabled={!this.state.editing}
+									name="true_days"
+									onChange={this.handleChange}
+								/>
 							</div>
 						</div>
 					</div>
@@ -243,183 +439,3 @@ class AccountInfo extends Component {
 }
 
 export default AccountInfo;
-
-//   render() {
-//     const { editing } = this.state;
-//     return (
-//       <div className="ds9799-profile-card">
-//         <div className="ds9799-profile-card-header text-center">
-//           <strong>Profile</strong>
-//           <span className="pull-right">
-//             <button onClick={editing ? this.save : this.enableEditing}>
-//               <i className={editing ? 'fa fa-save' : 'fa fa-pencil'} />
-//             </button>
-//           </span>
-//         </div>
-//         <div className="ds9799-profile-card-content">
-//           <div className="input-group ds9799-margin-bottom">
-//             <span className="input-group-addon">
-//               <i className="fa fa-id-card fa-fw" />
-//             </span>
-//             <input
-//               type="text"
-//               className="ds9799-admin-account-form-control form-control"
-//               placeholder="Name"
-//               value={this.state.value.Name}
-//               disabled
-//             />
-//           </div>
-//           <div className="input-group ds9799-margin-bottom">
-//             <span className="input-group-addon">
-//               <i className="fa fa-user fa-fw" />
-//             </span>
-//             <input
-//               type="text"
-//               className="ds9799-admin-account-form-control form-control"
-//               placeholder="User"
-//               value={this.state.value.User}
-//               disabled
-//             />
-//           </div>
-
-//           <div className="input-group ds9799-margin-bottom">
-//             <span className="input-group-addon">
-//               <i className="fa fa-envelope fa-fw" />
-//             </span>
-//             <input
-//               type="email"
-//               name="MailAddr"
-//               className="ds9799-admin-account-form-control form-control"
-//               placeholder="Email Address"
-//               disabled={!this.state.editing}
-//               value={this.state.value.MailAddr}
-//               onChange={this.handleChange}
-//             />
-//           </div>
-
-//           <div className="input-group ds9799-margin-bottom">
-//             <span className="input-group-addon">
-//               <i className="fa fa-map-marker fa-fw" />
-//             </span>
-//             <input
-//               type="number"
-//               name="PostCode"
-//               className="ds9799-admin-account-form-control form-control"
-//               placeholder="Post Code"
-//               disabled={!this.state.editing}
-//               value={this.state.value.PostCode}
-//               onChange={this.handleChange}
-//             />
-//           </div>
-
-//           <div className="input-group ds9799-margin-bottom">
-//             <span className="input-group-addon">
-//               <i className="fa fa-briefcase fa-fw" />
-//             </span>
-//             <input
-//               type="number"
-//               name="JobCode"
-//               className="ds9799-admin-account-form-control form-control"
-//               placeholder="Job Code"
-//               disabled={!this.state.editing}
-//               value={this.state.value.JobCode}
-//               onChange={this.handleChange}
-//             />
-//           </div>
-
-//           <div className="input-group ds9799-margin-bottom">
-//             <span className="input-group-addon">
-//               <i className="fa fa-address-card fa-fw" />
-//             </span>
-//             <input
-//               type="text"
-//               name="AddrInfo"
-//               className="ds9799-admin-account-form-control form-control"
-//               placeholder="Primary Address"
-//               disabled={!this.state.editing}
-//               value={this.state.value.AddrInfo}
-//               onChange={this.handleChange}
-//             />
-//           </div>
-
-//           <div className="input-group ds9799-margin-bottom">
-//             <span className="input-group-addon">
-//               <i className="fa fa-address-card-o fa-fw" />
-//             </span>
-//             <input
-//               type="text"
-//               name="AddrDeta"
-//               className="ds9799-admin-account-form-control form-control"
-//               placeholder="Secondary Address"
-//               disabled={!this.state.editing}
-//               value={this.state.value.AddrDeta}
-//               onChange={this.handleChange}
-//             />
-//           </div>
-
-//           <div className="input-group ds9799-margin-bottom">
-//             <span className="input-group-addon">
-//               <i className="fa fa-mobile-phone fa-fw" />
-//             </span>
-//             <input
-//               type="number"
-//               name="TelNumb"
-//               className="ds9799-admin-account-form-control form-control"
-//               placeholder="Mobile Phone Number"
-//               disabled={!this.state.editing}
-//               value={this.state.value.TelNumb}
-//               onChange={this.handleChange}
-//             />
-//           </div>
-
-//           <div className="input-group ds9799-margin-bottom">
-//             <span className="input-group-addon">
-//               <i className="fa fa-phone-square fa-fw" />
-//             </span>
-//             <input
-//               type="number"
-//               name="PhonNumb"
-//               className="ds9799-admin-account-form-control form-control"
-//               placeholder="Phone Number"
-//               disabled={!this.state.editing}
-//               value={this.state.value.PhonNumb}
-//               onChange={this.handleChange}
-//             />
-//           </div>
-
-//           <div className="input-group ds9799-margin-bottom">
-//             <span className="input-group-addon">
-//               <i className="fa fa-lock fa-fw" />
-//             </span>
-//             <input
-//               type="text"
-//               name="FpasQues"
-//               className="ds9799-admin-account-form-control form-control"
-//               placeholder="Secret Question"
-//               disabled={!this.state.editing}
-//               value={this.state.value.FpasQues}
-//               onChange={this.handleChange}
-//             />
-//           </div>
-
-//           <div className="input-group ds9799-margin-bottom">
-//             <span className="input-group-addon">
-//               <i className="fa fa-unlock-alt fa-fw" />
-//             </span>
-//             <input
-//               type="text"
-//               name="FpasAnsw"
-//               className="ds9799-admin-account-form-control form-control"
-//               placeholder="Secret Answer"
-//               disabled={!this.state.editing}
-//               value={this.state.value.FpasAnsw}
-//               onChange={this.handleChange}
-//             />
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// export default ProfileCard;

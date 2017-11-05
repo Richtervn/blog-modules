@@ -38,8 +38,23 @@ class ProfileCard extends Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    const nextState = {...this.state};
-    nextState.value[name] = value;
+    const nextState = { ...this.state };
+
+    switch (name) {
+      case 'JobCode':
+        if (value < 0) {
+          nextState.value.JobCode = 0;
+        } else if (value > 99) {
+          nextState.value.JobCode = 99;
+        } else {
+          nextState.value.JobCode = value;
+        }
+        break;
+      default:
+        nextState.value[name] = value;
+        break;
+    }
+
     this.setState(nextState);
   }
 
@@ -60,25 +75,13 @@ class ProfileCard extends Component {
             <span className="input-group-addon">
               <i className="fa fa-id-card fa-fw" />
             </span>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Name"
-              value={this.state.value.Name}
-              disabled
-            />
+            <input type="text" className="form-control" placeholder="Name" value={this.state.value.Name} disabled />
           </div>
           <div className="input-group ds9799-margin-bottom">
             <span className="input-group-addon">
               <i className="fa fa-user fa-fw" />
             </span>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="User"
-              value={this.state.value.User}
-              disabled
-            />
+            <input type="text" className="form-control" placeholder="User" value={this.state.value.User} disabled />
           </div>
 
           <div className="input-group ds9799-margin-bottom">

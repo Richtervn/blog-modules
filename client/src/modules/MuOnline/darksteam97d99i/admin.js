@@ -23,7 +23,7 @@ export default (state = {
 }, action) => {
   switch (action.type) {
     case ADMIN_GET_ACCOUNTS_SUCCESS:
-      return {...state, accounts: action.data};
+      return {...state, accounts: action.data, focusAccount: action.data[0]};
     case ADMIN_SET_FOCUS_ACCOUNT:
       return {...state, focusAccount: action.account}
     default:
