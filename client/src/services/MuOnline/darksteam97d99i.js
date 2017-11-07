@@ -63,22 +63,6 @@ export default {
     const data = commonGet('mu/darksteam97d99i/system/server_info');
     return data;
   },
-  adminGetAccounts(query) {
-    const data = commonGet('mu/darksteam97d99i/admin/memb_info', null, query);
-    return data;
-  },
-  adminGetCharacters(query) {
-    const data = commonGet('mu/darksteam97d99i/admin/character', null, query);
-    return data;
-  },
-  adminGetBanks(query) {
-    const data = commonGet('mu/darksteam97d99i/admin/banking', null, query);
-    return data;
-  },
-  adminGetCredits(query) {
-    const data = commonGet('mu/darksteam97d99i/admin/credits', null, query);
-    return data;
-  },
   getMuData(file) {
     const data = commonGet('mu/darksteam97d99i/tools/data', [file]);
     return data;
@@ -105,6 +89,30 @@ export default {
       userId: user.memb___id,
       characterId: focusCharacter.Name
     });
+    return data;
+  },
+  adminGetAccounts(query) {
+    const data = commonGet('mu/darksteam97d99i/admin/memb_info', null, query);
+    return data;
+  },
+  adminEditAccount(formBody) {
+    const data = commonPost('mu/darksteam97d99i/admin/memb_info', formBody);
+    return data;
+  },
+  adminDeleteAccount(id) {
+    const data = commonDelete('mu/darksteam97d99i/admin/memb_info/' + id);
+    return data;
+  },
+  adminGetCharacters(query) {
+    const data = commonGet('mu/darksteam97d99i/admin/character', null, query);
+    return data;
+  },
+  adminGetBanks(query) {
+    const data = commonGet('mu/darksteam97d99i/admin/banking', null, query);
+    return data;
+  },
+  adminGetCredits(query) {
+    const data = commonGet('mu/darksteam97d99i/admin/credits', null, query);
     return data;
   }
 };

@@ -1,5 +1,5 @@
 import getMembers from './services/getMembers';
-import getCharacters from './services/getCharacters'
+import getCharacters from './services/getCharacters';
 
 export default (models, router, factories, helpers, appConfigs) => {
   const { wrap } = factories;
@@ -10,6 +10,26 @@ export default (models, router, factories, helpers, appConfigs) => {
     wrap(async (req, res, next) => {
       const accounts = await getMembers(MembInfo, req.query);
       res.send(accounts);
+    })
+  );
+
+  router.post(
+    '/admin/memb_info',
+    wrap(async (req, res, next) => {
+      const updateForm = { ...req.body };
+      delete updateForm.memb___id;
+      updateForm.IsVip = req.body.IsVip ? 1 : 0;
+      updateForm.mail_chek = req.body.mail_chek ? 1 : 0;
+      await MembInfo.update(updateForm, { where: { memb___id: req.body.memb___id } });
+      res.send(req.body);
+    })
+  );
+
+  router.delete(
+    '/admin/memb___info/:id',
+    wrap(async (req, res, next) => {
+      await MembInfo.destroy({ where: { memb___id: req.params.id } });
+      res.send({ id });
     })
   );
 
@@ -41,4 +61,3 @@ export default (models, router, factories, helpers, appConfigs) => {
 
   return router;
 };
-

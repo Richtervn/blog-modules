@@ -3,8 +3,8 @@ import React from 'react';
 import AccountsList from './AccountsList';
 import AccountInfo from './AccountInfo';
 
-export default ({accounts, onGetAccounts, onSetFocusAccount, focusAccount}) => {
-  if(!accounts){
+export default ({ accounts, onGetAccounts, onSetFocusAccount, focusAccount, onEditAccount, onDeleteAccount }) => {
+  if (!accounts) {
     onGetAccounts();
     return null;
   }
@@ -12,11 +12,11 @@ export default ({accounts, onGetAccounts, onSetFocusAccount, focusAccount}) => {
   return (
     <div className="row no-row-margin">
       <div className="col-2 no-col-margin ds9799-acc-list-container">
-        <AccountsList accounts={accounts} activeAccountId={focusAccount.memb___id} onSelect={onSetFocusAccount}/>
+        <AccountsList accounts={accounts} activeAccountId={focusAccount.memb___id} onSelect={onSetFocusAccount} />
       </div>
       <div className="col-10 no-col-margin">
-        <AccountInfo account={focusAccount}/>
+        <AccountInfo account={focusAccount} onEditAccount={onEditAccount} onDeleteAccount={onDeleteAccount} />
       </div>
     </div>
-  )
-}
+  );
+};

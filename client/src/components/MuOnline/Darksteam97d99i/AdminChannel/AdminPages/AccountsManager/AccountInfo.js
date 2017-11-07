@@ -1,91 +1,107 @@
 import React, { Component } from 'react';
+import unixTimeHelper from 'factories/unixTimeHelper';
+import inputTimeHelper from 'factories/inputTimeHelper';
 
 class AccountInfo extends Component {
 	constructor(props) {
 		super(props);
 		const { account } = this.props;
+
 		this.state = {
 			value: {
-				IsVip: account.IsVip ? true : false,
-				VipExpirationTime: account.VipExpirationTime,
+				IsVip: account.IsVip == 1 ? true : false,
+				VipExpirationTime: account.VipExpirationTime
+					? unixTimeHelper.toInputDate(account.VipExpirationTime)
+					: undefined,
 				addr_deta: account.addr_deta || '',
 				addr_info: account.addr_info || '',
-				appl_days: account.appl_days || undefined,
+				appl_days: account.appl_days ? inputTimeHelper.toInputDate(account.appl_days) : undefined,
 				bloc_code: account.bloc_code || 0,
 				ctl1_code: account.ctl1_code || 0,
 				fpas_answ: account.fpas_answ || '',
 				fpas_ques: account.fpas_ques || '',
 				job__code: account.job__code || 0,
 				mail_addr: account.mail_addr || '',
-				mail_chek: account.mail_chek ? true : false,
+				mail_chek: account.mail_chek == '1' ? true : false,
 				memb___id: account.memb___id,
 				memb__pwd: account.memb__pwd,
 				memb_guid: account.memb_guid,
 				memb_name: account.memb_name,
-				modi_days: account.modi_days || undefined,
-				out__days: account.out__days || undefined,
+				modi_days: account.modi_days ? inputTimeHelper.toInputDate(account.modi_days) : undefined,
+				out__days: account.out__days ? inputTimeHelper.toInputDate(account.out__days) : undefined,
 				phon_numb: account.phon_numb || 0,
 				post_code: account.post_code || undefined,
 				sno__numb: account.sno__numb || 0,
 				tel__numb: account.tel__numb || 0,
-				true_days: account.true_days || undefined
+				true_days: account.true_days ? inputTimeHelper.toInputDate(account.true_days) : undefined
 			},
 			editing: false
 		};
 		this.enableEditing = this.enableEditing.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.save = this.save.bind(this);
-		this.test = this.test.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
 		const { account } = nextProps;
 		this.setState({
 			value: {
-				memb_name: account.memb_name,
-				IsVip: account.IsVip ? true : false,
-				VipExpirationTime: account.VipExpirationTime,
+				IsVip: account.IsVip == 1 ? true : false,
+				VipExpirationTime: account.VipExpirationTime
+					? unixTimeHelper.toInputDate(account.VipExpirationTime)
+					: undefined,
 				addr_deta: account.addr_deta || '',
 				addr_info: account.addr_info || '',
-				appl_days: account.appl_days || undefined,
+				appl_days: account.appl_days ? inputTimeHelper.toInputDate(account.appl_days) : undefined,
 				bloc_code: account.bloc_code || 0,
 				ctl1_code: account.ctl1_code || 0,
 				fpas_answ: account.fpas_answ || '',
 				fpas_ques: account.fpas_ques || '',
 				job__code: account.job__code || 0,
 				mail_addr: account.mail_addr || '',
-				mail_chek: account.mail_chek ? true : false,
+				mail_chek: account.mail_chek == '1' ? true : false,
 				memb___id: account.memb___id,
 				memb__pwd: account.memb__pwd,
 				memb_guid: account.memb_guid,
-				modi_days: account.modi_days || undefined,
-				out__days: account.out__days || undefined,
+				memb_name: account.memb_name,
+				modi_days: account.modi_days ? inputTimeHelper.toInputDate(account.modi_days) : undefined,
+				out__days: account.out__days ? inputTimeHelper.toInputDate(account.out__days) : undefined,
 				phon_numb: account.phon_numb || 0,
 				post_code: account.post_code || undefined,
 				sno__numb: account.sno__numb || 0,
 				tel__numb: account.tel__numb || 0,
-				true_days: account.true_days || undefined
+				true_days: account.true_days ? inputTimeHelper.toInputDate(account.true_days) : undefined
 			},
 			editing: false
 		});
-	}
-
-	test(e) {
-		console.log(e.target.value);
 	}
 
 	enableEditing() {
 		this.setState({ editing: true });
 	}
 
-	save() {}
+	save() {
+		const formBody = { ...this.state.value };
+		if (this.state.VipExpirationTime) {
+			formBody.VipExpirationTime = unixTimeHelper.toOutputDate(formBody.VipExpirationTime);
+		}
+		this.props.onEditAccount(formBody);
+		this.setState({ editing: false });
+	}
 
 	handleChange(event) {
 		const { name, value } = event.target;
 		const nextStateValue = { ...this.state.value };
 		switch (name) {
+			case 'mail_chek':
+				nextStateValue[name] = !this.state.value[name];
+				break;
+			case 'IsVip':
+				nextStateValue[name] = !this.state.value[name];
+				break;
 			default:
 				nextStateValue[name] = value;
+				break;
 		}
 		this.setState({ value: nextStateValue });
 	}
@@ -101,7 +117,7 @@ class AccountInfo extends Component {
 						<button onClick={editing ? this.save : this.enableEditing}>
 							<i className={editing ? 'fa fa-save' : 'fa fa-pencil'} />
 						</button>
-						<button>
+						<button onClick={() => this.props.onDeleteAccount(this.props.account.memb___id)}>
 							<i className="fa fa-times" />
 						</button>
 					</span>
@@ -169,7 +185,7 @@ class AccountInfo extends Component {
 								<b>Address Info :</b>
 								<input
 									className="ds9799-admin-account-form-control form-control"
-									type="date"
+									type="text"
 									value={this.state.value.addr_info}
 									disabled={!this.state.editing}
 									name="addr_info"
@@ -183,7 +199,7 @@ class AccountInfo extends Component {
 								<b>Address Deta :</b>
 								<input
 									className="ds9799-admin-account-form-control form-control"
-									type="date"
+									type="text"
 									value={this.state.value.addr_deta}
 									disabled={!this.state.editing}
 									name="addr_deta"
@@ -364,7 +380,7 @@ class AccountInfo extends Component {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value={this.state.value.IsVip}
+										checked={this.state.value.IsVip == 1 || this.state.value.IsVip == true}
 										disabled={!this.state.editing}
 										name="IsVip"
 										onChange={this.handleChange}
@@ -408,7 +424,7 @@ class AccountInfo extends Component {
 									<input
 										className="form-check-input"
 										type="checkbox"
-										value={this.state.value.mail_chek}
+										checked={this.state.value.mail_chek == '1' || this.state.value.mail_chek == true}
 										disabled={!this.state.editing}
 										name="mail_chek"
 										onChange={this.handleChange}
