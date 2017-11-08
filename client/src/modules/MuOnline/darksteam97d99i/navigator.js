@@ -1,4 +1,5 @@
 import { REGISTER_SUCCESS, LOGIN_SUCCESS } from './user';
+import socket from 'factories/socketInstance';
 
 const CHANGE_ACTIVE_CHANNEL = 'darksteam97d99i/navigator/CHANGE_ACTIVE_CHANNEL';
 const CHANGE_ACTIVE_SIDE_FORM = 'darksteam97d99i/navigator/CHANGE_ACTIVE_SIDE_FORM';

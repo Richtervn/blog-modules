@@ -1,5 +1,6 @@
 import actionCreator from 'factories/actionCreator';
 import { darksteam97d99i } from 'services';
+import socket from 'factories/socketInstance';
 
 import {
   ADD_POINT_SUCCESS,
@@ -55,7 +56,6 @@ const initialState = { user: null, errorLogin: null, errorRegister: null };
 export default (state = initialState, action) => {
   switch (action.type) {
     case BUY_VIP_FAIL:
-      console.log(action)
       return state;
     case RESET_QUEST_SUCCESS:
     case ADD_POINT_SUCCESS:
@@ -112,6 +112,7 @@ export default (state = initialState, action) => {
     case REGISTER_FAIL:
       return { ...state, errorRegister: action.error };
     case LOGIN_SUCCESS:
+      socket.emit('darksteam97d99i/USER_LOGGED_IN', action.data.memb___id);
       return { ...state, user: action.data, viewControl: { ...state.viewControl, userPage: 'Dash Board' } };
     case LOGIN_FAIL:
       return { ...state, errorLogin: action.error };
