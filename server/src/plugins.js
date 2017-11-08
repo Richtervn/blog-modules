@@ -4,5 +4,6 @@ module.exports = [
   './routes',
   './features/muonline',
   './features/lineage2',
-  './system'
+  './system',
+  './socket'
 ]

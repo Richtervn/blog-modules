@@ -23,5 +23,5 @@ export default {
       func: dbConnect
     }
   },
-  exports: ['config', 'app', 'db']
+  exports: ['config', 'app', 'db', 'server']
 };

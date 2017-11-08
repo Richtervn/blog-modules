@@ -35,4 +35,6 @@ export default (app, config) => {
     }
     console.log(`[APP] Server is running on ${addrInfo}`);
   });
+
+  return server;
 };
