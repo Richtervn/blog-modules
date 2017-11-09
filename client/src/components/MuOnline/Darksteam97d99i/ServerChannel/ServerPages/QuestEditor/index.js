@@ -14,7 +14,7 @@ class QuestEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      minPlvl: 0,
+      minPlvl: 1,
       minPrs: 0,
       minPgrs: 0,
       monId: 0,

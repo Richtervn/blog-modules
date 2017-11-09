@@ -1,5 +1,8 @@
 export default async (MembInfo, query) => {
-  const options = { where: { ...query } };
-  const accounts = await MembInfo.findAll(options);
-  return accounts
-}
+	const options = { where: {} };
+	if (query.memb___id) {
+		options.where.memb___id = { $like: `%${query.memb___id}%` };
+	}
+	const accounts = await MembInfo.findAll(options);
+	return accounts;
+};

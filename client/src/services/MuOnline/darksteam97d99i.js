@@ -96,8 +96,11 @@ export default {
     return data;
   },
   adminEditAccount(formBody) {
-    const data = commonPost('mu/darksteam97d99i/admin/memb_info', formBody);
+    const data = commonPut('mu/darksteam97d99i/admin/memb_info', formBody);
     return data;
+  },
+  adminAddAccount(formBody) {
+    const data = commonPost('mu/darksteam97d99i/admin/memb_info', formBody);
   },
   adminDeleteAccount(id) {
     const data = commonDelete('mu/darksteam97d99i/admin/memb_info/' + id);

@@ -2,76 +2,86 @@ import React, { Component } from 'react';
 import unixTimeHelper from 'factories/unixTimeHelper';
 import inputTimeHelper from 'factories/inputTimeHelper';
 
+const initialValue = account => {
+	return {
+		IsVip: account.IsVip == 1 ? true : false,
+		VipExpirationTime: account.VipExpirationTime ? unixTimeHelper.toInputDate(account.VipExpirationTime) : '',
+		addr_deta: account.addr_deta || '',
+		addr_info: account.addr_info || '',
+		appl_days: account.appl_days ? inputTimeHelper.toInputDate(account.appl_days) : '',
+		bloc_code: account.bloc_code || 0,
+		ctl1_code: account.ctl1_code || 0,
+		fpas_answ: account.fpas_answ || '',
+		fpas_ques: account.fpas_ques || '',
+		job__code: account.job__code || 0,
+		mail_addr: account.mail_addr || '',
+		mail_chek: account.mail_chek == '1' ? true : false,
+		memb___id: account.memb___id,
+		memb__pwd: account.memb__pwd,
+		memb_guid: account.memb_guid,
+		memb_name: account.memb_name,
+		modi_days: account.modi_days ? inputTimeHelper.toInputDate(account.modi_days) : '',
+		out__days: account.out__days ? inputTimeHelper.toInputDate(account.out__days) : '',
+		phon_numb: account.phon_numb || 0,
+		post_code: account.post_code || '',
+		sno__numb: account.sno__numb || 0,
+		tel__numb: account.tel__numb || 0,
+		true_days: account.true_days ? inputTimeHelper.toInputDate(account.true_days) : ''
+	};
+};
+
 class AccountInfo extends Component {
 	constructor(props) {
 		super(props);
 		const { account } = this.props;
 
 		this.state = {
-			value: {
-				IsVip: account.IsVip == 1 ? true : false,
-				VipExpirationTime: account.VipExpirationTime
-					? unixTimeHelper.toInputDate(account.VipExpirationTime)
-					: undefined,
-				addr_deta: account.addr_deta || '',
-				addr_info: account.addr_info || '',
-				appl_days: account.appl_days ? inputTimeHelper.toInputDate(account.appl_days) : undefined,
-				bloc_code: account.bloc_code || 0,
-				ctl1_code: account.ctl1_code || 0,
-				fpas_answ: account.fpas_answ || '',
-				fpas_ques: account.fpas_ques || '',
-				job__code: account.job__code || 0,
-				mail_addr: account.mail_addr || '',
-				mail_chek: account.mail_chek == '1' ? true : false,
-				memb___id: account.memb___id,
-				memb__pwd: account.memb__pwd,
-				memb_guid: account.memb_guid,
-				memb_name: account.memb_name,
-				modi_days: account.modi_days ? inputTimeHelper.toInputDate(account.modi_days) : undefined,
-				out__days: account.out__days ? inputTimeHelper.toInputDate(account.out__days) : undefined,
-				phon_numb: account.phon_numb || 0,
-				post_code: account.post_code || undefined,
-				sno__numb: account.sno__numb || 0,
-				tel__numb: account.tel__numb || 0,
-				true_days: account.true_days ? inputTimeHelper.toInputDate(account.true_days) : undefined
-			},
-			editing: false
+			value: initialValue(account),
+			editing: false,
+			isMakeNew: false
 		};
 		this.enableEditing = this.enableEditing.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.close = this.close.bind(this);
 		this.save = this.save.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
 		const { account } = nextProps;
+		if (nextProps.isMakeNew) {
+			return this.setState({
+				value: {
+					IsVip: false,
+					VipExpirationTime: '',
+					addr_deta: '',
+					addr_info: '',
+					appl_days: '',
+					bloc_code: 0,
+					ctl1_code: 0,
+					fpas_answ: '',
+					fpas_ques: '',
+					job__code: 0,
+					mail_addr: '',
+					mail_chek: false,
+					memb___id: '',
+					memb__pwd: '',
+					memb_guid: '',
+					memb_name: '',
+					modi_days: '',
+					out__days: '',
+					phon_numb: 0,
+					post_code: 0,
+					sno__numb: 0,
+					tel__numb: 0,
+					true_days: ''
+				},
+				editing: true,
+				isMakeNew: true
+			});
+		}
+
 		this.setState({
-			value: {
-				IsVip: account.IsVip == 1 ? true : false,
-				VipExpirationTime: account.VipExpirationTime
-					? unixTimeHelper.toInputDate(account.VipExpirationTime)
-					: undefined,
-				addr_deta: account.addr_deta || '',
-				addr_info: account.addr_info || '',
-				appl_days: account.appl_days ? inputTimeHelper.toInputDate(account.appl_days) : undefined,
-				bloc_code: account.bloc_code || 0,
-				ctl1_code: account.ctl1_code || 0,
-				fpas_answ: account.fpas_answ || '',
-				fpas_ques: account.fpas_ques || '',
-				job__code: account.job__code || 0,
-				mail_addr: account.mail_addr || '',
-				mail_chek: account.mail_chek == '1' ? true : false,
-				memb___id: account.memb___id,
-				memb__pwd: account.memb__pwd,
-				memb_guid: account.memb_guid,
-				memb_name: account.memb_name,
-				modi_days: account.modi_days ? inputTimeHelper.toInputDate(account.modi_days) : undefined,
-				out__days: account.out__days ? inputTimeHelper.toInputDate(account.out__days) : undefined,
-				phon_numb: account.phon_numb || 0,
-				post_code: account.post_code || undefined,
-				sno__numb: account.sno__numb || 0,
-				tel__numb: account.tel__numb || 0,
-				true_days: account.true_days ? inputTimeHelper.toInputDate(account.true_days) : undefined
-			},
+			value: initialValue(account),
 			editing: false
 		});
 	}
@@ -80,13 +90,39 @@ class AccountInfo extends Component {
 		this.setState({ editing: true });
 	}
 
+	close() {
+		if (this.state.isMakeNew) {
+			return this.setState({
+				value: initialValue(this.props.account),
+				editing: false,
+				isMakeNew: false
+			});
+		}
+		if (this.state.editing) {
+			return this.setState({
+				editing: false,
+				isMakeNew: false
+			});
+		}
+		this.props.onDeleteAccount(this.props.account.memb___id);
+		this.setState({
+			editing: false,
+			isMakeNew: false
+		});
+	}
+
 	save() {
 		const formBody = { ...this.state.value };
 		if (this.state.VipExpirationTime) {
 			formBody.VipExpirationTime = unixTimeHelper.toOutputDate(formBody.VipExpirationTime);
 		}
-		this.props.onEditAccount(formBody);
-		this.setState({ editing: false });
+		if (!this.state.isMakeNew) {
+			this.props.onEditAccount(formBody);
+			this.setState({ editing: false });
+		} else {
+			this.props.onAddAccount(formBody);
+			this.setState({ editing: false, isMakeNew: false });
+		}
 	}
 
 	handleChange(event) {
@@ -117,7 +153,7 @@ class AccountInfo extends Component {
 						<button onClick={editing ? this.save : this.enableEditing}>
 							<i className={editing ? 'fa fa-save' : 'fa fa-pencil'} />
 						</button>
-						<button onClick={() => this.props.onDeleteAccount(this.props.account.memb___id)}>
+						<button onClick={this.close}>
 							<i className="fa fa-times" />
 						</button>
 					</span>
@@ -132,8 +168,6 @@ class AccountInfo extends Component {
 									type="text"
 									value={this.state.value.memb_guid}
 									disabled
-									name="memb_guid"
-									onChange={this.handleChange}
 								/>
 							</div>
 						</div>

@@ -4,6 +4,9 @@ import { darksteam97d99i } from 'services';
 const ADMIN_SET_FOCUS_ACCOUNT = 'darksteam97d99i/ADMIN_SET_FOCUS_ACCOUNT';
 const ADMIN_SET_FOCUS_CHARACTER = 'darksteam97d99i/ADMIN_SET_FOCUS_CHARACTER';
 
+const ADMIN_ADD_ACCOUNT_START = 'darksteam97d99i/ADMIN_ADD_ACCOUNT_START';
+const ADMIN_ADD_ACCOUNT_SUCCESS = 'darksteam97d99i/ADMIN_ADD_ACCOUNT_SUCCESS';
+const ADMIN_ADD_ACCOUNT_FAIL = 'darksteam97d99i/ADMIN_ADD_ACCOUNT_FAIL';
 const ADMIN_GET_ACCOUNTS_START = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_START';
 const ADMIN_GET_ACCOUNTS_SUCCESS = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_SUCCESS';
 const ADMIN_GET_ACCOUNTS_FAIL = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_FAIL';
@@ -49,6 +52,14 @@ export const deleteAccount = id =>
     darksteam97d99i.adminDeleteAccount,
     id
   )();
+export const addAcount = formBody =>
+  actionCreator(
+    ADMIN_ADD_ACCOUNT_START,
+    ADMIN_ADD_ACCOUNT_SUCCESS,
+    ADMIN_ADD_ACCOUNT_FAIL,
+    darksteam97d99i.adminAddAccount,
+    formBody
+  )();
 
 export default (
   state = {
@@ -61,7 +72,14 @@ export default (
 ) => {
   switch (action.type) {
     case ADMIN_GET_ACCOUNTS_SUCCESS:
-      return { ...state, accounts: action.data, focusAccount: action.data[0] };
+      return {
+        ...state,
+        accounts: action.data.slice(0),
+        focusAccount: state.focusAccount.memb___id ? action.data[0] : {}
+      };
+    case ADMIN_GET_ACCOUNTS_FAIL:
+      console.log(action);
+      return state;
     case ADMIN_SET_FOCUS_ACCOUNT:
       return { ...state, focusAccount: action.account };
     case ADMIN_EDIT_ACCOUNT_SUCCESS:
@@ -83,6 +101,9 @@ export default (
       };
     case ADMIN_GET_CHARACTERS_SUCCESS:
       return { ...state, characters: action.data, focusCharacter: action.data[0] };
+    case ADMIN_ADD_ACCOUNT_SUCCESS:
+      state.accounts.push(action.data);
+      return { ...state, accounts: state.accounts.slice(0) };
     default:
       return state;
   }

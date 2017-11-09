@@ -1,7 +1,13 @@
 import AccountsManager from 'components/MuOnline/Darksteam97d99i/AdminChannel/AdminPages/AccountsManager';
 import { connect } from 'react-redux';
 
-import { getAccounts, setFocusAccount, editAccount, deleteAccount } from 'modules/MuOnline/darksteam97d99i/admin';
+import {
+	getAccounts,
+	setFocusAccount,
+	editAccount,
+	deleteAccount,
+	addAccount
+} from 'modules/MuOnline/darksteam97d99i/admin';
 
 export default connect(
 	({ ds9799_admin }) => ({
@@ -9,8 +15,8 @@ export default connect(
 		focusAccount: ds9799_admin.focusAccount
 	}),
 	dispatch => ({
-		onGetAccounts() {
-			dispatch(getAccounts());
+		onGetAccounts(query) {
+			dispatch(getAccounts(query));
 		},
 		onSetFocusAccount(account) {
 			dispatch(setFocusAccount(account));
@@ -20,6 +26,9 @@ export default connect(
 		},
 		onDeleteAccount(id) {
 			dispatch(deleteAccount(id));
+		},
+		onAddAccount(formBody) {
+			dispatch(addAccount(formBody));
 		}
 	})
 )(AccountsManager);
