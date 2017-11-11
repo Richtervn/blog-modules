@@ -48,6 +48,28 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
     })
   );
 
+  router.post(
+    '/admin/character',
+    wrap(async (req, res, next) => {
+      res.send('ok');
+    })
+  );
+
+  router.put(
+    '/admin/character',
+    wrap(async (req, res, next) => {
+      res.send('ok');
+    })
+  );
+
+  router.delete(
+    '/admin/character/:id',
+    wrap(async (req, res, next) => {
+      await Character.destroy({ where: { Name: req.params.id } });
+      res.send({ id: req.params.id });
+    })
+  );
+
   router.get(
     '/admin/banking',
     wrap(async (req, res, next) => {

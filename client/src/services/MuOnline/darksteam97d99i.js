@@ -95,19 +95,32 @@ export default {
     const data = commonGet('mu/darksteam97d99i/admin/memb_info', null, query);
     return data;
   },
+  adminGetCharacters(query) {
+    const data = commonGet('mu/darksteam97d99i/admin/character', null, query);
+    return data;
+  },
   adminEditAccount(formBody) {
     const data = commonPut('mu/darksteam97d99i/admin/memb_info', formBody);
     return data;
   },
+  adminEditCharacter(formBody) {
+    const data = commonPut('mu/darksteam97d99i/admin/character', formBody);
+    return data;
+  },
   adminAddAccount(formBody) {
     const data = commonPost('mu/darksteam97d99i/admin/memb_info', formBody);
+    return data;
+  },
+  adminAddCharacter(formBody) {
+    const data = commonPost('mu/darksteam97d99i/admin/character', formBody);
+    return data;
+  },
+  adminDeleteCharacter(id) {
+    const data = commonDelete('mu/darksteam97d99i//admin/' + id);
+    return data;
   },
   adminDeleteAccount(id) {
     const data = commonDelete('mu/darksteam97d99i/admin/memb_info/' + id);
-    return data;
-  },
-  adminGetCharacters(query) {
-    const data = commonGet('mu/darksteam97d99i/admin/character', null, query);
     return data;
   },
   adminGetBanks(query) {

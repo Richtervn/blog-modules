@@ -58,5 +58,17 @@
     "CharName": "DS97_Jevel",
     "Amount": 54133987,
     "Type": "Deposit"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 200000000,
+    "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 1200000000,
+    "Type": "Loan"
   }
 ]

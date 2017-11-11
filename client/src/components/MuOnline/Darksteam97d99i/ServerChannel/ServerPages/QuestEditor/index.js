@@ -21,7 +21,7 @@ class QuestEditor extends Component {
       mapId: 0,
       monAmount: 0,
       questInfo: '',
-      questRequire: '',
+      questRequire: '-',
       questReward: '',
       isRequireItem: false,
       reqCategory: 'Swords',

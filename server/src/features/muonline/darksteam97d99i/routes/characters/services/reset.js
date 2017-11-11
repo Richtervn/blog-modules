@@ -43,7 +43,7 @@ export default async (Character, Banking, MembCredits, query, GameSetting, metho
   if (requireLevel > RESET_MAX_LEVEL) requireLevel = RESET_MAX_LEVEL;
 
   if (character.cLevel < requireLevel) {
-    return { message: `${name} need ${requireLevel} to reset` };
+    return { message: `${name} need level ${requireLevel} to reset` };
   }
 
   let charged;

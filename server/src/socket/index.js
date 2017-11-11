@@ -5,7 +5,7 @@ export default {
 	description: 'Socket IO',
 	services: {
 		socket: {
-			require: ['server'],
+			require: ['server', 'MuApps'],
 			func: socket
 		}
 	},

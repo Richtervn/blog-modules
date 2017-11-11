@@ -138,6 +138,7 @@ export default (
       };
     }
 
+    case RESET_QUEST_SUCCESS:
     case GRAND_RESET_SUCCESS:
     case RESET_SUCCESS: {
       const nextState = { ...state };
