@@ -181,6 +181,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="text"
 									value={this.state.value.Name}
+									onChange={this.handleChange}
 									name="Name"
 									disabled={!editing}
 								/>
@@ -211,6 +212,7 @@ class CharacterInfo extends Component {
 								<input
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
+									onChange={this.handleChange}
 									value={this.state.value.cLevel}
 									name="cLevel"
 									disabled={!editing}
@@ -225,6 +227,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.LevelUpPoint}
+									onChange={this.handleChange}
 									name="LevelUpPoint"
 									disabled={!editing}
 								/>
@@ -238,6 +241,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.Strength}
+									onChange={this.handleChange}
 									name="Strength"
 									disabled={!editing}
 								/>
@@ -251,6 +255,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.Dexterity}
+									onChange={this.handleChange}
 									name="Dexterity"
 									disabled={!editing}
 								/>
@@ -264,6 +269,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.Vitality}
+									onChange={this.handleChange}
 									name="Vitality"
 									disabled={!editing}
 								/>
@@ -277,6 +283,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.Energy}
+									onChange={this.handleChange}
 									name="Energy"
 									disabled={!editing}
 								/>
@@ -290,6 +297,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									onChange={this.handleChange}
 									value={this.state.value.MapNumber}
+									onChange={this.handleChange}
 									name="MapNumber"
 									disabled={!editing}>
 									{Object.keys(mapList).map(mapName => (
@@ -308,6 +316,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.MapPosX}
+									onChange={this.handleChange}
 									name="MapPosX"
 									disabled={!editing}
 								/>
@@ -321,6 +330,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.MapPosY}
+									onChange={this.handleChange}
 									name="MapPosY"
 									disabled={!editing}
 								/>
@@ -334,6 +344,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.Resets}
+									onChange={this.handleChange}
 									name="Resets"
 									disabled={!editing}
 								/>
@@ -347,6 +358,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.GrandResets}
+									onChange={this.handleChange}
 									name="GrandResets"
 									disabled={!editing}
 								/>
@@ -360,6 +372,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.CtlCode}
+									onChange={this.handleChange}
 									name="CtlCode"
 									disabled={!editing}
 								/>
@@ -389,6 +402,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="text"
 									value={this.state.value.MarryName}
+									onChange={this.handleChange}
 									name="MarryName"
 									disabled={!editing}
 								/>
@@ -402,6 +416,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.Money}
+									onChange={this.handleChange}
 									name="Money"
 									disabled={!editing}
 								/>
@@ -415,6 +430,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.QuestNumber}
+									onChange={this.handleChange}
 									name="QuestNumber"
 									disabled={!editing}
 								/>
@@ -428,6 +444,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.QuestMonsters}
+									onChange={this.handleChange}
 									name="QuestMonsters"
 									disabled={!editing}
 								/>
@@ -441,6 +458,7 @@ class CharacterInfo extends Component {
 									className="ds9799-admin-account-form-control form-control"
 									type="number"
 									value={this.state.value.SkyEventWins}
+									onChange={this.handleChange}
 									name="SkyEventWins"
 									disabled={!editing}
 								/>

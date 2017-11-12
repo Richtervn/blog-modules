@@ -1,5 +1,6 @@
 export default async (Character, query) => {
-  const options = { where: { ...query } };
+  const options = { where: {} };
+  if (query.Name) options.where.Name = { $like: `%${query.Name}%` };
   options.attributes = [
     'AccountID',
     'Name',

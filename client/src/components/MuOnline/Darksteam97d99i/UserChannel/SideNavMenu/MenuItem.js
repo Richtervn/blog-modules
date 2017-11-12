@@ -21,11 +21,15 @@ export default ({ item, isActive, onSelect }) => {
     case 'Web Quest':
       icon = 'fa-diamond';
       break;
-    case 'Vip Upgrade Items':
+    case 'Upgrade Items':
       icon = 'fa-flash';
       break;
     case 'Luxury Shop':
       icon = 'fa-magic';
+      break;
+    case 'Blacksmith':
+      icon = 'fa-gavel';
+      break;
     default:
       break;
   }

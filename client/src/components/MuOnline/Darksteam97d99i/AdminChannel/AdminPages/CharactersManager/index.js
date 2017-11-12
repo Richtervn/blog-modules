@@ -36,7 +36,6 @@ class CharactersManager extends Component {
 			onGetCharacters();
 			return null;
 		}
-		console.log(characters);
 
 		return (
 			<div className="row no-row-margin">

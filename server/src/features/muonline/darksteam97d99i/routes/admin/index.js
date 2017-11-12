@@ -2,6 +2,8 @@ import getMembers from './services/getMembers';
 import updateMember from './services/updateMember';
 import addMember from './services/addMember';
 import getCharacters from './services/getCharacters';
+import addCharacter from './services/addCharacter';
+import updateCharacter from './services/updateCharacter';
 
 export default (models, router, factories, helpers, appConfigs, methods) => {
   const { wrap } = factories;
@@ -51,14 +53,16 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
   router.post(
     '/admin/character',
     wrap(async (req, res, next) => {
-      res.send('ok');
+      const character = await addCharacter(Character,req.body);
+      res.send(character);
     })
   );
 
   router.put(
     '/admin/character',
     wrap(async (req, res, next) => {
-      res.send('ok');
+      const character = await updateCharacter(Character, req.body);
+      res.send(character);
     })
   );
 

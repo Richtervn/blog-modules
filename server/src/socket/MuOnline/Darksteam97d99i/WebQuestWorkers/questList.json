@@ -1,0 +1,186 @@
+[
+	{
+		"_id": "WQ1",
+		"description": "Fill dashboard",
+		"reward": 50,
+		"reward_unit": "Credits",
+		"rules": ["Complete your profile in dashboard"],
+		"isRepeatable": false,
+		"isJumpStep": false,
+		"type": "Account"
+	},
+	{
+		"_id": "WQ2",
+		"description": "Use add points 10 times",
+		"reward": 50,
+		"requirement": 100,
+		"reward_unit": "Credits",
+		"rules": ["Points to add must be greater than %(requirement)"],
+		"isRepeatable": true,
+		"isJumpStep": true,
+		"step": {
+			"reward": 10,
+			"requirement": 100
+		},
+		"type": "Account"
+	},
+	{
+		"_id": "WQ3",
+		"description": "Reset 1 character 5 times",
+		"reward": 50,
+		"reward_unit": "Credits",
+		"isRepeatable": true,
+		"isJumpStep": false,
+		"type": "Character"
+	},
+	{
+		"_id": "WQ4",
+		"description": "Perform grand reset 1 time",
+		"reward": 200,
+		"reward_unit": "Credits",
+		"isRepeatable": true,
+		"isJumpStep": false,
+		"type": "Account"
+	},
+	{
+		"_id": "WQ5",
+		"description": "Perform reset quests 1 time",
+		"reward": 100,
+		"reward_unit": "Credits",
+		"isRepeatable": true,
+		"isJumpStep": false,
+		"type": "Account"
+	},
+	{
+		"_id": "WQ6",
+		"description": "Loan 5 billions zen from Bank",
+		"reward": 50,
+		"reward_unit": "Credits",
+		"isRepeatable": true,
+		"isJumpStep": false,
+		"type": "Account"
+	},
+	{
+		"_id": "WQ7",
+		"description": "Pay 1 billion zen for the Bank",
+		"reward": 20,
+		"reward_unit": "Credits",
+		"isRepeatable": true,
+		"isJumpStep": false,
+		"type": "Account"
+	},
+	{
+		"_id": "WQ8",
+		"description": "Create Magic Gladiator character",
+		"reward": 20,
+		"reward_unit": "Credits",
+		"isRepeatable": false,
+		"isJumpStep": false,
+		"type": "Account"
+	},
+	{
+		"_id": "WQ9",
+		"description": "Buy %(requirement) credits",
+		"reward": 100000000,
+		"requirement": 500,
+		"reward_unit": "Zen",
+		"isRepeatable": true,
+		"isJumpStep": true,
+		"step": {
+			"reward": 50000000,
+			"requirement": 100
+		},
+		"type": "Account"
+	},
+	{
+		"_id": "WQ10",
+		"description": "Buy 1 Account VIP package",
+		"reward": 100000000,
+		"reward_unit": "Zen",
+		"isRepeatable": true,
+		"isJumpStep": false,
+		"type": "Account"
+	},
+	{
+		"_id": "WQ11",
+		"description": "Buy 1 Character VIP package",
+		"reward": 150000000,
+		"reward_unit": "Zen",
+		"isRepeatable": true,
+		"isJumpStep": false,
+		"type": "Account"
+	},
+	{
+		"_id": "WQ12",
+		"description": "Buy 1 package from Webshop",
+		"reward": 20,
+		"reward_unit": "Credits",
+		"isRepeatable": true,
+		"isJumpStep": false,
+		"type": "Account"
+	},
+	{
+		"_id": "WQ13",
+		"description": "Make %(requirement) credits from Luxury Shop",
+		"reward": 20,
+		"requirement": 200,
+		"reward_unit": "Credits",
+		"isRepeatable": true,
+		"isJumpStep": true,
+		"step": {
+			"reward": 10,
+			"requirement": 100
+		},
+		"type": "Account"
+	},
+	{
+		"_id": "WQ14",
+		"description": "Enhance Item using Upgrade Item",
+		"reward": 20,
+		"reward_unit": "Credits",
+		"isRepeatable": true,
+		"isJumpStep": false,
+		"type": "Account"
+	},
+	{
+		"_id": "WQ15",
+		"description": "Deposit %(requirement) Zen",
+		"reward": 20,
+		"requirement": 1000000000,
+		"reward_unit": "Credits",
+		"isRepeatable": true,
+		"isJumpStep": true,
+		"step": {
+			"reward": 10,
+			"requirement": 100000000
+		},
+		"type": "Account"
+	},
+	{
+		"_id": "WQ16",
+		"description": "Finish 5 Ingame Quest",
+		"reward": 50,
+		"reward_unit": "Credits",
+		"isRepeatable": true,
+		"isJumpStep": false,
+		"type": "Character"
+	},
+	{
+		"_id": "WQ17",
+		"description": "Buy 1 recipe from Luxury Shop",
+		"reward": 50000000,
+		"reward_unit": "Credits",
+		"isRepeatable": true,
+		"isJumpStep": false,
+		"type": "Account"
+	},
+	{
+		"_id": "WQ18",
+		"description": "Craft 1 Item with Blacksmith",
+		"reward": 1000000000,
+		"reward_unit": "Zen",
+		"isRepeatable": true,
+		"isJumpStep": false,
+		"type": "Account"
+	}
+]

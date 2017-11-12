@@ -26,8 +26,9 @@ export default (
       'Vip Manager',
       'Web Shop',
       'Web Quest',
-      'Vip Upgrade Items',
-      'Luxury Shop'
+      'Upgrade Items',
+      'Luxury Shop',
+      'Blacksmith'
     ],
     userPage: null,
     serverPages: [

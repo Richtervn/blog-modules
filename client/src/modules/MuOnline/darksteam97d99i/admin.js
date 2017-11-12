@@ -58,6 +58,15 @@ export const editAccount = formBody =>
     darksteam97d99i.adminEditAccount,
     formBody
   )();
+export const editCharacter = formBody =>
+  actionCreator(
+    ADMIN_EDIT_CHARACTER_START,
+    ADMIN_EDIT_CHARACTER_SUCCESS,
+    ADMIN_EDIT_CHARACTER_FAIL,
+    darksteam97d99i.adminEditCharacter,
+    formBody
+  )();
+
 export const deleteAccount = id =>
   actionCreator(
     ADMIN_DELETE_ACCOUNT_START,
@@ -66,12 +75,29 @@ export const deleteAccount = id =>
     darksteam97d99i.adminDeleteAccount,
     id
   )();
+export const deleteCharacter = id =>
+  actionCreator(
+    ADMIN_DELETE_CHARACTER_START,
+    ADMIN_DELETE_CHARACTER_SUCCESS,
+    ADMIN_DELETE_CHARACTER_FAIL,
+    darksteam97d99i.adminDeleteCharacter,
+    id
+  )();
+
 export const addAcount = formBody =>
   actionCreator(
     ADMIN_ADD_ACCOUNT_START,
     ADMIN_ADD_ACCOUNT_SUCCESS,
     ADMIN_ADD_ACCOUNT_FAIL,
     darksteam97d99i.adminAddAccount,
+    formBody
+  )();
+export const addCharacter = formBody =>
+  actionCreator(
+    ADMIN_ADD_CHARACTER_START,
+    ADMIN_ADD_CHARACTER_SUCCESS,
+    ADMIN_ADD_CHARACTER_FAIL,
+    darksteam97d99i.adminAddCharacter,
     formBody
   )();
 

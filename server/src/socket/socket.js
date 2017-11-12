@@ -1,14 +1,12 @@
 import socketIo from 'socket.io';
+import * as muAppsHandlers from './MuOnline';
 
-export default server => {
+export default (server, MuApps) => {
 	const io = socketIo(server);
+	const { models, methods } = MuApps;
 
 	io.on('connection', client => {
-		console.log('new connection');
-		client.emit('connected');
-		client.on('darksteam97d99i/USER_LOGGED_IN', id => {
-			console.log('logged In', id)
-		})
+		muAppsHandlers.darksteam97d99i(client, models.darksteam97d99i, methods.darksteam97d99i);
 	});
 
 	return io;
