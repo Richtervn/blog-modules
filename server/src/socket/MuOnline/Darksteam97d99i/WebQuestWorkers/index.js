@@ -48,6 +48,7 @@ class WebQuestWorker {
 		this.models = models;
 		this.methods = methods;
 		this.questWorkers = {};
+		this.completedStatus = {};
 	}
 
 	async initial(memb___id) {
@@ -67,11 +68,13 @@ class WebQuestWorker {
 		this.membCredits = membCredits;
 		this.userWebQuest = userWebQuest;
 
-		const userQuestIds = _.pluck(userWebQuest, 'quest_id');
+		const userQuestIds = _.uniq(pluck(userWebQuest, 'quest_id'));
 
 		await Promise.map(questList, async webQuest => {
+			let baseRecords;
+
 			if (webQuest.type == 'Account' && !_.contains(userQuestIds, webQuest._id)) {
-				UserWebQuest.create({
+				baseRecords = await UserWebQuest.create({
 					memb___id: memb___id,
 					quest_id: webQuest._id,
 					finish_times: 0,
@@ -79,67 +82,42 @@ class WebQuestWorker {
 					status: 'start',
 					type: webQuest.isRepeatable ? 'repeatable' : 'onetime'
 				});
+			} else if (webQuest.type == 'Character') {
+				const existQuestRecord = userWebQuest.filter(
+					userQuest => userQuest.quest_id == webQuest._id
+				);
+				const characterWebQuestIds = _.pluck(existQuestRecord, 'character_name');
+
+				baseRecords = await Promise.map(characters, async character => {
+					if (!_.contains(characterWebQuestIds, character.Name)) {
+						await UserWebQuest.create({
+							memb___id: memb___id,
+							quest_id: webQuest._id,
+							finish_times: 0,
+							progress: 0,
+							status: 'start',
+							type: webQuest.isRepeatable ? 'repeatable' : 'onetime'
+						});
+					}
+				});
+			} else {
+				baseRecords = userWebQuest.filter(userQuest => userQuest.quest_id == webQuest._id);
 			}
 
-			if(webQuest.type == 'Character')
-			// if(webQuest.type == 'Character'){
-
-			// 	UserWebQuest.create({
-			// 		memb___id: memb___id,
-			// 		quest_id: webQuest._id,
-			// 		finish_times: 0,
-			// 		progress: 0,
-			// 		status: 'start',
-			// 		type: webQuest.isRepeatable ? 'repeatable' : 'onetime'
-			// 	})
-			// }
-			// const questWorker = new questWorkers[webQuest._id]();
-			// await questWorker.initial(
-			// 	this.models,
-			// 	this.methods,
-			// 	this.membInfo,
-			// 	this.characters,
-			// 	this.banking,
-			// 	this.membCredits,
-			// 	webQuest
-			// );
-			// this.questWorkers[webQuest._id] = questWorker;
+			const questWorker = new questWorkers[webQuest._id](
+				this.models,
+				this.methods,
+				this.membInfo,
+				this.characters,
+				this.banking,
+				this.membCredits,
+				webQuest,
+				baseRecords
+			);
+			this.completedStatus[webQuest._id] = await questWorker.check();
+			this.questWorkers[webQuest._id] = questWorker;
 		});
 	}
 }
 
 export default WebQuestWorker;
-
-// z    id: {
-//         type: DataTypes.INTEGER,
-//         autoIncrement: true,
-//         primaryKey: true
-//       },
-//       memb___id: {
-//         type: DataTypes.STRING,
-//         allowNull: true
-//       },
-//       character_name: {
-//         type: DataTypes.STRING,
-//         allowNull: true
-//       },
-//       quest_id: {
-//         type: DataTypes.INTEGER,
-//         allowNull: false
-//       },
-//       finish_times: {
-//         type: DataTypes.INTEGER,
-//         allowNull: true
-//       },
-//       status: {
-//         type: DataTypes.STRING,
-//         allowNull: true
-//       },
-//       progress: {
-//         type: DataTypes.INTEGER,
-//         allowNull: true
-//       },
-//       type: {
-//         type: DataTypes.STRING,
-//         allowNull: true
-//       }
