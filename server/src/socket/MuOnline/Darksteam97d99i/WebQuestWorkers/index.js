@@ -54,7 +54,7 @@ class WebQuestWorker {
 	async initial(memb___id) {
 		const { MembInfo, Character, Banking, MembCredits, UserWebQuest } = this.models;
 
-		const { membInfo, characters, banking, membCredits, userWebQuest } = [
+		const [membInfo, characters, banking, membCredits, userWebQuest] = [
 			await MembInfo.findOne({ where: { memb___id: memb___id } }),
 			await Character.findAll({ where: { AccountId: memb___id } }),
 			await Banking.findOne({ where: { memb___id: memb___id } }),
@@ -68,7 +68,7 @@ class WebQuestWorker {
 		this.membCredits = membCredits;
 		this.userWebQuest = userWebQuest;
 
-		const userQuestIds = _.uniq(pluck(userWebQuest, 'quest_id'));
+		const userQuestIds = _.uniq(_.pluck(userWebQuest, 'quest_id'));
 
 		await Promise.map(questList, async webQuest => {
 			let baseRecords;
@@ -79,27 +79,34 @@ class WebQuestWorker {
 					quest_id: webQuest._id,
 					finish_times: 0,
 					progress: 0,
+					checkpoint: 0,
 					status: 'start',
 					type: webQuest.isRepeatable ? 'repeatable' : 'onetime'
 				});
 			} else if (webQuest.type == 'Character') {
-				const existQuestRecord = userWebQuest.filter(
-					userQuest => userQuest.quest_id == webQuest._id
-				);
+				const existQuestRecord = userWebQuest.filter(userQuest => userQuest.quest_id == webQuest._id);
 				const characterWebQuestIds = _.pluck(existQuestRecord, 'character_name');
-
-				baseRecords = await Promise.map(characters, async character => {
+				baseRecords = [];
+				await Promise.map(characters, async character => {
 					if (!_.contains(characterWebQuestIds, character.Name)) {
-						await UserWebQuest.create({
+						const record = await UserWebQuest.create({
 							memb___id: memb___id,
 							quest_id: webQuest._id,
+							character_name: character.Name,
 							finish_times: 0,
 							progress: 0,
+							checkpoint: 0,
 							status: 'start',
 							type: webQuest.isRepeatable ? 'repeatable' : 'onetime'
 						});
+						baseRecords.push(record);
+						return;
 					}
 				});
+
+				if (baseRecords.length == 0) {
+					baseRecords = userWebQuest.filter(userQuest => userQuest.quest_id == webQuest._id);
+				}
 			} else {
 				baseRecords = userWebQuest.filter(userQuest => userQuest.quest_id == webQuest._id);
 			}

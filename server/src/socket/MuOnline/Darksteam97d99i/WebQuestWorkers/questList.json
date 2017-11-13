@@ -27,6 +27,7 @@
 	{
 		"_id": "WQ3",
 		"description": "Reset 1 character 5 times",
+		"requirement": 5,
 		"reward": 50,
 		"reward_unit": "Credits",
 		"isRepeatable": true,
@@ -40,7 +41,7 @@
 		"reward_unit": "Credits",
 		"isRepeatable": true,
 		"isJumpStep": false,
-		"type": "Character"
+		"type": "Account"
 	},
 	{
 		"_id": "WQ5",
@@ -49,7 +50,7 @@
 		"reward_unit": "Credits",
 		"isRepeatable": true,
 		"isJumpStep": false,
-		"type": "Character"
+		"type": "Account"
 	},
 	{
 		"_id": "WQ6",
@@ -169,7 +170,7 @@
 		"_id": "WQ17",
 		"description": "Buy 1 recipe from Luxury Shop",
 		"reward": 50000000,
-		"reward_unit": "Credits",
+		"reward_unit": "Zen",
 		"isRepeatable": true,
 		"isJumpStep": false,
 		"type": "Account"

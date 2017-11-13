@@ -16,7 +16,7 @@ export default (sequelize, DataTypes) => {
         allowNull: true
       },
       quest_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false
       },
       finish_times: {

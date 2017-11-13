@@ -1,5 +1,5 @@
 export default class WQ19 {
-	async initial(models, methods, membInfo, characters, banking, membCredits, baseRecord){
+	constructor(models, methods, membInfo, characters, banking, membCredits,webQuest, baseRecord){
 		console.log('ok');
 	}
 	async check(){};

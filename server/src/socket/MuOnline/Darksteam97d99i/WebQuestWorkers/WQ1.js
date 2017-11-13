@@ -48,6 +48,7 @@ export default class WQ1 {
   constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
     this.baseRecord = baseRecord;
     this.webQuest = webQuest;
+    this.membInfo = membInfo;
   }
 
   check() {
@@ -59,8 +60,9 @@ export default class WQ1 {
 
   async giveReward() {
     const { reward } = this.webQuest;
-    this.membCredits.update({
-      credits: this.membCredits.credits + 50
-    })
+    await this.membCredits.update({
+      credits: this.membCredits.credits + 50,
+      status: 'done'
+    });
   }
 }
