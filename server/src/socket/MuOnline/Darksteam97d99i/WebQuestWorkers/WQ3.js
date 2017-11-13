@@ -1,3 +1,5 @@
+import Promise from 'bluebird';
+
 export default class WQ3 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecords = baseRecord;
@@ -18,33 +20,37 @@ export default class WQ3 {
 	}
 
 	async checkPoint(character_name) {
-		this.baseRecords = this.baseRecords.map(baseRecord => {
-			if (baseRecord.character_name == character_name) {
-				baseRecord.checkpoint += 1;
-				baseRecord.progress = baseRecord.checkpoint / this.webQuest.requirement * 100;
-				baseRecord.update({
-					checkpoint: baseRecord.checkpoint,
-					progress: baseRecord.progress
-				});
-			}
-			return baseRecord;
-		});
+		this.baseRecords = await Promise.all(
+			this.baseRecords.map(async baseRecord => {
+				if (baseRecord.character_name == character_name) {
+					baseRecord.checkpoint += 1;
+					baseRecord.progress = baseRecord.checkpoint / this.webQuest.requirement * 100;
+					await baseRecord.update({
+						checkpoint: baseRecord.checkpoint,
+						progress: baseRecord.progress
+					});
+				}
+				return baseRecord;
+			})
+		);
 	}
 
 	async giveReward() {
 		this.membCredits.credits += this.webQuest.reward;
 
-		this.baseRecords = this.baseRecords.map(baseRecord => {
-			if (baseRecord.character_name == this.characterFullFilled) {
-				baseRecord.checkpoint = 0;
-				baseRecord.progress = 0;
-				baseRecord.update({
-					checkpoint: baseRecord.checkpoint,
-					progress: baseRecord.progress
-				});
-			}
-			return baseRecord;
-		});
+		this.baseRecords = await Promise.all(
+			this.baseRecords.map(async baseRecord => {
+				if (baseRecord.character_name == this.characterFullFilled) {
+					baseRecord.checkpoint = 0;
+					baseRecord.progress = 0;
+					await baseRecord.update({
+						checkpoint: baseRecord.checkpoint,
+						progress: baseRecord.progress
+					});
+				}
+				return baseRecord;
+			})
+		);
 
 		await this.membCredits.update({
 			credits: this.membCredits.credits
