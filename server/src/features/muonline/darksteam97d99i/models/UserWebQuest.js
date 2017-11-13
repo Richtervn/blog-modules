@@ -27,6 +27,10 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: true
       },
+      checkpoint: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
       progress: {
         type: DataTypes.INTEGER,
         allowNull: true

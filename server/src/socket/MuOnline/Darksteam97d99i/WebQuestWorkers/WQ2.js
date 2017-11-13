@@ -14,7 +14,7 @@ export default class WQ2 {
   async checkPoint() {
     let currentRequirement = this.webQuest.requirement + this.baseRecord.finish_times * this.webQuest.step.requirement;
     
-    baseRecord.update({
+    this.baseRecord.update({
       progress: 0
     })
   }
