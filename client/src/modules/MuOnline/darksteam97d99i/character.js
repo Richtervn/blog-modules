@@ -161,7 +161,7 @@ export default (
         return character;
       });
       return {
-        ...state,
+        ...nextState,
         focusCharacter: { ...changedCharacter },
         characters: nextState.characters.slice(0)
       };

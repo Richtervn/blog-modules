@@ -107,7 +107,7 @@ class WebQuestWorker {
 					baseRecords = userWebQuest.filter(userQuest => userQuest.quest_id == webQuest._id);
 				}
 			} else {
-				baseRecords = userWebQuest.filter(userQuest => userQuest.quest_id == webQuest._id);
+				baseRecords = userWebQuest.filter(userQuest => userQuest.quest_id == webQuest._id)[0];
 			}
 
 			const questWorker = new questWorkers[webQuest._id](
