@@ -22,5 +22,26 @@ export default class WQ8 {
 			credits: this.membCredits.credits,
 			status: 'done'
 		});
+
+		return {
+			_id: 'WQ8',
+			credits: this.membCredits.credits
+		};
+	}
+
+	buildResult() {
+		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep } = this.webQuest;
+		const { isDone } = this.check();
+		const result = {
+			_id,
+			description,
+			isRepeatable,
+			type,
+			reward,
+			reward_unit,
+			isDone,
+			isJumpStep
+		};
+		return result;
 	}
 }

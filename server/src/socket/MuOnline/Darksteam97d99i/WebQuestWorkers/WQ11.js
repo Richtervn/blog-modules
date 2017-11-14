@@ -34,5 +34,31 @@ export default class WQ11 {
 			progress: 0,
 			finish_times: this.baseRecord.finish_times
 		});
+
+		return {
+			_id: 'WQ11',
+			zen_balance: this.banking.zen_balance.toString(),
+			progress: 0,
+			finish_times: this.baseRecord.finish_times
+		};
+	}
+
+	buildResult() {
+		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep } = this.webQuest;
+		const { progress, finish_times } = this.baseRecord;
+		const { isDone } = this.check();
+		const result = {
+			_id,
+			description,
+			isRepeatable,
+			type,
+			reward,
+			reward_unit,
+			isDone,
+			progress,
+			finish_times,
+			isJumpStep
+		};
+		return result;
 	}
 }

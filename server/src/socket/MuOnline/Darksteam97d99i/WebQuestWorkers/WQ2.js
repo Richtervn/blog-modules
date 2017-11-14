@@ -22,6 +22,8 @@ export default class WQ2 {
       checkpoint: this.baseRecord.checkpoint,
       progress: this.baseRecord.progress
     });
+
+    return { _id: 'WQ2', progress: this.baseRecord.progress };
   }
 
   async giveReward() {
@@ -41,5 +43,23 @@ export default class WQ2 {
       checkpoint: 0,
       progress: 0
     });
+
+    return {
+      _id: 'WQ2',
+      progress: 0,
+      credits: this.membCredits.credits,
+      finish_times: this.finish_times
+    };
+  }
+
+  buildResult() {
+    const { _id, description, isRepeatable, type, reward_unit, isJumpStep } = this.webQuest;
+    const { progress, finish_times } = this.baseRecord;
+    const { isDone } = this.check();
+    const result = { _id, description, isRepeatable, type, reward_unit, isDone, progress, finish_times, isJumpStep };
+    result.reward = this.currentReward;
+    result.requirement = this.requirement;
+
+    return result;
   }
 }

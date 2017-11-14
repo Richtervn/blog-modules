@@ -29,10 +29,36 @@ export default class WQ11 {
 		await this.membCredits.update({
 			credits: this.membCredits.credits
 		});
-		
+
 		await this.baseRecord.update({
 			progress: 0,
 			finish_times: this.baseRecord.finish_times
 		});
+
+		return {
+			_id: 'WQ12',
+			credits: this.membCredits.credits,
+			progress: 0,
+			finish_times: this.baseRecord.finish_times
+		};
+	}
+
+	buildResult() {
+		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep } = this.webQuest;
+		const { progress, finish_times } = this.baseRecord;
+		const { isDone } = this.check();
+		const result = {
+			_id,
+			description,
+			isRepeatable,
+			type,
+			reward,
+			reward_unit,
+			isDone,
+			progress,
+			finish_times,
+			isJumpStep
+		};
+		return result;
 	}
 }

@@ -43,5 +43,34 @@ export default class WQ15 {
 
 		this.currentRequirement = this.webQuest.requirement + this.baseRecord.finish_times * this.webQuest.step.requirement;
 		this.currentReward = this.webQuest.reward + this.baseRecord.finish_times * this.webQuest.step.reward;
+
+		return {
+			_id: 'WQ13',
+			progress: 0,
+			finish_times: this.baseRecord.finish_times,
+			credits: this.membCredits.credits,
+			reward: this.currentReward,
+			requirement: this.currentRequirement
+		};
+	}
+
+	buildResult() {
+		const { _id, description, isRepeatable, type, reward_unit, isJumpStep } = this.webQuest;
+		const { progress, finish_times } = this.baseRecord;
+		const { isDone } = this.check();
+		const result = {
+			_id,
+			description,
+			isRepeatable,
+			type,
+			reward_unit,
+			isDone,
+			progress,
+			finish_times,
+			isJumpStep
+		};
+		result.reward = this.currentReward;
+		result.requirement = this.currentRequirement;
+		return result;
 	}
 }

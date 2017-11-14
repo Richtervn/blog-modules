@@ -2,7 +2,7 @@ export default class WQ4 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;
 		this.membCredits = membCredits;
-		this.webQuest = this.webQuest;
+		this.webQuest = webQuest;
 	}
 
 	check() {
@@ -28,9 +28,37 @@ export default class WQ4 {
 		await this.membCredits.update({
 			credits: this.membCredits.credits
 		});
+
 		await this.baseRecord.update({
 			progress: 0,
 			finish_times: this.baseRecord.finish_times
 		});
+
+		return {
+			_id: 'WQ4',
+			progress: 0,
+			finish_times: this.baseRecord.finish_times,
+			credits: this.membCredits.credits
+		};
+	}
+
+	buildResult() {
+		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep } = this.webQuest;
+		const { progress, finish_times } = this.baseRecord;
+		const { isDone } = this.check();
+		const result = {
+			_id,
+			description,
+			isRepeatable,
+			type,
+			reward,
+			reward_unit,
+			isDone,
+			progress,
+			finish_times,
+			isJumpStep
+		};
+
+		return result;
 	}
 }

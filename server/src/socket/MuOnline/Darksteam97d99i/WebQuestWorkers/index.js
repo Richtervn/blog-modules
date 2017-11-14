@@ -48,7 +48,6 @@ class WebQuestWorker {
 		this.models = models;
 		this.methods = methods;
 		this.questWorkers = {};
-		this.completedStatus = {};
 	}
 
 	async initial(memb___id) {
@@ -121,9 +120,15 @@ class WebQuestWorker {
 				webQuest,
 				baseRecords
 			);
-			this.completedStatus[webQuest._id] = await questWorker.check();
 			this.questWorkers[webQuest._id] = questWorker;
 		});
+	}
+
+	getQuestList() {
+		const results = Object.keys(this.questWorkers).map(wqId => {
+			return this.questWorkers[wqId].buildResult();
+		});
+		return results;
 	}
 }
 

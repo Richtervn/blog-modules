@@ -58,5 +58,36 @@ export default class WQ16 {
 		await this.membCredits.update({
 			credits: this.membCredits.credits
 		});
+
+		return {
+			_id: 'WQ16',
+			credits: this.membCredits.credits
+		};
+	}
+
+	buildResult() {
+		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep } = this.webQuest;
+		let progress = 0;
+		let finish_times = 0;
+		this.baseRecords.forEach(baseRecord => {
+			if (baseRecord.progress > progress) progress = baseRecord.progress;
+			if (baseRecord.finish_times > finish_times) finish_times = baseRecord.finish_times;
+		});
+		const { isDone, character_name } = this.check();
+		const result = {
+			_id,
+			description,
+			isRepeatable,
+			type,
+			reward,
+			reward_unit,
+			isDone,
+			progress,
+			finish_times,
+			character_name,
+			isJumpStep
+		};
+
+		return result;
 	}
 }

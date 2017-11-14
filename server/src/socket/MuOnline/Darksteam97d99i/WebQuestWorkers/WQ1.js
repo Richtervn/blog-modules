@@ -60,9 +60,25 @@ export default class WQ1 {
 
   async giveReward() {
     const { reward } = this.webQuest;
+    this.membCredits += 50;
+
     await this.membCredits.update({
-      credits: this.membCredits.credits + 50,
+      credits: this.membCredits.credits,
       status: 'done'
     });
+
+    return {
+      _id: 'WQ1',
+      credits: this.membCredits.credits,
+      status: 'done'
+    };
+  }
+
+  buildResult() {
+    const { _id, description, isRepeatable, type, reward_unit, reward, isJumpStep } = this.webQuest;
+    const { message, isDone } = this.check();
+    const result = { _id, description, isRepeatable, type, reward_unit, reward, message, isDone, isJumpStep };
+    result.progress = isDone ? 100 : 0;
+    return result;
   }
 }

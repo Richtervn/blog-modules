@@ -57,6 +57,9 @@ export default (
     case CHANGE_ACTIVE_SIDE_FORM:
       return { ...state, activeSideForm: action.form };
     case CHANGE_USER_PAGE:
+      if(action.page == 'Web Quest'){
+        socket.emit('darksteam97d99i/GET_WEB_QUEST_LIST_START');
+      }
       return { ...state, userPage: action.page };
     case CHANGE_ADMIN_PAGE:
       return { ...state, adminPage: action.page };
