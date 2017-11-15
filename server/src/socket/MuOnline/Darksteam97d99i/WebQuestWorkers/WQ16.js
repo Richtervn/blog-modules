@@ -66,7 +66,7 @@ export default class WQ16 {
 	}
 
 	buildResult() {
-		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep } = this.webQuest;
+		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep, rules } = this.webQuest;
 		let progress = 0;
 		let finish_times = 0;
 		this.baseRecords.forEach(baseRecord => {
@@ -85,7 +85,8 @@ export default class WQ16 {
 			progress,
 			finish_times,
 			character_name,
-			isJumpStep
+			isJumpStep,
+			rules
 		};
 
 		return result;

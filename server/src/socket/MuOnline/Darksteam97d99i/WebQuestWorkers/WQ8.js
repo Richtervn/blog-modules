@@ -30,7 +30,7 @@ export default class WQ8 {
 	}
 
 	buildResult() {
-		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep } = this.webQuest;
+		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep, rules } = this.webQuest;
 		const { isDone } = this.check();
 		const result = {
 			_id,
@@ -40,7 +40,8 @@ export default class WQ8 {
 			reward,
 			reward_unit,
 			isDone,
-			isJumpStep
+			isJumpStep,
+			rules
 		};
 		return result;
 	}

@@ -75,9 +75,9 @@ export default class WQ1 {
   }
 
   buildResult() {
-    const { _id, description, isRepeatable, type, reward_unit, reward, isJumpStep } = this.webQuest;
+    const { _id, description, isRepeatable, type, reward_unit, reward, isJumpStep, rules } = this.webQuest;
     const { message, isDone } = this.check();
-    const result = { _id, description, isRepeatable, type, reward_unit, reward, message, isDone, isJumpStep };
+    const result = { _id, description, isRepeatable, type, reward_unit, reward, message, isDone, isJumpStep, rules };
     result.progress = isDone ? 100 : 0;
     return result;
   }

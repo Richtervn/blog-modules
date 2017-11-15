@@ -54,12 +54,13 @@ export default class WQ13 {
 	}
 
 	buildResult() {
-		const { _id, description, isRepeatable, type, reward_unit, isJumpStep } = this.webQuest;
+		const { _id, description, isRepeatable, type, reward_unit, isJumpStep, rules } = this.webQuest;
 		const { progress, finish_times } = this.baseRecord;
 		const { isDone } = this.check();
 		const result = {
 			_id,
 			description,
+			rules,
 			isRepeatable,
 			type,
 			reward_unit,

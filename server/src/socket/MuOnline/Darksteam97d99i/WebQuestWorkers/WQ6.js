@@ -47,7 +47,7 @@ export default class WQ6 {
 	}
 
 	buildResult() {
-		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep } = this.webQuest;
+		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep, rules } = this.webQuest;
 		const { progress, finish_times } = this.baseRecord;
 		const { isDone } = this.check();
 		const result = {
@@ -60,7 +60,8 @@ export default class WQ6 {
 			isDone,
 			progress,
 			finish_times,
-			isJumpStep
+			isJumpStep,
+			rules
 		};
 		return result;
 	}
