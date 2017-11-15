@@ -15,5 +15,9 @@ export default (client, models, methods) => {
 
 	client.on('darksteam97d99i/REQUEST_QUEST_REWARD', questId => {
 		// const result = await webQuestWorker[questId].
-	})
+	});
+
+	client.on('darksteam97d99i/CHECK_POINT_QUEST', questId => {
+
+	});
 };
