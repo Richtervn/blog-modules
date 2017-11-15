@@ -8,8 +8,6 @@ export default class WQ2 {
 
   check() {
     let isDone = true;
-    console.log(this.baseRecord.progress);
-    console.log(this.baseRecord);
     if (this.baseRecord.progress < 100) {
       isDone = false;
     }

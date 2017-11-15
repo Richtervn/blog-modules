@@ -504,3 +504,48 @@
   margin-right: 5px;
   margin-left: 20px;
 }
+
+.ds9799-quest-card {
+  height: 100px;
+  border: solid 1px #4c6177;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.ds9799-web-quest-container {
+  height: 670px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.ds9799-quest-card-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+}
+
+.ds9799-quest-card-subtitle {
+  font-size: 0.7rem;
+}
+
+.ds9799-quest-card-title {
+  font-weight: 600;
+}
+
+.ds9799-quest-card-content {
+  width: 385px;
+  padding-left: 10px;
+  position: relative;
+}
+
+.ds9799-quest-progress {
+  position: absolute;
+  bottom: 0;
+  width: 375px;
+}
+
+.ds9799-quest-card-completed {
+  background-color: rgba(0, 255, 0, 0.4);
+  cursor: pointer;
+}

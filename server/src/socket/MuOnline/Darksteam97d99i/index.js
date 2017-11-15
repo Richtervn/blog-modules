@@ -12,4 +12,8 @@ export default (client, models, methods) => {
 		const questList = webQuestWorker.getQuestList();
 		client.emit('darksteam97d99i/GET_WEB_QUEST_LIST_SUCCESS', questList)
 	})
+
+	client.on('darksteam97d99i/REQUEST_QUEST_REWARD', questId => {
+		// const result = await webQuestWorker[questId].
+	})
 };

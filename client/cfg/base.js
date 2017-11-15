@@ -38,7 +38,7 @@ module.exports = {
       modules: `${defaultSettings.srcPath}/modules/`,
       utilities: `${defaultSettings.srcPath}/utilities/`,
       app_modules: `${defaultSettings.srcPath}/app_modules`,
-      'react/lib/ReactMount': 'react-dom/lib/ReactMount'
+      'react/lib/ReactMount': 'react-dom/lib/ReactMount',
     }
   },
   module: {}
