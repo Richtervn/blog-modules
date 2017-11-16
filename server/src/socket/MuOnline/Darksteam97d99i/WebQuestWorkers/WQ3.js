@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import Promise from 'bluebird';
 
 export default class WQ3 {
@@ -6,6 +7,8 @@ export default class WQ3 {
 		this.characters = characters;
 		this.webQuest = webQuest;
 		this.membCredits = membCredits;
+		this.MembCredits = models.MembCredits;
+		this.membInfo = membInfo;
 	}
 
 	check() {
@@ -33,9 +36,15 @@ export default class WQ3 {
 				return baseRecord;
 			})
 		);
+
+		return {
+			_id: 'WQ3',
+			progress: _.max(this.baseRecords, 'progress')
+		};
 	}
 
 	async giveReward() {
+		this.membCredits = await this.MembCredits.findOne({ where: { memb___id: this.membInfo.memb___id } });
 		this.membCredits.credits += this.webQuest.reward;
 
 		this.baseRecords = await Promise.all(

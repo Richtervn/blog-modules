@@ -5,6 +5,8 @@ export default class WQ9 {
 		this.banking = banking;
 		this.currentRequirement = this.webQuest.requirement + this.baseRecord.finish_times * this.webQuest.step.requirement;
 		this.currentReward = this.webQuest.reward + this.baseRecord.finish_times * this.webQuest.step.reward;
+		this.membInfo = membInfo;
+		this.Banking = models.Banking;
 	}
 
 	check() {
@@ -23,9 +25,15 @@ export default class WQ9 {
 			checkpoint: this.baseRecord.checkpoint,
 			progress: this.baseRecord.progress
 		});
+
+		return {
+			_id: 'WQ9',
+			progress: this.baseRecord.progress
+		};
 	}
 
 	async giveReward() {
+		this.banking = await this.Banking.findOne({ where: { memb___id: this.membInfo.memb___id } });
 		this.banking.zen_balance = parseInt(this.banking.zen_balance) + this.currentReward;
 		this.baseRecord.checkpoint = 0;
 		this.baseRecord.progress = 0;

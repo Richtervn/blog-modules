@@ -4,6 +4,8 @@ export default class WQ2 {
     this.baseRecord = baseRecord;
     this.currentRequirement = this.webQuest.requirement + this.baseRecord.finish_times * this.webQuest.step.requirement;
     this.currentReward = this.webQuest.reward + this.baseRecord.finish_times * this.webQuest.step.reward;
+    this.MembCredits = models.MembCredits;
+    this.membInfo = membInfo;
   }
 
   check() {
@@ -27,7 +29,7 @@ export default class WQ2 {
   }
 
   async giveReward() {
-    this.membCredits.credits += this.currentReward;
+    this.membCredits = await this.MembCredits.findOne({ where: { memb___id: this.membInfo.memb___id } });
 
     await this.membCredits.update({
       credits: this.membCredits.credits

@@ -5,6 +5,8 @@ export default class WQ13 {
 		this.webQuest = webQuest;
 		this.currentRequirement = this.webQuest.requirement + this.baseRecord.finish_times * this.webQuest.step.requirement;
 		this.currentReward = this.webQuest.reward + this.baseRecord.finish_times * this.webQuest.step.reward;
+		this.MembCredits = models.MembCredits;
+		this.membInfo = membInfo;
 	}
 
 	check() {
@@ -23,9 +25,15 @@ export default class WQ13 {
 			checkpoint: this.baseRecord.checkpoint,
 			progress: this.baseRecord.progress
 		});
+
+		return {
+			_id: 'WQ13',
+			progress: this.baseRecord.progress
+		};
 	}
 
 	async giveReward() {
+		this.membCredits = await this.MembCredits.findOne({ where: { memb___id: this.membInfo.memb___id } });
 		this.membCredits.credits += this.currentReward;
 		this.baseRecord.finish_times += 1;
 		this.baseRecord.progress = 0;

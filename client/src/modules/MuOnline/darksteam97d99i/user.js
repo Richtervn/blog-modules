@@ -2,6 +2,8 @@ import actionCreator from 'factories/actionCreator';
 import { darksteam97d99i } from 'services';
 import socket from 'factories/socketInstance';
 
+import {CHANGE_USER_PAGE} from './navigator';
+
 import {
   ADD_POINT_SUCCESS,
   RESET_SUCCESS,
@@ -13,6 +15,8 @@ import {
   LOAN_SUCCESS,
   BUY_CREDIT_SUCCESS
 } from './character';
+
+import { REFRESH_QUEST_LIST } from './webQuest';
 
 const REGISTER_START = 'darksteam97d99i/user/REGISTER_START';
 export const REGISTER_SUCCESS = 'darksteam97d99i/user/REGISTER_SUCCESS';
@@ -40,7 +44,10 @@ export const register = formBody =>
   actionCreator(REGISTER_START, REGISTER_SUCCESS, REGISTER_FAIL, darksteam97d99i.register, formBody)();
 export const login = formBody =>
   actionCreator(LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, darksteam97d99i.login, formBody)();
-export const buyVip = (vipPackage, user, focusCharacter) =>
+
+let packageType;
+export const buyVip = (vipPackage, user, focusCharacter) => {
+  packageType = vipPackage.type;
   actionCreator(
     BUY_VIP_START,
     BUY_VIP_SUCCESS,
@@ -50,10 +57,31 @@ export const buyVip = (vipPackage, user, focusCharacter) =>
     user,
     focusCharacter
   )();
+};
 
 const initialState = { user: null, errorLogin: null, errorRegister: null };
 
 export default (state = initialState, action) => {
+  switch (action.type) {
+    case LOGIN_SUCCESS:
+      socket.emit('darksteam97d99i/USER_LOGGED_IN', action.data.memb___id);
+      break;
+    case EDIT_PROFILE_SUCCESS:
+      socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ1');
+      break;
+    case BUY_VIP_SUCCESS:
+      if (packageType == 'Character') socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ10');
+      if (packageType == 'Account') socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ11');
+      break;
+    case CHANGE_USER_PAGE:
+      if(action.page == 'Web Quest'){
+        socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ16');
+      }
+      break;
+    default:
+      break;
+  }
+
   switch (action.type) {
     case BUY_VIP_FAIL:
       return state;
@@ -112,7 +140,6 @@ export default (state = initialState, action) => {
     case REGISTER_FAIL:
       return { ...state, errorRegister: action.error };
     case LOGIN_SUCCESS:
-      socket.emit('darksteam97d99i/USER_LOGGED_IN', action.data.memb___id);
       return { ...state, user: action.data, viewControl: { ...state.viewControl, userPage: 'Dash Board' } };
     case LOGIN_FAIL:
       return { ...state, errorLogin: action.error };
@@ -120,6 +147,19 @@ export default (state = initialState, action) => {
       return { ...state, user: { ...state.user, ...action.data } };
     case LOGOUT:
       return { ...initialState };
+    case REFRESH_QUEST_LIST: {
+      const nextState = { ...state };
+      if (action.data.credits) {
+        nextState.user.MembCredits.credits = action.data.credits;
+      }
+      if (action.data.zen_balance) {
+        nextState.user.Banking.zen_balance = action.data.zen_balance;
+      }
+      return {
+        ...state,
+        user: { ...state.user, Credits: { ...state.user.MembCredits }, Banking: { ...state.user.Banking } }
+      };
+    }
     default:
       return state;
   }

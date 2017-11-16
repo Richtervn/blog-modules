@@ -1,5 +1,6 @@
 import actionCreator from 'factories/actionCreator';
 import { darksteam97d99i } from 'services';
+import socket from 'factories/socketInstance';
 
 const GET_CHARACTERS_START = 'darksteam97d99i/GET_CHARACTERS_START';
 const GET_CHARACTERS_SUCCESS = 'darksteam97d99i/GET_CHARACTERS_SUCCESS';
@@ -49,13 +50,7 @@ export const BUY_CREDIT_SUCCESS = 'darksteam97d99i/BUY_CREDIT_SUCCESS';
 const BUY_CREDIT_FAIL = 'darksteam97d99i/BUY_CREDIT_FAIL';
 
 export const getCharacters = id =>
-  actionCreator(
-    GET_CHARACTERS_START,
-    GET_CHARACTERS_SUCCESS,
-    GET_CHARACTERS_FAIL,
-    darksteam97d99i.getCharacters,
-    id
-  )();
+  actionCreator(GET_CHARACTERS_START, GET_CHARACTERS_SUCCESS, GET_CHARACTERS_FAIL, darksteam97d99i.getCharacters, id)();
 
 export const setFocusCharacter = character => ({ type: SET_FOCUS_CHARACTER, character });
 export const clearAddPointError = () => ({ type: CLEAR_ADD_POINT_ERROR });
@@ -64,37 +59,32 @@ export const clearGrandResetError = () => ({ type: CLEAR_GRAND_RESET_ERROR });
 export const clearResetQuestError = () => ({ type: CLEAR_RESET_QUEST_ERROR });
 export const clearBankingError = () => ({ type: CLEAR_BANKING_ERROR });
 
-export const deposit = query =>
-  actionCreator(DEPOSIT_START, DEPOSIT_SUCCESS, DEPOSIT_FAIL, darksteam97d99i.deposit, query)();
 export const withdraw = query =>
   actionCreator(WITHDRAW_START, WITHDRAW_SUCCESS, WITHDRAW_FAIL, darksteam97d99i.withdraw, query)();
-export const loan = query =>
+
+let amount;
+export const loan = query => {
+  amount = query.amount;
   actionCreator(LOAN_START, LOAN_SUCCESS, LOAN_FAIL, darksteam97d99i.loan, query)();
+};
+export const buyCredit = query => {
+  amount = query.amount;
+  actionCreator(BUY_CREDIT_START, BUY_CREDIT_SUCCESS, BUY_CREDIT_FAIL, darksteam97d99i.buyCredit, query)();
+};
+export const deposit = query => {
+  amount = query.amount;
+  actionCreator(DEPOSIT_START, DEPOSIT_SUCCESS, DEPOSIT_FAIL, darksteam97d99i.deposit, query)();
+};
+
 export const transfer = query =>
   actionCreator(TRANSFER_START, TRANSFER_SUCCESS, TRANSFER_FAIL, darksteam97d99i.transfer, query)();
-export const buyCredit = query =>
-  actionCreator(BUY_CREDIT_START, BUY_CREDIT_SUCCESS, BUY_CREDIT_FAIL, darksteam97d99i.buyCredit, query)();
-
 export const addPoint = query =>
   actionCreator(ADD_POINT_START, ADD_POINT_SUCCESS, ADD_POINT_FAIL, darksteam97d99i.addPoint, query)();
-export const reset = query =>
-  actionCreator(RESET_START, RESET_SUCCESS, RESET_FAIL, darksteam97d99i.reset, query)();
+export const reset = query => actionCreator(RESET_START, RESET_SUCCESS, RESET_FAIL, darksteam97d99i.reset, query)();
 export const grandReset = query =>
-  actionCreator(
-    GRAND_RESET_START,
-    GRAND_RESET_SUCCESS,
-    GRAND_RESET_FAIL,
-    darksteam97d99i.grandReset,
-    query
-  )();
+  actionCreator(GRAND_RESET_START, GRAND_RESET_SUCCESS, GRAND_RESET_FAIL, darksteam97d99i.grandReset, query)();
 export const resetQuest = query =>
-  actionCreator(
-    RESET_QUEST_START,
-    RESET_QUEST_SUCCESS,
-    RESET_QUEST_FAIL,
-    darksteam97d99i.resetQuest,
-    query
-  )();
+  actionCreator(RESET_QUEST_START, RESET_QUEST_SUCCESS, RESET_QUEST_FAIL, darksteam97d99i.resetQuest, query)();
 
 export default (
   state = {
@@ -108,6 +98,36 @@ export default (
   },
   action
 ) => {
+  switch (action.type) {
+    case ADD_POINT_SUCCESS:
+      socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ2');
+      break;
+    case RESET_SUCCESS:
+      socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ3', state.focusCharacter.Name);
+      break;
+    case GRAND_RESET_SUCCESS:
+      socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ4');
+      break;
+    case RESET_QUEST_SUCCESS:
+      socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ5');
+      break;
+    case LOAN_SUCCESS:
+      socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ6', amount);
+      break;
+    case DEPOSIT_SUCCESS:
+      if (action.data.loan_money) {
+        socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ8', amount);
+      } else {
+        socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ15', amount);
+      }
+      break;
+    case BUY_CREDIT_SUCCESS:
+      socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ9', amount);
+      break;
+    default:
+      break;
+  }
+
   switch (action.type) {
     case GET_CHARACTERS_SUCCESS:
       return { ...state, characters: action.data, focusCharacter: action.data[0] };
@@ -179,7 +199,7 @@ export default (
       return {
         ...nextState,
         characters: nextState.characters.slice(0),
-        focusCharacter: {...changedCharacter}
+        focusCharacter: { ...changedCharacter }
       };
     }
 
@@ -196,7 +216,7 @@ export default (
       return {
         ...nextState,
         characters: nextState.characters.slice(0),
-        focusCharacter: {...changedCharacter}
+        focusCharacter: { ...changedCharacter }
       };
     }
 

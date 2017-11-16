@@ -130,6 +130,21 @@ class WebQuestWorker {
 		});
 		return results;
 	}
+
+	async checkPointQuest(questId, ...params) {
+		const result = await this.questWorkers[questId].checkPoint(...params);
+		return result;
+	}
+
+	async getQuestReward(questId) {
+		const result = await this.questWorkers[questId].giveReward();
+		return result;
+	}
+
+	async checkQuest(questId){
+		const result = await this.questWorkers[questId].check();
+		return result
+	}
 }
 
 export default WebQuestWorker;

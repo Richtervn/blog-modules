@@ -3,6 +3,8 @@ export default class WQ17 {
 		this.baseRecord = baseRecord;
 		this.banking = banking;
 		this.webQuest = webQuest;
+		this.Banking = models.Banking;
+		this.membInfo = membInfo;
 	}
 
 	check() {
@@ -19,9 +21,15 @@ export default class WQ17 {
 		await this.baseRecord.update({
 			progress: this.baseRecord.progress
 		});
+
+				return {
+			_id: 'WQ18',
+			progress: this.baseRecord.progress
+		};
 	}
 
 	async giveReward() {
+		this.banking = await this.Banking.findOne({ where: { memb___id: this.membInfo.memb___id } });
 		this.banking.zen_balance = parseInt(this.banking.zen_balance) + this.webQuest.reward;
 		this.baseRecord.finish_times += 1;
 		this.baseRecord.progress = 0;

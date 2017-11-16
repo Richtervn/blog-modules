@@ -49,6 +49,8 @@ export default class WQ1 {
     this.baseRecord = baseRecord;
     this.webQuest = webQuest;
     this.membInfo = membInfo;
+    this.membCredits = membCredits;
+    this.MembCredits = models.MembCredits;
   }
 
   check() {
@@ -59,11 +61,15 @@ export default class WQ1 {
   }
 
   async giveReward() {
+    this.membCredits = await this.MembCredits.findOne({ where: { memb___id: this.membInfo.memb___id } });
     const { reward } = this.webQuest;
-    this.membCredits += 50;
+    this.membCredits.credits += 50;
 
     await this.membCredits.update({
-      credits: this.membCredits.credits,
+      credits: this.membCredits.credits
+    });
+
+    this.baseRecord = await this.baseRecord.update({
       status: 'done'
     });
 
@@ -77,7 +83,20 @@ export default class WQ1 {
   buildResult() {
     const { _id, description, isRepeatable, type, reward_unit, reward, isJumpStep, rules } = this.webQuest;
     const { message, isDone } = this.check();
-    const result = { _id, description, isRepeatable, type, reward_unit, reward, message, isDone, isJumpStep, rules };
+    const { status } = this.baseRecord;
+    const result = {
+      _id,
+      description,
+      isRepeatable,
+      type,
+      reward_unit,
+      reward,
+      message,
+      isDone,
+      isJumpStep,
+      rules,
+      status
+    };
     result.progress = isDone ? 100 : 0;
     return result;
   }

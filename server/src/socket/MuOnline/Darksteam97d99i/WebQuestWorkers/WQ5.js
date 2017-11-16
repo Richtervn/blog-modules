@@ -3,6 +3,8 @@ export default class WQ5 {
 		this.baseRecord = baseRecord;
 		this.membCredits = membCredits;
 		this.webQuest = webQuest;
+		this.membInfo = membInfo;
+		this.MembCredits = models.MembCredits;
 	}
 
 	check() {
@@ -18,9 +20,14 @@ export default class WQ5 {
 		await this.baseRecord.update({
 			progress: this.baseRecord.progress
 		});
+		return {
+			_id: 'WQ5',
+			progress: this.baseRecord.progress
+		};
 	}
 
 	async giveReward() {
+		this.membCredits = await this.MembCredits.findOne({ where: { memb___id: this.membInfo.memb___id } });
 		this.membCredits.credits += this.webQuest.reward;
 		this.baseRecord.finish_times += 1;
 		this.baseRecord.progress = 0;
@@ -28,7 +35,7 @@ export default class WQ5 {
 		await this.membCredits.update({
 			credits: this.membCredits.credits
 		});
-		
+
 		await this.baseRecord.update({
 			progress: 0,
 			finish_times: this.baseRecord.finish_times

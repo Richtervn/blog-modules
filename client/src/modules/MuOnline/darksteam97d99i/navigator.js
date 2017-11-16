@@ -4,7 +4,7 @@ import socket from 'factories/socketInstance';
 const CHANGE_ACTIVE_CHANNEL = 'darksteam97d99i/navigator/CHANGE_ACTIVE_CHANNEL';
 const CHANGE_ACTIVE_SIDE_FORM = 'darksteam97d99i/navigator/CHANGE_ACTIVE_SIDE_FORM';
 
-const CHANGE_USER_PAGE = 'darksteam97d99i/navigator/CHANGE_USER_PAGE';
+export const CHANGE_USER_PAGE = 'darksteam97d99i/navigator/CHANGE_USER_PAGE';
 const CHANGE_SERVER_PAGE = 'darksteam97d99i/navigator/CHANGE_SERVER_PAGE';
 const CHANGE_ADMIN_PAGE = 'darksteam97d99i/navigator/CHANGE_ADMIN_PAGE';
 

@@ -22,17 +22,26 @@ const questIcons = {
 	WQ18: 'craft'
 };
 
-export default ({ socket, questList, onReceiveQuestList, onRequestReward }) => {
+export default ({ socket, questList, onReceiveQuestList, onRequestReward, onRefreshQuestList }) => {
 	socket.on('darksteam97d99i/GET_WEB_QUEST_LIST_SUCCESS', questList => {
 		onReceiveQuestList(questList);
 	});
 
+	socket.on('darksteam97d99i/CHECK_POINT_QUEST_SUCCESS', quest => {
+		onRefreshQuestList(quest);
+	});
+
+	socket.on('darksteam97d99i/REQUEST_QUEST_REWARD_SUCCESS', quest => {
+		onRefreshQuestList(quest);
+	});
+
 	if (!questList) return null;
+	console.log(questList);
 
 	return (
 		<div className="ds9799-web-quest-container">
 			<div className="row no-row-margin">
-				{questList.map(quest => (
+				{questList.filter(quest => quest.status != 'done').map(quest => (
 					<div className="col-6 no-col-margin" key={quest._id}>
 						<QuestCard
 							quest={quest}

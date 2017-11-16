@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import Promise from 'bluebird';
 
 export default class WQ16 {
@@ -6,6 +7,8 @@ export default class WQ16 {
 		this.membCredits = membCredits;
 		this.webQuest = webQuest;
 		this.characters = characters;
+		this.membInfo = membInfo;
+		this.MembCredits = models.MembCredits;
 	}
 
 	check() {
@@ -19,31 +22,48 @@ export default class WQ16 {
 		return { isDone, character_name: this.characterFullFilled };
 	}
 
-	async checkPoint(character_name) {
-		const character = this.characters.filter(char => char.name == character_name)[0];
-		this.baseRecords = await Promise.all(
-			this.baseRecords.map(async baseRecord => {
-				if (baseRecord.character_name == character_name) {
-					baseRecord.progress = character.QuestNumber - baseRecord.checkpoint / 5 * 100;
-					await baseRecord.update({
-						progress: baseRecord.progress
-					});
-				}
-				return baseRecord;
+	async checkPoint() {
+		await Promise.all(
+			this.characters.map(async character => {
+
+				this.baseRecords = await Promise.all(
+					this.baseRecords.map(async baseRecord => {
+
+						if (baseRecord.character_name == character.Name) {
+							baseRecord.progress = (character.QuestNumber - baseRecord.checkpoint) / 5 * 100;
+
+							if (baseRecord.progress >= 100) {
+								this.characterFullFilled = baseRecord.character_name;
+							}
+
+							await baseRecord.update({
+								progress: baseRecord.progress
+							});
+						}
+
+						return baseRecord;
+					})
+				);
 			})
 		);
+
+		return {
+			_id: 'WQ16',
+			progress: _.max(_.pluck(this.baseRecords, 'progress'))
+		};
 	}
 
 	async giveReward() {
+		this.membCredits = await this.MembCredits.findOne({ where: { memb___id: this.membInfo.memb___id } });
 		this.membCredits.credits += this.webQuest.reward;
-		const character = this.characters.filter(char => char.name == this.characterFullFilled)[0];
+		const character = this.characters.filter(char => char.Name == this.characterFullFilled)[0];
 
 		this.baseRecords = await Promise.all(
 			this.baseRecords.map(baseRecord => {
 				if (baseRecord.character_name == this.characterFullFilled) {
 					baseRecord.checkpoint += 5;
 					baseRecord.finish_times += 1;
-					baseRecord.progress = character.QuestNumber - baseRecord.checkpoint / 5 * 100;
+					baseRecord.progress = (character.QuestNumber - baseRecord.checkpoint) / 5 * 100;
 
 					baseRecord.update({
 						progress: baseRecord.progress,
@@ -61,7 +81,9 @@ export default class WQ16 {
 
 		return {
 			_id: 'WQ16',
-			credits: this.membCredits.credits
+			credits: this.membCredits.credits,
+			progress: _.max(_.pluck(this.baseRecords, 'progress')),
+			isDone: _.max(_.pluck(this.baseRecords, 'progress')) < 100 ? false : true
 		};
 	}
 

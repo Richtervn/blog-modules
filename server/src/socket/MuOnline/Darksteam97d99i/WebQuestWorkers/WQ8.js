@@ -4,6 +4,8 @@ export default class WQ8 {
 		this.baseRecord = baseRecord;
 		this.webQuest = webQuest;
 		this.membCredits = membCredits;
+		this.membInfo = membInfo;
+		this.MembCredits = models.MembCredits;
 	}
 
 	check() {
@@ -17,21 +19,27 @@ export default class WQ8 {
 	}
 
 	async giveReward() {
+		this.membCredits = await this.MembCredits.findOne({ where: { memb___id: this.membInfo.memb___id } });
 		this.membCredits.credits += this.webQuest.reward;
 		await this.membCredits.update({
-			credits: this.membCredits.credits,
+			credits: this.membCredits.credits
+		});
+
+		this.baseRecord = await this.baseRecord.update({
 			status: 'done'
 		});
 
 		return {
 			_id: 'WQ8',
-			credits: this.membCredits.credits
+			credits: this.membCredits.credits,
+			status: 'done'
 		};
 	}
 
 	buildResult() {
 		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep, rules } = this.webQuest;
 		const { isDone } = this.check();
+		const { status } = this.baseRecord;
 		const result = {
 			_id,
 			description,
@@ -41,7 +49,8 @@ export default class WQ8 {
 			reward_unit,
 			isDone,
 			isJumpStep,
-			rules
+			rules,
+			status
 		};
 		return result;
 	}

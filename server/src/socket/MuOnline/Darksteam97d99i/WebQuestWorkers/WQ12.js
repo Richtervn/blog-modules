@@ -1,8 +1,10 @@
-export default class WQ11 {
+export default class WQ12 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;
 		this.membCredits = membCredits;
 		this.webQuest = webQuest;
+		this.MembCredits = models.MembCredits;
+		this.membInfo = membInfo;
 	}
 
 	check() {
@@ -19,9 +21,15 @@ export default class WQ11 {
 		await this.baseRecord.update({
 			progress: this.baseRecord.progress
 		});
+
+		return {
+			_id: 'WQ12',
+			progress: this.baseRecord.progress
+		};
 	}
 
 	async giveReward() {
+		this.membCredits = await this.MembCredits.findOne({ where: { memb___id: this.membInfo.memb___id } });
 		this.membCredits.credits += this.webQuest.reward;
 		this.baseRecord.finish_times += 1;
 		this.baseRecord.progress = 0;
