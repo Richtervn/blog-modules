@@ -45,7 +45,8 @@ export default (
       'Characters Manager',
       'Members Banking Manager',
       'Members Credits Manager',
-      'Game Setting Manager'
+      'Game Setting Manager',
+      'Web Shop Manager'
     ],
     adminPage: 'Accounts Manager'
   },

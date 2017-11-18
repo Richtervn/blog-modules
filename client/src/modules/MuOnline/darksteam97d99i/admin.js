@@ -1,34 +1,49 @@
 import actionCreator from 'factories/actionCreator';
 import { darksteam97d99i } from 'services';
 
-const ADMIN_SET_FOCUS_ACCOUNT = 'darksteam97d99i/ADMIN_SET_FOCUS_ACCOUNT';
-const ADMIN_SET_FOCUS_CHARACTER = 'darksteam97d99i/ADMIN_SET_FOCUS_CHARACTER';
+const ADMIN_SET_FOCUS_ACCOUNT = 'darksteam97d99i/admin/ADMIN_SET_FOCUS_ACCOUNT';
+const ADMIN_SET_FOCUS_CHARACTER = 'darksteam97d99i/admin/ADMIN_SET_FOCUS_CHARACTER';
+const ADMIN_SET_FOCUS_WEB_SHOP_CATEGORY = 'darksteam97d99i/admin/ADMIN_SET_FOCUS_WEB_SHOP_CATEGORY';
 
-const ADMIN_ADD_ACCOUNT_START = 'darksteam97d99i/ADMIN_ADD_ACCOUNT_START';
-const ADMIN_ADD_ACCOUNT_SUCCESS = 'darksteam97d99i/ADMIN_ADD_ACCOUNT_SUCCESS';
-const ADMIN_ADD_ACCOUNT_FAIL = 'darksteam97d99i/ADMIN_ADD_ACCOUNT_FAIL';
-const ADMIN_GET_ACCOUNTS_START = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_START';
-const ADMIN_GET_ACCOUNTS_SUCCESS = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_SUCCESS';
-const ADMIN_GET_ACCOUNTS_FAIL = 'darksteam97d99i/ADMIN_GET_ACCOUNTS_FAIL';
-const ADMIN_EDIT_ACCOUNT_START = 'darksteam97d99i/ADMIN_EDIT_ACCOUNT_START';
-const ADMIN_EDIT_ACCOUNT_SUCCESS = 'darksteam97d99i/ADMIN_EDIT_ACCOUNT_SUCCESS';
-const ADMIN_EDIT_ACCOUNT_FAIL = 'darksteam97d99i/ADMIN_EDIT_ACCOUNT_FAIL';
-const ADMIN_DELETE_ACCOUNT_START = 'darksteam97d99i/ADMIN_DELETE_ACCOUNT_START';
-const ADMIN_DELETE_ACCOUNT_SUCCESS = 'darksteam97d99i/ADMIN_DELETE_ACCOUNT_SUCCESS';
-const ADMIN_DELETE_ACCOUNT_FAIL = 'darksteam97d99i/ADMIN_DELETE_ACCOUNT_FAIL';
+const ADMIN_ADD_ACCOUNT_START = 'darksteam97d99i/admin/ADMIN_ADD_ACCOUNT_START';
+const ADMIN_ADD_ACCOUNT_SUCCESS = 'darksteam97d99i/admin/ADMIN_ADD_ACCOUNT_SUCCESS';
+const ADMIN_ADD_ACCOUNT_FAIL = 'darksteam97d99i/admin/ADMIN_ADD_ACCOUNT_FAIL';
+const ADMIN_GET_ACCOUNTS_START = 'darksteam97d99i/admin/ADMIN_GET_ACCOUNTS_START';
+const ADMIN_GET_ACCOUNTS_SUCCESS = 'darksteam97d99i/admin/ADMIN_GET_ACCOUNTS_SUCCESS';
+const ADMIN_GET_ACCOUNTS_FAIL = 'darksteam97d99i/admin/ADMIN_GET_ACCOUNTS_FAIL';
+const ADMIN_EDIT_ACCOUNT_START = 'darksteam97d99i/admin/ADMIN_EDIT_ACCOUNT_START';
+const ADMIN_EDIT_ACCOUNT_SUCCESS = 'darksteam97d99i/admin/ADMIN_EDIT_ACCOUNT_SUCCESS';
+const ADMIN_EDIT_ACCOUNT_FAIL = 'darksteam97d99i/admin/ADMIN_EDIT_ACCOUNT_FAIL';
+const ADMIN_DELETE_ACCOUNT_START = 'darksteam97d99i/admin/ADMIN_DELETE_ACCOUNT_START';
+const ADMIN_DELETE_ACCOUNT_SUCCESS = 'darksteam97d99i/admin/ADMIN_DELETE_ACCOUNT_SUCCESS';
+const ADMIN_DELETE_ACCOUNT_FAIL = 'darksteam97d99i/admin/ADMIN_DELETE_ACCOUNT_FAIL';
 
-const ADMIN_ADD_CHARACTER_START = 'darksteam97d99i/ADMIN_ADD_CHARACTER_START';
-const ADMIN_ADD_CHARACTER_SUCCESS = 'darksteam97d99i/ADMIN_ADD_CHARACTER_SUCCESS';
-const ADMIN_ADD_CHARACTER_FAIL = 'darksteam97d99i/ADMIN_ADD_CHARACTER_FAIL';
-const ADMIN_GET_CHARACTERS_START = 'darksteam97d99i/ADMIN_GET_CHARACTERS_START';
-const ADMIN_GET_CHARACTERS_SUCCESS = 'darksteam97d99i/ADMIN_GET_CHARACTERS_SUCCESS';
-const ADMIN_GET_CHARACTERS_FAIL = 'darksteam97d99i/ADMIN_GET_CHARACTERS_FAIL';
-const ADMIN_EDIT_CHARACTER_START = 'darksteam97d99i/ADMIN_EDIT_CHARACTER_START';
-const ADMIN_EDIT_CHARACTER_SUCCESS = 'darksteam97d99i/ADMIN_EDIT_CHARACTER_SUCCESS';
-const ADMIN_EDIT_CHARACTER_FAIL = 'darksteam97d99i/ADMIN_EDIT_CHARACTER_FAIL';
-const ADMIN_DELETE_CHARACTER_START = 'darksteam97d99i/ADMIN_DELETE_CHARACTER_START';
-const ADMIN_DELETE_CHARACTER_SUCCESS = 'darksteam97d99i/ADMIN_DELETE_CHARACTER_SUCCESS';
-const ADMIN_DELETE_CHARACTER_FAIL = 'darksteam97d99i/ADMIN_DELETE_CHARACTER_FAIL';
+const ADMIN_ADD_CHARACTER_START = 'darksteam97d99i/admin/ADMIN_ADD_CHARACTER_START';
+const ADMIN_ADD_CHARACTER_SUCCESS = 'darksteam97d99i/admin/ADMIN_ADD_CHARACTER_SUCCESS';
+const ADMIN_ADD_CHARACTER_FAIL = 'darksteam97d99i/admin/ADMIN_ADD_CHARACTER_FAIL';
+const ADMIN_GET_CHARACTERS_START = 'darksteam97d99i/admin/ADMIN_GET_CHARACTERS_START';
+const ADMIN_GET_CHARACTERS_SUCCESS = 'darksteam97d99i/admin/ADMIN_GET_CHARACTERS_SUCCESS';
+const ADMIN_GET_CHARACTERS_FAIL = 'darksteam97d99i/admin/ADMIN_GET_CHARACTERS_FAIL';
+const ADMIN_EDIT_CHARACTER_START = 'darksteam97d99i/admin/ADMIN_EDIT_CHARACTER_START';
+const ADMIN_EDIT_CHARACTER_SUCCESS = 'darksteam97d99i/admin/ADMIN_EDIT_CHARACTER_SUCCESS';
+const ADMIN_EDIT_CHARACTER_FAIL = 'darksteam97d99i/admin/ADMIN_EDIT_CHARACTER_FAIL';
+const ADMIN_DELETE_CHARACTER_START = 'darksteam97d99i/admin/ADMIN_DELETE_CHARACTER_START';
+const ADMIN_DELETE_CHARACTER_SUCCESS = 'darksteam97d99i/admin/ADMIN_DELETE_CHARACTER_SUCCESS';
+const ADMIN_DELETE_CHARACTER_FAIL = 'darksteam97d99i/admin/ADMIN_DELETE_CHARACTER_FAIL';
+
+const ADMIN_GET_BANKS_START = 'darksteam97d99i/admin/ADMIN_GET_BANKS_START';
+const ADMIN_GET_BANKS_SUCCESS = 'darksteam97d99i/admin/ADMIN_GET_BANKS_SUCCESS';
+const ADMIN_GET_BANKS_FAIL = 'darksteam97d99i/admin/ADMIN_GET_BANKS_FAIL';
+const ADMIN_EDIT_BANK_START = 'darksteam97d99i/admin/ADMIN_EDIT_BANK_START';
+const ADMIN_EDIT_BANK_SUCCESS = 'darksteam97d99i/admin/ADMIN_EDIT_BANK_SUCCESS';
+const ADMIN_EDIT_BANK_FAIL = 'darksteam97d99i/admin/ADMIN_EDIT_BANK_FAIL';
+
+const ADMIN_GET_CREDITS_START = 'darksteam97d99i/admin/ADMIN_GET_CREDITS_START';
+const ADMIN_GET_CREDITS_SUCCESS = 'darksteam97d99i/admin/ADMIN_GET_CREDITS_SUCCESS';
+const ADMIN_GET_CREDITS_FAIL = 'darksteam97d99i/admin/ADMIN_GET_CREDITS_FAIL';
+const ADMIN_EDIT_CREDIT_START = 'darksteam97d99i/admin/ADMIN_EDIT_CREDIT_START';
+const ADMIN_EDIT_CREDIT_SUCCESS = 'darksteam97d99i/admin/ADMIN_EDIT_CREDIT_SUCCESS';
+const ADMIN_EDIT_CREDIT_FAIL = 'darksteam97d99i/admin/ADMIN_EDIT_CREDIT_FAIL';
 
 export const setFocusAccount = account => ({ type: ADMIN_SET_FOCUS_ACCOUNT, account });
 export const setFocusCharacter = character => ({ type: ADMIN_SET_FOCUS_CHARACTER, character });
@@ -49,6 +64,18 @@ export const getCharacters = query =>
     darksteam97d99i.adminGetCharacters,
     query
   )();
+export const getBankings = actionCreator(
+  ADMIN_GET_BANKS_START,
+  ADMIN_GET_BANKS_SUCCESS,
+  ADMIN_GET_BANKS_FAIL,
+  darksteam97d99i.adminGetBankings
+);
+export const getCredits = actionCreator(
+  ADMIN_GET_CREDITS_START,
+  ADMIN_GET_CREDITS_SUCCESS,
+  ADMIN_GET_CREDITS_FAIL,
+  darksteam97d99i.adminGetCredits
+);
 
 export const editAccount = formBody =>
   actionCreator(
@@ -64,6 +91,22 @@ export const editCharacter = formBody =>
     ADMIN_EDIT_CHARACTER_SUCCESS,
     ADMIN_EDIT_CHARACTER_FAIL,
     darksteam97d99i.adminEditCharacter,
+    formBody
+  )();
+export const editBanking = formBody =>
+  actionCreator(
+    ADMIN_EDIT_BANK_START,
+    ADMIN_EDIT_BANK_SUCCESS,
+    ADMIN_EDIT_BANK_FAIL,
+    darksteam97d99i.adminEditBanking,
+    formBody
+  )();
+export const editCredits = formBody =>
+  actionCreator(
+    ADMIN_EDIT_CREDIT_START,
+    ADMIN_EDIT_CREDIT_SUCCESS,
+    ADMIN_EDIT_CREDIT_FAIL,
+    darksteam97d99i.adminEditCredit,
     formBody
   )();
 
@@ -106,7 +149,9 @@ export default (
     accounts: null,
     focusAccount: {},
     characters: null,
-    focusCharacter: {}
+    focusCharacter: {},
+    bankings: null,
+    credits: null
   },
   action
 ) => {
@@ -166,6 +211,35 @@ export default (
         ...state,
         characters: state.characters.filter(character => character.Name != action.data.id),
         focusCharacter: {}
+      };
+
+    case ADMIN_GET_BANKS_SUCCESS:
+      return { ...state, bankings: action.data };
+    case ADMIN_GET_CREDITS_SUCCESS:
+      return { ...state, credits: action.data };
+    case ADMIN_EDIT_BANK_SUCCESS:
+      return {
+        ...state,
+        bankings: state.bankings
+          .map(bank => {
+            if (bank.memb___id == action.data.memb___id) {
+              return action.data;
+            }
+            return bank;
+          })
+          .slice(0)
+      };
+    case ADMIN_EDIT_CREDIT_SUCCESS:
+      return {
+        ...state,
+        credits: state.credits
+          .map(credit => {
+            if (credit.memb___id == action.data.memb___id) {
+              return action.data;
+            }
+            return credit;
+          })
+          .slice(0)
       };
 
     case ADMIN_DELETE_ACCOUNT_FAIL:

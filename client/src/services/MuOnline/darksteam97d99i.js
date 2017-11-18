@@ -1,6 +1,6 @@
 import serviceCaller from 'factories/serviceCaller';
 
-const { commonPost, commonGet, commonPut, commonDelete } = serviceCaller;
+const { commonPost, commonGet, commonPut, commonDelete, commonPostMultiplePart } = serviceCaller;
 
 export default {
   register(formBody) {
@@ -99,6 +99,22 @@ export default {
     const data = commonGet('mu/darksteam97d99i/admin/character', null, query);
     return data;
   },
+  adminGetBankings() {
+    const data = commonGet('mu/darksteam97d99i/admin/banking');
+    return data;
+  },
+  adminGetCredits() {
+    const data = commonGet('mu/darksteam97d99i/admin/credit');
+    return data;
+  },
+  adminEditBanking(formBody) {
+    const data = commonPut('mu/darksteam97d99i/admin/banking', formBody);
+    return data;
+  },
+  adminEditCredit(formBody) {
+    const data = commonPut('mu/darksteam97d99i/admin/credit', formBody);
+    return data;
+  },
   adminEditAccount(formBody) {
     const data = commonPut('mu/darksteam97d99i/admin/memb_info', formBody);
     return data;
@@ -123,12 +139,13 @@ export default {
     const data = commonDelete('mu/darksteam97d99i/admin/memb_info/' + id);
     return data;
   },
-  adminGetBanks(query) {
-    const data = commonGet('mu/darksteam97d99i/admin/banking', null, query);
+  addWebShopPackage(formBody){
+    formBody.items = JSON.stringify(formBody.items);
+    const data = commonPostMultiplePart('mu/darksteam97d99i/admin/web_shop', formBody);
     return data;
   },
-  adminGetCredits(query) {
-    const data = commonGet('mu/darksteam97d99i/admin/credits', null, query);
+  getWebShopPackage(id){
+    const data = commonGet('mu/darksteam97d99i/web_shop', [id]);
     return data;
   }
 };

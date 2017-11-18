@@ -21,6 +21,8 @@ const models = async config => {
   const ViCurInfo = sequelize.import('./ViCurInfo');
   const VipSystem = sequelize.import('./VipSystem');
   const UserWebQuest = sequelize.import('./UserWebQuest');
+  const WebShopItem = sequelize.import('./WebShopItem');
+  const WebShopPackage = sequelize.import('./WebShopPackage');
 
   try {
     await sequelize.sync();
@@ -36,7 +38,9 @@ const models = async config => {
     Banking,
     ViCurInfo,
     VipSystem,
-    UserWebQuest
+    UserWebQuest,
+    WebShopItem,
+    WebShopPackage
   };
 };
 

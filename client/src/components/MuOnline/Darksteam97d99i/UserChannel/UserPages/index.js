@@ -7,6 +7,7 @@ import CharacterManager from 'containers/MuOnline/Darksteam97d99i/UserChannel/Us
 import BankingManager from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/BankingManager';
 import VipManager from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/VipManager';
 import WebQuest from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/WebQuest';
+import WebShop from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/WebShop';
 
 export default ({page}) => {
   switch(page){
@@ -22,6 +23,8 @@ export default ({page}) => {
       return <VipManager/>
     case 'Web Quest':
       return <WebQuest/>
+    case 'Web Shop':
+      return <WebShop/>
     default:
       return <Introduction/>
   }

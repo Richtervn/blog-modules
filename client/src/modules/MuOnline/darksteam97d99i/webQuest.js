@@ -8,11 +8,6 @@ export const setQuestList = questList => ({ type: SET_QUEST_LIST, questList });
 export const requestReward = questId => ({ type: REQUEST_QUEST_REWARD, questId });
 export const refreshQuestList = data => ({ type: REFRESH_QUEST_LIST, data });
 
-	socket.on('darksteam97d99i/CHECK_POINT_QUEST_SUCCESS', data => {
-		console.log(data);
-	})
-
-
 export default (
 	state = {
 		socket: socket,
