@@ -5,7 +5,7 @@ import ItemSelector from 'components/MuOnline/Darksteam97d99i/ServerChannel/Serv
 import SlotSelector from './SlotSelector';
 
 const initialItem = {
-	slot: 'Right hand',
+	slot: 'RightHand',
 	category: 'Swords',
 	duration: 255,
 	itemId: 0,
@@ -87,11 +87,12 @@ class ModalAddPackage extends Component {
 		this.setState(nextState);
 	}
 
-	onChangeItemLevel(level, i) {
+	onChangeItemLevel(event, i) {
 		const nextState = { ...this.state };
+		const { name, value } = event.target;
 		nextState.items = nextState.items.map((item, idx) => {
 			if (idx == i) {
-				item.level = level;
+				item[name] = value;
 			}
 			return item;
 		});
@@ -127,7 +128,7 @@ class ModalAddPackage extends Component {
 	}
 
 	submit() {
-		this.props.onSubmit({...this.state});
+		this.props.onSubmit({ ...this.state });
 		console.log(this.state);
 	}
 
@@ -215,7 +216,7 @@ class ModalAddPackage extends Component {
 													skill={this.state.items[i].skill}
 													level={this.state.items[i].level}
 													option={this.state.items[i].option}
-													onChangeLevel={event => this.onChangeItemLevel(event.target.value, i)}
+													onChangeLevel={event => this.onChangeItemLevel(event, i)}
 													onChangeCheck={name => this.onChangeItemCheck(name, i)}
 												/>
 												<ExcItemOptions

@@ -145,7 +145,7 @@ export default {
     return data;
   },
   getWebShopPackage(id){
-    const data = commonGet('mu/darksteam97d99i/web_shop', [id]);
+    const data = commonGet('mu/darksteam97d99i/web_shop/packages', [id]);
     return data;
   }
 };

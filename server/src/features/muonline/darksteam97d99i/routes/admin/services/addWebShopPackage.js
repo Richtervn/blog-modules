@@ -34,11 +34,11 @@ export default async (WebShopPackage, WebShopItem, body) => {
 		return webShopItem;
 	});
 
-	const response = webShopPackage.dataValues;
-	response.items = [];
-	webShopItems.forEach(item => {
-		response.items.push(item.dataValues);
-	});
+	// const response = webShopPackage.dataValues;
+	// response.items = [];
+	// webShopItems.forEach(item => {
+	// 	response.items.push(item.dataValues);
+	// });
 
-	return response;
+	return webShopPackage;
 };

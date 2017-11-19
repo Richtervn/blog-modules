@@ -5,6 +5,8 @@ import getCharacters from './services/getCharacters';
 import addCharacter from './services/addCharacter';
 import updateCharacter from './services/updateCharacter';
 import addWebShopPackage from './services/addWebShopPackage';
+import updateWebShopPackage from './services/updateWebShopPackage';
+import deleteWebShopPackage from './services/deleteWebShopPackage';
 import uploadWebShopPackageImage from './services/uploadWebShopPackageImage';
 
 export default (models, router, factories, helpers, appConfigs, methods) => {
@@ -129,9 +131,23 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
     wrap(async (req, res, next) => {
       req.body = await uploadWebShopPackageImage(req, res);
       const response = await addWebShopPackage(WebShopPackage, WebShopItem, req.body);
-      res.send(response)
+      res.send(response);
     })
   );
+
+  router.put(
+    '/admin/web_shop',
+    wrap(async (req, res, next) => {
+      req.body = await uploadWebShopPackageImage(req, res);
+      const response = await updateWebShopPackage(WebShopPackage, WebShopItem, req.body);
+      res.send(response);
+    })
+  );
+
+  router.delete('/admin/web_shop/:id', wrap(async (req, res, next) => {
+    await deleteWebShopPackage(WebShopPackage, WebShopItem, req.params.id)
+    res.send({id: req.params.id})
+  }))
 
   return router;
 };
