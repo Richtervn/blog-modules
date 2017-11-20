@@ -20,6 +20,10 @@ const GET_PACKAGE_START = 'darksteam97d99i/webShop/GET_PACKAGE_START';
 const GET_PACKAGE_SUCCESS = 'darksteam97d99i/webShop/GET_PACKAGE_SUCCESS';
 const GET_PACKAGE_FAIL = 'darksteam97d99i/webShop/GET_PACKAGE_FAIL';
 
+const BUY_PACKAGE_START = 'darksteam97d99i/webShop/BUY_PACKAGE_START';
+export const BUY_PACKAGE_SUCCESS = 'darksteam97d99i/webShop/BUY_PACKAGE_SUCCESS';
+const BUY_PACKAGE_FAIL = 'darksteam97d99i/webShop/BUY_PACKAGE_FAIL';
+
 export const setFocusWebShopCategory = category => ({
 	type: ADMIN_SET_FOCUS_WEB_SHOP_CATEGORY,
 	category
@@ -69,6 +73,16 @@ export const deletePackage = id =>
 		DELETE_PACKAGE_FAIL,
 		darksteam97d99i.deleteWebShopPackage,
 		id
+	)();
+
+export const buyPackage = (packageId, characterName) =>
+	actionCreator(
+		BUY_PACKAGE_START,
+		BUY_PACKAGE_SUCCESS,
+		BUY_PACKAGE_FAIL,
+		darksteam97d99i.buyWebShopPackage,
+		packageId,
+		characterName
 	)();
 
 const initialState = {
@@ -130,7 +144,7 @@ export default (state = initialState, action) => {
 				packages: {
 					...state.packages,
 					[state.focusWebShopCategory._id]: state.packages[state.focusWebShopCategory._id].slice(0).map(pack => {
-						const refeshPack = {...pack}
+						const refeshPack = { ...pack };
 						refeshPack.items = refeshPack.items.slice(0);
 						return refeshPack;
 					})
@@ -153,6 +167,7 @@ export default (state = initialState, action) => {
 
 		case EDIT_PACKAGE_FAIL:
 		case DELETE_PACKAGE_FAIL:
+		case BUY_PACKAGE_FAIL:
 			console.log(action);
 		default:
 			return state;

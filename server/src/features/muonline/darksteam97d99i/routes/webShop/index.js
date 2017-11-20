@@ -16,8 +16,8 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
 	router.get(
 		'/web_shop/buy/:packageId/:characterName',
 		wrap(async (req, res, next) => {
-			await buyPackage(models, helpers, req.params.characterName, req.params.packageId);
-			res.sendStatus(200);
+			const result = await buyPackage(models, helpers, req.params.characterName, req.params.packageId);
+			res.send(result);
 		})
 	);
 

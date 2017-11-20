@@ -156,5 +156,9 @@ export default {
   deleteWebShopPackage(id) {
     const data = commonDelete('mu/darksteam97d99i/admin/web_shop/' + id);
     return data;
+  },
+  buyWebShopPackage(packageId, characterName) {
+    const data = commonGet('mu/darksteam97d99i/web_shop/buy', [packageId, characterName]);
+    return data;
   }
 };

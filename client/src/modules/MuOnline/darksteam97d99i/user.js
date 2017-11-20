@@ -2,7 +2,7 @@ import actionCreator from 'factories/actionCreator';
 import { darksteam97d99i } from 'services';
 import socket from 'factories/socketInstance';
 
-import {CHANGE_USER_PAGE} from './navigator';
+import { CHANGE_USER_PAGE } from './navigator';
 
 import {
   ADD_POINT_SUCCESS,
@@ -17,6 +17,7 @@ import {
 } from './character';
 
 import { REFRESH_QUEST_LIST } from './webQuest';
+import { BUY_PACKAGE_SUCCESS } from './webShop';
 
 const REGISTER_START = 'darksteam97d99i/user/REGISTER_START';
 export const REGISTER_SUCCESS = 'darksteam97d99i/user/REGISTER_SUCCESS';
@@ -74,7 +75,7 @@ export default (state = initialState, action) => {
       if (packageType == 'Account') socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ11');
       break;
     case CHANGE_USER_PAGE:
-      if(action.page == 'Web Quest'){
+      if (action.page == 'Web Quest') {
         socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ16');
       }
       break;
@@ -83,8 +84,11 @@ export default (state = initialState, action) => {
   }
 
   switch (action.type) {
-    case BUY_VIP_FAIL:
-      return state;
+    case BUY_PACKAGE_SUCCESS:
+      return {
+        ...state,
+        user: { ...state.user, MembCredits: { ...state.user.MembCredits, credits: action.data.credits } }
+      };
     case RESET_QUEST_SUCCESS:
     case ADD_POINT_SUCCESS:
       if (action.data.isUseBank == 'true') {
