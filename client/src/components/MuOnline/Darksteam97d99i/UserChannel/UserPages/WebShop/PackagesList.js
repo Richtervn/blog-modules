@@ -8,7 +8,7 @@ export default ({ category, onGetPackage, packages }) => {
 	}
 	return (
 		<div className="row no-row-margin">
-			{packages[category._id].map(pack => <PackageCard key={pack._id} pack={pack} />)}
+			{packages[category._id].map((pack, i) => <PackageCard key={i} pack={pack} />)}
 		</div>
 	);
 };

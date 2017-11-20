@@ -1,6 +1,8 @@
 import Promise from 'bluebird';
 
 export default async (WebShopPackage, WebShopItem, body) => {
+	console.log(body);
+	console.log('is_vip_require', body.isVipRequire);
 	const webShopPackageForm = {
 		category_id: body.category_id,
 		image_url: body.image_url,
@@ -34,11 +36,12 @@ export default async (WebShopPackage, WebShopItem, body) => {
 		return webShopItem;
 	});
 
-	// const response = webShopPackage.dataValues;
-	// response.items = [];
-	// webShopItems.forEach(item => {
-	// 	response.items.push(item.dataValues);
-	// });
+	const response = webShopPackage.dataValues;
+	response.items = [];
+	webShopItems.forEach(item => {
+		response.items.push(item.dataValues);
+	});
 
-	return webShopPackage;
+	return response;
+
 };

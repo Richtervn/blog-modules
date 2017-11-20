@@ -8,6 +8,14 @@ const ADMIN_ADD_PACKAGE_START = 'darksteam97d99i/webShop/ADMIN_ADD_PACKAGE_START
 const ADMIN_ADD_PACKAGE_SUCCESS = 'darksteam97d99i/webShop/ADMIN_ADD_PACKAGE_SUCCESS';
 const ADMIN_ADD_PACKAGE_FAIL = 'darksteam97d99i/webShop/ADMIN_ADD_PACKAGE_FAIL';
 
+const EDIT_PACKAGE_START = 'darksteam97d99i/webShop/EDIT_PACKAGE_START';
+const EDIT_PACKAGE_SUCCESS = 'darksteam97d99i/webShop/EDIT_PACKAGE_SUCCESS';
+const EDIT_PACKAGE_FAIL = 'darksteam97d99i/webShop/EDIT_PACKAGE_FAIL';
+
+const DELETE_PACKAGE_START = 'darksteam97d99i/webShop/DELETE_PACKAGE_START';
+const DELETE_PACKAGE_SUCCESS = 'darksteam97d99i/webShop/DELETE_PACKAGE_SUCCESS';
+const DELETE_PACKAGE_FAIL = 'darksteam97d99i/webShop/DELETE_PACKAGE_FAIL';
+
 const GET_PACKAGE_START = 'darksteam97d99i/webShop/GET_PACKAGE_START';
 const GET_PACKAGE_SUCCESS = 'darksteam97d99i/webShop/GET_PACKAGE_SUCCESS';
 const GET_PACKAGE_FAIL = 'darksteam97d99i/webShop/GET_PACKAGE_FAIL';
@@ -29,6 +37,7 @@ export const addPackage = formBody =>
 		darksteam97d99i.addWebShopPackage,
 		formBody
 	)();
+
 export const getPackage = id => {
 	const getPackageStart = () => ({ type: GET_PACKAGE_START });
 	const getPackageSuccess = packages => ({ type: GET_PACKAGE_SUCCESS, packages, id });
@@ -43,6 +52,24 @@ export const getPackage = id => {
 		}
 	};
 };
+
+export const editPackage = formBody =>
+	actionCreator(
+		EDIT_PACKAGE_START,
+		EDIT_PACKAGE_SUCCESS,
+		EDIT_PACKAGE_FAIL,
+		darksteam97d99i.editWebShopPackage,
+		formBody
+	)();
+
+export const deletePackage = id =>
+	actionCreator(
+		DELETE_PACKAGE_START,
+		DELETE_PACKAGE_SUCCESS,
+		DELETE_PACKAGE_FAIL,
+		darksteam97d99i.deleteWebShopPackage,
+		id
+	)();
 
 const initialState = {
 	categories: [
@@ -73,12 +100,60 @@ export default (state = initialState, action) => {
 				...state,
 				focusCategory: action.category
 			};
+		case ADMIN_ADD_PACKAGE_SUCCESS:
+			state.packages[state.focusWebShopCategory._id].push(action.data);
+			return {
+				...state,
+				packages: {
+					...state.packages,
+					[state.focusWebShopCategory._id]: state.packages[state.focusWebShopCategory._id].slice(0)
+				}
+			};
+
 		case GET_PACKAGE_SUCCESS:
 			state.packages[action.id] = action.packages;
 			return {
 				...state,
 				packages: { ...state.packages }
 			};
+
+		case EDIT_PACKAGE_SUCCESS: {
+			console.log(action.data);
+			state.packages[state.focusWebShopCategory._id] = state.packages[state.focusWebShopCategory._id].map(pack => {
+				if (pack.id == action.data.id) {
+					return action.data;
+				}
+				return pack;
+			});
+			return {
+				...state,
+				packages: {
+					...state.packages,
+					[state.focusWebShopCategory._id]: state.packages[state.focusWebShopCategory._id].slice(0).map(pack => {
+						const refeshPack = {...pack}
+						refeshPack.items = refeshPack.items.slice(0);
+						return refeshPack;
+					})
+				}
+			};
+		}
+
+		case DELETE_PACKAGE_SUCCESS: {
+			state.packages[state.focusWebShopCategory._id] = state.packages[state.focusWebShopCategory._id].filter(
+				pack => pack.id != action.data.id
+			);
+			return {
+				...state,
+				packages: {
+					...state.packages,
+					[state.focusWebShopCategory._id]: state.packages[state.focusWebShopCategory._id].slice(0)
+				}
+			};
+		}
+
+		case EDIT_PACKAGE_FAIL:
+		case DELETE_PACKAGE_FAIL:
+			console.log(action);
 		default:
 			return state;
 	}

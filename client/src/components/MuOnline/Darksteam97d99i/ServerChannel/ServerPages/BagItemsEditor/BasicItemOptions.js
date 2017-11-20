@@ -34,7 +34,7 @@ export default ({ luck, skill, onChangeCheck, option, level, onChangeLevel }) =>
         <div className="col no-col-margin">
           <form className="form-inline flex-center">
             <label className="mr-sm-2">Item Level :</label>
-            <select className="ds9799-sm-selector" name="level" onChange={onChangeLevel} defaultValue={level}>
+            <select className="ds9799-sm-selector" name="level" onChange={onChangeLevel} value={level}>
               {itemLevel.map((lvl, i) => (
                 <option value={lvl} key={i}>
                   {lvl}
@@ -50,7 +50,7 @@ export default ({ luck, skill, onChangeCheck, option, level, onChangeLevel }) =>
               className="ds9799-sm-selector"
               name="option"
               onChange={onChangeLevel}
-              defaultValue={option}>
+              value={option}>
               {optLevel.map((lvl, i) => (
                 <option value={lvl} key={i}>
                   {lvl}

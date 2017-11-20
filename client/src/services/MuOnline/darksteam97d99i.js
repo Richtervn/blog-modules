@@ -1,6 +1,6 @@
 import serviceCaller from 'factories/serviceCaller';
 
-const { commonPost, commonGet, commonPut, commonDelete, commonPostMultiplePart } = serviceCaller;
+const { commonPost, commonGet, commonPut, commonDelete, commonPostMultiplePart, commonPutMultiplePart } = serviceCaller;
 
 export default {
   register(formBody) {
@@ -139,13 +139,22 @@ export default {
     const data = commonDelete('mu/darksteam97d99i/admin/memb_info/' + id);
     return data;
   },
-  addWebShopPackage(formBody){
+  addWebShopPackage(formBody) {
     formBody.items = JSON.stringify(formBody.items);
     const data = commonPostMultiplePart('mu/darksteam97d99i/admin/web_shop', formBody);
     return data;
   },
-  getWebShopPackage(id){
+  getWebShopPackage(id) {
     const data = commonGet('mu/darksteam97d99i/web_shop/packages', [id]);
+    return data;
+  },
+  editWebShopPackage(formBody) {
+    formBody.items = JSON.stringify(formBody.items);
+    const data = commonPutMultiplePart('mu/darksteam97d99i/admin/web_shop', formBody);
+    return data;
+  },
+  deleteWebShopPackage(id) {
+    const data = commonDelete('mu/darksteam97d99i/admin/web_shop/' + id);
     return data;
   }
 };

@@ -78,7 +78,6 @@
 
 .ds9799-dashboard-container {
   margin: 10px;
-  overflow-y: auto;
   max-height: 656px;
 }
 
@@ -647,6 +646,10 @@
   margin: 10px;
   border-radius: 5px;
   border: solid 2px darkgoldenrod;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .ds9799-ws-package-label {
@@ -658,4 +661,17 @@
   margin-bottom: 8px;
   padding: 5px;
   background-color: maroon;
+}
+
+.ds9799-ws-add-package-btn {
+  display: flex;
+  background-color: rgba(222, 184, 135, 0.5);
+  margin: 10px;
+  border-radius: 5px;
+  border: dashed 2px darkgoldenrod;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  min-height: 300px;
 }
