@@ -16,7 +16,7 @@ export default class WQ6 {
 	}
 
 	async checkPoint(amount) {
-		this.baseRecord.checkpoint += amount;
+		this.baseRecord.checkpoint += parseInt(amount);
 		this.baseRecord.progress = this.baseRecord.checkpoint / 5000000000 * 100;
 		await this.baseRecord.update({
 			progress: this.baseRecord.progress,

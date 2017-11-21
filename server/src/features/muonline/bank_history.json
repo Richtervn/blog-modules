@@ -70,5 +70,17 @@
     "CharName": "KuroNeko",
     "Amount": 1200000000,
     "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 500,
+    "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 500000000,
+    "Type": "Loan"
   }
 ]

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import QuestCard from './QuestCard';
+
+import socket from 'factories/socketInstance';
 
 const questIcons = {
 	WQ1: 'wq-fill-form',
@@ -22,35 +24,48 @@ const questIcons = {
 	WQ18: 'wq-craft'
 };
 
-export default ({ socket, questList, onReceiveQuestList, onRequestReward, onRefreshQuestList }) => {
-	socket.on('darksteam97d99i/GET_WEB_QUEST_LIST_SUCCESS', questList => {
-		onReceiveQuestList(questList);
-	});
+class WebQuest extends Component {
+	constructor(props) {
+		super(props);
+	}
 
-	socket.on('darksteam97d99i/CHECK_POINT_QUEST_SUCCESS', quest => {
-		onRefreshQuestList(quest);
-	});
+	componentDidMount() {
+		const { onReceiveQuestList, onRefreshQuestList } = this.props;
 
-	socket.on('darksteam97d99i/REQUEST_QUEST_REWARD_SUCCESS', quest => {
-		onRefreshQuestList(quest);
-	});
+		socket.on('darksteam97d99i/GET_WEB_QUEST_LIST_SUCCESS', questList => {
+			onReceiveQuestList(questList);
+		});
 
-	if (!questList) return null;
-	console.log(questList);
+		socket.on('darksteam97d99i/CHECK_POINT_QUEST_SUCCESS', quest => {
+			onRefreshQuestList(quest);
+		});
 
-	return (
-		<div className="ds9799-web-quest-container">
-			<div className="row no-row-margin">
-				{questList.filter(quest => quest.status != 'done').map(quest => (
-					<div className="col-6 no-col-margin" key={quest._id}>
-						<QuestCard
-							quest={quest}
-							icon={`/app_modules/images/icons/${questIcons[quest._id]}.jpg`}
-							onRequestReward={onRequestReward}
-						/>
-					</div>
-				))}
+		socket.on('darksteam97d99i/REQUEST_QUEST_REWARD_SUCCESS', quest => {
+			onRefreshQuestList(quest);
+		});
+	}
+
+	render() {
+		const { questList, onRequestReward } = this.props;
+
+		if (!questList) return null;
+		console.log(questList);
+		return (
+			<div className="ds9799-web-quest-container">
+				<div className="row no-row-margin">
+					{questList.filter(quest => quest.status != 'done').map(quest => (
+						<div className="col-6 no-col-margin" key={quest._id}>
+							<QuestCard
+								quest={quest}
+								icon={`/app_modules/images/icons/${questIcons[quest._id]}.jpg`}
+								onRequestReward={onRequestReward}
+							/>
+						</div>
+					))}
+				</div>
 			</div>
-		</div>
-	);
-};
+		);
+	}
+}
+
+export default WebQuest;

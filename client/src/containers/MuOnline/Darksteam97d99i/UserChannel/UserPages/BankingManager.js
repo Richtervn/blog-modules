@@ -28,7 +28,7 @@ export default connect(
       dispatch(getCharacters(id));
     },
     onClearBankingError() {
-      dispatch(clearBankingError);
+      dispatch(clearBankingError());
     },
     onDeposit(query){
       dispatch(deposit(query))

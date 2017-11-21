@@ -9,7 +9,7 @@ export default (sequelize, DataTypes) => {
       allowNull: true
     },
     loan_money: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true
     }
   }, {

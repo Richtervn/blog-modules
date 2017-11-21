@@ -65,15 +65,17 @@ export const withdraw = query =>
 let amount;
 export const loan = query => {
   amount = query.amount;
-  actionCreator(LOAN_START, LOAN_SUCCESS, LOAN_FAIL, darksteam97d99i.loan, query)();
+  return actionCreator(LOAN_START, LOAN_SUCCESS, LOAN_FAIL, darksteam97d99i.loan, query)();
 };
+
 export const buyCredit = query => {
   amount = query.amount;
-  actionCreator(BUY_CREDIT_START, BUY_CREDIT_SUCCESS, BUY_CREDIT_FAIL, darksteam97d99i.buyCredit, query)();
+  return actionCreator(BUY_CREDIT_START, BUY_CREDIT_SUCCESS, BUY_CREDIT_FAIL, darksteam97d99i.buyCredit, query)();
 };
+
 export const deposit = query => {
   amount = query.amount;
-  actionCreator(DEPOSIT_START, DEPOSIT_SUCCESS, DEPOSIT_FAIL, darksteam97d99i.deposit, query)();
+  return actionCreator(DEPOSIT_START, DEPOSIT_SUCCESS, DEPOSIT_FAIL, darksteam97d99i.deposit, query)();
 };
 
 export const transfer = query =>

@@ -13,37 +13,33 @@ export default class WQ16 {
 
 	check() {
 		let isDone = false;
-		this.baseRecords.map(baseRecord => {
+		this.baseRecords.forEach(baseRecord => {
 			if (baseRecord.progress >= 100) {
 				isDone = true;
 				this.characterFullFilled = baseRecord.character_name;
 			}
 		});
-		return { isDone, character_name: this.characterFullFilled };
+		return { isDone: isDone, character_name: this.characterFullFilled };
 	}
 
 	async checkPoint() {
 		await Promise.all(
 			this.characters.map(async character => {
+				this.baseRecords = await Promise.map(this.baseRecords, async baseRecord => {
+					if (baseRecord.character_name == character.Name) {
+						baseRecord.progress = (character.QuestNumber - baseRecord.checkpoint) / 5 * 100;
 
-				this.baseRecords = await Promise.all(
-					this.baseRecords.map(async baseRecord => {
-
-						if (baseRecord.character_name == character.Name) {
-							baseRecord.progress = (character.QuestNumber - baseRecord.checkpoint) / 5 * 100;
-
-							if (baseRecord.progress >= 100) {
-								this.characterFullFilled = baseRecord.character_name;
-							}
-
-							await baseRecord.update({
-								progress: baseRecord.progress
-							});
+						if (baseRecord.progress >= 100) {
+							this.characterFullFilled = baseRecord.character_name;
 						}
 
-						return baseRecord;
-					})
-				);
+						await baseRecord.update({
+							progress: baseRecord.progress
+						});
+					}
+
+					return baseRecord;
+				});
 			})
 		);
 
@@ -58,32 +54,32 @@ export default class WQ16 {
 		this.membCredits.credits += this.webQuest.reward;
 		const character = this.characters.filter(char => char.Name == this.characterFullFilled)[0];
 
-		this.baseRecords = await Promise.all(
-			this.baseRecords.map(baseRecord => {
-				if (baseRecord.character_name == this.characterFullFilled) {
-					baseRecord.checkpoint += 5;
-					baseRecord.finish_times += 1;
-					baseRecord.progress = (character.QuestNumber - baseRecord.checkpoint) / 5 * 100;
+		this.baseRecords = this.baseRecords.map(baseRecord => {
+			if (baseRecord.character_name == this.characterFullFilled) {
+				baseRecord.checkpoint += 5;
+				baseRecord.finish_times += 1;
+				baseRecord.progress = (character.QuestNumber - baseRecord.checkpoint) / 5 * 100;
 
-					baseRecord.update({
-						progress: baseRecord.progress,
-						checkpoint: baseRecord.checkpoint,
-						finish_times: baseRecord.finish_times
-					});
-				}
-				return baseRecord;
-			})
-		);
+				baseRecord.update({
+					progress: baseRecord.progress,
+					checkpoint: baseRecord.checkpoint,
+					finish_times: baseRecord.finish_times
+				});
+			}
+			return baseRecord;
+		});
 
 		await this.membCredits.update({
 			credits: this.membCredits.credits
 		});
 
+		const { isDone } = this.check();
+
 		return {
 			_id: 'WQ16',
 			credits: this.membCredits.credits,
 			progress: _.max(_.pluck(this.baseRecords, 'progress')),
-			isDone: _.max(_.pluck(this.baseRecords, 'progress')) < 100 ? false : true
+			isDone: isDone
 		};
 	}
 

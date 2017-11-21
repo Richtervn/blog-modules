@@ -5,7 +5,6 @@ import { setQuestList, requestReward, refreshQuestList } from 'modules/MuOnline/
 
 export default connect(
 	({ ds9799_webQuest }) => ({
-		socket: ds9799_webQuest.socket,
 		questList: ds9799_webQuest.questList
 	}),
 	dispatch => ({

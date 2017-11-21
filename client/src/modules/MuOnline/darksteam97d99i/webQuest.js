@@ -10,7 +10,6 @@ export const refreshQuestList = data => ({ type: REFRESH_QUEST_LIST, data });
 
 export default (
 	state = {
-		socket: socket,
 		questList: null
 	},
 	action
@@ -26,10 +25,7 @@ export default (
 			const { data } = action;
 			state.questList = state.questList.map(quest => {
 				if (quest._id == data._id) {
-					if (data.finish_times) quest.finish_times = data.finish_times;
-					if (data.status) quest.status = data.status;
-					if (data.progress) quest.progress = data.progress;
-					if (data.isDone) quest.isDone = data.isDone;
+					quest = {...quest, ...data};
 				}
 				return quest;
 			});
