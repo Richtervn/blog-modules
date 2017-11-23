@@ -23,6 +23,10 @@ const models = async config => {
   const UserWebQuest = sequelize.import('./UserWebQuest');
   const WebShopItem = sequelize.import('./WebShopItem');
   const WebShopPackage = sequelize.import('./WebShopPackage');
+  const Consumable = sequelize.import('./Consumable');
+  const Exchange = sequelize.import('./Exchange');
+  const Material = sequelize.import('./Material');
+  const Receipt = sequelize.import('./Receipt');
 
   try {
     await sequelize.sync();
@@ -40,7 +44,11 @@ const models = async config => {
     VipSystem,
     UserWebQuest,
     WebShopItem,
-    WebShopPackage
+    WebShopPackage,
+    Consumable,
+    Exchange,
+    Material,
+    Receipt
   };
 };
 

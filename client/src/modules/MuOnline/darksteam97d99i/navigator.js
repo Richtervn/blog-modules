@@ -26,9 +26,9 @@ export default (
       'Vip Manager',
       'Web Shop',
       'Web Quest',
-      'Upgrade Items',
       'Luxury Shop',
-      'Blacksmith'
+      'Blacksmith',
+      'Upgrade Items'
     ],
     userPage: null,
     serverPages: [
@@ -46,7 +46,8 @@ export default (
       'Members Banking Manager',
       'Members Credits Manager',
       'Game Setting Manager',
-      'Web Shop Manager'
+      'Web Shop Manager',
+      'Luxury Shop Manager'
     ],
     adminPage: 'Accounts Manager'
   },

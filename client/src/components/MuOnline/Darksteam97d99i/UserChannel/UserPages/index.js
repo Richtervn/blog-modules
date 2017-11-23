@@ -8,6 +8,7 @@ import BankingManager from 'containers/MuOnline/Darksteam97d99i/UserChannel/User
 import VipManager from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/VipManager';
 import WebQuest from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/WebQuest';
 import WebShop from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/WebShop';
+import LuxuryShop from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/LuxuryShop';
 
 export default ({page}) => {
   switch(page){
@@ -25,6 +26,8 @@ export default ({page}) => {
       return <WebQuest/>
     case 'Web Shop':
       return <WebShop/>
+    case 'Luxury Shop':
+      return <LuxuryShop/>
     default:
       return <Introduction/>
   }

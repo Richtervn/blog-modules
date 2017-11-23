@@ -5,6 +5,7 @@ import CharactersManager from 'containers/MuOnline/Darksteam97d99i/AdminChannel/
 import BankingManager from 'containers/MuOnline/Darksteam97d99i/AdminChannel/AdminPages/BankingManager';
 import CreditManager from 'containers/MuOnline/Darksteam97d99i/AdminChannel/AdminPages/CreditManager';
 import WebShopManager from 'containers/MuOnline/Darksteam97d99i/AdminChannel/AdminPages/WebShopManager';
+import LuxuryShopManager from 'containers/MuOnline/Darksteam97d99i/AdminChannel/AdminPages/LuxuryShopManager';
 
 export default ({ page }) => {
   switch (page) {
@@ -18,6 +19,8 @@ export default ({ page }) => {
       return <CreditManager />;
     case 'Web Shop Manager':
       return <WebShopManager />;
+    case 'Luxury Shop Manager':
+      return <LuxuryShopManager/>;
     default:
       return null;
   }

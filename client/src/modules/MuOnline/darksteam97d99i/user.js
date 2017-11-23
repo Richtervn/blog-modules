@@ -38,7 +38,7 @@ const BUY_VIP_FAIL = 'darksteam97d99i/user/BUY_VIP_FAIL';
 export const editProfile = formBody =>
   actionCreator(EDIT_PROFILE_START, EDIT_PROFILE_SUCCESS, EDIT_PROFILE_FAIL, darksteam97d99i.editProfile, formBody)();
 
-const LOGOUT = 'darksteam97d99i/LOGOUT';
+export const LOGOUT = 'darksteam97d99i/LOGOUT';
 
 export const logout = () => ({ type: LOGOUT });
 export const register = formBody =>

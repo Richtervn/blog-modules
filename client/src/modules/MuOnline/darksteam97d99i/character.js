@@ -2,6 +2,8 @@ import actionCreator from 'factories/actionCreator';
 import { darksteam97d99i } from 'services';
 import socket from 'factories/socketInstance';
 
+import { LOGOUT } from './user';
+
 const GET_CHARACTERS_START = 'darksteam97d99i/GET_CHARACTERS_START';
 const GET_CHARACTERS_SUCCESS = 'darksteam97d99i/GET_CHARACTERS_SUCCESS';
 const GET_CHARACTERS_FAIL = 'darksteam97d99i/GET_CHARACTERS_FAIL';
@@ -246,6 +248,16 @@ export default (
       return { ...state, errorResetQuest: null };
     case CLEAR_BANKING_ERROR:
       return { ...state, errorBanking: null };
+    case LOGOUT:
+      return {
+        characters: null,
+        focusCharacter: {},
+        errorAddPoint: null,
+        errorReset: null,
+        errorGrandReset: null,
+        errorResetQuest: null,
+        errorBanking: null
+      };
     default:
       return state;
   }

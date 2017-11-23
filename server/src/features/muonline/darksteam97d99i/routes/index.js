@@ -6,3 +6,4 @@ export admin from './admin';
 export system from './system';
 export vipSystem from './vipSystem';
 export webShop from './webShop';
+export luxuryShop from './luxuryShop';
