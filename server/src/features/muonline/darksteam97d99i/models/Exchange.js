@@ -27,10 +27,6 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      slot: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
       duration: {
         type: DataTypes.INTEGER,
         allowNull: true

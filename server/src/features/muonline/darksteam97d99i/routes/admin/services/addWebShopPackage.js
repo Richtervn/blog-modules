@@ -1,8 +1,7 @@
 import Promise from 'bluebird';
 
 export default async (WebShopPackage, WebShopItem, body) => {
-	console.log(body);
-	console.log('is_vip_require', body.isVipRequire);
+
 	const webShopPackageForm = {
 		category_id: body.category_id,
 		image_url: body.image_url,

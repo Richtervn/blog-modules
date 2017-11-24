@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   return sequelize.define(
-    'RECEIPT',
+    'MATERIAL',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -78,7 +78,7 @@ export default (sequelize, DataTypes) => {
       }
     },
     {
-      tableName: 'RECEIPT',
+      tableName: 'MATERIAL',
       freezeTableName: true,
       timestamps: false
     }

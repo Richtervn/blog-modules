@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) => {
   return sequelize.define(
-    'RECEIPT',
+    'CONSUMABLE',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -15,16 +15,16 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false
       },
+      image_url: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
       category: {
         type: DataTypes.STRING,
         allowNull: false
       },
       itemId: {
         type: DataTypes.INTEGER,
-        allowNull: false
-      },
-      slot: {
-        type: DataTypes.STRING,
         allowNull: false
       },
       duration: {
@@ -73,7 +73,7 @@ export default (sequelize, DataTypes) => {
       }
     },
     {
-      tableName: 'RECEIPT',
+      tableName: 'CONSUMABLE',
       freezeTableName: true,
       timestamps: false
     }

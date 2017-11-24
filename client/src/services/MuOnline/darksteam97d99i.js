@@ -160,5 +160,53 @@ export default {
   buyWebShopPackage(packageId, characterName) {
     const data = commonGet('mu/darksteam97d99i/web_shop/buy', [packageId, characterName]);
     return data;
+  },
+  adminAddExchange(formBody){
+    const data = commonPostMultiplePart('mu/darksteam97d99i/luxury_shop/exchange', formBody);
+    return data;
+  },
+  adminEditExchange(formBody){
+    const data = commonPutMultiplePart('mu/darksteam97d99i/luxury_shop/exchange', formBody);
+    return data;
+  },
+  deleteExchange(id){
+    const data = commonDelete('mu/darksteam97d99i/luxury_shop/exchange/' + id);
+    return data;
+  },
+  getExchange(){
+    const data = commonGet('mu/darksteam97d99i/luxury_shop/exchange');
+    return data;
+  },
+  adminAddConsumable(formBody){
+    const data = commonPostMultiplePart('mu/darksteam97d99i/luxury_shop/consumable', formBody);
+    return data;
+  },
+  adminEditConsumable(formBody){
+    const data = commonPutMultiplePart('mu/darksteam97d99i/luxury_shop/consumable', formBody);
+    return data;
+  },
+  getConsumable(){
+    const data = commonGet('mu/darksteam97d99i/luxury_shop/consumable');
+    return data;
+  },
+  deleteConsumabe(id){
+    const data = commonDelete('mu/darksteam97d99i/luxury_shop/consumable/' + id);
+    return data;
+  },
+  adminAddReceipt(formBody){
+    const data = commonPostMultiplePart('mu/darksteam97d99i/luxury_shop/receipt', formBody);
+    return data;
+  },
+  adminEditReceipt(formBody){
+    const data = commonPutMultiplePart('mu/darksteam97d99i/luxury_shop/receipt', formBody);
+    return data;
+  },
+  getReceipt(){
+    const data = commonGet('mu/darksteam97d99i/luxury_shop/receipt');
+    return data;
+  },
+  deleteReceipt(id){
+    const data = commonDelete('mu/darksteam97d99i/luxury_shop/receipt/' + id);
+    return data;
   }
 };

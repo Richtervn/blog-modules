@@ -27,6 +27,7 @@ const models = async config => {
   const Exchange = sequelize.import('./Exchange');
   const Material = sequelize.import('./Material');
   const Receipt = sequelize.import('./Receipt');
+  const UserReceipt = sequelize.import('./UserReceipt');
 
   try {
     await sequelize.sync();
@@ -48,7 +49,8 @@ const models = async config => {
     Consumable,
     Exchange,
     Material,
-    Receipt
+    Receipt,
+    UserReceipt
   };
 };
 

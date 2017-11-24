@@ -46,6 +46,9 @@ class ModalAddPackage extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
+		if (Object.keys(this.props.data).length < Object.keys(nextProps.data).length) {
+			return;
+		}
 		const { pack } = nextProps;
 		const nextState = {
 			id: pack.id,
