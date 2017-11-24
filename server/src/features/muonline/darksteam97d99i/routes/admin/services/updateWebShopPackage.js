@@ -26,7 +26,8 @@ export default async (WebShopPackage, WebShopItem, body) => {
 		}
 	});
 
-	await WebShopPackage.update(webShopPackageForm, { where: { id: body.id } }), (body.items = JSON.parse(body.items));
+	await WebShopPackage.update(webShopPackageForm, { where: { id: body.id } });
+	body.items = JSON.parse(body.items);
 	body.items = await Promise.map(body.items, async item => {
 		const webShopItemForm = {
 			slot: item.slot,
@@ -46,8 +47,9 @@ export default async (WebShopPackage, WebShopItem, body) => {
 		};
 
 		if (item.id) {
-			const webShopItem = await WebShopItem.update(webShopItemForm, { where: { id: item.id } });
-			return webShopItem;
+			await WebShopItem.update(webShopItemForm, { where: { id: item.id } });
+			webShopItemForm.id = item.id;
+			return webShopItemForm;
 		} else {
 			const webShopItem = await WebShopItem.create(webShopItemForm);
 			return webShopItem.dataValues;

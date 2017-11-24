@@ -10,10 +10,10 @@ export default async (WebShopPackage, WebShopItem, id) => {
 	fs.unlinkSync(webShopPackage.image_url);
 
 	[
-		(await WebShopPackage.destroy({ where: { id } }),
+		await WebShopPackage.destroy({ where: { id } }),
 		await Promise.map(webShopItems, async items => {
 			await items.destroy();
-		}))
+		})
 	];
 
 	return;

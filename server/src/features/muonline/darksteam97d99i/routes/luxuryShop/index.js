@@ -2,6 +2,7 @@ import addExchange from './services/addExchange';
 import addConsumable from './services/addConsumable';
 import editExchange from './services/editExchange';
 import editConsumable from './services/editConsumable';
+import getReceipt from './services/getReceipt';
 import uploadConsumableImage from './services/uploadConsumableImage';
 import uploadExchangeImage from './services/uploadExchangeImage';
 import uploadReceiptImage from './services/uploadReceiptImage';
@@ -81,7 +82,7 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
   router.get(
     '/luxury_shop/receipt',
     wrap(async (req, res, next) => {
-      const receipts = await Receipt.findAll();
+      const receipts = await getReceipt(Receipt, Material);
       res.send(receipts);
     })
   );

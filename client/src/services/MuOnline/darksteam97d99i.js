@@ -194,10 +194,12 @@ export default {
     return data;
   },
   adminAddReceipt(formBody){
+    formBody.materials = JSON.stringify(formBody.materials);
     const data = commonPostMultiplePart('mu/darksteam97d99i/luxury_shop/receipt', formBody);
     return data;
   },
   adminEditReceipt(formBody){
+    formBody.materials = JSON.stringify(formBody.materials);
     const data = commonPutMultiplePart('mu/darksteam97d99i/luxury_shop/receipt', formBody);
     return data;
   },

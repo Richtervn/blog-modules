@@ -19,17 +19,12 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-
       category: {
         type: DataTypes.STRING,
         allowNull: false
       },
       itemId: {
         type: DataTypes.INTEGER,
-        allowNull: false
-      },
-      slot: {
-        type: DataTypes.STRING,
         allowNull: false
       },
       duration: {

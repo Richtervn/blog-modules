@@ -17,7 +17,8 @@ const initialMaterial = {
 	exc3: false,
 	exc4: false,
 	exc5: false,
-	exc6: false
+	exc6: false,
+	count: 0
 };
 
 class ModalAddReceipt extends Component {
@@ -55,6 +56,7 @@ class ModalAddReceipt extends Component {
 		this.onChangeItemLevel = this.onChangeItemLevel.bind(this);
 		this.addMaterial = this.addMaterial.bind(this);
 		this.onChangeReceiptItem = this.onChangeReceiptItem.bind(this);
+		this.handleMaterialsChange = this.handleMaterialsChange.bind(this);
 	}
 
 	onChangeReceiptItem(value, name) {
@@ -71,6 +73,17 @@ class ModalAddReceipt extends Component {
 				nextState[value] = !this.state[value];
 				break;
 		}
+		this.setState(nextState);
+	}
+
+	handleMaterialsChange(value, i) {
+		const nextState = { ...this.state };
+		nextState.materials = nextState.materials.map((item, idx) => {
+			if (idx == i) {
+				item.count = value;
+			}
+			return item;
+		});
 		this.setState(nextState);
 	}
 
@@ -156,7 +169,7 @@ class ModalAddReceipt extends Component {
 	}
 
 	submit() {
-		this.props.onSubmit({ ...this.state });
+		// this.props.onSubmit({ ...this.state });
 		console.log(this.state);
 	}
 
@@ -278,7 +291,18 @@ class ModalAddReceipt extends Component {
 									<div className="ds9799-ws-add-item-wrapper">
 										{this.state.materials.map((item, i) => (
 											<div key={i} className="ds9799-ws-add-item">
-												<SlotSelector onSelect={event => this.onSelectItemSlot(event.target.value, i)} />
+												<div className="form-group">
+													<label>
+														<strong>Count :</strong>
+													</label>
+													<input
+														type="number"
+														className="form-control"
+														name="count"
+														onChange={event => this.handleMaterialsChange(event.target.value, i)}
+														value={this.state.materials[i].count}
+													/>
+												</div>
 												<ItemSelector
 													data={data}
 													onGetData={onGetData}
@@ -309,6 +333,7 @@ class ModalAddReceipt extends Component {
 													onChangeCheck={name => this.onChangeItemCheck(name, i)}
 													itemId={this.state.materials[i].itemId}
 												/>
+
 												<div className="ds9799-ws-add-item-rm-btn">
 													<button className="btn btn-sm btn-danger" onClick={() => this.removeItem(i)}>
 														Remove
