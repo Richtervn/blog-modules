@@ -40,9 +40,9 @@ class Receipt extends Component {
 				<div className="row no-row-margin" style={{ flexWrap: 'wrap' }}>
 					{receipts.map((receipt, i) => (
 						<ReceiptCard
-							receipt={receipt}
 							key={i}
 							admin
+							receipt={receipt}
 							onClickDelete={this.handleDeleteClick}
 							onClickEdit={this.handleEditClick}
 						/>
@@ -52,11 +52,12 @@ class Receipt extends Component {
 						style={{ display: 'flex' }}
 						data-toggle="modal"
 						data-target="#addDs9799LxReceiptModal">
-						<div className="ds9799-lx-add-receipt-btn">
+						<div className="ds9799-lx-add-exchange-btn">
 							<i className="fa fa-plus-circle fa-3x" />
 						</div>
 					</div>
 				</div>
+
 				<AddReceiptModal data={data} onGetData={onGetData} onSubmit={onAddReceipt} />
 				<DeleteModal
 					id="deleteDs9799LxReceiptModal"

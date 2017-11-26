@@ -5,6 +5,7 @@ import ItemSelector from 'components/MuOnline/Darksteam97d99i/ServerChannel/Serv
 import SlotSelector from '../WebShopManager/SlotSelector';
 
 const initialMaterial = {
+	name: '',
 	category: 'Swords',
 	duration: 255,
 	itemId: 0,
@@ -76,11 +77,12 @@ class ModalAddReceipt extends Component {
 		this.setState(nextState);
 	}
 
-	handleMaterialsChange(value, i) {
+	handleMaterialsChange(event, i) {
 		const nextState = { ...this.state };
+		const { name, value } = event.target;
 		nextState.materials = nextState.materials.map((item, idx) => {
 			if (idx == i) {
-				item.count = value;
+				item[name] = value;
 			}
 			return item;
 		});
@@ -169,8 +171,7 @@ class ModalAddReceipt extends Component {
 	}
 
 	submit() {
-		// this.props.onSubmit({ ...this.state });
-		console.log(this.state);
+		this.props.onSubmit({ ...this.state });
 	}
 
 	render() {
@@ -293,13 +294,25 @@ class ModalAddReceipt extends Component {
 											<div key={i} className="ds9799-ws-add-item">
 												<div className="form-group">
 													<label>
+														<strong>Name :</strong>
+													</label>
+													<input
+														type="text"
+														className="form-control"
+														name="name"
+														onChange={event => this.handleMaterialsChange(event, i)}
+														value={this.state.materials[i].name}
+													/>
+												</div>
+												<div className="form-group">
+													<label>
 														<strong>Count :</strong>
 													</label>
 													<input
 														type="number"
 														className="form-control"
 														name="count"
-														onChange={event => this.handleMaterialsChange(event.target.value, i)}
+														onChange={event => this.handleMaterialsChange(event, i)}
 														value={this.state.materials[i].count}
 													/>
 												</div>

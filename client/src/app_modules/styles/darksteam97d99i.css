@@ -748,3 +748,22 @@
   cursor: pointer;
   min-width: 200px;
 }
+
+.ds9799-lx-receipt-card {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: solid 2px chocolate;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.ds9799-lx-receipt-describle {
+  border-radius: 5px;
+  border: solid 1px;
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}

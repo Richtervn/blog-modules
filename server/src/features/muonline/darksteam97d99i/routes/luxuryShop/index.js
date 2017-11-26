@@ -1,8 +1,11 @@
 import addExchange from './services/addExchange';
 import addConsumable from './services/addConsumable';
+import addReceipt from './services/addReceipt';
 import editExchange from './services/editExchange';
 import editConsumable from './services/editConsumable';
+import editReceipt from './services/editReceipt';
 import getReceipt from './services/getReceipt';
+import deleteReceipt from './services/deleteReceipt';
 import uploadConsumableImage from './services/uploadConsumableImage';
 import uploadExchangeImage from './services/uploadExchangeImage';
 import uploadReceiptImage from './services/uploadReceiptImage';
@@ -84,6 +87,32 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
     wrap(async (req, res, next) => {
       const receipts = await getReceipt(Receipt, Material);
       res.send(receipts);
+    })
+  );
+
+  router.post(
+    '/luxury_shop/receipt',
+    wrap(async (req, res, next) => {
+      const body = await uploadReceiptImage(req, res);
+      const receipt = await addReceipt(Receipt, Material, body);
+      res.send(receipt);
+    })
+  );
+
+  router.put(
+    '/luxury_shop/receipt',
+    wrap(async (req, res, next) => {
+      const body = await uploadReceiptImage(req, res);
+      const receipt = await editReceipt(Receipt, Material, body);
+      res.send(receipt);
+    })
+  );
+
+  router.delete(
+    '/luxury_shop/receipt/:id',
+    wrap(async (req, res, next) => {
+      await deleteReceipt(Receipt, Material, req.params.id);
+      res.send({ id: req.params.id });
     })
   );
 
