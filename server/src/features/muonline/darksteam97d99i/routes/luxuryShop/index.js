@@ -1,18 +1,23 @@
 import addExchange from './services/addExchange';
 import addConsumable from './services/addConsumable';
 import addReceipt from './services/addReceipt';
+import buyConsumable from './services/buyConsumable';
+import buyReceipt from './services/buyReceipt';
+import countExchange from './services/countExchange';
+import deleteReceipt from './services/deleteReceipt';
 import editExchange from './services/editExchange';
 import editConsumable from './services/editConsumable';
 import editReceipt from './services/editReceipt';
 import getReceipt from './services/getReceipt';
-import deleteReceipt from './services/deleteReceipt';
+import tradeExchange from './services/tradeExchange';
 import uploadConsumableImage from './services/uploadConsumableImage';
 import uploadExchangeImage from './services/uploadExchangeImage';
 import uploadReceiptImage from './services/uploadReceiptImage';
 
 export default (models, router, factories, helpers, appConfigs, methods) => {
   const { readFile, writeFile, wrap } = factories;
-  const { Exchange, Receipt, UserReceipt, Consumable, Material } = models;
+  const { Exchange, Receipt, UserReceipt, Consumable, Material, Character, MembCredits } = models;
+  const { readInventory, makeItemValue, makeInventory } = helpers;
 
   router.post(
     '/luxury_shop/exchange',
@@ -113,6 +118,53 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
     wrap(async (req, res, next) => {
       await deleteReceipt(Receipt, Material, req.params.id);
       res.send({ id: req.params.id });
+    })
+  );
+
+  router.get(
+    '/luxury_shop/exchange/count/:memb___id/:exchangeId',
+    wrap(async (req, res, next) => {
+      const result = await countExchange(
+        Exchange,
+        Character,
+        req.params.memb___id,
+        req.params.exchangeId,
+        readInventory,
+        makeItemValue
+      );
+      res.send(result);
+    })
+  );
+
+  router.get(
+    '/luxury_shop/exchange/trade',
+    wrap(async (req, res, next) => {
+      const result = await tradeExchange(Exchange, Character, req.query, readInventory, makeItemValue, makeInventory);
+      res.send(result);
+    })
+  );
+
+  router.get(
+    '/luxury_shop/receipt/buy/:memb___id/:receiptId',
+    wrap(async (req, res, next) => {
+      const result = await buyReceipt(Receipt, MembCredits, UserReceipt, req.params.memb___id, req.params.receiptId);
+      res.send(result);
+    })
+  );
+
+  router.get(
+    '/luxury_shop/consumable/buy',
+    wrap(async (req, res, next) => {
+      const result = await buyConsumable(
+        Consumable,
+        MembCredits,
+        Character,
+        req.query,
+        readInventory,
+        makeItemValue,
+        makeInventory
+      );
+      res.send(result);
     })
   );
 

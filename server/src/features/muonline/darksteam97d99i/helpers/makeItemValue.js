@@ -3,16 +3,16 @@ import { Categories } from '../data';
 export default item => {
   const indexes = {};
 
-  Categories.map(category => (indexes[category.Name] = Categories._id));
+  Categories.map(category => (indexes[category.Name] = category._id));
 
   const itemArr = [];
-  const baseIndex = (indexes[item.Category] % 8) * 32;
+  const baseIndex = (indexes[item.category] % 8) * 32;
 
   const firstValue = parseInt(baseIndex) + parseInt(item.itemId);
 
   itemArr.push(firstValue);
 
-  let eighthValue = indexes[item.Category] / 8 < 1 ? 0 : 128;
+  let eighthValue = indexes[item.category] / 8 < 1 ? 0 : 128;
   let secondValue = item.level * 8;
 
   if (item.skill == 1) secondValue += 128;
