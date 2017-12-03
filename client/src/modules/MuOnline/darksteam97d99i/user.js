@@ -36,13 +36,25 @@ export const BUY_VIP_SUCCESS = 'darksteam97d99i/user/BUY_VIP_SUCCESS';
 const BUY_VIP_FAIL = 'darksteam97d99i/user/BUY_VIP_FAIL';
 
 export const editProfile = formBody =>
-  actionCreator(EDIT_PROFILE_START, EDIT_PROFILE_SUCCESS, EDIT_PROFILE_FAIL, darksteam97d99i.editProfile, formBody)();
+  actionCreator(
+    EDIT_PROFILE_START,
+    EDIT_PROFILE_SUCCESS,
+    EDIT_PROFILE_FAIL,
+    darksteam97d99i.editProfile,
+    formBody
+  )();
 
 export const LOGOUT = 'darksteam97d99i/LOGOUT';
 
 export const logout = () => ({ type: LOGOUT });
 export const register = formBody =>
-  actionCreator(REGISTER_START, REGISTER_SUCCESS, REGISTER_FAIL, darksteam97d99i.register, formBody)();
+  actionCreator(
+    REGISTER_START,
+    REGISTER_SUCCESS,
+    REGISTER_FAIL,
+    darksteam97d99i.register,
+    formBody
+  )();
 export const login = formBody =>
   actionCreator(LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, darksteam97d99i.login, formBody)();
 
@@ -87,14 +99,20 @@ export default (state = initialState, action) => {
     case BUY_PACKAGE_SUCCESS:
       return {
         ...state,
-        user: { ...state.user, MembCredits: { ...state.user.MembCredits, credits: action.data.credits } }
+        user: {
+          ...state.user,
+          MembCredits: { ...state.user.MembCredits, credits: action.data.credits }
+        }
       };
     case RESET_QUEST_SUCCESS:
     case ADD_POINT_SUCCESS:
       if (action.data.isUseBank == 'true') {
         return {
           ...state,
-          user: { ...state.user, Banking: { ...state.user.Banking, zen_balance: action.data.zen_balance } }
+          user: {
+            ...state.user,
+            Banking: { ...state.user.Banking, zen_balance: action.data.zen_balance }
+          }
         };
       }
       return state;
@@ -126,25 +144,45 @@ export default (state = initialState, action) => {
       };
 
     case LOAN_SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          Banking: { ...state.user.Banking, loan_money: action.data.loan_money }
+        }
+      };
     case WITHDRAW_SUCCESS:
       return {
         ...state,
-        user: { ...state.user, Banking: { ...state.user.Banking, zen_balance: action.data.zen_balance } }
+        user: {
+          ...state.user,
+          Banking: { ...state.user.Banking, zen_balance: action.data.zen_balance }
+        }
       };
     case TRANSFER_SUCCESS:
       return {
         ...state,
-        user: { ...state.user, Banking: { ...state.user.Banking, zen_balance: action.data.zen_balance } }
+        user: {
+          ...state.user,
+          Banking: { ...state.user.Banking, zen_balance: action.data.zen_balance }
+        }
       };
     case BUY_CREDIT_SUCCESS:
       return {
         ...state,
-        user: { ...state.user, Credits: { ...state.user.MembCredits, credits: action.data.credits } }
+        user: {
+          ...state.user,
+          Credits: { ...state.user.MembCredits, credits: action.data.credits }
+        }
       };
     case REGISTER_FAIL:
       return { ...state, errorRegister: action.error };
     case LOGIN_SUCCESS:
-      return { ...state, user: action.data, viewControl: { ...state.viewControl, userPage: 'Dash Board' } };
+      return {
+        ...state,
+        user: action.data,
+        viewControl: { ...state.viewControl, userPage: 'Dash Board' }
+      };
     case LOGIN_FAIL:
       return { ...state, errorLogin: action.error };
     case EDIT_PROFILE_SUCCESS:
@@ -161,7 +199,11 @@ export default (state = initialState, action) => {
       }
       return {
         ...state,
-        user: { ...state.user, Credits: { ...state.user.MembCredits }, Banking: { ...state.user.Banking } }
+        user: {
+          ...state.user,
+          Credits: { ...state.user.MembCredits },
+          Banking: { ...state.user.Banking }
+        }
       };
     }
     default:

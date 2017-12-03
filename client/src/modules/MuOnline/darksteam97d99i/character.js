@@ -248,6 +248,7 @@ export default (
     case WITHDRAW_SUCCESS: {
       const nextState = { ...state };
       const changedCharacter = { ...state.focusCharacter, Money: action.data.Money };
+      if(action.data.loan_money)
       nextState.characters = state.characters.map(character => {
         if (character.Name == changedCharacter.Name) {
           return changedCharacter;

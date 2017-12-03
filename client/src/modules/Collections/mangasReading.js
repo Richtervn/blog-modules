@@ -111,33 +111,37 @@ export default (
         ...state,
         viewControl: { ...state.viewControl, viewChannel: action.channel }
       };
-    case SUBMIT_ADD_MANGA_FAIL:
-      return { ...state, error: action.error };
     case GET_ALL_MANGA_SUCCESS:
       return { ...state, mangas: action.data.slice(0), focusManga: action.data[0] || {} };
-    case GET_ALL_MANGA_FAIL:
-      return { ...state, error: action.error };
+
     case CHANGE_ACTIVE_TOOL:
       return {
         ...state,
         viewControl: { ...state.viewControl, activeTool: action.tool }
       };
+
     case SUBMIT_ADD_MANGA_SUCCESS:
       state.mangas.push(action.data);
+      toast.success(`Added ${action.data.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       return {
         ...state,
         mangas: state.mangas.slice(0),
         focusManga: action.data,
         viewControl: { ...state.viewControl, viewChannel: 'Detail' }
       };
+
     case SET_FOCUS_MANGA:
       return {
         ...state,
         focusManga: action.manga,
         viewControl: { ...state.viewControl, viewChannel: 'Detail' }
       };
+
     case QUICK_UPDATE_SUCCESS:
-      toast.success(`Update ${action.data.Name} to chapter ${action.data.Chapter}`, {
+      toast.success(`Updated ${action.data.Name} to chapter ${action.data.Chapter}`, {
         position: toast.POSITION.BOTTOM_LEFT,
         className: 'toast-success'
       });
@@ -154,7 +158,12 @@ export default (
           })
           .slice(0)
       };
+
     case UPDATE_MANGA_SUCCESS:
+      toast.success(`Updated ${action.data.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       return {
         ...state,
         focusManga: action.data,
@@ -168,25 +177,45 @@ export default (
           })
           .slice(0)
       };
+
     case DELETE_MANGA_SUCCESS:
       const mangaList = state.mangas.filter(manga => manga._id != action.data._id);
+      toast.success(`Deleted ${state.focusManga.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       return {
         ...state,
         focusManga: mangaList[0],
         viewControl: { ...state.viewControl, viewChannel: 'Detail' },
         mangas: mangaList.slice(0)
       };
+
     case SEARCH_MANGA_SUCCESS:
       return {
         ...state,
         mangas: action.data.slice(0),
         viewControl: { ...state.viewControl, viewChannel: 'Detail' }
       };
+
     case SORT_MANGA_SUCCESS:
       return {
         ...state,
         mangas: action.data.slice(0)
       };
+
+    case GET_ALL_MANGA_FAIL:
+    case SUBMIT_ADD_MANGA_FAIL:
+    case QUICK_UPDATE_FAIL:
+    case UPDATE_MANGA_FAIL:
+    case DELETE_MANGA_FAIL:
+    case SORT_MANGA_FAIL:
+      toast.error(`${action.error}`, {
+        position: toast.POSITION.TOP_LEFT,
+        className: 'toast-error'
+      });
+      return state;
+
     default:
       return state;
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadingScreen from 'components/LoadingScreen';
 
 import SongListPannel from './SongListPannel';
 import PlayerPannel from './PlayerPannel';
@@ -28,7 +29,7 @@ export default ({
 }) => {
   if (!songsList) {
     onGetSongsList();
-    return null;
+    return <LoadingScreen/>;
   }
 
   return (

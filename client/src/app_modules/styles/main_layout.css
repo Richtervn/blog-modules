@@ -207,6 +207,13 @@
   text-align: center;
 }
 
+.toast-error {
+  border-radius: 5px !important;
+  border: solid 1px darkred;
+  background: #dc3545 !important;
+  text-align: center;
+}
+
 .loading-screen {
   color: white;
   margin-top: 45px;

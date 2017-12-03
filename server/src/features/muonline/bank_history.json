@@ -82,5 +82,65 @@
     "CharName": "KuroNeko",
     "Amount": 500000000,
     "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 1000,
+    "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 1000,
+    "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 1000,
+    "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 1500,
+    "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 1500,
+    "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 1500,
+    "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 1500,
+    "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 1500,
+    "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 5000,
+    "Type": "Loan"
+  },
+  {
+    "AccountID": "Richter",
+    "CharName": "KuroNeko",
+    "Amount": 4000,
+    "Type": "Loan"
   }
 ]
