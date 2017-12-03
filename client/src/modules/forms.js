@@ -1,5 +1,4 @@
 import commonFormChange from 'factories/commonFormChange';
-import actionCreator from 'factories/actionCreator';
 
 import { flashGames, yugiohPoc, music, starcraft } from 'services';
 import {
@@ -18,7 +17,10 @@ import {
   GET_CAMPAIGN_DETAIL_SUCCESS
 } from 'modules/Games/starcraft';
 
-import { GET_VIP_SYSTEMS_SUCCESS, SET_FOCUS_VIP_SYSTEM } from 'modules/MuOnline/darksteam97d99i/data';
+import {
+  GET_VIP_SYSTEMS_SUCCESS,
+  SET_FOCUS_VIP_SYSTEM
+} from 'modules/MuOnline/darksteam97d99i/data';
 
 import { GET_TOOL_DETAIL_SUCCESS, GET_VERSION_DETAIL_SUCCESS } from 'modules/Games/muonline';
 
@@ -65,14 +67,30 @@ const REMOVE_ARRAY_MUONLINE_EDIT_VERSION_FORM = 'forms/REMOVE_ARRAY_MUONLINE_EDI
 
 const CHANGE_FORM_RATING = 'forms/CHANGE_FORM_RATING';
 
-export const changeAddDs9799VipSystemForm = event => ({ type: CHANGE_ADD_DS9799_VIP_SYSTEM_FORM, event });
-export const changeEditDs9799VipSystemForm = event => ({ type: CHANGE_EDIT_DS9799_VIP_SYSTEM_FORM, event });
+export const changeAddDs9799VipSystemForm = event => ({
+  type: CHANGE_ADD_DS9799_VIP_SYSTEM_FORM,
+  event
+});
+export const changeEditDs9799VipSystemForm = event => ({
+  type: CHANGE_EDIT_DS9799_VIP_SYSTEM_FORM,
+  event
+});
 export const changeAddFlashForm = event => ({ type: CHANGE_ADD_FLASH_FORM, event });
 export const changeAddMusicForm = event => ({ type: CHANGE_ADD_MUSIC_FORM, event });
 export const changeAddStarcraftModForm = event => ({ type: CHANGE_ADD_STARCRAFT_MOD_FORM, event });
-export const changeEditStarcraftModForm = event => ({ type: CHANGE_EDIT_STARTCRAFT_MOD_FORM, event });
-export const changeAddYugiohModForm = (event, index) => ({ type: CHANGE_ADD_YUGIOH_MOD_FORM, event, index });
-export const changeAddStarcraftCampaignForm = event => ({ type: CHANGE_ADD_STARCRAFT_CAMPAIGN_FORM, event });
+export const changeEditStarcraftModForm = event => ({
+  type: CHANGE_EDIT_STARTCRAFT_MOD_FORM,
+  event
+});
+export const changeAddYugiohModForm = (event, index) => ({
+  type: CHANGE_ADD_YUGIOH_MOD_FORM,
+  event,
+  index
+});
+export const changeAddStarcraftCampaignForm = event => ({
+  type: CHANGE_ADD_STARCRAFT_CAMPAIGN_FORM,
+  event
+});
 export const changeEditStarcraftCampaignForm = event => ({
   type: CHANGE_EDIT_STARCRAFT_CAMPAIGN_FORM,
   event
@@ -119,11 +137,23 @@ export const addArrayYugiohDeckForm = name => ({ type: ADD_ARRAY_YUGIOH_DECK_FOR
 export const addArrayYugiohEditModForm = name => ({ type: ADD_ARRAY_YUGIOH_EDIT_MOD_FORM, name });
 export const addArrayYugiohEditDeckForm = name => ({ type: ADD_ARRAY_YUGIOH_EDIT_DECK_FORM, name });
 export const addArrayStarcraftMapForm = name => ({ type: ADD_ARRAY_STARCRAFT_MAP_FORM, name });
-export const addArrayStarcraftEditMapForm = name => ({ type: ADD_ARRAY_STARCRAFT_EDIT_MAP_FORM, name });
+export const addArrayStarcraftEditMapForm = name => ({
+  type: ADD_ARRAY_STARCRAFT_EDIT_MAP_FORM,
+  name
+});
 export const addArrayMuonlineToolForm = name => ({ type: ADD_ARRAY_MUONLINE_TOOL_FORM, name });
-export const addArrayMuonlineVersionForm = name => ({ type: ADD_ARRAY_MUONLINE_VERSION_FORM, name });
-export const addArrayMuonlineEditToolForm = name => ({ type: ADD_ARRAY_MUONLINE_EDIT_TOOL_FORM, name });
-export const addArrayMuonlineEditVersionForm = name => ({ type: ADD_ARRAY_MUONLINE_EDIT_VERSION_FORM, name });
+export const addArrayMuonlineVersionForm = name => ({
+  type: ADD_ARRAY_MUONLINE_VERSION_FORM,
+  name
+});
+export const addArrayMuonlineEditToolForm = name => ({
+  type: ADD_ARRAY_MUONLINE_EDIT_TOOL_FORM,
+  name
+});
+export const addArrayMuonlineEditVersionForm = name => ({
+  type: ADD_ARRAY_MUONLINE_EDIT_VERSION_FORM,
+  name
+});
 export const removeArrayYugiohModForm = (name, index) => ({
   type: REMOVE_ARRAY_YUGIOH_MOD_FORM,
   name,
@@ -175,7 +205,11 @@ export const removeArrayMuonlineEditVersionForm = (name, index) => ({
   index
 });
 
-export const changeFormRating = (formName, value) => ({ type: CHANGE_FORM_RATING, formName, value });
+export const changeFormRating = (formName, value) => ({
+  type: CHANGE_FORM_RATING,
+  formName,
+  value
+});
 
 export default (
   state = {
@@ -319,10 +353,14 @@ export default (
       );
       return { ...state, EditYugiohDeck: { ...formValue } };
     case CHANGE_ADD_STARCRAFT_MAP_FORM:
-      formValue = commonFormChange(state.AddStarcraftMap, action.event, action.index, ['Tipntrick']);
+      formValue = commonFormChange(state.AddStarcraftMap, action.event, action.index, [
+        'Tipntrick'
+      ]);
       return { ...state, AddStarcraftMap: { ...formValue } };
     case CHANGE_EDIT_STARCRAFT_MAP_FORM:
-      formValue = commonFormChange(state.EditStarcraftMap, action.event, action.index, ['Tipntrick']);
+      formValue = commonFormChange(state.EditStarcraftMap, action.event, action.index, [
+        'Tipntrick'
+      ]);
       return { ...state, EditStarcraftMap: { ...formValue } };
     case CHANGE_ADD_MUONLINE_TOOL_FORM:
       formValue = commonFormChange(
@@ -334,7 +372,9 @@ export default (
       );
       return { ...state, AddMuonlineTool: { ...formValue } };
     case CHANGE_ADD_MUONLINE_VERSION_FORM:
-      formValue = commonFormChange(state.AddMuonlineVersion, action.event, action.index, ['Credits']);
+      formValue = commonFormChange(state.AddMuonlineVersion, action.event, action.index, [
+        'Credits'
+      ]);
       return { ...state, AddMuonlineVersion: { ...formValue } };
     case CHANGE_EDIT_MUONLINE_TOOL_FORM:
       formValue = commonFormChange(
@@ -346,7 +386,9 @@ export default (
       );
       return { ...state, EditMuonlineTool: { ...formValue } };
     case CHANGE_EDIT_MUONLINE_VERSION_FORM:
-      formValue = commonFormChange(state.EditMuonlineVersion, action.event, action.index, ['Credits']);
+      formValue = commonFormChange(state.EditMuonlineVersion, action.event, action.index, [
+        'Credits'
+      ]);
       return { ...state, EditMuonlineVersion: { ...formValue } };
     case CHANGE_ADD_DS9799_VIP_SYSTEM_FORM:
       formValue = commonFormChange(state.AddDS9799VipSystem, action.event);
@@ -358,19 +400,28 @@ export default (
       state.AddYugiohMod[action.name].push('');
       return {
         ...state,
-        AddYugiohMod: { ...state.AddYugiohMod, [action.name]: state.AddYugiohMod[action.name].slice(0) }
+        AddYugiohMod: {
+          ...state.AddYugiohMod,
+          [action.name]: state.AddYugiohMod[action.name].slice(0)
+        }
       };
     case ADD_ARRAY_YUGIOH_DECK_FORM:
       state.AddYugiohDeck[action.name].push('');
       return {
         ...state,
-        AddYugiohDeck: { ...state.AddYugiohDeck, [action.name]: state.AddYugiohDeck[action.name].slice(0) }
+        AddYugiohDeck: {
+          ...state.AddYugiohDeck,
+          [action.name]: state.AddYugiohDeck[action.name].slice(0)
+        }
       };
     case ADD_ARRAY_YUGIOH_EDIT_MOD_FORM:
       state.EditYugiohMod[action.name].push('');
       return {
         ...state,
-        EditYugiohMod: { ...state.EditYugiohMod, [action.name]: state.EditYugiohMod[action.name].slice(0) }
+        EditYugiohMod: {
+          ...state.EditYugiohMod,
+          [action.name]: state.EditYugiohMod[action.name].slice(0)
+        }
       };
     case ADD_ARRAY_STARCRAFT_MAP_FORM:
       state.AddStarcraftMap[action.name].push('');
@@ -394,7 +445,10 @@ export default (
       state.EditYugiohDeck[action.name].push('');
       return {
         ...state,
-        EditYugiohDeck: { ...state.EditYugiohDeck, [action.name]: state.EditYugiohDeck[action.name].slice(0) }
+        EditYugiohDeck: {
+          ...state.EditYugiohDeck,
+          [action.name]: state.EditYugiohDeck[action.name].slice(0)
+        }
       };
     case ADD_ARRAY_MUONLINE_TOOL_FORM:
       state.AddMuonlineTool[action.name].push('');
@@ -454,25 +508,37 @@ export default (
       state.AddYugiohMod[action.name].splice(action.index, 1);
       return {
         ...state,
-        AddYugiohMod: { ...state.AddYugiohMod, [action.name]: state.AddYugiohMod[action.name].slice(0) }
+        AddYugiohMod: {
+          ...state.AddYugiohMod,
+          [action.name]: state.AddYugiohMod[action.name].slice(0)
+        }
       };
     case REMOVE_ARRAY_YUGIOH_DECK_FORM:
       state.AddYugiohDeck[action.name].splice(action.index, 1);
       return {
         ...state,
-        AddYugiohDeck: { ...state.AddYugiohDeck, [action.name]: state.AddYugiohDeck[action.name].slice(0) }
+        AddYugiohDeck: {
+          ...state.AddYugiohDeck,
+          [action.name]: state.AddYugiohDeck[action.name].slice(0)
+        }
       };
     case REMOVE_ARRAY_YUGIOH_EDIT_MOD_FORM:
       state.EditYugiohMod[action.name].splice(action.index, 1);
       return {
         ...state,
-        EditYugiohMod: { ...state.EditYugiohMod, [action.name]: state.EditYugiohMod[action.name].slice(0) }
+        EditYugiohMod: {
+          ...state.EditYugiohMod,
+          [action.name]: state.EditYugiohMod[action.name].slice(0)
+        }
       };
     case REMOVE_ARRAY_YUGIOH_EDIT_DECK_FORM:
       state.EditYugiohDeck[action.name].splice(action.index, 1);
       return {
         ...state,
-        EditYugiohDeck: { ...state.EditYugiohDeck, [action.name]: state.EditYugiohMod[action.name].slice(0) }
+        EditYugiohDeck: {
+          ...state.EditYugiohDeck,
+          [action.name]: state.EditYugiohMod[action.name].slice(0)
+        }
       };
     case REMOVE_ARRAY_MUONLINE_TOOL_FORM:
       state.AddMuonlineTool[action.name].slice(action.index, 1);
@@ -519,6 +585,7 @@ export default (
         AddYugiohDeck: { ...state.AddYugiohDeck, ModId: action.data[0]._id },
         EditYugiohMod: action.data[0]
       };
+      
     case GET_DECK_LIST_SUCCESS:
       return {
         ...state,

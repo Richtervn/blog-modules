@@ -1,6 +1,7 @@
 import actionCreator from 'factories/actionCreator';
 import { darksteam97d99i } from 'services';
 import socket from 'factories/socketInstance';
+import { toast } from 'react-toastify';
 
 import { CHANGE_USER_PAGE } from './navigator';
 
@@ -18,6 +19,7 @@ import {
 
 import { REFRESH_QUEST_LIST } from './webQuest';
 import { BUY_PACKAGE_SUCCESS } from './webShop';
+import { TRADE_EXCHANGE_SUCCESS } from './luxuryShop';
 
 const REGISTER_START = 'darksteam97d99i/user/REGISTER_START';
 export const REGISTER_SUCCESS = 'darksteam97d99i/user/REGISTER_SUCCESS';
@@ -96,6 +98,28 @@ export default (state = initialState, action) => {
   }
 
   switch (action.type) {
+    case LOGIN_SUCCESS:
+      toast.success(`Welcome ${action.data.memb___id}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
+      return {
+        ...state,
+        user: action.data,
+        viewControl: { ...state.viewControl, userPage: 'Dash Board' }
+      };
+    case LOGIN_FAIL:
+      return { ...state, errorLogin: action.error };
+    case REGISTER_SUCCESS:
+      toast.success(`Registerd New User`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
+      return state;
+    case REGISTER_FAIL:
+      return { ...state, errorRegister: action.error };
+
+    case TRADE_EXCHANGE_SUCCESS:
     case BUY_PACKAGE_SUCCESS:
       return {
         ...state,
@@ -104,6 +128,7 @@ export default (state = initialState, action) => {
           MembCredits: { ...state.user.MembCredits, credits: action.data.credits }
         }
       };
+
     case RESET_QUEST_SUCCESS:
     case ADD_POINT_SUCCESS:
       if (action.data.isUseBank == 'true') {
@@ -175,16 +200,7 @@ export default (state = initialState, action) => {
           Credits: { ...state.user.MembCredits, credits: action.data.credits }
         }
       };
-    case REGISTER_FAIL:
-      return { ...state, errorRegister: action.error };
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        user: action.data,
-        viewControl: { ...state.viewControl, userPage: 'Dash Board' }
-      };
-    case LOGIN_FAIL:
-      return { ...state, errorLogin: action.error };
+
     case EDIT_PROFILE_SUCCESS:
       return { ...state, user: { ...state.user, ...action.data } };
     case LOGOUT:

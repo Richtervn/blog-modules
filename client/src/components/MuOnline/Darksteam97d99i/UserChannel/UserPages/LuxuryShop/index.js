@@ -18,7 +18,8 @@ export default ({
 	onGetReceipt,
 	onGetConsumable,
 	onGetCharacters,
-	onGetExchangeCount
+	onGetExchangeCount,
+	onTradeExchange
 }) => (
 	<div className="ds9799-page-wrapper">
 		<NavigatorBar pages={pages} currentPage={currentPage} onChangePage={onChangePage} />
@@ -33,6 +34,7 @@ export default ({
 						onGetExchange={onGetExchange}
 						onGetExchangeCount={onGetExchangeCount}
 						onGetCharacters={onGetCharacters}
+						onTradeExchange={onTradeExchange}
 					/>
 				)}
 				{currentPage == 'Receipts' && <Receipt receipts={receipts} onGetReceipt={onGetReceipt} />}

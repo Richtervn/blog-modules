@@ -2,6 +2,8 @@ import React from 'react';
 import ControlPannel from './ControlPannel';
 import CardListLayout from './CardListLayout';
 
+import LoadingScreen from 'components/LoadingScreen';
+
 export default ({
   games,
   focusGame,
@@ -19,7 +21,7 @@ export default ({
 }) => {
   if (!games) {
     onGetAllGames();
-    return null;
+    return <LoadingScreen/>;
   }
   return (
     <div className="mangas-reading-main-screen">

@@ -25,7 +25,14 @@ class Exchange extends Component {
 	}
 
 	render() {
-		const { exchanges, onGetExchange, user, exchangeCount, characters } = this.props;
+		const {
+			exchanges,
+			onGetExchange,
+			user,
+			exchangeCount,
+			characters,
+			onTradeExchange
+		} = this.props;
 		if (!exchanges || !characters) {
 			return null;
 		}
@@ -41,9 +48,11 @@ class Exchange extends Component {
 					))}
 				</div>
 				<ExchangeModal
+					userId={user.memb___id}
 					characters={characters}
 					exchangeCount={exchangeCount}
 					exchange={this.state.focusExchange}
+					onTradeExchange={onTradeExchange}
 				/>
 			</div>
 		);

@@ -1,5 +1,6 @@
 import { system } from 'services';
 import actionCreator from 'factories/actionCreator';
+import { toast } from 'react-toastify';
 
 import { SUBMIT_ADD_FLASH_FORM_SUCCESS } from 'modules/flashGame';
 
@@ -40,11 +41,11 @@ const quotes = {
     author: 'Avantasia - In Quest For'
   },
   Games: {
-    quote: "Gaming is not a crime",
+    quote: 'Gaming is not a crime',
     author: 'DJ GEX - Gaming is not a crime'
   },
   'Mu Online': {
-    quote: "Take a look to the sky just before you die",
+    quote: 'Take a look to the sky just before you die',
     author: 'Metallica - For Whom The Bell Tolls'
   },
   'Lineage II': {
@@ -71,7 +72,7 @@ export default (
     case SET_DEACTIVE_GROUP:
       return { ...state, activeGroup: null };
     case SET_ACTIVE_ITEM:
-      const {activeGroup} = state;
+      const { activeGroup } = state;
       return {
         ...state,
         activeItem: action.name,
@@ -83,6 +84,13 @@ export default (
       return { ...state, menuTree: action.data };
     case SUBMIT_ADD_FLASH_FORM_SUCCESS:
       return { ...state, menuTree: action.data.menu };
+      
+    case GET_MENU_TREE_FAIL:
+      toast.error(`${action.error}`, {
+        position: toast.POSITION.TOP_LEFT,
+        className: 'toast-error'
+      });
+      return state;
     default:
       return state;
   }

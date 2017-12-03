@@ -1,4 +1,14 @@
-export default async (Exchange, Character, MembCredits, query, readInventory, makeItemValue, makeInventory) => {
+import Promise from 'bluebird';
+
+export default async (
+	Exchange,
+	Character,
+	MembCredits,
+	query,
+	readInventory,
+	makeItemValue,
+	makeInventory
+) => {
 	let { type, exchangeId, count, characterName, memb___id } = query;
 	let result = {};
 
@@ -33,17 +43,22 @@ export default async (Exchange, Character, MembCredits, query, readInventory, ma
 	if (type == 'single') {
 		let traded = 0;
 		let count = parseInt(count);
+
 		const character = await Character.findOne({ where: { Name: characterName } });
 		let inventory = readInventory(character.Inventory);
 
 		for (let key in inventory) {
-			if (traded == count) {
-				break;
-			}
-			if (inventory[key][0] == itemValue[0] && inventory[key][1] == itemValue[1] && inventory[key][7] == itemValue[7]) {
+			if (
+				inventory[key][0] == itemValue[0] &&
+				inventory[key][1] == itemValue[1] &&
+				inventory[key][7] == itemValue[7]
+			) {
 				traded++;
 				inventory[key] = emptyItemValue;
 				membCredits.credits = parseInt(membCredits.credits) + parseInt(exchange.price);
+			}
+			if (traded == count) {
+				break;
 			}
 		}
 

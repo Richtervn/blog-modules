@@ -6,7 +6,6 @@ const initState = (characters, exchangeCount) => {
   characters.forEach(character => {
     value[character.Name] = 0;
   });
-  console.log(exchangeCount);
   return {
     value: value,
     characters: characters.map(character => {
@@ -27,25 +26,42 @@ class ExchangeModal extends Component {
     const { characters, exchangeCount } = this.props;
     this.state = initState(characters, exchangeCount);
     this.handleChange = this.handleChange.bind(this);
+    this.handleTradeExchange = this.handleTradeExchange.bind(this);
   }
 
   componentWillReceiveProps({ exchangeCount, characters }) {
     this.setState(initState(characters, exchangeCount));
   }
 
-  handleChange(event){
-    let {name, value} = event.target;
-    const nextState = {...this.state};
+  handleChange(event) {
+    let { name, value } = event.target;
+    const nextState = { ...this.state };
     this.state.characters.forEach(character => {
-      if(character.Name == name && value > character.Count){
+      if (character.Name == name && value > character.Count) {
         value = character.Count;
       }
-    })
-    if(value < 0) {
+    });
+    if (value < 0) {
       value = 0;
     }
     nextState.value[name] = value;
-    this.setState(nextState)
+    this.setState(nextState);
+  }
+
+  handleTradeExchange(type, characterName) {
+    const { onTradeExchange, exchange, userId } = this.props;
+    if (type == 'single') {
+      onTradeExchange({
+        type,
+        characterName,
+        exchangeId: exchange.id,
+        count: this.state.value[characterName],
+        memb___id: userId
+      });
+    }
+    if (type == 'all') {
+      onTradeExchange({ type, exchangeId: exchange.id, memb___id: userId });
+    }
   }
 
   render() {
@@ -102,14 +118,22 @@ class ExchangeModal extends Component {
                               style={{ maxWidth: '150px' }}
                             />
                           </div>
-                          <button className="btn btn-danger">Exchange</button>
+                          <button
+                            className="btn btn-danger"
+                            type="button"
+                            onClick={() => this.handleTradeExchange('single', character.Name)}>
+                            Exchange
+                          </button>
                         </form>
                       </div>
                     </div>
                   </div>
                 ))}
 
-                <button className="btn btn-danger btn-block">
+                <button
+                  className="btn btn-danger btn-block"
+                  type="button"
+                  onClick={() => this.handleTradeExchange('all')}>
                   {`Exchange all ${this.state.total} ${exchange.name}`}
                 </button>
               </div>

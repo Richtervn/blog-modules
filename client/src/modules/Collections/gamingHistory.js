@@ -1,6 +1,7 @@
 import _ from 'underscore';
 import { gamingHistory } from 'services';
 import actionCreator from 'factories/actionCreator';
+import { toast } from 'react-toastify';
 
 const GET_ALL_GAME_START = 'gamingHistory/GET_ALL_GAME_START';
 const GET_ALL_GAME_SUCCESS = 'gamingHistory/GET_ALL_GAME_SUCCESS';
@@ -45,13 +46,31 @@ export const getAllGames = actionCreator(
 );
 
 export const submitEditGame = form =>
-  actionCreator(UPDATE_GAME_START, UPDATE_GAME_SUCCESS, UPDATE_GAME_FAIL, gamingHistory.edit, form)();
+  actionCreator(
+    UPDATE_GAME_START,
+    UPDATE_GAME_SUCCESS,
+    UPDATE_GAME_FAIL,
+    gamingHistory.edit,
+    form
+  )();
 
 export const submitDeleteGame = id =>
-  actionCreator(DELETE_GAME_START, DELETE_GAME_SUCCESS, DELETE_GAME_FAIL, gamingHistory.delete, id)();
+  actionCreator(
+    DELETE_GAME_START,
+    DELETE_GAME_SUCCESS,
+    DELETE_GAME_FAIL,
+    gamingHistory.delete,
+    id
+  )();
 
 export const searchGame = query =>
-  actionCreator(SEARCH_GAME_START, SEARCH_GAME_SUCCESS, SEARCH_GAME_FAIL, gamingHistory.search, query)();
+  actionCreator(
+    SEARCH_GAME_START,
+    SEARCH_GAME_SUCCESS,
+    SEARCH_GAME_FAIL,
+    gamingHistory.search,
+    query
+  )();
 
 export const sortGame = query => ({ type: SORT_GAME, query });
 
@@ -78,6 +97,10 @@ export default (
       };
     case SUBMIT_ADD_GAME_SUCCESS:
       state.games.push(action.data);
+      toast.success(`Added ${action.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       return {
         ...state,
         games: state.games.slice(0),
@@ -130,6 +153,18 @@ export default (
                 .slice(0)
       };
     }
+
+    case SEARCH_GAME_FAIL:
+    case DELETE_GAME_FAIL:
+    case UPDATE_GAME_FAIL:
+    case SUBMIT_ADD_GAME_FAIL:
+    case GET_ALL_GAME_FAIL:
+      toast.error(`${action.error}`, {
+        position: toast.POSITION.TOP_LEFT,
+        className: 'toast-error'
+      });
+      return state;
+
     default:
       return state;
   }

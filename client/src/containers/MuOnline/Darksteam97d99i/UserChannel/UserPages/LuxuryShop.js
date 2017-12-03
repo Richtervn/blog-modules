@@ -6,7 +6,8 @@ import {
 	getExchange,
 	getConsumable,
 	getReceipt,
-	getExchangeCount
+	getExchangeCount,
+	tradeExchange
 } from 'modules/MuOnline/darksteam97d99i/luxuryShop';
 
 import { getCharacters } from 'modules/MuOnline/darksteam97d99i/character';
@@ -40,6 +41,9 @@ export default connect(
 		},
 		onGetCharacters(id) {
 			dispatch(getCharacters(id));
+		},
+		onTradeExchange(query) {
+			dispatch(tradeExchange(query));
 		}
 	})
 )(LuxuryShop);

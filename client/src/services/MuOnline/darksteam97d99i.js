@@ -214,5 +214,9 @@ export default {
   getExchangeCount(memb___id, exchangeId){
     const data = commonGet('mu/darksteam97d99i/luxury_shop/exchange/count', [memb___id, exchangeId]);
     return data;
+  },
+  tradeExchange(query){
+    const data = commonGet('mu/darksteam97d99i/luxury_shop/exchange/trade', null, query);
+    return data;
   }
 };

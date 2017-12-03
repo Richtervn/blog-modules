@@ -139,7 +139,15 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
   router.get(
     '/luxury_shop/exchange/trade',
     wrap(async (req, res, next) => {
-      const result = await tradeExchange(Exchange, Character, req.query, readInventory, makeItemValue, makeInventory);
+      const result = await tradeExchange(
+        Exchange,
+        Character,
+        MembCredits,
+        req.query,
+        readInventory,
+        makeItemValue,
+        makeInventory
+      );
       res.send(result);
     })
   );
@@ -147,7 +155,13 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
   router.get(
     '/luxury_shop/receipt/buy/:memb___id/:receiptId',
     wrap(async (req, res, next) => {
-      const result = await buyReceipt(Receipt, MembCredits, UserReceipt, req.params.memb___id, req.params.receiptId);
+      const result = await buyReceipt(
+        Receipt,
+        MembCredits,
+        UserReceipt,
+        req.params.memb___id,
+        req.params.receiptId
+      );
       res.send(result);
     })
   );

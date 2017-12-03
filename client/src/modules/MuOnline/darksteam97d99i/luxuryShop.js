@@ -1,5 +1,6 @@
 import actionCreator from 'factories/actionCreator';
 import { darksteam97d99i } from 'services';
+import { toast } from 'react-toastify';
 
 const ADD_EXCHANGE_START = 'darksteam97d99i/luxuryShop/ADD_EXCHANGE_START';
 const ADD_EXCHANGE_SUCCESS = 'darksteam97d99i/luxuryShop/ADD_EXCHANGE_SUCCESS';
@@ -43,6 +44,9 @@ const GET_RECEIPT_SUCCESS = 'darksteam97d99i/luxuryShop/GET_RECEIPT_SUCCESS';
 const GET_EXCHANGE_COUNT_START = 'darksteam97d99i/luxuryShop/GET_EXCHANGE_COUNT_START';
 const GET_EXCHANGE_COUNT_SUCCESS = 'darksteam97d99i/luxuryShop/GET_EXCHANGE_COUNT_SUCCESS';
 const GET_EXCHANGE_COUNT_FAIL = 'darksteam97d99i/luxuryShop/GET_EXCHANGE_COUNT_FAIL';
+const TRADE_EXCHANGE_START = 'darksteam97d99i/luxuryShop/TRADE_EXCHANGE_START';
+export const TRADE_EXCHANGE_SUCCESS = 'darksteam97d99i/luxuryShop/TRADE_EXCHANGE_SUCCESS';
+const TRADE_EXCHANGE_FAIL = 'darksteam97d99i/luxuryShop/TRADE_EXCHANGE_FAIL';
 
 const SET_CURRENT_PAGE = 'darksteam97d99i/luxuryShop/SET_CURRENT_PAGE';
 export const setCurrentPage = page => ({ type: SET_CURRENT_PAGE, page });
@@ -150,6 +154,15 @@ export const getExchangeCount = (memb___id, exchangeId) =>
 		exchangeId
 	)();
 
+export const tradeExchange = query =>
+	actionCreator(
+		TRADE_EXCHANGE_START,
+		TRADE_EXCHANGE_SUCCESS,
+		TRADE_EXCHANGE_FAIL,
+		darksteam97d99i.tradeExchange,
+		query
+	)();
+
 export default (
 	state = {
 		pages: ['Exchange', 'Receipts', 'Consumable'],
@@ -214,6 +227,42 @@ export default (
 			return { ...state, exchanges: state.exchanges.slice(0) };
 		case GET_EXCHANGE_COUNT_SUCCESS:
 			return { ...state, exchangeCount: action.data };
+		case TRADE_EXCHANGE_SUCCESS:
+			toast.success('Exchange Successfull', {
+				position: toast.POSITION.BOTTOM_LEFT,
+				className: 'toast-success'
+			});
+			if (action.data.type == 'single') {
+				return {
+					...state,
+					exchangeCount: {
+						...state.exchangeCount,
+						[action.data.Name]:
+							parseInt(state.exchangeCount[action.data.Name]) - parseInt(action.data.traded)
+					}
+				};
+			}
+			return state;
+
+		case ADD_EXCHANGE_FAIL:
+		case EDIT_EXCHANGE_FAIL:
+		case DELETE_EXCHANGE_FAIL:
+		case GET_EXCHANGE_FAIL:
+		case ADD_CONSUMABLE_FAIL:
+		case EDIT_CONSUMABLE_FAIL:
+		case DELETE_CONSUMABLE_FAIL:
+		case GET_CONSUMABLE_FAIL:
+		case ADD_RECEIPT_FAIL:
+		case EDIT_RECEIPT_FAIL:
+		case DELETE_RECEIPT_FAIL:
+		case GET_RECEIPT_FAIL:
+		case GET_EXCHANGE_COUNT_FAIL:
+		case TRADE_EXCHANGE_FAIL:
+			toast.error(`${action.error}`, {
+				position: toast.POSITION.TOP_LEFT,
+				className: 'toast-error'
+			});
+			return state;
 		default:
 			return state;
 	}

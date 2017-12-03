@@ -1,5 +1,6 @@
 import actionCreator from 'factories/actionCreator';
 import { muonline } from 'services';
+import { toast } from 'react-toastify';
 
 const CHANGE_ACTIVE_VIEW = 'muonline/CHANGE_ACTIVE_VIEW';
 
@@ -28,8 +29,7 @@ const SUBMIT_EDIT_TOOL_START = 'muonline/SUBMIT_EDIT_TOOL_START';
 export const SUBMIT_EDIT_TOOL_SUCCESS = 'muonline/SUBMIT_EDIT_TOOL_SUCCESS';
 const SUBMIT_EDIT_TOOL_FAIL = 'muonline/SUBMIT_EDIT_TOOL_FAIL';
 const SUBMIT_EDIT_VERSION_START = 'muonline/SUBMIT_EDIT_VERSION_START';
-export const SUBMIT_EDIT_VERSION_SUCCESS =
-  'muonline/SUBMIT_EDIT_VERSION_SUCCESS';
+export const SUBMIT_EDIT_VERSION_SUCCESS = 'muonline/SUBMIT_EDIT_VERSION_SUCCESS';
 const SUBMIT_EDIT_VERSION_FAIL = 'muonline/SUBMIT_EDIT_VERSION_FAIL';
 
 const DELETE_TOOL_START = 'muonline/DELETE_TOOL_START';
@@ -198,10 +198,9 @@ export default (
     case DELETE_VERSION_SUCCESS:
       return {
         ...state,
-        versions: state.versions
-          .filter(version => version._id != action.data._id)
-          .slice(0)
+        versions: state.versions.filter(version => version._id != action.data._id).slice(0)
       };
+
     default:
       return state;
   }

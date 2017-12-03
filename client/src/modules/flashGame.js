@@ -1,5 +1,6 @@
 import { SET_ACTIVE_ITEM, SET_ACTIVE_GROUP } from 'modules/page';
 import { flashGames } from 'services';
+import { toast } from 'react-toastify';
 
 import actionCreator from 'factories/actionCreator';
 
@@ -31,6 +32,15 @@ export default (state = { Name: '', Uri: '', isActive: false }, action) => {
       return state.isActive ? { ...state, Name: action.name, Uri: '' } : state;
     case GET_GAME_SUCCESS:
       return { ...state, Uri: action.data.Uri };
+
+    case GET_GAME_FAIL:
+    case SUBMIT_ADD_FLASH_FORM_FAIL:
+      toast.error(`${action.error}`, {
+        position: toast.POSITION.TOP_LEFT,
+        className: 'toast-error'
+      });
+      return state;
+
     default:
       return state;
   }

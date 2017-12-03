@@ -1,6 +1,7 @@
 import { music } from 'services';
 import _ from 'underscore';
 import actionCreator from 'factories/actionCreator';
+import { toast } from 'react-toastify';
 
 const shuffle = a => {
   for (let i = a.length; i; i--) {
@@ -101,7 +102,10 @@ export default (
       index = state.playList.findIndex(song => song._id == state.currentSong._id);
       return { ...state, currentSong: state.playList[index - 1] };
     case REMOVE_SONG:
-      return { ...state, playList: state.playList.filter(song => song._id != action.song._id).slice(0) };
+      return {
+        ...state,
+        playList: state.playList.filter(song => song._id != action.song._id).slice(0)
+      };
     case SET_LOOP_TRACK:
       return { ...state, isLoopTrack: !state.isLoopTrack, isLoopList: false };
     case SET_LOOP_LIST:
@@ -135,6 +139,14 @@ export default (
                 .slice(0)
       };
 
+    case SEARCH_SONG_FAIL:
+    case GET_ALL_SONGS_FAIL:
+    case SUBMIT_ADD_MUSIC_FORM_FAIL:
+      toast.error(`${action.error}`, {
+        position: toast.POSITION.TOP_LEFT,
+        className: 'toast-error'
+      });
+      return state;
     default:
       return state;
   }
