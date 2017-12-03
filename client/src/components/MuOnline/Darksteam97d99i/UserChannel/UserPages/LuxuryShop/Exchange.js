@@ -1,16 +1,53 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ExchangeCard from '../../../AdminChannel/AdminPages/LuxuryShopManager/ExchangeCard';
+import ExchangeModal from './ExchangeModal';
 
-export default ({ exchanges, onGetExchange }) => {
-	if (!exchanges) {
-		onGetExchange();
-		return null;
+const $ = window.$;
+
+class Exchange extends Component {
+	constructor(props) {
+		super(props);
+		this.handleClickBuy = this.handleClickBuy.bind(this);
+		this.state = { focusExchange: { image_url: '' } };
 	}
-	return (
-		<div>
-			<div className="row no-row-margin" style={{ flexWrap: 'wrap' }}>
-				{exchanges.map((exchange, i) => <ExchangeCard key={i} exchange={exchange} />)}
+
+	componentWillMount() {
+		const { exchanges, onGetExchange, user, characters, onGetCharacters } = this.props;
+		if (!exchanges) onGetExchange();
+		if (!characters) onGetCharacters(user.memb___id);
+	}
+
+	handleClickBuy(exchange) {
+		const { onGetExchangeCount, user, exchangeCount } = this.props;
+		onGetExchangeCount(user.memb___id, exchange.id);
+		this.setState({ focusExchange: exchange });
+		$('#buyDs9799LuxuryExchangeModal').modal('show');
+	}
+
+	render() {
+		const { exchanges, onGetExchange, user, exchangeCount, characters } = this.props;
+		if (!exchanges || !characters) {
+			return null;
+		}
+		return (
+			<div>
+				<div className="row no-row-margin" style={{ flexWrap: 'wrap' }}>
+					{exchanges.map((exchange, i) => (
+						<ExchangeCard
+							key={i}
+							exchange={exchange}
+							onClickBuy={exchange => this.handleClickBuy(exchange)}
+						/>
+					))}
+				</div>
+				<ExchangeModal
+					characters={characters}
+					exchangeCount={exchangeCount}
+					exchange={this.state.focusExchange}
+				/>
 			</div>
-		</div>
-	);
-};
+		);
+	}
+}
+
+export default Exchange;

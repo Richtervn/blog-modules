@@ -210,5 +210,9 @@ export default {
   deleteReceipt(id){
     const data = commonDelete('mu/darksteam97d99i/luxury_shop/receipt/' + id);
     return data;
+  },
+  getExchangeCount(memb___id, exchangeId){
+    const data = commonGet('mu/darksteam97d99i/luxury_shop/exchange/count', [memb___id, exchangeId]);
+    return data;
   }
 };

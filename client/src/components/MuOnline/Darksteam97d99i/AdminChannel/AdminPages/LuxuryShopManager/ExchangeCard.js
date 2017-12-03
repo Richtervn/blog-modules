@@ -6,7 +6,7 @@ export default ({ exchange, admin, onClickEdit, onClickDelete, onClickBuy }) => 
 			<div className="ds9799-ws-package-label">{exchange.name}</div>
 			<img src={exchange.image_url.replace('./public', 'http://localhost:3000')} style={{ paddingBottom: '10px' }} />
 			{!admin && (
-				<button className="btn btn-danger btn-block" onClick={() => onClickBuy(exchange)}>{`Buy : ${exchange.price} Credits`}</button>
+				<button className="btn btn-danger btn-block" onClick={() => onClickBuy(exchange)}>{`Trade for ${exchange.price} Credits`}</button>
 			)}
 			{admin && (
 				<div className="badge badge-danger" style={{ marginBottom: '10px' }}>

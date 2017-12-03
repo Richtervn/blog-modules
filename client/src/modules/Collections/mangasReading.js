@@ -1,5 +1,6 @@
 import { mangasReading } from 'services';
 import actionCreator from 'factories/actionCreator';
+import { toast } from 'react-toastify';
 
 const CHANGE_CHANNEL = 'mangasReading/CHANGE_CHANNEL';
 const CHANGE_ACTIVE_TOOL = 'mangasReading/CHANGE_ACTIVE_TOOL';
@@ -64,13 +65,31 @@ export const quickUpdate = url =>
   )();
 
 export const submitEditManga = form =>
-  actionCreator(UPDATE_MANGA_START, UPDATE_MANGA_SUCCESS, UPDATE_MANGA_FAIL, mangasReading.edit, form)();
+  actionCreator(
+    UPDATE_MANGA_START,
+    UPDATE_MANGA_SUCCESS,
+    UPDATE_MANGA_FAIL,
+    mangasReading.edit,
+    form
+  )();
 
 export const submitDeleteManga = id =>
-  actionCreator(DELETE_MANGA_START, DELETE_MANGA_SUCCESS, DELETE_MANGA_FAIL, mangasReading.delete, id)();
+  actionCreator(
+    DELETE_MANGA_START,
+    DELETE_MANGA_SUCCESS,
+    DELETE_MANGA_FAIL,
+    mangasReading.delete,
+    id
+  )();
 
 export const searchManga = query =>
-  actionCreator(SEARCH_MANGA_START, SEARCH_MANGA_SUCCESS, SEARCH_MANGA_FAIL, mangasReading.search, query)();
+  actionCreator(
+    SEARCH_MANGA_START,
+    SEARCH_MANGA_SUCCESS,
+    SEARCH_MANGA_FAIL,
+    mangasReading.search,
+    query
+  )();
 
 export const sortManga = query =>
   actionCreator(SORT_MANGA_START, SORT_MANGA_SUCCESS, SORT_MANGA_FAIL, mangasReading.sort, query)();
@@ -118,6 +137,10 @@ export default (
         viewControl: { ...state.viewControl, viewChannel: 'Detail' }
       };
     case QUICK_UPDATE_SUCCESS:
+      toast.success(`Update ${action.data.Name} to chapter ${action.data.Chapter}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       return {
         ...state,
         focusManga: action.data,

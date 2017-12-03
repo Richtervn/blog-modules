@@ -129,7 +129,6 @@ class ModalAddPackage extends Component {
 
 	submit() {
 		this.props.onSubmit({ ...this.state });
-		console.log(this.state);
 	}
 
 	render() {

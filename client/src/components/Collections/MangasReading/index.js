@@ -1,6 +1,7 @@
 import React from 'react';
 import ControlPannel from './ControlPannel';
 import CardListLayout from './CardListLayout';
+import LoadingScreen from 'components/LoadingScreen';
 
 export default ({
   activeTool,
@@ -20,7 +21,7 @@ export default ({
 }) => {
   if (!mangas) {
     onGetAllMangas();
-    return null;
+    return <LoadingScreen/>
   }
 
   return (

@@ -52,7 +52,13 @@ export const BUY_CREDIT_SUCCESS = 'darksteam97d99i/BUY_CREDIT_SUCCESS';
 const BUY_CREDIT_FAIL = 'darksteam97d99i/BUY_CREDIT_FAIL';
 
 export const getCharacters = id =>
-  actionCreator(GET_CHARACTERS_START, GET_CHARACTERS_SUCCESS, GET_CHARACTERS_FAIL, darksteam97d99i.getCharacters, id)();
+  actionCreator(
+    GET_CHARACTERS_START,
+    GET_CHARACTERS_SUCCESS,
+    GET_CHARACTERS_FAIL,
+    darksteam97d99i.getCharacters,
+    id
+  )();
 
 export const setFocusCharacter = character => ({ type: SET_FOCUS_CHARACTER, character });
 export const clearAddPointError = () => ({ type: CLEAR_ADD_POINT_ERROR });
@@ -72,23 +78,54 @@ export const loan = query => {
 
 export const buyCredit = query => {
   amount = query.amount;
-  return actionCreator(BUY_CREDIT_START, BUY_CREDIT_SUCCESS, BUY_CREDIT_FAIL, darksteam97d99i.buyCredit, query)();
+  return actionCreator(
+    BUY_CREDIT_START,
+    BUY_CREDIT_SUCCESS,
+    BUY_CREDIT_FAIL,
+    darksteam97d99i.buyCredit,
+    query
+  )();
 };
 
 export const deposit = query => {
   amount = query.amount;
-  return actionCreator(DEPOSIT_START, DEPOSIT_SUCCESS, DEPOSIT_FAIL, darksteam97d99i.deposit, query)();
+  return actionCreator(
+    DEPOSIT_START,
+    DEPOSIT_SUCCESS,
+    DEPOSIT_FAIL,
+    darksteam97d99i.deposit,
+    query
+  )();
 };
 
 export const transfer = query =>
   actionCreator(TRANSFER_START, TRANSFER_SUCCESS, TRANSFER_FAIL, darksteam97d99i.transfer, query)();
 export const addPoint = query =>
-  actionCreator(ADD_POINT_START, ADD_POINT_SUCCESS, ADD_POINT_FAIL, darksteam97d99i.addPoint, query)();
-export const reset = query => actionCreator(RESET_START, RESET_SUCCESS, RESET_FAIL, darksteam97d99i.reset, query)();
+  actionCreator(
+    ADD_POINT_START,
+    ADD_POINT_SUCCESS,
+    ADD_POINT_FAIL,
+    darksteam97d99i.addPoint,
+    query
+  )();
+export const reset = query =>
+  actionCreator(RESET_START, RESET_SUCCESS, RESET_FAIL, darksteam97d99i.reset, query)();
 export const grandReset = query =>
-  actionCreator(GRAND_RESET_START, GRAND_RESET_SUCCESS, GRAND_RESET_FAIL, darksteam97d99i.grandReset, query)();
+  actionCreator(
+    GRAND_RESET_START,
+    GRAND_RESET_SUCCESS,
+    GRAND_RESET_FAIL,
+    darksteam97d99i.grandReset,
+    query
+  )();
 export const resetQuest = query =>
-  actionCreator(RESET_QUEST_START, RESET_QUEST_SUCCESS, RESET_QUEST_FAIL, darksteam97d99i.resetQuest, query)();
+  actionCreator(
+    RESET_QUEST_START,
+    RESET_QUEST_SUCCESS,
+    RESET_QUEST_FAIL,
+    darksteam97d99i.resetQuest,
+    query
+  )();
 
 export default (
   state = {
@@ -258,6 +295,11 @@ export default (
         errorResetQuest: null,
         errorBanking: null
       };
+
+    case GET_CHARACTERS_FAIL:
+      console.log(action);
+      return state;
+
     default:
       return state;
   }

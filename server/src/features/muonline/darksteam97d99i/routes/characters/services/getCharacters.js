@@ -14,7 +14,8 @@ export default async (Character, id) => {
       'GrandResets',
       'PkCount',
       'PkLevel',
-      'Money'
+      'Money',
+      'IsVip'
     ],
     where: {
       AccountID: id

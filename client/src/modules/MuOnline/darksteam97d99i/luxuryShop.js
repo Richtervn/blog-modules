@@ -40,6 +40,10 @@ const GET_RECEIPT_START = 'darksteam97d99i/luxuryShop/GET_RECEIPT_START';
 const GET_RECEIPT_FAIL = 'darksteam97d99i/luxuryShop/GET_RECEIPT_FAIL';
 const GET_RECEIPT_SUCCESS = 'darksteam97d99i/luxuryShop/GET_RECEIPT_SUCCESS';
 
+const GET_EXCHANGE_COUNT_START = 'darksteam97d99i/luxuryShop/GET_EXCHANGE_COUNT_START';
+const GET_EXCHANGE_COUNT_SUCCESS = 'darksteam97d99i/luxuryShop/GET_EXCHANGE_COUNT_SUCCESS';
+const GET_EXCHANGE_COUNT_FAIL = 'darksteam97d99i/luxuryShop/GET_EXCHANGE_COUNT_FAIL';
+
 const SET_CURRENT_PAGE = 'darksteam97d99i/luxuryShop/SET_CURRENT_PAGE';
 export const setCurrentPage = page => ({ type: SET_CURRENT_PAGE, page });
 
@@ -106,7 +110,13 @@ export const deleteConsumable = id =>
 	)();
 
 export const addReceipt = formBody =>
-	actionCreator(ADD_RECEIPT_START, ADD_RECEIPT_SUCCESS, ADD_RECEIPT_FAIL, darksteam97d99i.adminAddReceipt, formBody)();
+	actionCreator(
+		ADD_RECEIPT_START,
+		ADD_RECEIPT_SUCCESS,
+		ADD_RECEIPT_FAIL,
+		darksteam97d99i.adminAddReceipt,
+		formBody
+	)();
 export const editReceipt = formBody =>
 	actionCreator(
 		EDIT_RECEIPT_START,
@@ -122,12 +132,29 @@ export const getReceipt = actionCreator(
 	darksteam97d99i.getReceipt
 );
 export const deleteReceipt = id =>
-	actionCreator(DELETE_RECEIPT_START, DELETE_RECEIPT_SUCCESS, DELETE_RECEIPT_FAIL, darksteam97d99i.deleteReceipt, id)();
+	actionCreator(
+		DELETE_RECEIPT_START,
+		DELETE_RECEIPT_SUCCESS,
+		DELETE_RECEIPT_FAIL,
+		darksteam97d99i.deleteReceipt,
+		id
+	)();
+
+export const getExchangeCount = (memb___id, exchangeId) =>
+	actionCreator(
+		GET_EXCHANGE_COUNT_START,
+		GET_EXCHANGE_COUNT_SUCCESS,
+		GET_EXCHANGE_COUNT_FAIL,
+		darksteam97d99i.getExchangeCount,
+		memb___id,
+		exchangeId
+	)();
 
 export default (
 	state = {
 		pages: ['Exchange', 'Receipts', 'Consumable'],
 		currentPage: 'Exchange',
+		exchangeCount: {},
 		exchanges: null,
 		receipts: null,
 		consumables: null
@@ -185,6 +212,8 @@ export default (
 		case DELETE_EXCHANGE_SUCCESS:
 			state.exchanges = state.exchanges.filter(exchange => exchange.id != action.data.id);
 			return { ...state, exchanges: state.exchanges.slice(0) };
+		case GET_EXCHANGE_COUNT_SUCCESS:
+			return { ...state, exchangeCount: action.data };
 		default:
 			return state;
 	}

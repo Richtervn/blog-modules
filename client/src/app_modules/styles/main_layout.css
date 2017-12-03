@@ -199,3 +199,22 @@
 .pd-10 {
   padding: 10px;
 }
+
+.toast-success {
+  border-radius: 5px !important;
+  border: solid 1px darkgreen;
+  background: #28a745 !important;
+  text-align: center;
+}
+
+.loading-screen {
+  color: white;
+  margin-top: 45px;
+  margin-left: 200px;
+  height: 736px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

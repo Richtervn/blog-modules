@@ -3,6 +3,7 @@ import './fetchIntercept';
 
 import React from 'react';
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 import store from './store';
 
 import TopNavBar from 'containers/TopNavBar';
@@ -19,5 +20,6 @@ export default () =>
         <Navigation />
       </div>
       <AddModal />
+      <ToastContainer autoClose={1500}/>
     </div>
   </Provider>;
