@@ -19,7 +19,9 @@ export default ({
 	onGetConsumable,
 	onGetCharacters,
 	onGetExchangeCount,
-	onTradeExchange
+	onTradeExchange,
+	onBuyReceipt,
+	onBuyConsumable
 }) => (
 	<div className="ds9799-page-wrapper">
 		<NavigatorBar pages={pages} currentPage={currentPage} onChangePage={onChangePage} />
@@ -37,9 +39,23 @@ export default ({
 						onTradeExchange={onTradeExchange}
 					/>
 				)}
-				{currentPage == 'Receipts' && <Receipt receipts={receipts} onGetReceipt={onGetReceipt} />}
+				{currentPage == 'Receipts' && (
+					<Receipt
+						receipts={receipts}
+						onGetReceipt={onGetReceipt}
+						onBuyReceipt={onBuyReceipt}
+						user={user}
+					/>
+				)}
 				{currentPage == 'Consumable' && (
-					<Consumable consumables={consumables} onGetConsumable={onGetConsumable} />
+					<Consumable
+						user={user}
+						characters={characters}
+						consumables={consumables}
+						onGetCharacters={onGetCharacters}
+						onGetConsumable={onGetConsumable}
+						onBuyConsumable={onBuyConsumable}
+					/>
 				)}
 			</div>
 		</div>

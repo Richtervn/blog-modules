@@ -48,6 +48,14 @@ const TRADE_EXCHANGE_START = 'darksteam97d99i/luxuryShop/TRADE_EXCHANGE_START';
 export const TRADE_EXCHANGE_SUCCESS = 'darksteam97d99i/luxuryShop/TRADE_EXCHANGE_SUCCESS';
 const TRADE_EXCHANGE_FAIL = 'darksteam97d99i/luxuryShop/TRADE_EXCHANGE_FAIL';
 
+const BUY_CONSUMABLE_START = 'darksteam97d99i/luxuryShop/BUY_CONSUMABLE_START';
+export const BUY_CONSUMABLE_SUCCESS = 'darksteam97d99i/luxuryShop/BUY_CONSUMABLE_SUCCESS';
+const BUY_CONSUMABLE_FAIL = 'darksteam97d99i/luxuryShop/BUY_CONSUMABLE_FAIL';
+
+const BUY_RECEIPT_START = 'darksteam97d99i/luxuryShop/BUY_RECEIPT_START';
+export const BUY_RECEIPT_SUCCESS = 'darksteam97d99i/luxuryShop/BUY_RECEIPT_SUCCESS';
+const BUY_RECEIPT_FAIL = 'darksteam97d99i/luxuryShop/BUY_RECEIPT_FAIL';
+
 const SET_CURRENT_PAGE = 'darksteam97d99i/luxuryShop/SET_CURRENT_PAGE';
 export const setCurrentPage = page => ({ type: SET_CURRENT_PAGE, page });
 
@@ -160,6 +168,25 @@ export const tradeExchange = query =>
 		TRADE_EXCHANGE_SUCCESS,
 		TRADE_EXCHANGE_FAIL,
 		darksteam97d99i.tradeExchange,
+		query
+	)();
+
+export const buyReceipt = (memb___id, receiptId) =>
+	actionCreator(
+		BUY_RECEIPT_START,
+		BUY_RECEIPT_SUCCESS,
+		BUY_RECEIPT_FAIL,
+		darksteam97d99i.buyReceipt,
+		memb___id,
+		receiptId
+	)();
+
+export const buyConsumable = query =>
+	actionCreator(
+		BUY_CONSUMABLE_START,
+		BUY_CONSUMABLE_SUCCESS,
+		BUY_CONSUMABLE_FAIL,
+		darksteam97d99i.buyConsumable,
 		query
 	)();
 
