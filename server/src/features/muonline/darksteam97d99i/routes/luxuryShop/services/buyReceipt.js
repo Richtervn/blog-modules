@@ -14,5 +14,5 @@ export default async (Receipt, MembCredits, UserReceipt, memb___id, receiptId) =
 		receipt_id: receiptId
 	});
 
-	return { credits: membCredits.credits - receipt.price };
+	return { credits: membCredits.credits - receipt.price, receiptId };
 };

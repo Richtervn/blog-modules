@@ -9,6 +9,8 @@ import VipManager from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPage
 import WebQuest from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/WebQuest';
 import WebShop from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/WebShop';
 import LuxuryShop from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/LuxuryShop';
+import BlackSmith from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/BlackSmith';
+import UpgradeItems from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/UpgradeItems';
 
 export default ({page}) => {
   switch(page){
@@ -28,6 +30,10 @@ export default ({page}) => {
       return <WebShop/>
     case 'Luxury Shop':
       return <LuxuryShop/>
+    case 'Black Smith':
+      return <BlackSmith/>
+    case 'Upgrade Items':
+      return <UpgradeItems/>
     default:
       return <Introduction/>
   }

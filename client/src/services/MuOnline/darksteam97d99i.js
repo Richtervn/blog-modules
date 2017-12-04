@@ -236,5 +236,16 @@ export default {
   buyConsumable(query) {
     const data = commonGet('mu/darksteam97d99i/luxury_shop/consumable/buy', null, query);
     return data;
+  },
+  getUserReceipts(memb___id) {
+    const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt', [memb___id]);
+    return data;
+  },
+  getCountMaterials(memb___id, receiptId) {
+    const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt/count', [
+      memb___id,
+      receiptId
+    ]);
+    return data;
   }
 };

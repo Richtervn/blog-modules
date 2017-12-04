@@ -4,6 +4,7 @@ import addReceipt from './services/addReceipt';
 import buyConsumable from './services/buyConsumable';
 import buyReceipt from './services/buyReceipt';
 import countExchange from './services/countExchange';
+import countMaterials from './services/countMaterials';
 import deleteReceipt from './services/deleteReceipt';
 import editExchange from './services/editExchange';
 import editConsumable from './services/editConsumable';
@@ -177,6 +178,31 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
         readInventory,
         makeItemValue,
         makeInventory
+      );
+      res.send(result);
+    })
+  );
+
+  router.get(
+    '/luxury_shop/user_receipt/:memb___id',
+    wrap(async (req, res, next) => {
+      const userReceipts = await UserReceipt.findAll({
+        where: { memb___id: req.params.memb___id }
+      });
+      res.send(userReceipts);
+    })
+  );
+
+  router.get(
+    '/luxury_shop/user_receipt/count/:memb___id/:receiptId',
+    wrap(async (req, res, next) => {
+      const result = await countMaterials(
+        Material,
+        Character,
+        req.params.memb___id,
+        req.params.receiptId,
+        readInventory,
+        makeItemValue
       );
       res.send(result);
     })

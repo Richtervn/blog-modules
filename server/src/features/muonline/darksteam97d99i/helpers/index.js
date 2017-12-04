@@ -1,5 +1,6 @@
 export bankLogger from './bankLogger';
 export convertUnixTimestamp from './convertUnixTimestamp';
+export decodeItemValue from './decodeItemValue';
 export increaseUnixDay from './increaseUnixDay';
 export makeInventory from './makeInventory';
 export makeItemValue from './makeItemValue';

@@ -41,17 +41,23 @@ const GET_RECEIPT_START = 'darksteam97d99i/luxuryShop/GET_RECEIPT_START';
 const GET_RECEIPT_FAIL = 'darksteam97d99i/luxuryShop/GET_RECEIPT_FAIL';
 const GET_RECEIPT_SUCCESS = 'darksteam97d99i/luxuryShop/GET_RECEIPT_SUCCESS';
 
+const GET_USER_RECEIPTS_START = 'darksteam97d99i/luxuryShop/GET_USER_RECEIPTS_START';
+const GET_USER_RECEIPTS_SUCCESS = 'darksteam97d99i/luxuryShop/GET_USER_RECEIPTS_SUCCESS';
+const GET_USER_RECEIPTS_FAIL = 'darksteam97d99i/luxuryShop/GET_USER_RECEIPTS_FAIL';
+
 const GET_EXCHANGE_COUNT_START = 'darksteam97d99i/luxuryShop/GET_EXCHANGE_COUNT_START';
 const GET_EXCHANGE_COUNT_SUCCESS = 'darksteam97d99i/luxuryShop/GET_EXCHANGE_COUNT_SUCCESS';
 const GET_EXCHANGE_COUNT_FAIL = 'darksteam97d99i/luxuryShop/GET_EXCHANGE_COUNT_FAIL';
 const TRADE_EXCHANGE_START = 'darksteam97d99i/luxuryShop/TRADE_EXCHANGE_START';
 export const TRADE_EXCHANGE_SUCCESS = 'darksteam97d99i/luxuryShop/TRADE_EXCHANGE_SUCCESS';
 const TRADE_EXCHANGE_FAIL = 'darksteam97d99i/luxuryShop/TRADE_EXCHANGE_FAIL';
+const GET_COUNT_MATERIALS_START = 'darksteam97d99i/luxuryShop/GET_COUNT_MATERIALS_START';
+const GET_COUNT_MATERIALS_SUCCESS = 'darksteam97d99i/luxuryShop/GET_COUNT_MATERIALS_SUCCESS';
+const GET_COUNT_MATERIALS_FAIL = 'darksteam97d99i/luxuryShop/GET_COUNT_MATERIALS_FAIL';
 
 const BUY_CONSUMABLE_START = 'darksteam97d99i/luxuryShop/BUY_CONSUMABLE_START';
 export const BUY_CONSUMABLE_SUCCESS = 'darksteam97d99i/luxuryShop/BUY_CONSUMABLE_SUCCESS';
 const BUY_CONSUMABLE_FAIL = 'darksteam97d99i/luxuryShop/BUY_CONSUMABLE_FAIL';
-
 const BUY_RECEIPT_START = 'darksteam97d99i/luxuryShop/BUY_RECEIPT_START';
 export const BUY_RECEIPT_SUCCESS = 'darksteam97d99i/luxuryShop/BUY_RECEIPT_SUCCESS';
 const BUY_RECEIPT_FAIL = 'darksteam97d99i/luxuryShop/BUY_RECEIPT_FAIL';
@@ -190,6 +196,25 @@ export const buyConsumable = query =>
 		query
 	)();
 
+export const getUserReceipts = memb___id =>
+	actionCreator(
+		GET_USER_RECEIPTS_START,
+		GET_USER_RECEIPTS_SUCCESS,
+		GET_USER_RECEIPTS_FAIL,
+		darksteam97d99i.getUserReceipts,
+		memb___id
+	)();
+
+export const getCountMaterials = (memb___id, receiptId) =>
+	actionCreator(
+		GET_COUNT_MATERIALS_START,
+		GET_COUNT_MATERIALS_SUCCESS,
+		GET_COUNT_MATERIALS_FAIL,
+		darksteam97d99i.getCountMaterials,
+		memb___id,
+		receiptId
+	)();
+
 export default (
 	state = {
 		pages: ['Exchange', 'Receipts', 'Consumable'],
@@ -197,7 +222,9 @@ export default (
 		exchangeCount: {},
 		exchanges: null,
 		receipts: null,
-		consumables: null
+		consumables: null,
+		userReceipts: null,
+		countMaterials: {}
 	},
 	action
 ) => {
@@ -254,6 +281,8 @@ export default (
 			return { ...state, exchanges: state.exchanges.slice(0) };
 		case GET_EXCHANGE_COUNT_SUCCESS:
 			return { ...state, exchangeCount: action.data };
+		case GET_COUNT_MATERIALS_SUCCESS:
+			return { ...state, countMaterials: action.data };
 		case TRADE_EXCHANGE_SUCCESS:
 			toast.success('Exchange Successfull', {
 				position: toast.POSITION.BOTTOM_LEFT,
@@ -271,6 +300,27 @@ export default (
 			}
 			return state;
 
+		case GET_USER_RECEIPTS_SUCCESS:
+			return { ...state, userReceipts: action.data };
+
+		case BUY_RECEIPT_SUCCESS:
+			toast.success(`Buy receipt successfull`, {
+				position: toast.POSITION.BOTTOM_LEFT,
+				className: 'toast-success'
+			});
+			if (state.userReceipts) {
+				const boughtReceipts = state.receipts.find(receipt => receipt.id == action.data.receiptId);
+				state.userReceipts.push(boughtReceipts);
+			}
+			return { ...state, userReceipts: state.userReceipts.slice(0) };
+		case BUY_CONSUMABLE_SUCCESS:
+			toast.success(`Buy consumable successfull`, {
+				position: toast.POSITION.BOTTOM_LEFT,
+				className: 'toast-success'
+			});
+			return state;
+
+		case GET_USER_RECEIPTS_FAIL:
 		case ADD_EXCHANGE_FAIL:
 		case EDIT_EXCHANGE_FAIL:
 		case DELETE_EXCHANGE_FAIL:
@@ -284,6 +334,9 @@ export default (
 		case DELETE_RECEIPT_FAIL:
 		case GET_RECEIPT_FAIL:
 		case GET_EXCHANGE_COUNT_FAIL:
+		case GET_COUNT_MATERIALS_FAIL:
+		case BUY_CONSUMABLE_FAIL:
+		case BUY_RECEIPT_FAIL:
 		case TRADE_EXCHANGE_FAIL:
 			toast.error(`${action.error}`, {
 				position: toast.POSITION.TOP_LEFT,
