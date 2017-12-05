@@ -30,7 +30,7 @@ export default ({page}) => {
       return <WebShop/>
     case 'Luxury Shop':
       return <LuxuryShop/>
-    case 'Black Smith':
+    case 'Blacksmith':
       return <BlackSmith/>
     case 'Upgrade Items':
       return <UpgradeItems/>

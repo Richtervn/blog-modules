@@ -178,6 +178,8 @@ export default (state = initialState, action) => {
           Banking: { ...state.user.Banking, loan_money: action.data.loan_money }
         }
       };
+      
+    case TRANSFER_SUCCESS:
     case WITHDRAW_SUCCESS:
       return {
         ...state,
@@ -186,14 +188,7 @@ export default (state = initialState, action) => {
           Banking: { ...state.user.Banking, zen_balance: action.data.zen_balance }
         }
       };
-    case TRANSFER_SUCCESS:
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          Banking: { ...state.user.Banking, zen_balance: action.data.zen_balance }
-        }
-      };
+
     case BUY_CREDIT_SUCCESS:
       return {
         ...state,

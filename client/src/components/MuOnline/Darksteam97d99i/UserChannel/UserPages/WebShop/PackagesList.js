@@ -60,7 +60,7 @@ class PackagesList extends Component {
 							</div>
 							<div className="modal-body">
 								<div className="container center-flex flex-center-both">
-									<div className="alert alert-info">
+									<div className="alert alert-info flex-center-both">
 										<span><i className="fa fa-info-circle fa-2x"/></span>&nbsp;&nbsp;{`Select character to take ${this.state.focusPackage.name}`}
 									</div>
 									<div style={{ width: '330px' }}>
