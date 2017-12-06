@@ -6,7 +6,13 @@
   "scripts": {
     "client": "cd client && npm run start",
     "server": "cd server && npm run start",
-    "start": "start npm run client && npm run server"
+    "start": "start npm run client && npm run server",
+    "build:server": "cd server && npm run build",
+    "build:client": "cd client && npm run build",
+    "build": "start npm run build:server && npm run build:client",
+    "serve:server": "cd server && npm run serve",
+    "serve:client": "cd client && npm run serve",
+    "serve": "start npm run serve:server && npm run serve:client"
   },
   "author": "VuPham",
   "license": "ISC"
