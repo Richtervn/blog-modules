@@ -45,5 +45,100 @@
   "CREDIT_PRICE": {
     "buy": 300000,
     "sell": 200000
+  },
+  "SELL_RECEIPT_RATIO": 0.7,
+  "UPGRADE_ITEM_PRICE": {
+    "LEVEL": 1,
+    "OPTION": 1,
+    "LUCK": 1,
+    "SKILL": 1,
+    "EXC1": 1,
+    "EXC2": 1,
+    "EXC3": 1,
+    "EXC4": 1,
+    "EXC5": 1,
+    "EXC6": 1
+  },
+  "UPGRADE_ITEM_BASE_PRICE": {
+    "Swords": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Axes": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Maces": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Spears": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Bows": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Staffs": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Shields": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Helms": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Armors": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Pants": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Gloves": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Boots": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Wings": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Pets": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Misc": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    },
+    "Scrolls": {
+      "BASE": 4,
+      "STEP": 4,
+      "MULTIPLE": 0
+    }
   }
 }

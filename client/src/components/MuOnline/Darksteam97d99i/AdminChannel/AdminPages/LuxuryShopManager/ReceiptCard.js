@@ -10,7 +10,9 @@ export default ({
 	onClickDelete,
 	onClickBuy,
 	userMode,
-	onClickCraft
+	onClickCraft,
+	onClickSell,
+	gameSetting
 }) => {
 	return (
 		<div className="col-3 no-col-margin">
@@ -42,7 +44,7 @@ export default ({
 					)}
 				{admin && (
 					<div className="badge badge-danger" style={{ marginBottom: '10px' }}>
-						<strong>{`Price: ${receipt.price}`}</strong>
+						<strong>{`Price: ${receipt.price} credits`}</strong>
 					</div>
 				)}
 				{admin && (
@@ -60,9 +62,18 @@ export default ({
 					</div>
 				)}
 				{userMode && (
-					<button className="btn btn-warning btn-block" onClick={() => onClickCraft(receipt)}>
-						Craft
-					</button>
+					<div className="row no-row-margin" style={{ width: '100%' }}>
+						<div className="col no-col-margin">
+							<button className="btn btn-warning btn-block" onClick={() => onClickCraft(receipt)}>
+								<strong>{`Craft: ${receipt.charge_price} credits`}</strong>
+							</button>
+						</div>
+						<div className="col no-col-margin">
+							<button className="btn btn-danger btn-block" onClick={() => onClickSell(receipt)}>
+								{`Sell: ${receipt.price * gameSetting.SELL_RECEIPT_RATIO} credits`}
+							</button>
+						</div>
+					</div>
 				)}
 			</div>
 		</div>

@@ -5,11 +5,13 @@ import buyConsumable from './services/buyConsumable';
 import buyReceipt from './services/buyReceipt';
 import countExchange from './services/countExchange';
 import countMaterials from './services/countMaterials';
+import craftItem from './services/craftItem';
 import deleteReceipt from './services/deleteReceipt';
 import editExchange from './services/editExchange';
 import editConsumable from './services/editConsumable';
 import editReceipt from './services/editReceipt';
 import getReceipt from './services/getReceipt';
+import sellReceipt from './services/sellReceipt';
 import tradeExchange from './services/tradeExchange';
 import uploadConsumableImage from './services/uploadConsumableImage';
 import uploadExchangeImage from './services/uploadExchangeImage';
@@ -205,6 +207,34 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
         makeItemValue
       );
       res.send(result);
+    })
+  );
+
+  router.get(
+    '/luxury_shop/user_receipt/craft/:characterName/:receiptId',
+    wrap(async (req, res, next) => {
+      const result = await craftItem(
+        models,
+        req.params.characterName,
+        req.params.receiptId,
+        readInventory,
+        makeItemValue
+      );
+      return result;
+    })
+  );
+
+  router.get(
+    '/luxury_shop/user_receipt/sell/:memb___id/:receiptId',
+    wrap(async (req, res, next) => {
+      const result = await sellReceipt(
+        MembCredits,
+        Receipt,
+        req.params.memb___id,
+        req.params.receiptId,
+        appConfigs.GameSetting
+      );
+      return result;
     })
   );
 

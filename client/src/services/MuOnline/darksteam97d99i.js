@@ -247,5 +247,19 @@ export default {
       receiptId
     ]);
     return data;
+  },
+  craftItem(characterName, receiptId) {
+    const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt/craft', [
+      characterName,
+      receiptId
+    ]);
+    return data;
+  },
+  sellReceipt(memb___id, receiptId) {
+    const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt/sell', [
+      memb___id,
+      receiptId
+    ]);
+    return data;
   }
 };

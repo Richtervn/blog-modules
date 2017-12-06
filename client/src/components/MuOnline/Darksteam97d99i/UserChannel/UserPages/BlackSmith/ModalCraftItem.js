@@ -13,6 +13,7 @@ class ModalCraftItem extends Component {
 
   handleSelectCharacter(character) {
     const { countMaterials, receipt } = this.props;
+
     const checked = [];
     receipt.materials.map(material => {
       if (material.count == countMaterials[character.Name][material.name]) {
@@ -24,7 +25,7 @@ class ModalCraftItem extends Component {
     } else {
       this.setState({
         error: `${character.Name} doesn't have enough materials`,
-        focusCharacter: null
+        focusCharacter: { Name: '' }
       });
     }
   }
@@ -32,7 +33,7 @@ class ModalCraftItem extends Component {
   handleCraft(e) {
     e.preventDefault();
     if (this.state.focusCharacter.Name) {
-      this.props.onCraft(this.state.focusCharacter.Name, this.props.receipt.id);
+      this.props.onCraftItem(this.state.focusCharacter.Name, this.props.receipt.id);
     } else {
       this.setState({ error: 'Select a character with enough materials' });
     }

@@ -62,6 +62,32 @@ const BUY_RECEIPT_START = 'darksteam97d99i/luxuryShop/BUY_RECEIPT_START';
 export const BUY_RECEIPT_SUCCESS = 'darksteam97d99i/luxuryShop/BUY_RECEIPT_SUCCESS';
 const BUY_RECEIPT_FAIL = 'darksteam97d99i/luxuryShop/BUY_RECEIPT_FAIL';
 
+const CRAFT_ITEM_START = 'darksteam97d99i/luxuryShop/CRAFT_ITEM_START';
+export const CRAFT_ITEM_SUCCESS = 'darksteam97d99i/luxuryShop/CRAFT_ITEM_SUCCESS';
+const CRAFT_ITEM_FAIL = 'darksteam97d99i/luxuryShop/CRAFT_ITEM_FAIL';
+const SELL_RECEIPT_START = 'darksteam97d99i/luxuryShop/SELL_RECEIPT_START';
+export const SELL_RECEIPT_SUCCESS = 'darksteam97d99i/luxuryShop/SELL_RECEIPT_SUCCESS';
+const SELL_RECEIPT_FAIL = 'darksteam97d99i/luxuryShop/SELL_RECEIPT_FAIL';
+
+export const craftItem = (characterName, receiptId) =>
+	actionCreator(
+		CRAFT_ITEM_START,
+		CRAFT_ITEM_SUCCESS,
+		CRAFT_ITEM_FAIL,
+		darksteam97d99i.craftItem,
+		characterName,
+		receiptId
+	)();
+export const sellReceipt = (memb___id, receiptId) =>
+	actionCreator(
+		SELL_RECEIPT_START,
+		SELL_RECEIPT_SUCCESS,
+		SELL_RECEIPT_FAIL,
+		darksteam97d99i.sellReceipt,
+		memb___id,
+		receiptId
+	)();
+
 const SET_CURRENT_PAGE = 'darksteam97d99i/luxuryShop/SET_CURRENT_PAGE';
 export const setCurrentPage = page => ({ type: SET_CURRENT_PAGE, page });
 
@@ -319,8 +345,25 @@ export default (
 				className: 'toast-success'
 			});
 			return state;
+		case SELL_RECEIPT_SUCCESS:
+			toast.success(`Sell receipt successfull`, {
+				position: toast.POSITION.BOTTOM_LEFT,
+				className: 'toast-success'
+			});
+			state.userReceipts = state.userReceipts.filter(
+				receipt => receipt.id != action.data.receiptId
+			);
+			return { ...state, userReceipts: state.userReceipts.slice(0) };
+		case CRAFT_ITEM_SUCCESS:
+			toast.success(`Craft Item successfull`, {
+				position: toast.POSITION.BOTTOM_LEFT,
+				className: 'toast-success'
+			});
+			return { ...state, userReceipts: state.userReceipts.slice(0) };
 
 		case GET_USER_RECEIPTS_FAIL:
+		case CRAFT_ITEM_FAIL:
+		case SELL_RECEIPT_FAIL:
 		case ADD_EXCHANGE_FAIL:
 		case EDIT_EXCHANGE_FAIL:
 		case DELETE_EXCHANGE_FAIL:

@@ -19,7 +19,14 @@ import {
 
 import { REFRESH_QUEST_LIST } from './webQuest';
 import { BUY_PACKAGE_SUCCESS } from './webShop';
-import { TRADE_EXCHANGE_SUCCESS, BUY_CONSUMABLE_SUCCESS, BUY_RECEIPT_SUCCESS } from './luxuryShop';
+
+import {
+  TRADE_EXCHANGE_SUCCESS,
+  BUY_CONSUMABLE_SUCCESS,
+  BUY_RECEIPT_SUCCESS,
+  SELL_RECEIPT_SUCCESS,
+  CRAFT_ITEM_SUCCESS
+} from './luxuryShop';
 
 const REGISTER_START = 'darksteam97d99i/user/REGISTER_START';
 export const REGISTER_SUCCESS = 'darksteam97d99i/user/REGISTER_SUCCESS';
@@ -119,6 +126,8 @@ export default (state = initialState, action) => {
     case REGISTER_FAIL:
       return { ...state, errorRegister: action.error };
 
+    case SELL_RECEIPT_SUCCESS:
+    case CRAFT_ITEM_SUCCESS:
     case BUY_CONSUMABLE_SUCCESS:
     case BUY_RECEIPT_SUCCESS:
     case TRADE_EXCHANGE_SUCCESS:
@@ -178,7 +187,7 @@ export default (state = initialState, action) => {
           Banking: { ...state.user.Banking, loan_money: action.data.loan_money }
         }
       };
-      
+
     case TRANSFER_SUCCESS:
     case WITHDRAW_SUCCESS:
       return {

@@ -11,6 +11,7 @@ class Blacksmith extends Component {
     super(props);
     this.state = { focusReceipt: { image_url: '', materials: [] } };
     this.handleClickCraft = this.handleClickCraft.bind(this);
+    this.handleClickSell = this.handleClickSell.bind(this);
   }
 
   componentWillMount() {
@@ -36,8 +37,22 @@ class Blacksmith extends Component {
     $('#craftDs9799BlacksmithModal').modal('show');
   }
 
+  handleClickSell(receipt) {
+    this.props.onSellReceipt(receipt.id);
+  }
+
   render() {
-    const { characters, receipts, userReceipts, countMaterials, user, onCraft } = this.props;
+    const {
+      characters,
+      receipts,
+      userReceipts,
+      countMaterials,
+      gameSetting,
+      user,
+      onCraftItem,
+      onSellReceipt
+    } = this.props;
+
     if (!characters || !receipts || !userReceipts) {
       return (
         <div className="ds9799-blacksmith-no-receipt">
@@ -65,6 +80,8 @@ class Blacksmith extends Component {
               receipt={receipt}
               onClickCraft={this.handleClickCraft}
               userMode
+              gameSetting={gameSetting}
+              onClickSell={this.handleClickSell}
             />
           ))}
         </div>
@@ -73,7 +90,7 @@ class Blacksmith extends Component {
           countMaterials={countMaterials}
           user={user}
           characters={characters}
-          onCraft={onCraft}
+          onCraftItem={onCraftItem}
         />
       </div>
     );

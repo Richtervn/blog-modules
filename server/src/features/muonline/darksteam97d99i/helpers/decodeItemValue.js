@@ -1,13 +1,29 @@
 import { Categories } from '../data';
 
+const isEmptyItem = itemArr => {
+  const checked = [];
+  itemArr.forEach(value => {
+    if (value == 255) {
+      checked.push('check');
+    }
+  });
+  if (checked.length == itemArr.length) {
+    return true;
+  }
+  return false;
+};
+
 export default itemArr => {
   let item = {};
+  if (isEmptyItem(itemArr)) {
+    return null;
+  }
 
   let firstValue = itemArr[0];
   let secondValue = itemArr[1];
   let eighthValue = itemArr[7];
 
-  let categoryIndex = Math.truc(firstValue / 32);
+  let categoryIndex = Math.trunc(firstValue / 32);
   item.itemId = firstValue % 32;
 
   if (eighthValue >= 128) {
@@ -32,7 +48,8 @@ export default itemArr => {
     item.luck = 0;
   }
 
-  item.level = Math.floor(secondValue / 8);
+  item.level = Math.trunc(secondValue / 8);
+  secondValue -= item.level * 8;
 
   if (eighthValue >= 64) {
     item.option = 4;
