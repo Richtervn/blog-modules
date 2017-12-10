@@ -14,7 +14,8 @@ import {
   WITHDRAW_SUCCESS,
   TRANSFER_SUCCESS,
   LOAN_SUCCESS,
-  BUY_CREDIT_SUCCESS
+  BUY_CREDIT_SUCCESS,
+  UPGRADE_ITEM_SUCCESS
 } from './character';
 
 import { REFRESH_QUEST_LIST } from './webQuest';
@@ -126,6 +127,7 @@ export default (state = initialState, action) => {
     case REGISTER_FAIL:
       return { ...state, errorRegister: action.error };
 
+    case UPGRADE_ITEM_SUCCESS:
     case SELL_RECEIPT_SUCCESS:
     case CRAFT_ITEM_SUCCESS:
     case BUY_CONSUMABLE_SUCCESS:

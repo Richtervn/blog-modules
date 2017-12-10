@@ -48,97 +48,103 @@
   },
   "SELL_RECEIPT_RATIO": 0.7,
   "UPGRADE_ITEM_PRICE": {
-    "LEVEL": 1,
-    "OPTION": 1,
-    "LUCK": 1,
-    "SKILL": 1,
-    "EXC1": 1,
-    "EXC2": 1,
-    "EXC3": 1,
-    "EXC4": 1,
-    "EXC5": 1,
-    "EXC6": 1
+    "LEVEL_BELOW_9": 20,
+    "LEVEL_10": 50,
+    "LEVEL_11": 80,
+    "LEVEL_12": 120,
+    "LEVEL_13": 150,
+    "LEVEL_14": 200,
+    "LEVEL_15": 300,
+    "OPTION": 100,
+    "LUCK": 200,
+    "SKILL": 200,
+    "EXC1": 500,
+    "EXC2": 450,
+    "EXC3": 400,
+    "EXC4": 350,
+    "EXC5": 300,
+    "EXC6": 250
   },
   "UPGRADE_ITEM_BASE_PRICE": {
     "Swords": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 10,
+      "STEP": 10,
+      "MULTIPLE": 1
     },
     "Axes": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 50,
+      "STEP": 10,
+      "MULTIPLE": 1
     },
     "Maces": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 20,
+      "STEP": 10,
+      "MULTIPLE": 1
     },
     "Spears": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 50,
+      "STEP": 20,
+      "MULTIPLE": 1.5
     },
     "Bows": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 50,
+      "STEP": 20,
+      "MULTIPLE": 2
     },
     "Staffs": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 100,
+      "STEP": 50,
+      "MULTIPLE": 2
     },
     "Shields": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 100,
+      "STEP": 20,
+      "MULTIPLE": 3
     },
     "Helms": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 20,
+      "STEP": 10,
+      "MULTIPLE": 1
     },
     "Armors": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 50,
+      "STEP": 20,
+      "MULTIPLE": 1.5
     },
     "Pants": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 50,
+      "STEP": 15,
+      "MULTIPLE": 1.5
     },
     "Gloves": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 50,
+      "STEP": 20,
+      "MULTIPLE": 1
     },
     "Boots": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 50,
+      "STEP": 20,
+      "MULTIPLE": 1
     },
     "Wings": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 100,
+      "STEP": 20,
+      "MULTIPLE": 2
     },
     "Pets": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 100,
+      "STEP": 20,
+      "MULTIPLE": 2
     },
     "Misc": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 100,
+      "STEP": 10,
+      "MULTIPLE": 5
     },
     "Scrolls": {
-      "BASE": 4,
-      "STEP": 4,
-      "MULTIPLE": 0
+      "BASE": 100,
+      "STEP": 10,
+      "MULTIPLE": 5
     }
   }
 }

@@ -12,29 +12,29 @@ import LuxuryShop from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPage
 import BlackSmith from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/BlackSmith';
 import UpgradeItems from 'containers/MuOnline/Darksteam97d99i/UserChannel/UserPages/UpgradeItems';
 
-export default ({page}) => {
-  switch(page){
+export default ({ page }) => {
+  switch (page) {
     case 'Introduction':
-      return <Introduction/>
+      return <Introduction />;
     case 'Dash Board':
-      return <Dashboard/>
+      return <Dashboard />;
     case 'Character Manager':
-      return <CharacterManager/>
+      return <CharacterManager />;
     case 'Banking Manager':
-      return <BankingManager/>
+      return <BankingManager />;
     case 'Vip Manager':
-      return <VipManager/>
+      return <VipManager />;
     case 'Web Quest':
-      return <WebQuest/>
+      return <WebQuest />;
     case 'Web Shop':
-      return <WebShop/>
+      return <WebShop />;
     case 'Luxury Shop':
-      return <LuxuryShop/>
+      return <LuxuryShop />;
     case 'Blacksmith':
-      return <BlackSmith/>
+      return <BlackSmith />;
     case 'Upgrade Items':
-      return <UpgradeItems/>
+      return <UpgradeItems />;
     default:
-      return <Introduction/>
+      return <Introduction />;
   }
-}
+};

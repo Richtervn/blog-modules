@@ -261,5 +261,13 @@ export default {
       receiptId
     ]);
     return data;
+  },
+  getCharacterInventory(characterName) {
+    const data = commonGet('mu/darksteam97d99i/upgrade_items/inventory', [characterName]);
+    return data;
+  },
+  upgradeItem(body){
+    const data = commonPut('mu/darksteam97d99i/upgrade_items', body);
+    return data;
   }
 };
