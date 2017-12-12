@@ -79,6 +79,7 @@
 .ds9799-dashboard-container {
   margin: 10px;
   max-height: 656px;
+  overflow-y: auto;
 }
 
 .ds9799-profile-card {

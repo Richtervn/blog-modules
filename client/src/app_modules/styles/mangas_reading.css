@@ -3,7 +3,6 @@
   margin-left: 200px;
   height: 736px;
   width: 100%;
-  overflow-y: auto;
   background-image: url('../../app_modules/images/backgrounds/dark_art.jpg');
 }
 
@@ -14,14 +13,32 @@
 .mr-control-panel {
   background-color: #1e434c;
   width: 90%;
+  left: -80%;
   margin-left: 5%;
   height: 736px;
   overflow-y: auto;
+  position: relative;
+  animation: slide_left_in 1s forwards;
+}
+
+@keyframes slide_left_in {
+  100% {
+    left: 0;
+  }
 }
 
 .mr-card-list {
   height: 736px;
   overflow-y: auto;
+  position: relative;
+  right: -80%;
+  animation: slide_right_in 1s forwards;
+}
+
+@keyframes slide_right_in {
+  100% {
+    right: 0;
+  }
 }
 
 .box-margin {
@@ -75,7 +92,7 @@
 }
 
 .manga-card-active {
-  background-color: #00A65A;
+  background-color: #00a65a;
   color: white;
 }
 

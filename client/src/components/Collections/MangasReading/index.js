@@ -42,7 +42,7 @@ export default ({
             onSortSelect={onSortSelect}
           />
         </div>
-        <div className="col-9 static-position no-row-margin mr-card-list">
+        <div className="col-9 no-row-margin mr-card-list">
           <CardListLayout mangas={mangas} focusMangaId={focusManga._id} onSelectManga={onSelectManga} />
         </div>
       </div>

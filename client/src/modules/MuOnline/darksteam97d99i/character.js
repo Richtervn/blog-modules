@@ -334,9 +334,14 @@ export default (
         selectedSlot: action.slot
       };
     case UPGRADE_ITEM_SUCCESS:
+      toast.success('Item Upgraded Successfully', {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       return {
         ...state,
-        inventories: { ...state.inventories, [state.focusCharacter.Name]: action.data.inventory }
+        inventories: { ...state.inventories, [state.focusCharacter.Name]: action.data.inventory },
+        focusItem: action.data.inventory[state.selectedSlot]
       };
 
     case RESET_FAIL:

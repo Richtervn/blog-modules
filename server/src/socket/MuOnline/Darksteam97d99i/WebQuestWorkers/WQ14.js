@@ -47,7 +47,8 @@ export default class WQ14 {
 			_id: 'WQ14',
 			credits: this.membCredits.credits,
 			progress: 0,
-			finish_times: this.baseRecord.finish_times
+			finish_times: this.baseRecord.finish_times,
+			isDone: false
 		};
 	}
 

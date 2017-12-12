@@ -25,7 +25,7 @@ export default (
 			const { data } = action;
 			state.questList = state.questList.map(quest => {
 				if (quest._id == data._id) {
-					quest = {...quest, ...data};
+					return { ...quest, ...data };
 				}
 				return quest;
 			});
