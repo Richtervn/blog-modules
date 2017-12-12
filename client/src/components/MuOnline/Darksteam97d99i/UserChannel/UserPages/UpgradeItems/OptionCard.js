@@ -32,7 +32,6 @@ const defineRemainItemOption = item => {
 };
 
 const initState = item => {
-  console.log(item);
   if (!item) return {};
   const state = {
     value: {
@@ -147,14 +146,17 @@ class OptionCard extends Component {
           </h5>
         </div>
       );
+
     const consistentOption = defineConsistentOption(item);
     const remainItemOption = defineRemainItemOption(item);
     const remainItemLevel = defineRemainItemLevel(item);
     const { isHaveLuck, isHaveSkill } = getMuItemOptions(item.category, item.itemId);
+
     const { excOpt1, excOpt2, excOpt3, excOpt4, excOpt5, excOpt6 } = getMuExcText(
       item.category,
       item.itemId
     );
+    
     const { exc1, exc2, exc3, exc4, exc5, exc6, luck, skill } = this.state.value;
 
     return (

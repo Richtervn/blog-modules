@@ -35,7 +35,7 @@ export default ({
         ))}
       </div>
       <div className="col-9 no-col-margin">
-        <div className="row no-row-margin">
+        <div className="row no-row-margin" style={{ flexWrap: 'no-wrap' }}>
           <InventoryCard
             inventories={inventories}
             onGetInventory={onGetInventory}

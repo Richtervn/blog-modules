@@ -1,6 +1,7 @@
 import actionCreator from 'factories/actionCreator';
 import { darksteam97d99i } from 'services';
 import { toast } from 'react-toastify';
+import socket from 'factories/socketInstance';
 
 const ADD_EXCHANGE_START = 'darksteam97d99i/luxuryShop/ADD_EXCHANGE_START';
 const ADD_EXCHANGE_SUCCESS = 'darksteam97d99i/luxuryShop/ADD_EXCHANGE_SUCCESS';
@@ -254,6 +255,24 @@ export default (
 	},
 	action
 ) => {
+	switch (action.type) {
+		case BUY_RECEIPT_SUCCESS:
+			socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ17');
+			break;
+		case TRADE_EXCHANGE_SUCCESS:
+			socket.emit(
+				'darksteam97d99i/CHECK_POINT_QUEST',
+				'WQ13',
+				parseInt(action.data.traded) * parseInt(action.data.exchangePrice)
+			);
+			break;
+		case CRAFT_ITEM_SUCCESS:
+			socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ18');
+			break;
+		default:
+			break;
+	}
+
 	switch (action.type) {
 		case SET_CURRENT_PAGE:
 			return { ...state, currentPage: action.page };

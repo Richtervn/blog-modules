@@ -41,7 +41,7 @@ export default itemArr => {
     item.skill = 0;
   }
 
-  if (secondValue % 8 == 4) {
+  if (secondValue % 8 >= 4) {
     item.luck = 1;
     secondValue -= 4;
   } else {

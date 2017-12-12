@@ -199,6 +199,9 @@ export default (
     case BUY_CREDIT_SUCCESS:
       socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ9', amount);
       break;
+    case UPGRADE_ITEM_SUCCESS:
+      socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ14');
+      break;
     default:
       break;
   }

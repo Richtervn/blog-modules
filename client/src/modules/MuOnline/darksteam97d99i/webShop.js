@@ -1,7 +1,9 @@
 import actionCreator from 'factories/actionCreator';
 import { darksteam97d99i } from 'services';
+import socket from 'factories/socketInstance';
 
-const ADMIN_SET_FOCUS_WEB_SHOP_CATEGORY = 'darksteam97d99i/webShop/ADMIN_SET_FOCUS_WEB_SHOP_CATEGORY';
+const ADMIN_SET_FOCUS_WEB_SHOP_CATEGORY =
+	'darksteam97d99i/webShop/ADMIN_SET_FOCUS_WEB_SHOP_CATEGORY';
 const SET_FOCUS_CATEGORY = 'darksteam97d99i/webShop/SET_FOCUS_CATEGORY';
 
 const ADMIN_ADD_PACKAGE_START = 'darksteam97d99i/webShop/ADMIN_ADD_PACKAGE_START';
@@ -104,6 +106,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
 	switch (action.type) {
+		case BUY_PACKAGE_SUCCESS:
+			socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ12');
+			break;
+		default:
+			break;
+	}
+
+	switch (action.type) {
 		case ADMIN_SET_FOCUS_WEB_SHOP_CATEGORY:
 			return {
 				...state,
@@ -133,7 +143,9 @@ export default (state = initialState, action) => {
 
 		case EDIT_PACKAGE_SUCCESS: {
 			console.log(action.data);
-			state.packages[state.focusWebShopCategory._id] = state.packages[state.focusWebShopCategory._id].map(pack => {
+			state.packages[state.focusWebShopCategory._id] = state.packages[
+				state.focusWebShopCategory._id
+			].map(pack => {
 				if (pack.id == action.data.id) {
 					return action.data;
 				}
@@ -143,19 +155,21 @@ export default (state = initialState, action) => {
 				...state,
 				packages: {
 					...state.packages,
-					[state.focusWebShopCategory._id]: state.packages[state.focusWebShopCategory._id].slice(0).map(pack => {
-						const refeshPack = { ...pack };
-						refeshPack.items = refeshPack.items.slice(0);
-						return refeshPack;
-					})
+					[state.focusWebShopCategory._id]: state.packages[state.focusWebShopCategory._id]
+						.slice(0)
+						.map(pack => {
+							const refeshPack = { ...pack };
+							refeshPack.items = refeshPack.items.slice(0);
+							return refeshPack;
+						})
 				}
 			};
 		}
 
 		case DELETE_PACKAGE_SUCCESS: {
-			state.packages[state.focusWebShopCategory._id] = state.packages[state.focusWebShopCategory._id].filter(
-				pack => pack.id != action.data.id
-			);
+			state.packages[state.focusWebShopCategory._id] = state.packages[
+				state.focusWebShopCategory._id
+			].filter(pack => pack.id != action.data.id);
 			return {
 				...state,
 				packages: {

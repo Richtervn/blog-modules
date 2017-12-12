@@ -71,6 +71,7 @@ export default async (
 		result.traded = traded;
 		result.Name = characterName;
 		result.type = type;
+		result.exchangePrice = exchange.price; 
 	}
 
 	return result;

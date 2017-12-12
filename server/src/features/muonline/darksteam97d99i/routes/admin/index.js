@@ -117,7 +117,7 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
   router.put(
     '/admin/credit',
     wrap(async (req, res, next) => {
-      await MembInfo.update(req.body, {
+      await MembCredits.update(req.body, {
         where: {
           memb___id: req.body.memb___id
         }
