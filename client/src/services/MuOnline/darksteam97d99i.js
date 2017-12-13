@@ -196,7 +196,7 @@ export default {
     const data = commonGet('mu/darksteam97d99i/luxury_shop/consumable');
     return data;
   },
-  deleteConsumabe(id) {
+  deleteConsumable(id) {
     const data = commonDelete('mu/darksteam97d99i/luxury_shop/consumable/' + id);
     return data;
   },

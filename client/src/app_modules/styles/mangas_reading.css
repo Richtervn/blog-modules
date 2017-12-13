@@ -13,33 +13,31 @@
 .mr-control-panel {
   background-color: #1e434c;
   width: 90%;
-  left: -80%;
   margin-left: 5%;
   height: 736px;
   overflow-y: auto;
   position: relative;
-  animation: slide_left_in 1s forwards;
+/*  transform: translateX(-100%);
+  animation: slide_left_in 0.5s forwards;*/
 }
 
-@keyframes slide_left_in {
-  100% {
-    left: 0;
-  }
-}
+/*@keyframes slide_left_in {
+  100% { transform: translateX(0%); }
+}*/
 
 .mr-card-list {
   height: 736px;
   overflow-y: auto;
   position: relative;
-  right: -80%;
-  animation: slide_right_in 1s forwards;
+  /*right: -100%;*/
+  /*animation: slide_right_in 1s ease;*/
 }
 
-@keyframes slide_right_in {
+/*@keyframes slide_right_in {
   100% {
     right: 0;
   }
-}
+}*/
 
 .box-margin {
   width: 100%;
