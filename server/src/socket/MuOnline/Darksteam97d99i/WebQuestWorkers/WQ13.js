@@ -50,6 +50,7 @@ export default class WQ13 {
 
 		this.currentRequirement = this.webQuest.requirement + this.baseRecord.finish_times * this.webQuest.step.requirement;
 		this.currentReward = this.webQuest.reward + this.baseRecord.finish_times * this.webQuest.step.reward;
+		const { isDone } = this.check();
 
 		return {
 			_id: 'WQ13',
@@ -57,7 +58,8 @@ export default class WQ13 {
 			finish_times: this.baseRecord.finish_times,
 			credits: this.membCredits.credits,
 			reward: this.currentReward,
-			requirement: this.currentRequirement
+			requirement: this.currentRequirement,
+			isDone
 		};
 	}
 

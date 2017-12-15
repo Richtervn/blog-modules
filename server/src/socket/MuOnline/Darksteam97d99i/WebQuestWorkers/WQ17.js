@@ -22,7 +22,7 @@ export default class WQ17 {
 			progress: this.baseRecord.progress
 		});
 
-				return {
+		return {
 			_id: 'WQ17',
 			progress: this.baseRecord.progress
 		};
@@ -43,16 +43,28 @@ export default class WQ17 {
 			finish_times: this.baseRecord.finish_times
 		});
 
+		const { isDone } = this.check();
+
 		return {
-			_id: 'WQ16',
+			_id: 'WQ17',
 			zen_balance: this.banking.zen_balance.toString(),
 			progress: 0,
-			finish_times: this.baseRecord.finish_times
+			finish_times: this.baseRecord.finish_times,
+			isDone
 		};
 	}
 
 	buildResult() {
-		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep, rules } = this.webQuest;
+		const {
+			_id,
+			description,
+			isRepeatable,
+			type,
+			reward,
+			reward_unit,
+			isJumpStep,
+			rules
+		} = this.webQuest;
 		const { progress, finish_times } = this.baseRecord;
 		const { isDone } = this.check();
 		const result = {

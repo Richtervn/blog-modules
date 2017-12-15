@@ -735,6 +735,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .ds9799-lx-add-consumable-btn {

@@ -38,7 +38,7 @@ class Blacksmith extends Component {
   }
 
   handleClickSell(receipt) {
-    this.props.onSellReceipt(receipt.id);
+    this.props.onSellReceipt(this.props.user.memb___id, receipt.id);
   }
 
   render() {

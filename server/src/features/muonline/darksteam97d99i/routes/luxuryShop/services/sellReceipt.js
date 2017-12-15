@@ -1,7 +1,7 @@
-export default async (MembCredits, Receipt, UserReceipt, memb___id, receipId, GameSetting) => {
+export default async (MembCredits, Receipt, UserReceipt, memb___id, receiptId, GameSetting) => {
   const [membCredits, receipt] = [
     await MembCredits.findOne({ where: { memb___id } }),
-    await Receipt.findOne({ where: { id: receipId } })
+    await Receipt.findOne({ where: { id: receiptId } })
   ];
 
   const payBack = parseInt(receipt.price) * GameSetting.SELL_RECEIPT_RATIO;
@@ -13,5 +13,8 @@ export default async (MembCredits, Receipt, UserReceipt, memb___id, receipId, Ga
       receipt_id: receiptId
     }
   });
+  
   return { credits: remainCredits, receiptId };
 };
+
+

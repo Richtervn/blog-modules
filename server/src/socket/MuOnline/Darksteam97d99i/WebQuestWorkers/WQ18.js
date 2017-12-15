@@ -43,11 +43,14 @@ export default class WQ17 {
 			finish_times: this.baseRecord.finish_times
 		});
 
+		const { isDone } = this.check();
+
 		return {
 			_id: 'WQ18',
 			zen_balance: this.banking.zen_balance.toString(),
 			progress: 0,
-			finish_times: this.baseRecord.finish_times
+			finish_times: this.baseRecord.finish_times,
+			isDone
 		};
 	}
 

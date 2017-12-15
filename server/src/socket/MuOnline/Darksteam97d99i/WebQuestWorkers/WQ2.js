@@ -41,6 +41,8 @@ export default class WQ2 {
     this.currentRequirement = this.webQuest.requirement + this.baseRecord.finish_times * this.webQuest.step.requirement;
     this.currentReward = this.webQuest.reward + this.baseRecord.finish_times * this.webQuest.step.reward;
 
+    const { isDone } = this.check();
+
     await this.baseRecord.update({
       checkpoint: 0,
       progress: 0
@@ -50,7 +52,8 @@ export default class WQ2 {
       _id: 'WQ2',
       progress: 0,
       credits: this.membCredits.credits,
-      finish_times: this.finish_times
+      finish_times: this.finish_times,
+      isDone
     };
   }
 

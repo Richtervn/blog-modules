@@ -1,10 +1,13 @@
 import React from 'react';
 
 export default ({ consumable, admin, onClickEdit, onClickDelete, onClickBuy }) => (
-	<div className="col-3 no-col-margin">
+	<div className="col-3 no-col-margin" style={{ display: 'flex', width: '100%' }}>
 		<div className="ds9799-lx-consumable-card text-center">
 			<div className="ds9799-ws-package-label">{consumable.name}</div>
-			<img src={consumable.image_url.replace('./public', 'http://localhost:3000')} style={{ paddingBottom: '10px' }} />
+			<img
+				src={consumable.image_url.replace('./public', 'http://localhost:3000')}
+				style={{ paddingBottom: '10px' }}
+			/>
 			{!admin && (
 				<button
 					className="btn btn-danger btn-block"

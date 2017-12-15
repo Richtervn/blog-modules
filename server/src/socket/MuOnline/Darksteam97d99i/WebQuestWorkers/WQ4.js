@@ -36,6 +36,8 @@ export default class WQ4 {
 			credits: this.membCredits.credits
 		});
 
+		const { isDone } = this.check();
+
 		await this.baseRecord.update({
 			progress: 0,
 			finish_times: this.baseRecord.finish_times
@@ -45,7 +47,8 @@ export default class WQ4 {
 			_id: 'WQ4',
 			progress: 0,
 			finish_times: this.baseRecord.finish_times,
-			credits: this.membCredits.credits
+			credits: this.membCredits.credits,
+			isDone
 		};
 	}
 

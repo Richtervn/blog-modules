@@ -19,7 +19,6 @@ export default async (Exchange, body) => {
 		exc6: body.exc6 == true ? 1 : 0
 	};
 
-	console.log(body);
 	if (body.image_url) {
 		const exchange = await Exchange.findOne({ where: { id: body.id }, attributes: ['image_url'] });
 		fs.unlinkSync(exchange.image_url);

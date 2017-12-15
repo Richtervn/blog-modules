@@ -220,7 +220,7 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
         readInventory,
         makeItemValue
       );
-      return result;
+      res.send(result);
     })
   );
 
@@ -230,11 +230,12 @@ export default (models, router, factories, helpers, appConfigs, methods) => {
       const result = await sellReceipt(
         MembCredits,
         Receipt,
+        UserReceipt,
         req.params.memb___id,
         req.params.receiptId,
         appConfigs.GameSetting
       );
-      return result;
+      res.send(result);
     })
   );
 

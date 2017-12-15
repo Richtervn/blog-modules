@@ -67,9 +67,12 @@ export default class WQ3 {
 		});
 		this.characterFullFilled = '';
 
+		const { isDone } = this.check();
+
 		return {
 			_id: 'WQ3',
-			credits: this.membCredits.credits
+			credits: this.membCredits.credits,
+			isDone
 		};
 	}
 

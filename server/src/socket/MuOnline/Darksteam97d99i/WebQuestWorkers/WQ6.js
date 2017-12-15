@@ -45,11 +45,14 @@ export default class WQ6 {
 			finish_times: this.baseRecord.finish_times
 		});
 
+		const { isDone } = this.check();
+
 		return {
 			_id: 'WQ6',
 			credits: this.membCredits.credits,
 			progress: 0,
-			finish_times: this.baseRecord.finish_times
+			finish_times: this.baseRecord.finish_times,
+			isDone
 		};
 	}
 

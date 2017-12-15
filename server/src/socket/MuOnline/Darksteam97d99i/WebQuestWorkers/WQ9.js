@@ -51,6 +51,7 @@ export default class WQ9 {
 
 		this.currentRequirement = this.webQuest.requirement + this.baseRecord.finish_times * this.webQuest.step.requirement;
 		this.currentReward = this.webQuest.reward + this.baseRecord.finish_times * this.webQuest.step.reward;
+		const { isDone } = this.check();
 
 		return {
 			_id: 'WQ9',
@@ -58,7 +59,8 @@ export default class WQ9 {
 			progress: 0,
 			finish_times: this.baseRecord.finish_times,
 			requirement: this.currentRequirement,
-			reward: this.currentReward
+			reward: this.currentReward,
+			isDone
 		};
 	}
 

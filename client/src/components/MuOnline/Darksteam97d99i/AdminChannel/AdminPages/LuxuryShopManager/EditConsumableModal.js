@@ -10,15 +10,16 @@ class AddConsumableModal extends Component {
 		const { consumable } = this.props;
 		this.state = {
 			file: null,
-			name: consumable.name,
-			price: consumable.price,
-			category: consumable.category,
-			duration: consumable.duration,
-			itemId: consumable.itemId,
+			id: consumable.id || null,
+			name: consumable.name || '',
+			price: consumable.price || 0,
+			category: consumable.category || '',
+			duration: consumable.duration || 255,
+			itemId: consumable.itemId || 1,
 			luck: consumable.luck == 1,
 			skill: consumable.skill == 1,
-			option: consumable.option,
-			level: consumable.level,
+			option: consumable.option || 0,
+			level: consumable.level || 0,
 			exc1: consumable.exc1 == 1,
 			exc2: consumable.exc2 == 1,
 			exc3: consumable.exc3 == 1,
@@ -37,15 +38,16 @@ class AddConsumableModal extends Component {
 		}
 		this.setState({
 			file: null,
-			name: consumable.name,
-			price: consumable.price,
-			category: consumable.category,
-			duration: consumable.duration,
-			itemId: consumable.itemId,
+			id: consumable.id || null,
+			name: consumable.name || '',
+			price: consumable.price || 0,
+			category: consumable.category || '',
+			duration: consumable.duration || 255,
+			itemId: consumable.itemId || 1,
 			luck: consumable.luck == 1,
 			skill: consumable.skill == 1,
-			option: consumable.option,
-			level: consumable.level,
+			option: consumable.option || 0,
+			level: consumable.level || 0,
 			exc1: consumable.exc1 == 1,
 			exc2: consumable.exc2 == 1,
 			exc3: consumable.exc3 == 1,
@@ -111,7 +113,12 @@ class AddConsumableModal extends Component {
 										<label>
 											<strong>Image :</strong>
 										</label>
-										<input type="file" className="form-control" name="file" onChange={this.handleChange} />
+										<input
+											type="file"
+											className="form-control"
+											name="file"
+											onChange={this.handleChange}
+										/>
 									</div>
 									<div className="form-group">
 										<label>
@@ -175,7 +182,11 @@ class AddConsumableModal extends Component {
 							</div>
 						</div>
 						<div className="modal-footer">
-							<button type="button" className="btn btn-success" onClick={this.submit} data-dismiss="modal">
+							<button
+								type="button"
+								className="btn btn-success"
+								onClick={this.submit}
+								data-dismiss="modal">
 								Submit
 							</button>
 							<button type="button" className="btn btn-danger" data-dismiss="modal">
