@@ -7,4 +7,5 @@ export gamingHistory from './Collections/gamingHistory';
 export yugiohPoc from './Games/yugiohPoc';
 export starcraft from './Games/starcraft';
 export muonline from './Games/muonline';
+export diabloII from './Games/diabloII';
 export darksteam97d99i from './MuOnline/darksteam97d99i';

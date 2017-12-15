@@ -10,6 +10,7 @@ import music from 'modules/Collections/music';
 import starcraft from 'modules/Games/starcraft';
 import yugiohPoc from 'modules/Games/yugiohPoc';
 import muonline from 'modules/Games/muonline';
+import diabloII from 'modules/Games/diabloII';
 
 import darksteam97d99i from './MuOnline/darksteam97d99i';
 
@@ -24,6 +25,7 @@ export default combineReducers({
   yugiohPoc,
   starcraft,
   muonline,
+  diabloII,
   ds9799_navigator: darksteam97d99i.navigator,
   ds9799_user: darksteam97d99i.user,
   ds9799_info: darksteam97d99i.info,

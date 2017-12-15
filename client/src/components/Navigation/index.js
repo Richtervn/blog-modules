@@ -7,6 +7,7 @@ import FlashGame from 'containers/FlashGame';
 import YugiohPoc from 'containers/Games/YugiohPoc';
 import Starcraft from 'containers/Games/Starcraft';
 import MuOnline from 'containers/Games/MuOnline';
+import DiabloII from 'containers/Games/DiabloII';
 
 import MangasReading from 'containers/Collections/MangasReading';
 import GamingHistory from 'containers/Collections/GamingHistory';
@@ -43,6 +44,9 @@ export default ({ activeGroup, activeItem, menuTree }) => {
       break;
     case 'Freya Portable':
       Navigation = FreyaPortable;
+      break;
+    case 'Diablo II':
+      Navigation = DiabloII;
       break;
     default:
       break;
