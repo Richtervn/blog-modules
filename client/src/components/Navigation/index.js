@@ -13,6 +13,8 @@ import MangasReading from 'containers/Collections/MangasReading';
 import GamingHistory from 'containers/Collections/GamingHistory';
 import Music from 'containers/Collections/Music';
 
+import ContentMirror from 'containers/Tools/ContentMirror';
+
 import FreyaPortable from 'containers/LineageII/FreyaPortable';
 
 import Darksteam97d99i from 'containers/MuOnline/Darksteam97d99i';
@@ -47,6 +49,9 @@ export default ({ activeGroup, activeItem, menuTree }) => {
       break;
     case 'Diablo II':
       Navigation = DiabloII;
+      break;
+    case 'Content Mirror':
+      Navigation = ContentMirror
       break;
     default:
       break;

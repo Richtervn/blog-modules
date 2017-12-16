@@ -17,6 +17,8 @@ export default name => {
       return 'fa-coffee';
     case 'Notes':
       return 'fa-tags';
+    case 'Tools':
+      return 'fa-wrench';
     default:
       return groupIcon;
   }

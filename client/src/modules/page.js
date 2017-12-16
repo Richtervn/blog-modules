@@ -51,6 +51,10 @@ const quotes = {
   'Lineage II': {
     quote: "You're the ghost haunting through her heart",
     author: 'Within Temptation - Restless'
+  },
+  'Tools': {
+    quote: "I'm just a dreamer who dreams of better days",
+    author: 'Ozzy Osbourne - Dreamer'
   }
 };
 

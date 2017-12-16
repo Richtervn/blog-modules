@@ -17,10 +17,7 @@ import {
   GET_CAMPAIGN_DETAIL_SUCCESS
 } from 'modules/Games/starcraft';
 
-import {
-  GET_VIP_SYSTEMS_SUCCESS,
-  SET_FOCUS_VIP_SYSTEM
-} from 'modules/MuOnline/darksteam97d99i/data';
+import { GET_VIP_SYSTEMS_SUCCESS, SET_FOCUS_VIP_SYSTEM } from 'modules/MuOnline/darksteam97d99i/data';
 
 import { GET_TOOL_DETAIL_SUCCESS, GET_VERSION_DETAIL_SUCCESS } from 'modules/Games/muonline';
 
@@ -292,7 +289,47 @@ export default (
       duration: 0,
       type: 'Account'
     },
-    EditDS9799VipSystem: null
+    EditDS9799VipSystem: null,
+    AddD2Mod: {
+      Archive: null,
+      Icon: null,
+      Background: null,
+      Name: '',
+      ModVersion: '',
+      Version: '',
+      Overview: [''],
+      Description: '',
+      Rating: 0
+    },
+    EditD2Mod: null,
+    AddD2Tool: {
+      Archive: null,
+      Icon: null,
+      Name: '',
+      Description: '',
+      Overview: [''],
+      Rating: 0
+    },
+    EditD2Tool: null,
+    AddD2SurvivalKit: {
+      file: null,
+      Name: '',
+      Type: '',
+      Description: '',
+      Overview: [''],
+      Rating: 0
+    },
+    EditD2SurvivalKit: null,
+    AddD2Character: {
+      file: '',
+      Name: '',
+      Class: '',
+      ModId: '',
+      Overview: [''],
+      Rating: 0,
+      IsCount: true
+    },
+    EditD2Character: null
   },
   action
 ) => {
@@ -317,64 +354,28 @@ export default (
       formValue = commonFormChange(state.AddMusic, action.event);
       return { ...state, AddMusic: formValue };
     case CHANGE_ADD_YUGIOH_MOD_FORM:
-      formValue = commonFormChange(
-        state.AddYugiohMod,
-        action.event,
-        action.index,
-        ['Credits'],
-        ['Icon', 'Image']
-      );
+      formValue = commonFormChange(state.AddYugiohMod, action.event, action.index, ['Credits'], ['Icon', 'Image']);
       return { ...state, AddYugiohMod: formValue };
     case CHANGE_ADD_YUGIOH_DECK_FORM:
-      formValue = commonFormChange(
-        state.AddYugiohDeck,
-        action.event,
-        action.index,
-        ['Pros', 'Cons'],
-        ['Image']
-      );
+      formValue = commonFormChange(state.AddYugiohDeck, action.event, action.index, ['Pros', 'Cons'], ['Image']);
       return { ...state, AddYugiohDeck: formValue };
     case CHANGE_EDIT_YUGIOH_MOD_FORM:
-      formValue = commonFormChange(
-        state.EditYugiohMod,
-        action.event,
-        action.index,
-        ['Credits'],
-        ['Icon', 'Image']
-      );
+      formValue = commonFormChange(state.EditYugiohMod, action.event, action.index, ['Credits'], ['Icon', 'Image']);
       return { ...state, EditYugiohMod: { ...formValue } };
     case CHANGE_EDIT_YUGIOH_DECK_FORM:
-      formValue = commonFormChange(
-        state.EditYugiohDeck,
-        action.event,
-        action.index,
-        ['Pros', 'Cons'],
-        ['Image']
-      );
+      formValue = commonFormChange(state.EditYugiohDeck, action.event, action.index, ['Pros', 'Cons'], ['Image']);
       return { ...state, EditYugiohDeck: { ...formValue } };
     case CHANGE_ADD_STARCRAFT_MAP_FORM:
-      formValue = commonFormChange(state.AddStarcraftMap, action.event, action.index, [
-        'Tipntrick'
-      ]);
+      formValue = commonFormChange(state.AddStarcraftMap, action.event, action.index, ['Tipntrick']);
       return { ...state, AddStarcraftMap: { ...formValue } };
     case CHANGE_EDIT_STARCRAFT_MAP_FORM:
-      formValue = commonFormChange(state.EditStarcraftMap, action.event, action.index, [
-        'Tipntrick'
-      ]);
+      formValue = commonFormChange(state.EditStarcraftMap, action.event, action.index, ['Tipntrick']);
       return { ...state, EditStarcraftMap: { ...formValue } };
     case CHANGE_ADD_MUONLINE_TOOL_FORM:
-      formValue = commonFormChange(
-        state.AddMuonlineTool,
-        action.event,
-        action.index,
-        ['Credits'],
-        ['Archive', 'Icon']
-      );
+      formValue = commonFormChange(state.AddMuonlineTool, action.event, action.index, ['Credits'], ['Archive', 'Icon']);
       return { ...state, AddMuonlineTool: { ...formValue } };
     case CHANGE_ADD_MUONLINE_VERSION_FORM:
-      formValue = commonFormChange(state.AddMuonlineVersion, action.event, action.index, [
-        'Credits'
-      ]);
+      formValue = commonFormChange(state.AddMuonlineVersion, action.event, action.index, ['Credits']);
       return { ...state, AddMuonlineVersion: { ...formValue } };
     case CHANGE_EDIT_MUONLINE_TOOL_FORM:
       formValue = commonFormChange(
@@ -386,9 +387,7 @@ export default (
       );
       return { ...state, EditMuonlineTool: { ...formValue } };
     case CHANGE_EDIT_MUONLINE_VERSION_FORM:
-      formValue = commonFormChange(state.EditMuonlineVersion, action.event, action.index, [
-        'Credits'
-      ]);
+      formValue = commonFormChange(state.EditMuonlineVersion, action.event, action.index, ['Credits']);
       return { ...state, EditMuonlineVersion: { ...formValue } };
     case CHANGE_ADD_DS9799_VIP_SYSTEM_FORM:
       formValue = commonFormChange(state.AddDS9799VipSystem, action.event);
@@ -585,7 +584,7 @@ export default (
         AddYugiohDeck: { ...state.AddYugiohDeck, ModId: action.data[0]._id },
         EditYugiohMod: action.data[0]
       };
-      
+
     case GET_DECK_LIST_SUCCESS:
       return {
         ...state,
