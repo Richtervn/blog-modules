@@ -1,3 +1,4 @@
+import diabloIIRouter from './diabloII';
 import systemRouter from './system';
 import flashGamesRouter from './flashGames';
 import mangasReadingRouter from './mangasReading';
@@ -10,6 +11,10 @@ import muOnlineRouter from './muOnline';
 
 const routes = (models, factories) => {
   const {
+    DiabloIIMods,
+    DiabloIICharacters,
+    DiabloIITools,
+    DiabloIISurvivalKits,
     FlashGames,
     MangasReading,
     YugiohPocMods,
@@ -32,7 +37,8 @@ const routes = (models, factories) => {
     music: musicRouter(Music, factories),
     starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories),
     gaming_history: gamingHistoryRouter(GamingHistory, factories),
-    mu_online: muOnlineRouter(MuOnlineTools, MuOnlineVersions, factories)
+    mu_online: muOnlineRouter(MuOnlineTools, MuOnlineVersions, factories),
+    diabloII: diabloIIRouter(DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories)
   };
 };
 

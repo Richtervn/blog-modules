@@ -1,8 +1,12 @@
 import autoIncrement from 'mongoose-auto-increment';
 
+import AppDiary from './AppDiary';
+import DiabloIICharacters from './DiabloIICharacters';
+import DiabloIIMods from './DiabloIIMods';
+import DiabloIISurvivalKits from './DiabloIISurvivalKits';
+import DiabloIITools from './DiabloIITools';
 import FlashGames from './FlashGames';
 import MangasReading from './MangasReading';
-import AppDiary from './AppDiary';
 import PersonalDiary from './PersonalDiary';
 import YugiohPocMods from './YugiohPocMods';
 import YugiohPocDecks from './YugiohPocDecks';
@@ -28,11 +32,19 @@ const models = db => {
   GamingHistory.plugin(autoIncrement.plugin, 'GamingHistory');
   MuOnlineTools.plugin(autoIncrement.plugin, 'MuOnlineTools');
   MuOnlineVersions.plugin(autoIncrement.plugin, 'MuOnlineVersions');
+  DiabloIICharacters.plugin(autoIncrement.plugin, 'DiabloIICharacters');
+  DiabloIIMods.plugin(autoIncrement.plugin, 'DiabloIIMods');
+  DiabloIITools.plugin(autoIncrement.plugin, 'DiabloIITools');
+  DiabloIISurvivalKits.plugin(autoIncrement.plugin, 'DiabloIISurvivalKits');
 
   return {
+    AppDiary: db.model('AppDiary', AppDiary),
+    DiabloIICharacters: db.model('DiabloIICharacters', DiabloIICharacters),
+    DiabloIITools: db.model('DiabloIITools', DiabloIITools),
+    DiabloIIMods: db.model('DiabloIIMods', DiabloIIMods),
+    DiabloIISurvivalKits: db.model('DiabloIISurvivalKits', DiabloIISurvivalKits),
     FlashGames: db.model('FlashGames', FlashGames),
     MangasReading: db.model('MangasReading', MangasReading),
-    AppDiary: db.model('AppDiary', AppDiary),
     PersonalDiary: db.model('PersonalDiary', PersonalDiary),
     YugiohPocMods: db.model('YugiohPocMods', YugiohPocMods),
     YugiohPocDecks: db.model('YugiohPocDecks', YugiohPocDecks),

@@ -1,0 +1,30 @@
+.d2-main-screen {
+  margin-top: 45px;
+  margin-left: 200px;
+  height: 736px;
+  width: 100%;
+  background-image: url('../../app_modules/images/backgrounds/doom-castle.jpg');
+  background-size: cover;
+}
+
+.d2-screen-layout {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 736px;
+  width: 100%;
+  color: white;
+}
+
+.d2-channel-btn {
+  border: solid 1px #4ef7ce;
+  margin: 10px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.d2-channel-btn-active {
+  background-color: #9e2c2c;
+}
