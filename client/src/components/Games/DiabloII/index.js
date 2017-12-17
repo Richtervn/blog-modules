@@ -37,7 +37,15 @@ export default ({
   onSetFocusMod,
   onSetFocusTool,
   onSetFocusCharacter,
-  onSetFocusSurvivalKit
+  onSetFocusSurvivalKit,
+  addD2ModFormState,
+  editD2ModFormState,
+  addD2ToolFormState,
+  editD2ToolFormState,
+  addD2CharacterFormState,
+  editD2CharacterFormstate,
+  addD2SurvivalKitFormState,
+  editD2SurvivalKitFormState
 }) => (
   <div className="d2-main-screen">
     <div className="d2-screen-layout">
@@ -53,6 +61,8 @@ export default ({
             onEditTool={onEditTool}
             onDeleteTool={onDeleteTool}
             onAddTool={onAddTool}
+            addFormState={addD2ToolFormState}
+            editFormState={editD2ToolFormState}
           />
         )}
         {activeChannel == 'Characters' && (
@@ -65,6 +75,8 @@ export default ({
             onAddCharacter={onAddCharacter}
             onEditCharacter={onEditCharacter}
             onDeleteCharacter={onDeleteCharacter}
+            addFormState={addD2CharacterFormState}
+            editFormState={editD2CharacterFormstate}
           />
         )}
         {activeChannel == 'Survial Kits' && (
@@ -77,6 +89,8 @@ export default ({
             onEditSurvivalKit={onEditSurvivalKit}
             onDeleteSurvivalKit={onDeleteSurvivalKit}
             onAddSurvivalKit={onAddSurvivalKit}
+            addFormState={addD2SurvivalKitFormState}
+            editFormState={editD2SurvivalKitFormState}
           />
         )}
         {activeChannel == 'Mods' && (
@@ -89,6 +103,8 @@ export default ({
             onEditMod={onEditMod}
             onDeleteMod={onDeleteMod}
             onAddMod={onAddMod}
+            addFormState={addD2ModFormState}
+            editFormState={editD2ModFormState}
           />
         )}
       </div>

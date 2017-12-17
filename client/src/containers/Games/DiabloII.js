@@ -26,7 +26,7 @@ import {
 } from 'modules/Games/diabloII';
 
 export default connect(
-  ({ diabloII }) => ({
+  ({ diabloII, forms }) => ({
     mods: diabloII.mods,
     tools: diabloII.tools,
     survivalKits: diabloII.survivalKits,
@@ -37,7 +37,15 @@ export default connect(
     focusMod: diabloII.focusMod,
     focusTool: diabloII.focusTool,
     focusCharacter: diabloII.focusCharacter,
-    focusSurvivalKit: diabloII.focusSurvivalKit
+    focusSurvivalKit: diabloII.focusSurvivalKit,
+    addD2ModFormState: forms.AddD2Mod,
+    editD2ModFormState: forms.EditD2Mod,
+    addD2ToolFormState: forms.AddD2Tool,
+    editD2ToolFormState: forms.EditD2Tool,
+    addD2SurvivalKitFormState: forms.AddD2SurvivalKit,
+    editD2SurvivalKitFormState: forms.EditD2SurvivalKit,
+    addD2CharacterFormState: forms.AddD2Character,
+    editD2CharacterFormState: forms.EditD2Character
   }),
   dispatch => ({
     onGetMods() {

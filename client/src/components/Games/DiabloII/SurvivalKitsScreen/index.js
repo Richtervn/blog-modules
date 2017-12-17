@@ -8,7 +8,9 @@ export default ({
   onSetFocusSurvivalKit,
   onAddSurvivalKit,
   onEditSurvivalKit,
-  onDeleteSurvivalKit
+  onDeleteSurvivalKit,
+  addFormState,
+  editFormState
 }) => {
   if (!survivalKits) onGetSurvivalKits();
   return null;

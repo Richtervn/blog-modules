@@ -8,8 +8,12 @@ export default ({
   onSetFocusCharacter,
   onAddCharacter,
   onEditCharacter,
-  onDeleteCharacter
+  onDeleteCharacter,
+  addFormState,
+  editFormState
 }) => {
   if (!characters) onGetCharacters();
   return null;
 };
+
+
