@@ -1,25 +1,32 @@
 import React from 'react';
+
+import LoadingScreen from 'components/LoadingScreen';
 import FormModal from 'components/FormModal';
+import ControlBar from './ControlBar';
 
 export default ({
   mods,
   versions,
   onGetMods,
+  onGetModDetail,
   focusMod,
-  onSetFocusMod,
   onAddMod,
   onEditMod,
   onDeleteMod,
   addFormState,
   editFormState
 }) => {
-  if (!mods) onGetMods();
+  if (!mods) {
+    onGetMods();
+    return <LoadingScreen />;
+  }
+
   return (
-    <div>
-      <button className="btn btn-primary" data-toggle="modal" data-target="#addD2ModModal">
-        Test
-      </button>
-      <FormModal id="addD2ModModal" formBody={addFormState} onSubmit={(id, body) => console.log(body)} />
+    <div className="row no-row-margin">
+      <div className="col-3 no-col-margin">
+        <ControlBar mods={mods} focusMod={focusMod} onGetModDetail={onGetModDetail} onAddMod={onAddMod} addFormState={addFormState}/>
+      </div>
+      <div className="col-9 no-col-margin">.</div>
     </div>
   );
 };

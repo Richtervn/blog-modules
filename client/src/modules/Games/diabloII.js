@@ -3,13 +3,12 @@ import { diabloII } from 'services';
 import { toast } from 'react-toastify';
 
 const CHANGE_ACTIVE_CHANNEL = 'diabloII/CHANGE_ACTIVE_CHANNEL';
-export const SET_FOCUS_MOD = 'diabloII/SET_FOCUS_MOD';
 export const SET_FOCUS_TOOL = 'diabloII/SET_FOCUS_TOOL';
 export const SET_FOCUS_CHARACTER = 'diabloII/SET_FOCUS_CHARACTER';
 export const SET_FOCUS_SURVIVAL_KIT = 'diabloII/SET_FOCUS_SURVIVAL_KIT';
 
 const GET_MODS_START = 'diabloII/GET_MODS_START';
-export const GET_MODS_SUCCESS = 'diabloII/GET_MODS_SUCCESS';
+const GET_MODS_SUCCESS = 'diabloII/GET_MODS_SUCCESS';
 const GET_MODS_FAIL = 'diabloII/GET_MODS_FAIL';
 const GET_TOOLS_START = 'diabloII/GET_TOOLS_START';
 export const GET_TOOLS_SUCCESS = 'diabloII/GET_TOOLS_SUCCESS';
@@ -20,6 +19,10 @@ const GET_CHARACTERS_FAIL = 'diabloII/GET_CHARACTERS_FAIL';
 const GET_SURVIVAL_KITS_START = 'diabloII/GET_SURVIVAL_KITS_START';
 export const GET_SURVIVAL_KITS_SUCCESS = 'diabloII/GET_SURVIVAL_KITS_SUCCESS';
 const GET_SURVIVAL_KITS_FAIL = 'diabloII/GET_SURVIVAL_KITS_FAIL';
+
+const GET_MOD_DETAIL_START = 'diabloII/GET_MOD_DETAIL_START';
+export const GET_MOD_DETAIL_SUCCESS = 'diabloII/GET_MOD_DETAIL_SUCCESS';
+const GET_MOD_DETAIL_FAIL = 'diabloII/GET_MOD_DETAIL_FAIL';
 
 const ADD_MOD_START = 'diabloII/ADD_MOD_START';
 const ADD_MOD_SUCCESS = 'diabloII/ADD_MOD_SUCCESS';
@@ -61,7 +64,6 @@ const DELETE_SURVIVAL_KIT_SUCCESS = 'diabloII/DELETE_SURVIVAL_KIT_SUCCESS';
 const DELETE_SURVIVAL_KIT_FAIL = 'diabloII/DELETE_SURVIVAL_KIT_FAIL';
 
 export const changeActiveChannel = channel => ({ type: CHANGE_ACTIVE_CHANNEL, channel });
-export const setFocusMod = mod => ({ type: SET_FOCUS_MOD, mod });
 export const setFocusTool = tool => ({ type: SET_FOCUS_TOOL, tool });
 export const setFocusCharacter = character => ({ type: SET_FOCUS_CHARACTER, character });
 export const setFocusSurvivalKit = survivalKit => ({ type: SET_FOCUS_SURVIVAL_KIT, survivalKit });
@@ -114,6 +116,8 @@ export const deleteSurvivalKit = id =>
     id
   )();
 
+export const getModDetail = id =>
+  actionCreator(GET_MOD_DETAIL_START, GET_MOD_DETAIL_SUCCESS, GET_MOD_DETAIL_FAIL, diabloII.getModDetail, id)();
 export const getMods = actionCreator(GET_MODS_START, GET_MODS_SUCCESS, GET_MODS_FAIL, diabloII.getMods);
 export const getTools = actionCreator(GET_TOOLS_START, GET_TOOLS_SUCCESS, GET_TOOLS_FAIL, diabloII.getTools);
 export const getCharacters = actionCreator(
@@ -132,7 +136,7 @@ export const getSurvivalKits = actionCreator(
 export default (
   state = {
     versions: ['1.08', '1.09', '1.10', '1.11', '1.12', '1.13', '1.14'],
-    channels: ['Mods', 'Characters', 'Survival Kits', 'Tools'],
+    channels: ['Mods', 'Characters', 'Survival Kits', 'Tools', 'Extra'],
     activeChannel: 'Mods',
     mods: null,
     tools: null,
@@ -148,8 +152,6 @@ export default (
   switch (action.type) {
     case CHANGE_ACTIVE_CHANNEL:
       return { ...state, activeChannel: action.channel };
-    case SET_FOCUS_MOD:
-      return { ...state, focusMod: action.mod };
     case SET_FOCUS_TOOL:
       return { ...state, focusTool: action.tool };
     case SET_FOCUS_CHARACTER:
@@ -158,6 +160,8 @@ export default (
       return { ...state, focusSurvivalKit: action.survivalKit };
     case GET_MODS_SUCCESS:
       return { ...state, mods: action.data };
+    case GET_MOD_DETAIL_SUCCESS:
+      return { ...state, focusMod: action.data };
     case GET_TOOLS_SUCCESS:
       return { ...state, tools: action.data };
     case GET_CHARACTERS_SUCCESS:
@@ -166,7 +170,7 @@ export default (
       return { ...state, survivalKits: action.data };
     case ADD_MOD_SUCCESS:
       state.mods.push(action.data);
-      return { ...state, mods: state.mods.slice(0), focusMod: action.data };
+      return { ...state, mods: state.mods.slice(0) };
     case ADD_TOOL_SUCCESS:
       state.tools.push(action.data);
       return { ...state, tools: state.tools.slice(0), focusTool: action.data };
@@ -222,6 +226,7 @@ export default (
       return { ...state, tools: state.tools.slice(0), focusTool: state.tools[0] || {} };
 
     case GET_MODS_FAIL:
+    case GET_MOD_DETAIL_FAIL:
     case GET_TOOLS_FAIL:
     case GET_CHARACTERS_FAIL:
     case GET_SURVIVAL_KITS_FAIL:

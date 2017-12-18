@@ -22,11 +22,10 @@ import { GET_VIP_SYSTEMS_SUCCESS, SET_FOCUS_VIP_SYSTEM } from 'modules/MuOnline/
 import { GET_TOOL_DETAIL_SUCCESS, GET_VERSION_DETAIL_SUCCESS } from 'modules/Games/muonline';
 
 import {
-  SET_FOCUS_MOD as SET_FOCUS_D2_MOD,
+  GET_MOD_DETAIL_SUCCESS as GET_D2_MOD_DETAIL_SUCCESS,
   SET_FOCUS_TOOL as SET_FOCUS_D2_TOOL,
   SET_FOCUS_CHARACTER as SET_FOCUS_D2_CHARACTER,
   SET_FOCUS_SURVIVAL_KIT as SET_FOCUS_D2_SURVIVAL_KIT,
-  GET_MODS_SUCCESS as GET_D2_MODS_SUCCESS,
   GET_TOOLS_SUCCESS as GET_D2_TOOLS_SUCCESS,
   GET_CHARACTERS_SUCCESS as GET_D2_CHARACTERS_SUCCESS,
   GET_SURVIVAL_KITS_SUCCESS as GET_D2_SURVIVAL_KITS_SUCCESS
@@ -449,7 +448,7 @@ export default (
       Icon: null,
       Background: null,
       Name: '',
-      ModVersion: '',
+      ModVersion: '1.08',
       Version: '',
       Overview: [''],
       Description: '',
@@ -894,8 +893,8 @@ export default (
       return { ...state, EditStarcraftMap: action.data[0] };
     case SET_MAP_FOCUS:
       return { ...state, EditStarcraftMap: action.map };
-    case SET_FOCUS_D2_MOD:
-      return { ...state, EditD2Mod: action.mod };
+    case GET_D2_MOD_DETAIL_SUCCESS:
+      return { ...state, EditD2Mod: action.data };
     case SET_FOCUS_D2_TOOL:
       return { ...state, EditD2Tool: action.tool };
     case SET_FOCUS_D2_CHARACTER:
@@ -904,8 +903,6 @@ export default (
       return { ...state, EditD2SurvivalKit: action.survivalKit };
     case GET_D2_CHARACTERS_SUCCESS:
       return { ...state, EditD2Character: action.data[0] };
-    case GET_D2_MODS_SUCCESS:
-      return { ...state, EditD2Mod: action.data[0] };
     case GET_D2_TOOLS_SUCCESS:
       return { ...state, EditD2Tool: action.data[0] };
     case GET_D2_SURVIVAL_KITS_SUCCESS:

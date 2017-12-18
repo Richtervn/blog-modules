@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import {
   changeActiveChannel,
-  setFocusMod,
   setFocusTool,
   setFocusSurvivalKit,
   setFocusCharacter,
   getCharacters,
   getMods,
+  getModDetail,
   getTools,
   getSurvivalKits,
   editMod,
@@ -50,6 +50,9 @@ export default connect(
   dispatch => ({
     onGetMods() {
       dispatch(getMods());
+    },
+    onGetModDetail(id) {
+      dispatch(getModDetail(id));
     },
     onGetTools() {
       dispatch(getTools());
@@ -98,6 +101,15 @@ export default connect(
     },
     onDeleteTool(id) {
       dispatch(deleteTool(id));
+    },
+    onSetFocusTool(tool) {
+      dispatch(setFocusTool(tool));
+    },
+    onSetFocusCharacter(character) {
+      dispatch(setFocusCharacter(character));
+    },
+    onSetFocusSurvivalKit(kit) {
+      dispatch(setFocusSurvivalKit(kit));
     }
   })
 )(DiabloII);

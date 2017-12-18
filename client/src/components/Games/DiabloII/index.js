@@ -15,6 +15,7 @@ export default ({
   characters,
   survivalKits,
   onGetMods,
+  onGetModDetail,
   onGetCharacters,
   onGetTools,
   onGetSurvivalKits,
@@ -34,7 +35,6 @@ export default ({
   focusTool,
   focusCharacter,
   focusSurvivalKit,
-  onSetFocusMod,
   onSetFocusTool,
   onSetFocusCharacter,
   onSetFocusSurvivalKit,
@@ -99,7 +99,7 @@ export default ({
             mods={mods}
             focusMod={focusMod}
             onGetMods={onGetMods}
-            onSetFocusMod={onSetFocusMod}
+            onGetModDetail={onGetModDetail}
             onEditMod={onEditMod}
             onDeleteMod={onDeleteMod}
             onAddMod={onAddMod}

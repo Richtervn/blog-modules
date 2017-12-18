@@ -66,5 +66,9 @@ export default {
   deleteSurvivalKit(id) {
     const data = commonDelete('diabloII/survival_kit/' + id);
     return data;
+  },
+  getModDetail(id) {
+    const data = commonGet('diabloII/mod', [id]);
+    return data;
   }
 };

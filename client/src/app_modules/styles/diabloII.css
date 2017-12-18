@@ -28,3 +28,52 @@
 .d2-channel-btn-active {
   background-color: #9e2c2c;
 }
+
+.d2-channel-screen {
+  height: 667px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.d2-mod-control-bar {
+  height: 667px;
+  border: solid 1px #4ef7ce;
+  border-radius: 4px;
+  overflow-y: auto;
+}
+
+.d2-mod-card {
+  display: flex;
+  border: solid 1px;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px 10px 0px 10px;
+  background-color: black;
+  cursor: pointer;
+}
+
+.d2-mod-card-active {
+  background-color: darkblue;
+}
+
+.d2-mod-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.d2-mod-card-content {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.d2-add-card-btn {
+  border: dashed 1px;
+  margin: 10px;
+  border-radius: 4px;
+  height: 45px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
