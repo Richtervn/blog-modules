@@ -6,11 +6,11 @@
 }
 
 .music-song-list-pannel {
-  height: 736px;
+  height: calc(100vh - 45px);
 }
 
 .music-player-pannel {
-  height: 736px;
+  height: calc(100vh - 45px);
 }
 
 .music-tool-bar-input {
@@ -37,7 +37,7 @@
 }
 
 .music-list-songs-box {
-  height: 687px;
+  height: 680px;
   overflow-y: auto;
 }
 

@@ -10,14 +10,7 @@ export default ({ mods, focusMod, onGetModDetail, addFormState, onAddMod }) => {
       <div className="d2-add-card-btn" data-toggle="modal" data-target="#addD2ModModal">
         <i className="fa fa-plus-circle" />
       </div>
-      <FormModal
-        id="addD2ModModal"
-        formBody={addFormState}
-        onSubmit={(id, body) => {
-          console.log(body);
-          onAddMod(body);
-        }}
-      />
+      <FormModal id="addD2ModModal" formBody={addFormState} onSubmit={(id, body) => onAddMod(body)} />
     </div>
   );
 };

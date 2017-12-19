@@ -31,6 +31,14 @@ export default id => {
       return { header: { icon: makeIcon('danger'), label: 'Delete VIP System' } };
     case 'deleteDs9799WebShopPackageModal':
       return { header: { icon: makeIcon('danger'), label: 'Delete Web Shop Package' } };
+    case 'deleteD2ModModal':
+      return { header: { icon: makeIcon('danger'), label: 'Delete Diablo II Mod' } };
+    case 'deleteD2ToolModal':
+      return { header: { icon: makeIcon('danger'), label: 'Delete Diablo II Tool' } };
+    case 'deleteD2SurvivalKitModal':
+      return { header: { icon: makeIcon('danger'), label: 'Delete Diablo II Survial Kit' } };
+    case 'deleteD2CharacterModal':
+      return { header: { icon: makeIcon('danger'), label: 'Delete Diablo II Character' } };
     default:
       return modalDisplay;
   }

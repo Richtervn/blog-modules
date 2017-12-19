@@ -487,6 +487,7 @@ export default (
   action
 ) => {
   let formValue;
+  console.log(action.type);
   switch (action.type) {
     case CHANGE_D2_ADD_MOD_FORM:
       formValue = commonFormChange(
@@ -505,7 +506,7 @@ export default (
         ['Overview'],
         ['Archive', 'Icon', 'Background']
       );
-      return { ...state, EditD2Mod: formValue };
+      return { ...state, EditD2Mod: {...formValue} };
     case CHANGE_D2_ADD_TOOL_FORM:
       formValue = commonFormChange(state.AddD2Tool, action.event, action.index, ['Overview'], ['Archive', 'Icon']);
       return { ...state, AddD2Tool: formValue };

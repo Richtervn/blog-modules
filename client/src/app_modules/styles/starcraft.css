@@ -1,7 +1,7 @@
 .sc-main-screen {
   margin-top: 45px;
   margin-left: 200px;
-  height: 736px;
+  height: calc(100vh - 45px);
   width: 100%;
   overflow-y: auto;
   background-image: url('../../app_modules/images/backgrounds/scbw-terran.jpg');

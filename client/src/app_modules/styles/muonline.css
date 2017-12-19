@@ -1,7 +1,7 @@
 .mo-main-screen {
   margin-top: 45px;
   margin-left: 200px;
-  height: 736px;
+  height: calc(100vh - 45px);
   width: 100%;
   background-image: url('../../app_modules/images/backgrounds/mg_mu.jpg');
   background-size: 100%;
@@ -10,16 +10,16 @@
 .mo-main-screen-background {
   background: rgba(0, 0, 0, 0.8);
   color: white;
-  height: 736px;
+  height: calc(100vh - 45px);
   width: 100%;
 }
 
 .mo-full-screen {
-  height: 736px;
+  height: calc(100vh - 45px);
 }
 
 .mo-control-pannel {
-  height: 726px;
+  height: calc(100vh - 55px);
   margin: 5px;
   background-color: #1e434c;
   overflow-y: auto;
@@ -40,7 +40,7 @@
 }
 
 .mo-info-screen {
-  height: 726px;
+  height: calc(100vh - 55px);
   margin: 5px;
   border: solid 1px #1e434c;
   overflow-y: auto;
@@ -79,4 +79,5 @@
 .mo-info-feature-btn {
   border-radius: 4px;
   border: solid 1px;
+  cursor: pointer;
 }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { changeD2EditModForm, addArrayD2EditModForm, removeArrayD2EditModForm, changeFormRating } from 'modules/forms';
 
 export default connect(
-  ({ forms, diabloII }) => ({ formState: forms.EditD2Tool, versions: diabloII.versions }),
+  ({ forms, diabloII }) => ({ formState: forms.EditD2Mod, versions: diabloII.versions }),
   dispatch => ({
     onChange(event, index) {
       dispatch(changeD2EditModForm(event, index));

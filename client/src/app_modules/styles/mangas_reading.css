@@ -1,7 +1,7 @@
 .mangas-reading-main-screen {
   margin-top: 45px;
   margin-left: 200px;
-  height: 736px;
+  height: calc(100vh - 45px);
   width: 100%;
   background-image: url('../../app_modules/images/backgrounds/dark_art.jpg');
 }
@@ -14,7 +14,7 @@
   background-color: #1e434c;
   width: 90%;
   margin-left: 5%;
-  height: 736px;
+  height: calc(100vh - 45px);
   overflow-y: auto;
   position: relative;
 /*  transform: translateX(-100%);
@@ -26,7 +26,7 @@
 }*/
 
 .mr-card-list {
-  height: 736px;
+  height: calc(100vh - 45px);
   overflow-y: auto;
   position: relative;
   /*right: -100%;*/
