@@ -16,7 +16,7 @@ export default ({ formState, onChange, onChangeCheck, onAdd, onRemove, onRating,
       name="Class"
       label="Class"
       onChange={onChange}
-      options={['Amazon', 'Barbarian', 'Paladin', 'Druid', 'Socceress', 'Assasin']}
+      options={['Amazon', 'Barbarian', 'Paladin', 'Druid', 'Sorceress', 'Assasin']}
     />
     <FormGroupSelectId
       name="ModId"

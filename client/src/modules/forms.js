@@ -23,7 +23,7 @@ import { GET_TOOL_DETAIL_SUCCESS, GET_VERSION_DETAIL_SUCCESS } from 'modules/Gam
 
 import {
   GET_MOD_DETAIL_SUCCESS as GET_D2_MOD_DETAIL_SUCCESS,
-  SET_FOCUS_TOOL as SET_FOCUS_D2_TOOL,
+  GET_TOOL_DETAIL_SUCCESS as GET_D2_TOOL_DETAIL_SUCCESS,
   SET_FOCUS_CHARACTER as SET_FOCUS_D2_CHARACTER,
   SET_FOCUS_SURVIVAL_KIT as SET_FOCUS_D2_SURVIVAL_KIT,
   GET_TOOLS_SUCCESS as GET_D2_TOOLS_SUCCESS,
@@ -467,7 +467,7 @@ export default (
     AddD2SurvivalKit: {
       file: null,
       Name: '',
-      Type: '',
+      Type: 'Character',
       Description: '',
       Overview: [''],
       Rating: 0
@@ -896,8 +896,8 @@ export default (
       return { ...state, EditStarcraftMap: action.map };
     case GET_D2_MOD_DETAIL_SUCCESS:
       return { ...state, EditD2Mod: action.data };
-    case SET_FOCUS_D2_TOOL:
-      return { ...state, EditD2Tool: action.tool };
+    case GET_D2_TOOL_DETAIL_SUCCESS:
+      return { ...state, EditD2Tool: action.data };
     case SET_FOCUS_D2_CHARACTER:
       return { ...state, EditD2Character: action.character };
     case SET_FOCUS_D2_SURVIVAL_KIT:

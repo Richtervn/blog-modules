@@ -3,7 +3,7 @@ import { diabloII } from 'services';
 import { toast } from 'react-toastify';
 
 const CHANGE_ACTIVE_CHANNEL = 'diabloII/CHANGE_ACTIVE_CHANNEL';
-export const SET_FOCUS_TOOL = 'diabloII/SET_FOCUS_TOOL';
+
 export const SET_FOCUS_CHARACTER = 'diabloII/SET_FOCUS_CHARACTER';
 export const SET_FOCUS_SURVIVAL_KIT = 'diabloII/SET_FOCUS_SURVIVAL_KIT';
 
@@ -23,6 +23,9 @@ const GET_SURVIVAL_KITS_FAIL = 'diabloII/GET_SURVIVAL_KITS_FAIL';
 const GET_MOD_DETAIL_START = 'diabloII/GET_MOD_DETAIL_START';
 export const GET_MOD_DETAIL_SUCCESS = 'diabloII/GET_MOD_DETAIL_SUCCESS';
 const GET_MOD_DETAIL_FAIL = 'diabloII/GET_MOD_DETAIL_FAIL';
+const GET_TOOL_DETAIL_START = 'diabloII/GET_TOOL_DETAIL_START';
+export const GET_TOOL_DETAIL_SUCCESS = 'diabloII/GET_TOOL_DETAIL_SUCCESS';
+const GET_TOOL_DETAIL_FAIL = 'diabloII/GET_TOOL_DETAIL_FAIL';
 
 const ADD_MOD_START = 'diabloII/ADD_MOD_START';
 const ADD_MOD_SUCCESS = 'diabloII/ADD_MOD_SUCCESS';
@@ -64,7 +67,6 @@ const DELETE_SURVIVAL_KIT_SUCCESS = 'diabloII/DELETE_SURVIVAL_KIT_SUCCESS';
 const DELETE_SURVIVAL_KIT_FAIL = 'diabloII/DELETE_SURVIVAL_KIT_FAIL';
 
 export const changeActiveChannel = channel => ({ type: CHANGE_ACTIVE_CHANNEL, channel });
-export const setFocusTool = tool => ({ type: SET_FOCUS_TOOL, tool });
 export const setFocusCharacter = character => ({ type: SET_FOCUS_CHARACTER, character });
 export const setFocusSurvivalKit = survivalKit => ({ type: SET_FOCUS_SURVIVAL_KIT, survivalKit });
 
@@ -118,6 +120,9 @@ export const deleteSurvivalKit = id =>
 
 export const getModDetail = id =>
   actionCreator(GET_MOD_DETAIL_START, GET_MOD_DETAIL_SUCCESS, GET_MOD_DETAIL_FAIL, diabloII.getModDetail, id)();
+export const getToolDetail = id =>
+  actionCreator(GET_TOOL_DETAIL_START, GET_TOOL_DETAIL_SUCCESS, GET_TOOL_DETAIL_FAIL, diabloII.getToolDetail, id)();
+
 export const getMods = actionCreator(GET_MODS_START, GET_MODS_SUCCESS, GET_MODS_FAIL, diabloII.getMods);
 export const getTools = actionCreator(GET_TOOLS_START, GET_TOOLS_SUCCESS, GET_TOOLS_FAIL, diabloII.getTools);
 export const getCharacters = actionCreator(
@@ -152,8 +157,6 @@ export default (
   switch (action.type) {
     case CHANGE_ACTIVE_CHANNEL:
       return { ...state, activeChannel: action.channel };
-    case SET_FOCUS_TOOL:
-      return { ...state, focusTool: action.tool };
     case SET_FOCUS_CHARACTER:
       return { ...state, focusCharacter: action.character };
     case SET_FOCUS_SURVIVAL_KIT:
@@ -164,6 +167,8 @@ export default (
       return { ...state, focusMod: action.data };
     case GET_TOOLS_SUCCESS:
       return { ...state, tools: action.data };
+    case GET_TOOL_DETAIL_SUCCESS:
+      return { ...state, focusTool: action.data };
     case GET_CHARACTERS_SUCCESS:
       return { ...state, characters: action.data };
     case GET_SURVIVAL_KITS_SUCCESS:

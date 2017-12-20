@@ -8,7 +8,7 @@ import FormGroupSelect from './Tools/EditModal/FormGroupSelect';
 
 export default ({ formState, onChange, onChangeCheck, onAdd, onRemove, onRating, mods }) => (
   <form className="text-right">
-    <FormGroupRow name="file" type="file" label="D2S File" onChange={onChange} />
+    <FormGroupRow name="file" type="file" label="File" onChange={onChange} />
     <FormGroupRow name="Name" type="text" label="Name" onChange={onChange} value={formState.Name}/>
     <FormGroupSelect name="Type" label="Type" onChange={onChange} options={['Character', 'Item', 'Store']} value={formState.Type}/>
     <FormGroupArea name="Description" label="Description" onChange={onChange} value={formState.Description}/>

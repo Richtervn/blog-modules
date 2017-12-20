@@ -70,5 +70,9 @@ export default {
   getModDetail(id) {
     const data = commonGet('diabloII/mod', [id]);
     return data;
+  },
+  getToolDetail(id) {
+    const data = commonGet('diabloII/tool', [id]);
+    return data;
   }
 };

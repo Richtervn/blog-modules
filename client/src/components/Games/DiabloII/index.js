@@ -18,6 +18,7 @@ export default ({
   onGetModDetail,
   onGetCharacters,
   onGetTools,
+  onGetToolDetail,
   onGetSurvivalKits,
   onEditMod,
   onEditCharacter,
@@ -35,7 +36,6 @@ export default ({
   focusTool,
   focusCharacter,
   focusSurvivalKit,
-  onSetFocusTool,
   onSetFocusCharacter,
   onSetFocusSurvivalKit,
   addD2ModFormState,
@@ -56,7 +56,7 @@ export default ({
             versions={versions}
             tools={tools}
             focusTool={focusTool}
-            onSetFocusTool={onSetFocusTool}
+            onGetToolDetail={onGetToolDetail}
             onGetTools={onGetTools}
             onEditTool={onEditTool}
             onDeleteTool={onDeleteTool}
@@ -79,7 +79,7 @@ export default ({
             editFormState={editD2CharacterFormstate}
           />
         )}
-        {activeChannel == 'Survial Kits' && (
+        {activeChannel == 'Survival Kits' && (
           <SurvivalKitsScreen
             versions={versions}
             survivalKits={survivalKits}

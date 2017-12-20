@@ -33,7 +33,7 @@ export default ({ mod, editFormState, onEditMod, onDeleteMod }) => {
         <h3 style={{ paddingTop: '20px' }}>{`${mod.Name} v${mod.ModVersion}`}</h3>
         <StarRating
           className="larger-star-rating"
-          name={`${mod}-rating`}
+          name={`d2mod-${mod._id}-rating`}
           value={parseInt(mod.Rating)}
           editing={false}
         />
@@ -45,7 +45,7 @@ export default ({ mod, editFormState, onEditMod, onDeleteMod }) => {
           <ul style={{ textAlign: 'left' }}>{mod.Overview.map((text, i) => <li key={i}>{text}</li>)}</ul>
         </div>
         <div className="mgt-15"><b>Description :</b></div>
-        <div dangerouslySetInnerHTML={{ __html: mod.Description }} />
+        <div dangerouslySetInnerHTML={{ __html: mod.Description }} style={{padding: '10px'}}/>
         <FormModal id="editD2ModModal" formBody={editFormState} onSubmit={(id, body) => onEditMod(body)} />
         <DeleteModal
           id="deleteD2ModModal"

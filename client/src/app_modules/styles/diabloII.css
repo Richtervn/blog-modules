@@ -81,7 +81,7 @@
 .d2-mod-info-screen {
   height: 667px;
   border: solid 1px #4ef7ce;
-  border-radius: 4px; 
+  border-radius: 4px;
   margin-left: 10px;
 }
 
@@ -89,8 +89,53 @@
   height: 667px;
   border-radius: 4px;
   overflow-y: auto;
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
   position: relative;
+}
+
+.d2-ss-card {
+  display: flex;
+  border: solid 1px gray;
+  border-radius: 2px;
+  margin-right: 5px;
+  background-color: #00000075;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+}
+
+.d2-ss-add-card {
+  border: dashed 1px;
+  height: 100%;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.d2-ss-card-feature {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+}
+
+.d2-ss-feature-btn {
+  border: solid 1px;
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.d2-ss-feature-btn:hover{
+  color: black;
+  background-color: white;
+  transition: 0.7s;
 }

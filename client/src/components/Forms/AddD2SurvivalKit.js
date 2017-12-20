@@ -8,7 +8,7 @@ import FormGroupSelect from './Tools/AddModal/FormGroupSelect';
 
 export default ({ formState, onChange, onAdd, onRemove, onRating }) => (
   <form className="text-right">
-    <FormGroupRow name="file" type="file" label="D2S File" onChange={onChange} />
+    <FormGroupRow name="file" type="file" label="File" onChange={onChange} />
     <FormGroupRow name="Name" type="text" label="Name" onChange={onChange} />
     <FormGroupSelect name="Type" label="Type" onChange={onChange} options={['Character', 'Item', 'Store']} />
     <FormGroupArea name="Description" label="Description" onChange={onChange} />

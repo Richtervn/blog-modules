@@ -20,7 +20,10 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
   router.get(
     '/mods',
     wrap(async (req, res, next) => {
-      const mods = await DiabloIIMods.find({}, { Description: false, Introduction: false, BackgroundUrl: false });
+      const mods = await DiabloIIMods.find(
+        {},
+        { Description: false, Introduction: false, Overview: false, BackgroundUrl: false }
+      );
       res.send(mods);
     })
   );
@@ -44,8 +47,16 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
   router.get(
     '/tools',
     wrap(async (req, res, next) => {
-      const tools = await commonService.getAll(DiabloIITools);
+      const tools = await DiabloIITools.find({}, { Description: false, Introduction: false, Overview: false });
       res.send(tools);
+    })
+  );
+
+  router.get(
+    '/tool/:id',
+    wrap(async (req, res, next) => {
+      const tool = await commonService.getOne(DiabloIITools, req.params.id);
+      res.send(tool);
     })
   );
 

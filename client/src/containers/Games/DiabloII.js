@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 
 import {
   changeActiveChannel,
-  setFocusTool,
   setFocusSurvivalKit,
   setFocusCharacter,
   getCharacters,
   getMods,
   getModDetail,
   getTools,
+  getToolDetail,
   getSurvivalKits,
   editMod,
   editTool,
@@ -57,6 +57,9 @@ export default connect(
     onGetTools() {
       dispatch(getTools());
     },
+    onGetToolDetail(id){
+      dispatch(getToolDetail(id));
+    },
     onGetSurvivalKits() {
       dispatch(getSurvivalKits());
     },
@@ -101,9 +104,6 @@ export default connect(
     },
     onDeleteTool(id) {
       dispatch(deleteTool(id));
-    },
-    onSetFocusTool(tool) {
-      dispatch(setFocusTool(tool));
     },
     onSetFocusCharacter(character) {
       dispatch(setFocusCharacter(character));
