@@ -8,6 +8,7 @@ import musicRouter from './music';
 import starcraftRouter from './starcraft';
 import gamingHistoryRouter from './gamingHistory';
 import muOnlineRouter from './muOnline';
+import toolRouter from './tool';
 
 const routes = (models, factories) => {
   const {
@@ -38,7 +39,8 @@ const routes = (models, factories) => {
     starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories),
     gaming_history: gamingHistoryRouter(GamingHistory, factories),
     mu_online: muOnlineRouter(MuOnlineTools, MuOnlineVersions, factories),
-    diabloII: diabloIIRouter(DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories)
+    diabloII: diabloIIRouter(DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories),
+    tool: toolRouter(models, factories)
   };
 };
 

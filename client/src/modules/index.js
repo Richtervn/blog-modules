@@ -11,6 +11,7 @@ import starcraft from 'modules/Games/starcraft';
 import yugiohPoc from 'modules/Games/yugiohPoc';
 import muonline from 'modules/Games/muonline';
 import diabloII from 'modules/Games/diabloII';
+import contentMirror from 'modules/Tools/contentMirror';
 
 import darksteam97d99i from './MuOnline/darksteam97d99i';
 
@@ -26,6 +27,7 @@ export default combineReducers({
   starcraft,
   muonline,
   diabloII,
+  contentMirror,
   ds9799_navigator: darksteam97d99i.navigator,
   ds9799_user: darksteam97d99i.user,
   ds9799_info: darksteam97d99i.info,
