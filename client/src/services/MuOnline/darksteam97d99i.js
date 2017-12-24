@@ -139,7 +139,7 @@ export default {
     return data;
   },
   adminDeleteCharacter(id) {
-    const data = commonDelete('mu/darksteam97d99i//admin/' + id);
+    const data = commonDelete('mu/darksteam97d99i/admin/character/' + id);
     return data;
   },
   adminDeleteAccount(id) {

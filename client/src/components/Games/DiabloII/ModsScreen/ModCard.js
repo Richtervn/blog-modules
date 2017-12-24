@@ -12,7 +12,11 @@ export default ({ mod, focusMod, onGetModDetail }) => (
       <div className="ygo-mod-card-rating">
         <StarRating name={mod.Name} editing={false} value={parseInt(mod.Rating)} />
       </div>
-      <div>{`${mod.Name} v${mod.ModVersion} - LOD : ${mod.Version}`}</div>
+      <div>
+        <span className="badge badge-info">{mod.Version}</span>
+        {` ${mod.Name} `}
+        <span className="badge badge-danger">v{mod.ModVersion}</span>
+      </div>
     </div>
   </div>
 );

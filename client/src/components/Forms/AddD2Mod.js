@@ -13,7 +13,7 @@ export default ({ formState, onChange, onAdd, onRemove, onRating, versions }) =>
     <FormGroupRow name="Background" type="file" label="Background" onChange={onChange} />
     <FormGroupRow name="Name" type="text" label="Name" onChange={onChange} />
     <FormGroupRow name="ModVersion" type="text" label="Mod Version" onChange={onChange} />
-    <FormGroupSelect name="Version" label="LOD Version" onChange={onChange} options={versions} />
+    <FormGroupSelect name="Version" label="LOD Version" onChange={onChange} options={versions} value={formState.Version}/>
     <FormGroupArray
       name="Overview"
       type="text"

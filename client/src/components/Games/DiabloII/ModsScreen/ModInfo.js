@@ -15,9 +15,12 @@ export default ({ mod, editFormState, onEditMod, onDeleteMod }) => {
   }
 
   const style = {
-    backgroundImage: `url(${mod.BackgroundUrl.replace('./public', 'http://localhost:3000')})`,
     backgroundSize: 'cover'
   };
+
+  if (mod.BackgroundUrl) {
+    style.backgroundImage = `url(${mod.BackgroundUrl.replace('./public', 'http://localhost:3000')})`;
+  }
 
   return (
     <div className="d2-mod-info-screen" style={style}>
@@ -40,12 +43,19 @@ export default ({ mod, editFormState, onEditMod, onDeleteMod }) => {
         <br />
         <img src={`${mod.IconUrl.replace('./public', 'http://localhost:3000')}`} />
         <h6 className="mgt-5">{`LOD Version : ${mod.Version}`}</h6>
-        <div style={{marginTop: '25px'}}><b>Overview :</b></div>
+        <div style={{ marginTop: '25px' }}>
+          <b>Overview :</b>
+        </div>
         <div className="flex-center-both pdt-20">
           <ul style={{ textAlign: 'left' }}>{mod.Overview.map((text, i) => <li key={i}>{text}</li>)}</ul>
         </div>
-        <div className="mgt-15"><b>Description :</b></div>
-        <div dangerouslySetInnerHTML={{ __html: mod.Description }} style={{padding: '10px'}}/>
+        {mod.Description && (
+          <div className="mgt-15">
+            <b>Description :</b>
+          </div>
+        )}
+        {mod.Description && <div dangerouslySetInnerHTML={{ __html: mod.Description }} style={{ padding: '10px' }} />}
+
         <FormModal id="editD2ModModal" formBody={editFormState} onSubmit={(id, body) => onEditMod(body)} />
         <DeleteModal
           id="deleteD2ModModal"

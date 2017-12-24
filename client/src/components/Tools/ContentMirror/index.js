@@ -104,14 +104,3 @@ class ContentMirror extends Component {
 }
 
 export default ContentMirror;
-
-// content: contentMirror.content,
-// selectedTable: contentMirror.selectedTable,
-// selectedRecord: contentMirror.selectedRecord,
-// records: contentMirror.records
-
-// onSaveCode(body)
-// onGetRecords(tableName)
-// onGetRecordContent(tableName, id)
-// onChangeTable(table)
-// onChangeRecord(record)
