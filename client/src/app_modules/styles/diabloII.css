@@ -101,8 +101,6 @@
   border-radius: 2px;
   margin-right: 5px;
   background-color: #00000075;
-  justify-content: center;
-  align-content: center;
   position: relative;
 }
 
@@ -134,8 +132,22 @@
   cursor: pointer;
 }
 
-.d2-ss-feature-btn:hover{
+.d2-ss-feature-btn:hover {
   color: black;
   background-color: white;
   transition: 0.7s;
+}
+
+.d2-extra-rule-board {
+  border: solid 1px #4ef7ce;
+  padding: 10px;
+  border-radius: 4px;
+  margin-left: 5px;
+}
+
+.d2-extra-info-board {
+  border: solid 1px #4ef7ce;
+  padding: 10px;
+  border-radius: 4px;
+  margin-right: 5px;
 }

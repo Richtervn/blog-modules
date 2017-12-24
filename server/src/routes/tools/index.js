@@ -11,7 +11,7 @@ export default (models, factories) => {
   };
 
   router.get(
-    '/content_manage/db/:tableName',
+    '/content_mirror/records/:tableName',
     wrap(async (req, res, next) => {
       const data = await models[req.params.tableName].find({}, { Name: true });
       res.send(data);
@@ -19,7 +19,7 @@ export default (models, factories) => {
   );
 
   router.get(
-    '/content_manage/record/:tableName/:id',
+    '/content_mirror/record/:tableName/:id',
     wrap(async ({ params: { tableName, id } }, res, next) => {
       const data = await models[tableName].findOne({ _id: id });
       let result;
@@ -29,12 +29,12 @@ export default (models, factories) => {
         }
       }
 
-      res.send(result);
+      res.send({ content: result });
     })
   );
 
   router.post(
-    '/content_manage/save',
+    '/content_mirror/save_code',
     wrap(async (req, res, next) => {
       const { content, tableName, id } = req.body;
       let field;

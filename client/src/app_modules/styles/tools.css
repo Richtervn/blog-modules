@@ -1,3 +1,56 @@
 .CodeMirror {
-  height: 650px;
+  height: 600px;
+  width: 679px;
+}
+
+.t-ct-main-screen {
+  margin-top: 45px;
+  margin-left: 200px;
+  height: calc(100vh - 45px);
+  width: 100%;
+  background-color: #1e434c;
+}
+
+.t-ct-selector {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.t-ct-selector-input {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.t-ct-compare {
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+}
+
+.t-ct-editor {
+  width: 50%;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+
+.t-ct-mirror {
+  height: 600px;
+  width: 678px;
+  margin-left: 10px;
+  text-align: center;
+  color: white;
+  background-color: black;
+  overflow: auto;
+}
+
+.t-ct-feature {
+  display: flex;
+  margin-top: 15px;
+  padding-left: 300px;
+}
+
+.t-ct-feature-btn {
+  font-weight: 700;
+  padding: 15px 70px 15px 70px;
+  cursor: pointer;
 }

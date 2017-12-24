@@ -22,6 +22,7 @@ import { GET_VIP_SYSTEMS_SUCCESS, SET_FOCUS_VIP_SYSTEM } from 'modules/MuOnline/
 import { GET_TOOL_DETAIL_SUCCESS, GET_VERSION_DETAIL_SUCCESS } from 'modules/Games/muonline';
 
 import {
+  GET_MODS_SUCCESS as GET_D2_MODS_SUCCESS,
   GET_MOD_DETAIL_SUCCESS as GET_D2_MOD_DETAIL_SUCCESS,
   GET_TOOL_DETAIL_SUCCESS as GET_D2_TOOL_DETAIL_SUCCESS,
   SET_FOCUS_CHARACTER as SET_FOCUS_D2_CHARACTER,
@@ -329,7 +330,7 @@ export const removeArrayD2EditCharacterForm = (name, index) => ({
   name,
   index
 });
-export const removeArayD2AddCharacterForm = (name, index) => ({
+export const removeArrayD2AddCharacterForm = (name, index) => ({
   type: REMOVE_ARRAY_D2_ADD_CHARACTER_FORM,
   name,
   index
@@ -476,7 +477,9 @@ export default (
     AddD2Character: {
       file: '',
       Name: '',
-      Class: '',
+      Title: 'No Title',
+      Class: 'Amazon',
+      Level: 0,
       ModId: '',
       Overview: [''],
       Rating: 0,
@@ -487,7 +490,7 @@ export default (
   action
 ) => {
   let formValue;
-  console.log(action.type);
+
   switch (action.type) {
     case CHANGE_D2_ADD_MOD_FORM:
       formValue = commonFormChange(
@@ -506,7 +509,7 @@ export default (
         ['Overview'],
         ['Archive', 'Icon', 'Background']
       );
-      return { ...state, EditD2Mod: {...formValue} };
+      return { ...state, EditD2Mod: { ...formValue } };
     case CHANGE_D2_ADD_TOOL_FORM:
       formValue = commonFormChange(state.AddD2Tool, action.event, action.index, ['Overview'], ['Archive', 'Icon']);
       return { ...state, AddD2Tool: formValue };
@@ -866,7 +869,7 @@ export default (
       state[action.formName].Rating = action.value;
       return { ...state, [action.formName]: { ...state[action.formName] } };
     case CHANGE_FORM_CHECK:
-      state[action.formName][name] = !state[action.formName][name];
+      state[action.formName][action.name] = !state[action.formName][action.name];
       return { ...state, [action.formName]: { ...state[action.formName] } };
 
     case GET_MOD_LIST_SUCCESS:
@@ -903,11 +906,13 @@ export default (
     case SET_FOCUS_D2_SURVIVAL_KIT:
       return { ...state, EditD2SurvivalKit: action.survivalKit };
     case GET_D2_CHARACTERS_SUCCESS:
-      return { ...state, EditD2Character: action.data[0] };
+      return { ...state, EditD2Character: action.data[0] || { Overview: [''] } };
     case GET_D2_TOOLS_SUCCESS:
       return { ...state, EditD2Tool: action.data[0] };
     case GET_D2_SURVIVAL_KITS_SUCCESS:
       return { ...state, EditD2SurvivalKit: action.data[0] };
+    case GET_D2_MODS_SUCCESS:
+      return { ...state, AddD2Character: { ...state.AddD2Character, ModId: action.data[0]._id || 0 } };
     case GET_MOD_DETAIL_SUCCESS:
       return { ...state, EditStarcraftMod: { ...action.data } };
     case GET_CAMPAIGN_DETAIL_SUCCESS:

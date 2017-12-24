@@ -10,7 +10,7 @@ export default ({ name, label, placeholder, options, onChange }) => {
         <select className="form-control form-control-sm" onChange={onChange} name={name}>
           {options.map((opt, i) => (
             <option key={i} value={opt._id}>
-              {opt.Name}
+              {opt.name}
             </option>
           ))}
         </select>

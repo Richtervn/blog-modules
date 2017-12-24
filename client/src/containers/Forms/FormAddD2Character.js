@@ -10,7 +10,7 @@ import {
 } from 'modules/forms';
 
 export default connect(
-  ({ forms, diabloII }) => ({ formState: forms.AddD2Tool, mods: diabloII.mods }),
+  ({ forms, diabloII }) => ({ formState: forms.AddD2Character, mods: diabloII.mods }),
   dispatch => ({
     onChange(event, index) {
       dispatch(changeD2AddCharacterForm(event, index));

@@ -66,7 +66,7 @@ class SurvialKitsScreen extends Component {
               </div>
               <div className="text-center">
                 <b>{kit.Name}</b>
-                <div className="ygo-mod-card-rating">
+                <div className="ygo-mod-card-rating" style={{width: '100%'}}>
                   <StarRating name={`d2kit-${kit._id}-rating`} editing={false} value={parseInt(kit.Rating)} />
                   {kit.Overview.map((text, i) => (
                     <span key={i} className="badge badge-danger">

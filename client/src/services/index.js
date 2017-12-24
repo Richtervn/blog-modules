@@ -9,3 +9,4 @@ export starcraft from './Games/starcraft';
 export muonline from './Games/muonline';
 export diabloII from './Games/diabloII';
 export darksteam97d99i from './MuOnline/darksteam97d99i';
+export contentMirror from './Tools/contentMirror';

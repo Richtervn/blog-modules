@@ -1,6 +1,6 @@
 import serviceCaller from 'factories/serviceCaller';
 
-const { commonPostMultiplePart, commonPutMultiplePart, commonGet, commonDelete } = serviceCaller;
+const { commonPostMultiplePart, commonPutMultiplePart, commonGet, commonPut, commonDelete } = serviceCaller;
 
 export default {
   getMods() {
@@ -73,6 +73,26 @@ export default {
   },
   getToolDetail(id) {
     const data = commonGet('diabloII/tool', [id]);
+    return data;
+  },
+  getExtraData() {
+    const data = commonGet('diabloII/extra');
+    return data;
+  },
+  extraLevel(level) {
+    const data = commonGet('diabloII/extra/level', [level]);
+    return data;
+  },
+  extraGold(amount, type) {
+    const data = commonGet('diabloII/extra/gold', null, { amount, type });
+    return data;
+  },
+  extraSkill(amount, type) {
+    const data = commonGet('diabloII/extra/skill', null, { amount, type });
+    return data;
+  },
+  editExtraData(body) {
+    const data = commonPut('diabloII/extra', body);
     return data;
   }
 };

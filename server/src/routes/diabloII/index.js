@@ -12,10 +12,15 @@ import editMod from './services/editMod';
 import editTool from './services/editTool';
 import editCharacter from './services/editCharacter';
 import editSurvivalKit from './services/editSurvivalKit';
+import getExtra from './services/getExtra';
+import extraLevel from './services/extraLevel';
+import extraGold from './services/extraGold';
+import extraSkill from './services/extraSkill';
+import editExtra from './services/editExtra';
 
 export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories) => {
   const router = express.Router();
-  const { wrap, commonService } = factories;
+  const { wrap, commonService, readFile, writeFile } = factories;
 
   router.get(
     '/mods',
@@ -169,6 +174,46 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     wrap(async (req, res, next) => {
       const id = await commonService.delete(DiabloIISurvivalKits, req.params.id);
       res.send(id);
+    })
+  );
+
+  router.get(
+    '/extra',
+    wrap(async (req, res, next) => {
+      const extraData = await getExtra(DiabloIICharacters, readFile, writeFile);
+      res.send(extraData);
+    })
+  );
+
+  router.put(
+    '/extra',
+    wrap(async (req, res, next) => {
+      const extraData = await editExtra(req.body, readFile, writeFile);
+      res.send(extraData);
+    })
+  );
+
+  router.get(
+    '/extra/level/:level',
+    wrap(async (req, res, next) => {
+      const extraData = await extraLevel(req.params.level, readFile, writeFile);
+      res.send(extraData);
+    })
+  );
+
+  router.get(
+    '/extra/gold',
+    wrap(async (req, res, next) => {
+      const result = await extraGold(req.query.amount, req.query.type, readFile, writeFile);
+      res.send(result);
+    })
+  );
+
+  router.get(
+    '/extra/skill',
+    wrap(async (req, res, next) => {
+      const result = await extraSkill(req.query.amount, req.query.type, readFile, writeFile);
+      res.send(result);
     })
   );
 

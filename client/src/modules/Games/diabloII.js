@@ -8,7 +8,7 @@ export const SET_FOCUS_CHARACTER = 'diabloII/SET_FOCUS_CHARACTER';
 export const SET_FOCUS_SURVIVAL_KIT = 'diabloII/SET_FOCUS_SURVIVAL_KIT';
 
 const GET_MODS_START = 'diabloII/GET_MODS_START';
-const GET_MODS_SUCCESS = 'diabloII/GET_MODS_SUCCESS';
+export const GET_MODS_SUCCESS = 'diabloII/GET_MODS_SUCCESS';
 const GET_MODS_FAIL = 'diabloII/GET_MODS_FAIL';
 const GET_TOOLS_START = 'diabloII/GET_TOOLS_START';
 export const GET_TOOLS_SUCCESS = 'diabloII/GET_TOOLS_SUCCESS';
@@ -65,6 +65,37 @@ const DELETE_TOOL_FAIL = 'diabloII/DELETE_TOOL_FAIL';
 const DELETE_SURVIVAL_KIT_START = 'diabloII/DELETE_SURVIVAL_KIT_START';
 const DELETE_SURVIVAL_KIT_SUCCESS = 'diabloII/DELETE_SURVIVAL_KIT_SUCCESS';
 const DELETE_SURVIVAL_KIT_FAIL = 'diabloII/DELETE_SURVIVAL_KIT_FAIL';
+
+const GET_EXTRA_DATA_START = 'diabloII/GET_EXTRA_DATA_START';
+const GET_EXTRA_DATA_SUCCESS = 'diabloII/GET_EXTRA_DATA_SUCCESS';
+const GET_EXTRA_DATA_FAIL = 'diabloII/GET_EXTRA_DATA_FAIL';
+const EXTRA_SKILL_START = 'diabloII/EXTRA_SKILL_START';
+const EXTRA_SKILL_SUCCESS = 'diabloII/EXTRA_SKILL_SUCCESS';
+const EXTRA_SKILL_FAIL = 'diabloII/EXTRA_SKILL_FAIL';
+const EXTRA_LEVEL_START = 'diabloII/EXTRA_LEVEL_START';
+const EXTRA_LEVEL_SUCCESS = 'diabloII/EXTRA_LEVEL_SUCCESS';
+const EXTRA_LEVEL_FAIL = 'diabloII/EXTRA_LEVEL_FAIL';
+const EXTRA_GOLD_START = 'diabloII/EXTRA_GOLD_START';
+const EXTRA_GOLD_SUCCESS = 'diabloII/EXTRA_GOLD_SUCCESS';
+const EXTRA_GOLD_FAIL = 'diabloII/EXTRA_GOLD_FAIL';
+const EDIT_EXTRA_DATA_START = 'diabloII/EDIT_EXTRA_DATA_START';
+const EDIT_EXTRA_DATA_SUCCESS = 'diabloII/EDIT_EXTRA_DATA_SUCCESS';
+const EDIT_EXTRA_DATA_FAIL = 'diabloII/EDIT_EXTRA_DATA_FAIL';
+
+export const getExtraData = actionCreator(
+  GET_EXTRA_DATA_START,
+  GET_EXTRA_DATA_SUCCESS,
+  GET_EXTRA_DATA_FAIL,
+  diabloII.getExtraData
+);
+export const editExtraData = body =>
+  actionCreator(EDIT_EXTRA_DATA_START, EDIT_EXTRA_DATA_SUCCESS, EDIT_EXTRA_DATA_FAIL, diabloII.editExtraData, body)();
+export const extraLevel = level =>
+  actionCreator(EXTRA_LEVEL_START, EXTRA_LEVEL_SUCCESS, EXTRA_LEVEL_FAIL, diabloII.extraLevel, level)();
+export const extraSkill = (amount, type) =>
+  actionCreator(EXTRA_SKILL_START, EXTRA_SKILL_SUCCESS, EXTRA_SKILL_FAIL, diabloII.extraSkill, amount, type)();
+export const extraGold = (amount, type) =>
+  actionCreator(EXTRA_GOLD_START, EXTRA_GOLD_SUCCESS, EXTRA_GOLD_FAIL, diabloII.extraGold, amount, type)();
 
 export const changeActiveChannel = channel => ({ type: CHANGE_ACTIVE_CHANNEL, channel });
 export const setFocusCharacter = character => ({ type: SET_FOCUS_CHARACTER, character });
@@ -150,7 +181,8 @@ export default (
     focusMod: {},
     focusTool: {},
     focusSurvivalKit: {},
-    focusCharacter: {}
+    focusCharacter: {},
+    extraData: null
   },
   action
 ) => {
@@ -174,18 +206,38 @@ export default (
     case GET_SURVIVAL_KITS_SUCCESS:
       return { ...state, survivalKits: action.data };
     case ADD_MOD_SUCCESS:
+      toast.success(`Added ${action.data.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       state.mods.push(action.data);
       return { ...state, mods: state.mods.slice(0) };
     case ADD_TOOL_SUCCESS:
+      toast.success(`Added ${action.data.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       state.tools.push(action.data);
       return { ...state, tools: state.tools.slice(0), focusTool: action.data };
     case ADD_CHARACTER_SUCCESS:
+      toast.success(`Added ${action.data.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       state.characters.push(action.data);
       return { ...state, characters: state.characters.slice(0), focusCharacter: action.data };
     case ADD_SURVIVAL_KIT_SUCCESS:
+      toast.success(`Added ${action.data.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       state.survivalKits.push(action.data);
       return { ...state, survivalKits: state.survivalKits.slice(0), focusSurvivalKit: action.data };
     case EDIT_MOD_SUCCESS:
+      toast.success(`Edited ${action.data.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       state.mods = state.mods.map(mod => {
         if (mod._id == action.data._id) {
           return action.data;
@@ -194,6 +246,10 @@ export default (
       });
       return { ...state, mods: state.mods.slice(0), focusMod: action.data };
     case EDIT_TOOL_SUCCESS:
+      toast.success(`Edited ${action.data.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       state.tools = state.tools.map(tool => {
         if (tool._id == action.data._id) {
           return action.data;
@@ -202,6 +258,10 @@ export default (
       });
       return { ...state, tools: state.tools.slice(0), focusTool: action.data };
     case EDIT_CHARACTER_SUCCESS:
+      toast.success(`Edited ${action.data.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       state.characters = state.characters.map(character => {
         if (character._id == action.data._id) {
           return action.data;
@@ -210,6 +270,10 @@ export default (
       });
       return { ...state, characters: state.characters.slice(0), focusCharacter: action.data };
     case EDIT_SURVIVAL_KIT_SUCCESS:
+      toast.success(`Edited ${action.data.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       state.survivalKits = state.survivalKits.map(kit => {
         if (kit._id == action.data._id) {
           return action.data;
@@ -229,6 +293,42 @@ export default (
     case DELETE_TOOL_SUCCESS:
       state.tools = state.tools.filter(tool => tool._id != action.data._id);
       return { ...state, tools: state.tools.slice(0), focusTool: state.tools[0] || {} };
+    case EDIT_EXTRA_DATA_SUCCESS:
+      toast.success(`Modify Extra Data Success`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
+      return { ...state, extraData: { ...state.extraData, ...action.data } };
+    case GET_EXTRA_DATA_SUCCESS:
+      return { ...state, extraData: action.data };
+    case EXTRA_GOLD_SUCCESS:
+      toast.success(`You have ${action.data.SavedGold} Gold`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
+      return { ...state, extraData: { ...state.extraData, SavedGold: action.data.SavedGold } };
+    case EXTRA_LEVEL_SUCCESS:
+      toast.success(`Level Increased`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
+      return {
+        ...state,
+        extraData: {
+          ...state.extraData,
+          NextSkillPoints: state.extraData.NextSkillPoints + action.data.SkillPoints,
+          NextLevelUpPoints: state.extraData.NextLevelUpPoints + action.data.LevelUpPoints
+        }
+      };
+    case EXTRA_SKILL_SUCCESS:
+      toast.success(`Skill Points Increased`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
+      action.data.type == 'add'
+        ? (state.extraData.NextSkillPoints += parseInt(action.data.amount))
+        : (state.extraData.NextSkillPoints -= parseInt(action.data.amount));
+      return { ...state, extraData: { ...state.extraData } };
 
     case GET_MODS_FAIL:
     case GET_MOD_DETAIL_FAIL:
@@ -247,6 +347,11 @@ export default (
     case DELETE_TOOL_FAIL:
     case DELETE_SURVIVAL_KIT_FAIL:
     case DELETE_CHARACTER_FAIL:
+    case GET_EXTRA_DATA_FAIL:
+    case EXTRA_GOLD_FAIL:
+    case EXTRA_SKILL_FAIL:
+    case EXTRA_LEVEL_FAIL:
+    case EDIT_EXTRA_DATA_FAIL:
       toast.error(`${action.error}`, {
         position: toast.POSITION.TOP_LEFT,
         className: 'toast-error'

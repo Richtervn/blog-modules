@@ -4,6 +4,7 @@ import ToolsScreen from './ToolsScreen';
 import ModsScreen from './ModsScreen';
 import SurvivalKitsScreen from './SurvivalKitsScreen';
 import CharactersScreen from './CharactersScreen';
+import ExtraScreen from './ExtraScreen';
 
 export default ({
   channels,
@@ -45,7 +46,13 @@ export default ({
   addD2CharacterFormState,
   editD2CharacterFormstate,
   addD2SurvivalKitFormState,
-  editD2SurvivalKitFormState
+  editD2SurvivalKitFormState,
+  extraData,
+  onEditExtraData,
+  onGetExtraData,
+  onExtraSkill,
+  onExtraGold,
+  onExtraLevel
 }) => (
   <div className="d2-main-screen">
     <div className="d2-screen-layout">
@@ -67,7 +74,8 @@ export default ({
         )}
         {activeChannel == 'Characters' && (
           <CharactersScreen
-            versions={versions}
+            mods={mods}
+            onGetMods={onGetMods}
             characters={characters}
             onSetFocusCharacter={onSetFocusCharacter}
             onGetCharacters={onGetCharacters}
@@ -105,6 +113,16 @@ export default ({
             onAddMod={onAddMod}
             addFormState={addD2ModFormState}
             editFormState={editD2ModFormState}
+          />
+        )}
+        {activeChannel == 'Extra' && (
+          <ExtraScreen
+            data={extraData}
+            onGetData={onGetExtraData}
+            onExtraLevel={onExtraLevel}
+            onExtraGold={onExtraGold}
+            onExtraSkill={onExtraSkill}
+            onEditData={onEditExtraData}
           />
         )}
       </div>

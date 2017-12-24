@@ -22,7 +22,12 @@ import {
   deleteMod,
   deleteTool,
   deleteCharacter,
-  deleteSurvivalKit
+  deleteSurvivalKit,
+  getExtraData,
+  extraSkill,
+  extraGold,
+  extraLevel,
+  editExtraData
 } from 'modules/Games/diabloII';
 
 export default connect(
@@ -45,7 +50,8 @@ export default connect(
     addD2SurvivalKitFormState: forms.AddD2SurvivalKit,
     editD2SurvivalKitFormState: forms.EditD2SurvivalKit,
     addD2CharacterFormState: forms.AddD2Character,
-    editD2CharacterFormState: forms.EditD2Character
+    editD2CharacterFormState: forms.EditD2Character,
+    extraData: diabloII.extraData
   }),
   dispatch => ({
     onGetMods() {
@@ -57,7 +63,7 @@ export default connect(
     onGetTools() {
       dispatch(getTools());
     },
-    onGetToolDetail(id){
+    onGetToolDetail(id) {
       dispatch(getToolDetail(id));
     },
     onGetSurvivalKits() {
@@ -110,6 +116,21 @@ export default connect(
     },
     onSetFocusSurvivalKit(kit) {
       dispatch(setFocusSurvivalKit(kit));
+    },
+    onGetExtraData() {
+      dispatch(getExtraData());
+    },
+    onExtraGold(amount, type) {
+      dispatch(extraGold(amount, type));
+    },
+    onExtraSkill(amount, type) {
+      dispatch(extraSkill(amount, type));
+    },
+    onExtraLevel(level) {
+      dispatch(extraLevel(level));
+    },
+    onEditExtraData(body) {
+      dispatch(editExtraData(body));
     }
   })
 )(DiabloII);

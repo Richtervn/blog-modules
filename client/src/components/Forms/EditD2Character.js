@@ -8,10 +8,13 @@ import FormGroupSelect from './Tools/EditModal/FormGroupSelect';
 import FormGroupCheck from './Tools/AddModal/FormGroupCheck';
 import FormGroupSelectId from './Tools/AddModal/FormGroupSelectId';
 
+const charTitle = ['No title', 'Slayer', 'Champion', 'Patriarch'];
+
 export default ({ formState, onChange, onChangeCheck, onAdd, onRemove, onRating, mods }) => (
   <form className="text-right">
     <FormGroupRow name="file" type="file" label="D2S File" onChange={onChange} />
-    <FormGroupRow name="Name" type="text" label="Name" onChange={onChange} />
+    <FormGroupRow name="Name" type="text" label="Name" onChange={onChange} value={formState.Name} />
+    <FormGroupSelect name="Title" label="Title" onChange={onChange} options={charTitle} value={formState.Title} />
     <FormGroupSelect
       name="Class"
       label="Class"
@@ -19,11 +22,14 @@ export default ({ formState, onChange, onChangeCheck, onAdd, onRemove, onRating,
       options={['Amazon', 'Barbarian', 'Paladin', 'Druid', 'Sorceress', 'Assasin']}
       value={formState.Class}
     />
+    <FormGroupRow name="Level" type="number" label="Level" onChange={onChange} value={formState.Level} />
     <FormGroupSelectId
       name="ModId"
       label="Mod"
       onChange={onChange}
-      options={mods.map(mod => ({ _id: mod._id, name: mod.Name }))}
+      options={mods.map(mod => {
+        return { _id: mod._id, name: mod.Name };
+      })}
       value={formState.ModId}
     />
     <FormGroupArray

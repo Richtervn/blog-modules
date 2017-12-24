@@ -1,3 +1,14 @@
 {
-  "LevelUpPoints": 0
+  "AdditionLevelUpPoints": 70,
+  "AdditionSkillPoints": 6,
+  "SavedGold": 2000,
+  "LevelRatio": 1,
+  "SkillRatio": 0.4,
+  "Slayer": 25,
+  "Champion": 40,
+  "Patriarch": 60,
+  "SkillPointsTier1": 6,
+  "SkillPointsTier2": 14,
+  "SkillPointsTier3": 21,
+  "LevelUpPointsTier": 21
 }
