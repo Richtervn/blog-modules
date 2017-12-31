@@ -27,29 +27,36 @@ export default class SearchTools extends Component {
 
   render() {
     return (
-      <div className="row no-row-margin">
-        <input
-          type="text"
-          className="form-control box-margin"
-          onChange={this.handleChange}
-          name="value"
-          value={this.state.value}
-        />
-        {availableOptions.map((option, i) => (
-          <div key={i} className="form-check form-check-inline mr-search-radio">
-            <label className="form-check-label">
-              <input
-                className="form-check-input"
-                type="radio"
-                value={option}
-                onChange={this.handleChange}
-                checked={this.state.option == option}
-                name="option"
-              />
-              &nbsp;{option}
-            </label>
-          </div>
-        ))}
+      <div>
+        <div className="row no-row-margin">
+          <input
+            type="text"
+            className="form-control box-margin add-manga-form-input"
+            onChange={this.handleChange}
+            name="value"
+            value={this.state.value}
+            placeholder={`[Search] Input ${this.state.option}`}
+          />
+        </div>
+        <div className="row no-row-margin">
+          {availableOptions.map((option, i) => (
+            <div className="col no-col-margin" key={i}>
+              <div className="form-check form-check-inline mr-search-radio">
+                <label className="form-check-label">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    value={option}
+                    onChange={this.handleChange}
+                    checked={this.state.option == option}
+                    name="option"
+                  />
+                  &nbsp;{option}
+                </label>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
