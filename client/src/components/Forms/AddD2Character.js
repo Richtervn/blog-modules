@@ -19,7 +19,8 @@ export default ({ formState, onChange, onChangeCheck, onAdd, onRemove, onRating,
       name="Class"
       label="Class"
       onChange={onChange}
-      options={['Amazon', 'Barbarian', 'Paladin', 'Druid', 'Sorceress', 'Assasin', 'Necromancer']}
+      options={['Amazon', 'Barbarian', 'Paladin', 'Druid', 'Sorceress', 'Assassin', 'Necromancer']}
+      value={formState.Class}
     />
     <FormGroupRow name="Level" type="number" label="Level" onChange={onChange} />
     <FormGroupSelectId

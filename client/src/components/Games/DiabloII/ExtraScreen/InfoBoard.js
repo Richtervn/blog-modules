@@ -1,4 +1,5 @@
 import React from 'react';
+import formatNumber from 'factories/formatNumber';
 
 export default ({ data }) => (
   <div className="d2-extra-info-board">
@@ -11,7 +12,7 @@ export default ({ data }) => (
         <span style={{color: '#00cc00'}}>{data.NextSkillPoints}</span>&nbsp;Skill Points
       </h5>
       <h5>
-        You have saved :&nbsp;<span style={{color: '#ffc107'}}>{data.SavedGold}</span>&nbsp;Gold
+        You have saved :&nbsp;<span style={{color: '#ffc107'}}>{formatNumber(data.SavedGold)}</span>&nbsp;Gold
       </h5>
     </div>
   </div>

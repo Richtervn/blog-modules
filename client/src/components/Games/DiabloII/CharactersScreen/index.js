@@ -7,8 +7,8 @@ const $ = window.$;
 
 const getIcon = charClass => {
   switch (charClass) {
-    case 'Assasin':
-      return '/app_modules/images/icons/d2assasin.gif';
+    case 'Assassin':
+      return '/app_modules/images/icons/d2assassin.gif';
     case 'Amazon':
       return '/app_modules/images/icons/d2amazon.gif';
     case 'Druid':
@@ -70,9 +70,9 @@ class CharactersScreen extends Component {
       <div className="row no-row-margin" style={{ flexWrap: 'wrap' }}>
         {characters.map(character => (
           <div key={character._id} className="col-4 no-col-margin">
-            <div className="d2-ss-card" style={{ padding: '5px', height: '215px' }}>
+            <div className="d2-ss-card" style={{ padding: '5px', height: '215px', marginBottom: '10px' }}>
               <div>
-                <img src={getIcon(character.Class)} />
+                <img src={getIcon(character.Class)} style={{ width: '100px', height: '205px' }} />
               </div>
               <div className="text-center" style={{ width: '100%' }}>
                 <b>
@@ -89,7 +89,9 @@ class CharactersScreen extends Component {
                 <div className="text-left" style={{ padding: '5px' }}>
                   {character.Overview.map((text, i) => <div key={i}>{text}</div>)}
                 </div>
-                <div style={{ paddingTop: '5px'}}><b>Mod : {mods.filter(mod => mod._id == character.ModId)[0].Name}</b></div>
+                <div style={{ paddingTop: '5px' }}>
+                  <b>Mod : {mods.filter(mod => mod._id == character.ModId)[0].Name}</b>
+                </div>
               </div>
               <div className="d2-ss-card-feature">
                 <div className="d2-ss-feature-btn" onClick={() => this.handleEditClick(character)}>
@@ -103,7 +105,11 @@ class CharactersScreen extends Component {
           </div>
         ))}
         <div className="col-4 no-col-margin">
-          <div className="d2-ss-add-card" data-toggle="modal" data-target="#addD2CharacterModal">
+          <div
+            className="d2-ss-add-card"
+            data-toggle="modal"
+            data-target="#addD2CharacterModal"
+            style={{ height: '215px' }}>
             <i className="fa fa-plus-circle" />
           </div>
         </div>

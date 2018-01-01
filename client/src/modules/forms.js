@@ -490,7 +490,7 @@ export default (
   action
 ) => {
   let formValue;
-
+  console.log(action);
   switch (action.type) {
     case CHANGE_D2_ADD_MOD_FORM:
       formValue = commonFormChange(
@@ -515,19 +515,19 @@ export default (
       return { ...state, AddD2Tool: formValue };
     case CHANGE_D2_EDIT_TOOL_FORM:
       formValue = commonFormChange(state.EditD2Tool, action.event, action.index, ['Overview'], ['Archive', 'Icon']);
-      return { ...state, AddD2Tool: formValue };
+      return { ...state, EditD2Tool: { ...formValue } };
     case CHANGE_D2_ADD_SURVIVAL_KIT_FORM:
       formValue = commonFormChange(state.AddD2SurvivalKit, action.event, action.index, ['Overview']);
       return { ...state, AddD2SurvivalKit: formValue };
     case CHANGE_D2_EDIT_SURVIVAL_KIT_FORM:
       formValue = commonFormChange(state.EditD2SurvivalKit, action.event, action.index, ['Overview']);
-      return { ...state, AddD2SurvivalKit: formValue };
+      return { ...state, EditD2SurvivalKit: { ...formValue } };
     case CHANGE_D2_ADD_CHARACTER_FORM:
       formValue = commonFormChange(state.AddD2Character, action.event, action.index, ['Overview']);
       return { ...state, AddD2Character: formValue };
     case CHANGE_D2_EDIT_CHARACTER_FORM:
       formValue = commonFormChange(state.EditD2Character, action.event, action.index, ['Overview']);
-      return { ...state, AddD2Character: formValue };
+      return { ...state, EditD2Character: { ...formValue } };
     case CHANGE_ADD_FLASH_FORM:
       formValue = commonFormChange(state.AddFlashGame, action.event);
       return { ...state, AddFlashGame: formValue };

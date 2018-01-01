@@ -44,7 +44,7 @@ export default ({
   addD2ToolFormState,
   editD2ToolFormState,
   addD2CharacterFormState,
-  editD2CharacterFormstate,
+  editD2CharacterFormState,
   addD2SurvivalKitFormState,
   editD2SurvivalKitFormState,
   extraData,
@@ -84,7 +84,7 @@ export default ({
             onEditCharacter={onEditCharacter}
             onDeleteCharacter={onDeleteCharacter}
             addFormState={addD2CharacterFormState}
-            editFormState={editD2CharacterFormstate}
+            editFormState={editD2CharacterFormState}
           />
         )}
         {activeChannel == 'Survival Kits' && (

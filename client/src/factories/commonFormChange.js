@@ -16,6 +16,9 @@ export default (state, event, index, arrays, filesArr) => {
     case 'File':
       formValue[name] = files[0];
       break;
+    case 'file':
+      formValue[name] = files[0];
+      break;
     case 'InArray':
       formValue[name][index] = value;
       break;

@@ -86,6 +86,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/character',
     wrap(async (req, res, next) => {
       const body = await uploadCharacter(req, res);
+      console.log(req.file);
       const result = await addCharacter(DiabloIICharacters, body);
       res.send(result);
     })
