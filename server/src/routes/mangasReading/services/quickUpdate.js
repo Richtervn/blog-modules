@@ -1,7 +1,7 @@
 export default async (MangasReading, body) => {
   const { url } = body;
   const urlFrags = url.replace('http://', '').split('/');
-  const site = urlFrags[0];
+  const site = urlFrags[0].replace('www.', '');
 
   let mangaName;
   let mangaAka, chapter, mangaNameFrags;
@@ -14,6 +14,7 @@ export default async (MangasReading, body) => {
       mangaName = urlFrags[1].split('-').join(' ');
       break;
     }
+
     case 'truyentranh8.net': {
       mangaNameFrags = urlFrags[1].split('-chap-');
       chapter = mangaNameFrags[1];
@@ -21,6 +22,12 @@ export default async (MangasReading, body) => {
         .split('-')
         .map(frag => frag.charAt(0).toUpperCase() + frag.slice(1, frag.length))
         .join(' ');
+      break;
+    }
+
+    case 'nettruyen.com': {
+      mangaName = urlFrags[2];
+      chapter = urlFrags[3].replace('chap-', '');
       break;
     }
   }

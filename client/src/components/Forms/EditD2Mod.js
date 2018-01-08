@@ -30,6 +30,6 @@ export default ({ formState, onChange, onAdd, onRemove, onRating, versions }) =>
       onRemove={onRemove}
     />
     <FormGroupArea name="Description" label="Description" onChange={onChange} value={formState.Description} />
-    <FormStarRating formName="AddD2Mod" rating={formState.Rating} onRating={onRating} />
+    <FormStarRating formName="EditD2Mod" rating={formState.Rating} onRating={onRating} />
   </form>
 );

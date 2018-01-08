@@ -1,6 +1,7 @@
 import _ from 'underscore';
 import { starcraft } from 'services';
 import actionCreator from 'factories/actionCreator';
+import { toast } from 'react-toastify';
 
 const CHANGE_SIDE_LIST_VIEW = 'starcraft/CHANGE_SIDE_LIST_VIEW';
 export const SET_MAP_FOCUS = 'starcraft/SET_MAP_FOCUS';
@@ -143,13 +144,7 @@ export const submitEditStarcraftCampaignForm = formBody =>
     formBody
   )();
 export const getModDetail = id =>
-  actionCreator(
-    GET_MOD_DETAIL_START,
-    GET_MOD_DETAIL_SUCCESS,
-    GET_MOD_DETAIL_FAIL,
-    starcraft.getModDetail,
-    id
-  )();
+  actionCreator(GET_MOD_DETAIL_START, GET_MOD_DETAIL_SUCCESS, GET_MOD_DETAIL_FAIL, starcraft.getModDetail, id)();
 export const getCampaignDetail = id =>
   actionCreator(
     GET_CAMPAIGN_DETAIL_START,
@@ -164,26 +159,14 @@ export const deleteMap = id =>
 export const deleteMod = id =>
   actionCreator(DELETE_MOD_START, DELETE_MOD_SUCCESS, DELETE_MOD_FAIL, starcraft.deleteMod, id)();
 export const deleteCampaign = id =>
-  actionCreator(
-    DELETE_CAMPAIGN_START,
-    DELETE_CAMPAIGN_SUCESS,
-    DELETE_CAMPAIGN_FAIL,
-    starcraft.deleteCampaign,
-    id
-  )();
+  actionCreator(DELETE_CAMPAIGN_START, DELETE_CAMPAIGN_SUCESS, DELETE_CAMPAIGN_FAIL, starcraft.deleteCampaign, id)();
 
 export const searchMap = text =>
   actionCreator(SEARCH_MAP_START, SEARCH_MAP_SUCCESS, SEARCH_MAP_FAIL, starcraft.searchMap, text)();
 export const searchMod = text =>
   actionCreator(SEARCH_MOD_START, SEARCH_MOD_SUCCESS, SEARCH_MOD_FAIL, starcraft.searchMod, text)();
 export const searchCampaign = text =>
-  actionCreator(
-    SEARCH_CAMPAIGN_START,
-    SEARCH_CAMPAIGN_SUCCESS,
-    SEARCH_CAMPAIGN_FAIL,
-    starcraft.searchCampaign,
-    text
-  )();
+  actionCreator(SEARCH_CAMPAIGN_START, SEARCH_CAMPAIGN_SUCCESS, SEARCH_CAMPAIGN_FAIL, starcraft.searchCampaign, text)();
 
 export const sortMap = query => ({ type: SORT_MAP, query });
 export const sortMod = query => ({ type: SORT_MOD, query });
@@ -203,7 +186,6 @@ export default (
   },
   action
 ) => {
-
   switch (action.type) {
     case CHANGE_SIDE_LIST_VIEW:
       return { ...state, viewControl: { ...state.viewControl, SideList: action.header } };
@@ -218,12 +200,24 @@ export default (
     case GET_CAMPAIGN_DETAIL_SUCCESS:
       return { ...state, campaignFocus: action.data };
     case SUBMIT_ADD_STARCRAFT_MAP_SUCCESS:
+      toast.success(`Added ${action.data.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       state.maps.push(action.data);
       return { ...state, maps: state.maps.slice(0), mapFocus: action.data };
     case SUBMIT_ADD_STARCRAFT_MOD_SUCCESS:
+      toast.success(`Added ${action.data.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       state.mods.push(action.data);
       return { ...state, mods: state.mods.slice(0), modFocus: action.data };
     case SUBMIT_ADD_STARCRAFT_CAMPAIGN_SUCCESS:
+      toast.success(`Added ${action.data.Name}`, {
+        position: toast.POSITION.BOTTOM_LEFT,
+        className: 'toast-success'
+      });
       state.campaigns.push(action.data);
       return { ...state, campaigns: state.campaigns.slice(0), campaignFocus: action.data };
     case SET_MAP_FOCUS:
@@ -282,6 +276,30 @@ export default (
                 .slice(0)
       };
     }
+
+    case GET_MOD_LIST_FAIL:
+    case GET_CAMPAIGN_LIST_FAIL:
+    case GET_MAP_LIST_FAIL:
+    case GET_MOD_DETAIL_FAIL:
+    case GET_CAMPAIGN_DETAIL_FAIL:
+    case SUBMIT_ADD_STARCRAFT_MAP_FAIL:
+    case SUBMIT_EDIT_STARCRAFT_MAP_FAIL:
+    case SUBMIT_ADD_STARCRAFT_MOD_FAIL:
+    case SUBMIT_EDIT_STARCRAFT_MOD_FAIL:
+    case SUBMIT_ADD_STARCRAFT_CAMPAIGN_FAIL:
+    case SUBMIT_EDIT_STARCRAFT_CAMPAIGN_FAIL:
+    case SEARCH_MAP_FAIL:
+    case SEARCH_MOD_FAIL:
+    case SEARCH_CAMPAIGN_FAIL:
+    case DELETE_MAP_FAIL:
+    case DELETE_MOD_FAIL:
+    case DELETE_CAMPAIGN_FAIL:
+      toast.error(`${action.error}`, {
+        position: toast.POSITION.TOP_LEFT,
+        className: 'toast-error'
+      });
+      return state;
+
     default:
       return state;
   }

@@ -19,16 +19,10 @@ export default ({ campaign, onEditCampaignSubmit, editCampaignFormState, onDelet
           <strong>{campaign.Name.toUpperCase()}</strong>
         </h3>
         <div className="sc-map-info-feature">
-          <button
-            className="sc-map-feature-btn"
-            data-toggle="modal"
-            data-target="#editStarcraftCampaignModal">
+          <button className="sc-map-feature-btn" data-toggle="modal" data-target="#editStarcraftCampaignModal">
             <i className="fa fa-pencil" />
           </button>
-          <button
-            className="sc-map-feature-btn"
-            data-toggle="modal"
-            data-target="#deleteStarcraftCampaignModal">
+          <button className="sc-map-feature-btn" data-toggle="modal" data-target="#deleteStarcraftCampaignModal">
             <i className="fa fa-times" />
           </button>
         </div>
@@ -63,23 +57,21 @@ export default ({ campaign, onEditCampaignSubmit, editCampaignFormState, onDelet
           <strong>Description : </strong>
           {campaign.Description}
         </div>
-        <div className="sc-green-box">
-          <p>
-            <strong>Introduction : </strong>
-          </p>
-          <div
-            style={{ paddingLeft: '20px' }}
-            dangerouslySetInnerHTML={{
-              __html: campaign.Introduction
-            }}
-          />
-        </div>
+        {campaign.Introduction && (
+          <div className="sc-green-box">
+            <p>
+              <strong>Introduction : </strong>
+            </p>
+            <div
+              style={{ paddingLeft: '20px' }}
+              dangerouslySetInnerHTML={{
+                __html: campaign.Introduction
+              }}
+            />
+          </div>
+        )}
       </div>
-      <FormModal
-        id="editStarcraftCampaignModal"
-        formBody={editCampaignFormState}
-        onSubmit={onEditCampaignSubmit}
-      />
+      <FormModal id="editStarcraftCampaignModal" formBody={editCampaignFormState} onSubmit={onEditCampaignSubmit} />
       <DeleteModal
         id="deleteStarcraftMapModal"
         text={`Hey man, make sure you want to delete ${campaign.Name}. The action can't be backed up`}

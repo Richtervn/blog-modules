@@ -36,17 +36,19 @@ export default ({ mod, onEditModSubmit, editModFormState, onDeleteMod }) => {
           <strong>Description : </strong>
           {mod.Description}
         </div>
-        <div
-          className="sc-green-box text-jusify"
-          style={{
-            paddingLeft: '20px',
-            paddingRight: '20px',
-            marginTop: '20px',
-            marginBottom: '20px'
-          }}>
-          <strong>Introduction : </strong>
-          <div style={{ paddingLeft: '20px' }} dangerouslySetInnerHTML={{ __html: mod.Introduction }} />
-        </div>
+        {mod.Introduction && (
+          <div
+            className="sc-green-box text-jusify"
+            style={{
+              paddingLeft: '20px',
+              paddingRight: '20px',
+              marginTop: '20px',
+              marginBottom: '20px'
+            }}>
+            <strong>Introduction : </strong>
+            <div style={{ paddingLeft: '20px' }} dangerouslySetInnerHTML={{ __html: mod.Introduction }} />
+          </div>
+        )}
       </div>
       <FormModal id="editStarcraftModModal" formBody={editModFormState} onSubmit={onEditModSubmit} />
       <DeleteModal
