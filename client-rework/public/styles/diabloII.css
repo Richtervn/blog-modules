@@ -1,0 +1,153 @@
+.d2-main-screen {
+  margin-top: 45px;
+  margin-left: 200px;
+  height: calc(100vh - 45px);
+  width: 100%;
+  background-image: url('../../app_modules/images/backgrounds/doom-castle.jpg');
+  background-size: cover;
+}
+
+.d2-screen-layout {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: calc(100vh - 45px);
+  width: 100%;
+  color: white;
+}
+
+.d2-channel-btn {
+  border: solid 1px #4ef7ce;
+  margin: 10px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.d2-channel-btn-active {
+  background-color: #9e2c2c;
+}
+
+.d2-channel-screen {
+  height: 667px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.d2-mod-control-bar {
+  height: 667px;
+  border: solid 1px #4ef7ce;
+  border-radius: 4px;
+  overflow-y: auto;
+}
+
+.d2-mod-card {
+  display: flex;
+  border: solid 1px;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px 10px 0px 10px;
+  background-color: black;
+  cursor: pointer;
+}
+
+.d2-mod-card-active {
+  background-color: darkblue;
+}
+
+.d2-mod-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.d2-mod-card-content {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.d2-add-card-btn {
+  border: dashed 1px;
+  margin: 10px;
+  border-radius: 4px;
+  height: 45px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.d2-mod-info-screen {
+  height: 667px;
+  border: solid 1px #4ef7ce;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.d2-mod-info-overlay {
+  height: 667px;
+  border-radius: 4px;
+  overflow-y: auto;
+  margin-bottom: 5px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.d2-ss-card {
+  display: flex;
+  border: solid 1px gray;
+  border-radius: 2px;
+  margin-right: 5px;
+  background-color: #00000075;
+  position: relative;
+}
+
+.d2-ss-add-card {
+  border: dashed 1px;
+  height: 100%;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.d2-ss-card-feature {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+}
+
+.d2-ss-feature-btn {
+  border: solid 1px;
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.d2-ss-feature-btn:hover {
+  color: black;
+  background-color: white;
+  transition: 0.7s;
+}
+
+.d2-extra-rule-board {
+  border: solid 1px #4ef7ce;
+  padding: 10px;
+  border-radius: 4px;
+  margin-left: 5px;
+}
+
+.d2-extra-info-board {
+  border: solid 1px #4ef7ce;
+  padding: 10px;
+  border-radius: 4px;
+  margin-right: 5px;
+}

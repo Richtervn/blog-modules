@@ -1,0 +1,25 @@
+.blog-top-nav {
+  position: fixed;
+  background-color: #000000;
+  height: 45px;
+  align-items: center;
+  width: 100%;
+}
+.blog-nav-name {
+  padding-top: 5px;
+  padding-left: 15px;
+  color: #ffffff;
+}
+
+.blog-nav-icon {
+  padding-left: 15px;
+  color: #ffffff;
+}
+
+.blog-nav-quote {
+  color: #ffffff;
+}
+
+.blog-nav-quote-author {
+  color: #f5ad28;
+}
