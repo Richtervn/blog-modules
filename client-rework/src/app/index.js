@@ -6,10 +6,13 @@ import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import store from './store';
 
-import {TopBar} from 'components/Layout';
+import HeaderBar from 'containers/Layout/HeaderBar';
 
 export default () => (
   <Provider store={store}>
-    <div className="container-fluid"><TopBar/></div>
+    <div className="container-fluid">
+      <HeaderBar />
+      <ToastContainer autoClose={1500}/>
+    </div>
   </Provider>
 );

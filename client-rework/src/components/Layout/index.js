@@ -1,3 +1,3 @@
-import TopBar from './TopBar';
+import HeaderBar from './HeaderBar';
 
-export { TopBar };
+export { HeaderBar };

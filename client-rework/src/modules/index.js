@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-import page from './page';
+import appControl from './appControl';
 
 export default combineReducers({
-  page
+  appControl
 });
 
 // import page from 'modules/page';
