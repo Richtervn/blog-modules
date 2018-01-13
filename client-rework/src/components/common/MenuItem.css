@@ -1,0 +1,14 @@
+.menu-group-item {
+  color: #ffffff;
+  padding-left: 15px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.menu-group-item:hover {
+  background-color: #68829e;
+}
+
+.menu-group-item.active {
+  background-color: #68829e;
+}

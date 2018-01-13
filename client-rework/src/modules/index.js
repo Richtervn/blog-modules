@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
 import appControl from './appControl';
+import flashGames from './flashGames';
 
 export default combineReducers({
-  appControl
+  appControl,
+  flashGames
 });
 
 // import page from 'modules/page';

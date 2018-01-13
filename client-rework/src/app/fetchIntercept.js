@@ -3,7 +3,7 @@ import fetchIntercept from 'fetch-intercept';
 
 fetchIntercept.register({
   request: function(url, config) {
-    url = process.env.API_HOST + url;
+    url = window.appConfig.API_HOST + url;
     if (config && config.method === 'POST') {
       config.headers = { 'Content-Type': 'application/json; charset=utf-8' };
     }

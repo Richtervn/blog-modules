@@ -1,0 +1,6 @@
+.page-wrapper {
+  width: calc(100vw - 200px);
+  height: calc(100vh - 45px);
+  margin-left: 200px;
+  margin-top: 45px;
+}

@@ -1,0 +1,22 @@
+.menu-group {
+  background-color: #021c1e;
+}
+
+.menu-group.active {
+  background-color: #1995ad;
+}
+
+.menu-group-name {
+  color: #ffffff;
+  padding-left: 15px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.menu-group-icon {
+  padding-right: 15px;
+}
+
+.menu-group-toggle-icon {
+  padding-right: 15px;
+}

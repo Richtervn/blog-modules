@@ -1,0 +1,13 @@
+.toast-success {
+  border-radius: 5px !important;
+  border: solid 1px darkgreen;
+  background: #28a745 !important;
+  text-align: center;
+}
+
+.toast-error {
+  border-radius: 5px !important;
+  border: solid 1px darkred;
+  background: #dc3545 !important;
+  text-align: center;
+}
