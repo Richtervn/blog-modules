@@ -1,13 +1,6 @@
-import serviceCaller from 'factories/serviceCaller';
+import { serviceCaller } from 'helpers';
 
-const {
-  commonPost,
-  commonGet,
-  commonPut,
-  commonDelete,
-  commonPostMultiplePart,
-  commonPutMultiplePart
-} = serviceCaller;
+const { commonPost, commonGet, commonPut, commonDelete, commonPostMultiplePart, commonPutMultiplePart } = serviceCaller;
 
 export default {
   register(formBody) {
@@ -219,10 +212,7 @@ export default {
     return data;
   },
   getExchangeCount(memb___id, exchangeId) {
-    const data = commonGet('mu/darksteam97d99i/luxury_shop/exchange/count', [
-      memb___id,
-      exchangeId
-    ]);
+    const data = commonGet('mu/darksteam97d99i/luxury_shop/exchange/count', [memb___id, exchangeId]);
     return data;
   },
   tradeExchange(query) {
@@ -242,31 +232,22 @@ export default {
     return data;
   },
   getCountMaterials(memb___id, receiptId) {
-    const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt/count', [
-      memb___id,
-      receiptId
-    ]);
+    const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt/count', [memb___id, receiptId]);
     return data;
   },
   craftItem(characterName, receiptId) {
-    const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt/craft', [
-      characterName,
-      receiptId
-    ]);
+    const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt/craft', [characterName, receiptId]);
     return data;
   },
   sellReceipt(memb___id, receiptId) {
-    const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt/sell', [
-      memb___id,
-      receiptId
-    ]);
+    const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt/sell', [memb___id, receiptId]);
     return data;
   },
   getCharacterInventory(characterName) {
     const data = commonGet('mu/darksteam97d99i/upgrade_items/inventory', [characterName]);
     return data;
   },
-  upgradeItem(body){
+  upgradeItem(body) {
     const data = commonPut('mu/darksteam97d99i/upgrade_items', body);
     return data;
   }

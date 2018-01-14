@@ -1,5 +1,7 @@
+import './Page.css';
 import React, { Component } from 'react';
 import { appRouter } from 'utils';
+
 
 class Page extends Component {
   constructor(props) {
@@ -14,7 +16,7 @@ class Page extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { onSetActiveGroup, onSetActiveItem } = this.props;
+    const { onSetActiveGroup, onSetActiveItem, onSetDefaultShowGroup } = this.props;
     const { menuTree, activeItem, activeGroup } = nextProps;
 
     if (menuTree && !this.state.isRecievedTree) {
@@ -30,18 +32,15 @@ class Page extends Component {
       }
       if (activeGroup !== currentPage.activeGroup) {
         onSetActiveGroup(currentPage.activeGroup);
+        onSetDefaultShowGroup(currentPage.activeGroup);
       }
     }
   }
 
   render() {
     const { children } = this.props;
-    const styles = {
-      width: '100%',
-      height: '100%'
-    };
 
-    return <div style={styles}>{children}</div>;
+    return <div className="page">{children}</div>;
   }
 }
 

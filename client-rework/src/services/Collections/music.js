@@ -1,18 +1,18 @@
-import serviceCaller from 'factories/serviceCaller';
+import { serviceCaller } from 'helpers';
 
-const {commonPostMultiplePart, commonPutMultiplePart, commonGet, commonPut, commonDelete} = serviceCaller;
+const { commonPostMultiplePart, commonGet } = serviceCaller;
 
 export default {
-  add(formBody){
+  add(formBody) {
     const data = commonPostMultiplePart('music/add_song', formBody);
     return data;
   },
-  getAll(){
+  getAll() {
     const data = commonGet('music/get_all');
     return data;
   },
-  search(query){
+  search(query) {
     const data = commonGet('music/search', null, query);
     return data;
   }
-}
+};

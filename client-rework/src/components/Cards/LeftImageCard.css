@@ -1,0 +1,29 @@
+.left-image-card {
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  width: 100%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.left-image-card.active {
+  background-color: #00a65a;
+  color: white;
+}
+
+.left-image-card-img {
+  width: 120px;
+  height: 180px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.left-image-card-content {
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: relative;
+}

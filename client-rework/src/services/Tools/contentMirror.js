@@ -1,4 +1,4 @@
-import serviceCaller from 'factories/serviceCaller';
+import { serviceCaller } from 'helpers';
 
 const { commonGet, commonPost } = serviceCaller;
 

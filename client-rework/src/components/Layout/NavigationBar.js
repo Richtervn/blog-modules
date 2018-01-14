@@ -42,7 +42,7 @@ class NavigationBar extends Component {
   }
 
   render() {
-    const { menuTree, activeGroup, activeItem } = this.props;
+    const { menuTree, activeGroup, activeItem, defaultShowGroup } = this.props;
     if (!menuTree) return null;
     const router = appRouter(menuTree);
 
@@ -54,6 +54,7 @@ class NavigationBar extends Component {
             key={i}
             isOpen={_.contains(this.state.openedGroups, group)}
             isActive={activeGroup === group}
+            isShow={group === defaultShowGroup}
             onClick={() => this.handleGroupClick(group)}>
             {menuTree[group].items.map((item, i) => (
               <MenuItem

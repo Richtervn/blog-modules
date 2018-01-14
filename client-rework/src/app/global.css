@@ -1,3 +1,11 @@
 .collapse > a {
   text-decoration: none;
 }
+
+.larger-star-rating {
+  font-size: xx-large;
+}
+
+.dv-star-rating-star {
+  margin-bottom: 0 !important;
+}

@@ -25,3 +25,13 @@
 .header-bar-quote-author {
   color: #f5ad28;
 }
+
+@media only screen and (max-width: 900px) {
+  .header-bar-quote  {
+    display: none;
+  }
+
+  .header-bar-quote-author {
+    display: none;
+  }
+}

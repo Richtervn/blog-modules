@@ -4,12 +4,8 @@ import allReducer from 'modules';
 
 const store = createStore(
   allReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk)
 );
-
-// store.subscribe(() => {
-//   console.log('STORE');
-//   console.log(store.getState());
-// });
 
 export default store;

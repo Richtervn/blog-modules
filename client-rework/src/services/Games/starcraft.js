@@ -1,13 +1,6 @@
-import serviceCaller from 'factories/serviceCaller';
+import { serviceCaller } from 'helpers';
 
-const {
-  commonPostMultiplePart,
-  commonPutMultiplePart,
-  commonGet,
-  commonPut,
-  commonDelete,
-  commonPost
-} = serviceCaller;
+const { commonPostMultiplePart, commonPutMultiplePart, commonGet, commonPut, commonDelete, commonPost } = serviceCaller;
 
 export default {
   getMapList() {

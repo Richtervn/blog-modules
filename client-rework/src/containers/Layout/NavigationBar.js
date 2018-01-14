@@ -6,7 +6,8 @@ import { getMenuTree, setActiveGroup, setActiveItem } from 'modules/appControl';
 const mapStateToProps = ({ appControl }) => ({
   menuTree: appControl.menuTree,
   activeGroup: appControl.activeGroup,
-  activeItem: appControl.activeItem
+  activeItem: appControl.activeItem,
+  defaultShowGroup: appControl.defaultShowGroup
 });
 
 const mapDispatchToProps = dispatch => ({

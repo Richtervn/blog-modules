@@ -7,7 +7,7 @@ export default {
     const data = commonPostMultiplePart('flash_games/add_game', formBody);
     return data;
   },
-  getGame(Name){
+  getGame(Name) {
     const data = commonGet('flash_games/get_game', [Name]);
     return data;
   }

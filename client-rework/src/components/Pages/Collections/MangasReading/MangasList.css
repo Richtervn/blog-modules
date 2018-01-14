@@ -1,0 +1,12 @@
+.manga-chaper-text {
+  position: absolute;
+  text-align: center;
+  bottom: 5px;
+  width: 100%;
+  color: #d9534f;
+}
+
+.mangas-list {
+  height: calc(100vh - 45px);
+  overflow-y: auto;
+}

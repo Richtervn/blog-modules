@@ -10,10 +10,10 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import { ToastContainer } from 'react-toastify';
+
 import HeaderBar from 'containers/Layout/HeaderBar';
 import NavigationBar from 'containers/Layout/NavigationBar';
-
-import { PageWrapper } from 'components/common';
+import Page from 'containers/Layout/Page';
 
 import MangasReading from 'containers/Pages/Collections/MangasReading';
 import AppMenu from 'containers/Pages/Setting/AppMenu';
@@ -26,17 +26,15 @@ const newHistory = createBrowserHistory();
 export default () => (
   <Provider store={store}>
     <Router history={newHistory}>
-      <div className="container-fluid">
+      <div>
         <HeaderBar />
-        <div className="row">
-          <NavigationBar />
-          <PageWrapper>
-            <Route exact path="/mangas_reading" component={MangasReading}/>
-            <Route exact path="/app_menu" component={AppMenu} />
-            <Route path="/flash_games/:name" component={FlashGames}/>
-          </PageWrapper>
-        </div>
-        <ToastContainer autoClose={1500} />
+        <NavigationBar />
+        <Page>
+          <Route exact path="/mangas_reading" component={MangasReading} />
+          <Route exact path="/app_menu" component={AppMenu} />
+          <Route path="/flash_games/:name" component={FlashGames} />
+        </Page>
+        <ToastContainer autoClose={1500} closeButton={false}/>
         <Modal />
       </div>
     </Router>

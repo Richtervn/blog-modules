@@ -1,5 +1,5 @@
 import MenuGroup from './MenuGroup';
 import MenuItem from './MenuItem';
-import PageWrapper from './PageWrapper';
+import PageContainer from './PageContainer';
 
-export { MenuGroup, MenuItem, PageWrapper };
+export { MenuGroup, MenuItem, PageContainer };

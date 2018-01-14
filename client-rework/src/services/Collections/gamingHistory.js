@@ -1,6 +1,6 @@
-import serviceCaller from 'factories/serviceCaller';
+import { serviceCaller } from 'helpers';
 
-const { commonPostMultiplePart, commonPutMultiplePart, commonGet, commonPut, commonDelete } = serviceCaller;
+const { commonPostMultiplePart, commonPutMultiplePart, commonGet, commonDelete } = serviceCaller;
 
 export default {
   add(formBody) {

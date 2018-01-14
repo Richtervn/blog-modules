@@ -1,9 +1,12 @@
 import { combineReducers } from 'redux';
 
+import mangasReading from './Collections/mangasReading';
+
 import appControl from './appControl';
 import flashGames from './flashGames';
 
 export default combineReducers({
+  mangasReading,
   appControl,
   flashGames
 });
@@ -12,7 +15,7 @@ export default combineReducers({
 // import forms from 'modules/forms';
 // import flashGame from 'modules/flashGame';
 // import profile from 'modules/profile';
-// import mangasReading from 'modules/Collections/mangasReading';
+
 // import gamingHistory from 'modules/Collections/gamingHistory';
 // import music from 'modules/Collections/music';
 // import starcraft from 'modules/Games/starcraft';

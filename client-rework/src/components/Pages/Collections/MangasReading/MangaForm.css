@@ -1,0 +1,50 @@
+.manga-control-form-btn {
+  line-height: 1;
+  width: 85px;
+  margin: 0px 5px;
+}
+
+.manga-form {
+  padding: 5px;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+}
+
+.manga-form-label {
+  margin: 0;
+}
+
+#manga-form > .form-group > label {
+  margin: 0;
+}
+
+#manga-form > .form-group {
+  margin: 0;
+}
+
+.manga-form-input {
+  padding: 5px;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.manga-form-input:focus {
+  box-shadow: 0 0 0 1px rgba(0, 123, 255, 0.25);
+}
+
+.manga-form-array-input {
+  display: flex;
+}
+
+.manga-form-array-btn {
+  line-height: 1.25;
+  margin-left: 5px;
+}
+
+.manga-form-add-array-btn {
+  line-height: 0.75;
+  width: 100%;
+  font-size: 14px;
+  padding: 4px;
+  margin-top: 2px;
+}
