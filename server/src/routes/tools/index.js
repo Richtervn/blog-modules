@@ -43,7 +43,7 @@ export default (models, factories) => {
           field = key;
         }
       }
-      await models[tableName].update({ _id: id, $set: { [field]: content } });
+      await models[tableName].update({ _id: id }, { $set: { [field]: content } });
       res.send(req.body);
     })
   );

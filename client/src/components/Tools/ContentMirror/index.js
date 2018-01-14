@@ -24,6 +24,7 @@ class ContentMirror extends Component {
     this.handleChangeRecord = this.handleChangeRecord.bind(this);
     this.handleResetCode = this.handleResetCode.bind(this);
     this.handleClearCode = this.handleClearCode.bind(this);
+    this.handleSaveCode = this.handleSaveCode.bind(this);
   }
 
   handleChangeCode(code) {
@@ -51,6 +52,11 @@ class ContentMirror extends Component {
   handleClearCode() {
     this.setState({ content: '' });
     this.editor.codeMirror.setValue('');
+  }
+
+  handleSaveCode() {
+    const { onSaveCode, selectedTable, selectedRecord } = this.props;
+    onSaveCode({ content: this.state.content, id: selectedRecord, tableName: selectedTable });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -82,7 +88,7 @@ class ContentMirror extends Component {
           <div dangerouslySetInnerHTML={{ __html: this.state.content }} className="t-ct-mirror" />
         </div>
         <div className="t-ct-feature">
-          <div className="btn btn-danger t-ct-feature-btn" onClick={() => onSaveCode(this.state.content)}>
+          <div className="btn btn-danger t-ct-feature-btn" onClick={() => this.handleSaveCode()}>
             SAVE CODE
           </div>
           <div

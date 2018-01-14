@@ -11,7 +11,7 @@ const mapStateToProps = ({ appControl }) => {
       name: 'Home'
     };
   }
-
+  console.log(activeGroup);
   if (menuTree && !activeGroup) {
     return {
       name: 'Home',

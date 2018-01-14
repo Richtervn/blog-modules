@@ -258,8 +258,8 @@ export default (
         ...state,
         mods:
           action.query[key] == 'ASC'
-            ? _.sortBy(state.maps, key).slice(0)
-            : _.sortBy(state.maps, key)
+            ? _.sortBy(state.mods, key).slice(0)
+            : _.sortBy(state.mods, key)
                 .reverse()
                 .slice(0)
       };
@@ -270,8 +270,8 @@ export default (
         ...state,
         campaigns:
           action.query[key] == 'ASC'
-            ? _.sortBy(state.maps, key).slice(0)
-            : _.sortBy(state.maps, key)
+            ? _.sortBy(state.campaigns, key).slice(0)
+            : _.sortBy(state.campaigns, key)
                 .reverse()
                 .slice(0)
       };

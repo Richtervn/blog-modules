@@ -1,8 +1,37 @@
 {
-  "Collections": ["Mangas Reading", "Music", "Gaming History"],
-  "Games": ["Starcraft Broodwar", "YugiOh! PoC", "Mu Online", "Diablo II"],
-  "Flash Games": ["Sonny 1", "Sonny 2", "Stormy Castle", "Kingdom Rush", "Kingdom Rush 2"],
-  "Mu Online": ["Darksteam 97d99i"],
-  "Lineage II": ["Freya Portable"],
-  "Tools": ["Content Mirror"]
+  "Collections": {
+    "items": ["Mangas Reading", "Music", "Gaming History"],
+    "quote": "You're in quest for more to find the core. Your journey still ain't over",
+    "author": "Avantasia - In Quest For"
+  },
+  "Games": {
+    "items": ["Starcraft Broodwar", "YugiOh! PoC", "Mu Online", "Diablo II"],
+    "quote": "Gaming is not a crime",
+    "author": "DJ GEX - Gaming is not a crime"
+  },
+  "Flash Games": {
+    "items": ["Sonny 1", "Sonny 2", "Stormy Castle", "Kingdom Rush", "Kingdom Rush 2"],
+    "quote": "You want to share what you have been through",
+    "author": "Linkin Park - Points of Authority"
+  },
+  "Mu Online": {
+    "items": ["Darksteam 97d99i"],
+    "quote": "Take a look to the sky just before you die",
+    "author": "Metallica - For Whom The Bell Tolls"
+  },
+  "Lineage II": {
+    "items": ["Freya Portable"],
+    "quote": "You're the ghost haunting through her heart",
+    "author": "Within Temptation - Restless"
+  },
+  "Tools": {
+    "items": ["Content Mirror"],
+    "quote": "I'm just a dreamer who dreams of better days",
+    "author": "Ozzy Osbourne - Dreamer"
+  },
+  "Setting": {
+    "items": ["App Menu"],
+    "quote": "My mind has had enough",
+    "author": "Element Eighty - Broken Promises"
+  }
 }

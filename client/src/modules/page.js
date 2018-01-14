@@ -52,7 +52,7 @@ const quotes = {
     quote: "You're the ghost haunting through her heart",
     author: 'Within Temptation - Restless'
   },
-  'Tools': {
+  Tools: {
     quote: "I'm just a dreamer who dreams of better days",
     author: 'Ozzy Osbourne - Dreamer'
   }
@@ -84,11 +84,20 @@ export default (
         quote: quotes[activeGroup].quote,
         quoteAuthor: quotes[activeGroup].author
       };
-    case GET_MENU_TREE_SUCCESS:
-      return { ...state, menuTree: action.data };
+    case GET_MENU_TREE_SUCCESS: {
+      let menuTree = {};
+      for (let key in action.data) {
+        menuTree[key] = action.data[key].items;
+      }
+      console.log(menuTree);
+      return { ...state, menuTree: menuTree };
+    }
     case SUBMIT_ADD_FLASH_FORM_SUCCESS:
-      return { ...state, menuTree: action.data.menu };
-      
+      let menuTree = {};
+      for (let key in action.data.menu) {
+        menuTree[key] = action.data.menu[key].items;
+      }
+      return { ...state, menuTree: menuTree };
     case GET_MENU_TREE_FAIL:
       toast.error(`${action.error}`, {
         position: toast.POSITION.TOP_LEFT,

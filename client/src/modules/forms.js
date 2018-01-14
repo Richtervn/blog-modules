@@ -539,10 +539,10 @@ export default (
       return { ...state, AddStarcraftMod: formValue };
     case CHANGE_EDIT_STARTCRAFT_MOD_FORM:
       formValue = commonFormChange(state.EditStarcraftMod, action.event);
-      return { ...state, EditStarcraftMod: formValue };
+      return { ...state, EditStarcraftMod: { ...formValue } };
     case CHANGE_EDIT_STARCRAFT_CAMPAIGN_FORM:
       formValue = commonFormChange(state.EditStarcraftCampaign, action.event);
-      return { ...state, EditStarcraftCampaign: formValue };
+      return { ...state, EditStarcraftCampaign: { ...formValue } };
     case CHANGE_ADD_MUSIC_FORM:
       formValue = commonFormChange(state.AddMusic, action.event);
       return { ...state, AddMusic: formValue };
