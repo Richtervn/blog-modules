@@ -2,7 +2,6 @@ import './Page.css';
 import React, { Component } from 'react';
 import { appRouter } from 'utils';
 
-
 class Page extends Component {
   constructor(props) {
     super(props);

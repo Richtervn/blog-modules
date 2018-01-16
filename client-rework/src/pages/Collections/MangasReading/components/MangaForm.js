@@ -31,6 +31,12 @@ class MangaForm extends Component {
     this.handleUndo = this.handleUndo.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.manga && nextProps.manga && parseInt(this.props.manga._id, 10) !== parseInt(nextProps.manga._id, 10)) {
+      this.setState(this.getDefaultState(nextProps.manga));
+    }
+  }
+
   handleChange(event, index) {
     const nextState = { ...this.state };
     const { name, value, files } = event.target;

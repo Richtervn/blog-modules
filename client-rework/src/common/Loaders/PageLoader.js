@@ -1,7 +1,7 @@
 import './PageLoader.css';
 
 import React from 'react';
-import { PageContainer } from 'components/common';
+import PageContainer from 'common/PageContainer';
 
 export default () => (
   <PageContainer opacity={8} center>

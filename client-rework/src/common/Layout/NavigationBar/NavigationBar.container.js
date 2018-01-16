@@ -1,7 +1,7 @@
-import { NavigationBar } from 'components/Layout';
+import NavigationBar from './NavigationBar.component';
 import { connect } from 'react-redux';
 
-import { getMenuTree, setActiveGroup, setActiveItem } from 'modules/appControl';
+import { getMenuTree, setActiveGroup, setActiveItem } from 'pages/appControl';
 
 const mapStateToProps = ({ appControl }) => ({
   menuTree: appControl.menuTree,

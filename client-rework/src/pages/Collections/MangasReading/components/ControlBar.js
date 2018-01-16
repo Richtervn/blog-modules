@@ -1,6 +1,8 @@
 import './ControlBar.css';
 import React, { Component } from 'react';
 
+import ButtonsBar from 'components/ButtonsBar';
+
 import MangaForm from './MangaForm';
 import MangaDetailView from './MangaDetailView';
 import MangaDeleteView from './MangaDeleteView';
@@ -10,7 +12,6 @@ class ControlBar extends Component {
     super(props);
     this.state = {
       activeTool: 'QuickUpdate',
-      activeView: 'Add',
       quickUrl: '',
       search: {
         option: 'Name',
@@ -59,13 +60,22 @@ class ControlBar extends Component {
     this.setState({ activeTool: tool });
   }
 
-  changeActiveView(view) {
-    this.setState({ activeView: view });
-  }
-
   render() {
-    const { activeTool, activeView } = this.state;
-    const { manga, onAddManga, onEditManga, onDeleteManga } = this.props;
+    const { activeTool } = this.state;
+    const { manga, onAddManga, onEditManga, onDeleteManga, activeView, onSetActiveView } = this.props;
+
+    const tools = [
+      { name: 'QuickUpdate', icon: 'fa-plus-circle', tooltip: 'Open quick update tool' },
+      { name: 'Search', icon: 'fa-search', tooltip: 'Open search tool' },
+      { name: 'Sort', icon: 'fa-sort', tooltip: 'Open sort tool' }
+    ];
+    
+    const views = [
+      { name: 'Add', icon: 'fa-plus', tooltip: 'Open insert form' },
+      { name: 'Detail', icon: 'fa-file-o', tooltip: 'Open detail view' },
+      { name: 'Edit', icon: 'fa-pencil', tooltip: 'Open edit form' },
+      { name: 'Delete', icon: 'fa-times', tooltip: 'Open delete box' }
+    ];
 
     return (
       <div className="row">
@@ -82,7 +92,7 @@ class ControlBar extends Component {
               />,
               <button
                 key="qu_bt"
-                className="btn btn-primary manga-feature-button"
+                className="btn btn-success manga-feature-button"
                 disabled={!this.state.quickUrl}
                 onClick={() => this.handleQuickUpdate()}>
                 <i className="fa fa-plus-circle" />
@@ -130,76 +140,25 @@ class ControlBar extends Component {
           </div>
           <div className="card" style={{ margin: '0px 5px 0px 5px' }}>
             <div className="card-header" style={{ padding: '5px' }}>
-              <span className="pull-left">
-                <button
-                  className={`manga-control-feature-button ${activeTool === 'QuickUpdate' ? 'active' : ''}`}
-                  onClick={() => this.changeActiveTool('QuickUpdate')}
-                  style={{ marginRight: '2px' }}
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Open quick update tool">
-                  <i className="fa fa-plus-circle fa-fw" />
-                </button>
-                <button
-                  className={`manga-control-feature-button ${activeTool === 'Search' ? 'active' : ''}`}
-                  onClick={() => this.changeActiveTool('Search')}
-                  style={{ marginRight: '2px' }}
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Open search tool">
-                  <i className="fa fa-search fa-fw" />
-                </button>
-                <button
-                  className={`manga-control-feature-button ${activeTool === 'Sort' ? 'active' : ''}`}
-                  onClick={() => this.changeActiveTool('Sort')}
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Open sort tool">
-                  <i className="fa fa-sort fa-fw" />
-                </button>
-              </span>
-              <span className="pull-right">
-                <button
-                  className={`manga-control-feature-button ${activeView === 'Add' ? 'active' : ''}`}
-                  onClick={() => this.changeActiveView('Add')}
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Open insert form">
-                  <i className="fa fa-plus fa-fw" />
-                </button>
-                <button
-                  className={`manga-control-feature-button ${activeView === 'Detail' ? 'active' : ''}`}
-                  style={{ marginLeft: '2px' }}
-                  onClick={() => this.changeActiveView('Detail')}
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Open detail view">
-                  <i className="fa fa-file-o fa-fw" />
-                </button>
-                <button
-                  className={`manga-control-feature-button ${activeView === 'Edit' ? 'active' : ''}`}
-                  style={{ marginLeft: '2px' }}
-                  onClick={() => this.changeActiveView('Edit')}
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Open edit form">
-                  <i className="fa fa-pencil fa-fw" />
-                </button>
-                <button
-                  className={`manga-control-feature-button ${activeView === 'Delete' ? 'active' : ''}`}
-                  style={{ marginLeft: '2px' }}
-                  onClick={() => this.changeActiveView('Delete')}
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Open delete box">
-                  <i className="fa fa-times fa-fw" />
-                </button>
-              </span>
+              <ButtonsBar
+                customClass="pull-left"
+                features={tools}
+                featureClass="manga-control-feature-button"
+                activeFeature={activeTool}
+                onChangeFeature={this.changeActiveTool}
+              />
+              <ButtonsBar
+                customClass="pull-right"
+                features={views}
+                featureClass="manga-control-feature-button"
+                activeFeature={activeView}
+                onChangeFeature={onSetActiveView}
+              />
             </div>
             {activeView === 'Detail' && <MangaDetailView manga={manga} />}
-            {activeView === 'Delete' && <MangaDeleteView manga={manga} onSubmit={onDeleteManga}/>}
-            {activeView === 'Add' && <MangaForm onSubmit={onAddManga}/>}
-            {activeView === 'Edit' && <MangaForm manga={manga} onSubmit={onEditManga}/>}
+            {activeView === 'Delete' && <MangaDeleteView manga={manga} onSubmit={onDeleteManga} />}
+            {activeView === 'Add' && <MangaForm onSubmit={onAddManga} />}
+            {activeView === 'Edit' && <MangaForm manga={manga} onSubmit={onEditManga} />}
           </div>
         </div>
       </div>

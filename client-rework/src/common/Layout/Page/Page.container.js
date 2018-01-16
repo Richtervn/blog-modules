@@ -1,7 +1,7 @@
-import { Page } from 'components/Layout';
+import Page from './Page.component';
 import { connect } from 'react-redux';
 
-import { setActiveGroup, setActiveItem, setDefaultShowGroup } from 'modules/appControl';
+import { setActiveGroup, setActiveItem, setDefaultShowGroup } from 'pages/appControl';
 
 const mapStateToProps = ({ appControl }) => ({
   menuTree: appControl.menuTree,

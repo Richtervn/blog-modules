@@ -1,4 +1,4 @@
-import MangasReading from 'components/Pages/Collections/MangasReading';
+import MangasReading from './MangasReading.component';
 import { connect } from 'react-redux';
 
 import {
@@ -9,17 +9,22 @@ import {
   deleteManga,
   quickUpdate,
   searchManga,
-  sortManga
-} from 'modules/Collections/mangasReading';
+  sortManga,
+  setActiveView
+} from './MangasReading.module';
 
 const mapStateToProps = ({ mangasReading }) => ({
   mangas: mangasReading.mangas,
-  focusManga: mangasReading.focusManga
+  focusManga: mangasReading.focusManga,
+  activeView: mangasReading.activeView
 });
 
 const mapDispatchToProps = dispatch => ({
   onGetMangas() {
     dispatch(getMangas());
+  },
+  onSetActiveView(name){
+    dispatch(setActiveView(name));
   },
   onSetFocusManga(id) {
     dispatch(setFocusManga(id));

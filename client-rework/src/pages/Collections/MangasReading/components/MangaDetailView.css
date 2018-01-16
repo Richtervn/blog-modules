@@ -1,0 +1,14 @@
+.manga-detail-view {
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  padding: 5px 10px;
+}
+
+.mr-genre-tag {
+  margin-right: 2px;
+}
+
+.mr-aka-tag {
+  white-space: pre-wrap;
+  margin-right: 2px;
+}

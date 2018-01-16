@@ -12,9 +12,9 @@ import store from './store';
 
 import { ToastContainer } from 'react-toastify';
 
-import { HeaderBar } from 'common/Layout';
-// import NavigationBar from 'containers/Layout/NavigationBar';
-// import Page from 'containers/Layout/Page';
+import { HeaderBar, NavigationBar, Page } from 'common/Layout';
+
+import { MangasReading } from 'pages/Collections/MangasReading';
 
 // import MangasReading from 'containers/Pages/Collections/MangasReading';
 // import AppMenu from 'containers/Pages/Setting/AppMenu';
@@ -28,11 +28,11 @@ import { HeaderBar } from 'common/Layout';
 //         <HeaderBar />
 //         <NavigationBar />
 //         <Page>
-//           <Route exact path="/mangas_reading" component={MangasReading} />
+//
 //           <Route exact path="/app_menu" component={AppMenu} />
 //           <Route path="/flash_games/:name" component={FlashGames} />
 //         </Page>
-//         <ToastContainer autoClose={1500} closeButton={false}/>
+//
 //         <Modal />
 //       </div>
 
@@ -51,6 +51,13 @@ export default () => (
     <Router history={newHistory}>
       <div className="container-fluid">
         <HeaderBar />
+        <div className="row">
+          <NavigationBar />
+          <Page>
+            <Route exact path="/mangas_reading" component={MangasReading} />
+          </Page>
+        </div>
+        <ToastContainer autoClose={1500} closeButton={false} />
       </div>
     </Router>
   </Provider>

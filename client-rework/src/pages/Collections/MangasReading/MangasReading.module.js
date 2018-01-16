@@ -13,6 +13,7 @@ const GET_MANGAS_SUCCESS = 'mangasReading/GET_ALL_MANGA_SUCCESS';
 const GET_MANGAS_FAIL = 'mangasReading/GET_ALL_MANGA_FAIL';
 
 const SET_FOCUS_MANGA = 'mangasReading/SET_FOCUS_MANGA';
+const SET_ACTIVE_VIEW = 'mangasReading/SET_ACTIVE_VIEW';
 
 const QUICK_UPDATE_START = 'mangasReading/QUICK_UPDATE_START';
 const QUICK_UPDATE_SUCCESS = 'mangasReading/QUICK_UPDATE_SUCCESS';
@@ -35,9 +36,9 @@ const SORT_MANGA_SUCCESS = 'mangasReading/SORT_MANGA_SUCCESS';
 const SORT_MANGA_FAIL = 'mangasReading/SORT_MANGA_FAIL';
 
 export const setFocusManga = id => ({ type: SET_FOCUS_MANGA, id });
+export const setActiveView = name => ({ type: SET_ACTIVE_VIEW, name });
 
-export const addManga = form =>
-  actionCreator(ADD_MANGA_START, ADD_MANGA_SUCCESS, ADD_MANGA_FAIL, services.add, form)();
+export const addManga = form => actionCreator(ADD_MANGA_START, ADD_MANGA_SUCCESS, ADD_MANGA_FAIL, services.add, form)();
 
 export const editManga = form =>
   actionCreator(UPDATE_MANGA_START, UPDATE_MANGA_SUCCESS, UPDATE_MANGA_FAIL, services.edit, form)();
@@ -58,7 +59,8 @@ export const getMangas = actionCreator(GET_MANGAS_START, GET_MANGAS_SUCCESS, GET
 
 const initialState = {
   mangas: null,
-  focusManga: null
+  focusManga: null,
+  activeView: 'Add'
 };
 
 export default (state = initialState, action) => {
@@ -66,7 +68,9 @@ export default (state = initialState, action) => {
     case GET_MANGAS_SUCCESS:
       return { ...state, mangas: action.data, focusManga: action.data[0]._id };
     case SET_FOCUS_MANGA:
-      return { ...state, focusManga: action.id };
+      return { ...state, focusManga: action.id, activeView: 'Detail' };
+    case SET_ACTIVE_VIEW:
+      return { ...state, activeView: action.name };
     case ADD_MANGA_SUCCESS:
       state.mangas.push(action.data);
       toastSuccess(() => (
@@ -77,7 +81,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         mangas: state.mangas.slice(0),
-        focusManga: action.data._id
+        focusManga: action.data._id,
+        activeView: 'Detail'
       };
     case QUICK_UPDATE_SUCCESS:
       toastSuccess(() => (
@@ -87,6 +92,7 @@ export default (state = initialState, action) => {
       ));
       return {
         ...state,
+        activeView: 'Detail',
         focusManga: action.data._id,
         mangas: state.mangas
           .map(manga => {
@@ -105,6 +111,7 @@ export default (state = initialState, action) => {
       ));
       return {
         ...state,
+        activeView: 'Detail',
         focusManga: action.data._id,
         mangas: state.mangas
           .map(manga => {
@@ -120,6 +127,7 @@ export default (state = initialState, action) => {
       toastSuccess('You will never remember about that one');
       return {
         ...state,
+        activeView: 'Detail',
         focusManga: mangaList[0]._id,
         mangas: mangaList.slice(0)
       };

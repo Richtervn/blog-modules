@@ -1,18 +1,10 @@
 import { connect } from 'react-redux';
 import HeaderBar from './HeaderBar.component';
 
-import { getMenuTree } from 'pages/appControl';
-
 const mapStateToProps = ({ appControl }) => {
   const { menuTree, activeGroup } = appControl;
 
-  if (!menuTree && !activeGroup) {
-    return {
-      name: 'Home'
-    };
-  }
-  console.log(activeGroup);
-  if (menuTree && !activeGroup) {
+  if (!menuTree || !activeGroup) {
     return {
       name: 'Home',
       quote: "There's no place like home. There's no place like HOME!!!",
@@ -27,10 +19,4 @@ const mapStateToProps = ({ appControl }) => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  onGetMenuTree() {
-    dispatch(getMenuTree());
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderBar);
+export default connect(mapStateToProps)(HeaderBar);

@@ -33,6 +33,14 @@
   transition: 0.25s all;
 }
 
+.pull-right > .manga-control-feature-button {
+  margin-left: 2px;
+}
+
+.pull-left > .manga-control-feature-button {
+  margin-right: 2px;
+}
+
 .manga-control-feature-button.active {
   background-color: #063852;
 }

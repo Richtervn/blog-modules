@@ -2,7 +2,7 @@ import './NavigationBar.css';
 
 import _ from 'underscore';
 import React, { Component } from 'react';
-import { MenuGroup, MenuItem } from 'components/common';
+import { MenuGroup, MenuItem } from 'components/CollapseMenu';
 
 import { appRouter } from 'utils';
 

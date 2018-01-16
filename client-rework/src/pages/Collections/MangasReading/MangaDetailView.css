@@ -1,5 +1,0 @@
-.manga-detail-view {
-  max-height: calc(100vh - 140px);
-  overflow-y: auto;
-  padding: 5px 10px;
-}
