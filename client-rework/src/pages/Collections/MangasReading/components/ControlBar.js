@@ -23,6 +23,8 @@ class ControlBar extends Component {
       }
     };
     this.handleChange = this.handleChange.bind(this);
+    this.changeActiveTool = this.changeActiveTool.bind(this);
+    this.handleQuickUpdate = this.handleQuickUpdate.bind(this);
   }
 
   handleChange(event, prefix) {

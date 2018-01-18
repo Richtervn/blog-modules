@@ -1,7 +1,7 @@
-import FlashGames from 'components/Pages/FlashGames';
+import FlashGames from './FlashGames.component';
 import { connect } from 'react-redux';
 
-import { getGame } from 'modules/flashGames';
+import { getGame } from './FlashGames.module';
 
 const mapStateToProps = ({ flashGames }) => ({
   uri: flashGames.uri

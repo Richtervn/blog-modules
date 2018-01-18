@@ -1,8 +1,8 @@
 import './FlashGames.css';
 import React, { Component } from 'react';
 
-import Page from 'containers/Layout/Page';
-import { PageLoader } from 'components/Loaders';
+import { PageLoader } from 'common/Loaders';
+import PageContainer from 'common/PageContainer';
 
 const decodeGameName = encodeName => {
   let frags = encodeName.split('_');
@@ -32,11 +32,11 @@ class FlashGames extends Component {
     }
     const flashUri = this.props.uri.replace('./public', window.appConfig.API_HOST);
     return (
-      <Page>
-        <div className="flash-games-container">
+      <PageContainer backgroundColor="#324851">
+        <div className="row flash-games-container">
           <embed src={flashUri} type="application/x-shockwave-flash" width="800" height="600" />
         </div>
-      </Page>
+      </PageContainer>
     );
   }
 }

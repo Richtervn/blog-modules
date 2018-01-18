@@ -1,10 +1,14 @@
 import React from 'react';
 
-export default ({ children, backgroundUrl, overflow, center, opacity }) => {
+export default ({ children, backgroundUrl, overflow, center, opacity, backgroundColor }) => {
   const styles = {
     width: 'calc(100vw - 200px)',
     height: 'calc(100vh - 45px)'
   };
+
+  if (backgroundColor) {
+    styles.backgroundColor = backgroundColor;
+  }
 
   if (backgroundUrl) {
     styles.background = `url(${backgroundUrl})`;
@@ -38,7 +42,9 @@ export default ({ children, backgroundUrl, overflow, center, opacity }) => {
 
   return (
     <div style={styles}>
-      <div className="container-fluid">{children}</div>
+      <div className="container-fluid" style={{ height: '100%' }}>
+        {children}
+      </div>
     </div>
   );
 };

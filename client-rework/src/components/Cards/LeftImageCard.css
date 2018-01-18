@@ -7,6 +7,7 @@
   margin-right: 10px;
   display: inline-flex;
   cursor: pointer;
+  transition: 0.2s all;
 }
 
 .left-image-card.active {
