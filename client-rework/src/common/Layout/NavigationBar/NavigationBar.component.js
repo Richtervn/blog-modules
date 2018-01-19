@@ -4,6 +4,7 @@ import _ from 'underscore';
 import React, { Component } from 'react';
 import { MenuGroup, MenuItem } from 'components/CollapseMenu';
 
+import { openModal } from 'common/Modal';
 import { appRouter } from 'utils';
 
 class NavigationBar extends Component {
@@ -67,7 +68,7 @@ class NavigationBar extends Component {
             ))}
             {group === 'Flash Games' && (
               <div className="text-center">
-                <button className="menu-item-button">
+                <button className="menu-item-button" onClick={() => openModal('FlashGame')}>
                   <i className="fa fa-plus-square" />
                 </button>
               </div>

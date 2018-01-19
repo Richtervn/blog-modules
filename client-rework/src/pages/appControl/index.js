@@ -1,3 +1,9 @@
-import reducer, { setActiveGroup, setActiveItem, setDefaultShowGroup, getMenuTree } from './appControl.module';
+import reducer, {
+  setActiveGroup,
+  setActiveItem,
+  setDefaultShowGroup,
+  getMenuTree,
+  setModalName
+} from './appControl.module';
 
-export { reducer, setActiveGroup, setActiveItem, setDefaultShowGroup, getMenuTree };
+export { reducer, setActiveGroup, setActiveItem, setDefaultShowGroup, getMenuTree, setModalName };

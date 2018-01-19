@@ -1,4 +1,4 @@
-import Modal from './Modal.components';
+import Modal from './Modal.component';
 import { connect } from 'react-redux';
 
 const mapStateToProps = ({ appControl }) => ({ name: appControl.modalName });

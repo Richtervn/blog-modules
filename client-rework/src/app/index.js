@@ -11,18 +11,11 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import { ToastContainer } from 'react-toastify';
-
+import { Modal } from 'common/Modal';
 import { HeaderBar, NavigationBar, Page } from 'common/Layout';
 
 import { MangasReading } from 'pages/Collections/MangasReading';
 import { FlashGames } from 'pages/FlashGames';
-
-// import MangasReading from 'containers/Pages/Collections/MangasReading';
-// import AppMenu from 'containers/Pages/Setting/AppMenu';
-
-// import Modal from 'components/Modal';
-
-// <button onClick={() => {window.$('#modal').modal('show')}}>dcm</button>
 
 const newHistory = createBrowserHistory();
 
@@ -39,6 +32,7 @@ export default () => (
           </Page>
         </div>
         <ToastContainer autoClose={1500} closeButton={false} />
+        <Modal />
       </div>
     </Router>
   </Provider>

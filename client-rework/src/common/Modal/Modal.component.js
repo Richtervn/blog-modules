@@ -1,12 +1,139 @@
-import Modal from 'components/Modal';
+import React from 'react';
+import { Modal } from 'components/Modal';
 
-import { FlashGameForm } from 'pages/FlashGames';
+import { FlashGamesForm } from 'pages/FlashGames';
 
 export default ({ name }) => {
   const additionProps = {};
 
-  return <Modal>{name === 'FlashGame' && <FlashGameForm />}</Modal>;
+  return (
+    <Modal {...additionProps}>
+      {name === 'FlashGame' && <FlashGamesForm />}
+    </Modal>
+  );
 };
+
+// state = {
+
+//   AddYugiohMod: {
+//     Name: '',
+//     Icon: null,
+//     Image: null,
+//     Credits: [''],
+//     Rating: 0,
+//     Description: '',
+//     Introduction: ''
+//   },
+//   AddYugiohDeck: {
+//     ModId: '',
+//     Name: '',
+//     Image: null,
+//     Rating: 0,
+//     Description: '',
+//     Pros: [''],
+//     Cons: [''],
+//     Winrate: 0
+//   },
+//   EditYugiohMod: null,
+//   EditYugiohDeck: null,
+//   AddMusic: {
+//     File: null,
+//     Rating: 0,
+//     Genre: ''
+//   },
+//   AddStarcraftMap: {
+//     Rating: 0,
+//     File: null,
+//     Matchup: '',
+//     Description: '',
+//     Tipntrick: ['']
+//   },
+//   EditStarcraftMap: null,
+//   AddStarcraftCampaign: {
+//     Rating: 0,
+//     Matchup: '',
+//     Description: '',
+//     Introduction: '',
+//     Version: ''
+//   },
+//   EditStarcraftCampaign: null,
+//   AddStarcraftMod: {
+//     Name: '',
+//     Rating: 0,
+//     Description: '',
+//     Introduction: '',
+//     Version: ''
+//   },
+//   EditStarcraftMod: null,
+//   AddMuonlineTool: {
+//     Credits: [''],
+//     Archive: null,
+//     Icon: null,
+//     Rating: 0,
+//     Description: '',
+//     Introduce: '',
+//     Version: ''
+//   },
+//   EditMuonlineTool: null,
+//   AddMuonlineVersion: {
+//     file: null,
+//     Credits: [''],
+//     Rating: 0,
+//     Description: '',
+//     Introduce: '',
+//     Version: ''
+//   },
+//   EditMuonlineVersion: null,
+//   AddDS9799VipSystem: {
+//     name: '',
+//     price: 0,
+//     duration: 0,
+//     type: 'Account'
+//   },
+//   EditDS9799VipSystem: null,
+//   AddD2Mod: {
+//     Archive: null,
+//     Icon: null,
+//     Background: null,
+//     Name: '',
+//     ModVersion: '1.08',
+//     Version: '',
+//     Overview: [''],
+//     Description: '',
+//     Rating: 0
+//   },
+//   EditD2Mod: null,
+//   AddD2Tool: {
+//     Archive: null,
+//     Icon: null,
+//     Name: '',
+//     Description: '',
+//     Overview: [''],
+//     Rating: 0
+//   },
+//   EditD2Tool: null,
+//   AddD2SurvivalKit: {
+//     file: null,
+//     Name: '',
+//     Type: 'Character',
+//     Description: '',
+//     Overview: [''],
+//     Rating: 0
+//   },
+//   EditD2SurvivalKit: null,
+//   AddD2Character: {
+//     file: '',
+//     Name: '',
+//     Title: 'No Title',
+//     Class: 'Amazon',
+//     Level: 0,
+//     ModId: '',
+//     Overview: [''],
+//     Rating: 0,
+//     IsCount: true
+//   },
+//   EditD2Character: null
+// },
 
 // import FormAddFlashGame from 'containers/Forms/FormAddFlashGame';
 // import FormAddMusic from 'containers/Forms/FormAddMusic';
