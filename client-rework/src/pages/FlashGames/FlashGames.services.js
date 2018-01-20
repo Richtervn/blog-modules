@@ -1,6 +1,6 @@
 import { serviceCaller } from 'helpers';
 
-const { commonPostMultiplePart, commonGet } = serviceCaller;
+const { commonPostMultiplePart, commonGet, commonPutMultiplePart } = serviceCaller;
 
 export default {
   addGame(formBody) {
@@ -9,6 +9,10 @@ export default {
   },
   getGame(Name) {
     const data = commonGet('flash_games/get_game', [Name]);
+    return data;
+  },
+  editGame(formBody) {
+    const data = commonPutMultiplePart('flash_games/edit_game', formBody);
     return data;
   }
 };

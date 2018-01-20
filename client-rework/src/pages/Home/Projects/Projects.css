@@ -1,0 +1,7 @@
+.test-card {
+  width: 200px;
+  height: 100px;
+  background: red;
+  cursor: pointer;
+  user-select: none;
+}

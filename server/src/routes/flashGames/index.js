@@ -1,9 +1,12 @@
 import express from 'express';
 
 import addGame from './services/addGame';
+import editGame from './services/editGame';
 import getGame from './services/getGame';
 import uploadGame from './services/uploadGame';
+
 import addMenu from '../system/services/addMenu';
+import editMenu from '../system/services/editMenu';
 
 export default (FlashGames, factories) => {
   const router = express.Router();
@@ -31,6 +34,15 @@ export default (FlashGames, factories) => {
     const list = await FlashGames.find();
     res.send(list);
   });
+
+  router.put(
+    '/edit_game',
+    wrap(async (req, res, next) => {
+      const body = await uploadGame(req, res);
+      const { game, menu } = await editGame(FlashGames, body, editMenu, readFile, writeFile);
+      res.send({ game, menu });
+    })
+  );
 
   return router;
 };

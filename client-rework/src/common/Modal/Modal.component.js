@@ -9,6 +9,7 @@ export default ({ name }) => {
   return (
     <Modal {...additionProps}>
       {name === 'FlashGame' && <FlashGamesForm />}
+      {name === 'EditFlashGame' && <FlashGamesForm edit/>}
     </Modal>
   );
 };

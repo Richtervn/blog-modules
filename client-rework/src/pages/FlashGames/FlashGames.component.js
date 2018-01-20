@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import { PageLoader } from 'common/Loaders';
 import PageContainer from 'common/PageContainer';
+import { openModal } from 'common/Modal';
 
 const decodeGameName = encodeName => {
   let frags = encodeName.split('_');
@@ -27,14 +28,33 @@ class FlashGames extends Component {
   }
 
   render() {
-    if (!this.props.uri) {
+    const { currentGame } = this.props;
+
+    if (!currentGame) {
       return <PageLoader />;
     }
-    const flashUri = this.props.uri.replace('./public', window.appConfig.API_HOST);
+    const flashUri = currentGame.Uri.replace('./public', window.appConfig.API_HOST);
+
     return (
       <PageContainer backgroundColor="#324851">
-        <div className="row flash-games-container">
-          <embed src={flashUri} type="application/x-shockwave-flash" width="800" height="600" />
+        <div className="flash-games-container">
+          <embed
+            src={flashUri}
+            type="application/x-shockwave-flash"
+            width={currentGame.Width || 800}
+            height={currentGame.Height || 600}
+          />
+          <div className="flash-games-addon">
+            <button
+              className="btn btn-secondary"
+              style={{ marginRight: '2px' }}
+              onClick={() => openModal('EditFlashGame')}>
+              <i className="fa fa-gear fa-fw" />
+            </button>
+            <button className="btn btn-secondary">
+              <i className="fa fa-question-circle-o fa-fw" />
+            </button>
+          </div>
         </div>
       </PageContainer>
     );

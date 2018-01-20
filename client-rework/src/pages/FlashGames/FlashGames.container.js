@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getGame } from './FlashGames.module';
 
 const mapStateToProps = ({ flashGames }) => ({
-  uri: flashGames.uri
+  currentGame: flashGames.currentGame
 });
 
 const mapDispatchToProps = dispatch => ({

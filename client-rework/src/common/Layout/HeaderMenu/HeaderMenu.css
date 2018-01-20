@@ -1,0 +1,23 @@
+.header-menu-bar {
+  position: fixed;
+  width: 400px;
+  background: #2e2f2f;
+  right: 0;
+  top: 45px;
+  z-index: 1;
+  padding: 10px;
+}
+
+.header-menu-input-wrapper {
+  display: flex;
+}
+
+.header-menu-input {
+  height: 32px;
+  margin-right: 5px;
+}
+
+.header-menu-btn {
+  line-height: 1.1;
+  padding: 2px 8px;
+}

@@ -3,7 +3,18 @@ import reducer, {
   setActiveItem,
   setDefaultShowGroup,
   getMenuTree,
-  setModalName
+  setModalName,
+  showHeaderMenu,
+  hideHeaderMenu
 } from './appControl.module';
 
-export { reducer, setActiveGroup, setActiveItem, setDefaultShowGroup, getMenuTree, setModalName };
+export {
+  reducer,
+  setActiveGroup,
+  setActiveItem,
+  setDefaultShowGroup,
+  getMenuTree,
+  setModalName,
+  showHeaderMenu,
+  hideHeaderMenu
+};

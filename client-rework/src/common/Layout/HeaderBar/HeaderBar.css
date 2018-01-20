@@ -33,6 +33,18 @@
   right: 150px;
 }
 
+.header-bar-btn-wrapper {
+  position: fixed;
+  right: 10px;
+}
+
+.header-bar-btn {
+  border: solid 1px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 800px) {
   .header-bar-texts-wrapper {
     position: fixed;

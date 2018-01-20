@@ -93,15 +93,17 @@ export default (state = initialState, action) => {
       return {
         ...state,
         activeView: 'Detail',
-        focusManga: action.data._id,
+        focusManga: state.focusManga ? action.data._id : null,
         mangas: state.mangas
-          .map(manga => {
-            if (parseInt(manga._id, 10) === parseInt(action.data._id, 10)) {
-              return action.data;
-            }
-            return manga;
-          })
-          .slice(0)
+          ? state.mangas
+              .map(manga => {
+                if (parseInt(manga._id, 10) === parseInt(action.data._id, 10)) {
+                  return action.data;
+                }
+                return manga;
+              })
+              .slice(0)
+          : null
       };
     case UPDATE_MANGA_SUCCESS:
       toastSuccess(() => (
@@ -112,15 +114,17 @@ export default (state = initialState, action) => {
       return {
         ...state,
         activeView: 'Detail',
-        focusManga: action.data._id,
+        focusManga: state.focusManga ? action.data._id : null,
         mangas: state.mangas
-          .map(manga => {
-            if (parseInt(manga._id, 10) === parseInt(action.data._id, 10)) {
-              return action.data;
-            }
-            return manga;
-          })
-          .slice(0)
+          ? state.mangas
+              .map(manga => {
+                if (parseInt(manga._id, 10) === parseInt(action.data._id, 10)) {
+                  return action.data;
+                }
+                return manga;
+              })
+              .slice(0)
+          : null
       };
     case DELETE_MANGA_SUCCESS:
       const mangaList = state.mangas.filter(manga => manga._id !== action.data._id);

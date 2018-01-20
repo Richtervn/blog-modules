@@ -11,6 +11,8 @@ const SET_ACTIVE_GROUP = 'appControl/SET_ACTIVE_GROUP';
 const SET_ACTIVE_ITEM = 'appControl/SET_ACTIVE_ITEM';
 const SET_DEFAULT_SHOW_GROUP = 'appControl/SET_DEFAULT_SHOW_GROUP';
 const SET_MODAL_NAME = 'appControl/SET_MODAL_NAME';
+const SHOW_HEADER_MENU = 'appControl/SHOW_HEADER_MENU';
+const HIDE_HEADER_MENU = 'appControl/HIDE_HEADER_MENU';
 
 export const getMenuTree = actionCreator(
   GET_MENU_TREE_START,
@@ -23,13 +25,16 @@ export const setActiveGroup = group => ({ type: SET_ACTIVE_GROUP, group });
 export const setActiveItem = item => ({ type: SET_ACTIVE_ITEM, item });
 export const setDefaultShowGroup = group => ({ type: SET_DEFAULT_SHOW_GROUP, group });
 export const setModalName = name => ({ type: SET_MODAL_NAME, name });
+export const showHeaderMenu = () => ({ type: SHOW_HEADER_MENU });
+export const hideHeaderMenu = () => ({ type: HIDE_HEADER_MENU });
 
 const initialState = {
   menuTree: null,
   activeGroup: null,
   activeItem: null,
   defaultShowGroup: null,
-  modalName: 'FlashGame'
+  modalName: 'FlashGame',
+  isShowHeaderMenu: false
 };
 
 export default (state = initialState, action) => {
@@ -44,6 +49,11 @@ export default (state = initialState, action) => {
       return { ...state, defaultShowGroup: action.group };
     case SET_MODAL_NAME:
       return { ...state, modalName: action.name };
+    case SHOW_HEADER_MENU:
+      return { ...state, isShowHeaderMenu: true };
+    case HIDE_HEADER_MENU:
+      return { ...state, isShowHeaderMenu: false };
+
     case GET_MENU_TREE_FAIL:
       toastError(action.error);
       return state;
