@@ -51,7 +51,7 @@ class FlashGames extends Component {
               onClick={() => openModal('EditFlashGame')}>
               <i className="fa fa-gear fa-fw" />
             </button>
-            <button className="btn btn-secondary">
+            <button className="btn btn-secondary" onClick={() => openModal('FlashGameGuide')}>
               <i className="fa fa-question-circle-o fa-fw" />
             </button>
           </div>

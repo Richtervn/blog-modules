@@ -13,6 +13,7 @@ const Types = {
  * Specifies the drag source contract.
  * Only `beginDrag` function is required.
  */
+ 
 const cardSource = {
   beginDrag(props) {
     // Return the data describing the dragged item
@@ -21,10 +22,12 @@ const cardSource = {
   },
 
   endDrag(props, monitor, component) {
+    console.log(props);
+    console.log(monitor);
+    console.log(component);
     if (!monitor.didDrop()) {
       return;
     }
-
     // When dropped on a compatible target, do something
     const item = monitor.getItem();
     const dropResult = monitor.getDropResult();

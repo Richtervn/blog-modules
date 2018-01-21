@@ -1,15 +1,19 @@
 import React from 'react';
 import { Modal } from 'components/Modal';
 
-import { FlashGamesForm } from 'pages/FlashGames';
+import { FlashGamesForm, FlashGamesGuide } from 'pages/FlashGames';
 
 export default ({ name }) => {
   const additionProps = {};
+  if (name === 'FlashGameGuide') {
+    additionProps.dialogStyles = { maxWidth: 'max-content', minWidth: '500px' };
+  }
 
   return (
     <Modal {...additionProps}>
       {name === 'FlashGame' && <FlashGamesForm />}
-      {name === 'EditFlashGame' && <FlashGamesForm edit/>}
+      {name === 'EditFlashGame' && <FlashGamesForm edit />}
+      {name === 'FlashGameGuide' && <FlashGamesGuide />}
     </Modal>
   );
 };
