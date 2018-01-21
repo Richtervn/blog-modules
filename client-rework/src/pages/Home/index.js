@@ -1,3 +1,3 @@
-import { Projects } from './Projects';
+import Home from './Home.component';
 
-export { Projects };
+export { Home };

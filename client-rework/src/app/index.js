@@ -20,8 +20,7 @@ import { HeaderBar, NavigationBar, Page, HeaderMenu } from 'common/Layout';
 
 import { MangasReading } from 'pages/Collections/MangasReading';
 import { FlashGames } from 'pages/FlashGames';
-
-import { Projects } from 'pages/Home';
+import { Home } from 'pages/Home';
 
 const newHistory = createBrowserHistory();
 
@@ -36,7 +35,7 @@ class App extends Component {
             <div className="row">
               <NavigationBar />
               <Page>
-                <Route exact path="/" component={Projects} />
+                <Route exact path="/" component={Home} />
                 <Route exact path="/mangas_reading" component={MangasReading} />
                 <Route path="/flash_games/:name" component={FlashGames} />
               </Page>
