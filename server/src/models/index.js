@@ -8,6 +8,7 @@ import DiabloIITools from './DiabloIITools';
 import FlashGames from './FlashGames';
 import MangasReading from './MangasReading';
 import PersonalDiary from './PersonalDiary';
+import Projects from './Projects';
 import YugiohPocMods from './YugiohPocMods';
 import YugiohPocDecks from './YugiohPocDecks';
 import Music from './Music';
@@ -23,6 +24,7 @@ const models = db => {
   MangasReading.plugin(autoIncrement.plugin, 'MangasReading');
   AppDiary.plugin(autoIncrement.plugin, 'AppDiary');
   PersonalDiary.plugin(autoIncrement.plugin, 'PersonalDiary');
+  Projects.plugin(autoIncrement.plugin, 'Projects');
   YugiohPocMods.plugin(autoIncrement.plugin, 'YugiohPocMods');
   YugiohPocDecks.plugin(autoIncrement.plugin, 'YugiohPocDecks');
   Music.plugin(autoIncrement.plugin, 'Music');
@@ -46,6 +48,7 @@ const models = db => {
     FlashGames: db.model('FlashGames', FlashGames),
     MangasReading: db.model('MangasReading', MangasReading),
     PersonalDiary: db.model('PersonalDiary', PersonalDiary),
+    Projects: db.model('Projects', Projects),
     YugiohPocMods: db.model('YugiohPocMods', YugiohPocMods),
     YugiohPocDecks: db.model('YugiohPocDecks', YugiohPocDecks),
     Music: db.model('Music', Music),

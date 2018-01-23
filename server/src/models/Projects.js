@@ -2,11 +2,11 @@ import { Schema } from 'mongoose';
 
 const Projects = new Schema({
   Name: String,
-  Technology: String,
-  Description: String,
+  Technologies: [String],
   StartTime: Date,
   EndTime: Date,
-  Status: String
+  Progess: String,
+  Color: String
 });
 
 export default Projects;

@@ -3,6 +3,7 @@ import systemRouter from './system';
 import flashGamesRouter from './flashGames';
 import mangasReadingRouter from './mangasReading';
 import profileRouter from './profile';
+import projectsRouter from './projects';
 import yugiohPocRouter from './yugiohPoc';
 import musicRouter from './music';
 import starcraftRouter from './starcraft';
@@ -18,6 +19,7 @@ const routes = (models, factories) => {
     DiabloIISurvivalKits,
     FlashGames,
     MangasReading,
+    Projects,
     YugiohPocMods,
     YugiohPocDecks,
     Music,
@@ -34,6 +36,7 @@ const routes = (models, factories) => {
     flash_games: flashGamesRouter(FlashGames, factories),
     mangas_reading: mangasReadingRouter(MangasReading, factories),
     profile: profileRouter(factories),
+    projects: projectsRouter(Projects, factories),
     yugioh_poc: yugiohPocRouter(YugiohPocMods, YugiohPocDecks, factories),
     music: musicRouter(Music, factories),
     starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories),
