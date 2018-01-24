@@ -3,11 +3,13 @@ import { combineReducers } from 'redux';
 import { reducer as appControl } from 'pages/appControl';
 import { reducer as flashGames } from 'pages/FlashGames';
 import { reducer as mangasReading } from 'pages/Collections/MangasReading';
+import { reducer as projects } from 'pages/Home/Projects';
 
 export default combineReducers({
   appControl,
   flashGames,
-  mangasReading
+  mangasReading,
+  projects
 });
 
 // import page from 'modules/page';
@@ -48,4 +50,3 @@ export default combineReducers({
 //   ds9799_webShop: darksteam97d99i.webShop,
 //   ds9799_luxuryShop: darksteam97d99i.luxuryShop
 // });
-

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ModalHeader } from 'components/Modal';
+import { ModalHeader, ModalFooter } from 'components/Modal';
 import { FormGroupRow, FormGroupArea } from 'components/FormTools';
 
 const initialFormValue = {
@@ -70,14 +70,7 @@ class FlashGamesForm extends Component {
           <FormGroupArea name="Guide" onChange={this.handleChange} label="Guide" value={Guide} />
         </form>
       </div>,
-      <div key="fg_f" className="modal-footer">
-        <button className="btn btn-success" onClick={() => this.handleSubmit()}>
-          Submit
-        </button>
-        <button className="btn btn-danger" data-dismiss="modal">
-          Close
-        </button>
-      </div>
+      <ModalFooter key="fg_f" onClickSubmit={() => this.handleSubmit()} />
     ];
   }
 }

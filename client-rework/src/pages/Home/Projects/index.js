@@ -1,3 +1,5 @@
-import Projects from './Projects.component';
+import Projects from './Projects.container';
+import reducer from './Projects.module';
+import ProjectForm from './components/ProjectForm';
 
-export { Projects };
+export { reducer, ProjectForm, Projects };

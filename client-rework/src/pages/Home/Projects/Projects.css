@@ -1,7 +1,6 @@
-.test-card {
-  width: 200px;
-  height: 100px;
-  background: red;
-  cursor: pointer;
-  user-select: none;
+.projects-container {
+  flex-wrap: wrap;
+  padding: 10px 0 10px 10px;
+  height: calc(100vh - 90px);
+  overflow-y: auto;
 }

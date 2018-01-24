@@ -1,6 +1,7 @@
 import reducer, {
   setActiveGroup,
   setActiveItem,
+  setActiveTab,
   setDefaultShowGroup,
   getMenuTree,
   setModalName,
@@ -12,6 +13,7 @@ export {
   reducer,
   setActiveGroup,
   setActiveItem,
+  setActiveTab,
   setDefaultShowGroup,
   getMenuTree,
   setModalName,

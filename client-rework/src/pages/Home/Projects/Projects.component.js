@@ -1,70 +1,25 @@
+import './Projects.css';
 import React from 'react';
-import { DragSource } from 'react-dnd';
 
-// Drag sources and drop targets only interact
-// if they have the same string type.
-// You want to keep types in a separate file with
-// the rest of your app's constants.
-const Types = {
-  CARD: 'card'
-};
+import { TabLoader } from 'common/Loaders';
+import { openModal } from 'common/Modal';
 
-/**
- * Specifies the drag source contract.
- * Only `beginDrag` function is required.
- */
- 
-const cardSource = {
-  beginDrag(props) {
-    // Return the data describing the dragged item
-    const item = { id: props.id };
-    return item;
-  },
+import AddCardButton from 'components/AddCardButton';
 
-  endDrag(props, monitor, component) {
-    console.log(props);
-    console.log(monitor);
-    console.log(component);
-    if (!monitor.didDrop()) {
-      return;
-    }
-    // When dropped on a compatible target, do something
-    const item = monitor.getItem();
-    const dropResult = monitor.getDropResult();
-    // CardActions.moveCardToList(item.id, dropResult.listId);
+export default ({ projects, onGetProjects }) => {
+  if (!projects) {
+    onGetProjects();
+    return <TabLoader />;
   }
-};
 
-/**
- * Specifies which props to inject into your component.
- */
-function collect(connect, monitor) {
-  return {
-    // Call this function inside render()
-    // to let React DnD handle the drag events:
-    connectDragSource: connect.dragSource(),
-    // You can ask the monitor about the current drag state:
-    isDragging: monitor.isDragging()
-  };
-}
-
-class Card extends React.Component {
-  render() {
-    // Your component receives its own props as usual
-    const { id } = this.props;
-
-    // These two props are injected by React DnD,
-    // as defined by your `collect` function above:
-    const { isDragging, connectDragSource } = this.props;
-
-    return connectDragSource(
-      <div>
-        I am a draggable card number {id}
-        {isDragging && ' (and I am being dragged now)'}
+  return (
+    <div className="fit-container" id="tabProjects">
+      <div className="container-fluid">
+        <div className="row projects-container">
+          {projects.map(project => <div />)}
+          <AddCardButton col={3} minHeight="200px" color="#2e2f2f" onClick={() => openModal('AddProject')} />
+        </div>
       </div>
-    );
-  }
-}
-
-// Export the wrapped version
-export default DragSource(Types.CARD, cardSource, collect)(Card);
+    </div>
+  );
+};

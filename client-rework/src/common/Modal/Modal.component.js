@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal } from 'components/Modal';
 
 import { FlashGamesForm, FlashGamesGuide } from 'pages/FlashGames';
+import { ProjectForm } from 'pages/Home/Projects';
 
 export default ({ name }) => {
   const additionProps = {};
@@ -14,6 +15,7 @@ export default ({ name }) => {
       {name === 'FlashGame' && <FlashGamesForm />}
       {name === 'EditFlashGame' && <FlashGamesForm edit />}
       {name === 'FlashGameGuide' && <FlashGamesGuide />}
+      {name === 'AddProject' && <ProjectForm />}
     </Modal>
   );
 };
