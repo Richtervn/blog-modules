@@ -4,3 +4,7 @@
   height: calc(100vh - 90px);
   overflow-y: auto;
 }
+
+.project-info {
+  padding-top: 20px; 
+}

@@ -1,0 +1,16 @@
+.form-array-wrapper {
+  display: flex;
+}
+
+.form-array-wrapper > .btn {
+  height: 32px;
+  padding: 0 10px;
+  margin-left: 5px;
+}
+
+.form-array-btn {
+  float: left;
+  margin-top: 5px;
+  padding: 0 20px;
+  font-size: 14px;
+}

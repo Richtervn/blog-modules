@@ -8,4 +8,8 @@ const openModal = name => {
   window.$('#modal').modal('show');
 };
 
-export { Modal, openModal };
+const hideModal = () => {
+  window.$('#modal').modal('hide');
+};
+
+export { Modal, openModal, hideModal };

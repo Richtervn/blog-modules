@@ -1,7 +1,8 @@
 import _ from 'underscore';
 
-export default (state, event, index, arrays, filesArr) => {
+export default (state, event, index, arrays, filesArr, colorArr) => {
   const formValue = state;
+
   const { name, value, files } = event.target;
 
   let valueName = name;
@@ -10,6 +11,9 @@ export default (state, event, index, arrays, filesArr) => {
   }
   if (filesArr && _.contains(filesArr, name)) {
     valueName = 'InFiles';
+  }
+  if( colorArr && _.contains(colorArr, name)) {
+    valueName = 'InColor';
   }
 
   switch (valueName) {
@@ -24,6 +28,9 @@ export default (state, event, index, arrays, filesArr) => {
       break;
     case 'InFiles':
       formValue[name] = files[0];
+      break;
+    case 'InColor':
+      formValue[name] = value;
       break;
     default:
       formValue[name] = value;

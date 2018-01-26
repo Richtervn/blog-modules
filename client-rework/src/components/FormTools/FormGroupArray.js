@@ -1,3 +1,4 @@
+import './FormGroupArray.css';
 import React from 'react';
 
 export default ({ label, type, name, placeholder, arrayValues, onChange, onRemove, onAdd }) => {
@@ -8,28 +9,21 @@ export default ({ label, type, name, placeholder, arrayValues, onChange, onRemov
       </label>
       <div className="col-sm-9">
         {arrayValues.map((arrayValue, index) => (
-          <div className="row no-row-margin" key={index}>
-            <div className="col-10 no-row-margin">
-              <input
-                type={type}
-                className="form-control form-control-sm"
-                placeholder={placeholder}
-                value={arrayValue}
-                onChange={event => onChange(event, index)}
-                name={name}
-              />
-            </div>
-            <div className="col-2 no-row-margin">
-              <button
-                className="btn btn-danger channel-button"
-                type="button"
-                onClick={() => onRemove(name, index)}>
-                <i className="fa fa-times" />
-              </button>
-            </div>
+          <div key={index} className="form-array-wrapper">
+            <input
+              type={type}
+              className="form-control form-control-sm"
+              placeholder={placeholder}
+              value={arrayValue}
+              onChange={event => onChange(event, index)}
+              name={name}
+            />
+            <button className="btn btn-danger channel-button" type="button" onClick={() => onRemove(name, index)}>
+              <i className="fa fa-times" />
+            </button>
           </div>
         ))}
-         <button className="btn btn-primary btn-sm" type="button" onClick={() => onAdd(name)} style={{float: 'left', marginTop: '5px'}}>
+        <button className="btn btn-primary form-array-btn" type="button" onClick={() => onAdd(name)}>
           <span>
             <i className="fa fa-plus" />
           </span>&nbsp; {`Add ${name}`}

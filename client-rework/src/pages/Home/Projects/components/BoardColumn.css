@@ -1,0 +1,13 @@
+.project-board-column {
+  width: 25%;
+  background-color: #e2e4e6;
+  margin-right: 10px;
+  border-radius: 4px;
+  padding: 10px;
+  height: fit-content;
+  max-height: calc(100vh - 175px);
+}
+
+.project-board-column > .column-label {
+  font-weight: 700;
+}

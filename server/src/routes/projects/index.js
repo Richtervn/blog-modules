@@ -1,6 +1,7 @@
 import express from 'express';
 
 import addProject from './services/addProject';
+import getAllProjects from './services/getAllProjects';
 import updateProject from './services/updateProject';
 
 export default (Projects, factories) => {
@@ -10,8 +11,16 @@ export default (Projects, factories) => {
   router.get(
     '/get_all',
     wrap(async (req, res, next) => {
-      const projects = await commonService.getAll(Projects);
+      const projects = await getAllProjects(Projects);
       res.send(projects);
+    })
+  );
+
+  router.get(
+    '/get_detail/:id',
+    wrap(async (req, res, next) => {
+      const project = await commonService.getOne(Projects, req.params.id);
+      res.send(project);
     })
   );
 

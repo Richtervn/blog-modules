@@ -7,6 +7,10 @@ export default {
     const data = commonGet('projects/get_all');
     return data;
   },
+  getProjectDetail(id) {
+    const data = commonGet('projects/get_detail', [id]);
+    return data;
+  },
   addProject(formBody) {
     const data = commonPost('projects/add', formBody);
     return data;
