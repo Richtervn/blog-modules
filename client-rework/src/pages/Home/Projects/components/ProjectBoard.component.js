@@ -1,7 +1,8 @@
 import './ProjectBoard.css';
 import React, { Component } from 'react';
 
-import BoardColumn from './BoardColumn.component';
+import { openModal } from 'common/Modal';
+import BoardColumn from './BoardColumn.container';
 
 const columns = [
   { key: 'Plans', label: 'Plans' },
@@ -12,24 +13,31 @@ const columns = [
 
 class ProjectBoard extends Component {
   render() {
-    const { project } = this.props;
+    const { project, onBack } = this.props;
 
     return (
       <div className="row">
         <div className="project-board-header">
-          <button className="btn btn-back">
+          <button className="btn btn-back" onClick={() => onBack()}>
             <i className="fa fa-long-arrow-left" />
           </button>
           <button className="btn">
             <i className="fa fa-save" />
           </button>
-          <button className="btn">
+          <button className="btn" onClick={() => openModal('ProjectSetting')}>
             <i className="fa fa-gear" />
           </button>
           <h4>{project.Name}</h4>
+          <div className="project-tags">
+            {project.TagColor.map((tag, i) => (
+              <div key={tag._id} className="project-color-tag" style={{ backgroundColor: tag.Color }}>
+                {tag.Label}
+              </div>
+            ))}
+          </div>
         </div>
         <div className="project-board-content" style={{ backgroundColor: project.Color }}>
-          {columns.map((column, i) => <BoardColumn key={i} label={column.label} />)}
+          {columns.map((column, i) => <BoardColumn key={i} column={column} items={project[column.key]} />)}
         </div>
       </div>
     );

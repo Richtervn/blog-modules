@@ -1,16 +1,21 @@
 import { Schema } from 'mongoose';
 
+const SubTask = new Schema({
+  Label: String,
+  IsDone: Boolean
+});
+
 const ProjectItem = new Schema({
   Label: String,
   Description: String,
-  SubTasks: [String],
+  SubTasks: [SubTask],
   Tags: [String]
 });
 
 const TagColor = new Schema({
   Label: String,
   Color: String
-})
+});
 
 const Projects = new Schema({
   Name: String,

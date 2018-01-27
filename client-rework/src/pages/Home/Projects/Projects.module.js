@@ -19,9 +19,19 @@ const DELETE_PROJECT_FAIL = 'projects/DELETE_PROJECT_FAIL';
 const GET_PROJECT_DETAIL_START = 'projects/GET_PROJECT_DETAIL_START';
 const GET_PROJECT_DETAIL_SUCCESS = 'projects/GET_PROJECT_DETAIL_SUCCESS';
 const GET_PROJECT_DETAIL_FAIL = 'projects/GET_PROJECT_DETAIL_FAIL';
+const UPDATE_SETTING_START = 'projects/UPDATE_SETTING_START';
+const UPDATE_SETTING_SUCCESS = 'projects/UPDATE_SETTING_SUCCESS';
+const UPDATE_SETTING_FAIL = 'projects/UPDATE_SETTING_FAIL';
+
+const ADD_PROJECT_ITEM_START = 'projects/ADD_PROJECT_ITEM_START';
+const ADD_PROJECT_ITEM_SUCCESS = 'projects/ADD_PROJECT_ITEM_SUCCESS';
+const ADD_PROJECT_ITEM_FAIL = 'projects/ADD_PROJECT_ITEM_FAIL';
 
 const SET_CURRENT_PROJECT = 'projects/SET_CURRENT_PROJECT';
 const UNSET_PROJECT_ON_BOARD = 'projects/UNSET_PROJECT_ON_BOARD';
+const SET_COLUMN_ON_ADD = 'projects/SET_COLUMN_ON_ADD';
+
+const MOVE_CARD_TO_LIST = 'projects/MOVE_CARD_TO_LIST';
 
 export const getProjects = actionCreator(
   GET_PROJECTS_START,
@@ -43,13 +53,29 @@ export const editProject = formBody =>
   actionCreator(EDIT_PROJECT_START, EDIT_PROJECT_SUCCESS, EDIT_PROJECT_FAIL, services.editProject, formBody)();
 export const deleteProject = id =>
   actionCreator(DELETE_PROJECT_START, DELETE_PROJECT_SUCCESS, DELETE_PROJECT_FAIL, services.deleteProject, id)();
+export const updateSetting = formBody =>
+  actionCreator(UPDATE_SETTING_START, UPDATE_SETTING_SUCCESS, UPDATE_SETTING_FAIL, services.updateSetting, formBody)();
+
+export const addProjectItem = formBody =>
+  actionCreator(
+    ADD_PROJECT_ITEM_START,
+    ADD_PROJECT_ITEM_SUCCESS,
+    ADD_PROJECT_ITEM_FAIL,
+    services.addProjectItem,
+    formBody
+  )();
+
 export const setCurrentProject = project => ({ type: SET_CURRENT_PROJECT, project });
 export const unsetProjectOnBoard = () => ({ type: UNSET_PROJECT_ON_BOARD });
+export const setColumnOnAdd = column => ({ type: SET_COLUMN_ON_ADD, column });
+
+export const moveCardToList = (item, column, oldColumn) => ({ type: MOVE_CARD_TO_LIST, item, column, oldColumn });
 
 const initialState = {
   projects: null,
   currentProject: { Technologies: [''] },
-  projectOnBoard: null
+  projectOnBoard: null,
+  columnOnAdd: null
 };
 
 export default (state = initialState, action) => {
@@ -92,11 +118,35 @@ export default (state = initialState, action) => {
       return { ...state, currentProject: { ...action.project } };
     case UNSET_PROJECT_ON_BOARD:
       return { ...state, projectOnBoard: null };
+    case SET_COLUMN_ON_ADD:
+      return { ...state, columnOnAdd: action.column };
+    case UPDATE_SETTING_SUCCESS:
+      toastSuccess('Saved Setting');
+      return { ...state, projectOnBoard: { ...state.projectOnBoard, ...action.data } };
 
+    case ADD_PROJECT_ITEM_SUCCESS:
+      return { ...state, projectOnBoard: { ...action.data } };
+
+    case MOVE_CARD_TO_LIST:
+      state.projectOnBoard[action.column.key].push(action.item);
+      state.projectOnBoard[action.oldColumn.key] = state.projectOnBoard[action.oldColumn.key].filter(
+        item => item._id !== action.item._id
+      );
+      return {
+        ...state,
+        projectOnBoard: {
+          ...state.projectOnBoard,
+          [action.column.key]: state.projectOnBoard[action.column.key].slice(0),
+          [action.oldColumn.key]: state.projectOnBoard[action.oldColumn.key].slice(0)
+        }
+      };
+
+    case UPDATE_SETTING_FAIL:
     case GET_PROJECTS_FAIL:
     case ADD_PROJECT_FAIL:
     case EDIT_PROJECT_FAIL:
     case DELETE_PROJECT_FAIL:
+    case ADD_PROJECT_ITEM_FAIL:
     case GET_PROJECT_DETAIL_FAIL:
       toastError(action.error);
       return state;

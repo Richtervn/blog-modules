@@ -22,5 +22,13 @@ export default {
   editProject(formBody) {
     const data = commonPut('projects/edit', formBody);
     return data;
+  },
+  updateSetting(formBody) {
+    const data = commonPut('projects/setting', formBody);
+    return data;
+  },
+  addProjectItem(formBody){
+    const data = commonPost('projects/add_item', formBody);
+    return data;
   }
 };

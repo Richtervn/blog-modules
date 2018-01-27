@@ -2,35 +2,44 @@ import './BoardColumn.css';
 import React, { Component } from 'react';
 import { DropTarget } from 'react-dnd';
 
+import BoardCard from './BoardCard.container';
+
+import { openModal } from 'common/Modal';
+
 const Types = {
   CARD: 'card'
 };
 
 const boardTarget = {
-  drop(props, monitor, component) {},
-  hover(props, monitor, component) {},
-  canDrop(props, monitor) {}
+  drop(props, monitor, component) {
+    return { ...props.column };
+  }
 };
 
 const collect = (connect, monitor) => {
-  // connectDragSource: connect.dragSource(),
-  // isOver: monitor.isOver(),
-  // isOverCurrent: monitor.isOver({ shallow: true }),
   return {
-    connectDropTarget: connect.dropTarget()
-
-    // isDragging: monitor.isDragging()
+    connectDropTarget: connect.dropTarget(),
+    isOverCurrent: monitor.isOver({ shallow: true })
   };
 };
 
 class BoardColumn extends Component {
   render() {
-    const { label, connectDropTarget } = this.props;
+    const { column, connectDropTarget, onSetColumnOnAdd, items, isOverCurrent } = this.props;
 
     return connectDropTarget(
       <div className="project-board-column">
-        <div className="column-label">{label}</div>
-        <button className="btn btn-block btn-success btn-sm">
+        <div className="column-label">
+          {column.label}
+          {items.map((item, i) => <BoardCard key={i} item={item} column={column} />)}
+          {isOverCurrent && <div className="project-item-placeholder" />}
+        </div>
+        <button
+          className="btn btn-block btn-success btn-sm"
+          onClick={() => {
+            onSetColumnOnAdd(column);
+            openModal('AddProjectItem');
+          }}>
           <i className="fa fa-plus-circle" />
         </button>
       </div>

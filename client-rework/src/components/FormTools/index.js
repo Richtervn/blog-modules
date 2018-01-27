@@ -1,5 +1,7 @@
 import FormGroupArea from './FormGroupArea';
 import FormGroupArray from './FormGroupArray';
+import FormGroupArraySelect from './FormGroupArraySelect';
+import FormGroupArraySelectId from './FormGroupArraySelectId';
 import FormGroupCheck from './FormGroupCheck';
 import FormGroupChromeColor from './FormGroupChromeColor';
 import FormGroupRating from './FormGroupRating';
@@ -10,6 +12,8 @@ import FormGroupSelectId from './FormGroupSelectId';
 export {
   FormGroupArea,
   FormGroupArray,
+  FormGroupArraySelect,
+  FormGroupArraySelectId,
   FormGroupCheck,
   FormGroupChromeColor,
   FormGroupRating,

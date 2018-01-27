@@ -1,8 +1,10 @@
 import express from 'express';
 
 import addProject from './services/addProject';
+import addItem from './services/addItem';
 import getAllProjects from './services/getAllProjects';
 import updateProject from './services/updateProject';
+import updateSetting from './services/updateSetting';
 
 export default (Projects, factories) => {
   const router = express.Router();
@@ -45,6 +47,22 @@ export default (Projects, factories) => {
     wrap(async (req, res, next) => {
       const id = await commonService.delete(Projects, req.params.id);
       res.send(id);
+    })
+  );
+
+  router.put(
+    '/setting',
+    wrap(async (req, res, next) => {
+      const setting = await updateSetting(Projects, req.body);
+      res.send(setting);
+    })
+  );
+
+  router.post(
+    '/add_item',
+    wrap(async (req, res, next) => {
+      const result = await addItem(Projects, req.body);
+      res.send(result);
     })
   );
 

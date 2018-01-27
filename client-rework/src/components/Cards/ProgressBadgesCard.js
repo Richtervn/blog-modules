@@ -12,7 +12,13 @@ export default ({ col, label, badges, progress, children, color, onClickEdit, on
   return (
     <div className={`col-${col}`}>
       <div className="row">
-        <div className="progress-badges-card" style={styles} onClick={() => onClick()}>
+        <div
+          className="progress-badges-card"
+          style={styles}
+          onClick={e => {
+            e.stopPropagation();
+            onClick();
+          }}>
           <h4>
             <strong>{label}</strong>
           </h4>
@@ -32,10 +38,20 @@ export default ({ col, label, badges, progress, children, color, onClickEdit, on
             />
           </div>
           <div className="progress-badges-card-features">
-            <button className="btn" onClick={() => onClickEdit()}>
+            <button
+              className="btn"
+              onClick={e => {
+                onClickEdit();
+                e.stopPropagation();
+              }}>
               <i className="fa fa-pencil" />
             </button>
-            <button className="btn" onClick={() => onClickDelete()}>
+            <button
+              className="btn"
+              onClick={e => {
+                e.stopPropagation();
+                onClickDelete();
+              }}>
               <i className="fa fa-times" />
             </button>
           </div>

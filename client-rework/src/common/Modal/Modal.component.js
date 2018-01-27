@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal } from 'components/Modal';
 
 import { FlashGamesForm, FlashGamesGuide } from 'pages/FlashGames';
-import { ProjectForm, ProjectDeleteConfirm } from 'pages/Home/Projects';
+import { ProjectForm, ProjectDeleteConfirm, ProjectSetting, ProjectItemForm } from 'pages/Home/Projects';
 
 export default ({ name }) => {
   const additionProps = {};
@@ -18,6 +18,8 @@ export default ({ name }) => {
       {name === 'AddProject' && <ProjectForm />}
       {name === 'EditProject' && <ProjectForm edit />}
       {name === 'DeleteProject' && <ProjectDeleteConfirm />}
+      {name === 'ProjectSetting' && <ProjectSetting />}
+      {name === 'AddProjectItem' && <ProjectItemForm />}
     </Modal>
   );
 };
