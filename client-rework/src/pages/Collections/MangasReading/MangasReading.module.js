@@ -66,7 +66,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_MANGAS_SUCCESS:
-      return { ...state, mangas: action.data, focusManga: action.data[0]._id };
+      return { ...state, mangas: action.data, focusManga: action.data[0] ? action.data[0]._id : null };
     case SET_FOCUS_MANGA:
       return { ...state, focusManga: action.id, activeView: 'Detail' };
     case SET_ACTIVE_VIEW:

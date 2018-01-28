@@ -28,6 +28,7 @@ class MangasList extends Component {
       <div className="row mangas-list">
         <div className="container-fluid">
           <div className="row">
+            {mangas.length < 1 && <div className="mangas-list-start-view">Start by adding some reading mangas</div>}
             {mangas.map((manga, i) => (
               <LeftImageCard
                 key={i}

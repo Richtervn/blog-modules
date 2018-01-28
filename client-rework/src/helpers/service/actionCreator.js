@@ -13,6 +13,7 @@ export default (START, SUCCESS, FAIL, service, ...serviceParams) => {
         }
         dispatch(actionSuccess(data));
       } catch(e){
+        console.log(e);
         return dispatch(actionError(e));
       }
     }

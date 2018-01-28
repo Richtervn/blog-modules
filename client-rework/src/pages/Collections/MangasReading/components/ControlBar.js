@@ -160,7 +160,7 @@ class ControlBar extends Component {
             {activeView === 'Detail' && <MangaDetailView manga={manga} />}
             {activeView === 'Delete' && <MangaDeleteView manga={manga} onSubmit={onDeleteManga} />}
             {activeView === 'Add' && <MangaForm onSubmit={onAddManga} />}
-            {activeView === 'Edit' && <MangaForm manga={manga} onSubmit={onEditManga} />}
+            {activeView === 'Edit' && <MangaForm manga={manga} onSubmit={onEditManga} edit/>}
           </div>
         </div>
       </div>

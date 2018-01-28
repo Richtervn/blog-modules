@@ -32,7 +32,11 @@ class MangaForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.manga && nextProps.manga && parseInt(this.props.manga._id, 10) !== parseInt(nextProps.manga._id, 10)) {
+    if (
+      this.props.manga &&
+      nextProps.manga &&
+      parseInt(this.props.manga._id, 10) !== parseInt(nextProps.manga._id, 10)
+    ) {
       this.setState(this.getDefaultState(nextProps.manga));
     }
   }
@@ -97,6 +101,14 @@ class MangaForm extends Component {
   }
 
   render() {
+    if (this.props.edit && !this.props.manga) {
+      return (
+        <div className="card-content manga-form">
+          <i>No current selected manga</i>
+        </div>
+      );
+    }
+
     return [
       <div key="mg-fb" className="card-content manga-form">
         <form id="manga-form">
@@ -104,7 +116,12 @@ class MangaForm extends Component {
             <label>
               <strong>Cover:</strong>
             </label>
-            <input type="file" className="form-control manga-form-input" onChange={this.handleChange} name="file" />
+            <input
+              type="file"
+              className="form-control manga-form-input"
+              onChange={this.handleChange}
+              name="file"
+            />
           </div>
           <div className="form-group">
             <label>
@@ -249,16 +266,22 @@ class MangaForm extends Component {
         </form>
       </div>,
       <div key="mg-ff" className="card-footer text-center" style={{ padding: '5px' }}>
-        <button className="btn btn-primary manga-control-form-btn" onClick={() => this.handleSubmit()}>
+        <button
+          className="btn btn-primary manga-control-form-btn"
+          onClick={() => this.handleSubmit()}>
           Submit
         </button>
         {!this.props.manga && (
-          <button className="btn btn-danger manga-control-form-btn" onClick={() => this.handleClear()}>
+          <button
+            className="btn btn-danger manga-control-form-btn"
+            onClick={() => this.handleClear()}>
             Clear
           </button>
         )}
         {this.props.manga && (
-          <button className="btn btn-danger manga-control-form-btn" onClick={() => this.handleUndo()}>
+          <button
+            className="btn btn-danger manga-control-form-btn"
+            onClick={() => this.handleUndo()}>
             Undo
           </button>
         )}
