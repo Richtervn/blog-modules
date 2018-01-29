@@ -13,26 +13,35 @@ const Types = {
 const boardTarget = {
   drop(props, monitor, component) {
     return { ...props.column };
+  },
+  canDrop(props, monitor) {
+    const item = monitor.getItem();
+    if (props.column.key !== item.column.key) {
+      return true;
+    } else {
+      return false;
+    }
   }
 };
 
 const collect = (connect, monitor) => {
   return {
     connectDropTarget: connect.dropTarget(),
+    canDrop: monitor.canDrop(),
     isOverCurrent: monitor.isOver({ shallow: true })
   };
 };
 
 class BoardColumn extends Component {
   render() {
-    const { column, connectDropTarget, onSetColumnOnAdd, items, isOverCurrent } = this.props;
+    const { column, connectDropTarget, canDrop, onSetColumnOnAdd, items, isOverCurrent } = this.props;
 
     return connectDropTarget(
       <div className="project-board-column">
         <div className="column-label">
           {column.label}
           {items.map((item, i) => <BoardCard key={i} item={item} column={column} />)}
-          {isOverCurrent && <div className="project-item-placeholder" />}
+          {canDrop && isOverCurrent && <div className="project-item-placeholder" />}
         </div>
         <button
           className="btn btn-block btn-success btn-sm"

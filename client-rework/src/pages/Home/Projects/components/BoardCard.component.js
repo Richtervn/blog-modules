@@ -2,13 +2,15 @@ import './BoardCard.css';
 import React, { Component } from 'react';
 import { DragSource } from 'react-dnd';
 
+import { openModal } from 'common/Modal';
+
 const Types = {
   CARD: 'card'
 };
 
 const cardSource = {
   beginDrag(props, monitor, component) {
-    return { ...props.item };
+    return { ...props.item, column: { ...props.column } };
   },
 
   endDrag(props, monitor, component) {
@@ -35,10 +37,14 @@ const collect = (connect, monitor) => {
 class BoardCard extends Component {
   render() {
     const { connectDragSource, isDragging, item, TagColor } = this.props;
+    const progress = item.SubTasks.filter(task => task.isDone).length / item.SubTasks.length * 100;
+
     return connectDragSource(
       <div>
         {!isDragging && (
-          <div className="project-item-card" onClick={() => console.log('Clicked')}>
+          <div className="project-item-card" onClick={() => {
+            openModal()
+          }}>
             <div className="project-item-tags">
               {item.Tags.map((tag, i) => (
                 <div
@@ -50,6 +56,15 @@ class BoardCard extends Component {
               ))}
             </div>
             <h5>{item.Label}</h5>
+            <div className="progress">
+              <div
+                className={`progress-bar progress-bar-striped bg-success ${progress < 100
+                  ? 'progress-bar-animated'
+                  : ''}`}
+                style={{ width: `${progress || 0}%` }}>
+                <i>{`${progress}%`}</i>
+              </div>
+            </div>
           </div>
         )}
         {isDragging && <div />}
