@@ -1,0 +1,26 @@
+.not-found-page {
+  background-image: url('/images/backgrounds/the-simpson-hommer.jpg');
+  background-size: cover;
+  height: calc(100vh - 45px);
+  position: relative;
+}
+
+.not-found-page-contain {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 100px;
+  text-align: justify;
+  top: 60px;
+  left: 95px;
+}
+
+.not-found-page-contain > h1 {
+  font-size: 160px;
+  color: #c33737;
+}
+
+.not-found-page-contain > h6 {
+  color: #6d6a6a;
+  font-size: 32px;
+  text-align: center;
+}

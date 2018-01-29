@@ -5,7 +5,7 @@ import './fetchIntercept';
 import './global.css';
 
 import React, { Component } from 'react';
-import { Router, Route } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import { Provider } from 'react-redux';
@@ -16,11 +16,8 @@ import { DragDropContext } from 'react-dnd';
 
 import { ToastContainer } from 'react-toastify';
 import { Modal } from 'common/Modal';
-import { HeaderBar, NavigationBar, Page, HeaderMenu } from 'common/Layout';
-
-import { MangasReading } from 'pages/Collections/MangasReading';
-import { FlashGames } from 'pages/FlashGames';
-import { Home } from 'pages/Home';
+import { HeaderBar, NavigationBar, HeaderMenu } from 'common/Layout';
+import AppRoutes from './AppRoutes';
 
 const newHistory = createBrowserHistory();
 
@@ -34,11 +31,7 @@ class App extends Component {
             <HeaderMenu />
             <div className="row">
               <NavigationBar />
-              <Page>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/mangas_reading" component={MangasReading} />
-                <Route path="/flash_games/:name" component={FlashGames} />
-              </Page>
+              <AppRoutes />
             </div>
             <ToastContainer autoClose={1500} closeButton={false} />
             <Modal />

@@ -37,7 +37,7 @@ const initialState = {
   defaultShowGroup: null,
   modalName: 'FlashGame',
   isShowHeaderMenu: false,
-  homeTabs: ['Projects', 'Profile', 'Diary'],
+  homeTabs: [{ name: 'Projects', route: '/home' }, { name: 'App Diary', route: '/home/app_diary' }],
   activeTab: 'Projects'
 };
 
