@@ -22,7 +22,7 @@ class Page extends Component {
       this.setState({ isRecievedTree: true });
     }
 
-    if (this.state.isRecievedTree) {
+    if (menuTree && this.state.isRecievedTree) {
       const router = appRouter(menuTree);
       const currentPage = router.decode(window.location.pathname);
 

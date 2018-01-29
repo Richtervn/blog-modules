@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, withRouter, Route } from 'react-router-dom';
+import { Switch, withRouter, Route, Redirect } from 'react-router-dom';
 import { Page } from 'common/Layout';
 
 import { NotFound } from 'pages/NotFound';
@@ -8,14 +8,17 @@ import { FlashGames } from 'pages/FlashGames';
 import { Home } from 'pages/Home';
 
 const AppRoutes = () => (
-  <Page>
-    <Switch>
-      <Route exact path="/" component={Home} />
+  <Switch>
+    <Page>
+      <Route exact path="/" render={() => <Redirect to="/home/projects" />} />
+      <Route path="/home/:tab/:subPage?" component={Home} />
       <Route exact path="/mangas_reading" component={MangasReading} />
       <Route path="/flash_games/:name" component={FlashGames} />
       <Route path="*" component={NotFound} />
-    </Switch>
-  </Page>
+    </Page>
+  </Switch>
 );
 
 export default withRouter(AppRoutes);
+
+
