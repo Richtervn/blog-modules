@@ -38,11 +38,12 @@ class BoardColumn extends Component {
 
     return connectDropTarget(
       <div className="project-board-column">
-        <div className="column-label">
-          {column.label}
+        <div className="column-label">{column.label}</div>
+        <div className="project-column-contains">
           {items.map((item, i) => <BoardCard key={i} item={item} column={column} />)}
           {canDrop && isOverCurrent && <div className="project-item-placeholder" />}
         </div>
+
         <button
           className="btn btn-block btn-success btn-sm"
           onClick={() => {

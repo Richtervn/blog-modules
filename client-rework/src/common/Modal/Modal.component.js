@@ -2,12 +2,26 @@ import React from 'react';
 import { Modal } from 'components/Modal';
 
 import { FlashGamesForm, FlashGamesGuide } from 'pages/FlashGames';
-import { ProjectForm, ProjectDeleteConfirm, ProjectSetting, ProjectItemForm } from 'pages/Home/Projects';
+import {
+  ProjectForm,
+  ProjectDeleteConfirm,
+  ProjectSetting,
+  ProjectItemForm,
+  ProjectItemDetail
+} from 'pages/Home/Projects';
 
 export default ({ name }) => {
-  const additionProps = {};
-  if (name === 'FlashGameGuide') {
-    additionProps.dialogStyles = { maxWidth: 'max-content', minWidth: '500px' };
+  let additionProps = {};
+  switch (name) {
+    case 'FlashGameGuide':
+      additionProps.dialogStyles = { maxWidth: 'max-content', minWidth: '500px' };
+      break;
+    case 'ProjectItemDetail':
+      additionProps.dialogStyles = { maxWidth: '800px' };
+      break;
+    default:
+      additionProps = {};
+      break;
   }
 
   return (
@@ -20,6 +34,7 @@ export default ({ name }) => {
       {name === 'DeleteProject' && <ProjectDeleteConfirm />}
       {name === 'ProjectSetting' && <ProjectSetting />}
       {name === 'AddProjectItem' && <ProjectItemForm />}
+      {name === 'ProjectItemDetail' && <ProjectItemDetail />}
     </Modal>
   );
 };

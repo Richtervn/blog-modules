@@ -13,14 +13,11 @@ const columns = [
 
 class ProjectBoard extends Component {
   render() {
-    const { project, onBack } = this.props;
+    const { project } = this.props;
 
     return (
       <div className="row">
         <div className="project-board-header">
-          <button className="btn btn-back" onClick={() => onBack()}>
-            <i className="fa fa-long-arrow-left" />
-          </button>
           <button className="btn">
             <i className="fa fa-save" />
           </button>

@@ -5,11 +5,11 @@
   border-radius: 4px;
   padding: 10px;
   height: fit-content;
-  max-height: calc(100vh - 175px);
 }
 
-.project-board-column > .column-label {
+.column-label {
   font-weight: 700;
+  margin-bottom: 10px;
 }
 
 .project-item-placeholder {
@@ -18,4 +18,9 @@
   margin: 10px 0;
   padding: 10px;
   height: 75px;
+}
+
+.project-column-contains {
+  max-height: calc(100vh - 255px);
+  overflow-y: auto;
 }

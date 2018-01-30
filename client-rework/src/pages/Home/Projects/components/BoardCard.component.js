@@ -36,15 +36,18 @@ const collect = (connect, monitor) => {
 
 class BoardCard extends Component {
   render() {
-    const { connectDragSource, isDragging, item, TagColor } = this.props;
+    const { connectDragSource, isDragging, item, TagColor, onSetItemOnDetail, column } = this.props;
     const progress = item.SubTasks.filter(task => task.isDone).length / item.SubTasks.length * 100;
 
     return connectDragSource(
       <div>
         {!isDragging && (
-          <div className="project-item-card" onClick={() => {
-            openModal()
-          }}>
+          <div
+            className="project-item-card"
+            onClick={() => {
+              onSetItemOnDetail(item, column);
+              openModal('ProjectItemDetail');
+            }}>
             <div className="project-item-tags">
               {item.Tags.map((tag, i) => (
                 <div

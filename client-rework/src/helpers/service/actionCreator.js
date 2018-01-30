@@ -1,23 +1,23 @@
-export default (START, SUCCESS, FAIL, service, ...serviceParams) => {
-  const actionStart = () => ({type: START});
-  const actionSuccess = data => ({type: SUCCESS, data});
-  const actionError = error => ({type: FAIL, error: error.message});
+export default (type, service, ...serviceParams) => {
+  const actionStart = () => ({ type: `${type}_START` });
+  const actionSuccess = data => ({ type: `${type}_SUCCESS`, data });
+  const actionError = error => ({ type: `${type}_FAIL`, error: error.message });
 
   const action = () => {
     return async dispatch => {
       dispatch(actionStart());
       try {
         const data = await service(...serviceParams);
-        if(data && data.message){
+        if (data && data.message) {
           return dispatch(actionError(data));
         }
         dispatch(actionSuccess(data));
-      } catch(e){
+      } catch (e) {
         console.log(e);
         return dispatch(actionError(e));
       }
-    }
-  }
+    };
+  };
 
   return action;
-}
+};

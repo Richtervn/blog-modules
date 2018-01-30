@@ -1,12 +1,10 @@
 import { actionCreator } from 'helpers';
 import { toastError } from 'common/Toast';
+import { ADD_GAME } from 'pages/FlashGames';
 
 import services from './appControl.services';
 
-const GET_MENU_TREE_START = 'appControl/GET_MENU_TREE';
-const GET_MENU_TREE_SUCCESS = 'appControl/GET_MENU_TREE_SUCCESS';
-const GET_MENU_TREE_FAIL = 'appControl/GET_MENU_TREE_FAIL';
-
+const GET_MENU_TREE = 'appControl/GET_MENU_TREE';
 const SET_ACTIVE_GROUP = 'appControl/SET_ACTIVE_GROUP';
 const SET_ACTIVE_ITEM = 'appControl/SET_ACTIVE_ITEM';
 const SET_ACTIVE_TAB = 'appControl/SET_ACTIVE_TAB';
@@ -15,12 +13,7 @@ const SET_MODAL_NAME = 'appControl/SET_MODAL_NAME';
 const SHOW_HEADER_MENU = 'appControl/SHOW_HEADER_MENU';
 const HIDE_HEADER_MENU = 'appControl/HIDE_HEADER_MENU';
 
-export const getMenuTree = actionCreator(
-  GET_MENU_TREE_START,
-  GET_MENU_TREE_SUCCESS,
-  GET_MENU_TREE_FAIL,
-  services.getMenuTree
-);
+export const getMenuTree = actionCreator(GET_MENU_TREE, services.getMenuTree);
 
 export const setActiveGroup = group => ({ type: SET_ACTIVE_GROUP, group });
 export const setActiveItem = item => ({ type: SET_ACTIVE_ITEM, item });
@@ -43,7 +36,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_MENU_TREE_SUCCESS:
+    case `${GET_MENU_TREE}_SUCCESS`:
       return { ...state, menuTree: action.data };
     case SET_ACTIVE_GROUP:
       return { ...state, activeGroup: action.group };
@@ -60,7 +53,10 @@ export default (state = initialState, action) => {
     case HIDE_HEADER_MENU:
       return { ...state, isShowHeaderMenu: false };
 
-    case GET_MENU_TREE_FAIL:
+    case `${ADD_GAME}_SUCCESS`:
+      return { ...state, menuTree: { ...action.data.menu } };
+
+    case `${GET_MENU_TREE}_FAIL`:
       toastError(action.error);
       return state;
     default:
