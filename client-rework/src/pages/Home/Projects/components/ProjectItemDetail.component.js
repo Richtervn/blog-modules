@@ -1,4 +1,5 @@
 import './ProjectItemDetail.css';
+import _ from 'underscore';
 import React, { Component } from 'react';
 
 class ProjectItemDetail extends Component {
@@ -8,24 +9,48 @@ class ProjectItemDetail extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.openSelectTag = this.openSelectTag.bind(this);
     this.closeSelectTag = this.closeSelectTag.bind(this);
+    this.handleTagSelect = this.handleTagSelect.bind(this);
+    this.handleChangeCheck = this.handleChangeCheck.bind(this);
+    this.handleChangeSubTaskLabel = this.handleChangeSubTaskLabel.bind(this);
+    this.handleAddSubTask = this.handleAddSubTask.bind(this);
+    this.handleRemoveSubTask = this.handleRemoveSubTask.bind(this);
+
     this.state = {
-      value: this.initStateValue(this.props.item),
+      value: this.initStateValue({ ...this.props.item }),
       editing: false,
       selectingTag: false,
-      progress: 10
+      progress: this.calcProgress(this.props.item.SubTasks)
     };
   }
 
   initStateValue(item) {
     return {
       Label: item.Label,
-      Description: item.Description
+      Description: item.Description,
+      Tags: [...item.Tags],
+      SubTasks: item.SubTasks.map(subTask => ({ ...subTask })).slice(0)
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.item._id !== this.props.item._id) {
+      this.setState({
+        value: this.initStateValue({ ...nextProps.item }),
+        editing: false,
+        selectingTag: false,
+        progress: this.calcProgress(nextProps.item.SubTasks)
+      });
+    }
   }
 
   openSelectTag() {
     this.setState({ selectingTag: true });
     document.addEventListener('mousedown', this.closeSelectTag);
+  }
+
+  calcProgress(subTasks) {
+    const progress = subTasks.filter(subTask => subTask.IsDone).length / subTasks.length * 100;
+    return progress;
   }
 
   closeSelectTag(event) {
@@ -35,7 +60,47 @@ class ProjectItemDetail extends Component {
     }
   }
 
-  handleChange() {}
+  handleAddSubTask() {
+    this.state.value.SubTasks.push({ isDone: false, Label: 'New sub task' });
+    this.setState({ value: { ...this.state.value, SubTasks: [...this.state.value.SubTasks] } });
+  }
+
+  handleRemoveSubTask(index) {
+    this.state.value.SubTasks.splice(index, 1);
+    this.setState({ value: { ...this.state.value, SubTasks: [...this.state.value.SubTasks] } });
+  }
+
+  handleChange(event, index) {
+    const { name, value } = event.target;
+    this.setState({ value: { ...this.state.value, [name]: value } });
+  }
+
+  handleChangeSubTaskLabel(event, index) {
+    const { value } = event.target;
+    let { SubTasks } = this.state.value;
+    SubTasks[index].Label = value;
+    this.setState({ value: { ...this.state.value, SubTasks: [...SubTasks] } });
+  }
+
+  handleTagSelect(label) {
+    let { Tags } = this.state.value;
+    if (!_.contains(Tags, label)) {
+      Tags.push(label);
+    } else {
+      Tags = _.without(Tags, label);
+    }
+    this.setState({ value: { ...this.state.value, Tags: [...Tags] } });
+  }
+
+  handleChangeCheck(label) {
+    const SubTasks = this.state.value.SubTasks.map(subTask => {
+      if (subTask.Label === label) {
+        subTask.IsDone = !subTask.IsDone;
+      }
+      return subTask;
+    });
+    this.setState({ value: { ...this.state.value, SubTasks: [...SubTasks] }, progress: this.calcProgress(SubTasks) });
+  }
 
   render() {
     const { item, column, tagColors } = this.props;
@@ -56,19 +121,24 @@ class ProjectItemDetail extends Component {
             <button key="btn-save" className="btn btn-primary" onClick={() => this.enableEdit()}>
               <i className="fa fa-save fa-fw" />
             </button>,
-            <button key="btn-cancel" className="btn btn-danger" onClick={() => this.setState({ editing: false })}>
+            <button
+              key="btn-cancel"
+              className="btn btn-danger"
+              onClick={() => this.setState({ editing: false, value: { ...this.initStateValue({ ...item }) } })}>
               <i className="fa fa-times fa-fw" />
             </button>
           ]}
         </div>
         <div className="item-detail-view">
-          {editing && <input type="text" value={value.Label} onChange={this.handleChange} className="label-input" />}
+          {editing && (
+            <input type="text" value={value.Label} onChange={this.handleChange} className="label-input" name="Label" />
+          )}
           {!editing && <div className="item-label">{item.Label}</div>}
           <p className="item-subtitle">
             In column : <u>{column.label}</u>
           </p>
           <div className="item-color-tags">
-            {item.Tags.map((tag, i) => (
+            {value.Tags.map((tag, i) => (
               <div
                 key={i}
                 className="item-color-tag"
@@ -76,26 +146,43 @@ class ProjectItemDetail extends Component {
                 {tag}
               </div>
             ))}
-            <div className="item-tag-selector-wrapper">
-              <button className="btn btn-secondary" onClick={() => this.openSelectTag()}>
-                <i className="fa fa-plus" />
-              </button>
-              {selectingTag && (
-                <div className="item-tag-selector" ref={node => (this.TagSelector = node)}>
-                  {tagColors.map((tagColor, i) => (
-                    <div key={i} className="item-tag-option" style={{ backgroundColor: tagColor.Color }}>
-                      {tagColor.Label}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+            {editing && (
+              <div className="item-tag-selector-wrapper">
+                <button className="btn btn-secondary" onClick={() => this.openSelectTag()}>
+                  <i className="fa fa-plus" />
+                </button>
+                {selectingTag && (
+                  <div className="item-tag-selector" ref={node => (this.TagSelector = node)}>
+                    {tagColors.map((tagColor, i) => (
+                      <div
+                        key={i}
+                        className="item-tag-option"
+                        style={{ backgroundColor: tagColor.Color }}
+                        onClick={() => this.handleTagSelect(tagColor.Label)}>
+                        {tagColor.Label}
+                        {value.Tags.find(tag => tagColor.Label === tag) && (
+                          <span className="pull-right">
+                            <i className="fa fa-check fa-fw" />
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
           {item.Description && <div className="paragraph-label">Description : </div>}
           {!item.Description && editing && <div className="paragraph-label">Description : </div>}
           {!editing && <div>{item.Description}</div>}
           {editing && (
-            <textarea className="description-input" value={value.Description} onChange={this.handleChange} rows={4} />
+            <textarea
+              className="description-input"
+              value={value.Description}
+              onChange={this.handleChange}
+              rows={4}
+              name="Description"
+            />
           )}
           {item.SubTasks.filter(subTask => subTask.Label).length > 0 && [
             <div key="st-l" className="paragraph-label">
@@ -110,16 +197,26 @@ class ProjectItemDetail extends Component {
               />
             </div>
           ]}
-          {item.SubTasks.filter(subTask => subTask.Label).length < 1 && editing && (
-            <div className="paragraph-label">Tasks List :</div>
-          )}
-          {item.SubTasks.filter(subTask => subTask.Label).map((subTask, i) => {
+          {item.SubTasks.filter(subTask => subTask.Label).length < 1 &&
+            editing && <div className="paragraph-label">Tasks List :</div>}
+          {value.SubTasks.filter(subTask => subTask.Label).map((subTask, i) => {
             if (editing) {
               return (
                 <div key={i} className="form-check sub-task-list">
-                  <input className="form-check-input" type="checkbox" checked={subTask.isDone} />
-                  <input type="text" value={subTask.Label} className="item-sub-task-label-input" />
-                  <button className="btn btn-danger">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    checked={subTask.IsDone}
+                    onChange={() => this.handleChangeCheck(subTask.Label)}
+                  />
+                  <input
+                    type="text"
+                    value={subTask.Label}
+                    className="item-sub-task-label-input"
+                    onChange={event => this.handleChangeSubTaskLabel(event, i)}
+                    name="SubTask"
+                  />
+                  <button className="btn btn-danger" onClick={() => this.handleRemoveSubTask(i)}>
                     <i className="fa fa-times" />
                   </button>
                 </div>
@@ -127,14 +224,19 @@ class ProjectItemDetail extends Component {
             } else {
               return (
                 <div key={i} className="form-check">
-                  <input className="form-check-input" type="checkbox" checked={subTask.isDone} />
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    checked={subTask.IsDone}
+                    onChange={() => this.handleChangeCheck(subTask.Label)}
+                  />
                   <label className="form-check-label">{subTask.Label}</label>
                 </div>
               );
             }
           })}
           {editing && (
-            <button className="btn btn-primary btn-add-sub-task">
+            <button className="btn btn-primary btn-add-sub-task" onClick={() => this.handleAddSubTask()}>
               <i className="fa fa-plus fa-fw" />&nbsp;Add a sub task
             </button>
           )}
