@@ -5,8 +5,4 @@ const mapStateToProps = ({ projects }) => ({
   project: projects.projectOnBoard
 });
 
-const mapDispatchToProps = dispatch => ({
-
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectBoard);
+export default connect(mapStateToProps)(ProjectBoard);

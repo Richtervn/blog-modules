@@ -18,9 +18,6 @@ class ProjectBoard extends Component {
     return (
       <div className="row">
         <div className="project-board-header">
-          <button className="btn">
-            <i className="fa fa-save" />
-          </button>
           <button className="btn" onClick={() => openModal('ProjectSetting')}>
             <i className="fa fa-gear" />
           </button>

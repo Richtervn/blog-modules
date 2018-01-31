@@ -22,7 +22,6 @@ const Projects = new Schema({
   Technologies: [String],
   StartTime: Date,
   EndTime: Date,
-  Progress: String,
   Color: String,
   TagColor: [TagColor],
   Plans: [ProjectItem],

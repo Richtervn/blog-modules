@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import { actionCreator } from 'helpers';
 import { toastError, toastSuccess } from 'common/Toast';
 
@@ -11,6 +12,7 @@ const DELETE_PROJECT = 'projects/DELETE_PROJECT';
 const GET_PROJECT_DETAIL = 'projects/GET_PROJECT_DETAIL';
 const UPDATE_SETTING = 'projects/UPDATE_SETTING';
 const ADD_PROJECT_ITEM = 'projects/ADD_PROJECT_ITEMT';
+const EDIT_ITEM = 'projects/EDIT_ITEM';
 
 const SET_CURRENT_PROJECT = 'projects/SET_CURRENT_PROJECT';
 const SET_COLUMN_ON_ADD = 'projects/SET_COLUMN_ON_ADD';
@@ -25,12 +27,26 @@ export const editProject = formBody => actionCreator(EDIT_PROJECT, services.edit
 export const deleteProject = id => actionCreator(DELETE_PROJECT, services.deleteProject, id)();
 export const updateSetting = formBody => actionCreator(UPDATE_SETTING, services.updateSetting, formBody)();
 export const addProjectItem = formBody => actionCreator(ADD_PROJECT_ITEM, services.addProjectItem, formBody)();
+export const editItem = formBody => actionCreator(EDIT_ITEM, services.editItem, formBody)();
 
 export const setCurrentProject = project => ({ type: SET_CURRENT_PROJECT, project });
 export const setColumnOnAdd = column => ({ type: SET_COLUMN_ON_ADD, column });
 export const setItemOnDetail = (item, column) => ({ type: SET_ITEM_ON_DETAIL, item, column });
 
-export const moveCardToList = (item, column, oldColumn) => ({ type: MOVE_CARD_TO_LIST, item, column, oldColumn });
+const moveToList = (item, column, oldColumn) => ({ type: MOVE_CARD_TO_LIST, item, column, oldColumn });
+export const moveCardToList = (item, column, oldColumn, ProjectId) => {
+  const formBody = {
+    projectId: ProjectId,
+    fromColumn: oldColumn.key,
+    toColumn: column.key,
+    item: item
+  };
+
+  return dispatch => {
+    dispatch(moveToList(item, column, oldColumn));
+    dispatch(actionCreator(MOVE_CARD_TO_LIST, services.moveCardToList, formBody)());
+  };
+};
 
 const initialState = {
   projects: null,
@@ -104,6 +120,25 @@ export default (state = initialState, action) => {
         }
       };
 
+    case `${EDIT_ITEM}_SUCCESS`:
+      let editedItem = _.omit(action.data, 'Column');
+
+      state.projectOnBoard[action.data.Column] = state.projectOnBoard[action.data.Column].map(item => {
+        if (item._id === action.data._id) {
+          return editedItem;
+        }
+        return item;
+      });
+
+      return {
+        ...state,
+        itemOnDetail: { ...state.itemOnDetail, item: { ...editedItem } },
+        projectOnBoard: {
+          ...state.projectOnBoard,
+          [action.data.Column]: state.projectOnBoard[action.data.Column].slice(0)
+        }
+      };
+
     case `${UPDATE_SETTING}_FAIL`:
     case `${GET_PROJECTS}_FAIL`:
     case `${ADD_PROJECT}_FAIL`:
@@ -111,6 +146,8 @@ export default (state = initialState, action) => {
     case `${DELETE_PROJECT}_FAIL`:
     case `${ADD_PROJECT_ITEM}_FAIL`:
     case `${GET_PROJECT_DETAIL}_FAIL`:
+    case `${MOVE_CARD_TO_LIST}_FAIL`:
+    case `${EDIT_ITEM}_FAIL`:
       toastError(action.error);
       return state;
 

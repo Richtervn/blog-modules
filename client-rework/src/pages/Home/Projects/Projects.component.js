@@ -50,7 +50,7 @@ export default ({ projects, onGetProjects, onSetCurrentProject, projectOnBoard, 
               col={3}
               color={project.Color}
               label={project.Name}
-              progress={project.progress}
+              progress={project.Progress}
               badges={project.Technologies}
               route={`/home/projects/${project.Name.toLowerCase().replace(/ /g, '_')}`}
               onClickEdit={() => {

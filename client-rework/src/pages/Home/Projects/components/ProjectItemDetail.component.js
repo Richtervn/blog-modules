@@ -14,6 +14,7 @@ class ProjectItemDetail extends Component {
     this.handleChangeSubTaskLabel = this.handleChangeSubTaskLabel.bind(this);
     this.handleAddSubTask = this.handleAddSubTask.bind(this);
     this.handleRemoveSubTask = this.handleRemoveSubTask.bind(this);
+    this.handleSave = this.handleSave.bind(this);
 
     this.state = {
       value: this.initStateValue({ ...this.props.item }),
@@ -100,6 +101,24 @@ class ProjectItemDetail extends Component {
       return subTask;
     });
     this.setState({ value: { ...this.state.value, SubTasks: [...SubTasks] }, progress: this.calcProgress(SubTasks) });
+    const formBody = {
+      projectId: this.props.projectId,
+      item: { ...this.state.value, _id: this.props.item._id },
+      Column: this.props.column.key
+    };
+    this.props.onEditItem(formBody);
+  }
+
+  handleSave() {
+    const formBody = {
+      projectId: this.props.projectId,
+      item: { ...this.state.value, _id: this.props.item._id },
+      Column: this.props.column.key
+    };
+    this.props.onEditItem(formBody);
+    this.setState({
+      editing: false
+    });
   }
 
   render() {
@@ -118,7 +137,7 @@ class ProjectItemDetail extends Component {
             </button>
           ]}
           {editing && [
-            <button key="btn-save" className="btn btn-primary" onClick={() => this.enableEdit()}>
+            <button key="btn-save" className="btn btn-primary" onClick={() => this.handleSave()}>
               <i className="fa fa-save fa-fw" />
             </button>,
             <button
@@ -203,12 +222,6 @@ class ProjectItemDetail extends Component {
             if (editing) {
               return (
                 <div key={i} className="form-check sub-task-list">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    checked={subTask.IsDone}
-                    onChange={() => this.handleChangeCheck(subTask.Label)}
-                  />
                   <input
                     type="text"
                     value={subTask.Label}

@@ -27,8 +27,16 @@ export default {
     const data = commonPut('projects/setting', formBody);
     return data;
   },
-  addProjectItem(formBody){
+  addProjectItem(formBody) {
     const data = commonPost('projects/add_item', formBody);
+    return data;
+  },
+  moveCardToList(formBody) {
+    const data = commonPut('projects/move_item', formBody);
+    return data;
+  },
+  editItem(formBody) {
+    const data = commonPut('projects/edit_item', formBody);
     return data;
   }
 };

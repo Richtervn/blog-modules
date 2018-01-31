@@ -2,7 +2,9 @@ import express from 'express';
 
 import addProject from './services/addProject';
 import addItem from './services/addItem';
+import editItem from './services/editItem';
 import getAllProjects from './services/getAllProjects';
+import moveItem from './services/moveItem';
 import updateProject from './services/updateProject';
 import updateSetting from './services/updateSetting';
 
@@ -62,6 +64,22 @@ export default (Projects, factories) => {
     '/add_item',
     wrap(async (req, res, next) => {
       const result = await addItem(Projects, req.body);
+      res.send(result);
+    })
+  );
+
+  router.put(
+    '/move_item',
+    wrap(async (req, res, next) => {
+      const result = await moveItem(Projects, req.body);
+      res.send(result);
+    })
+  );
+
+  router.put(
+    '/edit_item',
+    wrap(async (req, res, next) => {
+      const result = await editItem(Projects, req.body);
       res.send(result);
     })
   );
