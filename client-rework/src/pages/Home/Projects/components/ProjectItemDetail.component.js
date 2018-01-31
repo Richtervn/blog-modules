@@ -15,6 +15,7 @@ class ProjectItemDetail extends Component {
     this.handleAddSubTask = this.handleAddSubTask.bind(this);
     this.handleRemoveSubTask = this.handleRemoveSubTask.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.handleItemDescription = this.handleItemDescription.bind(this);
 
     this.state = {
       value: this.initStateValue({ ...this.props.item }),
@@ -31,6 +32,11 @@ class ProjectItemDetail extends Component {
       Tags: [...item.Tags],
       SubTasks: item.SubTasks.map(subTask => ({ ...subTask })).slice(0)
     };
+  }
+
+  handleItemDescription(value) {
+    const content = value.split(/\n/);
+    return <div>{content.map((line, i) => <p key={i}>{line}</p>)}</div>;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -62,7 +68,7 @@ class ProjectItemDetail extends Component {
   }
 
   handleAddSubTask() {
-    this.state.value.SubTasks.push({ isDone: false, Label: 'New sub task' });
+    this.state.value.SubTasks.push({ isDone: false, Label: '' });
     this.setState({ value: { ...this.state.value, SubTasks: [...this.state.value.SubTasks] } });
   }
 
@@ -193,7 +199,7 @@ class ProjectItemDetail extends Component {
           </div>
           {item.Description && <div className="paragraph-label">Description : </div>}
           {!item.Description && editing && <div className="paragraph-label">Description : </div>}
-          {!editing && <div>{item.Description}</div>}
+          {!editing && <div>{this.handleItemDescription(item.Description)}</div>}
           {editing && (
             <textarea
               className="description-input"
@@ -218,7 +224,7 @@ class ProjectItemDetail extends Component {
           ]}
           {item.SubTasks.filter(subTask => subTask.Label).length < 1 &&
             editing && <div className="paragraph-label">Tasks List :</div>}
-          {value.SubTasks.filter(subTask => subTask.Label).map((subTask, i) => {
+          {value.SubTasks.map((subTask, i) => {
             if (editing) {
               return (
                 <div key={i} className="form-check sub-task-list">
@@ -228,6 +234,7 @@ class ProjectItemDetail extends Component {
                     className="item-sub-task-label-input"
                     onChange={event => this.handleChangeSubTaskLabel(event, i)}
                     name="SubTask"
+                    placeholder="New Sub Task's Label"
                   />
                   <button className="btn btn-danger" onClick={() => this.handleRemoveSubTask(i)}>
                     <i className="fa fa-times" />
@@ -235,6 +242,9 @@ class ProjectItemDetail extends Component {
                 </div>
               );
             } else {
+              if (!subTask.Label) {
+                return null;
+              }
               return (
                 <div key={i} className="form-check">
                   <input

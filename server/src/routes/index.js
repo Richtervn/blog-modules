@@ -1,49 +1,52 @@
+import appDiaryRouter from './appDiary';
 import diabloIIRouter from './diabloII';
-import systemRouter from './system';
 import flashGamesRouter from './flashGames';
+import gamingHistoryRouter from './gamingHistory';
 import mangasReadingRouter from './mangasReading';
+import muOnlineRouter from './muOnline';
+import musicRouter from './music';
 import profileRouter from './profile';
 import projectsRouter from './projects';
-import yugiohPocRouter from './yugiohPoc';
-import musicRouter from './music';
 import starcraftRouter from './starcraft';
-import gamingHistoryRouter from './gamingHistory';
-import muOnlineRouter from './muOnline';
+import systemRouter from './system';
 import toolsRouter from './tools';
+import yugiohPocRouter from './yugiohPoc';
 
 const routes = (models, factories) => {
   const {
+    AppDiary,
     DiabloIIMods,
     DiabloIICharacters,
     DiabloIITools,
     DiabloIISurvivalKits,
     FlashGames,
-    MangasReading,
-    Projects,
-    YugiohPocMods,
-    YugiohPocDecks,
-    Music,
-    StarcraftMaps,
-    StarcraftCampaigns,
-    StarcraftMods,
     GamingHistory,
+    MangasReading,
     MuOnlineTools,
-    MuOnlineVersions
+    MuOnlineVersions,
+    Music,
+    Projects,
+    StarcraftCampaigns,
+    StarcraftMaps,
+    StarcraftMods,
+    YugiohPocDecks,
+    YugiohPocMods
   } = models;
 
   return {
-    system: systemRouter(factories),
+    app_diary: appDiaryRouter(AppDiary, factories),
+    diabloII: diabloIIRouter(DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories),
     flash_games: flashGamesRouter(FlashGames, factories),
+    gaming_history: gamingHistoryRouter(GamingHistory, factories),
     mangas_reading: mangasReadingRouter(MangasReading, factories),
+    mu_online: muOnlineRouter(MuOnlineTools, MuOnlineVersions, factories),
+    music: musicRouter(Music, factories),
     profile: profileRouter(factories),
     projects: projectsRouter(Projects, factories),
-    yugioh_poc: yugiohPocRouter(YugiohPocMods, YugiohPocDecks, factories),
-    music: musicRouter(Music, factories),
     starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories),
-    gaming_history: gamingHistoryRouter(GamingHistory, factories),
-    mu_online: muOnlineRouter(MuOnlineTools, MuOnlineVersions, factories),
-    diabloII: diabloIIRouter(DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories),
-    tools: toolsRouter(models, factories)
+    system: systemRouter(factories),
+    tools: toolsRouter(models, factories),
+    yugioh_poc: yugiohPocRouter(YugiohPocMods, YugiohPocDecks, factories)
   };
 };
 

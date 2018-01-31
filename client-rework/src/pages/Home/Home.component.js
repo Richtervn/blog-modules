@@ -5,6 +5,7 @@ import PageContainer from 'common/PageContainer';
 import TabNavBar from 'components/TabNavBar';
 
 import { Projects } from './Projects';
+import { AppDiary } from './AppDiary';
 
 class Home extends Component {
   componentWillMount() {
@@ -30,7 +31,7 @@ class Home extends Component {
         </div>
         <div className="row">
           {activeTab === 'Projects' && <Projects projectName={params.subPage} />}
-          {activeTab === 'App Diary' && <div>dcm</div>}
+          {activeTab === 'App Diary' && <AppDiary />}
         </div>
       </PageContainer>
     );

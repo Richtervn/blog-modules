@@ -1,11 +1,8 @@
 import { Schema } from 'mongoose';
 
-const AppDiary = new Schema(
-  {
-    Component: String,
-    Content: String
-  },
-  { timestamps: true }
-);
+const AppDiary = new Schema({
+  ts: String,
+  text: String
+});
 
 export default AppDiary;
