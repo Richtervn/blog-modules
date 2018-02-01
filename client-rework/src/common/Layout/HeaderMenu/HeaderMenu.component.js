@@ -1,5 +1,6 @@
 import './HeaderMenu.css';
 import React, { Component } from 'react';
+import MiniMusicPlayer from './components/MiniMusicPlayer.container';
 
 class HeaderMenu extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class HeaderMenu extends Component {
       }
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSelfHide = this.handleSelfHide.bind(this);
   }
 
   handleChange(event) {
@@ -28,13 +30,26 @@ class HeaderMenu extends Component {
     this.setState({ ...this.state, value: { ...this.state.value, mangaUrl: '' } });
   }
 
+  handleSelfHide(event) {
+    if (this.wrapper && !this.wrapper.contains(event.target)) {
+      event.stopImmediatePropagation();
+      this.props.onSelfHide();
+    }
+  }
+
   render() {
     const { isShow } = this.props;
+    if(isShow){
+      document.addEventListener('click', this.handleSelfHide);
+    }
+    if(this.wrapper && !isShow){
+      document.removeEventListener('click', this.handleSelfHide);
+    }
 
     if (!isShow) return null;
 
     return (
-      <div className="header-menu-bar">
+      <div className="header-menu-bar" ref={node => (this.wrapper = node)}>
         <div className="header-menu-input-wrapper">
           <input
             type="text"
@@ -50,6 +65,9 @@ class HeaderMenu extends Component {
             onClick={() => this.handleQuickUpdate()}>
             <i className="fa fa-plus-circle" />
           </button>
+        </div>
+        <div className="header-menu-mini-player">
+          <MiniMusicPlayer />
         </div>
       </div>
     );

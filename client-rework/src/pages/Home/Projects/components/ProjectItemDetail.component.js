@@ -52,7 +52,7 @@ class ProjectItemDetail extends Component {
 
   openSelectTag() {
     this.setState({ selectingTag: true });
-    document.addEventListener('mousedown', this.closeSelectTag);
+    document.addEventListener('click', this.closeSelectTag);
   }
 
   calcProgress(subTasks) {
@@ -62,8 +62,9 @@ class ProjectItemDetail extends Component {
 
   closeSelectTag(event) {
     if (this.TagSelector && !this.TagSelector.contains(event.target)) {
+      event.stopImmediatePropagation();
       this.setState({ selectingTag: false });
-      document.removeEventListener('mousedown', this.closeSelectTag);
+      document.removeEventListener('click', this.closeSelectTag);
     }
   }
 

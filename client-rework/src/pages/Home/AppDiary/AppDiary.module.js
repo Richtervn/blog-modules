@@ -1,7 +1,7 @@
 import { actionCreator } from 'helpers';
 import { toastError } from 'common/Toast';
 
-import services from './AppDiary.service';
+import services from './AppDiary.services';
 
 const GET_LOGS = 'appDiary/GET_LOGS';
 const ADD_LOG = 'appDiary/ADD_LOG';

@@ -3,15 +3,15 @@ import { serviceCaller } from 'helpers';
 const { commonPostMultiplePart, commonGet } = serviceCaller;
 
 export default {
-  add(formBody) {
+  addSong(formBody) {
     const data = commonPostMultiplePart('music/add_song', formBody);
     return data;
   },
-  getAll() {
+  getSongs() {
     const data = commonGet('music/get_all');
     return data;
   },
-  search(query) {
+  searchSong(query) {
     const data = commonGet('music/search', null, query);
     return data;
   }
