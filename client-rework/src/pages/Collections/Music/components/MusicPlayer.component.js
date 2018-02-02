@@ -3,50 +3,37 @@ import ReactPlayer from 'react-player';
 
 class MusicPlayer extends Component {
   componentWillReceiveProps(nextProps) {
-    if (nextProps.isPlaying && !this.props.songs) {
+    if (nextProps.isPlaying && !this.props.playList) {
       this.props.onGetSongs();
     }
   }
 
   render() {
     const {
-      onGetSongs,
-      songs,
+      playList,
       currentSongIndex,
       isPlaying,
       onSetPlayedTime,
       onSetDuration,
-      isLoopList,
+      onPlayEnd,
       isLoopTrack
     } = this.props;
 
-    if (!songs) {
+    if (!playList || playList.length < 1) {
       return null;
     }
-    const url = songs[currentSongIndex].Url.replace('./public', window.appConfig.API_HOST);
+    const url = playList[currentSongIndex].Url.replace('./public', window.appConfig.API_HOST);
     return (
       <ReactPlayer
         url={url}
         playing={isPlaying}
         onProgress={obj => onSetPlayedTime(obj.playedSeconds)}
         onDuration={duration => onSetDuration(duration)}
+        loop={isLoopTrack}
+        onEnded={() => onPlayEnd()}
       />
     );
   }
 }
 
 export default MusicPlayer;
-
-// <ReactPlayer
-//   url={currentSong ? currentSong.Url.replace('./public', ) : ''}
-//   playing={isStartPlay}
-//   controls={true}
-//   loop={isLoopTrack}
-//   width={'415px'}
-//   height={'32px'}
-//   onEnded={() => {
-//     if (!isLoopTrack) {
-//       onNextTrack();
-//     }
-//   }}
-// />

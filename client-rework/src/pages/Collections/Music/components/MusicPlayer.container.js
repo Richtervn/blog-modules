@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import MusicPlayer from './MusicPlayer.component';
 
-import { getSongs, setDuration, setPlayedTime } from '../Music.module';
+import { getSongs, setDuration, setPlayedTime, playEnd } from '../Music.module';
 
 const mapStateToProps = ({ music }) => ({
-  songs: music.songs,
+  playList: music.playList,
   currentSongIndex: music.currentSongIndex,
   isPlaying: music.isPlaying,
   isLoopSong: music.isLoopSong,
@@ -20,6 +20,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onSetPlayedTime(playedTime) {
     dispatch(setPlayedTime(playedTime));
+  },
+  onPlayEnd() {
+    dispatch(playEnd());
   }
 });
 

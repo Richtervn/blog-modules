@@ -19,6 +19,11 @@
   margin-top: 10px;
 }
 
+.player-features > .btn.active {
+  background-color: #323232;
+  color: white;
+}
+
 .dv-star-rating-input {
   margin-bottom: 0;
 }
