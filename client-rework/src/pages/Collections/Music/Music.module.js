@@ -1,40 +1,49 @@
 import _ from 'underscore';
+import React from 'react';
 import { actionCreator, shuffleList as shuffle } from 'helpers';
 import { toastError, toastSuccess } from 'common/Toast';
 
 import services from './Music.services';
 
-const GET_SONGS = 'music/GET_SONGS';
 const ADD_SONG = 'music/ADD_SONG';
+const EDIT_SONG = 'music/EDIT_SONG';
+const GET_SONGS = 'music/GET_SONGS';
 const SEARCH_SONG = 'music/SEARCH_SONG';
 
+const ADD_TO_LIST = 'music/ADD_TO_LIST';
+const NEW_PLAYLIST = 'music/NEW_PLAYLIST';
+const REMOVE_FROM_LIST = 'music/REMOVE_FROM_LIST';
+const SHUFFLE_LIST = 'music/SHUFFLE_LIST';
 const TOGGLE_PLAY = 'music/TOGGLE_PLAY';
 const TOGGLE_LOOP_SONG = 'music/TOGGLE_LOOP_SONG';
 const TOGGLE_LOOP_LIST = 'music/TOGGLE_LOOP_LIST';
-const SHUFFLE_LIST = 'music/SHUFFLE_LIST';
 
 const PLAY_END = 'music/PLAY_END';
-const SORT_PLAY_LIST = 'music/SORT_PLAY_LIST';
+const SORT_SONGS = 'music/SORT_SONGS';
 
-const SET_PLAYED_TIME = 'music/SET_PLAYED_TIME';
-const SET_DURATION = 'music/SET_DURATION';
 const NEXT_SONG = 'music/NEXT_SONG';
 const PREVIOUS_SONG = 'music/PREVIOUS_SONG';
+const SET_PLAYED_TIME = 'music/SET_PLAYED_TIME';
+const SET_DURATION = 'music/SET_DURATION';
 
-export const getSongs = actionCreator(GET_SONGS, services.getSongs);
 export const addSong = formBody => actionCreator(ADD_SONG, services.addSong, formBody)();
+export const editSong = formBody => actionCreator(EDIT_SONG, services.editSong, formBody)();
+export const getSongs = actionCreator(GET_SONGS, services.getSongs);
 export const searchSong = query => actionCreator(SEARCH_SONG, services.searchSong, query)();
 
-export const togglePlay = () => ({ type: TOGGLE_PLAY });
+export const addToList = songs => ({ type: ADD_TO_LIST, songs });
+export const nextSong = () => ({ type: NEXT_SONG });
+export const newPlaylist = () => ({ type: NEW_PLAYLIST });
+export const playEnd = () => ({ type: PLAY_END });
+export const previousSong = () => ({ type: PREVIOUS_SONG });
+export const removeFormList = songId => ({ type: REMOVE_FROM_LIST, songId });
+export const setDuration = duration => ({ type: SET_DURATION, duration });
+export const setPlayedTime = playedTime => ({ type: SET_PLAYED_TIME, playedTime });
+export const shuffleList = () => ({ type: SHUFFLE_LIST });
+export const sortSongs = name => ({ type: SORT_SONGS, name });
 export const toggleLoopSong = () => ({ type: TOGGLE_LOOP_SONG });
 export const toggleLoopList = () => ({ type: TOGGLE_LOOP_LIST });
-export const setPlayedTime = playedTime => ({ type: SET_PLAYED_TIME, playedTime });
-export const setDuration = duration => ({ type: SET_DURATION, duration });
-export const nextSong = () => ({ type: NEXT_SONG });
-export const previousSong = () => ({ type: PREVIOUS_SONG });
-export const playEnd = () => ({ type: PLAY_END });
-export const shuffleList = () => ({ type: SHUFFLE_LIST });
-export const sortPlayList = name => ({ type: SORT_PLAY_LIST, name });
+export const togglePlay = () => ({ type: TOGGLE_PLAY });
 
 const initialState = {
   songs: null,
@@ -53,6 +62,16 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case `${ADD_SONG}_SUCCESS`:
+      if (state.songs) {
+        state.songs.push(action.data);
+      }
+      toastSuccess(() => (
+        <div>
+          Added <strong>{`${action.data.Artist} - ${action.data.Name}.mp3`}</strong>
+        </div>
+      ));
+      return { ...state, songs: state.songs ? state.songs.slice(0) : null };
     case `${GET_SONGS}_START`:
       return { ...state, isLoading: true };
     case `${GET_SONGS}_SUCCESS`:
@@ -63,6 +82,22 @@ export default (state = initialState, action) => {
         isLoading: false,
         canNextSong: action.data.length > 1
       };
+    case `${EDIT_SONG}_SUCCESS`:
+      state.songs = state.songs.map(song => {
+        if (song._id === action.data._id) {
+          return action.data;
+        }
+        return song;
+      });
+      state.playList = state.playList.map(song => {
+        if (song._id === action.data._id) {
+          return action.data;
+        }
+        return song;
+      });
+      return { ...state, playList: state.playList.slice(0), songs: state.songs.slice(0) };
+    case `${SEARCH_SONG}_SUCCESS`:
+      return { ...state, songs: action.data.slice(0) };
 
     case NEXT_SONG: {
       const stateWillChange = {};
@@ -88,15 +123,26 @@ export default (state = initialState, action) => {
       if (!state.isLoopList) {
         stateWillChange.currentSongIndex = state.currentSongIndex - 1;
       } else {
-        stateWillChange.currentSongIndex = state.playList.length;
+        stateWillChange.currentSongIndex = state.playList.length - 1;
       }
       return { ...state, ...stateWillChange };
     }
 
     case TOGGLE_PLAY:
       return { ...state, isPlaying: !state.isPlaying };
-    case TOGGLE_LOOP_LIST:
-      return { ...state, isLoopList: !state.isLoopList };
+    case TOGGLE_LOOP_LIST: {
+      const stateWillChange = {};
+      if (!state.isLoopList === true) {
+        stateWillChange.isLoopList = true;
+        stateWillChange.canNextSong = true;
+        stateWillChange.canPreviousSong = true;
+      } else {
+        stateWillChange.isLoopList = false;
+        stateWillChange.canNextSong = state.currentSongIndex + 1 <= state.playList.length;
+        stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
+      }
+      return { ...state, ...stateWillChange };
+    }
     case TOGGLE_LOOP_SONG: {
       const stateWillChange = {};
       if (!state.isLoopSong === true) {
@@ -106,8 +152,8 @@ export default (state = initialState, action) => {
       } else {
         stateWillChange.isLoopSong = false;
         if (!state.isLoopList) {
-          stateWillChange.canNextSong = state.currentSongIndex + 1 >= state.playList.length;
-          stateWillChange.canPreviousSong = state.currentSongIndex - 1 <= 0;
+          stateWillChange.canNextSong = state.currentSongIndex + 1 <= state.playList.length;
+          stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
         } else {
           stateWillChange.canNextSong = true;
           stateWillChange.canPreviousSong = true;
@@ -119,6 +165,8 @@ export default (state = initialState, action) => {
       return { ...state, playedTime: action.playedTime };
     case SET_DURATION:
       return { ...state, duration: action.duration };
+    case NEW_PLAYLIST:
+      return { ...state, currentSongIndex: 0, playList: [], canNextSong: false, canPreviousSong: false, duration: 0 };
 
     case SHUFFLE_LIST:
       shuffle(state.playList);
@@ -128,17 +176,64 @@ export default (state = initialState, action) => {
     case PLAY_END: {
       const stateWillChange = {};
       if (state.isLoopSong) {
+        stateWillChange.currentSongIndex = state.currentSongIndex;
+      } else {
+        if (!state.isLoopList) {
+          if (state.currentSongIndex + 1 >= state.playList.length) {
+            stateWillChange.canNextSong = false;
+            stateWillChange.isPlaying = false;
+          } else {
+            stateWillChange.currentSongIndex = state.currentSongIndex + 1;
+          }
+        } else {
+          if (stateWillChange + 1 >= state.playList.length) {
+            stateWillChange.currentSongIndex = 0;
+          }
+        }
       }
-      return { ...state };
+      return { ...state, ...stateWillChange };
+    }
+
+    case REMOVE_FROM_LIST: {
+      const stateWillChange = {};
+      state.playList = state.playList.filter(song => song._id !== action.songId);
+      if (!state.isLoopList) {
+        stateWillChange.canNextSong = state.currentSongIndex + 1 <= state.playList.length;
+        stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
+      } else {
+        stateWillChange.canNextSong = true;
+        stateWillChange.canPreviousSong = true;
+      }
+      return { ...state, ...stateWillChange };
+    }
+
+    case ADD_TO_LIST: {
+      const stateWillChange = {};
+      const songList = _.pluck(state.playList, '_id');
+      action.songs.forEach(song => {
+        if (!_.contains(songList, song._id)) {
+          state.playList.push(song);
+        }
+      });
+      if (!state.isLoopList) {
+        stateWillChange.canNextSong = state.currentSongIndex + 1 <= state.playList.length;
+        stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
+      } else {
+        stateWillChange.canNextSong = true;
+        stateWillChange.canPreviousSong = true;
+      }
+      stateWillChange.playList = state.playList.slice(0);
+      return { ...state, ...stateWillChange };
     }
 
     case `${GET_SONGS}_FAIL`:
     case `${ADD_SONG}_FAIL`:
+    case `${EDIT_SONG}_FAIL`:
     case `${SEARCH_SONG}_FAIL`:
       toastError(action.error);
       return state;
 
-    case SORT_PLAY_LIST:
+    case SORT_SONGS:
       let sort = {};
       sort[action.name] = state.sort[action.name];
       if (sort[action.name]) {
@@ -149,10 +244,10 @@ export default (state = initialState, action) => {
       return {
         ...state,
         sort: { ...sort },
-        songsList:
+        songs:
           sort[action.name] === 'ASC'
-            ? _.sortBy(state.playList, action.name).slice(0)
-            : _.sortBy(state.playList, action.name)
+            ? _.sortBy(state.songs, action.name).slice(0)
+            : _.sortBy(state.songs, action.name)
                 .reverse()
                 .slice(0)
       };
@@ -161,74 +256,3 @@ export default (state = initialState, action) => {
       return state;
   }
 };
-
-// import { music } from 'services';
-
-// import actionCreator from 'factories/actionCreator';
-// import { toast } from 'react-toastify';
-
-// const SUBMIT_ADD_MUSIC_FORM_START = 'forms/SUBMIT_ADD_MUSIC_FORM_START';
-// export const SUBMIT_ADD_MUSIC_FORM_SUCESS = 'forms/SUBMIT_ADD_MUSIC_FORM_SUCESS';
-// const SUBMIT_ADD_MUSIC_FORM_FAIL = 'forms/SUBMIT_ADD_MUSIC_FORM_FAIL';
-
-// const SEARCH_SONG_START = 'music/SEARCH_SONG_START';
-// const SEARCH_SONG_SUCCESS = 'music/SEARCH_SONG_SUCCESS';
-// const SEARCH_SONG_FAIL = 'music/SEARCH_SONG_FAIL';
-
-// const REMOVE_SONG = 'music/REMOVE_SONG';
-// const ADD_PLAYLIST = 'music/ADD_PLAYLIST';
-// const NEW_PLAYLIST = 'music/NEW_PLAYLIST';
-// const SORT_SONG_LIST = 'music/SORT_SONG_LIST';
-
-// export const submitAddMusicForm = formBody =>
-//   actionCreator(
-//     SUBMIT_ADD_MUSIC_FORM_START,
-//     SUBMIT_ADD_MUSIC_FORM_SUCESS,
-//     SUBMIT_ADD_MUSIC_FORM_FAIL,
-//     music.add,
-//     formBody
-//   )();
-
-// export const searchSong = option =>
-//   actionCreator(SEARCH_SONG_START, SEARCH_SONG_SUCCESS, SEARCH_SONG_FAIL, music.search, option)();
-
-// export const removeSong = song => ({ type: REMOVE_SONG, song });
-// export const addPlaylist = song => ({ type: ADD_PLAYLIST, song });
-// export const newPlaylist = () => ({ type: NEW_PLAYLIST });
-
-// export default (
-//   state = {
-//     songsList: null,
-//     playList: [],
-//     currentSong: null,
-//     isStartPlay: false,
-//     isLoopTrack: false,
-//     isLoopList: false,
-//
-//   },
-//   action
-// ) => {
-//   let index;
-//   switch (action.type) {
-
-//     case SEARCH_SONG_SUCCESS:
-//       return { ...state, songsList: action.data.slice(0) };
-//     case SUBMIT_ADD_MUSIC_FORM_SUCESS:
-//       state.songsList.push(action.data);
-//       return { ...state, songsList: state.songsList.slice(0) };
-//     case SET_CURRENT_SONG:
-//       return { ...state, currentSong: { ...action.song }, isStartPlay: true };
-
-//     case REMOVE_SONG:
-//       return {
-//         ...state,
-//         playList: state.playList.filter(song => song._id != action.song._id).slice(0)
-//       };
-
-//     case NEW_PLAYLIST:
-//       return { ...state, playList: [], currentSong: null };
-//     case ADD_PLAYLIST:
-//       if (!_.findWhere(state.playList, action.song)) {
-//         state.playList.push(action.song);
-//       }
-//       return { ...state, playList: state.playList.slice(0) };

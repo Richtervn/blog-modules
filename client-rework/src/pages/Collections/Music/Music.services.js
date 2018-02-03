@@ -1,6 +1,6 @@
 import { serviceCaller } from 'helpers';
 
-const { commonPostMultiplePart, commonGet } = serviceCaller;
+const { commonPostMultiplePart, commonGet, commonPut } = serviceCaller;
 
 export default {
   addSong(formBody) {
@@ -13,6 +13,10 @@ export default {
   },
   searchSong(query) {
     const data = commonGet('music/search', null, query);
+    return data;
+  },
+  editSong(formBody) {
+    const data = commonPut('music/update', formBody);
     return data;
   }
 };

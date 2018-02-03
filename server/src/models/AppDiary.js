@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose';
 
 const AppDiary = new Schema({
-  ts: String,
+  ts: Date,
   text: String
 });
 

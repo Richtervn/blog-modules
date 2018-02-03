@@ -1,0 +1,160 @@
+.music-control {
+  width: 100%;
+  background-color: #3b3b3b;
+  margin: 10px 10px 10px 0;
+  border-radius: 5px;
+  border: solid 1px rgba(255, 255, 255, 0.1);
+  padding: 20px 15px;
+  height: calc(100vh - 62px);
+}
+
+.music-control > .music-info {
+  display: flex;
+}
+
+.music-info > .player-avatar > img {
+  width: 150px;
+  border-radius: 10px;
+  border: solid 1px;
+}
+
+.music-info > .playing-info {
+  padding-left: 10px;
+}
+
+.playing-info > .song-title {
+  width: 270px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.playing-info > .song-artist {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.playing-info > .song-rating {
+  font-size: 24px;
+}
+
+.music-control > .play-progress {
+  padding-top: 10px;
+}
+
+.music-control > .play-progress > .progress > .progress-bar {
+  transition: none;
+}
+
+.music-control > .play-control {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: flex-end;
+}
+
+.media-feature > .btn-play {
+  width: 70px;
+  height: 70px;
+  border: solid 1px rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  font-size: 30px;
+  padding: 0;
+  margin: 0 10px;
+}
+
+.media-feature > .btn-control {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  border: solid 1px rgba(0, 0, 0, 0.5);
+}
+
+.control-feature > .btn {
+  padding: 0;
+  width: 30px;
+  margin-left: 2px;
+  border: solid 1px rgba(0, 0, 0, 0.5);
+}
+
+.control-feature > .btn.active {
+  background-color: #141515;
+  color: white;
+}
+
+.playlist-feature > .btn {
+  padding: 0;
+  width: 30px;
+  margin-right: 2px;
+  border: solid 1px rgba(0, 0, 0, 0.5);
+}
+
+.music-play-list {
+  border-radius: 5px;
+  border: solid 1px rgba(255, 255, 255, 0.5);
+  margin-top: 10px;
+  height: calc(100vh - 320px);
+  overflow-y: auto;
+  position: relative;
+}
+
+.music-play-list::-webkit-scrollbar {
+  width: 10px;
+}
+.music-play-list::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #2e2f2f;
+}
+.music-play-list::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #141515;
+}
+
+.music-play-list > .play-list-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  font-size: 14px;
+}
+
+.music-play-list > .play-list-row.playing {
+  background-color: #1995ad!important;
+}
+
+.music-play-list > .play-list-row:hover {
+  background-color: #2e2f2f;
+}
+
+.play-list-row > .song-remove {
+  font-size: 12px;
+  position: absolute;
+  right: 10px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.play-list-row > .song-remove:hover {
+  color: red;
+}
+
+.play-list-row > .song-icon {
+  text-align: center;
+  width: 25px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.play-list-row > .song-index {
+  width: 40px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.play-list-row > .song-name {
+  width: 330px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

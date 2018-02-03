@@ -7,7 +7,7 @@ export default ({
   currentSong,
   isPlaying,
   isLoading,
-  isLoadedSong,
+  isHaveList,
   isLoopSong,
   isLoopList,
   onToggleLoopSong,
@@ -18,7 +18,8 @@ export default ({
   canNextSong,
   canPreviousSong,
   onNextSong,
-  onPreviousSong
+  onPreviousSong,
+  onEditSong
 }) => {
   const getPlayButtonClass = () => {
     if (isLoading) {
@@ -38,22 +39,21 @@ export default ({
     <div className="mini-music-player">
       <div className="control-wrapper">
         <div className="song-info">
-          <div className="song-title">
-            {currentSong ? currentSong.Name : 'Music can be played anywhere'}
-          </div>
-          <div className="song-artist">
-            {currentSong ? currentSong.Artist : 'Life will be more beautiful'}
-          </div>
-          {currentSong && <StarRating name="mini-music-player" value={currentSong.Rating} />}
+          <div className="song-title">{currentSong ? currentSong.Name : 'Music can be played anywhere'}</div>
+          <div className="song-artist">{currentSong ? currentSong.Artist : 'Life will be more beautiful'}</div>
+          {currentSong && (
+            <StarRating
+              name="mini-music-player"
+              value={currentSong.Rating}
+              onStarClick={value => onEditSong({ _id: currentSong._id, Rating: value })}
+            />
+          )}
         </div>
         <div className="song-control">
           <button className="btn" disabled={!canPreviousSong} onClick={() => onPreviousSong()}>
             <i className="fa fa-step-backward" />
           </button>
-          <button
-            className="btn btn-large"
-            onClick={() => onTogglePlay()}
-            disabled={isPlaying && !currentSong}>
+          <button className="btn btn-large" onClick={() => onTogglePlay()} disabled={isPlaying && !currentSong}>
             <i className={`fa ${getPlayButtonClass()}`} />
           </button>
           <button className="btn" disabled={!canNextSong} onClick={() => onNextSong()}>
@@ -78,10 +78,10 @@ export default ({
         <button
           className={`btn ${isLoopList ? 'active' : ''}`}
           onClick={() => onToggleLoopList()}
-          disabled={!isPlaying || !isLoadedSong}>
+          disabled={!isPlaying || !isHaveList}>
           <i className="fa fa-retweet" />
         </button>
-        <button className="btn" onClick={() => onShuffleList()} disabled={!isLoadedSong}>
+        <button className="btn" onClick={() => onShuffleList()} disabled={!isHaveList}>
           <i className="fa fa-random" />
         </button>
       </div>

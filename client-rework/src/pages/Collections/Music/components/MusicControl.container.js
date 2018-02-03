@@ -1,27 +1,24 @@
+import MusicControl from './MusicControl.component';
 import { connect } from 'react-redux';
-import MiniMusicPlayer from './MiniMusicPlayer.component';
 
 import {
-  editSong,
   togglePlay,
   nextSong,
   previousSong,
   toggleLoopSong,
   toggleLoopList,
-  shuffleList
-} from 'pages/Collections/Music/Music.module';
+  shuffleList,
+  newPlaylist,
+  editSong,
+  removeFormList
+} from '../Music.module';
 
-const mapStateToProps = ({ music, appControl }) => ({
-  isHaveList: music.playList && music.playList.length > 0,
+const mapStateToProps = ({ music }) => ({
   currentSong: music.playList ? music.playList[music.currentSongIndex] : null,
-  isLoading: music.isLoading,
+  playList: music.playList,
+  duration: music.duration,
+  playedTime: music.playedTime,
   isPlaying: music.isPlaying,
-  progress:
-    (appControl.isShowHeaderMenu &&
-      music.duration &&
-      music.playedTime &&
-      Math.floor(music.playedTime / music.duration * 100)) ||
-    0,
   canNextSong: music.canNextSong,
   canPreviousSong: music.canPreviousSong,
   isLoopSong: music.isLoopSong,
@@ -29,8 +26,8 @@ const mapStateToProps = ({ music, appControl }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onEditSong(formBody) {
-    dispatch(editSong(formBody));
+  onNewList() {
+    dispatch(newPlaylist());
   },
   onTogglePlay() {
     dispatch(togglePlay());
@@ -49,7 +46,13 @@ const mapDispatchToProps = dispatch => ({
   },
   onShuffleList() {
     dispatch(shuffleList());
+  },
+  onEditSong(formBody) {
+    dispatch(editSong(formBody));
+  },
+  onRemoveFromList(songId) {
+    dispatch(removeFormList(songId));
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MiniMusicPlayer);
+export default connect(mapStateToProps, mapDispatchToProps)(MusicControl);

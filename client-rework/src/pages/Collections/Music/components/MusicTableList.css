@@ -1,0 +1,119 @@
+.music-table {
+  padding: 0 10px 10px 10px;
+  width: 100%;
+  position: relative;
+}
+
+.music-table:focus {
+  outline: none;
+}
+
+.music-table > .music-table-header {
+  background-color: #063852;
+  color: white;
+  font-weight: 700;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.music-table-header > .music-table-row {
+  border: none;
+  font-size: 16px;
+  padding-right: 16px;
+}
+
+.music-table > .music-table-body {
+  max-height: calc(100vh - 135px);
+  overflow-y: auto;
+  background-color: #e9ecef;
+  color: #343434;
+}
+
+.music-table-body > .music-table-row.selected {
+  background-color: #8ed08e !important;
+}
+
+.music-table-body > .music-table-row:hover {
+  background-color: #bfe4c3 !important;
+}
+
+.music-table-body > .music-table-row.selected:hover {
+  background-color: #8ed08e !important;
+}
+
+.music-table-row {
+  display: flex;
+  font-size: 14px;
+  border-top-style: none;
+  align-items: center;
+  user-select: none;
+}
+
+.music-table-body > .music-table-row:nth-child(even) {
+  background-color: #f0f8ff;
+}
+
+.music-table-row > .artist-col {
+  width: 25%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.music-table-row > .name-col {
+  width: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.music-table-row > .rating-col {
+  width: 10%;
+  text-align: center;
+}
+
+.music-table-row > .genre-col {
+  width: 15%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.music-table-header-sort-icon {
+  display: inline-block;
+  padding: 0px 10px;
+}
+
+.music-table-row > .genre-col > .hot-edit-input {
+  border: none;
+  width: 95%;
+  padding-left: 5px;
+}
+
+.music-table > .music-table-options {
+  top: 50px;
+  right: 50px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 10px 0px 10px;
+  width: 180px;
+  z-index: 1;
+}
+
+.music-table-options > .btn {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 0 20px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.music-table-options > .btn > .fa {
+  font-size: 18px;
+}

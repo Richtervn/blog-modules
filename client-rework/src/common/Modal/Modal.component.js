@@ -9,6 +9,7 @@ import {
   ProjectItemForm,
   ProjectItemDetail
 } from 'pages/Home/Projects';
+import { MusicForm } from 'pages/Collections/Music';
 
 export default ({ name }) => {
   let additionProps = {};
@@ -35,6 +36,7 @@ export default ({ name }) => {
       {name === 'ProjectSetting' && <ProjectSetting />}
       {name === 'AddProjectItem' && <ProjectItemForm />}
       {name === 'ProjectItemDetail' && <ProjectItemDetail />}
+      {name === 'AddSong' && <MusicForm />}
     </Modal>
   );
 };
@@ -62,11 +64,7 @@ export default ({ name }) => {
 //   },
 //   EditYugiohMod: null,
 //   EditYugiohDeck: null,
-//   AddMusic: {
-//     File: null,
-//     Rating: 0,
-//     Genre: ''
-//   },
+
 //   AddStarcraftMap: {
 //     Rating: 0,
 //     File: null,

@@ -21,7 +21,7 @@ export default ({ name, quote, author, onShowHeaderMenu, onHideHeaderMenu, isSho
         onClick={() => {
           isShowHeaderMenu ? onHideHeaderMenu() : onShowHeaderMenu();
         }}>
-        <i className={`fa ${isShowHeaderMenu ? 'fa-times' : 'fa-navicon'} fa-fw`} />
+        <i className={`fa ${isShowHeaderMenu ? 'fa-times' : 'fa-bolt'} fa-fw`} />
       </button>
     </div>
   </div>

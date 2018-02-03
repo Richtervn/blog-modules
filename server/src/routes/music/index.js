@@ -1,6 +1,7 @@
 import _ from 'underscore';
 import express from 'express';
 
+import updateMusic from './services/updateMusic';
 import uploadMusic from './services/uploadMusic';
 import searchMusic from './services/searchMusic';
 
@@ -30,6 +31,14 @@ export default (Music, factories) => {
     wrap(async (req, res, next) => {
       const songs = await searchMusic(Music, req.query);
       res.send(songs);
+    })
+  );
+
+  router.put(
+    '/update',
+    wrap(async (req, res, next) => {
+      const song = await updateMusic(Music, req.body);
+      res.send(song);
     })
   );
 
