@@ -4,6 +4,7 @@ import express from 'express';
 import updateMusic from './services/updateMusic';
 import uploadMusic from './services/uploadMusic';
 import searchMusic from './services/searchMusic';
+import deleteMusic from './services/deleteMusic';
 
 export default (Music, factories) => {
   const router = express.Router();
@@ -39,6 +40,14 @@ export default (Music, factories) => {
     wrap(async (req, res, next) => {
       const song = await updateMusic(Music, req.body);
       res.send(song);
+    })
+  );
+
+  router.put(
+    '/delete_songs',
+    wrap(async (req, res, next) => {
+      const ids = await deleteMusic(Music, req.body);
+      res.send(ids);
     })
   );
 

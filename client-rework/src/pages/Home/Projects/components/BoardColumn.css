@@ -24,3 +24,7 @@
   max-height: calc(100vh - 255px);
   overflow-y: auto;
 }
+
+.project-board-column > .btn {
+  padding: 0;
+}

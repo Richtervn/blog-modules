@@ -24,6 +24,8 @@ class MusicTableList extends Component {
     this.handleKeyUp = this.handleKeyUp.bind(this);
     this.handleClickAddToList = this.handleClickAddToList.bind(this);
     this.handleClickClear = this.handleClickClear.bind(this);
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    this.handleClickPlaySelected = this.handleClickPlaySelected.bind(this);
   }
 
   handleClickAddToList(e) {
@@ -54,6 +56,11 @@ class MusicTableList extends Component {
         this.setState({ shiftHolding: true });
       }
     }
+  }
+
+  handleDeleteClick() {
+    this.props.onDeleteSongs({ ids: _.pluck(this.state.selectedSongs, '_id') });
+    this.setState({ selectedSongs: [] });
   }
 
   handleKeyUp(e) {
@@ -88,6 +95,11 @@ class MusicTableList extends Component {
     this.setState({ selectedSongs: selectedSongs.filter(song => song._id !== songId) });
   }
 
+  handleClickPlaySelected(){
+    this.props.onPlaySongs(this.state.selectedSongs);
+    this.setState({selectedSongs: []})
+  }
+
   renderSortIcon(header) {
     if (!this.props.sort[header]) {
       return null;
@@ -101,7 +113,7 @@ class MusicTableList extends Component {
   }
 
   render() {
-    const { songs, onSortSongs, onEditSong, onRemoveFromList } = this.props;
+    const { songs, onSortSongs, onEditSong } = this.props;
     const selectedSongsId = _.pluck(this.state.selectedSongs, '_id');
     return (
       <div className="music-table" onKeyDown={this.handleKeyDown} onKeyUp={this.handleKeyUp} tabIndex="0">
@@ -110,8 +122,14 @@ class MusicTableList extends Component {
             <button className="btn btn-primary btn-block" onClick={this.handleClickAddToList}>
               <i className="fa fa-sign-in fa-fw" /> Add to playlist
             </button>
-            <button className="btn btn-danger btn-block" onClick={this.handleClickClear}>
+            <button className="btn btn-info btn-block" onClick={this.handleClickPlaySelected}>
+              <i className="fa fa-play-circle-o fa-fw" /> Play selected
+            </button>
+            <button className="btn btn-warning btn-block" onClick={this.handleClickClear}>
               <i className="fa fa-times-circle-o fa-fw" /> Clear selected
+            </button>
+            <button className="btn btn-danger btn-block" onClick={this.handleDeleteClick}>
+              <i className="fa fa-trash-o fa-fw" /> Delete selected
             </button>
           </div>
         )}

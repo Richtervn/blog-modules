@@ -22,7 +22,7 @@ class MusicForm extends Component {
     const valueState = { ...this.state.value };
     switch (name) {
       case 'File':
-        valueState.File = event.files[0];
+        valueState.File = event.target.files[0];
         break;
       default:
         valueState[name] = value;

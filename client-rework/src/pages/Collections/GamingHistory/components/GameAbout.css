@@ -1,0 +1,22 @@
+.game-about {
+  display: flex;
+  padding: 10px;
+}
+
+.game-about > .intro-col {
+  width: 258px;
+}
+
+.game-about > .contents-col {
+  width: 258px;
+}
+
+.game-about > .article-col {
+  width: calc(100% - 536px);
+  border: solid 1px rgba(255, 255, 255, 0.5);
+  margin-left: 10px;
+  margin-right: 10px;
+  height: fit-content;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+}

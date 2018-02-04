@@ -25,10 +25,12 @@ export default appTree => {
       return path;
     },
     decode(path) {
+      const pathFrags = path.split('/');
+      const pathStrict = `/${pathFrags[1]}`
       let result = {};
       Object.keys(appRouter).forEach(group => {
         appRouter[group].forEach(router => {
-          if (router.path === path) {
+          if (router.path === pathStrict) {
             result.activeGroup = group;
             result.activeItem = router.item;
           }

@@ -31,6 +31,7 @@ export default ({
   onNextSong,
   onEditSong,
   onRemoveFromList,
+  onPlaySong,
   onPreviousSong,
   onToggleLoopSong,
   onToggleLoopList,
@@ -114,7 +115,10 @@ export default ({
       </div>
       <div className="music-play-list">
         {playList.map((song, i) => (
-          <div key={i} className={`play-list-row ${song._id === currentSong._id ? 'playing' : ''}`}>
+          <div
+            key={i}
+            className={`play-list-row ${song._id === currentSong._id ? 'playing' : ''}`}
+            onClick={() => onPlaySong(i)}>
             <div className="song-icon">
               <i className="fa fa-music" />
             </div>
@@ -122,7 +126,12 @@ export default ({
             <div className="song-name">
               {song.Artist} - {song.Name}
             </div>
-            <div className="song-remove" onClick={() => onRemoveFromList(song._id)}>
+            <div
+              className="song-remove"
+              onClick={e => {
+                e.stopPropagation();
+                onRemoveFromList(song._id);
+              }}>
               <i className="fa fa-times" />
             </div>
           </div>

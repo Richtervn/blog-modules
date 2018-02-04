@@ -18,5 +18,9 @@ export default {
   editSong(formBody) {
     const data = commonPut('music/update', formBody);
     return data;
+  },
+  deleteSongs(ids) {
+    const data = commonPut('music/delete_songs', ids);
+    return data;
   }
 };

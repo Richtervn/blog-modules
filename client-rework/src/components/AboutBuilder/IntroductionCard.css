@@ -1,0 +1,64 @@
+.introduction-card {
+  border: solid 1px rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+.introduction-card-info {
+  padding: 5px;
+}
+
+.introduction-card-info > .info-line {
+  display: flex;
+  position: relative;
+}
+
+.introduction-card-info > .info-line > .info-key {
+  width: 40%;
+  font-weight: 600;
+}
+
+.introduction-card-info > .info-line > input {
+  border: none;
+}
+
+.introduction-card-info > .info-line > .info-key-input {
+  width: 40%;
+}
+
+.introduction-card-info > .btn {
+  padding: 0;
+  margin-top: 5px;
+  line-height: 1;
+  font-size: 14px;
+}
+
+.introduction-card > .introduction-card-feature {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: none;
+}
+
+.introduction-card-feature > .btn {
+  padding: 0;
+  width: 25px;
+  margin-left: 2px;
+}
+
+.introduction-card:hover .introduction-card-feature {
+  display: block;
+}
+
+.info-line > .remove-field-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 8px;
+  border: none;
+  background: none;
+  color: #343434;
+}
+
+.info-line > .remove-field-btn:hover {
+  color: red;
+}

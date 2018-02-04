@@ -1,13 +1,15 @@
 import './HeaderBar.css';
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 export default ({ name, quote, author, onShowHeaderMenu, onHideHeaderMenu, isShowHeaderMenu }) => (
   <div className="row header-bar-container">
     <div className="flex-center">
       <i className="fa fa-server fa-2x header-bar-icon" />
-      <a className="header-bar-title" href="/">
+      <Link className="header-bar-title" to="/">
         <h5>{name}</h5>
-      </a>
+      </Link>
     </div>
     <div className="header-bar-texts-wrapper">
       <div>

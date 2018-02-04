@@ -1,0 +1,85 @@
+.article-view-wrapper {
+  position: relative;
+}
+
+.article-view {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.article-view > .main-article > .article-label {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 24px;
+  width: 100%;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+}
+
+.sub-article-label {
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.article-view-wrapper > .article-view-feature {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  display: none;
+}
+
+.article-view-feature > .btn {
+  padding: 0;
+  width: 25px;
+  margin-left: 2px;
+}
+
+.article-view-wrapper:hover .article-view-feature {
+  display: block;
+}
+
+.article-view-form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.article-view-form > .label-input {
+  font-style: italic;
+  font-weight: 500;
+  font-size: 24px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+.article-view-form > .content-input {
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.article-view-form > .article-view-form-btns {
+  text-align: right;
+}
+
+.article-view-form-btns > .btn {
+  margin-left: 5px;
+  padding: 0;
+  width: 200px;
+  margin-top: 5px;
+}
+
+.article-edit {
+  display: none;
+}
+
+.article-edit > .btn {
+  width: 25px;
+  padding: 0;
+}
+
+.article-view:hover .article-edit {
+  display: inline-block;
+}

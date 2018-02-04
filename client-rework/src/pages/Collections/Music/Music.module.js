@@ -9,6 +9,7 @@ const ADD_SONG = 'music/ADD_SONG';
 const EDIT_SONG = 'music/EDIT_SONG';
 const GET_SONGS = 'music/GET_SONGS';
 const SEARCH_SONG = 'music/SEARCH_SONG';
+const DELETE_SONGS = 'muisc/DELETE_SONGS';
 
 const ADD_TO_LIST = 'music/ADD_TO_LIST';
 const NEW_PLAYLIST = 'music/NEW_PLAYLIST';
@@ -17,9 +18,11 @@ const SHUFFLE_LIST = 'music/SHUFFLE_LIST';
 const TOGGLE_PLAY = 'music/TOGGLE_PLAY';
 const TOGGLE_LOOP_SONG = 'music/TOGGLE_LOOP_SONG';
 const TOGGLE_LOOP_LIST = 'music/TOGGLE_LOOP_LIST';
+const PLAY_SONG = 'music/PLAY_SONG';
 
 const PLAY_END = 'music/PLAY_END';
 const SORT_SONGS = 'music/SORT_SONGS';
+const PLAY_SONGS = 'music/PLAY_SONGS';
 
 const NEXT_SONG = 'music/NEXT_SONG';
 const PREVIOUS_SONG = 'music/PREVIOUS_SONG';
@@ -30,11 +33,13 @@ export const addSong = formBody => actionCreator(ADD_SONG, services.addSong, for
 export const editSong = formBody => actionCreator(EDIT_SONG, services.editSong, formBody)();
 export const getSongs = actionCreator(GET_SONGS, services.getSongs);
 export const searchSong = query => actionCreator(SEARCH_SONG, services.searchSong, query)();
+export const deleteSongs = ids => actionCreator(DELETE_SONGS, services.deleteSongs, ids)();
 
 export const addToList = songs => ({ type: ADD_TO_LIST, songs });
 export const nextSong = () => ({ type: NEXT_SONG });
 export const newPlaylist = () => ({ type: NEW_PLAYLIST });
 export const playEnd = () => ({ type: PLAY_END });
+export const playSong = index => ({ type: PLAY_SONG, index });
 export const previousSong = () => ({ type: PREVIOUS_SONG });
 export const removeFormList = songId => ({ type: REMOVE_FROM_LIST, songId });
 export const setDuration = duration => ({ type: SET_DURATION, duration });
@@ -44,6 +49,7 @@ export const sortSongs = name => ({ type: SORT_SONGS, name });
 export const toggleLoopSong = () => ({ type: TOGGLE_LOOP_SONG });
 export const toggleLoopList = () => ({ type: TOGGLE_LOOP_LIST });
 export const togglePlay = () => ({ type: TOGGLE_PLAY });
+export const playSongs = songs => ({ type: PLAY_SONGS, songs });
 
 const initialState = {
   songs: null,
@@ -101,14 +107,18 @@ export default (state = initialState, action) => {
 
     case NEXT_SONG: {
       const stateWillChange = {};
-      if (!state.isLoopList && state.currentSongIndex + 1 >= state.playList.length) {
-        stateWillChange.canNextSong = false;
-      }
+
       if (!state.isLoopList) {
-        stateWillChange.currentSongIndex = state.currentSongIndex + 1;
+        if (state.currentSongIndex + 1 >= state.playList.length) {
+          stateWillChange.canNextSong = false;
+        } else {
+          stateWillChange.currentSongIndex = state.currentSongIndex + 1;
+        }
       } else {
         if (state.currentSongIndex + 1 >= state.playList.length) {
           stateWillChange.currentSongIndex = 0;
+        } else {
+          stateWillChange.currentSongIndex = state.currentSongIndex + 1;
         }
       }
       stateWillChange.canPreviousSong = true;
@@ -138,7 +148,7 @@ export default (state = initialState, action) => {
         stateWillChange.canPreviousSong = true;
       } else {
         stateWillChange.isLoopList = false;
-        stateWillChange.canNextSong = state.currentSongIndex + 1 <= state.playList.length;
+        stateWillChange.canNextSong = state.currentSongIndex + 1 <= state.playList.length - 1;
         stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
       }
       return { ...state, ...stateWillChange };
@@ -152,7 +162,7 @@ export default (state = initialState, action) => {
       } else {
         stateWillChange.isLoopSong = false;
         if (!state.isLoopList) {
-          stateWillChange.canNextSong = state.currentSongIndex + 1 <= state.playList.length;
+          stateWillChange.canNextSong = state.currentSongIndex + 1 <= state.playList.length - 1;
           stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
         } else {
           stateWillChange.canNextSong = true;
@@ -167,6 +177,8 @@ export default (state = initialState, action) => {
       return { ...state, duration: action.duration };
     case NEW_PLAYLIST:
       return { ...state, currentSongIndex: 0, playList: [], canNextSong: false, canPreviousSong: false, duration: 0 };
+    case PLAY_SONG:
+      return { ...state, currentSongIndex: action.index };
 
     case SHUFFLE_LIST:
       shuffle(state.playList);
@@ -186,7 +198,7 @@ export default (state = initialState, action) => {
             stateWillChange.currentSongIndex = state.currentSongIndex + 1;
           }
         } else {
-          if (stateWillChange + 1 >= state.playList.length) {
+          if (state.currentSongIndex + 1 >= state.playList.length) {
             stateWillChange.currentSongIndex = 0;
           }
         }
@@ -226,6 +238,48 @@ export default (state = initialState, action) => {
       return { ...state, ...stateWillChange };
     }
 
+    case `${DELETE_SONGS}_SUCCESS`: {
+      const stateWillChange = {};
+      stateWillChange.playList = state.playList.filter(song => !_.contains(action.data.ids, song._id));
+      stateWillChange.songs = state.songs.filter(song => !_.contains(action.data.ids, song._id));
+      if (!state.isLoopList) {
+        stateWillChange.canNextSong = state.currentSongIndex + 1 <= stateWillChange.playList.length;
+        stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
+      } else {
+        stateWillChange.canNextSong = stateWillChange.playList.length > 0;
+        stateWillChange.canPreviousSong = stateWillChange.playList.length > 0;
+      }
+      return {
+        ...state,
+        ...stateWillChange,
+        playList: stateWillChange.playList.slice(0),
+        songs: stateWillChange.songs.slice(0)
+      };
+    }
+
+    case PLAY_SONGS: {
+      const stateWillChange = {};
+      const willPlaySongIds = _.pluck(action.songs, '_id');
+      stateWillChange.playList = state.playList.filter(song => !_.contains(willPlaySongIds, song._id));
+      const songIndex = stateWillChange.playList.length;
+      stateWillChange.playList = stateWillChange.playList.concat(action.songs);
+      if (!state.isLoopList) {
+        stateWillChange.canNextSong = state.currentSongIndex + 1 <= stateWillChange.playList.length;
+        stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
+      } else {
+        stateWillChange.canNextSong = stateWillChange.playList.length > 0;
+        stateWillChange.canPreviousSong = stateWillChange.playList.length > 0;
+      }
+      return {
+        ...state,
+        ...stateWillChange,
+        currentSongIndex: songIndex,
+        playList: stateWillChange.playList.slice(0),
+        isPlaying: true
+      };
+    }
+
+    case `${DELETE_SONGS}_FAIL`:
     case `${GET_SONGS}_FAIL`:
     case `${ADD_SONG}_FAIL`:
     case `${EDIT_SONG}_FAIL`:

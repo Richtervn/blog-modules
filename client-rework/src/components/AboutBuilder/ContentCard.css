@@ -1,0 +1,15 @@
+.contents-card {
+  border: solid 1px rgba(255, 255, 255, 0.5);
+  padding: 5px;
+  font-size: 14px;
+}
+
+.contents-card > .contents-card-label {
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.main-article-ref > .sub-article-ref {
+  padding-left: 15px;
+}

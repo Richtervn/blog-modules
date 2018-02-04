@@ -1,0 +1,36 @@
+.gaming-history-card-content {
+  text-align: center;
+  color: #343434;
+}
+
+.gaming-history-card-content > .game-title {
+  font-weight: 700;
+}
+
+.gaming-history-card-content > .game-genre > .badge {
+  margin-left: 2px;
+}
+
+.gaming-history-card-content > .game-publishers {
+  margin-left: 2px;
+  font-size: 14px;
+}
+
+.gaming-history-card-content > .game-rating {
+  font-size: 24px;
+}
+
+.gaming-history-card-content > .game-period {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+}
+
+.gaming-history-card-content > .game-period > .badge {
+  margin-left: 2px;
+}
+
+.game-list-row {
+  padding: 10px 0 10px 10px;
+  flex-wrap: wrap;
+}

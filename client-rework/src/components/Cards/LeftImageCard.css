@@ -28,3 +28,20 @@
   padding-right: 5px;
   position: relative;
 }
+
+.left-image-card-content > .left-image-card-feature {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+}
+
+.left-image-card:hover .left-image-card-feature {
+  display: block;
+}
+
+.left-image-card-feature > .btn {
+  padding: 0;
+  width: 25px;
+  margin-right: 2px;
+}
