@@ -83,8 +83,8 @@ export default (state = initialState, action) => {
     case `${GET_SONGS}_SUCCESS`:
       return {
         ...state,
-        songs: action.data,
-        playList: action.data,
+        songs: [...action.data],
+        playList: [...action.data],
         isLoading: false,
         canNextSong: action.data.length > 1
       };

@@ -26,7 +26,10 @@ class GameAbout extends Component {
           />
         </div>
         <div className="article-col">
-          <ArticleView data={aboutContent.Sections} />
+          <ArticleView
+            data={aboutContent.Sections}
+            onSave={sections => onEditAboutContent({ GameId: gameInfo._id, Sections: sections })}
+          />
         </div>
         <div className="contents-col">
           <ContentCard data={aboutContent.Sections} />

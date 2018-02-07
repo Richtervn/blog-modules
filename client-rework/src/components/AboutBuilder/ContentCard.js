@@ -13,8 +13,8 @@ export default ({ data }) => {
             </a>
             {obj.SubSections &&
               obj.SubSections.map((subObj, subIndex) => (
-                <div className="sub-article-ref">
-                  <a key={`sa${index}${subIndex}`} href={`#section${index + 1}-${subIndex + 1}`}>
+                <div key={`sa${index}${subIndex}`} className="sub-article-ref">
+                  <a href={`#section${index + 1}-${subIndex + 1}`}>
                     {index + 1}.{subIndex + 1} {subObj.Label}
                   </a>
                 </div>

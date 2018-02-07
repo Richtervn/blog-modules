@@ -3,7 +3,20 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 export default withRouter(
-  ({ col, label, badges, progress, children, color, onClickEdit, onClickDelete, onClick, route, history }) => {
+  ({
+    col,
+    label,
+    badges,
+    progress,
+    showProgress,
+    children,
+    color,
+    onClickEdit,
+    onClickDelete,
+    onClick,
+    route,
+    history
+  }) => {
     const styles = {};
 
     if (color) {
@@ -40,8 +53,9 @@ export default withRouter(
             <div className="progress">
               <div
                 className={`progress-bar progress-bar-striped ${progress < 100 ? 'progress-bar-animated' : ''}`}
-                style={{ width: `${progress || 0}%` }}
-              />
+                style={{ width: `${progress || 0}%` }}>
+                {showProgress && Math.round(progress) + '%'}
+              </div>
             </div>
             <div className="progress-badges-card-features">
               <button

@@ -22,7 +22,7 @@ const cardSource = {
     if (dropResult.key === props.column.key) {
       return;
     }
-    console.log(props.ProjectId);
+
     props.onMoveCardToList(props.item, dropResult, props.column, props.ProjectId);
   }
 };
@@ -37,7 +37,7 @@ const collect = (connect, monitor) => {
 class BoardCard extends Component {
   render() {
     const { connectDragSource, isDragging, item, TagColor, onSetItemOnDetail, column } = this.props;
-    const progress = item.SubTasks.filter(task => task.IsDone).length / item.SubTasks.length * 100;
+    const progress = Math.round(item.SubTasks.filter(task => task.IsDone).length / item.SubTasks.length * 100);
 
     return connectDragSource(
       <div>

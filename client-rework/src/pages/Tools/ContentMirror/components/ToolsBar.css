@@ -1,0 +1,44 @@
+.cm-toolsbar {
+  background-color: #2e2f2f;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cm-toolsbar > div > .btn {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  transition: all 0.5s;
+}
+
+.cm-toolsbar > div > .btn.active {
+  background-color: #1995ad;
+  color: white;
+}
+
+.cm-toolsbar > div > .btn > .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.cm-toolsbar > .selectors {
+  display: flex;
+}
+
+.cm-toolsbar > .selectors > .form-control {
+  margin-left: 10px;
+  line-height: 1;
+  height: 30px!important;
+}
+
+.cm-toolsbar > .selectors > .form-control.opacity-input {
+  width: 80px;
+}
+
+.cm-toolsbar > .selectors > .form-control.select {
+  padding: 0 0.75rem;
+  width: auto;
+}
