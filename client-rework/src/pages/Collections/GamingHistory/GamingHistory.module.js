@@ -15,8 +15,8 @@ const GET_OVERVIEWS = 'gamingHistory/GET_OVERVIEWS';
 const GET_LIST = 'gamingHistory/GET_LIST';
 const EDIT_ABOUT = 'gamingHistory/EDIT_ABOUT';
 const EDIT_GAME = 'gamingHistory/EDIT_GAME';
-// const EDIT_GUIDE = 'gamingHistory/EDIT_GUIDE';
-// const EDIT_OVERVIEW = 'gamingHistory/EDIT_OVERVIEW';
+const EDIT_GUIDE = 'gamingHistory/EDIT_GUIDE';
+const EDIT_OVERVIEW = 'gamingHistory/EDIT_OVERVIEW';
 const DELETE_GAME = 'gamingHistory/DELETE_GAME';
 const DELETE_GUIDE = 'gamingHistory/DELETE_GUIDE';
 const DELETE_OVERVIEW = 'gamingHistory/DELETE_OVERVIEW';
@@ -24,6 +24,7 @@ const DELETE_OVERVIEW = 'gamingHistory/DELETE_OVERVIEW';
 const SET_FOCUS_GAME = 'gamingHistory/SET_FOCUS_GAME';
 const SET_ACTIVE_TAB = 'gamingHistory/SET_ACTIVE_TAB';
 const SET_GAME_INFO = 'gamingHistory/SET_GAME_INFO';
+const SET_FOCUS_GUIDE = 'gamingHistory/SET_FOCUS_GUIDE';
 
 export const getList = actionCreator(GET_LIST, services.getList);
 export const getGuides = actionCreator(GET_GUIDES, services.getGuides);
@@ -35,6 +36,8 @@ export const addGame = formBody => actionCreator(ADD_GAME, services.addGame, for
 export const addGuide = formBody => actionCreator(ADD_GUIDE, services.addGuide, formBody)();
 export const addOverview = formBody => actionCreator(ADD_OVERVIEW, services.addOverview, formBody)();
 export const editGame = formBody => actionCreator(EDIT_GAME, services.editGame, formBody)();
+export const editGuide = formBody => actionCreator(EDIT_GUIDE, services.editGuide, formBody)();
+export const editOverview = formBody => actionCreator(EDIT_OVERVIEW, services.editOverview, formBody)();
 export const deleteGame = id => actionCreator(DELETE_GAME, services.deleteGame, id)();
 export const deleteGuide = id => actionCreator(DELETE_GUIDE, services.deleteGuide, id)();
 export const deleteOverview = id => actionCreator(DELETE_OVERVIEW, services.deleteOverview, id)();
@@ -43,10 +46,12 @@ export const editAboutContent = formBody => actionCreator(EDIT_ABOUT, services.e
 export const setFocusGame = game => ({ type: SET_FOCUS_GAME, game });
 export const setActiveTab = tabName => ({ type: SET_ACTIVE_TAB, tabName });
 export const setGameInfo = game => ({ type: SET_GAME_INFO, game });
+export const setFocusGuide = guide => ({ type: SET_FOCUS_GUIDE, guide });
 
 const initialState = {
   list: null,
   focusGame: { Genres: [''], Publishers: [''], Periods: [''] },
+  focusGuide: {},
   activeTab: 'About',
   aboutContent: null,
   guides: null,
@@ -89,6 +94,27 @@ export default (state = initialState, action) => {
     case `${EDIT_ABOUT}_SUCCESS`:
       toastSuccess('Edited page content');
       return { ...state, aboutContent: { ...state.aboutContent, ...action.data } };
+    case `${ADD_GUIDE}_SUCCESS`:
+      state.guides.push(action.data);
+      toastSuccess(() => (
+        <p>
+          Added <strong>{action.data.Title}</strong>
+        </p>
+      ));
+      return { ...state, guides: state.guides.slice(0) };
+    case `${EDIT_GUIDE}_SUCCESS`:
+      state.guides = state.guides.map(guide => {
+        if (guide._id === action.data._id) {
+          return action.data;
+        }
+        return guide;
+      });
+      toastSuccess(() => (
+        <p>
+          Updated <strong>{action.data.Title}</strong>
+        </p>
+      ));
+      return { ...state, guides: state.guides.slice(0) };
 
     case SET_FOCUS_GAME:
       return { ...state, focusGame: action.game };
@@ -96,6 +122,8 @@ export default (state = initialState, action) => {
       return { ...state, activeTab: action.tabName };
     case SET_GAME_INFO:
       return { ...state, gameInfo: action.game };
+    case SET_FOCUS_GUIDE:
+      return { ...state, focusGuide: action.guide };
 
     case `${GET_LIST}_FAIL`:
     case `${ADD_GAME}_FAIL`:

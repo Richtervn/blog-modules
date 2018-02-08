@@ -10,7 +10,7 @@ import {
   ProjectItemDetail
 } from 'pages/Home/Projects';
 import { MusicForm } from 'pages/Collections/Music';
-import { GamingHistoryForm, GamingHistoryDeleteConfirm } from 'pages/Collections/GamingHistory';
+import { GamingHistoryForm, GamingHistoryDeleteConfirm, GamingHistoryGuideForm } from 'pages/Collections/GamingHistory';
 
 export default ({ name }) => {
   let additionProps = {};
@@ -41,6 +41,8 @@ export default ({ name }) => {
       {name === 'AddGamingHistory' && <GamingHistoryForm />}
       {name === 'EditGamingHistory' && <GamingHistoryForm edit />}
       {name === 'DeleteGamingHistory' && <GamingHistoryDeleteConfirm />}
+      {name === 'AddGamingHistoryGuide' && <GamingHistoryGuideForm />}
+      {name === 'EditGamingHistoryGuide' && <GamingHistoryGuideForm edit />}
     </Modal>
   );
 };

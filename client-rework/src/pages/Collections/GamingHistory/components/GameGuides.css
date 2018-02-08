@@ -1,0 +1,35 @@
+.game-guides-list {
+  padding: 10px 0 10px 10px;
+  flex-wrap: wrap;
+  height: calc(100vh - 90px);
+  overflow-y: auto;
+}
+
+.game-guide-card {
+  padding: 0px 10px;
+  position: relative;
+  height: 100px;
+  text-align: center;
+  color: #343434;
+}
+
+.game-guide-card > .title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.game-guide-card > .author {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.game-guide-card > .source-wrapper {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  font-style: italic;
+}

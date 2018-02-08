@@ -13,7 +13,7 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   router.post(
     '/add_guide',
     wrap(async (req, res, next) => {
-      const guide = commonService.create(GamingHistoryGuide, req.body);
+      const guide = await commonService.create(GamingHistoryGuide, req.body);
       res.send(guide);
     })
   );
@@ -21,7 +21,7 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   router.post(
     '/add_overview',
     wrap(async (req, res, next) => {
-      const overview = commonService.create(GamingHistoryOverview, req.body);
+      const overview = await commonService.create(GamingHistoryOverview, req.body);
       res.send(overview);
     })
   );
@@ -29,7 +29,7 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   router.put(
     '/edit_guide',
     wrap(async (req, res, next) => {
-      const guide = commonService.update(GamingHistoryGuide, req.body);
+      const guide = await commonService.update(GamingHistoryGuide, req.body);
       res.send(guide);
     })
   );
@@ -37,7 +37,7 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   router.put(
     '/edit_overview',
     wrap(async (req, res, next) => {
-      const overview = commonService.update(GamingHistoryOverview, req.body);
+      const overview = await commonService.update(GamingHistoryOverview, req.body);
       res.send(overview);
     })
   );
@@ -45,7 +45,7 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   router.get(
     '/get_guides',
     wrap(async (req, res, next) => {
-      const guides = commonService.getAll(GamingHistoryGuide, { CSS: false, HTML: false });
+      const guides = await commonService.getAll(GamingHistoryGuide, { CSS: false, HTML: false });
       res.send(guides);
     })
   );
@@ -53,7 +53,7 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   router.get(
     '/get_guide/:id',
     wrap(async (req, res, next) => {
-      const guide = commonService.getOne(GamingHistoryGuide, req.params.id);
+      const guide = await commonService.getOne(GamingHistoryGuide, req.params.id);
       res.send(guide);
     })
   );
@@ -61,7 +61,7 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   router.get(
     '/get_overviews',
     wrap(async (req, res, next) => {
-      const overviews = commonService.getAll(GamingHistoryOverview, { Sections: false });
+      const overviews = await commonService.getAll(GamingHistoryOverview, { Sections: false });
       res.send(overviews);
     })
   );
@@ -69,7 +69,7 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   router.get(
     '/get_overview/:id',
     wrap(async (req, res, next) => {
-      const overview = commonService.getOne(GamingHistoryOverview, req.params.id);
+      const overview = await commonService.getOne(GamingHistoryOverview, req.params.id);
       res.send(overview);
     })
   );
@@ -77,7 +77,7 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   router.delete(
     '/delete_guide/:id',
     wrap(async (req, res, next) => {
-      const id = commonService.delete(GamingHistoryGuide, req.params.id);
+      const id = await commonService.delete(GamingHistoryGuide, req.params.id);
       res.send(id);
     })
   );
@@ -85,7 +85,7 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   router.delete(
     '/delete_overview/:id',
     wrap(async (req, res, next) => {
-      const id = commonService.detele(GamingHistoryOverview, req.params.id);
+      const id = await commonService.detele(GamingHistoryOverview, req.params.id);
       res.send(id);
     })
   );

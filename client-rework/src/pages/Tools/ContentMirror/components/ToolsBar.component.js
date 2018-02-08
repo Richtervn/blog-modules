@@ -1,5 +1,6 @@
 import './ToolsBar.css';
 import React from 'react';
+import ContentSelector from './ContentSelector.container';
 
 import { backgrounds } from 'app/manifest';
 
@@ -13,7 +14,8 @@ export default ({
   opacity,
   onChangeOpacity,
   background,
-  onChangeBackground
+  onChangeBackground,
+  params
 }) => (
   <div className="cm-toolsbar">
     <div>
@@ -28,16 +30,7 @@ export default ({
       </button>
     </div>
     <div className="selectors">
-      <select className="form-control select" value="default" readOnly>
-        <option value="default" disabled hidden>
-          Select Collection
-        </option>
-      </select>
-      <select className="form-control select" value="default" readOnly>
-        <option value="default" disabled hidden>
-          Select Document
-        </option>
-      </select>
+      <ContentSelector table={params.table} record={params.record} />
       <select className="form-control select" value={background} onChange={e => onChangeBackground(e.target.value)}>
         <option value="default" disabled hidden>
           Select Background

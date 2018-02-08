@@ -17,7 +17,7 @@ const AppRoutes = () => (
       <Route path="/home/:tab/:subPage?" component={Home} />
       <Route exact path="/mangas_reading" component={MangasReading} />
       <Route exact path="/music" component={Music} />
-      <Route exact path="/content_mirror" component={ContentMirror} />
+      <Route path="/content_mirror/:table?/:record?" component={ContentMirror} />
       <Route path="/gaming_history/:game?/:tab?/:subPage?" component={GamingHistory} />
       <Route path="/flash_games/:name" component={FlashGames} />
       <Route path="/404" component={NotFound} />

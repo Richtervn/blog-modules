@@ -36,8 +36,8 @@ class GamePage extends Component {
           headerClass="home-tab-nav-header"
         />
         {activeTab === 'About' && <GameAbout />}
-        {activeTab === 'Guides' && <GameGuides subPage={params.subPage} />}
-        {activeTab === 'Overview' && <GameOverviews subPage={params.subPage} />}
+        {activeTab === 'Guides' && <GameGuides params={params} />}
+        {activeTab === 'Overview' && <GameOverviews params={params} />}
       </PageContainer>
     );
   }
