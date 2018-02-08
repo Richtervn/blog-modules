@@ -1,14 +1,94 @@
 import express from 'express';
 
-import uploadCover from './services/uploadCover';
 import addGame from './services/addGame';
-import updateGame from './services/updateGame';
 import searchGame from './services/searchGame';
 import updateAbout from './services/updateAbout';
+import updateGame from './services/updateGame';
+import uploadCover from './services/uploadCover';
 
-export default (GamingHistory, GamingHistoryAbout, factories) => {
+export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHistoryOverview, factories) => {
   const router = express.Router();
   const { wrap, commonService } = factories;
+
+  router.post(
+    '/add_guide',
+    wrap(async (req, res, next) => {
+      const guide = commonService.create(GamingHistoryGuide, req.body);
+      res.send(guide);
+    })
+  );
+
+  router.post(
+    '/add_overview',
+    wrap(async (req, res, next) => {
+      const overview = commonService.create(GamingHistoryOverview, req.body);
+      res.send(overview);
+    })
+  );
+
+  router.put(
+    '/edit_guide',
+    wrap(async (req, res, next) => {
+      const guide = commonService.update(GamingHistoryGuide, req.body);
+      res.send(guide);
+    })
+  );
+
+  router.put(
+    '/edit_overview',
+    wrap(async (req, res, next) => {
+      const overview = commonService.update(GamingHistoryOverview, req.body);
+      res.send(overview);
+    })
+  );
+
+  router.get(
+    '/get_guides',
+    wrap(async (req, res, next) => {
+      const guides = commonService.getAll(GamingHistoryGuide, { CSS: false, HTML: false });
+      res.send(guides);
+    })
+  );
+
+  router.get(
+    '/get_guide/:id',
+    wrap(async (req, res, next) => {
+      const guide = commonService.getOne(GamingHistoryGuide, req.params.id);
+      res.send(guide);
+    })
+  );
+
+  router.get(
+    '/get_overviews',
+    wrap(async (req, res, next) => {
+      const overviews = commonService.getAll(GamingHistoryOverview, { Sections: false });
+      res.send(overviews);
+    })
+  );
+
+  router.get(
+    '/get_overview/:id',
+    wrap(async (req, res, next) => {
+      const overview = commonService.getOne(GamingHistoryOverview, req.params.id);
+      res.send(overview);
+    })
+  );
+
+  router.delete(
+    '/delete_guide/:id',
+    wrap(async (req, res, next) => {
+      const id = commonService.delete(GamingHistoryGuide, req.params.id);
+      res.send(id);
+    })
+  );
+
+  router.delete(
+    '/delete_overview/:id',
+    wrap(async (req, res, next) => {
+      const id = commonService.detele(GamingHistoryOverview, req.params.id);
+      res.send(id);
+    })
+  );
 
   router.get(
     '/get_list',

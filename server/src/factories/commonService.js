@@ -4,8 +4,8 @@ export default {
     const doc = await schema.save();
     return doc;
   },
-  getAll: async model => {
-    const docs = await model.find();
+  getAll: async (model, options) => {
+    const docs = await model.find({}, {...options});
     return docs;
   },
   delete: async (model, id) => {

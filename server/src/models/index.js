@@ -8,6 +8,8 @@ import DiabloIITools from './DiabloIITools';
 import FlashGames from './FlashGames';
 import GamingHistory from './GamingHistory';
 import GamingHistoryAbout from './GamingHistoryAbout';
+import GamingHistoryGuide from './GamingHistoryGuide';
+import GamingHistoryOverview from './GamingHistoryOverview';
 import MangasReading from './MangasReading';
 import MuOnlineTools from './MuOnlineTools';
 import MuOnlineVersions from './MuOnlineVersions';
@@ -29,6 +31,8 @@ const models = db => {
   FlashGames.plugin(autoIncrement.plugin, 'FlashGames');
   GamingHistory.plugin(autoIncrement.plugin, 'GamingHistory');
   GamingHistoryAbout.plugin(autoIncrement.plugin, 'GamingHistoryAbout');
+  GamingHistoryGuide.plugin(autoIncrement.plugin, 'GamingHistoryGuide');
+  GamingHistoryOverview.plugin(autoIncrement.plugin, 'GamingHistoryOverview');
   MangasReading.plugin(autoIncrement.plugin, 'MangasReading');
   MuOnlineTools.plugin(autoIncrement.plugin, 'MuOnlineTools');
   MuOnlineVersions.plugin(autoIncrement.plugin, 'MuOnlineVersions');
@@ -50,6 +54,8 @@ const models = db => {
     FlashGames: db.model('FlashGames', FlashGames),
     GamingHistory: db.model('GamingHistory', GamingHistory),
     GamingHistoryAbout: db.model('GamingHistoryAbout', GamingHistoryAbout),
+    GamingHistoryGuide: db.model('GamingHistoryGuide', GamingHistoryGuide),
+    GamingHistoryOverview: db.model('GamingHistoryOverview', GamingHistoryOverview),
     MangasReading: db.model('MangasReading', MangasReading),
     MuOnlineTools: db.model('MuOnlineTools', MuOnlineTools),
     MuOnlineVersions: db.model('MuOnlineVersions', MuOnlineVersions),

@@ -5,7 +5,8 @@ import { getAboutContent, editAboutContent } from '../GamingHistory.module';
 
 export default connect(
   ({ gamingHistory }) => ({
-    aboutContent: gamingHistory.aboutContent
+    aboutContent: gamingHistory.aboutContent,
+    gameInfo: gamingHistory.gameInfo
   }),
   dispatch => ({
     onGetAboutContent(gameId) {

@@ -22,6 +22,8 @@ const routes = (models, factories) => {
     FlashGames,
     GamingHistory,
     GamingHistoryAbout,
+    GamingHistoryGuide,
+    GamingHistoryOverview,
     MangasReading,
     MuOnlineTools,
     MuOnlineVersions,
@@ -38,7 +40,13 @@ const routes = (models, factories) => {
     app_diary: appDiaryRouter(AppDiary, factories),
     diabloII: diabloIIRouter(DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories),
     flash_games: flashGamesRouter(FlashGames, factories),
-    gaming_history: gamingHistoryRouter(GamingHistory, GamingHistoryAbout, factories),
+    gaming_history: gamingHistoryRouter(
+      GamingHistory,
+      GamingHistoryAbout,
+      GamingHistoryGuide,
+      GamingHistoryOverview,
+      factories
+    ),
     mangas_reading: mangasReadingRouter(MangasReading, factories),
     mu_online: muOnlineRouter(MuOnlineTools, MuOnlineVersions, factories),
     music: musicRouter(Music, factories),
