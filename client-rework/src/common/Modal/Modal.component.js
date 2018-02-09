@@ -2,15 +2,25 @@ import React from 'react';
 import { Modal } from 'components/Modal';
 
 import { FlashGamesForm, FlashGamesGuide } from 'pages/FlashGames';
+
+import { ProjectForm } from 'pages/Home/Projects';
 import {
-  ProjectForm,
   ProjectDeleteConfirm,
-  ProjectSetting,
+  ProjectItemDetail,
   ProjectItemForm,
-  ProjectItemDetail
-} from 'pages/Home/Projects';
+  ProjectSetting
+} from 'pages/Home/Projects/ProjectBoard';
+
 import { MusicForm } from 'pages/Collections/Music';
-import { GamingHistoryForm, GamingHistoryDeleteConfirm, GamingHistoryGuideForm } from 'pages/Collections/GamingHistory';
+
+import {
+  GamingHistoryGuideDeleteConfirm,
+  GamingHistoryGuideForm,
+  GamingHistoryOverviewDeleteConfirm,
+  GamingHistoryOverviewForm,
+  GamingHistoryDeleteConfirm,
+  GamingHistoryForm
+} from 'pages/Collections/GamingHistory';
 
 export default ({ name }) => {
   let additionProps = {};
@@ -43,6 +53,10 @@ export default ({ name }) => {
       {name === 'DeleteGamingHistory' && <GamingHistoryDeleteConfirm />}
       {name === 'AddGamingHistoryGuide' && <GamingHistoryGuideForm />}
       {name === 'EditGamingHistoryGuide' && <GamingHistoryGuideForm edit />}
+      {name === 'DeleteGamingHistoryGuide' && <GamingHistoryGuideDeleteConfirm />}
+      {name === 'AddGamingHistoryOverview' && <GamingHistoryOverviewForm />}
+      {name === 'EditGamingHistoryOverview' && <GamingHistoryOverviewForm edit />}
+      {name === 'DeleteGamingHistoryOverview' && <GamingHistoryOverviewDeleteConfirm />}
     </Modal>
   );
 };

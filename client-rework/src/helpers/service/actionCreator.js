@@ -1,6 +1,6 @@
 export default (type, service, ...serviceParams) => {
-  const actionStart = () => ({ type: `${type}_START` });
-  const actionSuccess = data => ({ type: `${type}_SUCCESS`, data });
+  const actionStart = () => ({ type: `${type}_START`, params: { ...serviceParams } });
+  const actionSuccess = data => ({ type: `${type}_SUCCESS`, data, params: { ...serviceParams } });
   const actionError = error => ({ type: `${type}_FAIL`, error: error.message });
 
   const action = () => {

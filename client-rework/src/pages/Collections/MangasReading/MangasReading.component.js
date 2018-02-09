@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import { PageLoader } from 'common/Loaders';
 import PageContainer from 'common/PageContainer';
 
-import ControlBar from './components/ControlBar';
-import MangasList from './components/MangasList';
+import ControlBar from './ControlBar';
+import MangasList from './MangasList';
 
 class MangasReading extends Component {
   componentWillMount() {

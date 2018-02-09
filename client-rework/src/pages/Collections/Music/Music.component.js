@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { PageLoader } from 'common/Loaders';
 import PageContainer from 'common/PageContainer';
 
-import MusicToolsBar from './components/MusicToolsBar.container';
-import MusicTableList from './components/MusicTableList.container';
-import MusicControl from './components/MusicControl.container';
+import MusicToolsBar from './MusicToolsBar.container';
+import MusicTableList from './MusicTableList.container';
+import MusicControl from './MusicControl.container';
 
 class Music extends Component {
   constructor(props) {

@@ -2,6 +2,15 @@
   position: relative;
 }
 
+.article-view-wrapper > .default-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 20px; 
+}
+
 .article-view {
   padding: 10px;
   margin-bottom: 10px;

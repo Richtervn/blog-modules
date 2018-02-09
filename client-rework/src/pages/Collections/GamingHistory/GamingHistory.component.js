@@ -10,7 +10,7 @@ import { openModal } from 'common/Modal';
 
 import AddCardButton from 'components/AddCardButton';
 import { LeftImageCard } from 'components/Cards';
-import GamePage from './components/GamePage.container';
+import GamePage from './GamePage.container';
 
 class GamingHistory extends Component {
   componentWillMount() {

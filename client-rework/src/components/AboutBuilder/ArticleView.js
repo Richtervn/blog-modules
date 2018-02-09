@@ -136,6 +136,11 @@ class ArticleView extends Component {
     const { editing, adding, editingIndex } = this.state;
     return (
       <div className="article-view-wrapper">
+        {data.length <= 0 && !adding && (
+          <div className="default-view">
+            <i>Hover me and click at the corner button to start adding contents</i>
+          </div>
+        )}
         {data.map((obj, i) => {
           if (editing && editingIndex === i) {
             return (

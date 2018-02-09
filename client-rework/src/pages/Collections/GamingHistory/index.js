@@ -1,7 +1,16 @@
 import reducer from './GamingHistory.module';
+import { GamingHistoryGuideDeleteConfirm, GamingHistoryGuideForm } from './Guides';
+import { GamingHistoryOverviewDeleteConfirm, GamingHistoryOverviewForm } from './Overview';
+import { GamingHistoryDeleteConfirm, GamingHistoryForm } from './Modals';
 import GamingHistory from './GamingHistory.container';
-import GamingHistoryForm from './components/GamingHistoryForm.container';
-import GamingHistoryDeleteConfirm from './components/GamingHistoryDeleteConfirm.container';
-import GamingHistoryGuideForm from './components/GameGuideForm.container';
 
-export { reducer, GamingHistory, GamingHistoryForm, GamingHistoryDeleteConfirm, GamingHistoryGuideForm };
+export {
+  reducer,
+  GamingHistory,
+  GamingHistoryGuideDeleteConfirm,
+  GamingHistoryGuideForm,
+  GamingHistoryOverviewDeleteConfirm,
+  GamingHistoryOverviewForm,
+  GamingHistoryDeleteConfirm,
+  GamingHistoryForm
+};

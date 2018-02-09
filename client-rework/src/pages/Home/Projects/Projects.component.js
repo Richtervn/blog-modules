@@ -9,7 +9,7 @@ import { openModal } from 'common/Modal';
 import AddCardButton from 'components/AddCardButton';
 import { ProgressBadgesCard } from 'components/Cards';
 
-import ProjectBoard from './components/ProjectBoard.container';
+import { ProjectBoard } from './ProjectBoard';
 
 const findMatchProject = (projects, projectName) => {
   const decodedProjectName = projectName.replace(/_/g, ' ');

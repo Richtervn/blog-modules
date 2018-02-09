@@ -4,9 +4,9 @@ import { Redirect } from 'react-router-dom';
 import PageContainer from 'common/PageContainer';
 import { PageLoader } from 'common/Loaders';
 
-import ToolsBar from './components/ToolsBar.container';
-import CodeEditor from './components/CodeEditor.container';
-import ContentViewer from './components/ContentViewer.container';
+import ToolsBar from './ToolsBar.container';
+import CodeEditor from './CodeEditor.container';
+import ContentViewer from './ContentViewer.container';
 
 class ContentMirror extends Component {
   componentWillMount() {
