@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app';
+import registerServiceWorker from './registerServiceWorker';
 
-import $ from 'app_modules/libs/jquery-3.2.1.slim.min.js';
-window.$ = $;
-window.jQuery = $;
+// import $ from '../public/libs/jquery-3.2.1.slim.min.js';
 
-// Render the main component into the dom
-ReactDOM.render(<App />, document.getElementById('app'));
+// window.$ = $;
+// window.jQuery = $;
+
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();

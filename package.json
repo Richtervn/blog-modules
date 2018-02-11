@@ -4,17 +4,16 @@
   "description": "my-blog",
   "main": "index.js",
   "scripts": {
-    "client": "cd client && npm run start",
-    "client:rework": "cd client-rework && npm run start",
-    "server": "cd server && npm run start",
-    "start": "start npm run client && npm run server",
-    "build:server": "cd server && npm run build",
-    "build:client": "cd client && npm run build",
-    "build": "start npm run build:server && npm run build:client",
-    "serve:server": "cd server && npm run serve",
-    "serve:client": "cd client && npm run serve",
-    "serve": "start npm run serve:server && npm run serve:client",
-    "start:rework": "start npm run client && start npm run client:rework && npm run server"
+    "client:dev": "cd client && npm run start",
+    "server:dev": "cd server && npm run start",
+    "client:build": "cd client && npm run build",
+    "server:build": "cd server && npm run build",
+    "client:serve": "cd client && serve -s build",
+    "server:serve": "cd server && npm run serve",
+    "start": "start npm run client:dev && start npm run server:dev",
+    "build": "start npm run client:build && start npm run server:build",
+    "serve": "start npm run server:serve && start npm run server:serve",
+    "client-old": "cd client-old && npm run start"
   },
   "author": "VuPham",
   "license": "ISC"

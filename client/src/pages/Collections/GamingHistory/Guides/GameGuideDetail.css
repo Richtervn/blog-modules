@@ -1,0 +1,17 @@
+.game-guide-detail {
+  padding: 10px;
+  overflow-y: auto;
+  max-height: calc(100vh - 90px);
+  position: relative;
+}
+
+.game-guide-detail > .game-guide-feature {
+  position: fixed;
+  top: 52px;
+  right: 10px;
+}
+
+.game-guide-feature > .btn {
+  padding: 0;
+  width: 25px;
+}

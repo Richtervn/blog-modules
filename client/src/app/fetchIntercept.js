@@ -3,17 +3,17 @@ import fetchIntercept from 'fetch-intercept';
 
 fetchIntercept.register({
   request: function(url, config) {
-    url = 'http://localhost:3000' + url;
-    if (config && config.method == 'POST') {
+    url = window.appConfig.API_HOST + url;
+    if (config && config.method === 'POST') {
       config.headers = { 'Content-Type': 'application/json; charset=utf-8' };
     }
-    if (config && config.method == 'PUT') {
+    if (config && config.method === 'PUT') {
       config.headers = { 'Content-Type': 'application/json; charset=utf-8' };
     }
-    if (config && config.method == 'POST-MULTIPLEPART') {
+    if (config && config.method === 'POST-MULTIPLEPART') {
       config.method = 'POST';
     }
-    if (config && config.method == 'PUT-MULTIPLEPART') {
+    if (config && config.method === 'PUT-MULTIPLEPART') {
       config.method = 'PUT';
     }
     return [url, config];
