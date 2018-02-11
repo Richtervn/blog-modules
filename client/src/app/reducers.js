@@ -8,6 +8,7 @@ import { reducer as gamingHistory } from 'pages/Collections/GamingHistory';
 import { reducer as mangasReading } from 'pages/Collections/MangasReading';
 import { reducer as music } from 'pages/Collections/Music';
 import { reducer as projects } from 'pages/Home/Projects';
+import { reducer as starcraft } from 'pages/Games/Starcraft';
 
 export default combineReducers({
   appControl,
@@ -17,7 +18,8 @@ export default combineReducers({
   gamingHistory,
   mangasReading,
   music,
-  projects
+  projects,
+  starcraft
 });
 
 // import page from 'modules/page';

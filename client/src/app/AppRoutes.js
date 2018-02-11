@@ -9,6 +9,7 @@ import { GamingHistory } from 'pages/Collections/GamingHistory';
 import { FlashGames } from 'pages/FlashGames';
 import { Home } from 'pages/Home';
 import { ContentMirror } from 'pages/Tools/ContentMirror';
+import { Starcraft } from 'pages/Games/Starcraft';
 
 const AppRoutes = () => (
   <Page>
@@ -20,6 +21,7 @@ const AppRoutes = () => (
       <Route path="/content_mirror/:table?/:record?" component={ContentMirror} />
       <Route path="/gaming_history/:game?/:tab?/:subPage?" component={GamingHistory} />
       <Route path="/flash_games/:name" component={FlashGames} />
+      <Route path="/starcraft_broodwar/:tab?/:subPage?" component={Starcraft} />
       <Route path="/404" component={NotFound} />
       <Route path="*" component={NotFound} />
     </Switch>

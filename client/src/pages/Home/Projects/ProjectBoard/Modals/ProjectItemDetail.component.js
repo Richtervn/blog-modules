@@ -27,8 +27,8 @@ class ProjectItemDetail extends Component {
 
   initStateValue(item) {
     return {
-      Label: item.Label,
-      Description: item.Description,
+      Label: item.Label || [],
+      Description: item.Description || '',
       Tags: [...item.Tags],
       SubTasks: item.SubTasks.map(subTask => ({ ...subTask })).slice(0)
     };
@@ -251,7 +251,7 @@ class ProjectItemDetail extends Component {
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    checked={subTask.IsDone}
+                    checked={subTask.IsDone ? true : false}
                     onChange={() => this.handleChangeCheck(subTask.Label)}
                   />
                   <label className="form-check-label">{subTask.Label}</label>
