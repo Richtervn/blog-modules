@@ -33,7 +33,9 @@ class GameGuideForm extends Component {
 
   handleSubmit() {
     this.props.edit ? this.props.onEditOverview(this.state.value) : this.props.onAddOverview(this.state.value);
-    this.setState({ value: this.initStateValue() });
+    if(!this.props.edit){
+      this.setState({ value: this.initStateValue() });
+    }
     hideModal();
   }
 
