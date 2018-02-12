@@ -41,6 +41,10 @@
   margin-right: 2px;
 }
 
+.manga-control-feature-button:hover {
+  background-color: #245c79;
+}
+
 .manga-control-feature-button.active {
   background-color: #063852;
 }

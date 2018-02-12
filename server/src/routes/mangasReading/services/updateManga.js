@@ -1,9 +1,9 @@
 export default async (MangasReading, req) => {
   const { body, file } = req;
-  body.Aka = body.Aka.split(',');
-  body.Authors = body.Authors.split(',');
-  body.Genre = body.Genre.split(',');
+  if (body.Aka) body.Aka = body.Aka.split(',');
+  if (body.Authors) body.Authors = body.Authors.split(',');
+  if (body.Genre) body.Genre = body.Genre.split(',');
   let updateForm = { ...body };
-  await MangasReading.update({ _id: body._id }, { $set: updateForm });
-  return body;
+  const manga = await MangasReading.findOneAndUpdate({ _id: body._id }, { $set: updateForm }, { new: true });
+  return manga;
 };

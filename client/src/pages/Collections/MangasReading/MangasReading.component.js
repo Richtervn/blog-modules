@@ -1,11 +1,10 @@
-import _ from 'underscore';
 import React, { Component } from 'react';
 
 import { PageLoader } from 'common/Loaders';
 import PageContainer from 'common/PageContainer';
 
-import ControlBar from './ControlBar';
-import MangasList from './MangasList';
+import ControlBar from './ControlBar.container';
+import MangasList from './MangasList.container';
 
 class MangasReading extends Component {
   componentWillMount() {
@@ -13,40 +12,20 @@ class MangasReading extends Component {
   }
 
   render() {
-    const {
-      activeView,
-      mangas,
-      focusManga,
-      onSetFocusManga,
-      onSetActiveView,
-      onAddManga,
-      onEditManga,
-      onDeleteManga,
-      onQuickUpdate,
-      onSearchManga,
-      onSortManga
-    } = this.props;
+    const { mangas } = this.props;
+
     if (!mangas) {
       return <PageLoader />;
     }
+
     return (
       <PageContainer backgroundUrl="/images/backgrounds/dark_art.jpg">
         <div className="row">
           <div className="col-3">
-            <ControlBar
-              manga={_.findWhere(mangas, { _id: focusManga })}
-              activeView={activeView}
-              onSetActiveView={onSetActiveView}
-              onAddManga={onAddManga}
-              onEditManga={onEditManga}
-              onDeleteManga={onDeleteManga}
-              onQuickUpdate={onQuickUpdate}
-              onSearchManga={onSearchManga}
-              onSortManga={onSortManga}
-            />
+            <ControlBar />
           </div>
           <div className="col-9">
-            <MangasList mangas={mangas} focusManga={focusManga} onSetFocusManga={onSetFocusManga} />
+            <MangasList />
           </div>
         </div>
       </PageContainer>

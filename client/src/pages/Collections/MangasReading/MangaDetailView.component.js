@@ -2,7 +2,16 @@ import './MangaDetailView.css';
 import React from 'react';
 import StarRating from 'react-star-rating-component';
 
-export default ({ manga }) => {
+export default ({
+  manga,
+  onEditManga,
+  onSearchManga,
+  onChangeSearchOption,
+  onChangeSearchValue,
+  onChangeActiveTool,
+  search,
+  activeTool
+}) => {
   if (!manga) {
     return (
       <div className="card-content manga-detail-view">
@@ -15,9 +24,7 @@ export default ({ manga }) => {
       <div className="text-center">
         <h4>{manga.Name}</h4>
         <img
-          src={
-            manga.CoverUri ? manga.CoverUri.replace('./public', window.appConfig.API_HOST) : null
-          }
+          src={manga.CoverUri ? manga.CoverUri.replace('./public', window.appConfig.API_HOST) : null}
           alt={`${manga.Name} cover`}
         />
         <br />
@@ -25,7 +32,7 @@ export default ({ manga }) => {
           className="larger-star-rating"
           name="manga-rating-view"
           value={parseInt(manga.Rating, 10)}
-          editing={false}
+          onStarClick={value => onEditManga({ _id: manga._id, Rating: value })}
         />
       </div>
       <p>
@@ -41,7 +48,16 @@ export default ({ manga }) => {
       <p>
         <strong>Authors : </strong>
         {manga.Authors.map((author, i) => (
-          <span key={i} className="badge badge-success mr-genre-tag">
+          <span
+            key={i}
+            className="badge badge-success mr-genre-tag"
+            onClick={e => {
+              e.stopPropagation();
+              if (search.activeTool !== 'Search') onChangeActiveTool('Search');
+              if (search.option !== 'Author') onChangeSearchOption('Author');
+              onChangeSearchValue(author);
+              onSearchManga({ Author: author });
+            }}>
             {author}
           </span>
         ))}
@@ -49,7 +65,16 @@ export default ({ manga }) => {
       <p>
         <strong>Genres : </strong>
         {manga.Genre.map((genre, i) => (
-          <span key={i} className="badge badge-info mr-genre-tag">
+          <span
+            key={i}
+            className="badge badge-info mr-genre-tag"
+            onClick={e => {
+              e.stopPropagation();
+              if (activeTool !== 'Search') onChangeActiveTool('Search');
+              if (search.option !== 'Genre') onChangeSearchOption('Genre');
+              onChangeSearchValue(genre);
+              onSearchManga({ Genre: genre });
+            }}>
             {genre}
           </span>
         ))}

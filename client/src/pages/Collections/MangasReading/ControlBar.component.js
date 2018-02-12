@@ -1,40 +1,38 @@
+import _ from 'underscore';
 import './ControlBar.css';
 import React, { Component } from 'react';
 
 import ButtonsBar from 'components/ButtonsBar';
 
 import MangaForm from './MangaForm';
-import MangaDetailView from './MangaDetailView';
+import MangaDetailView from './MangaDetailView.container';
 import MangaDeleteView from './MangaDeleteView';
 
 class ControlBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTool: 'QuickUpdate',
       quickUrl: '',
-      search: {
-        option: 'Name',
-        value: ''
-      },
       sort: {
         option: 'default',
         value: 'ASC'
       }
     };
     this.handleChange = this.handleChange.bind(this);
-    this.changeActiveTool = this.changeActiveTool.bind(this);
     this.handleQuickUpdate = this.handleQuickUpdate.bind(this);
   }
 
   handleChange(event, prefix) {
     const { name, value } = event.target;
+    const { search, onChangeSearchOption, onChangeSearchValue, onSearchManga } = this.props;
+    const throttledSearch = _.throttle(onSearchManga, 500);
     switch (prefix) {
       case 'searchOption':
-        this.setState({ search: { ...this.state.search, option: value } });
+        onChangeSearchOption(value);
         break;
       case 'searchValue':
-        this.props.onSearchManga({ [this.state.search.option]: value });
+        onChangeSearchValue(value);
+        throttledSearch({ [search.option]: value });
         this.setState({ search: { ...this.state.search, value } });
         break;
       case 'sortOption':
@@ -58,20 +56,25 @@ class ControlBar extends Component {
     this.setState({ quickUrl: '' });
   }
 
-  changeActiveTool(tool) {
-    this.setState({ activeTool: tool });
-  }
-
   render() {
-    const { activeTool } = this.state;
-    const { manga, onAddManga, onEditManga, onDeleteManga, activeView, onSetActiveView } = this.props;
+    const {
+      manga,
+      onAddManga,
+      onEditManga,
+      onDeleteManga,
+      activeView,
+      onSetActiveView,
+      onChangeActiveTool,
+      activeTool,
+      search
+    } = this.props;
 
     const tools = [
       { name: 'QuickUpdate', icon: 'fa-plus-circle', tooltip: 'Open quick update tool' },
       { name: 'Search', icon: 'fa-search', tooltip: 'Open search tool' },
       { name: 'Sort', icon: 'fa-sort', tooltip: 'Open sort tool' }
     ];
-    
+
     const views = [
       { name: 'Add', icon: 'fa-plus', tooltip: 'Open insert form' },
       { name: 'Detail', icon: 'fa-file-o', tooltip: 'Open detail view' },
@@ -104,7 +107,7 @@ class ControlBar extends Component {
               <select
                 key="s_sl"
                 className="form-control manga-select-search-option"
-                value={this.state.search.option}
+                value={search.option}
                 onChange={e => this.handleChange(e, 'searchOption')}>
                 <option value="Name">Name</option>
                 <option value="Author">Author</option>
@@ -114,7 +117,7 @@ class ControlBar extends Component {
                 key="s_ip"
                 type="text"
                 className="form-control manga-search-input"
-                value={this.state.search.value}
+                value={search.value}
                 onChange={e => this.handleChange(e, 'searchValue')}
               />
             ]}
@@ -147,7 +150,7 @@ class ControlBar extends Component {
                 features={tools}
                 featureClass="manga-control-feature-button"
                 activeFeature={activeTool}
-                onChangeFeature={this.changeActiveTool}
+                onChangeFeature={tool => onChangeActiveTool(tool)}
               />
               <ButtonsBar
                 customClass="pull-right"
@@ -157,10 +160,10 @@ class ControlBar extends Component {
                 onChangeFeature={onSetActiveView}
               />
             </div>
-            {activeView === 'Detail' && <MangaDetailView manga={manga} />}
+            {activeView === 'Detail' && <MangaDetailView />}
             {activeView === 'Delete' && <MangaDeleteView manga={manga} onSubmit={onDeleteManga} />}
             {activeView === 'Add' && <MangaForm onSubmit={onAddManga} />}
-            {activeView === 'Edit' && <MangaForm manga={manga} onSubmit={onEditManga} edit/>}
+            {activeView === 'Edit' && <MangaForm manga={manga} onSubmit={onEditManga} edit />}
           </div>
         </div>
       </div>
