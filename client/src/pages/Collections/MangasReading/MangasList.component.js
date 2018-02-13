@@ -5,9 +5,6 @@ import StarRating from 'react-star-rating-component';
 import { LeftImageCard } from 'components/Cards';
 
 class MangasList extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidUpdate(prevProps, prevState) {
     let willScroll = false;

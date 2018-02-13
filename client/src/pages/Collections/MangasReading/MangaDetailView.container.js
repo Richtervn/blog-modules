@@ -7,9 +7,7 @@ import {
   searchManga,
   changeSearchOption,
   changeSearchValue,
-  changeActiveTool,
-  search,
-  activeTool
+  changeActiveTool
 } from './MangasReading.module';
 
 export default connect(

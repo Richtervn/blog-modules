@@ -53,7 +53,7 @@ export default ({
             className="badge badge-success mr-genre-tag"
             onClick={e => {
               e.stopPropagation();
-              if (search.activeTool !== 'Search') onChangeActiveTool('Search');
+              if (activeTool !== 'Search') onChangeActiveTool('Search');
               if (search.option !== 'Author') onChangeSearchOption('Author');
               onChangeSearchValue(author);
               onSearchManga({ Author: author });

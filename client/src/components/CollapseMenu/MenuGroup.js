@@ -22,13 +22,15 @@ const defineGroupIcon = name => {
     case 'Mu Online':
       return 'fa-gift';
     case 'Lineage II':
-      return 'fa-archive';
+      return 'fa-briefcase';
     // case 'Notes':
     //   return 'fa-tags';
     case 'Tools':
       return 'fa-wrench';
     case 'Setting':
       return 'fa-gears';
+    case 'Archived':
+      return 'fa-archive';
     default:
       return 'fa-gamepad';
   }
