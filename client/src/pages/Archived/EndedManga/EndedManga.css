@@ -1,0 +1,9 @@
+.ended-mangas-row {
+  max-height: calc(100vh - 45px);
+  overflow-y: auto;
+  padding-left: 10px;
+}
+
+.mr-genre-tag.no-hover {
+  pointer-events:none;
+}

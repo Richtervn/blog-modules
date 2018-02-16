@@ -3,11 +3,11 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 export default withRouter(
-  ({ col, imgUrl, isActive, admin, onClick, onClickEdit, onClickDelete, route, children, history }) => (
+  ({ col, imgUrl, isActive, admin, onClick, onClickEdit, onClickDelete, route, children, nohover, history }) => (
     <div className={`col-${col}`}>
       <div className="row">
         <div
-          className={`left-image-card ${isActive ? 'active' : ''}`}
+          className={`left-image-card ${isActive ? 'active' : ''} ${nohover ? 'no-hover' : ''}`}
           onClick={e => {
             e.stopPropagation();
             if (route) {

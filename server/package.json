@@ -31,6 +31,11 @@
     "winston": "^2.3.1",
     "winston-null": "^1.0.2"
   },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true,
+    "jsxBracketSameLine": true
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",

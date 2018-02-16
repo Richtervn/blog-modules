@@ -11,7 +11,14 @@
   height: 100px;
   text-align: center;
   color: #343434;
+  transition: all 0.2s;
 }
+
+.game-overview-card:hover {
+  color: white;
+  background-color: #4ab763;
+}
+
 
 .game-overview-card > .title {
   font-size: 20px;

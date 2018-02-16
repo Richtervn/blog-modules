@@ -92,7 +92,7 @@ export default (state = initialState, action) => {
       });
       toastSuccess(() => (
         <p>
-          Removed <strong>{action.data.Name}</strong>
+          Updated <strong>{action.data.Name}</strong>
         </p>
       ));
       return { ...state, list: state.list.slice(0), focusGame: { ...action.data } };

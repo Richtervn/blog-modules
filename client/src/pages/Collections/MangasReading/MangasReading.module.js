@@ -5,7 +5,7 @@ import { toastError, toastSuccess } from 'common/Toast';
 import services from './MangasReading.services';
 
 const ADD_MANGA = 'mangasReading/ADD_MANGA';
-const GET_MANGAS = 'mangasReading/GET_MANGAS';
+export const GET_MANGAS = 'mangasReading/GET_MANGAS';
 const QUICK_UPDATE = 'mangasReading/QUICK_UPDATE';
 const UPDATE_MANGA = 'mangasReading/UPDATE_MANGA';
 const DELETE_MANGA = 'mangasReading/DELETE_MANGA';
@@ -21,8 +21,14 @@ const CHANGE_SEARCH_VALUE = 'mangasReading/CHANGE_SEARCH_VALUE';
 export const setFocusManga = id => ({ type: SET_FOCUS_MANGA, id });
 export const setActiveView = name => ({ type: SET_ACTIVE_VIEW, name });
 export const changeActiveTool = tool => ({ type: CHANGE_ACTIVE_TOOL, tool });
-export const changeSearchOption = option => ({ type: CHANGE_SEARCH_OPTION, option });
-export const changeSearchValue = value => ({ type: CHANGE_SEARCH_VALUE, value });
+export const changeSearchOption = option => ({
+  type: CHANGE_SEARCH_OPTION,
+  option
+});
+export const changeSearchValue = value => ({
+  type: CHANGE_SEARCH_VALUE,
+  value
+});
 
 export const addManga = form => actionCreator(ADD_MANGA, services.add, form)();
 export const editManga = form => actionCreator(UPDATE_MANGA, services.edit, form)();
@@ -46,8 +52,14 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case `${GET_MANGAS}_SUCCESS`:
-      return { ...state, mangas: action.data, focusManga: action.data[0] ? action.data[0]._id : null };
+    case `${GET_MANGAS}_SUCCESS`: {
+      const readingMangas = action.data.filter(manga => manga.Chapter.indexOf(' - END') === -1);
+      return {
+        ...state,
+        mangas: readingMangas,
+        focusManga: readingMangas[0] ? readingMangas[0]._id : null
+      };
+    }
     case SET_FOCUS_MANGA:
       return { ...state, focusManga: action.id, activeView: 'Detail' };
     case SET_ACTIVE_VIEW:

@@ -10,6 +10,7 @@ import { FlashGames } from 'pages/FlashGames';
 import { Home } from 'pages/Home';
 import { ContentMirror } from 'pages/Tools/ContentMirror';
 import { Starcraft } from 'pages/Games/Starcraft';
+import { EndedManga } from 'pages/Archived/EndedManga';
 
 const AppRoutes = () => (
   <Page>
@@ -17,6 +18,7 @@ const AppRoutes = () => (
       <Route exact path="/" render={() => <Redirect to="/home/projects" />} />
       <Route path="/home/:tab/:subPage?" component={Home} />
       <Route exact path="/mangas_reading" component={MangasReading} />
+      <Route exact path="/ended_manga" component={EndedManga} />
       <Route exact path="/music" component={Music} />
       <Route path="/content_mirror/:table?/:record?" component={ContentMirror} />
       <Route path="/gaming_history/:game?/:tab?/:subPage?" component={GamingHistory} />

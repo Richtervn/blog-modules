@@ -27,6 +27,11 @@
     "underscore": "^1.8.3",
     "whatwg-fetch": "^2.0.3"
   },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": true,
+    "jsxBracketSameLine": true
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

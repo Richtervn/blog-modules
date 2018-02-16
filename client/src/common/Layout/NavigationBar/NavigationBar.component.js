@@ -56,6 +56,7 @@ class NavigationBar extends Component {
             isOpen={_.contains(this.state.openedGroups, group)}
             isActive={activeGroup === group}
             isShow={group === defaultShowGroup}
+            icon={menuTree[group].icon}
             onClick={() => this.handleGroupClick(group)}>
             {menuTree[group].items.map((item, i) => (
               <MenuItem

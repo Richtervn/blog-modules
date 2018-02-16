@@ -2,12 +2,14 @@
   "Collections": {
     "items": ["Mangas Reading", "Music", "Gaming History"],
     "quote": "You're in quest for more to find the core. Your journey still ain't over",
-    "author": "Avantasia - In Quest For"
+    "author": "Avantasia - In Quest For",
+    "icon": "book"
   },
   "Games": {
     "items": ["Starcraft Broodwar", "YugiOh! PoC", "Mu Online", "Diablo II"],
     "quote": "Gaming is not a crime",
-    "author": "DJ GEX - Gaming is not a crime"
+    "author": "DJ GEX - Gaming is not a crime",
+    "icon": "suitcase"
   },
   "Flash Games": {
     "items": ["Sonny 1", "Sonny 2", "Stormy Castle", "Kingdom Rush", "Kingdom Rush 2"],
@@ -17,22 +19,31 @@
   "Mu Online": {
     "items": ["Darksteam 97d99i"],
     "quote": "Take a look to the sky just before you die",
-    "author": "Metallica - For Whom The Bell Tolls"
+    "author": "Metallica - For Whom The Bell Tolls",
+    "icon": "gift"
   },
   "Lineage II": {
     "items": ["Freya Portable"],
     "quote": "You're the ghost haunting through her heart",
-    "author": "Within Temptation - Restless"
+    "author": "Within Temptation - Restless",
+    "icon": "briefcase"
   },
   "Tools": {
     "items": ["Content Mirror"],
     "quote": "I'm just a dreamer who dreams of better days",
-    "author": "Ozzy Osbourne - Dreamer"
+    "author": "Ozzy Osbourne - Dreamer",
+    "icon": "wrench"
   },
-  "Setting": { "items": ["App Menu"], "quote": "My mind has had enough", "author": "Element Eighty - Broken Promises" },
+  "Setting": {
+    "items": ["App Menu"],
+    "quote": "My mind has had enough",
+    "author": "Element Eighty - Broken Promises",
+    "icon": "gears"
+  },
   "Archived": {
     "items": ["Ended Manga"],
     "quote": "But in the end. It doesn't even matter",
-    "author": "Linkin Park - In The End"
+    "author": "Linkin Park - In The End",
+    "icon": "archive"
   }
 }

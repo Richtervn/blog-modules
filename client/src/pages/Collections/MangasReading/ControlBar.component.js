@@ -8,6 +8,20 @@ import MangaForm from './MangaForm';
 import MangaDetailView from './MangaDetailView.container';
 import MangaDeleteView from './MangaDeleteView';
 
+const tools = [
+  { name: 'QuickUpdate', icon: 'fa-plus-circle', tooltip: 'Open quick update tool' },
+  { name: 'Search', icon: 'fa-search', tooltip: 'Open search tool' },
+  { name: 'Sort', icon: 'fa-sort', tooltip: 'Open sort tool' }
+];
+
+const views = [
+  { name: 'Add', icon: 'fa-plus', tooltip: 'Open insert form' },
+  { name: 'Detail', icon: 'fa-file-o', tooltip: 'Open detail view' },
+  { name: 'Edit', icon: 'fa-pencil', tooltip: 'Open edit form' },
+  { name: 'Delete', icon: 'fa-times', tooltip: 'Open delete box' }
+];
+
+
 class ControlBar extends Component {
   constructor(props) {
     super(props);
@@ -68,19 +82,6 @@ class ControlBar extends Component {
       activeTool,
       search
     } = this.props;
-
-    const tools = [
-      { name: 'QuickUpdate', icon: 'fa-plus-circle', tooltip: 'Open quick update tool' },
-      { name: 'Search', icon: 'fa-search', tooltip: 'Open search tool' },
-      { name: 'Sort', icon: 'fa-sort', tooltip: 'Open sort tool' }
-    ];
-
-    const views = [
-      { name: 'Add', icon: 'fa-plus', tooltip: 'Open insert form' },
-      { name: 'Detail', icon: 'fa-file-o', tooltip: 'Open detail view' },
-      { name: 'Edit', icon: 'fa-pencil', tooltip: 'Open edit form' },
-      { name: 'Delete', icon: 'fa-times', tooltip: 'Open delete box' }
-    ];
 
     return (
       <div className="row">
