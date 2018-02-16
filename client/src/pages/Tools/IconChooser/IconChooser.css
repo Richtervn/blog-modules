@@ -1,0 +1,79 @@
+.icon-filter {
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.icon-filter > .fa {
+  position: absolute;
+  right: 20px;
+  color: #b9b9b9;
+}
+
+.icon-select-category {
+  width: 100%;
+  padding: 0 10px 10px 10px;
+}
+
+.icon-list-row {
+  max-height: calc(100vh - 45px);
+  overflow-y: auto;
+  padding: 10px 0px;
+}
+
+.icon-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: solid 1px rgba(0, 0, 0, 0.125);
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 0 10px 10px 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-card > .icon-preview {
+  padding: 10px;
+}
+
+.icon-card > .icon-name {
+  font-size: 12px;
+  background-color: #e0e0e0;
+  width: 100%;
+  text-align: center;
+}
+
+.icon-card:hover {
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.icon-card:hover > .icon-name {
+  color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+}
+
+.icon-card.active {
+  color: white;
+  background-color: black;
+}
+
+.icon-card.active > .icon-name {
+  color: black;
+  background-color: white;
+}
+
+.selected-icon-box {
+  border: solid 1px rgba(0, 0, 0, 0.125);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  margin: 0 10px 10px 10px;
+  padding: 40px 10px;
+}

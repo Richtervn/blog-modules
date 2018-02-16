@@ -29,7 +29,7 @@
     "icon": "briefcase"
   },
   "Tools": {
-    "items": ["Content Mirror"],
+    "items": ["Content Mirror", "Icon Chooser"],
     "quote": "I'm just a dreamer who dreams of better days",
     "author": "Ozzy Osbourne - Dreamer",
     "icon": "wrench"
