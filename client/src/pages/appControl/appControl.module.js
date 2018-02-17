@@ -5,6 +5,7 @@ import { ADD_GAME } from 'pages/FlashGames';
 import services from './appControl.services';
 
 const GET_MENU_TREE = 'appControl/GET_MENU_TREE';
+const SAVE_MENU_TREE = 'appControl/SAVE_MENU_TREE';
 const SET_ACTIVE_GROUP = 'appControl/SET_ACTIVE_GROUP';
 const SET_ACTIVE_ITEM = 'appControl/SET_ACTIVE_ITEM';
 const SET_ACTIVE_TAB = 'appControl/SET_ACTIVE_TAB';
@@ -14,6 +15,7 @@ const SHOW_HEADER_MENU = 'appControl/SHOW_HEADER_MENU';
 const HIDE_HEADER_MENU = 'appControl/HIDE_HEADER_MENU';
 
 export const getMenuTree = actionCreator(GET_MENU_TREE, services.getMenuTree);
+export const saveMenuTree = formBody => actionCreator(SAVE_MENU_TREE, services.saveMenuTree, formBody)();
 
 export const setActiveGroup = group => ({ type: SET_ACTIVE_GROUP, group });
 export const setActiveItem = item => ({ type: SET_ACTIVE_ITEM, item });
@@ -38,6 +40,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case `${GET_MENU_TREE}_SUCCESS`:
       return { ...state, menuTree: action.data };
+    case `${SAVE_MENU_TREE}_SUCCESS`:
+      return { ...state, menuTree: action.data };
     case SET_ACTIVE_GROUP:
       return { ...state, activeGroup: action.group };
     case SET_ACTIVE_ITEM:
@@ -57,6 +61,7 @@ export default (state = initialState, action) => {
       return { ...state, menuTree: { ...action.data.menu } };
 
     case `${GET_MENU_TREE}_FAIL`:
+    case `${SAVE_MENU_TREE}_FAIL`:
       toastError(action.error);
       return state;
     default:

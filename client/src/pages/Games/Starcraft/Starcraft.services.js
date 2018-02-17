@@ -10,7 +10,7 @@ const {
 } = serviceCaller;
 
 export default {
-  getMapList() {
+  getMaps() {
     const data = commonGet('starcraft/list_map');
     return data;
   },

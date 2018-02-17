@@ -1,0 +1,33 @@
+.sc-feature-box {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.sc-feature-box > .sc-feature-box-btns > .btn {
+  background: none;
+  border: solid 1px #00cc00;
+  color: #00cc00;
+  padding: 0;
+  width: 25px;
+  margin-left: 5px;
+}
+
+.sc-feature-box > .sc-feature-box-btns > .btn:hover {
+  color: #ddff99;
+  border: solid 1px #ddff99;
+}
+
+.sc-feature-box > .sc-feature-box-input-wrapper {
+  flex-grow: 1;
+  margin: 0 5px;
+}
+
+.sc-feature-box > .sc-feature-box-input-wrapper > .sc-feature-box-input {
+  width: 100%;
+  background: none;
+  border: solid 1px #00cc00;
+  border-radius: 4px;
+  padding-left: 10px;
+  color: #00cc00;
+}

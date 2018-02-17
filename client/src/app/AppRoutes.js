@@ -12,6 +12,7 @@ import { ContentMirror } from 'pages/Tools/ContentMirror';
 import { IconChooser } from 'pages/Tools/IconChooser';
 import { Starcraft } from 'pages/Games/Starcraft';
 import { EndedManga } from 'pages/Archived/EndedManga';
+import { AppMenu } from 'pages/Setting/AppMenu';
 
 const AppRoutes = () => (
   <Page>
@@ -22,6 +23,7 @@ const AppRoutes = () => (
       <Route exact path="/ended_manga" component={EndedManga} />
       <Route exact path="/icon_chooser" component={IconChooser} />
       <Route exact path="/music" component={Music} />
+      <Route exact path="/app_menu" component={AppMenu} />
       <Route path="/content_mirror/:table?/:record?" component={ContentMirror} />
       <Route path="/gaming_history/:game?/:tab?/:subPage?" component={GamingHistory} />
       <Route path="/flash_games/:name" component={FlashGames} />

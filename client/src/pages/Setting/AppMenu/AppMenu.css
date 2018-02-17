@@ -1,0 +1,12 @@
+.app-menu-page {
+  max-height: calc(100vh - 45px);
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.app-menu-page > .btn {
+  margin:10px;
+  width: 200px;
+}

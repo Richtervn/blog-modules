@@ -1,4 +1,15 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Starcraft from './Starcraft.component';
 
-export default connect()(Starcraft);
+import { setActiveTab } from './Starcraft.module';
+
+export default connect(
+  ({ starcraft }) => ({
+    activeTab: starcraft.activeTab
+  }),
+  dispatch => ({
+    onSetActiveTab(tab) {
+      dispatch(setActiveTab(tab));
+    }
+  })
+)(Starcraft);

@@ -1,20 +1,36 @@
+import { actionCreator } from 'helpers';
+import services from './Starcraft.services';
+import { toastError, toastSuccess } from 'common/Toast';
+
+const GET_MAPS = 'starcraft/GET_MAPS';
+
+const SET_ACTIVE_TAB = 'starcraft/SET_ACTIVE_TAB';
+
+export const setActiveTab = tab => ({ type: SET_ACTIVE_TAB, tab });
+
+export const getMaps = actionCreator(GET_MAPS, services.getMaps);
+
 const initialState = {
   mods: null,
   campaigns: null,
-  maps: null
+  maps: null,
+  activeTab: ''
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case SET_ACTIVE_TAB:
+      return { ...state, activeTab: action.tab };
+    case `${GET_MAPS}_SUCCESS`:
+      return { ...state, maps: action.data };
+      
+    case `${GET_MAPS}_FAIL`:
+      toastError(action.error);
+      return state;
     default:
       return state;
   }
 };
-
-// import _ from 'underscore';
-// import { starcraft } from 'services';
-// import actionCreator from 'factories/actionCreator';
-// import { toast } from 'react-toastify';
 
 // const CHANGE_SIDE_LIST_VIEW = 'starcraft/CHANGE_SIDE_LIST_VIEW';
 // export const SET_MAP_FOCUS = 'starcraft/SET_MAP_FOCUS';

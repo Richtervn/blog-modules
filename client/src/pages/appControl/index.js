@@ -4,6 +4,7 @@ import reducer, {
   setActiveTab,
   setDefaultShowGroup,
   getMenuTree,
+  saveMenuTree,
   setModalName,
   showHeaderMenu,
   hideHeaderMenu
@@ -16,6 +17,7 @@ export {
   setActiveTab,
   setDefaultShowGroup,
   getMenuTree,
+  saveMenuTree,
   setModalName,
   showHeaderMenu,
   hideHeaderMenu

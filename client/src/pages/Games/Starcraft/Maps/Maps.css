@@ -1,0 +1,19 @@
+.sc-tab-view {
+  height: calc(100vh - 110px);
+  overflow-y: auto;
+}
+
+.sc-border {
+  width: 100%;
+  padding: 3px 2px;
+  border: 2px solid #331f1f;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.8);
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.sc-border-inner {
+  border: 1px solid #800000;
+  border-radius: 5px;
+}

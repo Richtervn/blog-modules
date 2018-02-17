@@ -1,30 +1,35 @@
-/*.sc-main-screen {
-  margin-top: 45px;
-  margin-left: 200px;
-  height: calc(100vh - 45px);
-  width: 100%;
-  overflow-y: auto;
-  background-image: url('../../app_modules/images/backgrounds/scbw-terran.jpg');
-  background-size: 100%;
+.sc-page {
   font-family: 'Eurostile', sans-serif;
+  margin-left: 5px;
 }
 
-.sc-header-border-block {
+.sc-border-block {
+  width: 100%;
   padding: 3px 2px;
   border: 2px solid #331f1f;
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.8);
   height: 45px;
-  margin-top: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
 }
 
-.sc-header-border-block-inner {
+.sc-border-block-inner {
   border: 1px solid #800000;
   border-radius: 5px;
   height: 35px;
 }
+
+/*.sc-main-screen {
+  margin-top: 45px;
+  margin-left: 200px;
+  
+  width: 100%;
+  overflow-y: auto;
+  background-image: url('../../app_modules/images/backgrounds/scbw-terran.jpg');
+  background-size: 100%;
+  
+}
+
+
 
 .sc-header-navigation-list {
   display: table-row;

@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
 import TabNavBar from 'components/TabNavBar';
 import PageContainer from 'common/PageContainer';
+import { getSimpleName } from 'helpers';
 
 import { GameAbout } from './About';
 import { GameGuides } from './Guides';
 import { GameOverviews } from './Overview';
 
 const availableTabs = ['about', 'guides', 'overview'];
-const getTabName = tabKey => {
-  return tabKey.charAt(0).toUpperCase() + tabKey.slice(1, tabKey.length);
-};
 
 class GamePage extends Component {
   componentWillMount() {
     const { params, onSetActiveTab, onSetGameInfo, gameInfo } = this.props;
     const { game, tab } = params;
     this.tabs = availableTabs.map(tabKey => ({
-      name: getTabName(tabKey),
+      name: getSimpleName(tabKey),
       route: `/gaming_history/${game}/${tabKey}`
     }));
-    onSetActiveTab(getTabName(tab));
+    onSetActiveTab(getSimpleName(tab));
     onSetGameInfo(gameInfo);
   }
 
