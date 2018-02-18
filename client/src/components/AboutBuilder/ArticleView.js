@@ -19,7 +19,7 @@ class ArticleView extends Component {
       editing: false,
       editingIndex: 0,
       adding: false,
-      Sections: this.props.data,
+      Sections: this.props.data.slice(0),
       addSection: { ...newSection }
     };
     this.handleEditClick = this.handleEditClick.bind(this);
@@ -128,7 +128,19 @@ class ArticleView extends Component {
   }
 
   handleClearEditingSubSection() {
-    this.setState({ Sections: this.props.data, editing: false });
+    this.setState({ Sections: this.props.data.slice(0), editing: false });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data !== this.props.data) {
+      this.setState({
+        editing: false,
+        editingIndex: 0,
+        adding: false,
+        Sections: nextProps.data.slice(0),
+        addSection: { ...newSection }
+      });
+    }
   }
 
   render() {

@@ -83,7 +83,6 @@ export default (state = initialState, action) => {
 };
 
 // const CHANGE_SIDE_LIST_VIEW = 'starcraft/CHANGE_SIDE_LIST_VIEW';
-// export const SET_MAP_FOCUS = 'starcraft/SET_MAP_FOCUS';
 // export const SET_MOD_FOCUS = 'starcraft/SET_MOD_FOCUS';
 // export const SET_CAMPAIGN_FOCUS = 'starcraft/SET_CAMPAIGN_FOCUS';
 
@@ -118,9 +117,7 @@ export default (state = initialState, action) => {
 // export const SUBMIT_EDIT_STARCRAFT_CAMPAIGN_SUCCESS = 'starcraft/SUBMIT_EDIT_STARCRAFT_CAMPAIGN_SUCCESS';
 // const SUBMIT_EDIT_STARCRAFT_CAMPAIGN_FAIL = 'starcraft/SUBMIT_EDIT_STARCRAFT_CAMPAIGN_FAIL';
 
-// const SEARCH_MAP_START = 'starcraft/SEARCH_MAP_START';
-// const SEARCH_MAP_SUCCESS = 'starcraft/SEARCH_MAP_SUCCESS';
-// const SEARCH_MAP_FAIL = 'starcraft/SEARCH_MAP_FAIL';
+
 // const SEARCH_MOD_START = 'starcraft/SEARCH_MOD_START';
 // const SEARCH_MOD_SUCCESS = 'starcraft/SEARCH_MOD_SUCCESS';
 // const SEARCH_MOD_FAIL = 'starcraft/SEARCH_MOD_FAIL';
@@ -165,14 +162,7 @@ export default (state = initialState, action) => {
 //   starcraft.getCampaignList
 // );
 
-// export const submitAddStarcraftMapForm = formBody =>
-//   actionCreator(
-//     SUBMIT_ADD_STARCRAFT_MAP_START,
-//     SUBMIT_ADD_STARCRAFT_MAP_SUCCESS,
-//     SUBMIT_ADD_STARCRAFT_MAP_FAIL,
-//     starcraft.addMap,
-//     formBody
-//   )();
+
 // export const submitEditStarcraftMapForm = formBody =>
 //   actionCreator(
 //     SUBMIT_EDIT_STARCRAFT_MAP_START,
@@ -189,14 +179,7 @@ export default (state = initialState, action) => {
 //     starcraft.addMod,
 //     formBody
 //   )();
-// export const submitEditStarcraftModForm = formBody =>
-//   actionCreator(
-//     SUBMIT_EDIT_STARCRAFT_MOD_START,
-//     SUBMIT_EDIT_STARCRAFT_MOD_SUCCESS,
-//     SUBMIT_EDIT_STARCRAFT_MOD_FAIL,
-//     starcraft.editMod,
-//     formBody
-//   )();
+
 // export const submitAddStarcraftCampaignForm = formBody =>
 //   actionCreator(
 //     SUBMIT_ADD_STARCRAFT_CAMPAIGN_START,

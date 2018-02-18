@@ -5,7 +5,7 @@ import { TabLoader } from 'common/Loaders';
 
 class GameAbout extends Component {
   componentWillMount() {
-    if (!this.props.aboutContent) {
+    if (!this.props.aboutContent || this.props.aboutContent._id !== this.props.gameInfo._id) {
       this.props.onGetAboutContent(this.props.gameInfo._id);
     }
   }
@@ -20,7 +20,7 @@ class GameAbout extends Component {
       <div className="game-about">
         <div className="intro-col">
           <IntroductionCard
-            info={aboutContent.Info}
+            info={aboutContent.Info || {}}
             imgUrl={gameInfo.CoverUri.replace('./public', window.appConfig.API_HOST)}
             onSave={info => onEditAboutContent({ GameId: gameInfo._id, Info: info })}
           />

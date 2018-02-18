@@ -3,6 +3,10 @@
   position: relative;
 }
 
+.introduction-card > .introduction-image {
+  width: 256px;
+}
+
 .introduction-card-info {
   padding: 5px;
 }

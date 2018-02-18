@@ -27,7 +27,7 @@ export default ({ projects, onGetProjects, onSetCurrentProject, projectOnBoard, 
   if (projectName) {
     const matchProject = findMatchProject(projects, projectName);
     if (!matchProject) return <Redirect to="/404" />;
-    if (!projectOnBoard) {
+    if (!projectOnBoard || projectOnBoard._id !== matchProject._id) {
       onGetProjectDetail(matchProject._id);
       return <TabLoader />;
     }

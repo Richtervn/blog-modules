@@ -58,7 +58,7 @@ class IntroductionCard extends Component {
     const { editing } = this.state;
     return (
       <div className="introduction-card">
-        <img src={imgUrl} alt="Introcard" />
+        <img src={imgUrl} alt="Introcard" className="introduction-image" />
         <div className="introduction-card-info">
           {!editing &&
             Object.keys(info).map(key => (
