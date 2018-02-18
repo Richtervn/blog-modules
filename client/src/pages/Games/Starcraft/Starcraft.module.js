@@ -1,30 +1,80 @@
+import React from 'react';
 import { actionCreator } from 'helpers';
 import services from './Starcraft.services';
 import { toastError, toastSuccess } from 'common/Toast';
 
 const GET_MAPS = 'starcraft/GET_MAPS';
+const ADD_MAP = 'starcraft/ADD_MAP';
+const EDIT_MAP = 'starcraft/EDIT_MAP';
+const DELETE_MAP = 'starcraft/DELETE_MAP';
+const SEARCH_MAP = 'starcraft/SEARCH_MAP';
 
 const SET_ACTIVE_TAB = 'starcraft/SET_ACTIVE_TAB';
+const SET_FOCUS_MAP = 'starcraft/SET_FOCUS_MAP';
+const CHANGE_CURRENT_FEATURE = 'starcraft/CHANGE_CURRENT_FEATURE';
 
 export const setActiveTab = tab => ({ type: SET_ACTIVE_TAB, tab });
+export const setFocusMap = id => ({ type: SET_FOCUS_MAP, id });
+export const changeCurrentFeature = feature => ({ type: CHANGE_CURRENT_FEATURE, feature });
 
 export const getMaps = actionCreator(GET_MAPS, services.getMaps);
+export const addMap = formBody => actionCreator(ADD_MAP, services.ADD_MAP, formBody)();
+export const editMap = formBody => actionCreator(EDIT_MAP, services.EDIT_MAP, formBody)();
+export const deleteMap = id => actionCreator(DELETE_MAP, services.DELETE_MAP, id)();
+export const searchMap = text => actionCreator(SEARCH_MAP, services.SEARCH_MAP, text)();
 
 const initialState = {
   mods: null,
   campaigns: null,
   maps: null,
-  activeTab: ''
+  activeTab: '',
+  focusMap: null,
+  currentFeature: 'Search'
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_ACTIVE_TAB:
       return { ...state, activeTab: action.tab };
+    case SET_FOCUS_MAP:
+      return { ...state, focusMap: action.id };
+    case CHANGE_CURRENT_FEATURE:
+      return { ...state, currentFeature: action.feature };
+
     case `${GET_MAPS}_SUCCESS`:
-      return { ...state, maps: action.data };
-      
+      return { ...state, maps: action.data, focusMap: action.data[0] ? action.data[0]._id : null };
+    case `${ADD_MAP}_SUCCESS`:
+      state.maps.push(action.data);
+      toastSuccess(() => (
+        <p>
+          Added <strong>{action.data.Name}</strong>
+        </p>
+      ));
+      return { ...state, maps: state.maps.slice(0) };
+    case `${EDIT_MAP}_SUCCESS`:
+      state.maps = state.maps.map(scmap => {
+        if (scmap._id === action.data._id) {
+          return action.data;
+        }
+        return scmap;
+      });
+      toastSuccess(() => (
+        <p>
+          Updated <strong>{action.data.Name}</strong>
+        </p>
+      ));
+      return { ...state, maps: state.maps.slice(0) };
+    case `${DELETE_MAP}_SUCCESS`:
+      state.maps = state.maps.filter(scmap => scmap._id !== action.data._id);
+      return { ...state, maps: state.maps.slice(0) };
+    case `${SEARCH_MAP}_SUCCESS`:
+      return { ...state, maps: action.data, focusMap: action.data[0] ? action.data[0]._id : null };
+
     case `${GET_MAPS}_FAIL`:
+    case `${ADD_MAP}_FAIL`:
+    case `${EDIT_MAP}_FAIL`:
+    case `${DELETE_MAP}_FAIL`:
+    case `${SEARCH_MAP}_FAIL`:
       toastError(action.error);
       return state;
     default:
@@ -54,12 +104,6 @@ export default (state = initialState, action) => {
 // export const GET_CAMPAIGN_DETAIL_SUCCESS = 'starcraft/GET_CAMPAIGN_DETAIL_SUCCESS';
 // const GET_CAMPAIGN_DETAIL_FAIL = 'starcraft/GET_CAMPAIGN_DETAIL_FAIL';
 
-// const SUBMIT_ADD_STARCRAFT_MAP_START = 'starcraft/SUBMIT_ADD_STARCRAFT_MAP_START';
-// export const SUBMIT_ADD_STARCRAFT_MAP_SUCCESS = 'starcraft/SUBMIT_ADD_STARCRAFT_MAP_SUCCESS';
-// const SUBMIT_ADD_STARCRAFT_MAP_FAIL = 'starcraft/SUBMIT_ADD_STARCRAFT_MAP_FAIL';
-// const SUBMIT_EDIT_STARCRAFT_MAP_START = 'starcraft/SUBMIT_EDIT_STARCRAFT_MAP_START';
-// export const SUBMIT_EDIT_STARCRAFT_MAP_SUCCESS = 'starcraft/SUBMIT_EDIT_STARCRAFT_MAP_SUCCESS';
-// const SUBMIT_EDIT_STARCRAFT_MAP_FAIL = 'starcraft/SUBMIT_EDIT_STARCRAFT_MAP_FAIL';
 // const SUBMIT_ADD_STARCRAFT_MOD_START = 'starcraft/SUBMIT_ADD_STARCRAFT_MOD_START';
 // export const SUBMIT_ADD_STARCRAFT_MOD_SUCCESS = 'starcraft/SUBMIT_ADD_STARCRAFT_MOD_SUCCESS';
 // const SUBMIT_ADD_STARCRAFT_MOD_FAIL = 'starcraft/SUBMIT_ADD_STARCRAFT_MOD_FAIL';
@@ -84,9 +128,6 @@ export default (state = initialState, action) => {
 // const SEARCH_CAMPAIGN_SUCCESS = 'starcraft/SEARCH_CAMPAIGN_SUCCESS';
 // const SEARCH_CAMPAIGN_FAIL = 'starcraft/SEARCH_CAMPAIGN_FAIL';
 
-// const DELETE_MAP_START = 'starcraft/DELETE_MAP_START';
-// const DELETE_MAP_SUCCESS = 'starcraft/DELETE_MAP_START_SUCCESS';
-// const DELETE_MAP_FAIL = 'starcraft/DELETE_MAP_FAIL';
 // const DELETE_MOD_START = 'starcraft/DELETE_MOD_START';
 // const DELETE_MOD_SUCCESS = 'starcraft/DELETE_MOD_SUCCESS';
 // const DELETE_MOD_FAIL = 'starcraft.DELETE_MOD_FAIL';
@@ -228,12 +269,7 @@ export default (state = initialState, action) => {
 //       return { ...state, modFocus: action.data };
 //     case GET_CAMPAIGN_DETAIL_SUCCESS:
 //       return { ...state, campaignFocus: action.data };
-//     case SUBMIT_ADD_STARCRAFT_MAP_SUCCESS:
-//       toast.success(`Added ${action.data.Name}`, {
-//         position: toast.POSITION.BOTTOM_LEFT,
-//         className: 'toast-success'
-//       });
-//       state.maps.push(action.data);
+
 //       return { ...state, maps: state.maps.slice(0), mapFocus: action.data };
 //     case SUBMIT_ADD_STARCRAFT_MOD_SUCCESS:
 //       toast.success(`Added ${action.data.Name}`, {

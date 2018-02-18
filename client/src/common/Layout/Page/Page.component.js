@@ -15,7 +15,7 @@ class Page extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { onSetActiveGroup, onSetActiveItem, onSetDefaultShowGroup } = this.props;
+    const { onSetActiveGroup, onSetActiveItem, onSetDefaultShowGroup, onToggleMenuGroup } = this.props;
     const { menuTree, activeItem, activeGroup } = nextProps;
 
     if (menuTree && !this.state.isRecievedTree) {
@@ -32,6 +32,7 @@ class Page extends Component {
       if (activeGroup !== currentPage.activeGroup) {
         onSetActiveGroup(currentPage.activeGroup);
         onSetDefaultShowGroup(currentPage.activeGroup);
+        onToggleMenuGroup(currentPage.activeGroup);
       }
     }
   }

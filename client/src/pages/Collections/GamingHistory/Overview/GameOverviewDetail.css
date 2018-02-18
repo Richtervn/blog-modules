@@ -7,6 +7,11 @@
   width: 258px;
 }
 
+.game-overview-detail > .contents-col > .contents-card > .contents-card-menu {
+  max-height: calc(100vh - 142px);
+  overflow-y: auto;
+}
+
 .game-overview-detail > .article-col {
   width: calc(100% - 258px);
   border: solid 1px rgba(255, 255, 255, 0.5);

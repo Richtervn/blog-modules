@@ -3,6 +3,13 @@
   overflow-y: auto;
 }
 
+.sc-card-list {
+  height: calc(100vh - 148px);
+  border-top: solid 1px #800000;
+  margin-top: 5px;
+  overflow-y: auto;
+}
+
 .sc-border {
   width: 100%;
   padding: 3px 2px;
@@ -16,4 +23,33 @@
 .sc-border-inner {
   border: 1px solid #800000;
   border-radius: 5px;
+}
+
+.sc-card-list::-webkit-scrollbar {
+  width: 15px;
+}
+
+.sc-card-list::-webkit-scrollbar-track {
+  border-radius: 4px;
+  border: solid 1px #800000;
+}
+
+.sc-card-list::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #800000;
+}
+
+
+.sc-tab-view::-webkit-scrollbar {
+  width: 15px;
+}
+
+.sc-tab-view::-webkit-scrollbar-track {
+  border-radius: 4px;
+  border: solid 1px #800000;
+}
+
+.sc-tab-view::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #800000;
 }

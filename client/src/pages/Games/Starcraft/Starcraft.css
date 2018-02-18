@@ -77,19 +77,6 @@
   overflow-y: auto;
 }
 
-.sc-side-list-border-block-inner::-webkit-scrollbar {
-  width: 20px;
-}
-
-.sc-side-list-border-block-inner::-webkit-scrollbar-track {
-  border-radius: 5px;
-  border: solid 1px #800000;
-}
-
-.sc-side-list-border-block-inner::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background-color: #800000;
-}
 
 .sc-add-map-btn {
   border: solid 1px;

@@ -1,3 +1,4 @@
 import Maps from './Maps.container';
+import { StarcraftDeleteMapConfirm, StarcraftMapForm } from './Modals';
 
-export { Maps };
+export { Maps, StarcraftDeleteMapConfirm, StarcraftMapForm };

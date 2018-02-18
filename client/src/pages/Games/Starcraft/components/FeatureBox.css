@@ -18,6 +18,11 @@
   border: solid 1px #ddff99;
 }
 
+.sc-feature-box > .sc-feature-box-btns > .btn.active {
+  color: #ccff66;
+  border: solid 1px #ddff99;
+}
+
 .sc-feature-box > .sc-feature-box-input-wrapper {
   flex-grow: 1;
   margin: 0 5px;
@@ -29,5 +34,9 @@
   border: solid 1px #00cc00;
   border-radius: 4px;
   padding-left: 10px;
+  color: #00cc00;
+}
+
+.sc-side-feature-radio {
   color: #00cc00;
 }

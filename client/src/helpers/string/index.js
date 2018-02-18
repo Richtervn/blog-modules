@@ -1,3 +1,4 @@
 import getSimpleName from './getSimpleName';
+import getStarcraftRaces from './getStarcraftRaces';
 
-export { getSimpleName };
+export { getSimpleName, getStarcraftRaces };

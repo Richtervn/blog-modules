@@ -1,6 +1,10 @@
 import './Maps.css';
+import _ from 'underscore';
 import React, { Component } from 'react';
-import { FeatureBox } from '../components';
+import MapDetail from './MapDetail.component';
+import { FeatureBox, FeatureCard } from '../components';
+
+import { openModal } from 'common/Modal';
 
 class Maps extends Component {
   componentWillMount() {
@@ -11,6 +15,10 @@ class Maps extends Component {
   }
 
   render() {
+    const { maps, onSetFocusMap, focusMap } = this.props;
+    if (!maps) {
+      return null;
+    }
     return (
       <div className="row">
         <div className="col-4">
@@ -18,7 +26,20 @@ class Maps extends Component {
             <div className="sc-border">
               <div className="sc-border-inner">
                 <div className="sc-tab-view">
-                  <FeatureBox />
+                  <FeatureBox onAddClick={() => openModal('AddStarcraftMap')} />
+                  <div className="sc-card-list">
+                    {maps.map((scmap, i) => (
+                      <FeatureCard
+                        key={i}
+                        rating={scmap.Rating}
+                        label={scmap.Name}
+                        uri={scmap.Uri.replace('./public', window.appConfig.API_HOST)}
+                        matchUp={scmap.Matchup}
+                        onClick={() => onSetFocusMap(scmap._id)}
+                        isActive={scmap._id === focusMap}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -28,7 +49,9 @@ class Maps extends Component {
           <div className="row">
             <div className="sc-border">
               <div className="sc-border-inner">
-                <div className="sc-tab-view">.</div>
+                <div className="sc-tab-view">
+                  <MapDetail map={_.findWhere(maps, { _id: focusMap })} />
+                </div>
               </div>
             </div>
           </div>

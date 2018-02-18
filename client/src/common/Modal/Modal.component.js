@@ -22,6 +22,8 @@ import {
   GamingHistoryForm
 } from 'pages/Collections/GamingHistory';
 
+import { StarcraftDeleteMapConfirm, StarcraftMapForm } from 'pages/Games/Starcraft';
+
 export default ({ name }) => {
   let additionProps = {};
   switch (name) {
@@ -57,6 +59,9 @@ export default ({ name }) => {
       {name === 'AddGamingHistoryOverview' && <GamingHistoryOverviewForm />}
       {name === 'EditGamingHistoryOverview' && <GamingHistoryOverviewForm edit />}
       {name === 'DeleteGamingHistoryOverview' && <GamingHistoryOverviewDeleteConfirm />}
+      {name === 'AddStarcraftMap' && <StarcraftMapForm />}
+      {name === 'EditStarcraftMap' && <StarcraftMapForm edit />}
+      {name === 'DeleteStarcraftMap' && <StarcraftDeleteMapConfirm />}
     </Modal>
   );
 };
@@ -82,17 +87,7 @@ export default ({ name }) => {
 //     Cons: [''],
 //     Winrate: 0
 //   },
-//   EditYugiohMod: null,
-//   EditYugiohDeck: null,
 
-//   AddStarcraftMap: {
-//     Rating: 0,
-//     File: null,
-//     Matchup: '',
-//     Description: '',
-//     Tipntrick: ['']
-//   },
-//   EditStarcraftMap: null,
 //   AddStarcraftCampaign: {
 //     Rating: 0,
 //     Matchup: '',
@@ -100,7 +95,7 @@ export default ({ name }) => {
 //     Introduction: '',
 //     Version: ''
 //   },
-//   EditStarcraftCampaign: null,
+
 //   AddStarcraftMod: {
 //     Name: '',
 //     Rating: 0,
@@ -108,7 +103,7 @@ export default ({ name }) => {
 //     Introduction: '',
 //     Version: ''
 //   },
-//   EditStarcraftMod: null,
+
 //   AddMuonlineTool: {
 //     Credits: [''],
 //     Archive: null,
@@ -118,7 +113,7 @@ export default ({ name }) => {
 //     Introduce: '',
 //     Version: ''
 //   },
-//   EditMuonlineTool: null,
+
 //   AddMuonlineVersion: {
 //     file: null,
 //     Credits: [''],
@@ -127,14 +122,14 @@ export default ({ name }) => {
 //     Introduce: '',
 //     Version: ''
 //   },
-//   EditMuonlineVersion: null,
+
 //   AddDS9799VipSystem: {
 //     name: '',
 //     price: 0,
 //     duration: 0,
 //     type: 'Account'
 //   },
-//   EditDS9799VipSystem: null,
+
 //   AddD2Mod: {
 //     Archive: null,
 //     Icon: null,
@@ -146,7 +141,7 @@ export default ({ name }) => {
 //     Description: '',
 //     Rating: 0
 //   },
-//   EditD2Mod: null,
+
 //   AddD2Tool: {
 //     Archive: null,
 //     Icon: null,
@@ -155,7 +150,7 @@ export default ({ name }) => {
 //     Overview: [''],
 //     Rating: 0
 //   },
-//   EditD2Tool: null,
+
 //   AddD2SurvivalKit: {
 //     file: null,
 //     Name: '',
@@ -164,7 +159,7 @@ export default ({ name }) => {
 //     Overview: [''],
 //     Rating: 0
 //   },
-//   EditD2SurvivalKit: null,
+
 //   AddD2Character: {
 //     file: '',
 //     Name: '',
@@ -178,37 +173,6 @@ export default ({ name }) => {
 //   },
 //   EditD2Character: null
 // },
-
-// import FormAddFlashGame from 'containers/Forms/FormAddFlashGame';
-// import FormAddMusic from 'containers/Forms/FormAddMusic';
-
-// import FormAddYugiohMod from 'containers/Forms/FormAddYugiohMod';
-// import FormAddYugiohDeck from 'containers/Forms/FormAddYugiohDeck';
-// import FormEditYugiohMod from 'containers/Forms/FormEditYugiohMod';
-// import FormEditYugiohDeck from 'containers/Forms/FormEditYugiohDeck';
-
-// import FormAddStarcraftMap from 'containers/Forms/FormAddStarcraftMap';
-// import FormEditStarcraftMap from 'containers/Forms/FormEditStarcraftMap';
-// import FormAddStarcraftCampaign from 'containers/Forms/FormAddStarcraftCampaign';
-// import FormEditStarcraftCampaign from 'containers/Forms/FormEditStarcraftCampaign';
-// import FormAddStarcraftMod from 'containers/Forms/FormAddStarcraftMod';
-// import FormEditStarcraftMod from 'containers/Forms/FormEditStarcraftMod';
-// import FormAddMuonlineTool from 'containers/Forms/FormAddMuonlineTool';
-// import FormAddMuonlineVersion from 'containers/Forms/FormAddMuonlineVersion';
-// import FormEditMuonlineTool from 'containers/Forms/FormEditMuonlineTool';
-// import FormEditMuonlineVersion from 'containers/Forms/FormEditMuonlineVersion';
-
-// import FormAddDs9799VipSystem from 'containers/Forms/FormAddDs9799VipSystem';
-// import FormEditDs9799VipSystem from 'containers/Forms/FormEditDs9799VipSystem';
-
-// import FormAddD2Mod from 'containers/Forms/FormAddD2Mod';
-// import FormAddD2Tool from 'containers/Forms/FormAddD2Tool';
-// import FormAddD2Character from 'containers/Forms/FormAddD2Character';
-// import FormAddD2SurvivalKit from 'containers/Forms/FormAddD2SurvivalKit';
-// import FormEditD2Mod from 'containers/Forms/FormEditD2Mod';
-// import FormEditD2Tool from 'containers/Forms/FormEditD2Tool';
-// import FormEditD2Character from 'containers/Forms/FormEditD2Character';
-// import FormEditD2SurvivalKit from 'containers/Forms/FormEditD2SurvivalKit';
 
 // const makeIcon = (name, ext) => {
 //   const iconPath = 'app_modules/images/icons/';

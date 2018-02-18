@@ -1,7 +1,7 @@
 import Page from './Page.component';
 import { connect } from 'react-redux';
 
-import { setActiveGroup, setActiveItem, setDefaultShowGroup } from 'pages/appControl';
+import { setActiveGroup, setActiveItem, setDefaultShowGroup, toggleMenuGroup } from 'pages/appControl';
 
 const mapStateToProps = ({ appControl }) => ({
   menuTree: appControl.menuTree,
@@ -18,6 +18,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onSetDefaultShowGroup(group) {
     dispatch(setDefaultShowGroup(group));
+  },
+  onToggleMenuGroup(group) {
+    dispatch(toggleMenuGroup(group));
   }
 });
 

@@ -1,0 +1,68 @@
+.sc-feature-card {
+  border: solid 1px #00cc00;
+  margin: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 5px;
+  color: #00cc00;
+}
+
+.sc-feature-card:hover {
+  color: #ddff99;
+  border: solid 1px #ddff99;
+}
+
+.sc-feature-card > .label {
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+
+.sc-feature-card.active {
+  color: #ccff66;
+  border: solid 1px #ccff66;
+}
+
+.sc-feature-card > .content {
+  display: flex;
+}
+
+.sc-feature-card > .content > .matchup {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sc-feature-card > .content > .matchup > .icon {
+  height: 45px;
+}
+
+.sc-feature-card > .content > .matchup > .versus-icon {
+  height: 25px;
+  padding: 0px 5px;
+}
+
+.sc-feature-card > .content > .rating {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sc-feature-card > .content > .rating > .dl-btn {
+  color: #00cc00;
+  border: solid 1px #00cc00;
+  border-radius: 4px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.sc-feature-card > .content > .rating > .dl-btn:hover {
+  color: #ddff99;
+  border: solid 1px #ddff99;
+}

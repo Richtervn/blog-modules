@@ -2,7 +2,7 @@ import { Schema } from 'mongoose';
 
 const StarcraftMaps = new Schema({
   Name: String,
-  Rating: String,
+  Rating: Number,
   Matchup: String,
   Description: String,
   Tipntrick: [String],

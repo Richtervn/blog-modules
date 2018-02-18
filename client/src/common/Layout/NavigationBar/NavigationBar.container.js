@@ -1,13 +1,14 @@
 import NavigationBar from './NavigationBar.component';
 import { connect } from 'react-redux';
 
-import { getMenuTree, setActiveGroup, setActiveItem } from 'pages/appControl';
+import { getMenuTree, setActiveGroup, setActiveItem, toggleMenuGroup } from 'pages/appControl';
 
 const mapStateToProps = ({ appControl }) => ({
   menuTree: appControl.menuTree,
   activeGroup: appControl.activeGroup,
   activeItem: appControl.activeItem,
-  defaultShowGroup: appControl.defaultShowGroup
+  defaultShowGroup: appControl.defaultShowGroup,
+  openedGroups: appControl.openedGroups
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -17,8 +18,11 @@ const mapDispatchToProps = dispatch => ({
   onSetActiveGroup(group) {
     dispatch(setActiveGroup(group));
   },
-  onSetActiveItem(item){
+  onSetActiveItem(item) {
     dispatch(setActiveItem(item));
+  },
+  onToggleMenuGroup(group) {
+    dispatch(toggleMenuGroup(group));
   }
 });
 

@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import { actionCreator } from 'helpers';
 import { toastError } from 'common/Toast';
 import { ADD_GAME } from 'pages/FlashGames';
@@ -13,6 +14,7 @@ const SET_DEFAULT_SHOW_GROUP = 'appControl/SET_DEFAULT_SHOW_GROUP';
 const SET_MODAL_NAME = 'appControl/SET_MODAL_NAME';
 const SHOW_HEADER_MENU = 'appControl/SHOW_HEADER_MENU';
 const HIDE_HEADER_MENU = 'appControl/HIDE_HEADER_MENU';
+const TOGGLE_MENU_GROUP = 'appControl/TOGGLE_MENU_GROUP';
 
 export const getMenuTree = actionCreator(GET_MENU_TREE, services.getMenuTree);
 export const saveMenuTree = formBody => actionCreator(SAVE_MENU_TREE, services.saveMenuTree, formBody)();
@@ -24,6 +26,7 @@ export const setDefaultShowGroup = group => ({ type: SET_DEFAULT_SHOW_GROUP, gro
 export const setModalName = name => ({ type: SET_MODAL_NAME, name });
 export const showHeaderMenu = () => ({ type: SHOW_HEADER_MENU });
 export const hideHeaderMenu = () => ({ type: HIDE_HEADER_MENU });
+export const toggleMenuGroup = group => ({ type: TOGGLE_MENU_GROUP, group });
 
 const initialState = {
   menuTree: null,
@@ -31,6 +34,7 @@ const initialState = {
   activeItem: null,
   defaultShowGroup: null,
   modalName: 'FlashGame',
+  openedGroups: [],
   isShowHeaderMenu: false,
   homeTabs: [{ name: 'Projects', route: '/home/projects' }, { name: 'App Diary', route: '/home/app_diary' }],
   activeTab: 'Projects'
@@ -56,7 +60,15 @@ export default (state = initialState, action) => {
       return { ...state, isShowHeaderMenu: true };
     case HIDE_HEADER_MENU:
       return { ...state, isShowHeaderMenu: false };
-
+    case TOGGLE_MENU_GROUP: {
+      let openedGroups;
+      if (_.contains(state.openedGroups, action.group)) {
+        openedGroups = _.without(state.openedGroups, action.group).slice(0);
+      } else {
+        openedGroups = [...state.openedGroups, action.group];
+      }
+      return { ...state, openedGroups };
+    }
     case `${ADD_GAME}_SUCCESS`:
       return { ...state, menuTree: { ...action.data.menu } };
 

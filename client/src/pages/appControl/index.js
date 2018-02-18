@@ -7,7 +7,8 @@ import reducer, {
   saveMenuTree,
   setModalName,
   showHeaderMenu,
-  hideHeaderMenu
+  hideHeaderMenu,
+  toggleMenuGroup
 } from './appControl.module';
 
 export {
@@ -20,5 +21,6 @@ export {
   saveMenuTree,
   setModalName,
   showHeaderMenu,
-  hideHeaderMenu
+  hideHeaderMenu,
+  toggleMenuGroup
 };

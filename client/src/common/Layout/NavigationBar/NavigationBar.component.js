@@ -8,28 +8,11 @@ import { openModal } from 'common/Modal';
 import { appRouter } from 'utils';
 
 class NavigationBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      openedGroups: []
-    };
-  }
-
   componentWillMount() {
     const { menuTree, onGetMenuTree } = this.props;
     if (!menuTree) {
       onGetMenuTree();
     }
-  }
-
-  handleGroupClick(group) {
-    let openedGroups;
-    if (_.contains(this.state.openedGroups, group)) {
-      openedGroups = _.without(this.state.openedGroups, group);
-    } else {
-      openedGroups = [...this.state.openedGroups, group];
-    }
-    this.setState({ openedGroups });
   }
 
   handleItemClick(item, group) {
@@ -43,7 +26,7 @@ class NavigationBar extends Component {
   }
 
   render() {
-    const { menuTree, activeGroup, activeItem, defaultShowGroup } = this.props;
+    const { menuTree, activeGroup, activeItem, defaultShowGroup, openedGroups, onToggleMenuGroup } = this.props;
     if (!menuTree) return null;
     const router = appRouter(menuTree);
 
@@ -53,11 +36,11 @@ class NavigationBar extends Component {
           <MenuGroup
             name={group}
             key={i}
-            isOpen={_.contains(this.state.openedGroups, group)}
+            isOpen={_.contains(openedGroups, group)}
             isActive={activeGroup === group}
             isShow={group === defaultShowGroup}
             icon={menuTree[group].icon}
-            onClick={() => this.handleGroupClick(group)}>
+            onClick={() => onToggleMenuGroup(group)}>
             {menuTree[group].items.map((item, i) => (
               <MenuItem
                 name={item}
