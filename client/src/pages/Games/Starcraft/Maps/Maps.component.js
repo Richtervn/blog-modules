@@ -1,8 +1,8 @@
 import './Maps.css';
 import _ from 'underscore';
 import React, { Component } from 'react';
-import MapDetail from './MapDetail.component';
-import { FeatureBox, FeatureCard } from '../components';
+import { PageLoader } from 'common/Loaders';
+import { FeatureBox, FeatureCard, FeatureView, FeatureDetail } from '../components';
 
 import { openModal } from 'common/Modal';
 
@@ -15,47 +15,54 @@ class Maps extends Component {
   }
 
   render() {
-    const { maps, onSetFocusMap, focusMap } = this.props;
+    const { maps, onSetFocusMap, focusMap, onSearchMap, onSortMap } = this.props;
+
     if (!maps) {
-      return null;
+      return (
+        <div className="sc-loader">
+          <PageLoader />
+        </div>
+      );
     }
+
+    const map = _.findWhere(maps, { _id: focusMap });
+
     return (
       <div className="row">
-        <div className="col-4">
-          <div className="row">
-            <div className="sc-border">
-              <div className="sc-border-inner">
-                <div className="sc-tab-view">
-                  <FeatureBox onAddClick={() => openModal('AddStarcraftMap')} />
-                  <div className="sc-card-list">
-                    {maps.map((scmap, i) => (
-                      <FeatureCard
-                        key={i}
-                        rating={scmap.Rating}
-                        label={scmap.Name}
-                        uri={scmap.Uri.replace('./public', window.appConfig.API_HOST)}
-                        matchUp={scmap.Matchup}
-                        onClick={() => onSetFocusMap(scmap._id)}
-                        isActive={scmap._id === focusMap}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+        <FeatureView col={4}>
+          <FeatureBox onAddClick={() => openModal('AddStarcraftMap')} onSearch={onSearchMap} onSort={onSortMap} />
+          <div className="sc-card-list">
+            {maps.map((scmap, i) => (
+              <FeatureCard
+                key={i}
+                rating={scmap.Rating}
+                label={scmap.Name}
+                uri={scmap.Uri.replace('./public', window.appConfig.API_HOST)}
+                matchUp={scmap.Matchup}
+                onClick={() => onSetFocusMap(scmap._id)}
+                isActive={scmap._id === focusMap}
+              />
+            ))}
           </div>
-        </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="sc-border">
-              <div className="sc-border-inner">
-                <div className="sc-tab-view">
-                  <MapDetail map={_.findWhere(maps, { _id: focusMap })} />
-                </div>
-              </div>
+        </FeatureView>
+        <FeatureView col={8}>
+          {!map && (
+            <div className="flex-center sc-zero-notice">
+              <div className="notice">No map selected</div>
             </div>
-          </div>
-        </div>
+          )}
+          {map && (
+            <FeatureDetail
+              title={map.Name}
+              onEditClick={() => openModal('EditStarcraftMap')}
+              onDeleteClick={() => openModal('DeleteStarcraftMap')}
+              description={map.Description}
+              tipntrick={map.Tipntrick}
+              rating={map.Rating}
+              matchup={map.Matchup}
+            />
+          )}
+        </FeatureView>
       </div>
     );
   }

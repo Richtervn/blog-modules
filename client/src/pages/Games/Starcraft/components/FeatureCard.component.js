@@ -3,7 +3,7 @@ import React from 'react';
 import StarRating from 'react-star-rating-component';
 import { getStarcraftRaces } from 'helpers';
 
-const FeatureCard = ({ rating, label, uri, matchUp, isActive, onClick }) => {
+const FeatureCard = ({ rating, label, uri, matchUp, isActive, onClick, version }) => {
   const { playerRaces, opponentRaces } = getStarcraftRaces(matchUp);
   return (
     <div className={`sc-feature-card ${isActive ? 'active' : ''}`} onClick={onClick}>
@@ -17,6 +17,12 @@ const FeatureCard = ({ rating, label, uri, matchUp, isActive, onClick }) => {
           ))}
         </div>
         <div className="rating">
+          {version && (
+            <div className="version">
+              <img className="icon" src="/images/icons/sc_launcher.ico" alt={version} />
+              <div className="text">{version}</div>
+            </div>
+          )}
           <a href={uri} className="dl-btn" download>
             <i className="fa fa-download" />
           </a>

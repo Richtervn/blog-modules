@@ -7,6 +7,7 @@ import { getSimpleName } from 'helpers';
 
 import TopNavBar from './TopNavBar.container';
 import { Maps } from './Maps';
+import { Campaigns } from './Campaigns';
 
 class Starcraft extends Component {
   componentWillMount() {
@@ -30,6 +31,7 @@ class Starcraft extends Component {
         <div className="sc-page">
           <TopNavBar />
           {activeTab === 'Maps' && <Maps />}
+          {activeTab === 'Campaigns' && <Campaigns />}
         </div>
       </PageContainer>
     );

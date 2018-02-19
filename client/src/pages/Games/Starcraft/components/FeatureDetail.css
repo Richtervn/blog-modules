@@ -1,0 +1,123 @@
+.sc-detail {
+  position: relative;
+  color: #00cc00;
+}
+
+.sc-detail > .feature {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.sc-detail > .feature > .btn {
+  width: 25px;
+  padding: 0;
+  background: none;
+  border: solid 1px #00cc00;
+  margin-left: 2px;
+  color: #00cc00;
+}
+
+.sc-detail > .feature > .btn:hover {
+  color: #ddff99;
+  border: solid 1px #ddff99;
+}
+
+.sc-detail > .title {
+  padding-top: 30px;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.sc-detail > .version {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sc-detail > .version > .text {
+  font-size: 24px;
+  padding-left: 10px;
+}
+
+.sc-detail > .rating {
+  width: 100%;
+  font-size: 28px;
+  text-align: center;
+}
+
+.sc-detail > .matchup {
+  display: flex;
+  padding-right: 10px;
+}
+
+.sc-detail > .matchup > .half {
+  width: 50%;
+  margin-left: 10px;
+}
+
+.sc-detail > .matchup > .half > .label {
+  width: 100%;
+  border: solid 1px #00cc00;
+  padding: 5px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.sc-detail > .matchup > .half > .races {
+  width: 100%;
+  border: solid 1px #00cc00;
+  padding: 5px;
+  margin-top: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.sc-detail > .description {
+  margin: 10px;
+  border: solid 1px #00cc00;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.sc-detail > .tipntrick {
+  margin: 10px;
+  border: solid 1px #00cc00;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.sc-detail > .tipntrick ul {
+  margin-bottom: 0;
+}
+
+.sc-detail > .html-bind-wrapper {
+  position: relative;
+  border: solid 1px #00cc00;
+  padding: 5px;
+  border-radius: 4px;
+  margin: 10px;
+}
+
+.sc-detail > .html-bind-wrapper > .feature {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.sc-detail > .html-bind-wrapper > .feature > .btn {
+  width: 25px;
+  padding: 0;
+  background: none;
+  border: solid 1px #00cc00;
+  margin-left: 2px;
+  color: #00cc00;
+}
+
+.sc-detail > .html-bind-wrapper > .feature > .btn:hover {
+  color: #ddff99;
+  border: solid 1px #ddff99;
+}

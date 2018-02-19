@@ -18,7 +18,7 @@ export default {
     const data = commonGet('starcraft/list_mod');
     return data;
   },
-  getCampaignList() {
+  getCampaigns() {
     const data = commonGet('starcraft/list_campaign');
     return data;
   },

@@ -29,8 +29,8 @@ const SET_FOCUS_GUIDE = 'gamingHistory/SET_FOCUS_GUIDE';
 const SET_FOCUS_OVERVIEW = 'gamingHistory/SET_FOCUS_OVERVIEW';
 
 export const getList = actionCreator(GET_LIST, services.getList);
-export const getGuides = actionCreator(GET_GUIDES, services.getGuides);
-export const getOverviews = actionCreator(GET_OVERVIEWS, services.getOverviews);
+export const getGuides = gameId => actionCreator(GET_GUIDES, services.getGuides, gameId)();
+export const getOverviews = gameId => actionCreator(GET_OVERVIEWS, services.getOverviews, gameId)();
 export const getAboutContent = gameId => actionCreator(GET_ABOUT, services.getAbout, gameId)();
 export const getGuide = id => actionCreator(GET_GUIDE, services.getGuide, id)();
 export const getOverview = id => actionCreator(GET_OVERVIEW, services.getOverview, id)();

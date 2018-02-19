@@ -2,11 +2,12 @@ import { Schema } from 'mongoose';
 
 const StarcraftCampaigns = new Schema({
   Name: String,
-  Rating: String,
+  Rating: Number,
   Matchup: String,
   Description: String,
-  Introduction: String,
   Version: String,
+  HTML: String,
+  CSS: String,
   Uri: String
 });
 

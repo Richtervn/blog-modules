@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Maps from './Maps.component';
 
-import { getMaps, setFocusMap } from '../Starcraft.module';
+import { getMaps, setFocusMap, searchMap, sortMap } from '../Starcraft.module';
 
 export default connect(
   ({ starcraft }) => ({
@@ -14,6 +14,12 @@ export default connect(
     },
     onSetFocusMap(id) {
       dispatch(setFocusMap(id));
+    },
+    onSearchMap(text) {
+      dispatch(searchMap(text));
+    },
+    onSortMap(query) {
+      dispatch(sortMap(query));
     }
   })
 )(Maps);

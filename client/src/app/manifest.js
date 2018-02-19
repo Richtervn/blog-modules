@@ -4,10 +4,11 @@ const backgrounds = [
   { name: 'Dark Art', file: 'dark_art.jpg' },
   { name: 'Doom Castle', file: 'doom-castle.jpg' },
   { name: 'Heavy Metal Bands', file: 'heavy_metal_bands.jpg' },
+  { name: 'Hommer Simpson', file: 'the-simpson-hommer.jpg' },
   { name: 'Jungle', file: 'jungle.jpg' },
   { name: 'MU Magic Gladior', file: 'mg_mu.jpg' },
   { name: 'SC Terran', file: 'scbw-terran.jpg' },
-  { name: 'Hommer Simpson', file: 'the-simpson-hommer.jpg' },
+  { name: 'Starcraft', file: 'starcraft.jpg' },
   { name: 'Wood Hightlight', file: 'wood_highlight.jpg' }
 ];
 

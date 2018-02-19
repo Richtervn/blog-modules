@@ -43,9 +43,12 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   );
 
   router.get(
-    '/get_guides',
+    '/get_guides/:gameId',
     wrap(async (req, res, next) => {
-      const guides = await commonService.getAll(GamingHistoryGuide, { CSS: false, HTML: false });
+      const guides = await commonService.getByParam(GamingHistoryGuide, 'GameId', req.params.gameId, {
+        CSS: false,
+        HTML: false
+      });
       res.send(guides);
     })
   );
@@ -59,9 +62,11 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   );
 
   router.get(
-    '/get_overviews',
+    '/get_overviews/:gameId',
     wrap(async (req, res, next) => {
-      const overviews = await commonService.getAll(GamingHistoryOverview, { Sections: false });
+      const overviews = await commonService.getByParam(GamingHistoryOverview, 'GameId', req.params.gameId, {
+        Sections: false
+      });
       res.send(overviews);
     })
   );

@@ -13,7 +13,7 @@ export default (type, service, ...serviceParams) => {
         }
         dispatch(actionSuccess(data));
       } catch (e) {
-        console.log(e);
+        console.error(e);
         return dispatch(actionError(e));
       }
     };

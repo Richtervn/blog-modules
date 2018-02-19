@@ -27,43 +27,43 @@ export default {
     const data = commonPut('gaming_history/edit_about', formBody);
     return data;
   },
-  getGuides(){
-    const data = commonGet('gaming_history/get_guides');
+  getGuides(gameId) {
+    const data = commonGet('gaming_history/get_guides', [gameId]);
     return data;
   },
-  getOverviews(){
-    const data = commonGet('gaming_history/get_overviews');
+  getOverviews(gameId) {
+    const data = commonGet('gaming_history/get_overviews', [gameId]);
     return data;
   },
-  getGuide(id){
+  getGuide(id) {
     const data = commonGet('gaming_history/get_guide', [id]);
     return data;
   },
-  getOverview(id){
+  getOverview(id) {
     const data = commonGet('gaming_history/get_overview', [id]);
     return data;
   },
-  addGuide(formBody){
+  addGuide(formBody) {
     const data = commonPost('gaming_history/add_guide', formBody);
     return data;
   },
-  addOverview(formBody){
+  addOverview(formBody) {
     const data = commonPost('gaming_history/add_overview', formBody);
     return data;
   },
-  editGuide(formBody){
+  editGuide(formBody) {
     const data = commonPut('gaming_history/edit_guide', formBody);
     return data;
   },
-  editOverview(formBody){
+  editOverview(formBody) {
     const data = commonPut('gaming_history/edit_overview', formBody);
     return data;
   },
-  deleteGuide(id){
+  deleteGuide(id) {
     const data = commonDelete('gaming_history/delete_guide' + id);
     return data;
   },
-  deleteOverview(id){
+  deleteOverview(id) {
     const data = commonDelete('gaming_history/delete_overview' + id);
     return data;
   }

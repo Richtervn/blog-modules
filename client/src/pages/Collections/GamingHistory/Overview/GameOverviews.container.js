@@ -5,11 +5,12 @@ import { getOverviews, setFocusOverview } from '../GamingHistory.module';
 
 export default connect(
   ({ gamingHistory }) => ({
-    overviews: gamingHistory.overviews
+    overviews: gamingHistory.overviews,
+    gameInfo: gamingHistory.gameInfo
   }),
   dispatch => ({
-    onGetOverviews() {
-      dispatch(getOverviews());
+    onGetOverviews(gameId) {
+      dispatch(getOverviews(gameId));
     },
     onSetFocusOverview(overview) {
       dispatch(setFocusOverview(overview));

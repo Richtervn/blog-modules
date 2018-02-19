@@ -5,7 +5,7 @@ export default {
     return doc;
   },
   getAll: async (model, options) => {
-    const docs = await model.find({}, {...options});
+    const docs = await model.find({}, { ...options });
     return docs;
   },
   delete: async (model, id) => {
@@ -14,8 +14,8 @@ export default {
     await model.remove({ _id: id }).exec();
     return { _id: doc._id };
   },
-  getByParam: async (model, field, param) => {
-    const docs = await model.find({ [field]: param });
+  getByParam: async (model, field, param, options) => {
+    const docs = await model.find({ [field]: param }, { ...options });
     return docs;
   },
   getOne: async (model, id) => {

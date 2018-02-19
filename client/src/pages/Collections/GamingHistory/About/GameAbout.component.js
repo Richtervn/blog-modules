@@ -5,9 +5,7 @@ import { TabLoader } from 'common/Loaders';
 
 class GameAbout extends Component {
   componentWillMount() {
-    if (!this.props.aboutContent || this.props.aboutContent._id !== this.props.gameInfo._id) {
-      this.props.onGetAboutContent(this.props.gameInfo._id);
-    }
+    this.props.onGetAboutContent(this.props.gameInfo._id);
   }
 
   render() {

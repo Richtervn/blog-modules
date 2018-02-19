@@ -5,11 +5,12 @@ import { getGuides, setFocusGuide } from '../GamingHistory.module';
 
 export default connect(
   ({ gamingHistory }) => ({
-    guides: gamingHistory.guides
+    guides: gamingHistory.guides,
+    gameInfo: gamingHistory.gameInfo
   }),
   dispatch => ({
-    onGetGuides() {
-      dispatch(getGuides());
+    onGetGuides(gameId) {
+      dispatch(getGuides(gameId));
     },
     onSetFocusGuide(guide) {
       dispatch(setFocusGuide(guide));

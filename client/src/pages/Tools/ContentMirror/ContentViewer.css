@@ -1,12 +1,11 @@
 .cm-content-viewer {
   width: 100%;
-  padding: 10px;
-  height: calc(100vh - 85px);
-  overflow-y: auto;
-  background-size: cover!important;
+  background-size: cover !important;
 }
 
 .cm-content-viewer > .overlay {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 85px);
+  padding: 10px;
+  overflow-y: auto;
 }

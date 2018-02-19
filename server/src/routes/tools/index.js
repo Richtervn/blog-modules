@@ -10,6 +10,11 @@ export default (models, factories) => {
       DisplayField: 'Title',
       CssField: 'CSS',
       HtmlField: 'HTML'
+    },
+    StarcraftCampaigns: {
+      DisplayField: 'Name',
+      CssField: 'CSS',
+      HtmlField: 'HTML'
     }
   };
 

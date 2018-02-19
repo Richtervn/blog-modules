@@ -10,9 +10,9 @@ import GameGuideDetail from './GameGuideDetail.container';
 
 class GameGuides extends Component {
   componentWillMount() {
-    const { guides, onGetGuides, params } = this.props;
-    if (!params.subPage && !guides) {
-      onGetGuides();
+    const { onGetGuides, params, gameInfo } = this.props;
+    if (!params.subPage) {
+      onGetGuides(gameInfo._id);
     }
   }
 

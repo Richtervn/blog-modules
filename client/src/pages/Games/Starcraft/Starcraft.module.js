@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import React from 'react';
 import { actionCreator } from 'helpers';
 import services from './Starcraft.services';
@@ -8,20 +9,34 @@ const ADD_MAP = 'starcraft/ADD_MAP';
 const EDIT_MAP = 'starcraft/EDIT_MAP';
 const DELETE_MAP = 'starcraft/DELETE_MAP';
 const SEARCH_MAP = 'starcraft/SEARCH_MAP';
+const SORT_MAP = 'starcraft/SORT_MAP';
+
+const GET_CAMPAIGNS = 'starcraft/GET_CAMPAIGNS';
+const GET_CAMPAIGN_DETAIL = 'starcraft/GET_CAMPAIGN_DETAIL';
 
 const SET_ACTIVE_TAB = 'starcraft/SET_ACTIVE_TAB';
 const SET_FOCUS_MAP = 'starcraft/SET_FOCUS_MAP';
 const CHANGE_CURRENT_FEATURE = 'starcraft/CHANGE_CURRENT_FEATURE';
+const CHANGE_SEARCH = 'starcraft/CHANGE_SEARCH';
+const CHANGE_SORT_KEY = 'starcraft/CHANGE_SORT_KEY';
+const CHANGE_SORT_OPTION = 'starcraft/CHANGE_SORT_OPTION';
 
 export const setActiveTab = tab => ({ type: SET_ACTIVE_TAB, tab });
 export const setFocusMap = id => ({ type: SET_FOCUS_MAP, id });
 export const changeCurrentFeature = feature => ({ type: CHANGE_CURRENT_FEATURE, feature });
+export const changeSearch = text => ({ type: CHANGE_SEARCH, text });
+export const changeSortKey = key => ({ type: CHANGE_SORT_KEY, key });
+export const changeSortOption = option => ({ type: CHANGE_SORT_OPTION, option });
 
 export const getMaps = actionCreator(GET_MAPS, services.getMaps);
-export const addMap = formBody => actionCreator(ADD_MAP, services.ADD_MAP, formBody)();
-export const editMap = formBody => actionCreator(EDIT_MAP, services.EDIT_MAP, formBody)();
-export const deleteMap = id => actionCreator(DELETE_MAP, services.DELETE_MAP, id)();
-export const searchMap = text => actionCreator(SEARCH_MAP, services.SEARCH_MAP, text)();
+export const addMap = formBody => actionCreator(ADD_MAP, services.addMap, formBody)();
+export const editMap = formBody => actionCreator(EDIT_MAP, services.editMap, formBody)();
+export const deleteMap = id => actionCreator(DELETE_MAP, services.deleteMap, id)();
+export const searchMap = text => actionCreator(SEARCH_MAP, services.searchMap, text)();
+export const sortMap = query => ({ type: SORT_MAP, query });
+
+export const getCampaigns = actionCreator(GET_CAMPAIGNS, services.getCampaigns);
+export const getCampaignDetail = id => actionCreator(GET_CAMPAIGN_DETAIL, services.getCampaignDetail, id)();
 
 const initialState = {
   mods: null,
@@ -29,7 +44,11 @@ const initialState = {
   maps: null,
   activeTab: '',
   focusMap: null,
-  currentFeature: 'Search'
+  currentFeature: 'Search',
+  search: '',
+  sortKey: '',
+  sortOption: 'ASC',
+  campaignDetail: {}
 };
 
 export default (state = initialState, action) => {
@@ -40,6 +59,12 @@ export default (state = initialState, action) => {
       return { ...state, focusMap: action.id };
     case CHANGE_CURRENT_FEATURE:
       return { ...state, currentFeature: action.feature };
+    case CHANGE_SEARCH:
+      return { ...state, search: action.text };
+    case CHANGE_SORT_KEY:
+      return { ...state, sortKey: action.key };
+    case CHANGE_SORT_OPTION:
+      return { ...state, sortOption: action.option };
 
     case `${GET_MAPS}_SUCCESS`:
       return { ...state, maps: action.data, focusMap: action.data[0] ? action.data[0]._id : null };
@@ -69,12 +94,30 @@ export default (state = initialState, action) => {
       return { ...state, maps: state.maps.slice(0) };
     case `${SEARCH_MAP}_SUCCESS`:
       return { ...state, maps: action.data, focusMap: action.data[0] ? action.data[0]._id : null };
+    case SORT_MAP:
+      let key = Object.keys(action.query)[0];
+      return {
+        ...state,
+        maps:
+          action.query[key] === 'ASC'
+            ? _.sortBy(state.maps, key).slice(0)
+            : _.sortBy(state.maps, key)
+                .reverse()
+                .slice(0)
+      };
+
+    case `${GET_CAMPAIGNS}_SUCCESS`:
+      return { ...state, campaigns: action.data };
+    case `${GET_CAMPAIGN_DETAIL}_SUCCESS`:
+      return { ...state, campaignDetail: action.data };
 
     case `${GET_MAPS}_FAIL`:
     case `${ADD_MAP}_FAIL`:
     case `${EDIT_MAP}_FAIL`:
     case `${DELETE_MAP}_FAIL`:
     case `${SEARCH_MAP}_FAIL`:
+    case `${GET_CAMPAIGNS}_FAIL`:
+    case `${GET_CAMPAIGN_DETAIL}_FAIL`:
       toastError(action.error);
       return state;
     default:
@@ -117,7 +160,6 @@ export default (state = initialState, action) => {
 // export const SUBMIT_EDIT_STARCRAFT_CAMPAIGN_SUCCESS = 'starcraft/SUBMIT_EDIT_STARCRAFT_CAMPAIGN_SUCCESS';
 // const SUBMIT_EDIT_STARCRAFT_CAMPAIGN_FAIL = 'starcraft/SUBMIT_EDIT_STARCRAFT_CAMPAIGN_FAIL';
 
-
 // const SEARCH_MOD_START = 'starcraft/SEARCH_MOD_START';
 // const SEARCH_MOD_SUCCESS = 'starcraft/SEARCH_MOD_SUCCESS';
 // const SEARCH_MOD_FAIL = 'starcraft/SEARCH_MOD_FAIL';
@@ -132,7 +174,6 @@ export default (state = initialState, action) => {
 // const DELETE_CAMPAIGN_SUCESS = 'starcraft/DELETE_CAMPAIGN_SUCESS';
 // const DELETE_CAMPAIGN_FAIL = 'starcraft/DELETE_CAMPAIGN_FAIL';
 
-// const SORT_MAP = 'starcraft/SORT_MAP';
 // const SORT_MOD = 'starcraft/SORT_MOD';
 // const SORT_CAMPAIGN = 'starcraft/SORT_CAMPAIGN';
 
@@ -161,7 +202,6 @@ export default (state = initialState, action) => {
 //   GET_CAMPAIGN_LIST_FAIL,
 //   starcraft.getCampaignList
 // );
-
 
 // export const submitEditStarcraftMapForm = formBody =>
 //   actionCreator(
@@ -221,7 +261,6 @@ export default (state = initialState, action) => {
 // export const searchCampaign = text =>
 //   actionCreator(SEARCH_CAMPAIGN_START, SEARCH_CAMPAIGN_SUCCESS, SEARCH_CAMPAIGN_FAIL, starcraft.searchCampaign, text)();
 
-// export const sortMap = query => ({ type: SORT_MAP, query });
 // export const sortMod = query => ({ type: SORT_MOD, query });
 // export const sortCampaign = query => ({ type: SORT_CAMPAIGN, query });
 
@@ -289,17 +328,7 @@ export default (state = initialState, action) => {
 //       return { ...state, mods: action.data };
 //     case SEARCH_CAMPAIGN_SUCCESS:
 //       return { ...state, campaigns: action.data };
-//     case SORT_MAP:
-//       let key = Object.keys(action.query)[0];
-//       return {
-//         ...state,
-//         maps:
-//           action.query[key] == 'ASC'
-//             ? _.sortBy(state.maps, key).slice(0)
-//             : _.sortBy(state.maps, key)
-//                 .reverse()
-//                 .slice(0)
-//       };
+
 //     case SORT_MOD: {
 //       let key = Object.keys(action.query)[0];
 //       return {

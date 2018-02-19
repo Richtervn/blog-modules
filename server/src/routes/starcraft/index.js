@@ -1,3 +1,4 @@
+import Promise from 'bluebird';
 import express from 'express';
 import uploadMap from './services/uploadMap';
 import addMap from './services/addMap';
@@ -19,10 +20,7 @@ export default (StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories) => 
   router.get(
     '/list_campaign',
     wrap(async (req, res, next) => {
-      const campaigns = await StarcraftCampaigns.find(
-        {},
-        { Description: false, Introduction: false, Uri: false }
-      );
+      const campaigns = await StarcraftCampaigns.find({}, { Description: false, HTML: false, CSS: false });
       res.send(campaigns);
     })
   );
@@ -64,11 +62,7 @@ export default (StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories) => 
     '/add_campaign',
     wrap(async (req, res, next) => {
       const body = await uploadCampaign(req, res);
-      body.Introduction = Buffer.from(body.Introduction);
       const campaign = await commonService.create(StarcraftCampaigns, body);
-      delete campaign.Introduction;
-      delete campaign.Uri;
-      delete campaign.Description;
       res.send(campaign);
     })
   );
@@ -141,10 +135,7 @@ export default (StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories) => 
   router.get(
     '/search_mod',
     wrap(async (req, res, next) => {
-      const mods = await commonService.search(StarcraftMods, 'Name', req.query.Name, [
-        'Description',
-        'Introduction'
-      ]);
+      const mods = await commonService.search(StarcraftMods, 'Name', req.query.Name, ['Description', 'Introduction']);
       res.send(mods);
     })
   );
