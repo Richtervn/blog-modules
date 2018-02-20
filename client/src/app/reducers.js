@@ -10,11 +10,13 @@ import { reducer as music } from 'pages/Collections/Music';
 import { reducer as projects } from 'pages/Home/Projects';
 import { reducer as starcraft } from 'pages/Games/Starcraft';
 import { reducer as endedManga } from 'pages/Archived/EndedManga';
+import { ds9799_appControl } from 'pages/MuOnline/Darksteam97d99i';
 
 export default combineReducers({
   appControl,
   appDiary,
   contentMirror,
+  ds9799_appControl,
   endedManga,
   flashGames,
   gamingHistory,

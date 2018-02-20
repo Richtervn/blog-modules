@@ -1,0 +1,6 @@
+.ds9799-side-nav {
+  width: 300px;
+  height: calc(100vh - 95px);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}

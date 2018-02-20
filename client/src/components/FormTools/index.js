@@ -9,6 +9,8 @@ import FormGroupRow from './FormGroupRow';
 import FormGroupSelect from './FormGroupSelect';
 import FormGroupSelectId from './FormGroupSelectId';
 
+import InputGroupIcon from './InputGroupIcon';
+
 export {
   FormGroupArea,
   FormGroupArray,
@@ -19,5 +21,6 @@ export {
   FormGroupRating,
   FormGroupRow,
   FormGroupSelect,
-  FormGroupSelectId
+  FormGroupSelectId,
+  InputGroupIcon
 };
