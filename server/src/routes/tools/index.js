@@ -15,6 +15,11 @@ export default (models, factories) => {
       DisplayField: 'Name',
       CssField: 'CSS',
       HtmlField: 'HTML'
+    },
+    StarcraftMods: {
+      DisplayField: 'Name',
+      CssField: 'CSS',
+      HtmlField: 'HTML'
     }
   };
 

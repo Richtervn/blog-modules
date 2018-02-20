@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import { connect } from 'react-redux';
-import StarcraftMapForm from './StarcraftMapForm.component';
+import MapForm from './MapForm.component';
 
 import { editMap, addMap } from '../../Starcraft.module';
 
@@ -16,4 +16,4 @@ export default connect(
       dispatch(addMap(formBody));
     }
   })
-)(StarcraftMapForm);
+)(MapForm);

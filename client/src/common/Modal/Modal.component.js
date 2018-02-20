@@ -22,7 +22,14 @@ import {
   GamingHistoryForm
 } from 'pages/Collections/GamingHistory';
 
-import { StarcraftDeleteMapConfirm, StarcraftMapForm } from 'pages/Games/Starcraft';
+import {
+  StarcraftMapForm,
+  StarcraftCampaignForm,
+  StarcraftModForm,
+  StarcraftDeleteMapConfirm,
+  StarcraftDeleteCampaignConfirm,
+  StarcraftDeleteModConfirm
+} from 'pages/Games/Starcraft';
 
 export default ({ name }) => {
   let additionProps = {};
@@ -62,6 +69,12 @@ export default ({ name }) => {
       {name === 'AddStarcraftMap' && <StarcraftMapForm />}
       {name === 'EditStarcraftMap' && <StarcraftMapForm edit />}
       {name === 'DeleteStarcraftMap' && <StarcraftDeleteMapConfirm />}
+      {name === 'AddStarcraftCampaign' && <StarcraftCampaignForm />}
+      {name === 'EditStarcraftCampaign' && <StarcraftCampaignForm edit />}
+      {name === 'DeleteStarcraftCampaign' && <StarcraftDeleteCampaignConfirm />}
+      {name === 'AddStarcraftMod' && <StarcraftModForm />}
+      {name === 'EditStarcraftMod' && <StarcraftModForm edit />}
+      {name === 'DeleteStarcraftMod' && <StarcraftDeleteModConfirm />}
     </Modal>
   );
 };
@@ -86,14 +99,6 @@ export default ({ name }) => {
 //     Pros: [''],
 //     Cons: [''],
 //     Winrate: 0
-//   },
-
-//   AddStarcraftCampaign: {
-//     Rating: 0,
-//     Matchup: '',
-//     Description: '',
-//     Introduction: '',
-//     Version: ''
 //   },
 
 //   AddStarcraftMod: {

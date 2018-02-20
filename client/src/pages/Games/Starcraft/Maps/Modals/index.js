@@ -1,4 +1,4 @@
-import StarcraftDeleteMapConfirm from './StarcraftDeleteMapConfirm.container';
-import StarcraftMapForm from './StarcraftMapForm.container';
+import StarcraftDeleteMapConfirm from './DeleteMapConfirm.container';
+import StarcraftMapForm from './MapForm.container';
 
 export { StarcraftDeleteMapConfirm, StarcraftMapForm };

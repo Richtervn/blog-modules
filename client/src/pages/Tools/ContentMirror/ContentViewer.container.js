@@ -5,5 +5,6 @@ export default connect(({ contentMirror }) => ({
   cssCode: contentMirror.cssCode,
   htmlCode: contentMirror.htmlCode,
   background: contentMirror.background,
-  opacity: contentMirror.opacity
+  opacity: contentMirror.opacity,
+  collection: contentMirror.collectionValue
 }))(ContentViewer);

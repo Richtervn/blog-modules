@@ -2,10 +2,11 @@ import { Schema } from 'mongoose';
 
 const StarcraftMods = new Schema({
   Name: String,
-  Rating: String,
+  Rating: Number,
   Description: String,
-  Introduction: String,
-  Version: String
+  Version: String,
+  HTML: String,
+  CSS: String
 });
 
 export default StarcraftMods;

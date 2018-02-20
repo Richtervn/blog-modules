@@ -9,3 +9,12 @@
   padding: 10px;
   overflow-y: auto;
 }
+
+.content-view.sc-content-viewer {
+  color: #00ff00;
+  border: solid 1px #00ff00;
+  border-radius: 5px;
+  padding: 5px;
+  max-width: 800px;
+  margin: auto;
+}

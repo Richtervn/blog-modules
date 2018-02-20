@@ -16,7 +16,12 @@ export default ({
   htmlBind,
   cssBind
 }) => {
-  const { playerRaces, opponentRaces } = getStarcraftRaces(matchup);
+  let playerRaces, opponentRaces;
+  if (matchup) {
+    const matchUpDecoded = getStarcraftRaces(matchup);
+    playerRaces = matchUpDecoded.playerRaces;
+    opponentRaces = matchUpDecoded.playerRaces;
+  }
 
   return (
     <div className="sc-detail">
@@ -38,20 +43,22 @@ export default ({
       <div className="rating">
         <StarRating name={title} value={rating} />
       </div>
-      <div className="matchup">
-        <div className="half">
-          <div className="label">Player Races</div>
-          <div className="races">
-            {playerRaces.map((race, i) => <img key={i} src={`/images/icons/${race}.png`} alt={race} />)}
+      {matchup && (
+        <div className="matchup">
+          <div className="half">
+            <div className="label">Player Races</div>
+            <div className="races">
+              {playerRaces.map((race, i) => <img key={i} src={`/images/icons/${race}.png`} alt={race} />)}
+            </div>
+          </div>
+          <div className="half">
+            <div className="label">Opponent Races</div>
+            <div className="races">
+              {opponentRaces.map((race, i) => <img key={i} src={`/images/icons/${race}.png`} alt={race} />)}
+            </div>
           </div>
         </div>
-        <div className="half">
-          <div className="label">Opponent Races</div>
-          <div className="races">
-            {opponentRaces.map((race, i) => <img key={i} src={`/images/icons/${race}.png`} alt={race} />)}
-          </div>
-        </div>
-      </div>
+      )}
       <div className="description">
         <strong>Description : </strong>
         {description}

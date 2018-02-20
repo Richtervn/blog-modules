@@ -8,6 +8,7 @@ import { getSimpleName } from 'helpers';
 import TopNavBar from './TopNavBar.container';
 import { Maps } from './Maps';
 import { Campaigns } from './Campaigns';
+import { Mods } from './Mods';
 
 class Starcraft extends Component {
   componentWillMount() {
@@ -32,6 +33,7 @@ class Starcraft extends Component {
           <TopNavBar />
           {activeTab === 'Maps' && <Maps />}
           {activeTab === 'Campaigns' && <Campaigns />}
+          {activeTab === 'Mods' && <Mods />}
         </div>
       </PageContainer>
     );

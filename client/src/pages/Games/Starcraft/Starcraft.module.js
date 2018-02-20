@@ -13,6 +13,19 @@ const SORT_MAP = 'starcraft/SORT_MAP';
 
 const GET_CAMPAIGNS = 'starcraft/GET_CAMPAIGNS';
 const GET_CAMPAIGN_DETAIL = 'starcraft/GET_CAMPAIGN_DETAIL';
+const ADD_CAMPAIGN = 'starcraft/ADD_CAMPAIGN';
+const EDIT_CAMPAIGN = 'starcraft/EDIT_CAMPAIGN';
+const DELETE_CAMPAIGN = 'starcraft/DELETE_CAMPAIGN';
+const SEARCH_CAMPAIGN = 'starcraft/SEARCH_CAMPAIGN';
+const SORT_CAMPAIGN = 'starcraft/SORT_CAMPAIGN';
+
+const GET_MODS = 'starcraft/GET_MODS';
+const GET_MOD_DETAIL = 'starcraft/GET_MOD_DETAIL';
+const ADD_MOD = 'starcraft/ADD_MOD';
+const EDIT_MOD = 'starcraft/EDIT_MOD';
+const DELETE_MOD = 'starcraft/DELETE_MOD';
+const SEARCH_MOD = 'starcraft/SEARCH_MOD';
+const SORT_MOD = 'starcraft/SORT_MOD';
 
 const SET_ACTIVE_TAB = 'starcraft/SET_ACTIVE_TAB';
 const SET_FOCUS_MAP = 'starcraft/SET_FOCUS_MAP';
@@ -37,6 +50,19 @@ export const sortMap = query => ({ type: SORT_MAP, query });
 
 export const getCampaigns = actionCreator(GET_CAMPAIGNS, services.getCampaigns);
 export const getCampaignDetail = id => actionCreator(GET_CAMPAIGN_DETAIL, services.getCampaignDetail, id)();
+export const addCampaign = formBody => actionCreator(ADD_CAMPAIGN, services.addCampaign, formBody)();
+export const editCampaign = formBody => actionCreator(EDIT_CAMPAIGN, services.editCampaign, formBody)();
+export const deleteCampaign = id => actionCreator(DELETE_CAMPAIGN, services.deleteCampaign, id)();
+export const searchCampaign = text => actionCreator(SEARCH_CAMPAIGN, services.searchCampaign, text)();
+export const sortCampaign = query => ({ type: SORT_CAMPAIGN, query });
+
+export const getMods = actionCreator(GET_MODS, services.getMods);
+export const getModDetail = id => actionCreator(GET_MOD_DETAIL, services.getModDetail, id)();
+export const addMod = formBody => actionCreator(ADD_MOD, services.addMod, formBody)();
+export const editMod = formBody => actionCreator(EDIT_MOD, services.editMod, formBody)();
+export const deleteMod = id => actionCreator(DELETE_MOD, services.deleteMod, id)();
+export const searchMod = text => actionCreator(SEARCH_MOD, services.searchMod, text)();
+export const sortMod = query => ({ type: SORT_MOD, query });
 
 const initialState = {
   mods: null,
@@ -48,7 +74,8 @@ const initialState = {
   search: '',
   sortKey: '',
   sortOption: 'ASC',
-  campaignDetail: {}
+  campaignDetail: {},
+  modDetail: {}
 };
 
 export default (state = initialState, action) => {
@@ -94,7 +121,7 @@ export default (state = initialState, action) => {
       return { ...state, maps: state.maps.slice(0) };
     case `${SEARCH_MAP}_SUCCESS`:
       return { ...state, maps: action.data, focusMap: action.data[0] ? action.data[0]._id : null };
-    case SORT_MAP:
+    case SORT_MAP: {
       let key = Object.keys(action.query)[0];
       return {
         ...state,
@@ -105,11 +132,101 @@ export default (state = initialState, action) => {
                 .reverse()
                 .slice(0)
       };
+    }
 
     case `${GET_CAMPAIGNS}_SUCCESS`:
       return { ...state, campaigns: action.data };
     case `${GET_CAMPAIGN_DETAIL}_SUCCESS`:
       return { ...state, campaignDetail: action.data };
+    case `${ADD_CAMPAIGN}_SUCCESS`:
+      state.campaigns.push(action.data);
+      toastSuccess(() => (
+        <p>
+          Added <strong>{action.data.Name}</strong>
+        </p>
+      ));
+      return { ...state, campaigns: state.campaigns.slice(0) };
+    case `${EDIT_CAMPAIGN}_SUCCESS`:
+      state.campaigns = state.campaigns.map(campaign => {
+        if (campaign._id === action.data._id) {
+          return _.omit(action.data, 'HTML', 'CSS');
+        }
+        return campaign;
+      });
+      toastSuccess(() => (
+        <p>
+          Updated <strong>{action.data.Name}</strong>
+        </p>
+      ));
+      return {
+        ...state,
+        campaigns: state.campaigns.slice(0),
+        campaignDetail: { ...state.campaignDetail, ...action.data }
+      };
+    case `${DELETE_CAMPAIGN}_SUCCESS`:
+      state.campaigns = state.campaigns.filter(campaign => campaign._id !== action.data._id);
+      return { ...state, campaign: state.campaign.slice(0), campaignDetail: {} };
+    case `${SEARCH_CAMPAIGN}_SUCCESS`:
+      return { ...state, campaigns: action.data, campaignDetail: {} };
+    case SORT_CAMPAIGN: {
+      let key = Object.keys(action.query)[0];
+      return {
+        ...state,
+        campaigns:
+          action.query[key] === 'ASC'
+            ? _.sortBy(state.campaigns, key).slice(0)
+            : _.sortBy(state.campaigns, key)
+                .reverse()
+                .slice(0)
+      };
+    }
+
+    case `${GET_MODS}_SUCCESS`:
+      return { ...state, mods: action.data };
+    case `${GET_MOD_DETAIL}_SUCCESS`:
+      return { ...state, modDetail: action.data };
+    case `${ADD_MOD}_SUCCESS`:
+      state.mods.push(action.data);
+      toastSuccess(() => (
+        <p>
+          Added <strong>{action.data.Name}</strong>
+        </p>
+      ));
+      return { ...state, campaigns: state.mods.slice(0) };
+    case `${EDIT_MOD}_SUCCESS`:
+      state.mods = state.mods.map(mod => {
+        if (mod._id === action.data._id) {
+          return _.omit(action.data, 'HTML', 'CSS');
+        }
+        return mod;
+      });
+      toastSuccess(() => (
+        <p>
+          Updated <strong>{action.data.Name}</strong>
+        </p>
+      ));
+      return {
+        ...state,
+        mods: state.mods.slice(0),
+        modDetail: { ...state.modDetail, ...action.data }
+      };
+    case `${DELETE_MOD}_SUCCESS`:
+      state.mods = state.mods.filter(mod => mod._id !== action.data._id);
+      return { ...state, mods: state.mods.slice(0) };
+    case `${SEARCH_MOD}_SUCCESS`:
+      return { ...state, mods: action.data, modDetail: {} };
+    case SORT_MOD: {
+      let key = Object.keys(action.query)[0];
+      return {
+        ...state,
+        mods:
+          action.query[key] === 'ASC'
+            ? _.sortBy(state.mods, key).slice(0)
+            : _.sortBy(state.mods, key)
+                .reverse()
+                .slice(0)
+      };
+    }
 
     case `${GET_MAPS}_FAIL`:
     case `${ADD_MAP}_FAIL`:
@@ -118,266 +235,19 @@ export default (state = initialState, action) => {
     case `${SEARCH_MAP}_FAIL`:
     case `${GET_CAMPAIGNS}_FAIL`:
     case `${GET_CAMPAIGN_DETAIL}_FAIL`:
+    case `${ADD_CAMPAIGN}_FAIL`:
+    case `${EDIT_CAMPAIGN}_FAIL`:
+    case `${DELETE_CAMPAIGN}_FAIL`:
+    case `${SEARCH_CAMPAIGN}_FAIL`:
+    case `${GET_MODS}_FAIL`:
+    case `${GET_MOD_DETAIL}_FAIL`:
+    case `${ADD_MOD}_FAIL`:
+    case `${EDIT_MOD}_FAIL`:
+    case `${DELETE_MOD}_FAIL`:
+    case `${SEARCH_MOD}_FAIL`:
       toastError(action.error);
       return state;
     default:
       return state;
   }
 };
-
-// const CHANGE_SIDE_LIST_VIEW = 'starcraft/CHANGE_SIDE_LIST_VIEW';
-// export const SET_MOD_FOCUS = 'starcraft/SET_MOD_FOCUS';
-// export const SET_CAMPAIGN_FOCUS = 'starcraft/SET_CAMPAIGN_FOCUS';
-
-// const GET_MAP_LIST_START = 'starcraft/GET_MAP_LIST_START';
-// export const GET_MAP_LIST_SUCCESS = 'starcraft/GET_MAP_LIST_SUCCESS';
-// const GET_MAP_LIST_FAIL = 'starcraft/GET_MAP_LIST_FAIL';
-// const GET_MOD_LIST_START = 'starcraft/GET_MOD_LIST_START';
-// export const GET_MOD_LIST_SUCCESS = 'starcraft/GET_MOD_LIST_SUCCESS';
-// const GET_MOD_LIST_FAIL = 'starcraft/GET_MOD_LIST_FAIL';
-// const GET_CAMPAIGN_LIST_START = 'starcraft/GET_CAMPAIGN_LIST_START';
-// export const GET_CAMPAIGN_LIST_SUCCESS = 'starcraft/GET_CAMPAIGN_LIST_SUCCESS';
-// const GET_CAMPAIGN_LIST_FAIL = 'starcraft/GET_CAMPAIGN_LIST_FAIL';
-
-// const GET_MOD_DETAIL_START = 'starcraft/GET_MOD_DETAIL_START';
-// export const GET_MOD_DETAIL_SUCCESS = 'starcraft/GET_MOD_DETAIL_SUCCESS';
-// const GET_MOD_DETAIL_FAIL = 'starcraft/GET_MOD_DETAIL_FAIL';
-// const GET_CAMPAIGN_DETAIL_START = 'starcraft/GET_CAMPAIGN_DETAIL_START';
-// export const GET_CAMPAIGN_DETAIL_SUCCESS = 'starcraft/GET_CAMPAIGN_DETAIL_SUCCESS';
-// const GET_CAMPAIGN_DETAIL_FAIL = 'starcraft/GET_CAMPAIGN_DETAIL_FAIL';
-
-// const SUBMIT_ADD_STARCRAFT_MOD_START = 'starcraft/SUBMIT_ADD_STARCRAFT_MOD_START';
-// export const SUBMIT_ADD_STARCRAFT_MOD_SUCCESS = 'starcraft/SUBMIT_ADD_STARCRAFT_MOD_SUCCESS';
-// const SUBMIT_ADD_STARCRAFT_MOD_FAIL = 'starcraft/SUBMIT_ADD_STARCRAFT_MOD_FAIL';
-
-// const SUBMIT_EDIT_STARCRAFT_MOD_START = 'starcraft/SUBMIT_EDIT_STARCRAFT_MOD_START';
-// export const SUBMIT_EDIT_STARCRAFT_MOD_SUCCESS = 'starcraft/SUBMIT_EDIT_STARCRAFT_MOD_SUCCESS';
-// const SUBMIT_EDIT_STARCRAFT_MOD_FAIL = 'starcraft/SUBMIT_EDIT_STARCRAFT_MOD_FAIL';
-// const SUBMIT_ADD_STARCRAFT_CAMPAIGN_START = 'starcraft/SUBMIT_ADD_STARCRAFT_CAMPAIGN_START';
-// export const SUBMIT_ADD_STARCRAFT_CAMPAIGN_SUCCESS = 'starcraft/SUBMIT_ADD_STARCRAFT_CAMPAIGN_SUCCESS';
-// const SUBMIT_ADD_STARCRAFT_CAMPAIGN_FAIL = 'starcraft/SUBMIT_ADD_STARCRAFT_CAMPAIGN_FAIL';
-// const SUBMIT_EDIT_STARCRAFT_CAMPAIGN_START = 'starcraft/SUBMIT_EDIT_STARCRAFT_CAMPAIGN_START';
-// export const SUBMIT_EDIT_STARCRAFT_CAMPAIGN_SUCCESS = 'starcraft/SUBMIT_EDIT_STARCRAFT_CAMPAIGN_SUCCESS';
-// const SUBMIT_EDIT_STARCRAFT_CAMPAIGN_FAIL = 'starcraft/SUBMIT_EDIT_STARCRAFT_CAMPAIGN_FAIL';
-
-// const SEARCH_MOD_START = 'starcraft/SEARCH_MOD_START';
-// const SEARCH_MOD_SUCCESS = 'starcraft/SEARCH_MOD_SUCCESS';
-// const SEARCH_MOD_FAIL = 'starcraft/SEARCH_MOD_FAIL';
-// const SEARCH_CAMPAIGN_START = 'starcraft/SEARCH_CAMPAIGN_START';
-// const SEARCH_CAMPAIGN_SUCCESS = 'starcraft/SEARCH_CAMPAIGN_SUCCESS';
-// const SEARCH_CAMPAIGN_FAIL = 'starcraft/SEARCH_CAMPAIGN_FAIL';
-
-// const DELETE_MOD_START = 'starcraft/DELETE_MOD_START';
-// const DELETE_MOD_SUCCESS = 'starcraft/DELETE_MOD_SUCCESS';
-// const DELETE_MOD_FAIL = 'starcraft.DELETE_MOD_FAIL';
-// const DELETE_CAMPAIGN_START = 'starcraft/DELETE_CAMPAIGN_START';
-// const DELETE_CAMPAIGN_SUCESS = 'starcraft/DELETE_CAMPAIGN_SUCESS';
-// const DELETE_CAMPAIGN_FAIL = 'starcraft/DELETE_CAMPAIGN_FAIL';
-
-// const SORT_MOD = 'starcraft/SORT_MOD';
-// const SORT_CAMPAIGN = 'starcraft/SORT_CAMPAIGN';
-
-// export const changeSideListView = header => ({ type: CHANGE_SIDE_LIST_VIEW, header });
-// export const setMapFocus = map => ({ type: SET_MAP_FOCUS, map });
-// export const setModFocus = mod => ({ type: SET_MOD_FOCUS, mod });
-// export const setCampaignFocus = campaign => ({ type: SET_CAMPAIGN_FOCUS, campaign });
-
-// export const getMapList = actionCreator(
-//   GET_MAP_LIST_START,
-//   GET_MAP_LIST_SUCCESS,
-//   GET_MAP_LIST_FAIL,
-//   starcraft.getMapList
-// );
-
-// export const getModList = actionCreator(
-//   GET_MOD_LIST_START,
-//   GET_MOD_LIST_SUCCESS,
-//   GET_MOD_LIST_FAIL,
-//   starcraft.getModList
-// );
-
-// export const getCampaignList = actionCreator(
-//   GET_CAMPAIGN_LIST_START,
-//   GET_CAMPAIGN_LIST_SUCCESS,
-//   GET_CAMPAIGN_LIST_FAIL,
-//   starcraft.getCampaignList
-// );
-
-// export const submitEditStarcraftMapForm = formBody =>
-//   actionCreator(
-//     SUBMIT_EDIT_STARCRAFT_MAP_START,
-//     SUBMIT_EDIT_STARCRAFT_MAP_SUCCESS,
-//     SUBMIT_ADD_STARCRAFT_MAP_FAIL,
-//     starcraft.editMap,
-//     formBody
-//   )();
-// export const submitAddStarcraftModForm = formBody =>
-//   actionCreator(
-//     SUBMIT_ADD_STARCRAFT_MOD_START,
-//     SUBMIT_ADD_STARCRAFT_MOD_SUCCESS,
-//     SUBMIT_ADD_STARCRAFT_MOD_FAIL,
-//     starcraft.addMod,
-//     formBody
-//   )();
-
-// export const submitAddStarcraftCampaignForm = formBody =>
-//   actionCreator(
-//     SUBMIT_ADD_STARCRAFT_CAMPAIGN_START,
-//     SUBMIT_ADD_STARCRAFT_CAMPAIGN_SUCCESS,
-//     SUBMIT_ADD_STARCRAFT_CAMPAIGN_FAIL,
-//     starcraft.addCampaign,
-//     formBody
-//   )();
-// export const submitEditStarcraftCampaignForm = formBody =>
-//   actionCreator(
-//     SUBMIT_EDIT_STARCRAFT_CAMPAIGN_START,
-//     SUBMIT_EDIT_STARCRAFT_CAMPAIGN_SUCCESS,
-//     SUBMIT_EDIT_STARCRAFT_CAMPAIGN_FAIL,
-//     starcraft.editCampaign,
-//     formBody
-//   )();
-// export const getModDetail = id =>
-//   actionCreator(GET_MOD_DETAIL_START, GET_MOD_DETAIL_SUCCESS, GET_MOD_DETAIL_FAIL, starcraft.getModDetail, id)();
-// export const getCampaignDetail = id =>
-//   actionCreator(
-//     GET_CAMPAIGN_DETAIL_START,
-//     GET_CAMPAIGN_DETAIL_SUCCESS,
-//     GET_CAMPAIGN_DETAIL_FAIL,
-//     starcraft.getCampaignDetail,
-//     id
-//   )();
-
-// export const deleteMap = id =>
-//   actionCreator(DELETE_MAP_START, DELETE_MAP_SUCCESS, DELETE_MAP_FAIL, starcraft.deleteMap, id)();
-// export const deleteMod = id =>
-//   actionCreator(DELETE_MOD_START, DELETE_MOD_SUCCESS, DELETE_MOD_FAIL, starcraft.deleteMod, id)();
-// export const deleteCampaign = id =>
-//   actionCreator(DELETE_CAMPAIGN_START, DELETE_CAMPAIGN_SUCESS, DELETE_CAMPAIGN_FAIL, starcraft.deleteCampaign, id)();
-
-// export const searchMap = text =>
-//   actionCreator(SEARCH_MAP_START, SEARCH_MAP_SUCCESS, SEARCH_MAP_FAIL, starcraft.searchMap, text)();
-// export const searchMod = text =>
-//   actionCreator(SEARCH_MOD_START, SEARCH_MOD_SUCCESS, SEARCH_MOD_FAIL, starcraft.searchMod, text)();
-// export const searchCampaign = text =>
-//   actionCreator(SEARCH_CAMPAIGN_START, SEARCH_CAMPAIGN_SUCCESS, SEARCH_CAMPAIGN_FAIL, starcraft.searchCampaign, text)();
-
-// export const sortMod = query => ({ type: SORT_MOD, query });
-// export const sortCampaign = query => ({ type: SORT_CAMPAIGN, query });
-
-// export default (
-//   state = {
-//     maps: null,
-//     mods: null,
-//     campaigns: null,
-//     modFocus: {},
-//     campaignFocus: {},
-//     mapFocus: {},
-//     viewControl: {
-//       SideList: 'Campaigns'
-//     }
-//   },
-//   action
-// ) => {
-//   switch (action.type) {
-//     case CHANGE_SIDE_LIST_VIEW:
-//       return { ...state, viewControl: { ...state.viewControl, SideList: action.header } };
-//     case GET_MAP_LIST_SUCCESS:
-//       return { ...state, maps: action.data, mapFocus: action.data[0] };
-//     case GET_MOD_LIST_SUCCESS:
-//       return { ...state, mods: action.data };
-//     case GET_CAMPAIGN_LIST_SUCCESS:
-//       return { ...state, campaigns: action.data };
-//     case GET_MOD_DETAIL_SUCCESS:
-//       return { ...state, modFocus: action.data };
-//     case GET_CAMPAIGN_DETAIL_SUCCESS:
-//       return { ...state, campaignFocus: action.data };
-
-//       return { ...state, maps: state.maps.slice(0), mapFocus: action.data };
-//     case SUBMIT_ADD_STARCRAFT_MOD_SUCCESS:
-//       toast.success(`Added ${action.data.Name}`, {
-//         position: toast.POSITION.BOTTOM_LEFT,
-//         className: 'toast-success'
-//       });
-//       state.mods.push(action.data);
-//       return { ...state, mods: state.mods.slice(0), modFocus: action.data };
-//     case SUBMIT_ADD_STARCRAFT_CAMPAIGN_SUCCESS:
-//       toast.success(`Added ${action.data.Name}`, {
-//         position: toast.POSITION.BOTTOM_LEFT,
-//         className: 'toast-success'
-//       });
-//       state.campaigns.push(action.data);
-//       return { ...state, campaigns: state.campaigns.slice(0), campaignFocus: action.data };
-//     case SET_MAP_FOCUS:
-//       return { ...state, mapFocus: action.map };
-//     case SET_MOD_FOCUS:
-//       return { ...state, modFocus: action.mod };
-//     case SET_CAMPAIGN_FOCUS:
-//       return { ...state, campaignFocus: action.campaign };
-//     case DELETE_MAP_SUCCESS:
-//       const maps = state.maps.filter(map => map._id != action.data._id);
-//       return { ...state, maps: maps.slice(0), mapFocus: maps[0] };
-//     case DELETE_MOD_SUCCESS:
-//       const mods = state.mods.filter(mod => mod._id != action.data._id);
-//       return { ...state, mods: maps.slice(0), modFocus: mods[0] };
-//     case DELETE_CAMPAIGN_SUCESS:
-//       const campaigns = state.campaigns.filter(campaign => campaign._id != action.data._id);
-//       return { ...state, campaigns: campaigns.slice(0), campaignFocus: campaigns[0] };
-//     case SEARCH_MAP_SUCCESS:
-//       return { ...state, maps: action.data };
-//     case SEARCH_MOD_SUCCESS:
-//       return { ...state, mods: action.data };
-//     case SEARCH_CAMPAIGN_SUCCESS:
-//       return { ...state, campaigns: action.data };
-
-//     case SORT_MOD: {
-//       let key = Object.keys(action.query)[0];
-//       return {
-//         ...state,
-//         mods:
-//           action.query[key] == 'ASC'
-//             ? _.sortBy(state.mods, key).slice(0)
-//             : _.sortBy(state.mods, key)
-//                 .reverse()
-//                 .slice(0)
-//       };
-//     }
-//     case SORT_CAMPAIGN: {
-//       let key = Object.keys(action.query)[0];
-//       return {
-//         ...state,
-//         campaigns:
-//           action.query[key] == 'ASC'
-//             ? _.sortBy(state.campaigns, key).slice(0)
-//             : _.sortBy(state.campaigns, key)
-//                 .reverse()
-//                 .slice(0)
-//       };
-//     }
-
-//     case GET_MOD_LIST_FAIL:
-//     case GET_CAMPAIGN_LIST_FAIL:
-//     case GET_MAP_LIST_FAIL:
-//     case GET_MOD_DETAIL_FAIL:
-//     case GET_CAMPAIGN_DETAIL_FAIL:
-//     case SUBMIT_ADD_STARCRAFT_MAP_FAIL:
-//     case SUBMIT_EDIT_STARCRAFT_MAP_FAIL:
-//     case SUBMIT_ADD_STARCRAFT_MOD_FAIL:
-//     case SUBMIT_EDIT_STARCRAFT_MOD_FAIL:
-//     case SUBMIT_ADD_STARCRAFT_CAMPAIGN_FAIL:
-//     case SUBMIT_EDIT_STARCRAFT_CAMPAIGN_FAIL:
-//     case SEARCH_MAP_FAIL:
-//     case SEARCH_MOD_FAIL:
-//     case SEARCH_CAMPAIGN_FAIL:
-//     case DELETE_MAP_FAIL:
-//     case DELETE_MOD_FAIL:
-//     case DELETE_CAMPAIGN_FAIL:
-//       toast.error(`${action.error}`, {
-//         position: toast.POSITION.TOP_LEFT,
-//         className: 'toast-error'
-//       });
-//       return state;
-
-//     default:
-//       return state;
-//   }
-// };

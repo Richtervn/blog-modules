@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+
 import { PageLoader, ContainerLoader } from 'common/Loaders';
 import { FeatureBox, FeatureCard, FeatureView, FeatureDetail } from '../components';
 
@@ -28,7 +30,7 @@ class Campaigns extends Component {
   }
 
   render() {
-    const { campaigns, campaignDetail, onGetCampaignDetail, onSearchCampaign, onSortCampaign } = this.props;
+    const { campaigns, campaignDetail, onGetCampaignDetail, onSearchCampaign, onSortCampaign, history } = this.props;
     if (!campaigns) {
       return (
         <div className="sc-loader">
@@ -51,7 +53,7 @@ class Campaigns extends Component {
                 key={campaign._id}
                 rating={campaign.Rating}
                 label={campaign.Name}
-                uri={campaign.Uri.replace('./public', window.appConfig.API_HOST)}
+                uri={campaign.Uri ? campaign.Uri.replace('./public', window.appConfig.API_HOST) : null}
                 matchUp={campaign.Matchup}
                 version={campaign.Version}
                 isActive={campaignDetail._id === campaign._id}
@@ -81,8 +83,11 @@ class Campaigns extends Component {
                 matchup={campaignDetail.Matchup}
                 description={campaignDetail.Description}
                 version={campaignDetail.Version}
-                htmlBind={campaignDetail.HTML}
+                htmlBind={campaignDetail.HTML || '<div><i>No content</i></div>'}
                 cssBind={campaignDetail.CSS}
+                onEditBindClick={() => history.push(`/content_mirror/StarcraftCampaigns/${campaignDetail._id}`)}
+                onEditClick={() => openModal('EditStarcraftCampaign')}
+                onDeleteClick={() => openModal('DeleteStarcraftCampaign')}
               />
             )}
         </FeatureView>
@@ -91,4 +96,4 @@ class Campaigns extends Component {
   }
 }
 
-export default Campaigns;
+export default withRouter(Campaigns);

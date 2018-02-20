@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import { connect } from 'react-redux';
-import StarcraftDeleteMapConfirm from './StarcraftDeleteMapConfirm.component';
+import DeleteMapConfirm from './DeleteMapConfirm.component';
 
 import { deleteMap } from '../../Starcraft.module';
 
@@ -13,4 +13,4 @@ export default connect(
       dispatch(deleteMap(id));
     }
   })
-)(StarcraftDeleteMapConfirm);
+)(DeleteMapConfirm);

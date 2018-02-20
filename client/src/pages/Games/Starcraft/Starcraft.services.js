@@ -14,7 +14,7 @@ export default {
     const data = commonGet('starcraft/list_map');
     return data;
   },
-  getModList() {
+  getMods() {
     const data = commonGet('starcraft/list_mod');
     return data;
   },
