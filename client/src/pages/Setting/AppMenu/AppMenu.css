@@ -10,3 +10,8 @@
   margin:10px;
   width: 200px;
 }
+
+.app-menu-page > .col-6 > .btn {
+  padding: 0px 20px;
+  float: right;
+}

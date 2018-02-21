@@ -16,6 +16,8 @@ class AppMenu extends Component {
     this.handleAddItem = this.handleAddItem.bind(this);
     this.handleRemoveItem = this.handleRemoveItem.bind(this);
     this.handleClearChanges = this.handleClearChanges.bind(this);
+    this.handleRemoveGroup = this.handleRemoveGroup.bind(this);
+    this.handleAddGroup = this.handleAddGroup.bind(this);
   }
 
   initState(menuTree) {
@@ -49,6 +51,24 @@ class AppMenu extends Component {
   handleAddItem(index) {
     const menuTree = this.state.menuTree.slice(0);
     menuTree[index].items.push('');
+    this.setState({ menuTree });
+  }
+
+  handleAddGroup() {
+    const menuTree = this.state.menuTree.slice(0);
+    menuTree.push({
+      groupName: '',
+      items: [''],
+      quote: '',
+      author: '',
+      icon: ''
+    });
+    this.setState({ menuTree });
+  }
+
+  handleRemoveGroup(index) {
+    const menuTree = this.state.menuTree.slice(0);
+    menuTree.splice(index, 1);
     this.setState({ menuTree });
   }
 
@@ -97,6 +117,9 @@ class AppMenu extends Component {
                 onChange={e => this.handleChange(e, i)}
                 value={this.state.menuTree[i].groupName}
               />
+              <button className="btn btn-danger" onClick={() => this.handleRemoveGroup(i)}>
+                Remove this group
+              </button>
             </div>,
             <div className="col-6" key={`field-${i}`}>
               <FormGroupRow
@@ -115,7 +138,7 @@ class AppMenu extends Component {
               />
               <FormGroupRow
                 type="text"
-                label="FontAwesome Icon"
+                label="Icon Name"
                 name="icon"
                 onChange={e => this.handleChange(e, i)}
                 value={this.state.menuTree[i].icon}
@@ -131,8 +154,12 @@ class AppMenu extends Component {
               />
             </div>
           ])}
+
           <button className="btn btn-primary" onClick={() => this.handleSave()}>
             Save
+          </button>
+          <button className="btn btn-warning" onClick={() => this.handleAddGroup()}>
+            Add Group
           </button>
           <button className="btn btn-danger" onClick={() => this.handleClearChanges()}>
             Clear Changes
