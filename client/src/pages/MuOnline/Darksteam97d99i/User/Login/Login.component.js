@@ -1,10 +1,10 @@
 import './Login.css';
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 import { InputGroupIcon } from 'components/FormTools';
 
-import { SideNav } from '../../components';
+import { SideNav, InfoCard } from '../../components';
 
 class Login extends Component {
   constructor(props) {
@@ -24,7 +24,10 @@ class Login extends Component {
   }
 
   render() {
-    const { history, onSetCurrentPage } = this.props;
+    const { history, onSetCurrentPage, onLogin, isLoggedIn, serverInfo } = this.props;
+    if (isLoggedIn) {
+      return <Redirect to="/darksteam_97d99i/user/dashboard" />;
+    }
     return (
       <div className="row">
         <SideNav>
@@ -35,7 +38,7 @@ class Login extends Component {
               value={this.state.value.Username}
               name="Username"
               onChange={this.handleChange}
-              placeholder='Username'
+              placeholder="Username"
             />
             <InputGroupIcon
               icon="lock"
@@ -43,10 +46,12 @@ class Login extends Component {
               value={this.state.value.Password}
               name="Password"
               onChange={this.handleChange}
-              placeholder='Password'
+              placeholder="Password"
             />
             <div className="feature">
-              <button className="btn">Login</button>
+              <button className="btn" onClick={() => onLogin(this.state.value)}>
+                Login
+              </button>
               <button
                 className="btn"
                 onClick={() => {
@@ -57,6 +62,35 @@ class Login extends Component {
               </button>
             </div>
           </div>
+
+          <InfoCard label="Server Info">
+            {Object.keys(serverInfo).map((key, i) => (
+              <div key={i} className="info-text">
+                <strong>{`${key} :`}</strong> {`${serverInfo[key].toLocaleString()}`}
+              </div>
+            ))}
+          </InfoCard>
+          <InfoCard label="Version Info">
+            <div>
+              <strong>Story Line: </strong>Chapter I - The Beginning
+            </div>
+            <div>
+              <strong>MU Server: </strong>Darksteam 97d+99i
+            </div>
+            <div>
+              <strong>MU Server Version: </strong>Beta 37.3
+            </div>
+            <div>
+              <strong>MU Client Version: </strong>0.97.04
+            </div>
+            <div>
+              <strong>Web App Version: </strong>2.0.0
+            </div>
+
+            <div>
+              <strong>Web Server Version: </strong>2.0.0
+            </div>
+          </InfoCard>
         </SideNav>
       </div>
     );

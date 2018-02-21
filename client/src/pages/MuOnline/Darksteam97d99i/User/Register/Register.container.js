@@ -1,4 +1,15 @@
 import { connect } from 'react-redux';
-import { Register } from './Register.component';
+import Register from './Register.component';
 
-export default connect()(Register);
+import { setCurrentUserPage } from '../../Darksteam97d99i.module';
+
+export default connect(
+  ({ ds9799_appControl }) => ({
+    gameSetting: ds9799_appControl.gameSetting
+  }),
+  dispatch => ({
+    onSetCurrentPage(page) {
+      dispatch(setCurrentUserPage(page));
+    }
+  })
+)(Register);

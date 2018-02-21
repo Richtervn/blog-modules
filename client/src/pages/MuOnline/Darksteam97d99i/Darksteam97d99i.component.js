@@ -75,6 +75,9 @@ class Darksteam97d99i extends Component {
     } = this.props;
 
     const { tab, page } = params;
+    if(!tab){
+      return;
+    }
     const tabName = getSimpleName(tab);
 
     if (tabName !== activeTab) {
