@@ -8,7 +8,7 @@ export default {
     return menu;
   },
   saveMenuTree(formBody) {
-    const menu = commonPost('system/save_menu');
+    const menu = commonPost('system/save_menu', formBody);
     return menu;
   }
 };

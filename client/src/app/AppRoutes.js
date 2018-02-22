@@ -21,6 +21,8 @@ import { AppMenu } from 'pages/Setting/AppMenu';
 
 import { Darksteam97d99i } from 'pages/MuOnline/Darksteam97d99i';
 
+import { Guideline } from 'pages/Documentations/Guideline';
+
 const AppRoutes = () => (
   <Page>
     <Switch>
@@ -31,6 +33,7 @@ const AppRoutes = () => (
       <Route exact path="/icon_chooser" component={IconChooser} />
       <Route exact path="/music" component={Music} />
       <Route exact path="/app_menu" component={AppMenu} />
+      <Route exact path="/guideline" component={Guideline} />
       <Route path="/darksteam_97d99i/:tab?/:page?" component={Darksteam97d99i} />
       <Route path="/content_mirror/:table?/:record?" component={ContentMirror} />
       <Route path="/gaming_history/:game?/:tab?/:subPage?" component={GamingHistory} />

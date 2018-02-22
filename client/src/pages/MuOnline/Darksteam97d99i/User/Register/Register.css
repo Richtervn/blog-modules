@@ -28,24 +28,3 @@
 .ds9799-register-form > .feature > .btn:hover {
   background-color: #8b0000;
 }
-
-.ds9799-forgot-password-form > .input-group {
-  margin-bottom: 10px;
-}
-
-.ds9799-forgot-password-form > .input-group > .input-group-prepend {
-  width: 100%;
-}
-
-.ds9799-forgot-password-form > .feature {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.ds9799-forgot-password-form > .feature > .btn {
-  padding: 0px;
-  color: white;
-  width: 100px;
-  background-color: #f44336;
-  margin-left: 5px;
-}

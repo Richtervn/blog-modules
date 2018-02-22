@@ -256,7 +256,13 @@ class ArticleView extends Component {
             )}
         </div>
         {adding && (
-          <div className="article-view-form">
+          <div
+            className="article-view-form"
+            ref={node => {
+              if (node) {
+                node.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}>
             <input
               type="text"
               className="label-input"

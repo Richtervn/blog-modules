@@ -1,49 +1,83 @@
 {
   "Collections": {
-    "items": ["Mangas Reading", "Music", "Gaming History"],
-    "quote": "You're in quest for more to find the core. Your journey still ain't over",
+    "items": [
+      "Mangas Reading",
+      "Music",
+      "Gaming History"
+    ],
     "author": "Avantasia - In Quest For",
+    "quote": "You're in quest for more to find the core. Your journey still ain't over",
     "icon": "book"
   },
   "Games": {
-    "items": ["Starcraft Broodwar", "YugiOh! PoC", "Mu Online", "Diablo II"],
-    "quote": "Gaming is not a crime",
+    "items": [
+      "Starcraft Broodwar",
+      "YugiOh! PoC",
+      "Mu Online",
+      "Diablo II"
+    ],
     "author": "DJ GEX - Gaming is not a crime",
+    "quote": "Gaming is not a crime",
     "icon": "suitcase"
   },
   "Flash Games": {
-    "items": ["Sonny 1", "Sonny 2", "Stormy Castle", "Kingdom Rush", "Kingdom Rush 2"],
-    "quote": "You want to share what you have been through",
-    "author": "Linkin Park - Points of Authority"
+    "items": [
+      "Sonny 1",
+      "Sonny 2",
+      "Stormy Castle",
+      "Kingdom Rush",
+      "Kingdom Rush 2"
+    ],
+    "author": "Linkin Park - Points of Authority",
+    "quote": "You want to share what you have been through"
   },
   "Mu Online": {
-    "items": ["Darksteam 97d99i"],
-    "quote": "Take a look to the sky just before you die",
+    "items": [
+      "Darksteam 97d99i"
+    ],
     "author": "Metallica - For Whom The Bell Tolls",
+    "quote": "Take a look to the sky just before you die",
     "icon": "gift"
   },
   "Lineage II": {
-    "items": ["Freya Portable"],
-    "quote": "You're the ghost haunting through her heart",
+    "items": [
+      "Freya Portable"
+    ],
     "author": "Within Temptation - Restless",
+    "quote": "You're the ghost haunting through her heart",
     "icon": "briefcase"
   },
   "Tools": {
-    "items": ["Content Mirror", "Icon Chooser"],
-    "quote": "I'm just a dreamer who dreams of better days",
+    "items": [
+      "Content Mirror",
+      "Icon Chooser"
+    ],
     "author": "Ozzy Osbourne - Dreamer",
+    "quote": "I'm just a dreamer who dreams of better days",
     "icon": "wrench"
   },
   "Setting": {
-    "items": ["App Menu"],
-    "quote": "My mind has had enough",
+    "items": [
+      "App Menu"
+    ],
     "author": "Element Eighty - Broken Promises",
+    "quote": "My mind has had enough",
     "icon": "gears"
   },
   "Archived": {
-    "items": ["Ended Manga"],
-    "quote": "But in the end. It doesn't even matter",
+    "items": [
+      "Ended Manga"
+    ],
     "author": "Linkin Park - In The End",
+    "quote": "But in the end. It doesn't even matter",
     "icon": "archive"
+  },
+  "Documentations": {
+    "items": [
+      "Guideline"
+    ],
+    "author": "After Forever - Empty Memories",
+    "quote": "Times changed forever that night. Leaving only empty memories",
+    "icon": "bookmark"
   }
 }
