@@ -1,0 +1,83 @@
+import './Mods.css';
+import React, { Component } from 'react';
+import { PageLoader, ContainerLoader } from 'common/Loaders';
+
+import { SideNav, FeatureCard } from '../components';
+import ModDetail from './ModDetail.container';
+
+class Mods extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isDetailLoading: false,
+      didLoaded: false
+    };
+  }
+
+  componentWillMount() {
+    const { mods, onGetMods } = this.props;
+    if (!mods) {
+      onGetMods();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.modDetail._id !== this.props.modDetail._id) {
+      this.setState({ isDetailLoading: false });
+    }
+    if (!this.state.didLoaded && !this.props.mods && nextProps.mods.length > 0) {
+      this.props.onGetModDetail(nextProps.mods[0]._id);
+      this.setState({ didLoaded: true, isDetailLoading: true });
+    }
+  }
+
+  render() {
+    const { mods, modDetail, onGetModDetail } = this.props;
+    if (!mods) {
+      return (
+        <div className="row">
+          <PageLoader opacity={2} />
+        </div>
+      );
+    }
+
+    return (
+      <div className="row">
+        <div className="col-3">
+          <div className="row">
+            <SideNav sortOptions={['Name', 'Rating']}>
+              {mods.map(mod => (
+                <FeatureCard
+                  isActive={modDetail._id === mod._id}
+                  key={mod._id}
+                  name={mod.Name}
+                  iconUrl={mod.IconUrl.replace('./public', window.appConfig.API_HOST)}
+                  rating={mod.Rating}
+                  archiveUrl={mod.ArchiveUrl.replace('./public', window.appConfig.API_HOST)}
+                  iconBadge={mod.Version}
+                  version={'v' + mod.ModVersion}
+                  onClick={() => {
+                    this.setState({ isDetailLoading: true });
+                    onGetModDetail(mod._id);
+                  }}
+                />
+              ))}
+            </SideNav>
+          </div>
+        </div>
+        <div className="col-9">
+          {this.state.isDetailLoading && <ContainerLoader />}
+          {!this.state.isDetailLoading &&
+            !modDetail._id && (
+              <div className="flex-center d2-zero-notice">
+                <div className="notice">No mod selected</div>
+              </div>
+            )}
+          {!this.state.isDetailLoading && modDetail._id && <ModDetail />}
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Mods;

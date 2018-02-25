@@ -1,3 +1,4 @@
+import Promise from 'bluebird';
 import express from 'express';
 
 import uploadMod from './services/uploadMod';
@@ -25,10 +26,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
   router.get(
     '/mods',
     wrap(async (req, res, next) => {
-      const mods = await DiabloIIMods.find(
-        {},
-        { Description: false, Introduction: false, Overview: false, BackgroundUrl: false }
-      );
+      const mods = await DiabloIIMods.find({}, { HTML: false, CSS: false, Overview: false });
       res.send(mods);
     })
   );

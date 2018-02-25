@@ -5,10 +5,10 @@ const DiabloIIMods = new Schema({
   Name: String,
   ModVersion: String,
   Version: String,
-  BackgroundUrl: String,
   IconUrl: String,
   Overview: [String],
-  Description: String,
+  HTML: String,
+  CSS: String,
   Rating: Number
 });
 

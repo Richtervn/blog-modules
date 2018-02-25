@@ -1,4 +1,5 @@
 import './Starcraft.css';
+import _ from 'underscore';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
@@ -10,13 +11,17 @@ import { Maps } from './Maps';
 import { Campaigns } from './Campaigns';
 import { Mods } from './Mods';
 
+const availableTabs = ['maps', 'campaigns', 'mods'];
+
 class Starcraft extends Component {
   componentWillMount() {
     const { match, onSetActiveTab } = this.props;
     if (!match.params.tab) {
       onSetActiveTab('Maps');
     } else {
-      onSetActiveTab(getSimpleName(match.params.tab));
+      if (_.contains(availableTabs, match.params.tab)) {
+        onSetActiveTab(getSimpleName(match.params.tab));
+      }
     }
   }
 
@@ -25,6 +30,10 @@ class Starcraft extends Component {
 
     if (!match.params.tab) {
       return <Redirect to="/starcraft_broodwar/maps" />;
+    }
+
+    if (!_.contains(availableTabs, match.params.tab)) {
+      return <Redirect to="/404" />;
     }
 
     return (

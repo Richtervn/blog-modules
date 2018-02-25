@@ -1,7 +1,7 @@
 import { actionCreator } from 'helpers';
 import services from './Darksteam97d99i.services';
-import { toastError, toastSuccess } from 'common/Toast';
-
+import { toastError } from 'common/Toast';
+// toastSuccess
 const GET_SERVER_INFO = 'darksteam97d99i/GET_SERVER_INFO';
 const GET_GAME_SETTING = 'darksteam97d99i/GET_GAME_SETTING';
 

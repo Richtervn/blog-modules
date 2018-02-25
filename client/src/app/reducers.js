@@ -9,6 +9,7 @@ import { reducer as mangasReading } from 'pages/Collections/MangasReading';
 import { reducer as music } from 'pages/Collections/Music';
 import { reducer as projects } from 'pages/Home/Projects';
 import { reducer as starcraft } from 'pages/Games/Starcraft';
+import { reducer as diabloII } from 'pages/Games/DiabloII';
 import { reducer as endedManga } from 'pages/Archived/EndedManga';
 import { ds9799_appControl, ds9799_user } from 'pages/MuOnline/Darksteam97d99i';
 
@@ -16,6 +17,7 @@ export default combineReducers({
   appControl,
   appDiary,
   contentMirror,
+  diabloII,
   ds9799_appControl,
   ds9799_user,
   endedManga,

@@ -1,0 +1,58 @@
+.d2-side-nav {
+  height: calc(100vh - 90px);
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.d2-side-nav > .tools-bar {
+  display: flex;
+  padding: 10px;
+}
+
+.d2-side-nav > .tools-bar > .feature-btns > .btn {
+  padding: 3px 0;
+  width: 32px;
+  margin-right: 2px;
+  transition: all 0.2s;
+}
+
+.d2-side-nav .btn:hover {
+  color: white;
+  background-color: #68829e;
+}
+
+.d2-side-nav .btn.active {
+  color: white;
+  background-color: #1995ad;
+}
+
+.d2-side-nav > .tools-bar > .tool-input {
+  display: flex;
+  flex-grow: 1;
+}
+
+.d2-side-nav > .tools-bar > .tool-input > .search-input {
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  padding-left: 10px;
+  margin-left: 2px;
+}
+
+.d2-side-nav > .tools-bar > .tool-input > .sort-input {
+  display: flex;
+  width: 100%;
+}
+
+.d2-side-nav > .tools-bar > .tool-input > .sort-input > .btn {
+  padding: 0;
+  font-size: 14px;
+  flex: 1;
+  margin-left: 2px;
+  font-weight: 600;
+}
+
+.d2-side-nav > .list {
+  height: calc(100vh - 140px);
+  overflow-y: auto;
+}

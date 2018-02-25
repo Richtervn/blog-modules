@@ -23,7 +23,7 @@ const FeatureCard = ({ rating, label, uri, matchUp, isActive, onClick, version }
               <div className="text">{version}</div>
             </div>
           )}
-          <a href={uri} className="dl-btn" download>
+          <a href={uri} className="dl-btn" download onClick={e => e.stopPropagation()}>
             <i className="fa fa-download" />
           </a>
           <StarRating name={label} value={rating} editing={false} />

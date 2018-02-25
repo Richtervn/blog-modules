@@ -4,7 +4,6 @@ import moment from 'moment';
 
 const modPath = './public/DiabloII/Mods';
 const iconPath = './public/DiabloII/Mods/Icons';
-const backgroundPath = './public/DiabloII/Mods/Backgrounds';
 
 const versions = ['1.08', '1.09', '1.10', '1.11', '1.12', '1.13', '1.14'];
 
@@ -19,7 +18,6 @@ const storage = multer.diskStorage({
       });
     }
     if (file.fieldname == 'Icon') srcPath = iconPath;
-    if (file.fieldname == 'Background') srcPath = backgroundPath;
     cb(null, srcPath);
   },
   filename(req, file, cb) {
@@ -36,18 +34,13 @@ const storage = multer.diskStorage({
         }
       });
     }
-    if (file.fieldname == 'Background') {
-      name = moment().format('MMDDYYYYhhmmss') + '.jpg';
-      req.body.BackgroundUrl = `${backgroundPath}/${name}`;
-    }
     cb(null, name);
   }
 });
 
 const upload = multer({ storage: storage }).fields([
   { name: 'Icon', maxCount: 1 },
-  { name: 'Archive', maxCount: 1 },
-  { name: 'Background', maxCount: 1 }
+  { name: 'Archive', maxCount: 1 }
 ]);
 
 const multerUpload = (req, res) => {
