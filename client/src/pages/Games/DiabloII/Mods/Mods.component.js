@@ -1,5 +1,7 @@
 import './Mods.css';
+
 import React, { Component } from 'react';
+import { sortList } from 'helpers';
 import { PageLoader, ContainerLoader } from 'common/Loaders';
 
 import { SideNav, FeatureCard } from '../components';
@@ -32,7 +34,7 @@ class Mods extends Component {
   }
 
   render() {
-    const { mods, modDetail, onGetModDetail } = this.props;
+    const { mods, modDetail, onGetModDetail, onSort, sortKey, sortOption, onSearch } = this.props;
     if (!mods) {
       return (
         <div className="row">
@@ -41,12 +43,14 @@ class Mods extends Component {
       );
     }
 
+    let sortedMods = sortList(mods, sortKey, sortOption);
+
     return (
       <div className="row">
         <div className="col-3">
           <div className="row">
-            <SideNav sortOptions={['Name', 'Rating']}>
-              {mods.map(mod => (
+            <SideNav sortOptions={['Name', 'Rating']} onSort={onSort} onSearch={text => onSearch({ Name: text })}>
+              {sortedMods.map(mod => (
                 <FeatureCard
                   isActive={modDetail._id === mod._id}
                   key={mod._id}
@@ -55,6 +59,7 @@ class Mods extends Component {
                   rating={mod.Rating}
                   archiveUrl={mod.ArchiveUrl.replace('./public', window.appConfig.API_HOST)}
                   iconBadge={mod.Version}
+                  onIconBadgeClick={() => onSearch({ Version: mod.Version })}
                   version={'v' + mod.ModVersion}
                   onClick={() => {
                     this.setState({ isDetailLoading: true });

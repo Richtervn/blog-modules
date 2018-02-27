@@ -28,8 +28,7 @@ class SideNav extends Component {
     if (this.state.sortOption === 'DESC') {
       nextState.sortOption = '';
     }
-    const query = { [option]: nextState.sortOption };
-    this.props.onSort(query);
+    this.props.onSort(nextState.sortKey, nextState.sortOption);
     this.setState(nextState);
   }
 

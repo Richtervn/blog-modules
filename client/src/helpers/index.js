@@ -1,4 +1,4 @@
-import { shuffleList } from './array';
+import { shuffleList, sortList } from './array';
 import { commonAddArray, commonRemoveArray, commonFormChange } from './form';
 import { actionCreator, serviceCaller, serviceWrapper } from './service';
 import { getFullName, getSimpleName, getStarcraftRaces } from './string';
@@ -8,6 +8,7 @@ export {
   serviceCaller,
   serviceWrapper,
   shuffleList,
+  sortList,
   commonAddArray,
   commonRemoveArray,
   commonFormChange,

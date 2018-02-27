@@ -18,6 +18,7 @@ import extraLevel from './services/extraLevel';
 import extraGold from './services/extraGold';
 import extraSkill from './services/extraSkill';
 import editExtra from './services/editExtra';
+import searchMods from './services/searchMods';
 
 export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories) => {
   const router = express.Router();
@@ -27,6 +28,14 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/mods',
     wrap(async (req, res, next) => {
       const mods = await DiabloIIMods.find({}, { HTML: false, CSS: false, Overview: false });
+      res.send(mods);
+    })
+  );
+
+  router.get(
+    '/search_mods',
+    wrap(async (req, res, next) => {
+      const mods = await searchMods(DiabloIIMods, req.query);
       res.send(mods);
     })
   );

@@ -10,6 +10,8 @@ const GET_MOD_DETAIL = 'diabloII/GET_MOD_DETAIL';
 const ADD_MOD = 'diabloII/ADD_MOD';
 const EDIT_MOD = 'diabloII/EDIT_MOD';
 const DELETE_MOD = 'diabloII/DELETE_MOD';
+const SEARCH_MODS = 'diabloII/SEARCH_MODS';
+const SORT_MODS = 'diabloII/SORT_MODS';
 
 export const setActiveTab = tab => ({ type: SET_ACTIVE_TAB, tab });
 
@@ -18,10 +20,14 @@ export const getModDetail = id => actionCreator(GET_MOD_DETAIL, services.getModD
 export const addMod = formBody => actionCreator(ADD_MOD, services.addMod, formBody)();
 export const editMod = formBody => actionCreator(EDIT_MOD, services.editMod, formBody)();
 export const deleteMod = id => actionCreator(DELETE_MOD, services.deleteMod, id)();
+export const searchMods = query => actionCreator(SEARCH_MODS, services.searchMods, query)();
+export const sortMod = (sortKey, sortOption) => ({ type: SORT_MODS, sortKey, sortOption });
 
 const initialState = {
   activeTab: 'Mods',
   mods: null,
+  sortModKey: '',
+  sortModOption: '',
   modDetail: {}
 };
 
@@ -57,12 +63,17 @@ export default (state = initialState, action) => {
     case `${DELETE_MOD}_SUCCESS`:
       state.mods = state.mods.filter(mod => mod._id !== action.data._id);
       return { ...state, mods: state.mods.slice(0) };
+    case `${SEARCH_MODS}_SUCCESS`:
+      return { ...state, mods: action.data };
+    case SORT_MODS:
+      return { ...state, sortModKey: action.sortKey, sortModOption: action.sortOption };
 
     case `${GET_MODS}_FAIL`:
     case `${GET_MOD_DETAIL}_FAIL`:
     case `${ADD_MOD}_FAIL`:
     case `${EDIT_MOD}_FAIL`:
     case `${DELETE_MOD}_FAIL`:
+    case `${SEARCH_MODS}_FAIL`:
       toastError(action.error);
       return state;
     default:

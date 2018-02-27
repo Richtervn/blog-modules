@@ -1,3 +1,4 @@
 import shuffleList from './shuffleList';
+import sortList from './sortList';
 
-export { shuffleList };
+export { shuffleList, sortList };

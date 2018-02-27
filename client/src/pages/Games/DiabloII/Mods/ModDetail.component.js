@@ -1,9 +1,7 @@
 import './ModDetail.css';
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import StarRating from 'react-star-rating-component';
-
-// DiabloIIMods
 
 const ModDetail = ({ mod, history }) => (
   <div className="row">
