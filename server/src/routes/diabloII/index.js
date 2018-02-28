@@ -19,6 +19,7 @@ import extraGold from './services/extraGold';
 import extraSkill from './services/extraSkill';
 import editExtra from './services/editExtra';
 import searchMods from './services/searchMods';
+import searchTools from './services/searchTools';
 
 export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories) => {
   const router = express.Router();
@@ -60,6 +61,14 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/tools',
     wrap(async (req, res, next) => {
       const tools = await DiabloIITools.find({}, { Description: false, Introduction: false, Overview: false });
+      res.send(tools);
+    })
+  );
+
+  router.get(
+    '/search_tools',
+    wrap(async (req, res, next) => {
+      const tools = await searchTools(DiabloIITools, req.query);
       res.send(tools);
     })
   );
@@ -224,6 +233,17 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
       res.send(result);
     })
   );
+
+  router.get('/test', wrap(async(req, res, next) => {
+    const tools = await DiabloIITools.find();
+    await Promise.map(tools, tool => {
+      tool.HTML = tool.Description;
+      tool.CSS = '';
+      tool.Description = undefined;
+      return tool.save();
+    })
+    res.sendStatus(200);
+  }))
 
   return router;
 };

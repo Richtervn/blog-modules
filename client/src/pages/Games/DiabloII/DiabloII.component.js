@@ -8,6 +8,7 @@ import { getFullName } from 'helpers';
 
 import TopNavBar from './TopNavBar.container';
 import { Mods } from './Mods';
+import { Tools } from './Tools';
 
 const availableTabs = ['mods', 'characters', 'survival_kits', 'tools', 'extra'];
 
@@ -33,6 +34,7 @@ class DiabloII extends Component {
         <div className="container-fluid">
           <TopNavBar />
           {activeTab === 'Mods' && <Mods />}
+          {activeTab === 'Tools' && <Tools />}
         </div>
       </PageContainer>
     );

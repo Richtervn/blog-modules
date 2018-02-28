@@ -31,7 +31,12 @@ import {
   StarcraftDeleteModConfirm
 } from 'pages/Games/Starcraft';
 
-import { DiabloIIModForm, DiabloIIDeleteModConfirm } from 'pages/Games/DiabloII';
+import {
+  DiabloIIModForm,
+  DiabloIIDeleteModConfirm,
+  DiabloIIToolForm,
+  DiabloIIDeleteToolConfirm
+} from 'pages/Games/DiabloII';
 
 export default ({ name }) => {
   let additionProps = {};
@@ -80,6 +85,9 @@ export default ({ name }) => {
       {name === 'AddDiabloIIMod' && <DiabloIIModForm />}
       {name === 'EditDiabloIIMod' && <DiabloIIModForm edit />}
       {name === 'DeleteDiabloIIMod' && <DiabloIIDeleteModConfirm />}
+      {name === 'AddDiabloIITool' && <DiabloIIToolForm />}
+      {name === 'EditDiabloIITool' && <DiabloIIToolForm edit />}
+      {name === 'DeleteDiabloIITool' && <DiabloIIDeleteToolConfirm />}
     </Modal>
   );
 };

@@ -23,6 +23,10 @@ export default {
     const data = commonGet('diabloII/search_mods', null, query);
     return data;
   },
+  searchTools(query){
+    const data = commonGet('diabloII/search_tools', null, query);
+    return data;
+  },
   editMod(body) {
     const data = commonPutMultiplePart('diabloII/mod', body);
     return data;

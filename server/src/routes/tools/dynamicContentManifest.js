@@ -4,6 +4,11 @@ export default {
     CssField: 'CSS',
     HtmlField: 'HTML'
   },
+  DiabloIITools: {
+    DisplayField: 'Name',
+    CssField: 'CSS',
+    HtmlField: 'HTML'
+  },
   GamingHistoryGuide: {
     DisplayField: 'Title',
     CssField: 'CSS',

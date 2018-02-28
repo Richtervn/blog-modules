@@ -3,7 +3,11 @@ import React from 'react';
 import StarRating from 'react-star-rating-component';
 
 export default ({ iconUrl, name, iconBadge, onIconBadgeClick, archiveUrl, rating, isActive, onClick, version }) => (
-  <div className={`d2-feature-card ${isActive ? 'active' : ''}`} onClick={onClick}>
+  <div
+    className={`d2-feature-card ${isActive ? 'active' : ''}`}
+    onClick={() => {
+      if (!isActive) onClick();
+    }}>
     <div className="icon-wrapper">
       <img className="icon" src={iconUrl} alt={name} />
       {iconBadge && (

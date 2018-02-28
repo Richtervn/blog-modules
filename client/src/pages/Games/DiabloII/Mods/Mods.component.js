@@ -52,7 +52,7 @@ class Mods extends Component {
         <div className="col-3">
           <div className="row">
             <SideNav
-              sortOptions={['Name', 'Rating']}
+              sortOptions={['Name', 'Rating', 'Version']}
               onSort={onSort}
               onSearch={text => onSearch({ Name: text })}
               onClickAdd={() => openModal('AddDiabloIIMod')}>

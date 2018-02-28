@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 
 import { ModalHeader, ModalFooter } from 'components/Modal';
-import { FormGroupRow, FormGroupRating, FormGroupArray, FormGroupSelect } from 'components/FormTools';
+import { FormGroupRow, FormGroupRating, FormGroupArray } from 'components/FormTools';
 
 import { commonFormChange, commonAddArray, commonRemoveArray } from 'helpers';
 import { hideModal } from 'common/Modal';
 
 const initialValue = {
   Name: '',
-  ModVersion: '',
-  Version: '1.08',
   Overview: [''],
   Rating: 0
 };
 
-class DiabloIIModForm extends Component {
+class DiabloIIToolForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.edit ? this.initStateValue({ ...this.props.mod }) : this.initStateValue({ ...initialValue })
+      value: this.props.edit ? this.initStateValue({ ...this.props.tool }) : this.initStateValue({ ...initialValue })
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -27,20 +25,19 @@ class DiabloIIModForm extends Component {
     this.handleRemoveArray = this.handleRemoveArray.bind(this);
   }
 
-  initStateValue(mod) {
+  initStateValue(tool) {
     return {
       Archive: null,
       Icon: null,
-      Name: mod.Name,
-      ModVersion: mod.ModVersion,
-      Version: mod.Version,
-      Overview: mod.Overview,
-      Rating: mod.Rating
+      ToolVersion: tool.ToolVersion,
+      Version: tool.Version,
+      Overview: tool.Overview,
+      Rating: tool.Rating
     };
   }
 
   handleSubmit() {
-    this.props.edit ? this.props.onEditMod(this.state.value) : this.props.onAddMod(this.state.value);
+    this.props.edit ? this.props.onEditTool(this.state.value) : this.props.onAddTool(this.state.value);
     if (!this.props.edit) {
       this.setState({ value: this.initStateValue({ ...initialValue }) });
     }
@@ -67,21 +64,21 @@ class DiabloIIModForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.edit && nextProps.mod._id !== this.props.mod._id) {
-      this.setState({ value: this.initStateValue(nextProps.mod) });
+    if (nextProps.edit && nextProps.tool._id !== this.props.tool._id) {
+      this.setState({ value: this.initStateValue(nextProps.tool) });
     }
   }
 
   render() {
     return [
       <ModalHeader
-        key="sm_h"
+        key="dt_h"
         iconUrl="/images/icons/diablo_2.png"
-        label={this.props.edit ? `Update ${this.props.mod.Name}` : 'Add New Diablo II Mod'}
+        label={this.props.edit ? `Update ${this.props.tool.Name}` : 'Add New Diablo II Tool'}
       />,
-      <div key="sm_b" className="modal-body">
+      <div key="dt_b" className="modal-body">
         <form className="text-right">
-          <FormGroupRow type="file" name="Archive" label="Mod File" onChange={this.handleChange} />
+          <FormGroupRow type="file" name="Archive" label="Tool File" onChange={this.handleChange} />
           <FormGroupRow type="file" name="Icon" label="Icon File" onChange={this.handleChange} />
           <FormGroupRow
             type="text"
@@ -89,20 +86,6 @@ class DiabloIIModForm extends Component {
             label="Name"
             value={this.state.value.Name}
             onChange={this.handleChange}
-          />
-          <FormGroupRow
-            type="text"
-            name="ModVersion"
-            label="Mod Version"
-            value={this.state.value.ModVersion}
-            onChange={this.handleChange}
-          />
-          <FormGroupSelect
-            name="Version"
-            label="D2 Version"
-            value={this.state.value.Version}
-            onChange={this.handleChange}
-            options={['1.08', '1.09', '1.10', '1.11', '1.12', '1.13', '1.14']}
           />
           <FormGroupArray
             type="text"
@@ -116,9 +99,9 @@ class DiabloIIModForm extends Component {
           <FormGroupRating label="Rating" rating={this.state.value.Rating} onRating={this.handleRating} />
         </form>
       </div>,
-      <ModalFooter key="sm_f" onClickSubmit={() => this.handleSubmit()} />
+      <ModalFooter key="dt_f" onClickSubmit={() => this.handleSubmit()} />
     ];
   }
 }
 
-export default DiabloIIModForm;
+export default DiabloIIToolForm;

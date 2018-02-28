@@ -6,7 +6,9 @@ const DiabloIITools = new Schema({
   Description: String,
   Overview: [String],
   Rating: Number,
-  IconUrl: String
+  IconUrl: String,
+  HTML: String,
+  CSS: String
 });
 
 export default DiabloIITools;

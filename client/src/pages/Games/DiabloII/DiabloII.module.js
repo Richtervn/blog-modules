@@ -13,6 +13,14 @@ const DELETE_MOD = 'diabloII/DELETE_MOD';
 const SEARCH_MODS = 'diabloII/SEARCH_MODS';
 const SORT_MODS = 'diabloII/SORT_MODS';
 
+const GET_TOOLS = 'diabloII/GET_TOOLS';
+const GET_TOOL_DETAIL = 'diabloII/GET_TOOL_DETAIL';
+const ADD_TOOL = 'diabloII/ADD_TOOL';
+const EDIT_TOOL = 'diabloII/EDIT_TOOL';
+const DELETE_TOOL = 'diabloII/DELETE_TOOL';
+const SEARCH_TOOLS = 'diabloII/SEARCH_TOOLS';
+const SORT_TOOLS = 'diabloII/SORT_TOOLS';
+
 export const setActiveTab = tab => ({ type: SET_ACTIVE_TAB, tab });
 
 export const getMods = actionCreator(GET_MODS, services.getMods);
@@ -23,18 +31,31 @@ export const deleteMod = id => actionCreator(DELETE_MOD, services.deleteMod, id)
 export const searchMods = query => actionCreator(SEARCH_MODS, services.searchMods, query)();
 export const sortMod = (sortKey, sortOption) => ({ type: SORT_MODS, sortKey, sortOption });
 
+export const getTools = actionCreator(GET_TOOLS, services.getTools);
+export const getToolDetail = id => actionCreator(GET_TOOL_DETAIL, services.getToolDetail, id)();
+export const addTool = formBody => actionCreator(ADD_TOOL, services.addTool, formBody)();
+export const editTool = formBody => actionCreator(EDIT_TOOL, services.editTool, formBody)();
+export const deleteTool = id => actionCreator(DELETE_TOOL, services.deleteTool, id)();
+export const searchTools = query => actionCreator(SEARCH_TOOLS, services.searchTools, query)();
+export const sortTool = (sortKey, sortOption) => ({ type: SORT_TOOLS, sortKey, sortOption });
+
 const initialState = {
   activeTab: 'Mods',
   mods: null,
+  tools: null,
   sortModKey: '',
   sortModOption: '',
-  modDetail: {}
+  sortToolKey: '',
+  sortToolOption: '',
+  modDetail: {},
+  toolDetail: {}
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_ACTIVE_TAB:
       return { ...state, activeTab: action.tab };
+
     case `${GET_MODS}_SUCCESS`:
       return { ...state, mods: action.data };
     case `${GET_MOD_DETAIL}_SUCCESS`:
@@ -68,12 +89,51 @@ export default (state = initialState, action) => {
     case SORT_MODS:
       return { ...state, sortModKey: action.sortKey, sortModOption: action.sortOption };
 
+    case `${GET_TOOLS}_SUCCESS`:
+      return { ...state, tools: action.data };
+    case `${GET_TOOL_DETAIL}_SUCCESS`:
+      return { ...state, toolDetail: action.data };
+    case `${ADD_TOOL}_SUCCESS`:
+      state.tools.push(action.data);
+      toastSuccess(() => (
+        <p>
+          Added <strong>{action.data.Name}</strong>
+        </p>
+      ));
+      return { ...state, tools: state.tools.slice(0) };
+    case `${EDIT_TOOL}_SUCCESS`:
+      state.tools = state.tools.map(tool => {
+        if (tool._id === action.data._id) {
+          return action.data;
+        }
+        return tool;
+      });
+      toastSuccess(() => (
+        <p>
+          Updated <strong>{action.data.Name}</strong>
+        </p>
+      ));
+      return { ...state, tools: state.tools.slice(0), toolDetail: { ...state.toolDetail, ...action.data } };
+    case `${DELETE_TOOL}_SUCCESS`:
+      state.tools = state.tools.filter(tool => tool._id !== action.data._id);
+      return { ...state, tools: state.tools.slice(0) };
+    case `${SEARCH_TOOLS}_SUCCESS`:
+      return { ...state, tools: action.data };
+    case SORT_TOOLS:
+      return { ...state, sortToolKey: action.sortKey, sortToolOption: action.sortOption };
+
     case `${GET_MODS}_FAIL`:
     case `${GET_MOD_DETAIL}_FAIL`:
     case `${ADD_MOD}_FAIL`:
     case `${EDIT_MOD}_FAIL`:
     case `${DELETE_MOD}_FAIL`:
     case `${SEARCH_MODS}_FAIL`:
+    case `${GET_TOOLS}_FAIL`:
+    case `${GET_TOOL_DETAIL}_FAIL`:
+    case `${ADD_TOOL}_FAIL`:
+    case `${EDIT_TOOL}_FAIL`:
+    case `${DELETE_TOOL}_FAIL`:
+    case `${SEARCH_TOOLS}_FAIL`:
       toastError(action.error);
       return state;
     default:
