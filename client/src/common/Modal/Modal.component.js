@@ -31,6 +31,8 @@ import {
   StarcraftDeleteModConfirm
 } from 'pages/Games/Starcraft';
 
+import { DiabloIIModForm, DiabloIIDeleteModConfirm } from 'pages/Games/DiabloII';
+
 export default ({ name }) => {
   let additionProps = {};
   switch (name) {
@@ -75,6 +77,9 @@ export default ({ name }) => {
       {name === 'AddStarcraftMod' && <StarcraftModForm />}
       {name === 'EditStarcraftMod' && <StarcraftModForm edit />}
       {name === 'DeleteStarcraftMod' && <StarcraftDeleteModConfirm />}
+      {name === 'AddDiabloIIMod' && <DiabloIIModForm />}
+      {name === 'EditDiabloIIMod' && <DiabloIIModForm edit />}
+      {name === 'DeleteDiabloIIMod' && <DiabloIIDeleteModConfirm />}
     </Modal>
   );
 };
@@ -135,18 +140,6 @@ export default ({ name }) => {
 //     type: 'Account'
 //   },
 
-//   AddD2Mod: {
-//     Archive: null,
-//     Icon: null,
-//     Background: null,
-//     Name: '',
-//     ModVersion: '1.08',
-//     Version: '',
-//     Overview: [''],
-//     Description: '',
-//     Rating: 0
-//   },
-
 //   AddD2Tool: {
 //     Archive: null,
 //     Icon: null,
@@ -195,11 +188,7 @@ export default ({ name }) => {
 //     body: () => null
 //   };
 //   switch (id) {
-//     case 'addFlashGameModal':
-//       return {
-//         header: { icon: makeIcon('gamepad'), label: 'Add New Flash Game' },
-//         body: FormAddFlashGame
-//       };
+
 //     case 'addYgoModModal':
 //       return {
 //         header: { icon: makeIcon('gamepad'), label: 'Add New Yugioh Mod' },
@@ -220,41 +209,7 @@ export default ({ name }) => {
 //         header: { icon: makeIcon('gamepad'), label: 'Edit Yugioh Deck' },
 //         body: FormEditYugiohDeck
 //       };
-//     case 'addMusicModal':
-//       return {
-//         header: { icon: makeIcon('music'), label: 'Add New Song' },
-//         body: FormAddMusic
-//       };
-//     case 'addStarcraftMapModal':
-//       return {
-//         header: { icon: makeIcon('starcraft'), label: 'Add Starcraft Map' },
-//         body: FormAddStarcraftMap
-//       };
-//     case 'editStarcraftMapModal':
-//       return {
-//         header: { icon: makeIcon('starcraft'), label: 'Edit Starcraft Map' },
-//         body: FormEditStarcraftMap
-//       };
-//     case 'addStarcraftCampaignModal':
-//       return {
-//         header: { icon: makeIcon('starcraft'), label: 'Add Starcraft Campaign' },
-//         body: FormAddStarcraftCampaign
-//       };
-//     case 'editStarcraftCampaignModal':
-//       return {
-//         header: { icon: makeIcon('starcraft'), label: 'Edit Starcraft Campaign' },
-//         body: FormEditStarcraftCampaign
-//       };
-//     case 'addStarcraftModModal':
-//       return {
-//         header: { icon: makeIcon('starcraft'), label: 'Add Starcraft Mod' },
-//         body: FormAddStarcraftMod
-//       };
-//     case 'editStarcraftModModal':
-//       return {
-//         header: { icon: makeIcon('starcraft'), label: 'Edit Starcraft Mod' },
-//         body: FormEditStarcraftMod
-//       };
+
 //     case 'addMuonlineVersionModal':
 //       return {
 //         header: { icon: makeIcon('mulogo'), label: 'Add Mu Version' },

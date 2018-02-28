@@ -7,6 +7,8 @@ import { PageLoader, ContainerLoader } from 'common/Loaders';
 import { SideNav, FeatureCard } from '../components';
 import ModDetail from './ModDetail.container';
 
+import { openModal } from 'common/Modal';
+
 class Mods extends Component {
   constructor(props) {
     super(props);
@@ -49,7 +51,11 @@ class Mods extends Component {
       <div className="row">
         <div className="col-3">
           <div className="row">
-            <SideNav sortOptions={['Name', 'Rating']} onSort={onSort} onSearch={text => onSearch({ Name: text })}>
+            <SideNav
+              sortOptions={['Name', 'Rating']}
+              onSort={onSort}
+              onSearch={text => onSearch({ Name: text })}
+              onClickAdd={() => openModal('AddDiabloIIMod')}>
               {sortedMods.map(mod => (
                 <FeatureCard
                   isActive={modDetail._id === mod._id}

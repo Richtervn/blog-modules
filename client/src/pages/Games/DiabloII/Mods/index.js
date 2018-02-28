@@ -1,3 +1,4 @@
 import Mods from './Mods.container';
+import { DiabloIIModForm, DiabloIIDeleteModConfirm } from './Modals';
 
-export { Mods };
+export { Mods, DiabloIIModForm, DiabloIIDeleteModConfirm };

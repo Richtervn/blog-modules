@@ -1,4 +1,4 @@
 import StarcraftModForm from './ModForm.container';
-import StacraftDeleteModConfirm from './DeleteModConfirm.container';
+import StarcraftDeleteModConfirm from './DeleteModConfirm.container';
 
-export { StarcraftModForm, StacraftDeleteModConfirm };
+export { StarcraftModForm, StarcraftDeleteModConfirm };

@@ -3,14 +3,16 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import StarRating from 'react-star-rating-component';
 
+import { openModal } from 'common/Modal';
+
 const ModDetail = ({ mod, history }) => (
   <div className="row">
     <div className="d2-mod-detail">
       <div className="feature">
-        <button className="btn">
+        <button className="btn" onClick={() => openModal('EditDiabloIIMod')}>
           <i className="fa fa-pencil" />
         </button>
-        <button className="btn">
+        <button className="btn" onClick={() => openModal('DeleteDiabloIIMod')}>
           <i className="fa fa-times" />
         </button>
       </div>
