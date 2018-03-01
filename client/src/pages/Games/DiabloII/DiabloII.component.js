@@ -9,6 +9,7 @@ import { getFullName } from 'helpers';
 import TopNavBar from './TopNavBar.container';
 import { Mods } from './Mods';
 import { Tools } from './Tools';
+import { Characters } from './Characters';
 
 const availableTabs = ['mods', 'characters', 'survival_kits', 'tools', 'extra'];
 
@@ -35,6 +36,7 @@ class DiabloII extends Component {
           <TopNavBar />
           {activeTab === 'Mods' && <Mods />}
           {activeTab === 'Tools' && <Tools />}
+          {activeTab === 'Characters' && <Characters />}
         </div>
       </PageContainer>
     );

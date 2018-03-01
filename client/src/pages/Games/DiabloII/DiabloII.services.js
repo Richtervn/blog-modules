@@ -27,6 +27,14 @@ export default {
     const data = commonGet('diabloII/search_tools', null, query);
     return data;
   },
+  searchCharacters(query){
+    const data = commonGet('diabloII/search_characters', null, query);
+    return data;
+  },
+  searchSurvivalKits(query){
+    const data = commonGet('diabloII/search_survial_kits', null, query);
+    return data;
+  },
   editMod(body) {
     const data = commonPutMultiplePart('diabloII/mod', body);
     return data;

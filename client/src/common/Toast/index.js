@@ -1,4 +1,5 @@
 import './Toast.css';
+import React from 'react';
 import { toast } from 'react-toastify';
 
 export const toastSuccess = message => {
@@ -13,4 +14,18 @@ export const toastError = message => {
     position: toast.POSITION.TOP_LEFT,
     className: 'toast-error'
   });
+};
+
+export const toastStrong = (boldText = 'Added', prefix) => {
+  toast.success(
+    () => (
+      <p>
+        {prefix}&nbsp;<strong>{boldText}</strong>
+      </p>
+    ),
+    {
+      position: toast.POSITION.BOTTOM_LEFT,
+      className: 'toast-success'
+    }
+  );
 };

@@ -148,14 +148,7 @@ export default ({ name }) => {
 //     type: 'Account'
 //   },
 
-//   AddD2Tool: {
-//     Archive: null,
-//     Icon: null,
-//     Name: '',
-//     Description: '',
-//     Overview: [''],
-//     Rating: 0
-//   },
+
 
 //   AddD2SurvivalKit: {
 //     file: null,
