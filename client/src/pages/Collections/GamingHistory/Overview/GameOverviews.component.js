@@ -10,8 +10,8 @@ import GameOverviewDetail from './GameOverviewDetail.container';
 
 class GameOverviews extends Component {
   componentWillMount() {
-    const { onGetOverviews, params, gameInfo } = this.props;
-    if (!params.subPage) onGetOverviews(gameInfo._id);
+    const { onGetOverviews, gameInfo } = this.props;
+    onGetOverviews(gameInfo._id);
   }
 
   render() {

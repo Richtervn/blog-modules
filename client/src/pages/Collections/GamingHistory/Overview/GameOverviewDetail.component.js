@@ -1,5 +1,6 @@
 import './GameOverviewDetail.css';
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
 
 import { TabLoader } from 'common/Loaders';
 import { ArticleView, ContentCard } from 'components/AboutBuilder';
@@ -13,12 +14,19 @@ class GameOverviewDetail extends Component {
   }
 
   render() {
-    const { subPage, overview, onEditOverviewDetail } = this.props;
+    const { subPage, overview, onEditOverviewDetail, match, history } = this.props;
     if (!overview || overview._id !== parseInt(subPage, 10)) {
       return <TabLoader />;
     }
+    console.log(this.props);
     return (
       <div className="game-overview-detail">
+        <div className="feature">
+          <div className="title">{overview.Title}</div>
+          <button className="btn" onClick={() => history.push(`/gaming_history/${match.params.game}/${match.params.tab}`)}>
+            <i className="fa fa-long-arrow-left"/>
+          </button>
+        </div>
         <div className="article-col">
           <ArticleView
             data={overview.Sections}
@@ -33,4 +41,4 @@ class GameOverviewDetail extends Component {
   }
 }
 
-export default GameOverviewDetail;
+export default withRouter(GameOverviewDetail);

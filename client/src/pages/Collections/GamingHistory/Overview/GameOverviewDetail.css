@@ -3,6 +3,10 @@
   padding: 10px 10px 10px 0px;
 }
 
+.game-overview-detail .btn:hover {
+  background-color: white;
+}
+
 .game-overview-detail > .contents-col {
   width: 258px;
 }
@@ -20,4 +24,24 @@
   height: fit-content;
   max-height: calc(100vh - 110px);
   overflow-y: auto;
+}
+
+.game-overview-detail > .feature {
+  display: flex;
+  position: fixed;
+  top: 52px;
+  right: 10px;
+}
+
+.game-overview-detail > .feature > .btn {
+  padding: 0;
+  width: 50px;
+  margin-right: 5px;
+}
+
+.game-overview-detail > .feature > .title {
+  padding-right: 40px;
+  font-weight: 500;
+  font-size: 18px;
+  font-style: italic;
 }

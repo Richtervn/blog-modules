@@ -3,6 +3,8 @@ import services from './DiabloII.services';
 import { toastError, toastSuccess, toastStrong } from 'common/Toast';
 
 const SET_ACTIVE_TAB = 'diabloII/SET_ACTIVE_TAB';
+const SET_FOCUS_CHARACTER = 'diabloII/SET_FOCUS_CHARACTER';
+const SET_FOCUS_SURVIVAL_KIT = 'diabloII/SET_FOCUS_SURVIVAL_KIT';
 
 const GET_MODS = 'diabloII/GET_MODS';
 const GET_MOD_DETAIL = 'diabloII/GET_MOD_DETAIL';
@@ -41,6 +43,8 @@ const EXTRA_GOLD = 'diabloII/EXTRA_GOLD';
 const EDIT_EXTRA_DATA = 'diabloII/EDIT_EXTRA_DATA_START';
 
 export const setActiveTab = tab => ({ type: SET_ACTIVE_TAB, tab });
+export const setFocusCharacter = id => ({ type: SET_FOCUS_CHARACTER, id });
+export const setFocusSurvivalKit = id => ({ type: SET_FOCUS_SURVIVAL_KIT, id });
 
 export const getMods = actionCreator(GET_MODS, services.getMods);
 export const getModDetail = id => actionCreator(GET_MOD_DETAIL, services.getModDetail, id)();
@@ -94,13 +98,19 @@ const initialState = {
   sortSurvivalKitOption: '',
   modDetail: {},
   toolDetail: {},
-  extraData: null
+  extraData: null,
+  focusCharacter: null,
+  focusSurvivalKit: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_ACTIVE_TAB:
       return { ...state, activeTab: action.tab };
+    case SET_FOCUS_CHARACTER:
+      return { ...state, focusCharacter: action.id };
+    case SET_FOCUS_SURVIVAL_KIT:
+      return { ...state, focusSurvivalKit: action.id };
 
     case `${GET_MODS}_SUCCESS`:
       return { ...state, mods: action.data };
@@ -153,7 +163,7 @@ export default (state = initialState, action) => {
       return { ...state, sortToolKey: action.sortKey, sortToolOption: action.sortOption };
 
     case `${GET_CHARACTERS}_SUCCESS`:
-      return { ...state, characters: action.data };
+      return { ...state, characters: action.data, focusCharacter: action.data[0]._id };
     case `${ADD_CHARACTER}_SUCCESS`:
       state.characters.push(action.data);
       toastStrong('Added', action.data.Name);
@@ -176,7 +186,7 @@ export default (state = initialState, action) => {
       return { ...state, sortCharacterKey: action.sortKey, sortCharacterOption: action.sortOption };
 
     case `${GET_SURVIVAL_KITS}_SUCCESS`:
-      return { ...state, survivalKits: action.data };
+      return { ...state, survivalKits: action.data, focusSurvivalKit: action.data[0]._id };
     case `${ADD_SURVIVAL_KIT}_SUCCESS`:
       state.survivalKits.push(action.data);
       toastStrong('Added', action.data.Name);
@@ -253,23 +263,3 @@ export default (state = initialState, action) => {
       return state;
   }
 };
-
-// export const SET_FOCUS_CHARACTER = 'diabloII/SET_FOCUS_CHARACTER';
-// export const SET_FOCUS_SURVIVAL_KIT = 'diabloII/SET_FOCUS_SURVIVAL_KIT';
-
-// export const setFocusCharacter = character => ({ type: SET_FOCUS_CHARACTER, character });
-// export const setFocusSurvivalKit = survivalKit => ({ type: SET_FOCUS_SURVIVAL_KIT, survivalKit });
-
-// export default (
-
-// ) => {
-//   switch (action.type) {
-//     case CHANGE_ACTIVE_CHANNEL:
-//       return { ...state, activeChannel: action.channel };
-//     case SET_FOCUS_CHARACTER:
-//       return { ...state, focusCharacter: action.character };
-//     case SET_FOCUS_SURVIVAL_KIT:
-//       return { ...state, focusSurvivalKit: action.survivalKit };
-
-//   }
-// };

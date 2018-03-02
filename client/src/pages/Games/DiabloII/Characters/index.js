@@ -1,3 +1,4 @@
 import Characters from './Characters.container';
+import { DiabloIICharacterForm, DiabloIIDeleteCharacterConfirm } from './Modals';
 
-export { Characters };
+export { Characters, DiabloIICharacterForm, DiabloIIDeleteCharacterConfirm };
