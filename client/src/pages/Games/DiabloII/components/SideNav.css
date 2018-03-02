@@ -28,7 +28,7 @@
 
 .d2-side-nav > .tools-bar > .tool-input {
   display: flex;
-  flex-grow: 1;
+  flex: 1;
 }
 
 .d2-side-nav > .tools-bar > .tool-input > .search-input {

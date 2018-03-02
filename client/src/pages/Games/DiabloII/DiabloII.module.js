@@ -218,9 +218,9 @@ export default (state = initialState, action) => {
       };
     case `${EXTRA_SKILL}_SUCCESS`:
       toastSuccess('Skill Points Increased');
-      action.data.type == 'add'
-        ? (state.extraData.NextSkillPoints += parseInt(action.data.amount))
-        : (state.extraData.NextSkillPoints -= parseInt(action.data.amount));
+      action.data.type === 'add'
+        ? (state.extraData.NextSkillPoints += parseInt(action.data.amount, 10))
+        : (state.extraData.NextSkillPoints -= parseInt(action.data.amount, 10));
       return { ...state, extraData: { ...state.extraData } };
 
     case `${GET_MODS}_FAIL`:
@@ -229,26 +229,22 @@ export default (state = initialState, action) => {
     case `${EDIT_MOD}_FAIL`:
     case `${DELETE_MOD}_FAIL`:
     case `${SEARCH_MODS}_FAIL`:
-
     case `${GET_TOOLS}_FAIL`:
     case `${GET_TOOL_DETAIL}_FAIL`:
     case `${ADD_TOOL}_FAIL`:
     case `${EDIT_TOOL}_FAIL`:
     case `${DELETE_TOOL}_FAIL`:
     case `${SEARCH_TOOLS}_FAIL`:
-
     case `${GET_CHARACTERS}_FAIL`:
     case `${ADD_CHARACTER}_FAIL`:
     case `${EDIT_CHARACTER}_FAIL`:
     case `${DELETE_CHARACTER}_FAIL`:
     case `${SEARCH_CHARACTERS}_FAIL`:
-
     case `${GET_SURVIVAL_KITS}_FAIL`:
     case `${ADD_SURVIVAL_KIT}_FAIL`:
     case `${EDIT_SURVIVAL_KIT}_FAIL`:
     case `${DELETE_SURVIVAL_KIT}_FAIL`:
     case `${SEARCH_SURVIVAL_KITS}_FAIL`:
-
     case `${GET_EXTRA_DATA}_FAIL`:
     case `${EDIT_EXTRA_DATA}_FAIL`:
       toastError(action.error);
