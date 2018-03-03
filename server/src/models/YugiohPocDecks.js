@@ -4,7 +4,7 @@ const YugiohPocDecks = new Schema({
   ModId: String,
   Name: String,
   Image: String,
-  Rating: String,
+  Rating: Number,
   Description: String,
   Pros: [String],
   Cons: [String],

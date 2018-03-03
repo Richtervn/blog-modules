@@ -1,0 +1,46 @@
+.basic-side-bar {
+  width: 100%;
+}
+
+.basic-side-bar > .list {
+  padding-top: 5px;
+  overflow-y: auto;
+}
+
+.basic-side-bar > .tools-bar {
+  display: flex;
+  padding: 10px;
+}
+
+.basic-side-bar > .tools-bar > .feature-btns > .btn {
+  padding: 3px 0;
+  width: 32px;
+  margin-right: 2px;
+  transition: all 0.2s;
+}
+
+.basic-side-bar > .tools-bar > .tool-input {
+  display: flex;
+  flex: 1;
+}
+
+.basic-side-bar > .tools-bar > .tool-input > .search-input {
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  padding-left: 10px;
+  margin-left: 2px;
+}
+
+.basic-side-bar > .tools-bar > .tool-input > .sort-input {
+  display: flex;
+  width: 100%;
+}
+
+.basic-side-bar > .tools-bar > .tool-input > .sort-input > .btn {
+  padding: 0;
+  font-size: 14px;
+  flex: 1;
+  margin-left: 2px;
+  font-weight: 600;
+}

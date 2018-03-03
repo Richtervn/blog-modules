@@ -37,7 +37,7 @@ class Maps extends Component {
                 key={i}
                 rating={scmap.Rating}
                 label={scmap.Name}
-                uri={scmap.Uri.replace('./public', window.appConfig.API_HOST)}
+                uri={scmap.Uri}
                 matchUp={scmap.Matchup}
                 onClick={() => onSetFocusMap(scmap._id)}
                 isActive={scmap._id === focusMap}

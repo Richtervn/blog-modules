@@ -50,7 +50,7 @@ class GamingHistory extends Component {
             {list.map(game => (
               <LeftImageCard
                 key={game._id}
-                imgUrl={game.CoverUri.replace('./public', window.appConfig.API_HOST)}
+                imgUrl={game.CoverUri}
                 col={3}
                 route={`/gaming_history/${game.Name.toLowerCase().replace(/ /g, '_')}`}
                 admin

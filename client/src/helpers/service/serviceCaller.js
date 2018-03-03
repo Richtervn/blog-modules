@@ -13,8 +13,8 @@ export default {
       }
     }
     const response = await fetch(apiLink, { method: 'GET' });
-    const resp = await response.json();
-    return resp;
+    // const resp = await response.json();
+    return response;
   }),
 
   commonPostMultiplePart: serviceWrapper(async (link, formBody) => {
@@ -24,8 +24,8 @@ export default {
       formData.append(key, formBody[key]);
     }
     const response = await fetch(apiLink, { method: 'POST-MULTIPLEPART', body: formData });
-    const resp = await response.json();
-    return resp;
+    // const resp = await response.json();
+    return response;
   }),
 
   commonPut: serviceWrapper(async (link, formBody) => {
@@ -35,8 +35,8 @@ export default {
     options.body = JSON.stringify(formBody);
     options.headers = { 'Content-Type': 'application/json; charset=utf-8' };
     const response = await fetch(apiLink, options);
-    const resp = await response.json();
-    return resp;
+    // const resp = await response.json();
+    return response;
   }),
 
   commonPost: serviceWrapper(async (link, formBody) => {
@@ -46,8 +46,8 @@ export default {
     options.body = JSON.stringify(formBody);
     options.headers = { 'Content-Type': 'application/json; charset=utf-8' };
     const response = await fetch(apiLink, options);
-    const resp = await response.json();
-    return resp;
+    // const resp = await response.json();
+    return response;
   }),
 
   commonPutMultiplePart: serviceWrapper(async (link, formBody) => {
@@ -57,14 +57,14 @@ export default {
       formData.append(key, formBody[key]);
     }
     const response = await fetch(apiLink, { method: 'PUT-MULTIPLEPART', body: formData });
-    const resp = await response.json();
-    return resp;
+    // const resp = await response.json();
+    return response;
   }),
 
   commonDelete: serviceWrapper(async link => {
     let apiLink = `/api/${link}`;
     const response = await fetch(apiLink, { method: 'DELETE' });
-    const resp = await response.json();
-    return resp;
+    // const resp = await response.json();
+    return response;
   })
 };

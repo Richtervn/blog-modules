@@ -55,7 +55,7 @@ class MangasList extends Component {
               <LeftImageCard
                 key={i}
                 col={4}
-                imgUrl={manga.CoverUri.replace('./public', window.appConfig.API_HOST)}
+                imgUrl={manga.CoverUri}
                 onClick={() => onSetFocusManga(manga._id)}
                 isActive={manga._id === focusManga}>
                 <div className="text-center">

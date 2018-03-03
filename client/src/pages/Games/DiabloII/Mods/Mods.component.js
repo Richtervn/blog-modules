@@ -61,9 +61,9 @@ class Mods extends Component {
                   isActive={modDetail._id === mod._id}
                   key={mod._id}
                   name={mod.Name}
-                  iconUrl={mod.IconUrl.replace('./public', window.appConfig.API_HOST)}
+                  iconUrl={mod.IconUrl}
                   rating={mod.Rating}
-                  archiveUrl={mod.ArchiveUrl.replace('./public', window.appConfig.API_HOST)}
+                  archiveUrl={mod.ArchiveUrl}
                   iconBadge={mod.Version}
                   onIconBadgeClick={() => onSearch({ Version: mod.Version })}
                   version={'v' + mod.ModVersion}

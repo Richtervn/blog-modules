@@ -49,7 +49,7 @@ class Mods extends Component {
                 key={mod._id}
                 rating={mod.Rating}
                 label={mod.Name}
-                uri={mod.Uri ? mod.Uri.replace('./public', window.appConfig.API_HOST) : null}
+                uri={mod.Uri ? mod.Uri : null}
                 matchUp={mod.Matchup}
                 version={mod.Version}
                 isActive={modDetail._id === mod._id}

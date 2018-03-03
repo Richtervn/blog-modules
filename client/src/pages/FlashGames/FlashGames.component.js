@@ -33,7 +33,7 @@ class FlashGames extends Component {
     if (!currentGame) {
       return <PageLoader />;
     }
-    const flashUri = currentGame.Uri.replace('./public', window.appConfig.API_HOST);
+    const flashUri = currentGame.Uri;
 
     return (
       <PageContainer backgroundColor="#324851">

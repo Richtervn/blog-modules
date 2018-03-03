@@ -59,9 +59,9 @@ class Tools extends Component {
                   isActive={toolDetail._id === tool._id}
                   key={tool._id}
                   name={tool.Name}
-                  iconUrl={tool.IconUrl.replace('./public', window.appConfig.API_HOST)}
+                  iconUrl={tool.IconUrl}
                   rating={tool.Rating}
-                  archiveUrl={tool.ArchiveUrl.replace('./public', window.appConfig.API_HOST)}
+                  archiveUrl={tool.ArchiveUrl}
                   onClick={() => {
                     this.setState({ isDetailLoading: true });
                     onGetToolDetail(tool._id);

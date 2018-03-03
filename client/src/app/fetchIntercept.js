@@ -1,9 +1,10 @@
-import Promise from 'bluebird';
+import appConfig from './config';
 import fetchIntercept from 'fetch-intercept';
+import { dataTransform } from 'utils';
 
 fetchIntercept.register({
-  request: function(url, config) {
-    url = window.appConfig.API_HOST + url;
+  request(url, config) {
+    url = appConfig.API_HOST + url;
     if (config && config.method === 'POST') {
       config.headers = { 'Content-Type': 'application/json; charset=utf-8' };
     }
@@ -19,19 +20,8 @@ fetchIntercept.register({
     return [url, config];
   },
 
-  requestError: function(error) {
-    console.log('requestError');
-    console.log(error);
-    return Promise.reject(error);
-  },
-
-  response: function(response) {
-    return response;
-  },
-
-  responseError: function(error) {
-    console.log('responseError');
-    console.log(error);
-    return Promise.reject(error);
+  response: async response => {
+    const respData = await dataTransform(response, appConfig.API_HOST);
+    return respData;
   }
 });

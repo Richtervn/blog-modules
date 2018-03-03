@@ -1,4 +1,3 @@
-import './DiabloII.css';
 import _ from 'underscore';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
@@ -10,6 +9,11 @@ import TopNavBar from './TopNavBar.container';
 import { Mods } from './Mods';
 import { Tools } from './Tools';
 import { Characters } from './Characters';
+import { SurvivalKits } from './SurvivalKits';
+<<<<<<< HEAD
+import { Extra } from './Extra';
+=======
+>>>>>>> 752683a55f60625610abd7a6842170bf47787fd4
 
 const availableTabs = ['mods', 'characters', 'survival_kits', 'tools', 'extra'];
 
@@ -30,6 +34,9 @@ class DiabloII extends Component {
     if (!match.params.tab) {
       return <Redirect to="/diablo_ii/mods" />;
     }
+    if (!_.contains(availableTabs, match.params.tab)) {
+      return <Redirect to="/404" />;
+    }
     return (
       <PageContainer backgroundUrl="/images/backgrounds/doom-castle.jpg" opacity={6}>
         <div className="container-fluid">
@@ -37,6 +44,11 @@ class DiabloII extends Component {
           {activeTab === 'Mods' && <Mods />}
           {activeTab === 'Tools' && <Tools />}
           {activeTab === 'Characters' && <Characters />}
+          {activeTab === 'Survival Kits' && <SurvivalKits />}
+<<<<<<< HEAD
+          {activeTab === 'Extra' && <Extra />}
+=======
+>>>>>>> 752683a55f60625610abd7a6842170bf47787fd4
         </div>
       </PageContainer>
     );

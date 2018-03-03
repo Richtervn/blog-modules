@@ -1,0 +1,19 @@
+.left-png-card-trans {
+  width: 100%;
+  margin: 0 10px 10px 0;
+  display: flex;
+  border: solid 1px rgba(255, 255, 255, 0.35);
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+.left-png-card-trans > .image-wrapper > img {
+  width: 100px;
+  height: 205px;
+}
+
+.left-png-card-trans > .content {
+  flex: 1;
+  position: relative;
+}

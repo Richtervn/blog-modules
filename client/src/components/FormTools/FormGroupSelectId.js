@@ -9,7 +9,7 @@ export default ({ name, label, placeholder, options, onChange, value }) => {
       <div className="col-sm-9">
         <select className="form-control form-control-sm" onChange={onChange} name={name} value={value || 'default'}>
           {placeholder && (
-            <option disable value="default" hidden>
+            <option value="default" hidden>
               {placeholder}
             </option>
           )}

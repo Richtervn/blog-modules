@@ -5,7 +5,12 @@
   position: relative;
 }
 
+.game-guide-detail .btn:hover {
+  background-color: white;
+}
+
 .game-guide-detail > .game-guide-feature {
+  display: flex;
   position: fixed;
   top: 52px;
   right: 10px;
@@ -14,4 +19,16 @@
 .game-guide-feature > .btn {
   padding: 0;
   width: 25px;
+  margin-right: 5px;
+}
+
+.game-guide-feature > .btn.long {
+  width: 50px;
+}
+
+.game-guide-feature > .title {
+  padding-right: 40px;
+  font-weight: 500;
+  font-size: 18px;
+  font-style: italic;
 }

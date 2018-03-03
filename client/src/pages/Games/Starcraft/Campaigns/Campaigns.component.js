@@ -53,7 +53,7 @@ class Campaigns extends Component {
                 key={campaign._id}
                 rating={campaign.Rating}
                 label={campaign.Name}
-                uri={campaign.Uri ? campaign.Uri.replace('./public', window.appConfig.API_HOST) : null}
+                uri={campaign.Uri ? campaign.Uri : null}
                 matchUp={campaign.Matchup}
                 version={campaign.Version}
                 isActive={campaignDetail._id === campaign._id}

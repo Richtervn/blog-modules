@@ -35,7 +35,11 @@ import {
   DiabloIIModForm,
   DiabloIIDeleteModConfirm,
   DiabloIIToolForm,
-  DiabloIIDeleteToolConfirm
+  DiabloIIDeleteToolConfirm,
+  DiabloIICharacterForm,
+  DiabloIIDeleteCharacterConfirm,
+  DiabloIISurvivalKitForm,
+  DiabloIIDeleteSurvivalKitConfirm
 } from 'pages/Games/DiabloII';
 
 export default ({ name }) => {
@@ -88,6 +92,12 @@ export default ({ name }) => {
       {name === 'AddDiabloIITool' && <DiabloIIToolForm />}
       {name === 'EditDiabloIITool' && <DiabloIIToolForm edit />}
       {name === 'DeleteDiabloIITool' && <DiabloIIDeleteToolConfirm />}
+      {name === 'AddDiabloIICharacter' && <DiabloIICharacterForm />}
+      {name === 'EditDiabloIICharacter' && <DiabloIICharacterForm edit />}
+      {name === 'DeleteDiabloIICharacter' && <DiabloIIDeleteCharacterConfirm />}
+      {name === 'AddDiabloIISurvivalKit' && <DiabloIISurvivalKitForm />}
+      {name === 'EditDiabloIISurvivalKit' && <DiabloIISurvivalKitForm edit />}
+      {name === 'DeleteDiabloIISurvivalKit' && <DiabloIIDeleteSurvivalKitConfirm />}
     </Modal>
   );
 };
@@ -148,46 +158,6 @@ export default ({ name }) => {
 //     type: 'Account'
 //   },
 
-
-
-//   AddD2SurvivalKit: {
-//     file: null,
-//     Name: '',
-//     Type: 'Character',
-//     Description: '',
-//     Overview: [''],
-//     Rating: 0
-//   },
-
-//   AddD2Character: {
-//     file: '',
-//     Name: '',
-//     Title: 'No Title',
-//     Class: 'Amazon',
-//     Level: 0,
-//     ModId: '',
-//     Overview: [''],
-//     Rating: 0,
-//     IsCount: true
-//   },
-//   EditD2Character: null
-// },
-
-// const makeIcon = (name, ext) => {
-//   const iconPath = 'app_modules/images/icons/';
-//   let iconLink = `${iconPath}${name}`;
-//   iconLink += ext ? ext : '.png';
-//   return iconLink;
-// };
-
-// export default id => {
-//   let modalDisplay = {
-//     header: {
-//       icon: '',
-//       label: ''
-//     },
-//     body: () => null
-//   };
 //   switch (id) {
 
 //     case 'addYgoModModal':
@@ -231,6 +201,7 @@ export default ({ name }) => {
 //         header: { icon: makeIcon('mulogo'), label: 'Edit Mu Tool' },
 //         body: FormEditMuonlineTool
 //       };
+
 //     case 'addDs9799VipSystemModal':
 //       return {
 //         header: { icon: makeIcon('mulogo'), label: 'Add Vip System' },
@@ -241,47 +212,3 @@ export default ({ name }) => {
 //         header: { icon: makeIcon('mulogo'), label: 'Edit Vip System' },
 //         body: FormEditDs9799VipSystem
 //       };
-//     case 'addD2ModModal':
-//       return {
-//         header: { icon: makeIcon('diablo_2'), label: 'Add Diablo II Mod' },
-//         body: FormAddD2Mod
-//       };
-//     case 'addD2ToolModal':
-//       return {
-//         header: { icon: makeIcon('diablo_2'), label: 'Add Diablo II Tool' },
-//         body: FormAddD2Tool
-//       };
-//     case 'addD2SurvivalKitModal':
-//       return {
-//         header: { icon: makeIcon('diablo_2'), label: 'Add Diablo II Survival Kit' },
-//         body: FormAddD2SurvivalKit
-//       };
-//     case 'addD2CharacterModal':
-//       return {
-//         header: { icon: makeIcon('diablo_2'), label: 'Add Diablo II Character' },
-//         body: FormAddD2Character
-//       };
-//     case 'editD2ModModal':
-//       return {
-//         header: { icon: makeIcon('diablo_2'), label: 'Edit Diablo II Mod' },
-//         body: FormEditD2Mod
-//       };
-//     case 'editD2CharacterModal':
-//       return {
-//         header: { icon: makeIcon('diablo_2'), label: 'Edit Diablo II Character' },
-//         body: FormEditD2Character
-//       };
-//     case 'editD2SurvivalKitModal':
-//       return {
-//         header: { icon: makeIcon('diablo_2'), label: 'Edit Diablo II Survival Kit' },
-//         body: FormEditD2SurvivalKit
-//       };
-//     case 'editD2ToolModal':
-//       return {
-//         header: { icon: makeIcon('diablo_2'), label: 'Edit Diablo II Tool' },
-//         body: FormEditD2Tool
-//       };
-//     default:
-//       return modalDisplay;
-//   }
-// };

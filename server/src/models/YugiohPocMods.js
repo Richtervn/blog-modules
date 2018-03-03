@@ -5,7 +5,7 @@ const YugiohPocMods = new Schema({
   Icon: String,
   Image: String,
   Credits: [String],
-  Rating: String,
+  Rating: Number,
   Description: String,
   Introduction: String,
 })

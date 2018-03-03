@@ -1,32 +1,26 @@
 import './SideNav.css';
-import React, { Component } from 'react';
+import React from 'react';
 
-class SideNav extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeTools: 'Search',
-      search: '',
-      sortKey: '',
-      sortOption: ''
-    };
-    this.handleSort = this.handleSort.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
-  }
+import { BasicSideBar } from 'components/SideBars';
 
+<<<<<<< HEAD
+export default props => <BasicSideBar {...props} customClass="d2-side-nav" />;
+=======
   handleSort(option) {
     const nextState = { ...this.state };
     if (this.state.sortKey !== option) {
       nextState.sortKey = option;
-    }
-    if (this.state.sortOption === '') {
       nextState.sortOption = 'ASC';
-    }
-    if (this.state.sortOption === 'ASC') {
-      nextState.sortOption = 'DESC';
-    }
-    if (this.state.sortOption === 'DESC') {
-      nextState.sortOption = '';
+    } else {
+      if (this.state.sortOption === '') {
+        nextState.sortOption = 'ASC';
+      }
+      if (this.state.sortOption === 'ASC') {
+        nextState.sortOption = 'DESC';
+      }
+      if (this.state.sortOption === 'DESC') {
+        nextState.sortOption = '';
+      }
     }
     this.props.onSort(nextState.sortKey, nextState.sortOption);
     this.setState(nextState);
@@ -70,7 +64,12 @@ class SideNav extends Component {
                     key={i}
                     onClick={() => this.handleSort(option)}>
                     {option}
-                    {sortOption && sortKey === option && <span className={`fa fa-sort-${sortOption.toLowerCase()}`} />}
+                    {sortOption &&
+                      sortKey === option && (
+                        <span>
+                          &nbsp;<i className={`fa fa-sort-${sortOption.toLowerCase()}`} />
+                        </span>
+                      )}
                   </button>
                 ))}
               </div>
@@ -84,3 +83,4 @@ class SideNav extends Component {
 }
 
 export default SideNav;
+>>>>>>> 752683a55f60625610abd7a6842170bf47787fd4

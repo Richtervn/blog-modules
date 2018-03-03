@@ -20,6 +20,7 @@ import extraSkill from './services/extraSkill';
 import editExtra from './services/editExtra';
 import searchMods from './services/searchMods';
 import searchTools from './services/searchTools';
+import searchCharacters from './services/searchCharacters';
 
 export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories) => {
   const router = express.Router();
@@ -53,6 +54,14 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/characters',
     wrap(async (req, res, next) => {
       const characters = await commonService.getAll(DiabloIICharacters);
+      res.send(characters);
+    })
+  );
+
+  router.get(
+    '/search_characters',
+    wrap(async (req, res, next) => {
+      const characters = await searchCharacters(DiabloIICharacters, req.query);
       res.send(characters);
     })
   );
@@ -234,16 +243,19 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     })
   );
 
-  router.get('/test', wrap(async(req, res, next) => {
-    const tools = await DiabloIITools.find();
-    await Promise.map(tools, tool => {
-      tool.HTML = tool.Description;
-      tool.CSS = '';
-      tool.Description = undefined;
-      return tool.save();
+  router.get(
+    '/test',
+    wrap(async (req, res, next) => {
+      const tools = await DiabloIITools.find();
+      await Promise.map(tools, tool => {
+        tool.HTML = tool.Description;
+        tool.CSS = '';
+        tool.Description = undefined;
+        return tool.save();
+      });
+      res.sendStatus(200);
     })
-    res.sendStatus(200);
-  }))
+  );
 
   return router;
 };

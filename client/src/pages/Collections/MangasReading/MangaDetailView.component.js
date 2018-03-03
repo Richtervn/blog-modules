@@ -24,7 +24,7 @@ export default ({
       <div className="text-center">
         <h4>{manga.Name}</h4>
         <img
-          src={manga.CoverUri ? manga.CoverUri.replace('./public', window.appConfig.API_HOST) : null}
+          src={manga.CoverUri ? manga.CoverUri : null}
           alt={`${manga.Name} cover`}
         />
         <br />

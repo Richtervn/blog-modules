@@ -19,7 +19,7 @@ class GameAbout extends Component {
         <div className="intro-col">
           <IntroductionCard
             info={aboutContent.Info || {}}
-            imgUrl={gameInfo.CoverUri.replace('./public', window.appConfig.API_HOST)}
+            imgUrl={gameInfo.CoverUri}
             onSave={info => onEditAboutContent({ GameId: gameInfo._id, Info: info })}
           />
         </div>

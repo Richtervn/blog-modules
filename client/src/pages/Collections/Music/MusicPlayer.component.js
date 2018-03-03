@@ -22,10 +22,10 @@ class MusicPlayer extends Component {
     if (!playList || playList.length < 1) {
       return null;
     }
-    const url = playList[currentSongIndex].Url.replace('./public', window.appConfig.API_HOST);
+
     return (
       <ReactPlayer
-        url={url}
+        url={playList[currentSongIndex].Url}
         playing={isPlaying}
         onProgress={obj => onSetPlayedTime(obj.playedSeconds)}
         onDuration={duration => onSetDuration(duration)}

@@ -23,7 +23,7 @@ class EndedManga extends Component {
         <div className="row ended-mangas-row">
           {mangas.length < 1 && <div className="mangas-list-start-view">Start by adding some reading mangas</div>}
           {mangas.map((manga, i) => (
-            <LeftImageCard key={i} col={3} imgUrl={manga.CoverUri.replace('./public', window.appConfig.API_HOST)} nohover>
+            <LeftImageCard key={i} col={3} imgUrl={manga.CoverUri} nohover>
               <div className="text-center">
                 <strong>{manga.Name}</strong>
                 <br />

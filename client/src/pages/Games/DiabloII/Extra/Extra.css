@@ -1,0 +1,150 @@
+.d2-extra-board {
+  margin-top: 10px;
+  border: solid 1px rgba(255, 255, 255, 0.35);
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 100%;
+}
+
+#d2e-info,
+#d2e-ratio,
+#d2e-extra {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+#d2e-rule,
+#d2e-rule-edit {
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+#d2e-info .info {
+  margin: auto;
+  width: fit-content;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#d2e-info .info .point {
+  color: #00cc00;
+}
+
+#d2e-info .info .gold {
+  color: #ffc107;
+}
+
+#d2e-extra {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#d2e-extra .input-level {
+  display: flex;
+}
+
+#d2e-extra .input-level .btn {
+  margin-left: 5px;
+  font-weight: 600;
+}
+
+#d2e-extra .input-label {
+  padding-top: 20px;
+}
+
+#d2e-extra .input-number {
+  display: flex;
+}
+
+#d2e-extra .input-number .form-control {
+  margin: 0px 5px;
+}
+
+#d2e-ratio {
+  display: flex;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  align-items: center;
+}
+
+#d2e-ratio .links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+#d2e-ratio .ratio-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+#d2e-ratio .ratio-input label {
+  font-weight: 600;
+  width: 100px;
+  padding-right: 10px;
+}
+
+#d2e-ratio .ratio-input .form-control {
+  width: 80px;
+  line-height: 1;
+}
+
+#d2e-ratio .feature {
+  display: flex;
+  justify-content: space-between;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+#d2e-ratio .feature .btn {
+  flex: 1;
+  margin: 10px 5px;
+  padding: 0;
+}
+
+#d2e-rule h5 {
+  margin-bottom: 0;
+}
+
+#d2e-rule .subtitle {
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+#d2e-rule-edit .input-rule {
+  display: flex;
+  align-items: center;
+}
+
+#d2e-rule-edit label {
+  flex: 1;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+#d2e-rule-edit .form-control {
+  width: 150px;
+  line-height: 1;
+  height: 32px;
+  margin-bottom: 2px;
+}
+
+#d2e-rule-edit > .input-rule:first-child {
+  margin-top: 1px;
+}
+
+#d2e-rule-edit .feature {
+  display: flex;
+  justify-content: space-between;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+#d2e-rule-edit .feature .btn {
+  flex: 1;
+  margin: 10px 5px;
+}

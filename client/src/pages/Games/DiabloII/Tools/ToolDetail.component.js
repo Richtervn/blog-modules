@@ -23,7 +23,7 @@ const ToolDetail = ({ tool, history }) => (
           <StarRating value={tool.Rating} name={tool.Name} />
         </div>
         <div className="icon">
-          <img src={tool.IconUrl.replace('./public', window.appConfig.API_HOST)} alt={tool.Name} />
+          <img src={tool.IconUrl} alt={tool.Name} />
         </div>
       </div>
       <div className="text-center">

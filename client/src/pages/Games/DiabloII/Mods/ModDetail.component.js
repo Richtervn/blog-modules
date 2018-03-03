@@ -24,7 +24,7 @@ const ModDetail = ({ mod, history }) => (
           <StarRating value={mod.Rating} name={mod.Name} />
         </div>
         <div className="icon">
-          <img src={mod.IconUrl.replace('./public', window.appConfig.API_HOST)} alt={mod.Name} />
+          <img src={mod.IconUrl} alt={mod.Name} />
         </div>
         <div className="version">LOD Version: {mod.Version}</div>
       </div>

@@ -1,0 +1,12 @@
+.ygo-mod-card {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.ygo-mod-card:hover {
+  background-color: rgba(6, 189, 255, 0.2)
+}
+
+.ygo-mod-card.active {
+  background-color: rgba(6, 189, 255, 0.5)
+}

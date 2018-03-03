@@ -8,6 +8,7 @@ export default ({ name, label, placeholder, options, onChange, value }) => {
       </label>
       <div className="col-sm-9">
         <select className="form-control form-control-sm" onChange={onChange} name={name} value={value}>
+          {placeholder && <option value="default" hidden>{placeholder}</option>}
           {options.map((opt, i) => (
             <option key={i} value={opt}>
               {opt}

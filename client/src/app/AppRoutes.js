@@ -16,6 +16,7 @@ import { IconChooser } from 'pages/Tools/IconChooser';
 
 import { Starcraft } from 'pages/Games/Starcraft';
 import { DiabloII } from 'pages/Games/DiabloII';
+import { YugiohPoc } from 'pages/Games/YugiohPoc';
 
 import { EndedManga } from 'pages/Archived/EndedManga';
 import { AppMenu } from 'pages/Setting/AppMenu';
@@ -35,6 +36,7 @@ const AppRoutes = () => (
       <Route exact path="/music" component={Music} />
       <Route exact path="/app_menu" component={AppMenu} />
       <Route exact path="/guideline" component={Guideline} />
+      <Route exact path="/yugioh!_poc" component={YugiohPoc} />
       <Route path="/diablo_ii/:tab?" component={DiabloII} />
       <Route path="/darksteam_97d99i/:tab?/:page?" component={Darksteam97d99i} />
       <Route path="/content_mirror/:table?/:record?" component={ContentMirror} />
