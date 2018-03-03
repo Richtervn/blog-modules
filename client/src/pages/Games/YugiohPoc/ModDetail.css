@@ -13,15 +13,15 @@
 }
 
 #ygo-mod-detail > .label,
-.name,
-.rating,
-.image-wrapper {
+#ygo-mod-detail > .name,
+#ygo-mod-detail > .rating,
+#ygo-mod-detail > .image-wrapper {
   text-align: center;
 }
 
 #ygo-mod-detail > .label,
-.name,
-.rating {
+#ygo-mod-detail > .name,
+#ygo-mod-detail > .rating {
   font-weight: 700;
   font-size: 24px;
 }
@@ -44,7 +44,7 @@
 }
 
 #ygo-mod-detail > .introduction,
-.description {
+#ygo-mod-detail > .description {
   padding-top: 20px;
 }
 
@@ -63,8 +63,15 @@
   background-color: rgba(34, 111, 43, 0.4);
 }
 
+#ygo-mod-detail > .deck > .rating {
+  font-size: 24px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
 #ygo-mod-detail > .deck > .image-wrapper {
-  padding-bottom: 20px;
+  text-align: center;
+  padding-bottom: 30px;
 }
 
 #ygo-mod-detail > .deck > .compare {

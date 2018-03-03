@@ -1,5 +1,4 @@
 import './SurvivalKits.css';
-import _ from 'underscore';
 import React, { Component } from 'react';
 import StarRating from 'react-star-rating-component';
 
