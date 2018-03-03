@@ -1,8 +1,5 @@
 import './SurvivalKits.css';
-<<<<<<< HEAD
-=======
 import _ from 'underscore';
->>>>>>> 752683a55f60625610abd7a6842170bf47787fd4
 import React, { Component } from 'react';
 import StarRating from 'react-star-rating-component';
 
@@ -157,11 +154,7 @@ class SurvivalKits extends Component {
                 <div className="feature">
                   <a
                     className="btn"
-<<<<<<< HEAD
                     href={`${survivalKit.FileUrl}`}
-=======
-                    href={`${survivalKit.FileUrl.replace('./public', window.appConfig.API_HOST)}`}
->>>>>>> 752683a55f60625610abd7a6842170bf47787fd4
                     download>
                     <i className="fa fa-download" />
                   </a>

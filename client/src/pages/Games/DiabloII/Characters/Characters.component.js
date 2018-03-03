@@ -7,11 +7,7 @@ import { PageLoader } from 'common/Loaders';
 import { openModal } from 'common/Modal';
 import { sortList } from 'helpers';
 
-<<<<<<< HEAD
 import { LeftPngCardTrans } from 'components/Cards';
-=======
-import { LeftImageCardTrans } from 'components/Cards';
->>>>>>> 752683a55f60625610abd7a6842170bf47787fd4
 
 class Characters extends Component {
   constructor(props) {
@@ -177,11 +173,7 @@ class Characters extends Component {
         </div>
         <div className="row d2-character-list">
           {sortedCharacters.map(character => (
-<<<<<<< HEAD
             <LeftPngCardTrans
-=======
-            <LeftImageCardTrans
->>>>>>> 752683a55f60625610abd7a6842170bf47787fd4
               key={character._id}
               col={4}
               imgUrl={`/images/icons/d2${character.Class.toLowerCase()}.gif`}>
@@ -196,14 +188,7 @@ class Characters extends Component {
                 <ul className="overview">{character.Overview.map((text, i) => <li key={i}>{text}</li>)}</ul>
                 <div className="mod">Mod : {this.getCharacterMod(character.ModId)}</div>
                 <div className="feature">
-                  <a
-                    className="btn"
-<<<<<<< HEAD
-                    href={`${character.FileUrl}`}
-=======
-                    href={`${character.FileUrl.replace('./public', window.appConfig.API_HOST)}`}
->>>>>>> 752683a55f60625610abd7a6842170bf47787fd4
-                    download>
+                  <a className="btn" href={`${character.FileUrl}`} download>
                     <i className="fa fa-download" />
                   </a>
                   <button
@@ -224,11 +209,7 @@ class Characters extends Component {
                   </button>
                 </div>
               </div>
-<<<<<<< HEAD
             </LeftPngCardTrans>
-=======
-            </LeftImageCardTrans>
->>>>>>> 752683a55f60625610abd7a6842170bf47787fd4
           ))}
         </div>
       </div>

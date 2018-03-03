@@ -10,10 +10,7 @@ import { Mods } from './Mods';
 import { Tools } from './Tools';
 import { Characters } from './Characters';
 import { SurvivalKits } from './SurvivalKits';
-<<<<<<< HEAD
 import { Extra } from './Extra';
-=======
->>>>>>> 752683a55f60625610abd7a6842170bf47787fd4
 
 const availableTabs = ['mods', 'characters', 'survival_kits', 'tools', 'extra'];
 
@@ -45,10 +42,7 @@ class DiabloII extends Component {
           {activeTab === 'Tools' && <Tools />}
           {activeTab === 'Characters' && <Characters />}
           {activeTab === 'Survival Kits' && <SurvivalKits />}
-<<<<<<< HEAD
           {activeTab === 'Extra' && <Extra />}
-=======
->>>>>>> 752683a55f60625610abd7a6842170bf47787fd4
         </div>
       </PageContainer>
     );

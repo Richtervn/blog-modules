@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component } from 'react';
 
 import { ModalHeader, ModalFooter } from 'components/Modal';
@@ -123,27 +122,3 @@ class DiabloIISurvivalKitForm extends Component {
 }
 
 export default DiabloIISurvivalKitForm;
-=======
-//   AddD2SurvivalKit: {
-//     file: null,
-//     Name: '',
-//     Type: 'Character',
-//     Description: '',
-//     Overview: [''],
-//     Rating: 0
-//   },
-
-// File:
-// Chọn tệp
-// Name:
-
-// Type:
-
-// Description:
-
-// Overview:
-
-
-//   Add Overview
-// Rating:
->>>>>>> 752683a55f60625610abd7a6842170bf47787fd4
