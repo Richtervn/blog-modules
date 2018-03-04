@@ -37,8 +37,11 @@ class StarcraftCampaignForm extends Component {
   }
 
   handleSubmit() {
-    this.props.edit ? this.props.onEditCampaign(this.state.value) : this.props.onAddCampaign(this.state.value);
-    if (!this.props.edit) {
+    const { edit, onEditCampaign, onAddCampaign, campaign } = this.props;
+    if (edit) {
+      onEditCampaign({ ...this.state.value, _id: campaign._id });
+    } else {
+      onAddCampaign(this.state.value);
       this.setState({ value: this.initStateValue({ ...initialValue }) });
     }
     hideModal();

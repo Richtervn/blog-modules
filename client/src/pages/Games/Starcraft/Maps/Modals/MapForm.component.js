@@ -37,8 +37,11 @@ class StarcraftMapForm extends Component {
   }
 
   handleSubmit() {
-    this.props.edit ? this.props.onEditMap(this.state.value) : this.props.onAddMap(this.state.value);
-    if (!this.props.edit) {
+    const { edit, onEditMap, onAddMap, map } = this.props;
+    if (edit) {
+      onEditMap({ ...this.state.value, _id: map._id });
+    } else {
+      onAddMap(this.state.value);
       this.setState({ value: this.initStateValue({ ...initialValue }) });
     }
     hideModal();

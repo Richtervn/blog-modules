@@ -1,6 +1,8 @@
 import './DeckList.css';
 import React from 'react';
 
+import { openModal } from 'common/Modal';
+
 export default ({ decks }) => (
   <div className="col-3">
     <div className="row">
@@ -16,7 +18,9 @@ export default ({ decks }) => (
               </li>
             ))}
           </ul>
-          <button className="btn">Insert deck</button>
+          <button className="btn" onClick={() => openModal('AddYugiohPocDeck')}>
+            Insert deck
+          </button>
         </div>
       </div>
     </div>

@@ -55,8 +55,11 @@ class DiabloIICharacterForm extends Component {
   }
 
   handleSubmit() {
-    this.props.edit ? this.props.onEditCharacter(this.state.value) : this.props.onAddCharacter(this.state.value);
-    if (!this.props.edit) {
+    const { edit, onEditCharacter, onAddCharacter, character } = this.props;
+    if (edit) {
+      onEditCharacter({ ...this.state.value, _id: character._id });
+    } else {
+      onAddCharacter(this.state.value);
       this.setState({ value: this.initStateValue({ ...initialValue }) });
     }
     hideModal();

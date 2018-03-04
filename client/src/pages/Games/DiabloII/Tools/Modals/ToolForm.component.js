@@ -37,8 +37,11 @@ class DiabloIIToolForm extends Component {
   }
 
   handleSubmit() {
-    this.props.edit ? this.props.onEditTool(this.state.value) : this.props.onAddTool(this.state.value);
-    if (!this.props.edit) {
+    const { tool, edit, onEditTool, onAddTool } = this.props;
+    if (edit) {
+      onEditTool({ ...this.state.value, _id: tool._id });
+    } else {
+      onAddTool(this.state.value);
       this.setState({ value: this.initStateValue({ ...initialValue }) });
     }
     hideModal();

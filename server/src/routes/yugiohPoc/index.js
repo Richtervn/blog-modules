@@ -56,6 +56,14 @@ export default (YugiohPocMods, YugiohPocDecks, factories) => {
   );
 
   router.get(
+    '/search_mod',
+    wrap(async (req, res, next) => {
+      const mods = await YugiohPocMods.find({}, { Name: { $regex: query.Name } });
+      res.send(mds);
+    })
+  );
+
+  router.get(
     '/deck_list/:modId',
     wrap(async (req, res, next) => {
       const decks = await commonService.getByParam(YugiohPocDecks, 'ModId', req.params.modId);

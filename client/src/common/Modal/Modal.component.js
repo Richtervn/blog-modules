@@ -42,6 +42,13 @@ import {
   DiabloIIDeleteSurvivalKitConfirm
 } from 'pages/Games/DiabloII';
 
+import {
+  YugiohPocDeckForm,
+  YugiohPocModForm,
+  YugiohPocDeleteDeckConfirm,
+  YugiohPocDeleteModConfirm
+} from 'pages/Games/YugiohPoc';
+
 export default ({ name }) => {
   let additionProps = {};
   switch (name) {
@@ -61,13 +68,16 @@ export default ({ name }) => {
       {name === 'FlashGame' && <FlashGamesForm />}
       {name === 'EditFlashGame' && <FlashGamesForm edit />}
       {name === 'FlashGameGuide' && <FlashGamesGuide />}
+
       {name === 'AddProject' && <ProjectForm />}
       {name === 'EditProject' && <ProjectForm edit />}
       {name === 'DeleteProject' && <ProjectDeleteConfirm />}
       {name === 'ProjectSetting' && <ProjectSetting />}
       {name === 'AddProjectItem' && <ProjectItemForm />}
       {name === 'ProjectItemDetail' && <ProjectItemDetail />}
+
       {name === 'AddSong' && <MusicForm />}
+
       {name === 'AddGamingHistory' && <GamingHistoryForm />}
       {name === 'EditGamingHistory' && <GamingHistoryForm edit />}
       {name === 'DeleteGamingHistory' && <GamingHistoryDeleteConfirm />}
@@ -77,6 +87,7 @@ export default ({ name }) => {
       {name === 'AddGamingHistoryOverview' && <GamingHistoryOverviewForm />}
       {name === 'EditGamingHistoryOverview' && <GamingHistoryOverviewForm edit />}
       {name === 'DeleteGamingHistoryOverview' && <GamingHistoryOverviewDeleteConfirm />}
+
       {name === 'AddStarcraftMap' && <StarcraftMapForm />}
       {name === 'EditStarcraftMap' && <StarcraftMapForm edit />}
       {name === 'DeleteStarcraftMap' && <StarcraftDeleteMapConfirm />}
@@ -86,6 +97,7 @@ export default ({ name }) => {
       {name === 'AddStarcraftMod' && <StarcraftModForm />}
       {name === 'EditStarcraftMod' && <StarcraftModForm edit />}
       {name === 'DeleteStarcraftMod' && <StarcraftDeleteModConfirm />}
+
       {name === 'AddDiabloIIMod' && <DiabloIIModForm />}
       {name === 'EditDiabloIIMod' && <DiabloIIModForm edit />}
       {name === 'DeleteDiabloIIMod' && <DiabloIIDeleteModConfirm />}
@@ -98,39 +110,19 @@ export default ({ name }) => {
       {name === 'AddDiabloIISurvivalKit' && <DiabloIISurvivalKitForm />}
       {name === 'EditDiabloIISurvivalKit' && <DiabloIISurvivalKitForm edit />}
       {name === 'DeleteDiabloIISurvivalKit' && <DiabloIIDeleteSurvivalKitConfirm />}
+
+      {name === 'AddYugiohPocMod' && <YugiohPocModForm />}
+      {name === 'EditYugiohPocMod' && <YugiohPocModForm edit />}
+      {name === 'DeleteYugiohPocMod' && <YugiohPocDeleteModConfirm />}
+      {name === 'AddYugiohPocDeck' && <YugiohPocDeckForm />}
+      {name === 'EditYugiohPocDeck' && <YugiohPocDeckForm edit />}
+      {name === 'DeleteYugiohPocDeck' && <YugiohPocDeleteDeckConfirm />}
     </Modal>
   );
 };
 
 // state = {
 
-//   AddYugiohMod: {
-//     Name: '',
-//     Icon: null,
-//     Image: null,
-//     Credits: [''],
-//     Rating: 0,
-//     Description: '',
-//     Introduction: ''
-//   },
-//   AddYugiohDeck: {
-//     ModId: '',
-//     Name: '',
-//     Image: null,
-//     Rating: 0,
-//     Description: '',
-//     Pros: [''],
-//     Cons: [''],
-//     Winrate: 0
-//   },
-
-//   AddStarcraftMod: {
-//     Name: '',
-//     Rating: 0,
-//     Description: '',
-//     Introduction: '',
-//     Version: ''
-//   },
 
 //   AddMuonlineTool: {
 //     Credits: [''],
@@ -160,26 +152,6 @@ export default ({ name }) => {
 
 //   switch (id) {
 
-//     case 'addYgoModModal':
-//       return {
-//         header: { icon: makeIcon('gamepad'), label: 'Add New Yugioh Mod' },
-//         body: FormAddYugiohMod
-//       };
-//     case 'addYgoDeckModal':
-//       return {
-//         header: { icon: makeIcon('gamepad'), label: 'Add New Yugioh Deck' },
-//         body: FormAddYugiohDeck
-//       };
-//     case 'editYgoModModal':
-//       return {
-//         header: { icon: makeIcon('gamepad'), label: 'Edit Yugioh Mod' },
-//         body: FormEditYugiohMod
-//       };
-//     case 'editYgoDeckModal':
-//       return {
-//         header: { icon: makeIcon('gamepad'), label: 'Edit Yugioh Deck' },
-//         body: FormEditYugiohDeck
-//       };
 
 //     case 'addMuonlineVersionModal':
 //       return {

@@ -41,8 +41,11 @@ class DiabloIISurvivalKitForm extends Component {
   }
 
   handleSubmit() {
-    this.props.edit ? this.props.onEditSurvivalKit(this.state.value) : this.props.onAddSurvivalKit(this.state.value);
-    if (!this.props.edit) {
+    const { survivalKit, edit, onEditSurvivalKit, onAddSurvivalKit } = this.props;
+    if (edit) {
+      onEditSurvivalKit({ ...this.state.value, _id: survivalKit._id });
+    } else {
+      onAddSurvivalKit(this.state.value);
       this.setState({ value: this.initStateValue({ ...initialValue }) });
     }
     hideModal();

@@ -33,8 +33,11 @@ class StarcraftModForm extends Component {
   }
 
   handleSubmit() {
-    this.props.edit ? this.props.onEditMod(this.state.value) : this.props.onAddMod(this.state.value);
-    if (!this.props.edit) {
+    const { edit, onEditMod, onAddMod, mod } = this.props;
+    if (edit) {
+      onEditMod({ ...this.state.value, _id: mod._id });
+    } else {
+      onAddMod(this.state.value);
       this.setState({ value: this.initStateValue({ ...initialValue }) });
     }
     hideModal();

@@ -38,3 +38,12 @@
   font-size: 14px;
   background: none;
 }
+
+.ygo-deck-list .btn:hover {
+  color: white;
+  border-color: white;
+}
+
+.ygo-deck-list .deck-index:hover {
+  color: #1995ad;
+}

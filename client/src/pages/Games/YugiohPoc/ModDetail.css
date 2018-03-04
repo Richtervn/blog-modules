@@ -6,10 +6,31 @@
   width: 100%;
   padding: 0 20px;
   border: solid 1px rgba(255, 255, 255, 0.3);
+  position: relative;
 }
 
 #ygo-mod-detail p {
   margin-bottom: 0;
+}
+
+#ygo-mod-detail > .feature {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#ygo-mod-detail .btn {
+  padding: 0;
+  background: none;
+  width: 25px;
+  margin-left: 2px;
+  color: rgba(255, 255, 255, 0.5);
+  border: solid 1px rgba(255, 255, 255, 0.5);
+}
+
+#ygo-mod-detail .btn:hover {
+  color: white;
+  border-color: white;
 }
 
 #ygo-mod-detail > .label,
@@ -26,7 +47,8 @@
   font-size: 24px;
 }
 
-#ygo-mod-detail > .label {
+#ygo-mod-detail > .label,
+#ygo-mod-detail > .credits {
   padding-top: 20px;
 }
 
@@ -61,6 +83,19 @@
   text-align: center;
   margin: 80px -20px 0;
   background-color: rgba(34, 111, 43, 0.4);
+  position: relative;
+}
+
+#ygo-mod-detail > .deck > .label > .winrate {
+  font-weight: 400;
+  font-style: italic;
+  font-size: 16px;
+}
+
+#ygo-mod-detail > .deck > .label > .feature {
+  position: absolute;
+  top: -4px;
+  right: 10px;
 }
 
 #ygo-mod-detail > .deck > .rating {
@@ -78,7 +113,7 @@
   padding-top: 30px;
   display: flex;
   justify-content: space-around;
-  margin-bottom: 40px
+  margin-bottom: 40px;
 }
 
 #ygo-mod-detail > .deck > .compare fieldset {

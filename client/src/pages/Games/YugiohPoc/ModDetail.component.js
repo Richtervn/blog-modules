@@ -2,10 +2,20 @@ import './ModDetail.css';
 import React from 'react';
 import StarRating from 'react-star-rating-component';
 
-export default ({ mod, decks }) => (
+import { openModal } from 'common/Modal';
+
+export default ({ mod, decks, onSetFocusDeck }) => (
   <div className="col-9">
     <div className="row">
       <div id="ygo-mod-detail">
+        <div className="feature">
+          <button className="btn" onClick={() => openModal('EditYugiohPocMod')}>
+            <i className="fa fa-pencil" />
+          </button>
+          <button className="btn" onClick={() => openModal('DeleteYugiohPocMod')}>
+            <i className="fa fa-times" />
+          </button>
+        </div>
         <div className="label">Yugioh! Power of Chaos</div>
         <div className="name">{mod.Name}</div>
         <div className="rating">
@@ -22,12 +32,43 @@ export default ({ mod, decks }) => (
           <strong>Description : </strong>
           <p>{mod.Description}</p>
         </div>
+        {mod.Credits && (
+          <div className="credits">
+            <strong>Credits : </strong>
+            <ul>{mod.Credits.map((text, i) => <li key={i}>{text}</li>)}</ul>
+          </div>
+        )}
         <div className="decks-title">
           <u>Decks Collection</u>
         </div>
         {decks.map(deck => (
           <div className="deck" id={`deck_${deck._id}`} key={deck._id}>
-            <div className="label">{deck.Name}</div>
+            <div className="label">
+              {deck.Name}
+              {deck.Winrate && (
+                <div className="winrate">
+                  &nbsp;(Win rate : <strong>{deck.Winrate}</strong>%)
+                </div>
+              )}
+              <div className="feature">
+                <button
+                  className="btn"
+                  onClick={() => {
+                    onSetFocusDeck(deck._id);
+                    openModal('EditYugiohPocDeck');
+                  }}>
+                  <i className="fa fa-pencil" />
+                </button>
+                <button
+                  className="btn"
+                  onClick={() => {
+                    onSetFocusDeck(deck._id);
+                    openModal('DeleteYugiohPocDeck');
+                  }}>
+                  <i className="fa fa-times" />
+                </button>
+              </div>
+            </div>
             <div className="rating">
               <StarRating value={deck.Rating} name={`deck_${deck._id}`} />
             </div>
@@ -53,8 +94,8 @@ export default ({ mod, decks }) => (
                 <legend>Cons</legend>
                 <ul>
                   {deck.Cons.map((con, i) => (
-                    <div className="alert alert-danger">
-                      <li key={i}>{con}</li>
+                    <div key={i} className="alert alert-danger">
+                      <li>{con}</li>
                     </div>
                   ))}
                 </ul>

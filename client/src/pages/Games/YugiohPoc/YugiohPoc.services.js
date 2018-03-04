@@ -7,6 +7,10 @@ export default {
     const data = commonPostMultiplePart('yugioh_poc/add_mod', formBody);
     return data;
   },
+  searchMod(query) {
+    const data = commonGet('yugioh_poc/search_mod', null, query);
+    return data;
+  },
   addDeck(formBody) {
     const data = commonPostMultiplePart('yugioh_poc/add_deck', formBody);
     return data;
