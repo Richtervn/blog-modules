@@ -9,7 +9,7 @@ export default ({ manga, onSubmit }) => {
     );
   }
   return (
-    <div className="manga-delete-view">
+    <div id="mgr-delete-view">
       <div className="alert alert-danger" role="alert" style={{ margin: 0 }}>
         <p>
           Are you really sure want to delete <strong>{manga.Name}</strong> ?
@@ -17,7 +17,7 @@ export default ({ manga, onSubmit }) => {
         <p className="text-center">
           <img
             src={
-              manga.CoverUri ? manga.CoverUri.replace('./public', 'http://localhost:3000') : null
+              manga.CoverUri ? manga.CoverUri : null
             }
             alt={`${manga.Name} cover`}
           />

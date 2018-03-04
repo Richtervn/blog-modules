@@ -1,49 +1,56 @@
 import './LeftImageCard.css';
 import React from 'react';
+import classNames from 'classnames';
+
+import { AdminButtons } from 'components/Buttons';
 import { withRouter } from 'react-router-dom';
 
-export default withRouter(
-  ({ col, imgUrl, isActive, admin, onClick, onClickEdit, onClickDelete, route, children, nohover, history }) => (
-    <div className={`col-${col}`}>
-      <div className="row">
-        <div
-          className={`left-image-card ${isActive ? 'active' : ''} ${nohover ? 'no-hover' : ''}`}
-          onClick={e => {
+const LeftImageCard = ({
+  col,
+  imgUrl,
+  imgWidth = 120,
+  imgHeight = 180,
+  isActive,
+  admin,
+  onClick,
+  onClickEdit,
+  onClickDelete,
+  route,
+  children,
+  nohover,
+  history,
+  customClass = 'default'
+}) => (
+  <div className={`col-${col}`}>
+    <div className="row">
+      <div
+        className={classNames('left-image-card', { active: isActive, 'no-hover': nohover }, customClass)}
+        onClick={e => {
+          if (!isActive) {
             e.stopPropagation();
             if (route) {
               history.push(route);
             } else {
               onClick();
             }
-          }}>
-          <div className="left-image-card-img">
-            <img src={imgUrl} className="left-image-card-img" alt={imgUrl} />
-          </div>
-          <div className="left-image-card-content">
-            {admin && (
-              <div className="left-image-card-feature">
-                <button
-                  className="btn"
-                  onClick={e => {
-                    e.stopPropagation();
-                    onClickEdit();
-                  }}>
-                  <i className="fa fa-edit" />
-                </button>
-                <button
-                  className="btn"
-                  onClick={e => {
-                    e.stopPropagation();
-                    onClickDelete();
-                  }}>
-                  <i className="fa fa-times" />
-                </button>
-              </div>
-            )}
-            {children}
-          </div>
+          }
+        }}>
+        <div className="image-wrapper">
+          <img src={imgUrl} className="image" alt={imgUrl} width={imgWidth} height={imgHeight} />
+        </div>
+        <div className="content">
+          {admin && (
+            <AdminButtons
+              onClickEdit={onClickEdit}
+              onClickDelete={onClickDelete}
+              customClass="left-image-card-feature"
+            />
+          )}
+          {children}
         </div>
       </div>
     </div>
-  )
+  </div>
 );
+
+export default withRouter(LeftImageCard);

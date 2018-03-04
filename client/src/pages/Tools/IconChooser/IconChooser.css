@@ -44,6 +44,8 @@
   background-color: #e0e0e0;
   width: 100%;
   text-align: center;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .icon-card:hover {

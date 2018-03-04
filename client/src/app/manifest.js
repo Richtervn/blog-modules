@@ -9,6 +9,7 @@ const backgrounds = [
   { name: 'MU Magic Gladior', file: 'mg_mu.jpg' },
   { name: 'SC Terran', file: 'scbw-terran.jpg' },
   { name: 'Starcraft', file: 'starcraft.jpg' },
+  { name: 'Yugioh Cards', file: 'yugioh-cards.jpg' },
   { name: 'Wood Hightlight', file: 'wood_highlight.jpg' }
 ];
 

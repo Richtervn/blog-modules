@@ -1,8 +1,8 @@
-import './Home.css';
+import './Home.theme.css';
 import React, { Component } from 'react';
 
 import PageContainer from 'common/PageContainer';
-import TabNavBar from 'components/TabNavBar';
+import { TabBar } from 'components/TopBars';
 
 import { Projects } from './Projects';
 import { AppDiary } from './AppDiary';
@@ -20,14 +20,7 @@ class Home extends Component {
     return (
       <PageContainer>
         <div className="row">
-          <TabNavBar
-            headers={tabs}
-            activeTab={activeTab}
-            onChangeTab={onSetActiveTab}
-            containerClass="home-tab-nav-container"
-            itemClass="home-tab-nav-item"
-            headerClass="home-tab-nav-header"
-          />
+          <TabBar headers={tabs} activeTab={activeTab} onChangeTab={onSetActiveTab} />
         </div>
         <div className="row">
           {activeTab === 'Projects' && <Projects projectName={params.subPage} />}

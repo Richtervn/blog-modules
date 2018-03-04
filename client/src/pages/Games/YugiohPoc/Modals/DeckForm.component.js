@@ -30,7 +30,6 @@ class YugiohPocDeckForm extends Component {
 
   initStateValue(deck) {
     return {
-      ModId: this.props.modId,
       Image: null,
       Name: deck.Name,
       Description: deck.Description,
@@ -42,11 +41,11 @@ class YugiohPocDeckForm extends Component {
   }
 
   handleSubmit() {
-    const { deck, edit, onEditDeck, onAddDeck } = this.props;
+    const { modId, deck, edit, onEditDeck, onAddDeck } = this.props;
     if (edit) {
-      onEditDeck({ ...this.state.value, _id: deck._id });
+      onEditDeck({ ...this.state.value, _id: deck._id, ModId: modId });
     } else {
-      onAddDeck(this.state.value);
+      onAddDeck({ ...this.state.value, ModId: modId });
       this.setState({ value: this.initStateValue({ ...initialValue }) });
     }
     hideModal();

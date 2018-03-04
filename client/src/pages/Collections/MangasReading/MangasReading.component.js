@@ -1,3 +1,4 @@
+import './MangasReading.theme.css';
 import React, { Component } from 'react';
 
 import { PageLoader } from 'common/Loaders';

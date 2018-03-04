@@ -1,26 +1,15 @@
-.d2-tab {
-  justify-content: center;
+.d2-nav-bar .tab {
   background-color: rgba(41, 41, 41, 0.5);
-  padding: 10px;
-  height: 45px;
-  text-transform: uppercase;
-  cursor: pointer;
-  position: relative;
-  font-weight: 700;
 }
 
-.d2-tab:hover {
+.d2-nav-bar .tab:hover {
   color: #9e9e9e;
 }
 
-.d2-tab.active {
+.d2-nav-bar .tab.active {
   color: white;
 }
 
-.d2-active-bar {
-  position: absolute;
-  bottom: 0;
-  height: 3px;
-  width: 100%;
+.d2-nav-bar .active-bar {
   background-color: #9e9e9e;
 }

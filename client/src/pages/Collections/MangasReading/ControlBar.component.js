@@ -2,7 +2,7 @@ import _ from 'underscore';
 import './ControlBar.css';
 import React, { Component } from 'react';
 
-import ButtonsBar from 'components/ButtonsBar';
+import { ButtonsNavBar } from 'components/Buttons';
 
 import MangaForm from './MangaForm';
 import MangaDetailView from './MangaDetailView.container';
@@ -85,20 +85,20 @@ class ControlBar extends Component {
 
     return (
       <div className="row">
-        <div className="manga-control-bar">
-          <div className="manga-feature-line-container">
+        <div id="mgr-control-bar">
+          <div className="wrapper">
             {activeTool === 'QuickUpdate' && [
               <input
                 key="qu_ip"
                 type="text"
-                className="form-control manga-feature-input"
+                className="form-control quick-update"
                 value={this.state.quickUrl}
                 onChange={this.handleChange}
                 name="quickUrl"
               />,
               <button
                 key="qu_bt"
-                className="btn btn-success manga-feature-button"
+                className="btn btn-success"
                 disabled={!this.state.quickUrl}
                 onClick={() => this.handleQuickUpdate()}>
                 <i className="fa fa-plus-circle" />
@@ -106,8 +106,9 @@ class ControlBar extends Component {
             ]}
             {activeTool === 'Search' && [
               <select
+                id="mgr-search-select"
                 key="s_sl"
-                className="form-control manga-select-search-option"
+                className="form-control"
                 value={search.option}
                 onChange={e => this.handleChange(e, 'searchOption')}>
                 <option value="Name">Name</option>
@@ -115,17 +116,19 @@ class ControlBar extends Component {
                 <option value="Genre">Genre</option>
               </select>,
               <input
+                id="mgr-search-input"
                 key="s_ip"
                 type="text"
-                className="form-control manga-search-input"
+                className="form-control"
                 value={search.value}
                 onChange={e => this.handleChange(e, 'searchValue')}
               />
             ]}
             {activeTool === 'Sort' && [
               <select
+                id="mgr-sort-condition"
                 key="c_sl"
-                className="form-control manga-select-sort-condition"
+                className="form-control"
                 value={this.state.sort.option}
                 onChange={e => this.handleChange(e, 'sortOption')}>
                 <option value="default" hidden>
@@ -135,8 +138,9 @@ class ControlBar extends Component {
                 <option value="Rating">Rating</option>
               </select>,
               <select
+                id="mgr-sort-option"
                 key="d_sl"
-                className="form-control manga-select-sort-direction"
+                className="form-control"
                 value={this.state.sort.value}
                 onChange={e => this.handleChange(e, 'sortValue')}>
                 <option value="ASC">ASC</option>
@@ -144,19 +148,17 @@ class ControlBar extends Component {
               </select>
             ]}
           </div>
-          <div className="card" style={{ margin: '0px 5px 0px 5px' }}>
-            <div className="card-header" style={{ padding: '5px' }}>
-              <ButtonsBar
-                customClass="pull-left"
+          <div className="card">
+            <div className="card-header">
+              <ButtonsNavBar
+                customClass="pull-left mgr-btn-nav-bar"
                 features={tools}
-                featureClass="manga-control-feature-button"
                 activeFeature={activeTool}
                 onChangeFeature={tool => onChangeActiveTool(tool)}
               />
-              <ButtonsBar
-                customClass="pull-right"
+              <ButtonsNavBar
+                customClass="pull-right mgr-btn-nav-bar"
                 features={views}
-                featureClass="manga-control-feature-button"
                 activeFeature={activeView}
                 onChangeFeature={onSetActiveView}
               />

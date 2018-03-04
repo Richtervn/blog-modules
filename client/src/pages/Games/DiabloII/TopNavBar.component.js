@@ -1,6 +1,6 @@
 import './TopNavBar.css';
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { BorderBottomBar } from 'components/TopBars';
 
 const tabs = [
   { name: 'Mods', route: '/diablo_ii/mods' },
@@ -10,27 +10,8 @@ const tabs = [
   { name: 'Extra', route: '/diablo_ii/extra' }
 ];
 
-const TopNavBar = ({ activeTab, history, onSetActiveTab }) => (
-  <div className="row">
-    {tabs.map((tab, i) => (
-      <div className="col" key={i}>
-        <div
-          className={`row d2-tab ${activeTab === tab.name ? 'active' : ''}`}
-          onClick={() => {
-            onSetActiveTab(tab.name);
-            history.push(tab.route);
-          }}>
-          {tab.name}
-        </div>
-
-        {activeTab === tab.name && (
-          <div className="row">
-            <div className="d2-active-bar" />
-          </div>
-        )}
-      </div>
-    ))}
-  </div>
+const TopNavBar = ({ activeTab, onSetActiveTab }) => (
+  <BorderBottomBar activeTab={activeTab} onSetActiveTab={onSetActiveTab} tabs={tabs} customClass="d2-nav-bar" />
 );
 
-export default withRouter(TopNavBar);
+export default TopNavBar;

@@ -12,7 +12,8 @@ import { reducer as projects } from 'pages/Home/Projects';
 
 import { reducer as starcraft } from 'pages/Games/Starcraft';
 import { reducer as diabloII } from 'pages/Games/DiabloII';
-import {reducer as yugiohPoc} from 'pages/Games/YugiohPoc';
+import { reducer as yugiohPoc } from 'pages/Games/YugiohPoc';
+import { reducer as muOnline } from 'pages/Games/MuOnline';
 
 import { reducer as contentMirror } from 'pages/Tools/ContentMirror';
 
@@ -31,6 +32,7 @@ export default combineReducers({
   flashGames,
   gamingHistory,
   mangasReading,
+  muOnline,
   music,
   projects,
   starcraft,

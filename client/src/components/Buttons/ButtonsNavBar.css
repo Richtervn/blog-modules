@@ -1,0 +1,23 @@
+.btns-nav-bar > .btn {
+  border-radius: 4px;
+  padding: 3px;
+  transition: 0.25s all;
+  border: solid 1px transparent;
+}
+
+.btns-nav-bar.default > .btn {
+  margin-right: 2px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.8);
+  border: solid 1px rgba(0, 0, 0, 0.5);
+}
+
+.btns-nav-bar.default > .btn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.btns-nav-bar.default > .btn.active {
+  background-color: black;
+  color: white;
+}

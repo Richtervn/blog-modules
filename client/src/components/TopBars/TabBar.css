@@ -1,0 +1,23 @@
+.tab-bar {
+  width: 100%;
+}
+
+.tab-bar > .nav-item {
+  transition: 0.2s all;
+}
+
+.tab-bar > .nav-item > .nav-link {
+  text-decoration: none;
+}
+
+.tab-bar.default {
+  background-color: #2e2f2f;
+}
+
+.tab-bar.default > .nav-item > .nav-link {
+  color: white;
+}
+
+.tab-bar.default > .nav-item > .nav-link.active {
+  color: black;
+}

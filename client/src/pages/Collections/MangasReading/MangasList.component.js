@@ -5,7 +5,6 @@ import StarRating from 'react-star-rating-component';
 import { LeftImageCard } from 'components/Cards';
 
 class MangasList extends Component {
-
   componentDidUpdate(prevProps, prevState) {
     let willScroll = false;
     if (prevProps.mangas.length < this.props.mangas.length && !this.props.noSearchResult) willScroll = true;
@@ -40,17 +39,21 @@ class MangasList extends Component {
 
     if (noSearchResult) {
       return (
-        <div className="row mangas-list flex-center">
+        <div className="row flex-center" id="mgr-mangas-list">
           <h2 className="notice-text">No result</h2>
         </div>
       );
     }
 
     return (
-      <div className="row mangas-list">
+      <div className="row" id="mgr-mangas-list">
         <div className="container-fluid">
           <div className="row">
-            {mangas.length < 1 && <div className="mangas-list-start-view">Start by adding some reading mangas</div>}
+            {mangas.length < 1 && (
+              <div id="mgr-mangas-list-start" className="flex-center">
+                Start by adding some reading mangas
+              </div>
+            )}
             {mangas.map((manga, i) => (
               <LeftImageCard
                 key={i}

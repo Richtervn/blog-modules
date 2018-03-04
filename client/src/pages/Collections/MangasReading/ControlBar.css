@@ -1,55 +1,32 @@
-.manga-control-bar {
-  background-color: #1e434c;
+#mgr-control-bar {
   height: calc(100vh - 45px);
   width: 100%;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.manga-feature-line-container {
+#mgr-control-bar > .wrapper {
   display: flex;
   line-height: 1.25;
   height: 45px;
 }
 
-.manga-feature-input {
+#mgr-control-bar > .wrapper > input.quick-update {
   margin: 5px 0px 5px 5px;
-  line-height: 1.25;
 }
 
-.manga-feature-button {
+#mgr-control-bar > .wrapper > .form-control {
+  line-height: 1.25;
+  height: auto !important;
+}
+
+#mgr-control-bar > .wrapper > .btn {
   margin: 5px 5px 5px 5px;
   cursor: pointer;
   line-height: 1.25;
 }
 
-.manga-control-feature-button {
-  border: solid 1px transparent;
-  border-radius: 4px;
-  padding: 3px;
-  cursor: pointer;
-  background-color: #868e96;
-  color: white;
-  transition: 0.25s all;
-}
-
-.pull-right > .manga-control-feature-button {
-  margin-left: 2px;
-}
-
-.pull-left > .manga-control-feature-button {
-  margin-right: 2px;
-}
-
-.manga-control-feature-button:hover {
-  background-color: #245c79;
-}
-
-.manga-control-feature-button.active {
-  background-color: #063852;
-}
-
-.manga-select-search-option {
+#mgr-search-select {
   margin: 5px 0px 5px 5px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -57,47 +34,43 @@
   padding-right: 5px;
   border: none;
   color: white;
-  background-color: #0069d9;
   font-weight: 500;
   width: 85px;
-  line-height: 1.25;
-  height: auto !important;
 }
 
-.manga-select-search-option:focus {
-  background-color: #0069d9;
-  color: white;
-}
-
-.manga-select-search-option > option {
-  font-weight: 500;
-}
-
-.manga-search-input {
+#mgr-search-input {
   margin: 5px 5px 5px 0px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   line-height: 1.25;
 }
 
-.manga-select-sort-condition {
+#mgr-sort-condition {
   margin: 5px 0px 5px 5px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   width: 50%;
-  line-height: 1.25;
-  height: auto !important;
 }
 
-.manga-select-sort-direction {
+#mgr-sort-option {
   margin: 5px 5px 5px 0px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   width: 50%;
-  line-height: 1.25;
-  height: auto !important;
 }
 
-.manga-control-view {
-  max-height: calc(100vh - 145px);
+#mgr-control-bar > .card {
+  margin: 0px 5px 0px 5px;
+}
+
+#mgr-control-bar > .card > .card-header {
+  padding: 5px;
+}
+
+.mgr-btn-nav-bar.pull-right > .btn {
+  margin-left: 2px;
+}
+
+.mgr-btn-nav-bar.pull-left > .btn {
+  margin-right: 2px;
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TabNavBar from 'components/TabNavBar';
+import { TabBar } from 'components/TopBars';
 import PageContainer from 'common/PageContainer';
 import { getSimpleName } from 'helpers';
 
@@ -25,14 +25,7 @@ class GamePage extends Component {
     const { activeTab, onSetActiveTab, params } = this.props;
     return (
       <PageContainer backgroundUrl={`/images/backgrounds/${params.game}.jpg`} opacity={5}>
-        <TabNavBar
-          headers={this.tabs}
-          activeTab={activeTab}
-          onChangeTab={onSetActiveTab}
-          containerClass="home-tab-nav-container"
-          itemClass="home-tab-nav-item"
-          headerClass="home-tab-nav-header"
-        />
+        <TabBar headers={this.tabs} activeTab={activeTab} onChangeTab={onSetActiveTab} />
         {activeTab === 'About' && <GameAbout />}
         {activeTab === 'Guides' && <GameGuides params={params} />}
         {activeTab === 'Overview' && <GameOverviews params={params} />}
