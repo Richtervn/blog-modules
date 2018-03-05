@@ -47,7 +47,7 @@ class GameOverviews extends Component {
             </TextPriorityCard>
           ))}
 
-          <AddCardButton col={3} onClick={() => openModal('AddGamingHistoryOverview')} minHeight="137.5px" />
+          <AddCardButton col={3} onClick={() => openModal('AddGamingHistoryOverview')} minHeight="137px" />
         </div>
       </div>
     );

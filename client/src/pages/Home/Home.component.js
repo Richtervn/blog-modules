@@ -1,4 +1,3 @@
-import './Home.theme.css';
 import React, { Component } from 'react';
 
 import PageContainer from 'common/PageContainer';

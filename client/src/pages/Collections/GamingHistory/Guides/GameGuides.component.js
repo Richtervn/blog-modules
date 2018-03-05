@@ -51,7 +51,7 @@ class GameGuides extends Component {
             </TextPriorityCard>
           ))}
 
-          <AddCardButton col={3} onClick={() => openModal('AddGamingHistoryGuide')} minHeight="137.5px" />
+          <AddCardButton col={3} onClick={() => openModal('AddGamingHistoryGuide')} minHeight="137px" />
         </div>
       </div>
     );

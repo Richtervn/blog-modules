@@ -75,7 +75,7 @@ export default ({ projects, onGetProjects, onSetCurrentProject, projectOnBoard, 
               </div>
             </ProgressBadgesCard>
           ))}
-          <AddCardButton col={3} minHeight="200px" color="#2e2f2f" onClick={() => openModal('AddProject')} />
+          <AddCardButton col={3} minHeight="200px" customClass="home-add-project-card" onClick={() => openModal('AddProject')} />
         </div>
       </div>
     </div>
