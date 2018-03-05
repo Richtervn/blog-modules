@@ -70,7 +70,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
 
   router.get(
     '/search_tools',
-    wrap(async (req, res, next) => {
+    wrap(async ({ query }, res, next) => {
       const tools = await commonService.search(DiabloIITools, query, { HTML: false, CSS: false, Overview: false });
       res.send(tools);
     })
@@ -78,8 +78,8 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
 
   router.get(
     '/tool/:id',
-    wrap(async (req, res, next) => {
-      const tool = await commonService.getOne(DiabloIITools, req.params.id);
+    wrap(async ({ params: { id } }, res, next) => {
+      const tool = await commonService.getOne(DiabloIITools, id);
       res.send(tool);
     })
   );
@@ -174,33 +174,33 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
 
   router.delete(
     '/mod/:id',
-    wrap(async (req, res, next) => {
-      const id = await commonService.delete(DiabloIIMods, req.params.id);
-      res.send(id);
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(DiabloIIMods, id);
+      res.send(result);
     })
   );
 
   router.delete(
     '/tool/:id',
-    wrap(async (req, res, next) => {
-      const id = await commonService.delete(DiabloIITools, req.params.id);
-      res.send(id);
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(DiabloIITools, id);
+      res.send(result);
     })
   );
 
   router.delete(
     '/character/:id',
-    wrap(async (req, res, next) => {
-      const id = await commonService.delete(DiabloIICharacters, req.params.id);
-      res.send(id);
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(DiabloIICharacters, id);
+      res.send(result);
     })
   );
 
   router.delete(
     '/survival_kit/:id',
-    wrap(async (req, res, next) => {
-      const id = await commonService.delete(DiabloIISurvivalKits, req.params.id);
-      res.send(id);
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(DiabloIISurvivalKits, id);
+      res.send(result);
     })
   );
 
@@ -214,32 +214,32 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
 
   router.put(
     '/extra',
-    wrap(async (req, res, next) => {
-      const extraData = await editExtra(req.body, readFile, writeFile);
+    wrap(async ({ body }, res, next) => {
+      const extraData = await editExtra(body, readFile, writeFile);
       res.send(extraData);
     })
   );
 
   router.get(
     '/extra/level/:level',
-    wrap(async (req, res, next) => {
-      const extraData = await extraLevel(req.params.level, readFile, writeFile);
+    wrap(async ({ params: { level } }, res, next) => {
+      const extraData = await extraLevel(level, readFile, writeFile);
       res.send(extraData);
     })
   );
 
   router.get(
     '/extra/gold',
-    wrap(async (req, res, next) => {
-      const result = await extraGold(req.query.amount, req.query.type, readFile, writeFile);
+    wrap(async ({ query: { amount, type } }, res, next) => {
+      const result = await extraGold(amount, type, readFile, writeFile);
       res.send(result);
     })
   );
 
   router.get(
     '/extra/skill',
-    wrap(async (req, res, next) => {
-      const result = await extraSkill(req.query.amount, req.query.type, readFile, writeFile);
+    wrap(async ({ query: { amount, type } }, res, next) => {
+      const result = await extraSkill(amount, type, readFile, writeFile);
       res.send(result);
     })
   );
