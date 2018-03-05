@@ -8,7 +8,7 @@ import PageContainer from 'common/PageContainer';
 import { PageLoader } from 'common/Loaders';
 import { openModal } from 'common/Modal';
 
-import AddCardButton from 'components/AddCardButton';
+import { AddCardButton } from 'components/Buttons';
 import { LeftImageCard } from 'components/Cards';
 import GamePage from './GamePage.container';
 

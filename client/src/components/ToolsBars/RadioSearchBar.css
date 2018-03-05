@@ -1,0 +1,9 @@
+.radio-search-bar {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+}
+
+.radio-search-bar > .radios-selector {
+  display: flex;
+}

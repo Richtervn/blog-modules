@@ -1,9 +1,7 @@
 import express from 'express';
 
 import addGame from './services/addGame';
-import searchGame from './services/searchGame';
 import updateAbout from './services/updateAbout';
-import updateGame from './services/updateGame';
 import uploadCover from './services/uploadCover';
 
 export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHistoryOverview, factories) => {
@@ -44,8 +42,8 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
 
   router.get(
     '/get_guides/:gameId',
-    wrap(async (req, res, next) => {
-      const guides = await commonService.getByParam(GamingHistoryGuide, 'GameId', req.params.gameId, {
+    wrap(async ({ params: { gameId } }, res, next) => {
+      const guides = await commonService.getByParam(GamingHistoryGuide, 'GameId', gameId, {
         CSS: false,
         HTML: false
       });
@@ -55,16 +53,16 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
 
   router.get(
     '/get_guide/:id',
-    wrap(async (req, res, next) => {
-      const guide = await commonService.getOne(GamingHistoryGuide, req.params.id);
+    wrap(async ({ params: { id } }, res, next) => {
+      const guide = await commonService.getOne(GamingHistoryGuide, id);
       res.send(guide);
     })
   );
 
   router.get(
     '/get_overviews/:gameId',
-    wrap(async (req, res, next) => {
-      const overviews = await commonService.getByParam(GamingHistoryOverview, 'GameId', req.params.gameId, {
+    wrap(async ({ params: { gameId } }, res, next) => {
+      const overviews = await commonService.getByParam(GamingHistoryOverview, 'GameId', gameId, {
         Sections: false
       });
       res.send(overviews);
@@ -73,25 +71,25 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
 
   router.get(
     '/get_overview/:id',
-    wrap(async (req, res, next) => {
-      const overview = await commonService.getOne(GamingHistoryOverview, req.params.id);
+    wrap(async ({ params: { id } }, res, next) => {
+      const overview = await commonService.getOne(GamingHistoryOverview, id);
       res.send(overview);
     })
   );
 
   router.delete(
     '/delete_guide/:id',
-    wrap(async (req, res, next) => {
-      const id = await commonService.delete(GamingHistoryGuide, req.params.id);
-      res.send(id);
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(GamingHistoryGuide, id);
+      res.send(result);
     })
   );
 
   router.delete(
     '/delete_overview/:id',
-    wrap(async (req, res, next) => {
-      const id = await commonService.detele(GamingHistoryOverview, req.params.id);
-      res.send(id);
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.detele(GamingHistoryOverview, id);
+      res.send(result);
     })
   );
 
@@ -116,39 +114,39 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
     '/edit_game',
     wrap(async (req, res, next) => {
       const body = await uploadCover(req, res);
-      const game = await updateGame(GamingHistory, body);
+      const game = await commonService.update(GamingHistory, body, ['Periods', 'Genres', 'Publishers']);
       res.send(game);
     })
   );
 
   router.delete(
     '/delete_game/:id',
-    wrap(async (req, res, next) => {
-      const id = await commonService.delete(GamingHistory, req.params.id);
-      res.send(id);
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(GamingHistory, id);
+      res.send(result);
     })
   );
 
   router.get(
     '/get_about/:gameId',
-    wrap(async (req, res, next) => {
-      const result = await GamingHistoryAbout.findOne({ GameId: req.params.gameId });
+    wrap(async ({ params: { gameId } }, res, next) => {
+      const result = await GamingHistoryAbout.findOne({ GameId: gameId });
       res.send(result);
     })
   );
 
   router.put(
     '/edit_about',
-    wrap(async (req, res, next) => {
-      const result = await updateAbout(GamingHistoryAbout, req.body);
+    wrap(async ({ body }, res, next) => {
+      const result = await updateAbout(GamingHistoryAbout, body);
       res.send(result);
     })
   );
 
   router.get(
     '/search',
-    wrap(async (req, res, next) => {
-      const games = await searchGame(GamingHistory, req.query);
+    wrap(async ({ query }, res, next) => {
+      const games = await commonService.search(GamingHistory, query);
       res.send(games);
     })
   );

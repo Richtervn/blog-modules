@@ -1,0 +1,20 @@
+.double-select-group {
+  display: flex;
+  width: 100%;
+  padding: 5px;
+}
+
+.double-select-group > .form-control {
+  line-height: 1.25;
+  height: auto !important;
+}
+
+.double-select-group > select:first-child {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.double-select-group > select:last-child {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}

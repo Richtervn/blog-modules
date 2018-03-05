@@ -18,21 +18,14 @@
   font-style: italic;
 }
 
-
-
-.manga-chaper-text {
+#mgr-mangas-list .manga-chaper-text {
   position: absolute;
   text-align: center;
   bottom: 5px;
   width: 100%;
-  color: #dc3545;
 }
 
-.mr-genre-tag {
+.mgr-genre-tag {
   margin-right: 2px;
   cursor: pointer;
-}
-
-.mr-genre-tag:hover {
-  background-color: #275c65;
 }

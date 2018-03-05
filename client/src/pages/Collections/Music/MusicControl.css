@@ -1,9 +1,7 @@
 .music-control {
   width: 100%;
-  background-color: #3b3b3b;
   margin: 10px 10px 10px 0;
   border-radius: 5px;
-  border: solid 1px rgba(255, 255, 255, 0.1);
   padding: 20px 15px;
   height: calc(100vh - 62px);
 }
@@ -56,7 +54,6 @@
 .media-feature > .btn-play {
   width: 70px;
   height: 70px;
-  border: solid 1px rgba(0, 0, 0, 0.5);
   border-radius: 50px;
   font-size: 30px;
   padding: 0;
@@ -68,19 +65,12 @@
   width: 40px;
   height: 40px;
   border-radius: 50px;
-  border: solid 1px rgba(0, 0, 0, 0.5);
 }
 
 .control-feature > .btn {
   padding: 0;
   width: 30px;
   margin-left: 2px;
-  border: solid 1px rgba(0, 0, 0, 0.5);
-}
-
-.control-feature > .btn.active {
-  background-color: #141515;
-  color: white;
 }
 
 .playlist-feature > .btn {
@@ -92,23 +82,10 @@
 
 .music-play-list {
   border-radius: 5px;
-  border: solid 1px rgba(255, 255, 255, 0.5);
   margin-top: 10px;
   height: calc(100vh - 320px);
   overflow-y: auto;
   position: relative;
-}
-
-.music-play-list::-webkit-scrollbar {
-  width: 10px;
-}
-.music-play-list::-webkit-scrollbar-track {
-  border-radius: 5px;
-  background-color: #2e2f2f;
-}
-.music-play-list::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background-color: #141515;
 }
 
 .music-play-list > .play-list-row {
@@ -120,19 +97,10 @@
   font-size: 14px;
 }
 
-.music-play-list > .play-list-row.playing {
-  background-color: #1995ad!important;
-}
-
-.music-play-list > .play-list-row:hover {
-  background-color: #2e2f2f;
-}
-
 .play-list-row > .song-remove {
   font-size: 12px;
   position: absolute;
   right: 10px;
-  color: rgba(255, 255, 255, 0.5);
 }
 
 .play-list-row > .song-remove:hover {
@@ -144,12 +112,10 @@
   width: 25px;
   padding-left: 5px;
   padding-right: 5px;
-  color: rgba(255, 255, 255, 0.5);
 }
 
 .play-list-row > .song-index {
   width: 40px;
-  color: rgba(255, 255, 255, 0.5);
 }
 
 .play-list-row > .song-name {

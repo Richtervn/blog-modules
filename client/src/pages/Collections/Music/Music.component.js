@@ -1,4 +1,4 @@
-import './Music.css';
+import './Music.theme.css';
 import React, { Component } from 'react';
 import { PageLoader } from 'common/Loaders';
 import PageContainer from 'common/PageContainer';

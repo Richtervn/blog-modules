@@ -36,7 +36,7 @@ export default {
       });
     }
     await model.update({ _id: body._id }, { $set: updateForm });
-    return body;
+    return updateForm;
   },
   search: async (model, query, options) => {
     const regexQuery = {};

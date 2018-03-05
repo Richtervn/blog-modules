@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import { TabLoader } from 'common/Loaders';
 import { openModal } from 'common/Modal';
-import AddCardButton from 'components/AddCardButton';
+import { AddCardButton } from 'components/Buttons';
 import { TextPriorityCard } from 'components/Cards';
 
 import GameGuideDetail from './GameGuideDetail.container';

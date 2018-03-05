@@ -10,9 +10,26 @@
   cursor: pointer;
 }
 
+.text-priority-card.must-read > .priority {
+  background-color: #dc3545;
+}
+.text-priority-card.highly-recommended > .priority {
+  background-color: #ffc107;
+}
+.text-priority-card.recommended > .priority {
+  background-color: #28a745;
+}
+.text-priority-card.interest > .priority {
+  background-color: #17a2b8;
+}
+
 .text-priority-card > .priority {
   width: 100%;
   height: 15px;
+}
+
+.text-priority-card > .content {
+  color: #343434;
 }
 
 .text-priority-card > .header {
@@ -23,25 +40,32 @@
   flex-direction: row-reverse;
 }
 
-.text-priority-card > .header > .feature {
+.text-priority-card-feature {
   display: flex;
 }
 
-.text-priority-card > .header > .feature > .feature-btn {
+.text-priority-card-feature > .btn {
   padding: 0;
   height: 20px;
   justify-content: center;
   display: flex;
   align-items: center;
   border: none;
-  margin-right: 2px;
-  cursor: pointer;
+  width: 10px;
+  background: none;
 }
 
-.text-priority-card > .header > .feature > .feature-btn:hover {
+.text-priority-card-feature > .btn:hover {
   color: #dc3545;
 }
 
-.text-priority-card > .header > .feature > .feature-btn > .fa {
+.text-priority-card-feature > .btn > .fa {
   font-size: 12px;
+}
+.text-priority-card:hover > .header {
+  background-color: #adadad;
+}
+.text-priority-card:hover > .content {
+  color: white;
+  background-color: #4ab763;
 }

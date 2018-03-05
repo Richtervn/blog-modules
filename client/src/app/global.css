@@ -10,10 +10,6 @@
   margin-bottom: 0 !important;
 }
 
-.display-flex {
-  display: flex;
-}
-
 .flex-center {
   display: flex;
   justify-content: center;
@@ -28,4 +24,9 @@
 .modal-body {
   max-height: calc(100vh - 150px);
   overflow: auto;
+}
+
+.chrome-picker {
+  border: 1px solid #ced4da;
+  box-shadow: none!important;
 }

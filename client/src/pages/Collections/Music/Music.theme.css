@@ -1,0 +1,110 @@
+.music-tools-bar .btn:hover {
+  background-color: #063852;
+  color: white;
+}
+
+.music-table {
+  padding: 0 10px 10px 10px;
+  width: 100%;
+  position: relative;
+}
+
+.music-table:focus {
+  outline: none;
+}
+
+.music-table > .music-table-header {
+  background-color: #063852;
+  color: white;
+}
+
+.music-table > .music-table-body {
+  background-color: #e9ecef;
+  color: #343434;
+}
+
+.music-table-body > .music-table-row.selected {
+  background-color: #8ed08e !important;
+}
+
+.music-table-body > .music-table-row:hover {
+  background-color: #bfe4c3 !important;
+}
+
+.music-table-body > .music-table-row.selected:hover {
+  background-color: #8ed08e !important;
+}
+
+.music-table-body > .music-table-row:nth-child(even) {
+  background-color: #f0f8ff;
+}
+
+.music-table > .music-table-options {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.music-control {
+  background-color: #3b3b3b;
+  border: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.media-feature > .btn-play {
+  border: solid 1px rgba(0, 0, 0, 0.5);
+}
+
+.media-feature > .btn-control {
+  border: solid 1px rgba(0, 0, 0, 0.5);
+}
+
+.control-feature > .btn {
+  border: solid 1px rgba(0, 0, 0, 0.5);
+}
+
+.control-feature > .btn.active {
+  background-color: #141515;
+  color: white;
+}
+
+.playlist-feature > .btn {
+  border: solid 1px rgba(0, 0, 0, 0.5);
+}
+
+.music-play-list {
+  border: solid 1px rgba(255, 255, 255, 0.5);
+}
+
+.music-play-list::-webkit-scrollbar {
+  width: 10px;
+}
+.music-play-list::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: #2e2f2f;
+}
+.music-play-list::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #141515;
+}
+
+.music-play-list > .play-list-row.playing {
+  background-color: #1995ad !important;
+}
+
+.music-play-list > .play-list-row:hover {
+  background-color: #2e2f2f;
+}
+
+.play-list-row > .song-remove {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.play-list-row > .song-remove:hover {
+  color: red;
+}
+
+.play-list-row > .song-icon {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.play-list-row > .song-index {
+  color: rgba(255, 255, 255, 0.5);
+}

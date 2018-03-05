@@ -1,5 +1,4 @@
 .left-image-card {
-  background-color: white;
   border-radius: 4px;
   width: 100%;
   margin-bottom: 10px;
@@ -12,8 +11,38 @@
   cursor: pointer;
 }
 
+.left-image-card > .content {
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: relative;
+}
+
+.left-image-card > .content > .left-image-card-feature {
+  position: absolute;
+  top: -1px;
+  right: 2px;
+  display: none;
+}
+
+.left-image-card:hover .left-image-card-feature {
+  display: block;
+}
+
+.left-image-card > .image-wrapper > .image {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.left-image-card-feature > .btn {
+  font-size: 12px;
+  width: 20px;
+}
+
+/*Default Theme*/
 .left-image-card.default {
   border: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: white;
 }
 
 .left-image-card.default:not(.no-hover):not(.active):hover {
@@ -24,27 +53,4 @@
 .left-image-card.default.active {
   background-color: #28a745;
   color: white;
-}
-
-.left-image-card > .image-wrapper > .image {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-.left-image-card > .content {
-  width: 100%;
-  padding-left: 5px;
-  padding-right: 5px;
-  position: relative;
-}
-
-.left-image-card > .content > .left-image-card-feature {
-  position: absolute;
-  top: 1px;
-  right: 2px;
-  display: none;
-}
-
-.left-image-card:hover .left-image-card-feature {
-  display: block;
 }

@@ -120,6 +120,3 @@ class ProjectForm extends Component {
 }
 
 export default ProjectForm;
-
-//    CirclePicker CompactPicker GithubPicker HuePicker MaterialPicker PhotoshopPicker SketchPicker SliderPicker SwatchesPicker TwitterPicker
-// AlphaPicker, BlockPicker

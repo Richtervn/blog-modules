@@ -1,15 +1,3 @@
-.music-tools-bar {
-  display: flex;
-  padding: 10px;
-  width: 100%;
-}
-
-.music-tools-bar > .options-selector {
-  display: flex;
-}
-
-.music-tools-bar > .input-group > .input-group-prepend {
-  width: 100%;
-  margin-left: 10px;
-  margin-right: 10px;
+.music-tools-bar .input-group-prepend {
+  padding: 0px 10px;
 }

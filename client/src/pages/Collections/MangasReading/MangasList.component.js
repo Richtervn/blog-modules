@@ -60,7 +60,8 @@ class MangasList extends Component {
                 col={4}
                 imgUrl={manga.CoverUri}
                 onClick={() => onSetFocusManga(manga._id)}
-                isActive={manga._id === focusManga}>
+                isActive={manga._id === focusManga}
+                >
                 <div className="text-center">
                   <strong>{manga.Name}</strong>
                   <br />
@@ -72,7 +73,7 @@ class MangasList extends Component {
                   <br />
                   {manga.Genre.map((genre, i) => (
                     <span
-                      className="badge badge-info mr-genre-tag"
+                      className="badge badge-info mgr-genre-tag"
                       key={i}
                       onClick={e => {
                         e.stopPropagation();

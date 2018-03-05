@@ -1,0 +1,31 @@
+.input-select-group {
+  display: flex;
+  width: 100%;
+}
+
+.input-select-group > select {
+  margin: 5px 0px 5px 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: none;
+  color: white;
+  font-weight: 500;
+  width: 85px;
+  line-height: 1.25;
+  height: auto !important;
+}
+
+.input-select-group > input {
+  margin: 5px 5px 5px 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  line-height: 1.25;
+  height: auto !important;
+}
+
+.input-select-group.default > select {
+  background-color: #cecdcd;
+  color: black;
+}

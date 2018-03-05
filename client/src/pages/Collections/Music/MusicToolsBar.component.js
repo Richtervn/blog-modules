@@ -1,9 +1,9 @@
 import './MusicToolsBar.css';
 import React, { Component } from 'react';
-import { createElementId } from 'utils';
+
 import { openModal } from 'common/Modal';
 
-const availableOptions = ['Artist', 'Name', 'Genre'];
+import { RadioSearchBar } from 'components/ToolsBars';
 
 class MusicToolsBar extends Component {
   constructor(props) {
@@ -30,37 +30,16 @@ class MusicToolsBar extends Component {
 
   render() {
     return (
-      <div className="music-tools-bar">
-        <button className="btn" onClick={() => openModal('AddSong')}>
-          <i className="fa fa-plus-square" />
-        </button>
-        <div className="input-group">
-          <div className="input-group-prepend">
-            <span className="input-group-text">
-              <i className="fa fa-search" />
-            </span>
-            <input className="form-control" type="text" onChange={this.handleChange} name="value" />
-          </div>
-        </div>
-        <div className="options-selector">
-          {availableOptions.map((option, i) => (
-            <div key={i} className="form-check form-check-inline">
-              <input
-                id={createElementId(option, 'opt')}
-                className="form-check-input"
-                type="radio"
-                value={option}
-                name="option"
-                checked={this.state.option === option}
-                onChange={this.handleChange}
-              />
-              <label className="form-check-label" htmlFor={createElementId(option, 'opt')}>
-                &nbsp;{option}
-              </label>
-            </div>
-          ))}
-        </div>
-      </div>
+      <RadioSearchBar
+        onClickAdd={() => openModal('AddSong')}
+        inputValue={this.state.value}
+        onChange={this.handleChange}
+        inputName="value"
+        options={['Artist', 'Name', 'Genre']}
+        radioName="option"
+        radioValue={this.state.option}
+        customClass="music-tools-bar"
+      />
     );
   }
 }

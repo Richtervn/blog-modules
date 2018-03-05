@@ -2,10 +2,6 @@
   background-color: #1e434c;
 }
 
-#mgr-search-select {
-  background-color: #0069d9;
-}
-
 .mgr-btn-nav-bar > .btn {
   background-color: #868e96;
   color: white;
@@ -17,4 +13,12 @@
 
 .mgr-btn-nav-bar > .btn.active {
   background-color: #063852;
+}
+
+#mgr-mangas-list .manga-chaper-text {
+  color: #dc3545;
+}
+
+.mgr-genre-tag:hover {
+  background-color: #275c65;
 }

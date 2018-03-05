@@ -50,7 +50,7 @@ export default ({
         {manga.Authors.map((author, i) => (
           <span
             key={i}
-            className="badge badge-success mr-genre-tag"
+            className="badge badge-success mgr-genre-tag"
             onClick={e => {
               e.stopPropagation();
               if (activeTool !== 'Search') onChangeActiveTool('Search');
@@ -67,7 +67,7 @@ export default ({
         {manga.Genre.map((genre, i) => (
           <span
             key={i}
-            className="badge badge-info mr-genre-tag"
+            className="badge badge-info mgr-genre-tag"
             onClick={e => {
               e.stopPropagation();
               if (activeTool !== 'Search') onChangeActiveTool('Search');

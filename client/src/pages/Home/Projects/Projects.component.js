@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { TabLoader } from 'common/Loaders';
 import { openModal } from 'common/Modal';
 
-import AddCardButton from 'components/AddCardButton';
+import { AddCardButton } from 'components/Buttons';
 import { ProgressBadgesCard } from 'components/Cards';
 
 import { ProjectBoard } from './ProjectBoard';

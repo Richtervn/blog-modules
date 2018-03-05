@@ -11,37 +11,13 @@
   height: 45px;
 }
 
-#mgr-control-bar > .wrapper > input.quick-update {
-  margin: 5px 0px 5px 5px;
-}
-
-#mgr-control-bar > .wrapper > .form-control {
-  line-height: 1.25;
-  height: auto !important;
+#mgr-control-bar .mgr-quick-update {
+  padding: 5px;
 }
 
 #mgr-control-bar > .wrapper > .btn {
   margin: 5px 5px 5px 5px;
   cursor: pointer;
-  line-height: 1.25;
-}
-
-#mgr-search-select {
-  margin: 5px 0px 5px 5px;
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border: none;
-  color: white;
-  font-weight: 500;
-  width: 85px;
-}
-
-#mgr-search-input {
-  margin: 5px 5px 5px 0px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
   line-height: 1.25;
 }
 

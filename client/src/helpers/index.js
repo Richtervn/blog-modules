@@ -2,7 +2,7 @@ import { shuffleList, sortList } from './array';
 import { commonAddArray, commonFormChange, commonRemoveArray } from './form';
 import { formatNumber } from './number';
 import { actionCreator, serviceCaller, serviceWrapper } from './service';
-import { getFullName, getSimpleName, getStarcraftRaces } from './string';
+import { connectString, getFullName, getSimpleName, getStarcraftRaces } from './string';
 
 export {
   shuffleList,
@@ -14,6 +14,7 @@ export {
   actionCreator,
   serviceCaller,
   serviceWrapper,
+  connectString,
   getFullName,
   getSimpleName,
   getStarcraftRaces

@@ -19,7 +19,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
   router.get(
     '/mods',
     wrap(async (req, res, next) => {
-      const mods = await commonService.find(DiabloIIMods, { HTML: false, CSS: false, Overview: false });
+      const mods = await commonService.getAll(DiabloIIMods, { HTML: false, CSS: false, Overview: false });
       res.send(mods);
     })
   );

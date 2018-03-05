@@ -3,6 +3,7 @@ import './ControlBar.css';
 import React, { Component } from 'react';
 
 import { ButtonsNavBar } from 'components/Buttons';
+import { DoubleSelectGroup, InputWithButton, InputSelectGroup } from 'components/Inputs';
 
 import MangaForm from './MangaForm';
 import MangaDetailView from './MangaDetailView.container';
@@ -20,7 +21,6 @@ const views = [
   { name: 'Edit', icon: 'fa-pencil', tooltip: 'Open edit form' },
   { name: 'Delete', icon: 'fa-times', tooltip: 'Open delete box' }
 ];
-
 
 class ControlBar extends Component {
   constructor(props) {
@@ -87,66 +87,39 @@ class ControlBar extends Component {
       <div className="row">
         <div id="mgr-control-bar">
           <div className="wrapper">
-            {activeTool === 'QuickUpdate' && [
-              <input
-                key="qu_ip"
-                type="text"
-                className="form-control quick-update"
+            {activeTool === 'QuickUpdate' && (
+              <InputWithButton
                 value={this.state.quickUrl}
                 onChange={this.handleChange}
                 name="quickUrl"
-              />,
-              <button
-                key="qu_bt"
-                className="btn btn-success"
-                disabled={!this.state.quickUrl}
-                onClick={() => this.handleQuickUpdate()}>
-                <i className="fa fa-plus-circle" />
-              </button>
-            ]}
-            {activeTool === 'Search' && [
-              <select
-                id="mgr-search-select"
-                key="s_sl"
-                className="form-control"
-                value={search.option}
-                onChange={e => this.handleChange(e, 'searchOption')}>
-                <option value="Name">Name</option>
-                <option value="Author">Author</option>
-                <option value="Genre">Genre</option>
-              </select>,
-              <input
-                id="mgr-search-input"
-                key="s_ip"
-                type="text"
-                className="form-control"
-                value={search.value}
-                onChange={e => this.handleChange(e, 'searchValue')}
+                btnIcon="plus-circle"
+                btnClass="btn-success"
+                btnDisabled={!this.state.quickUrl}
+                onClick={() => this.handleQuickUpdate()}
+                customClass="mgr-quick-update"
+                placeholder="Reading url"
               />
-            ]}
-            {activeTool === 'Sort' && [
-              <select
-                id="mgr-sort-condition"
-                key="c_sl"
-                className="form-control"
-                value={this.state.sort.option}
-                onChange={e => this.handleChange(e, 'sortOption')}>
-                <option value="default" hidden>
-                  Select field
-                </option>
-                <option value="Name">Name</option>
-                <option value="Rating">Rating</option>
-              </select>,
-              <select
-                id="mgr-sort-option"
-                key="d_sl"
-                className="form-control"
-                value={this.state.sort.value}
-                onChange={e => this.handleChange(e, 'sortValue')}>
-                <option value="ASC">ASC</option>
-                <option value="DESC">DESC</option>
-              </select>
-            ]}
+            )}
+            {activeTool === 'Search' && (
+              <InputSelectGroup
+                selectValue={search.option}
+                onChangeSelect={e => this.handleChange(e, 'searchOption')}
+                options={['Name', 'Author', 'Genere']}
+                inputValue={search.value}
+                onChangeInput={e => this.handleChange(e, 'searchValue')}
+              />
+            )}
+            {activeTool === 'Sort' && (
+              <DoubleSelectGroup
+                leftValue={this.state.sort.option}
+                rightValue={this.state.sort.value}
+                leftOptions={['Name', 'Rating']}
+                rightOptions={['ASC', 'DESC']}
+                onLeftChange={e => this.handleChange(e, 'sortOption')}
+                onRightChange={e => this.handleChange(e, 'sortValue')}
+                leftPlaceholder="Select field"
+              />
+            )}
           </div>
           <div className="card">
             <div className="card-header">
