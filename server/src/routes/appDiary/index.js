@@ -7,10 +7,10 @@ export default (AppDiary, factories) => {
 
   router.post(
     '/',
-    wrap(async (req, res, next) => {
+    wrap(async ({ body }, res, next) => {
       const log = new AppDiary({
         ts: moment(),
-        text: req.body.text
+        text: body.text
       });
       const result = await log.save();
       res.send(result);

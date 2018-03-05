@@ -1,6 +1,12 @@
 export default {
-  create: async (model, body) => {
-    const schema = new model(body);
+  create: async (model, body, arrayFields) => {
+    let docBody = body;
+    if (arrayFields) {
+      arrayFields.forEach(field => {
+        docBody[field] = docBody[field].split(',');
+      });
+    }
+    const schema = new model(docBody);
     const doc = await schema.save();
     return doc;
   },
@@ -22,17 +28,22 @@ export default {
     const doc = await model.findOne({ _id: id });
     return doc;
   },
-  update: async (model, body) => {
+  update: async (model, body, arrayFields) => {
     let updateForm = { ...body };
+    if (arrayFields) {
+      arrayFields.forEach(field => {
+        updateForm[field] = body[field].split(',');
+      });
+    }
     await model.update({ _id: body._id }, { $set: updateForm });
     return body;
   },
-  search: async (model, field, value, ignoreFields) => {
-    const ignore = {};
-    if (ignoreFields) {
-      ignoreFields.forEach(field => (ignore[field] = false));
+  search: async (model, query, options) => {
+    const regexQuery = {};
+    for (let key in query) {
+      regexQuery[key] = { $regex: query[key] };
     }
-    const docs = await model.find({ [field]: { $regex: value } }, ignore);
+    const docs = await model.find(regexQuery, options);
     return docs;
   }
 };

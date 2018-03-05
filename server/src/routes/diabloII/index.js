@@ -5,22 +5,12 @@ import uploadMod from './services/uploadMod';
 import uploadCharacter from './services/uploadCharacter';
 import uploadTool from './services/uploadTool';
 import uploadSurvivalKit from './services/uploadSurvivalKit';
-import addMod from './services/addMod';
-import addCharacter from './services/addCharacter';
-import addTool from './services/addTool';
-import addSurvivalKit from './services/addSurvivalKit';
-import editMod from './services/editMod';
-import editTool from './services/editTool';
-import editCharacter from './services/editCharacter';
-import editSurvivalKit from './services/editSurvivalKit';
+
 import getExtra from './services/getExtra';
 import extraLevel from './services/extraLevel';
 import extraGold from './services/extraGold';
 import extraSkill from './services/extraSkill';
 import editExtra from './services/editExtra';
-import searchMods from './services/searchMods';
-import searchTools from './services/searchTools';
-import searchCharacters from './services/searchCharacters';
 
 export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories) => {
   const router = express.Router();
@@ -29,23 +19,23 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
   router.get(
     '/mods',
     wrap(async (req, res, next) => {
-      const mods = await DiabloIIMods.find({}, { HTML: false, CSS: false, Overview: false });
+      const mods = await commonService.find(DiabloIIMods, { HTML: false, CSS: false, Overview: false });
       res.send(mods);
     })
   );
 
   router.get(
     '/search_mods',
-    wrap(async (req, res, next) => {
-      const mods = await searchMods(DiabloIIMods, req.query);
+    wrap(async ({ query }, res, next) => {
+      const mods = await commonService.search(DiabloIIMods, query, { HTML: false, CSS: false, Overview: false });
       res.send(mods);
     })
   );
 
   router.get(
     '/mod/:id',
-    wrap(async (req, res, next) => {
-      const mod = await commonService.getOne(DiabloIIMods, req.params.id);
+    wrap(async ({ params: { id } }, res, next) => {
+      const mod = await commonService.getOne(DiabloIIMods, id);
       res.send(mod);
     })
   );
@@ -60,8 +50,8 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
 
   router.get(
     '/search_characters',
-    wrap(async (req, res, next) => {
-      const characters = await searchCharacters(DiabloIICharacters, req.query);
+    wrap(async ({ query }, res, next) => {
+      const characters = await commonService.search(DiabloIICharacters, query);
       res.send(characters);
     })
   );
@@ -69,7 +59,11 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
   router.get(
     '/tools',
     wrap(async (req, res, next) => {
-      const tools = await DiabloIITools.find({}, { Description: false, Introduction: false, Overview: false });
+      const tools = await commonService.getAll(DiabloIITools, {
+        Description: false,
+        Introduction: false,
+        Overview: false
+      });
       res.send(tools);
     })
   );
@@ -77,7 +71,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
   router.get(
     '/search_tools',
     wrap(async (req, res, next) => {
-      const tools = await searchTools(DiabloIITools, req.query);
+      const tools = await commonService.search(DiabloIITools, query, { HTML: false, CSS: false, Overview: false });
       res.send(tools);
     })
   );
@@ -98,11 +92,19 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     })
   );
 
+  router.get(
+    '/search_survival_kits',
+    wrap(async ({ query }, res, next) => {
+      const kits = await commonService.search(DiabloIISurvivalKits, query);
+      res.send(kits);
+    })
+  );
+
   router.post(
     '/mod',
     wrap(async (req, res, next) => {
       const body = await uploadMod(req, res);
-      const result = await addMod(DiabloIIMods, body);
+      const result = await commonService.create(DiabloIIMods, body, ['Overview']);
       res.send(result);
     })
   );
@@ -111,8 +113,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/character',
     wrap(async (req, res, next) => {
       const body = await uploadCharacter(req, res);
-      console.log(req.file);
-      const result = await addCharacter(DiabloIICharacters, body);
+      const result = await commonService.create(DiabloIICharacters, body, ['Overview']);
       res.send(result);
     })
   );
@@ -121,7 +122,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/tool',
     wrap(async (req, res, next) => {
       const body = await uploadTool(req, res);
-      const result = await addTool(DiabloIITools, body);
+      const result = await commonService.create(DiabloIITools, body, ['Overview']);
       res.send(result);
     })
   );
@@ -130,7 +131,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/survival_kit',
     wrap(async (req, res, next) => {
       const body = await uploadSurvivalKit(req, res);
-      const result = await addSurvivalKit(DiabloIISurvivalKits, body);
+      const result = await commonService.create(DiabloIISurvivalKits, body, ['Overview']);
       res.send(result);
     })
   );
@@ -139,7 +140,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/mod',
     wrap(async (req, res, next) => {
       const body = await uploadMod(req, res);
-      const result = await editMod(DiabloIIMods, body);
+      const result = await commonService.update(DiabloIIMods, body, ['Overview']);
       res.send(result);
     })
   );
@@ -148,7 +149,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/tool',
     wrap(async (req, res, next) => {
       const body = await uploadTool(req, res);
-      const result = await editTool(DiabloIITools, body);
+      const result = await commonService.update(DiabloIITools, body, ['Overview']);
       res.send(result);
     })
   );
@@ -157,7 +158,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/survival_kit',
     wrap(async (req, res, next) => {
       const body = await uploadSurvivalKit(req, res);
-      const result = await editSurvivalKit(DiabloIISurvivalKits, body);
+      const result = await commonService.update(DiabloIISurvivalKits, body, ['Overview']);
       res.send(result);
     })
   );
@@ -166,7 +167,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/character',
     wrap(async (req, res, next) => {
       const body = await uploadCharacter(req, res);
-      const result = await editCharacter(DiabloIICharacters, body);
+      const result = await commonService.update(DiabloIICharacters, body, ['Overview']);
       res.send(result);
     })
   );
@@ -240,20 +241,6 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     wrap(async (req, res, next) => {
       const result = await extraSkill(req.query.amount, req.query.type, readFile, writeFile);
       res.send(result);
-    })
-  );
-
-  router.get(
-    '/test',
-    wrap(async (req, res, next) => {
-      const tools = await DiabloIITools.find();
-      await Promise.map(tools, tool => {
-        tool.HTML = tool.Description;
-        tool.CSS = '';
-        tool.Description = undefined;
-        return tool.save();
-      });
-      res.sendStatus(200);
     })
   );
 

@@ -127,7 +127,7 @@ export default (StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories) => 
   router.get(
     '/search_map',
     wrap(async (req, res, next) => {
-      const maps = await commonService.search(StarcraftMaps, 'Name', req.query.Name);
+      const maps = await commonService.search(StarcraftMaps, req.query);
       res.send(maps);
     })
   );
@@ -135,7 +135,7 @@ export default (StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories) => 
   router.get(
     '/search_mod',
     wrap(async (req, res, next) => {
-      const mods = await commonService.search(StarcraftMods, 'Name', req.query.Name, ['Description', 'Introduction']);
+      const mods = await commonService.search(StarcraftMods, req.query, { Description: false, Introduction: false });
       res.send(mods);
     })
   );
@@ -143,11 +143,11 @@ export default (StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories) => 
   router.get(
     '/search_campaign',
     wrap(async (req, res, next) => {
-      const maps = await commonService.search(StarcraftCampaigns, 'Name', req.query.Name, [
-        'Description',
-        'Introduction',
-        'Uri'
-      ]);
+      const maps = await commonService.search(StarcraftCampaigns, req.query, {
+        Description: false,
+        Introduction: false,
+        Uri: false
+      });
       res.send(maps);
     })
   );
