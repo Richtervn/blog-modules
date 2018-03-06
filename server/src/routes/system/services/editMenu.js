@@ -7,6 +7,6 @@ export default async (category, oldItem, newItem, readFile, writeFile) => {
     }
     return item;
   });
-  await writeFile('./src/routes/system/data/menu.json', JSON.stringify(menu));
+  await writeFile('./src/routes/system/data/menu.json', JSON.stringify(menu, null, 2));
   return menu;
 };
