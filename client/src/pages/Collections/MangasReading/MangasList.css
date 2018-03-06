@@ -18,7 +18,7 @@
   font-style: italic;
 }
 
-#mgr-mangas-list .manga-chaper-text {
+.manga-chaper-text {
   position: absolute;
   text-align: center;
   bottom: 5px;

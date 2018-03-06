@@ -30,7 +30,7 @@ class EndedManga extends Component {
                 <StarRating name={`mgr-${i}`} value={parseInt(manga.Rating, 10)} editing={false} />
                 <br />
                 {manga.Genre.map((genre, i) => (
-                  <span className="badge badge-info mr-genre-tag no-hover" key={i}>
+                  <span className="badge badge-info mgr-genre-tag no-hover" key={i}>
                     {genre}
                   </span>
                 ))}
