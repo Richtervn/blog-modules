@@ -2,14 +2,23 @@ import express from 'express';
 
 import editGame from './services/editGame';
 import getGame from './services/getGame';
-import uploadGame from './services/uploadGame';
 
 import addMenu from '../system/services/addMenu';
 import editMenu from '../system/services/editMenu';
 
 export default (FlashGames, factories) => {
   const router = express.Router();
-  const { wrap, readFile, writeFile, commonService } = factories;
+  const { wrap, readFile, writeFile, commonService, multerUploader } = factories;
+
+  const uploadGame = multerUploader.createSingleUpload(
+    './public/Flash Games',
+    (req, file, cb) => {
+      let url = `${req.body.Name}.swf`;
+      req.body.Uri = `./public/Flash Games/${url}`;
+      cb(null, url);
+    },
+    'File'
+  );
 
   router.post(
     '/add_game',

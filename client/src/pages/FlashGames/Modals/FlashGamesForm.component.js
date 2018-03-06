@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ModalHeader, ModalFooter } from 'components/Modal';
 import { FormGroupRow, FormGroupArea } from 'components/FormTools';
+import {commonFormChange} from 'helpers';
 
 const initialFormValue = {
   Name: '',
@@ -28,16 +29,7 @@ class FlashGamesForm extends Component {
   }
 
   handleChange(event) {
-    const { value, name } = event.target;
-    const valueState = { ...this.state.value };
-    switch (name) {
-      case 'File':
-        valueState.File = event.files[0];
-        break;
-      default:
-        valueState[name] = value;
-        break;
-    }
+    const valueState = commonFormChange(this.state.value, event);
     this.setState({ value: valueState });
   }
 
