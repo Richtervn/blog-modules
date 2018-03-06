@@ -1,6 +1,7 @@
 import './IntroductionCard.css';
 import _ from 'underscore';
 import React, { Component } from 'react';
+import classNames from 'classnames';
 
 class IntroductionCard extends Component {
   constructor(props) {
@@ -54,10 +55,10 @@ class IntroductionCard extends Component {
   }
 
   render() {
-    const { imgUrl, info } = this.props;
+    const { imgUrl, info, customClass } = this.props;
     const { editing } = this.state;
     return (
-      <div className="introduction-card">
+      <div className={classNames('introduction-card', customClass)}>
         <img src={imgUrl} alt="Introcard" className="introduction-image" />
         <div className="introduction-card-info">
           {!editing &&
@@ -117,5 +118,9 @@ class IntroductionCard extends Component {
     );
   }
 }
+
+IntroductionCard.defaultProps = {
+  customClass: 'default'
+};
 
 export default IntroductionCard;

@@ -4,7 +4,7 @@ import React from 'react';
 import { createElementId } from 'utils';
 import StarRating from 'react-star-rating-component';
 
-export default ({ label, icon, rating, isActive, customClass, onClick }) => (
+export default ({ label, icon, rating, isActive, customClass = 'default', onClick }) => (
   <div className={classNames('small-icon-card', { active: isActive }, customClass)} onClick={onClick}>
     <div className="icon-wrapper">
       <img src={icon} alt={label} />

@@ -13,7 +13,7 @@ class GameGuideDetail extends Component {
   }
 
   render() {
-    const {match, guide, subPage, history } = this.props;
+    const { match, guide, subPage, history } = this.props;
     if (!guide || guide._id !== parseInt(subPage, 10)) {
       return <TabLoader />;
     }
@@ -22,8 +22,10 @@ class GameGuideDetail extends Component {
       <div className="game-guide-detail">
         <div className="game-guide-feature">
           <div className="title">{guide.Title}</div>
-          <button className="btn long" onClick={() => history.push(`/gaming_history/${match.params.game}/${match.params.tab}`)}>
-            <i className="fa fa-long-arrow-left"/>
+          <button
+            className="btn long"
+            onClick={() => history.push(`/gaming_history/${match.params.game}/${match.params.tab}`)}>
+            <i className="fa fa-long-arrow-left" />
           </button>
           <button className="btn" onClick={() => history.push(`/content_mirror/GamingHistoryGuide/${guide._id}`)}>
             <i className="fa fa-edit" />

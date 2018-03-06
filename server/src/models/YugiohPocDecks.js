@@ -9,6 +9,6 @@ const YugiohPocDecks = new Schema({
   Pros: [String],
   Cons: [String],
   Winrate: Number
-})
+});
 
 export default YugiohPocDecks;

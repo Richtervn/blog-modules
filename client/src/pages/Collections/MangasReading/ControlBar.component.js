@@ -104,8 +104,9 @@ class ControlBar extends Component {
               <InputSelectGroup
                 selectValue={search.option}
                 onChangeSelect={e => this.handleChange(e, 'searchOption')}
-                options={['Name', 'Author', 'Genere']}
+                options={['Name', 'Author', 'Genre']}
                 inputValue={search.value}
+                inputPlaceholder="Search ..."
                 onChangeInput={e => this.handleChange(e, 'searchValue')}
               />
             )}

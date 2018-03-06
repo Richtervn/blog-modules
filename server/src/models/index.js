@@ -11,6 +11,8 @@ import GamingHistoryAbout from './GamingHistoryAbout';
 import GamingHistoryGuide from './GamingHistoryGuide';
 import GamingHistoryOverview from './GamingHistoryOverview';
 import MangasReading from './MangasReading';
+import MuOnlineCharacters from './MuOnlineCharacters';
+import MuOnlineGuides from './MuOnlineGuides';
 import MuOnlineTools from './MuOnlineTools';
 import MuOnlineVersions from './MuOnlineVersions';
 import Music from './Music';
@@ -34,6 +36,8 @@ const models = db => {
   GamingHistoryGuide.plugin(autoIncrement.plugin, 'GamingHistoryGuide');
   GamingHistoryOverview.plugin(autoIncrement.plugin, 'GamingHistoryOverview');
   MangasReading.plugin(autoIncrement.plugin, 'MangasReading');
+  MuOnlineCharacters.plugin(autoIncrement.plugin, 'MuOnlineCharacters');
+  MuOnlineGuides.plugin(autoIncrement.plugin, 'MuOnlineGuides');
   MuOnlineTools.plugin(autoIncrement.plugin, 'MuOnlineTools');
   MuOnlineVersions.plugin(autoIncrement.plugin, 'MuOnlineVersions');
   Music.plugin(autoIncrement.plugin, 'Music');
@@ -57,6 +61,8 @@ const models = db => {
     GamingHistoryGuide: db.model('GamingHistoryGuide', GamingHistoryGuide),
     GamingHistoryOverview: db.model('GamingHistoryOverview', GamingHistoryOverview),
     MangasReading: db.model('MangasReading', MangasReading),
+    MuOnlineCharacters: db.model('MuOnlineCharacters', MuOnlineCharacters),
+    MuOnlineGuides: db.model('MuOnlineGuides', MuOnlineGuides),
     MuOnlineTools: db.model('MuOnlineTools', MuOnlineTools),
     MuOnlineVersions: db.model('MuOnlineVersions', MuOnlineVersions),
     Music: db.model('Music', Music),

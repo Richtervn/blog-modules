@@ -8,6 +8,7 @@ export default ({
   selectValue,
   inputName,
   inputValue,
+  inputPlaceholder,
   options,
   onChange,
   onChangeSelect,
@@ -27,6 +28,7 @@ export default ({
       value={inputValue}
       onChange={onChange || onChangeInput}
       name={inputName}
+      placeholder={inputPlaceholder}
     />
   </div>
 );

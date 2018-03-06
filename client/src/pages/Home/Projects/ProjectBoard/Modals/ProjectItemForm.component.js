@@ -48,7 +48,6 @@ class ProjectItemForm extends Component {
     });
     formValue._id = this.props.project._id;
     formValue.columnKey = this.props.column.key;
-    console.log(formValue);
     this.props.edit ? this.props.onEditItem(formValue) : this.props.onAddItem(formValue);
   }
 

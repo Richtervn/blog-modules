@@ -1,17 +1,36 @@
-const initialState = {};
+import { actionCreator } from 'helpers';
+import services from './MuOnline.services';
+import { toastError } from 'common/Toast';
+
+const SET_ACTIVE_TAB = 'muonline/SET_ACTIVE_TAB';
+
+const GET_VERSIONS = 'muonline/GET_VERSIONS';
+
+export const setActiveTab = tab => ({ type: SET_ACTIVE_TAB, tab });
+
+export const getVersions = actionCreator(GET_VERSIONS, services.getVersions);
+
+const initialState = {
+  activeTab: null,
+  versions: null
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case SET_ACTIVE_TAB:
+      return { ...state, activeTab: action.tab };
+    case `${GET_VERSIONS}_SUCCESS`:
+      return { ...state, versions: action.data };
+
+    case `${GET_VERSIONS}_FAIL`:
+      toastError(action.error);
+      return state;
     default:
       return state;
   }
 };
 
-// import actionCreator from 'factories/actionCreator';
-// import { muonline } from 'services';
 // import { toast } from 'react-toastify';
-
-// const CHANGE_ACTIVE_VIEW = 'muonline/CHANGE_ACTIVE_VIEW';
 
 // const GET_TOOLS_START = 'muonline/GET_TOOLS_START';
 // const GET_TOOLS_SUCCESS = 'muonline/GET_TOOLS_SUCCESS';

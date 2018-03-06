@@ -1,6 +1,3 @@
-// #1e434c
-// #063852
-
 import React from 'react';
 import { RoundBorderBar } from 'components/TopBars';
 
@@ -11,4 +8,6 @@ const tabs = [
   { name: 'Guides', route: '/mu_online/guides' }
 ];
 
-export default () => <RoundBorderBar tabs={tabs} />;
+export default ({ activeTab, onSetActiveTab }) => (
+  <RoundBorderBar tabs={tabs} customClass="mu-top-nav-bar" onClick={onSetActiveTab} activeTab={activeTab} />
+);

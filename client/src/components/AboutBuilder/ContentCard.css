@@ -1,5 +1,4 @@
 .contents-card {
-  border: solid 1px rgba(255, 255, 255, 0.5);
   padding: 5px;
   font-size: 14px;
 }
@@ -12,4 +11,8 @@
 
 .main-article-ref > .sub-article-ref {
   padding-left: 15px;
+}
+
+.contents-card.default {
+  border: solid 1px rgba(255, 255, 255, 0.5);
 }

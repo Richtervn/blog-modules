@@ -38,7 +38,7 @@ const AppRoutes = () => (
       <Route exact path="/app_menu" component={AppMenu} />
       <Route exact path="/guideline" component={Guideline} />
       <Route exact path="/yugioh!_poc" component={YugiohPoc} />
-      <Route path="/diablo_ii/:tab?" component={DiabloII} />
+      <Route path="/diablo_ii/:tab?/:subPage?" component={DiabloII} />
       <Route path="/mu_online/:tab?" component={MuOnline} />
       <Route path="/darksteam_97d99i/:tab?/:page?" component={Darksteam97d99i} />
       <Route path="/content_mirror/:table?/:record?" component={ContentMirror} />

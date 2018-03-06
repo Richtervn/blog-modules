@@ -105,9 +105,14 @@
 }
 
 .d2-kit-card > .feature {
+  display: none;
   position: absolute;
   top: 5px;
   right: 5px;
+}
+
+.d2-kit-card:hover > .feature {
+  display: block;
 }
 
 .d2-kit-card > .feature > .btn {

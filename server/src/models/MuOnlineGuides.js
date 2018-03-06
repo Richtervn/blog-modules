@@ -1,15 +1,13 @@
 import { Schema } from 'mongoose';
 
-const MuOnlineVersions = new Schema({
-  ImageUrl: String,
+const MuOnlineGuides = new Schema({
   Name: String,
   Credits: [String],
   Rating: Number,
-  ArchiveUri: String,
+  ImageUrl: String,
   Description: String,
-  Version: String,
   HTML: String,
   CSS: String
 });
 
-export default MuOnlineVersions;
+export default MuOnlineGuides;

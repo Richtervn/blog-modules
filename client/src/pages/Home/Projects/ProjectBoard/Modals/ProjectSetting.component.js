@@ -46,7 +46,6 @@ class ProjectSetting extends Component {
   handleAddTagColor() {
     const formValue = { ...this.state.value };
     formValue.TagColor.push({ Label: '', Color: '' });
-    console.log(formValue);
     this.setState({ value: { ...formValue } });
   }
 

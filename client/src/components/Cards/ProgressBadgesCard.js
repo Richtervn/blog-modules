@@ -3,6 +3,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { AdminButtons } from 'components/Buttons';
+import { ProgressBar } from 'components/Other';
 
 const ProgressBadgesCard = ({
   col,
@@ -52,11 +53,7 @@ const ProgressBadgesCard = ({
           </div>
           {children}
           <div className="progress">
-            <div
-              className={`progress-bar progress-bar-striped ${progress < 100 ? 'progress-bar-animated' : ''}`}
-              style={{ width: `${progress || 0}%` }}>
-              {showProgress && Math.round(progress) + '%'}
-            </div>
+            <ProgressBar showProgress={showProgress} progress={progress} />
           </div>
           <AdminButtons
             onClickEdit={onClickEdit}

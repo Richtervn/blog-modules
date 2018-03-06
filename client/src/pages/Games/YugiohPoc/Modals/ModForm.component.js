@@ -52,7 +52,6 @@ class YugiohPocModForm extends Component {
 
   handleChange(event, index) {
     const formValue = commonFormChange(this.state.value, event, index, ['Credits'], ['Icon', 'Image']);
-    console.log(formValue);
     this.setState({ value: { ...formValue } });
   }
 

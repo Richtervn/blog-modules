@@ -1,0 +1,36 @@
+.round-border-bar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  padding: 5px;
+}
+
+.round-border-bar > .tabs-wrapper {
+  display: flex;
+  width: 50%;
+}
+
+.round-border-bar > .tabs-wrapper > .tab-content {
+  flex: 1;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin: 0 5px;
+  text-align: center;
+  border-radius: 5px;
+  padding: 4px 0 5px 0;
+  cursor: pointer;
+  box-shadow: 2px 1px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s;
+}
+
+.round-border-bar > .tabs-wrapper > .tab-content.active {
+  font-weight: 600;
+  transform: translate(1px, 1px);
+  padding: 4px 0 5px;
+  box-shadow: none;
+}

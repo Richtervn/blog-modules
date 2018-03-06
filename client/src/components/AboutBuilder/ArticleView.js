@@ -1,5 +1,6 @@
 import './ArticleView.css';
 import React, { Component } from 'react';
+import classNames from 'classnames';
 
 const newSection = {
   Label: '',
@@ -144,10 +145,11 @@ class ArticleView extends Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data, customClass } = this.props;
     const { editing, adding, editingIndex } = this.state;
+
     return (
-      <div className="article-view-wrapper">
+      <div className={classNames('article-view-wrapper', customClass)}>
         {data.length <= 0 &&
           !adding && (
             <div className="default-view">
@@ -319,5 +321,9 @@ class ArticleView extends Component {
     );
   }
 }
+
+ArticleView.defaultProps = {
+  customClass: 'default'
+};
 
 export default ArticleView;

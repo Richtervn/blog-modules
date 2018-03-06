@@ -1,9 +1,10 @@
 import './ContentCard.css';
 import React from 'react';
+import classNames from 'classnames';
 
-export default ({ data }) => {
+export default ({ data, customClass = 'default' }) => {
   return (
-    <div className="contents-card">
+    <div className={classNames('contents-card', customClass)}>
       <div className="contents-card-label">Contents</div>
       <div className="contents-card-menu">
         {data.map((obj, index) => (

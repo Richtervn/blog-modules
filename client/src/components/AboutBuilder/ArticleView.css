@@ -7,8 +7,7 @@
   justify-content: center;
   align-items: center;
   min-height: 200px;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 20px; 
+  font-size: 20px;
 }
 
 .article-view {
@@ -21,7 +20,6 @@
   font-weight: 500;
   font-size: 24px;
   width: 100%;
-  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
 }
 
 .sub-article-label {
@@ -53,20 +51,12 @@
   padding: 10px;
 }
 
-.article-view-form > .label-input {
-  font-style: italic;
-  font-weight: 500;
-  font-size: 24px;
-  border: none;
-  background: rgba(255, 255, 255, 0.2);
-  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
-  color: white;
-}
-
 .article-view-form > .content-input {
   border: none;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
+}
+
+.article-view-form > .label-input {
+  border: none;
 }
 
 .article-view-form > .article-view-form-btns {
@@ -105,17 +95,11 @@
   font-style: italic;
   font-weight: 600;
   border: none;
-  background: rgba(255, 255, 255, 0.2);
-  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
-  color: white;
 }
 
 .article-sub-section-form > .content-input {
   border: none;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
 }
-
 
 .article-sub-section-form > .article-sub-section-feature {
   position: absolute;
@@ -129,5 +113,45 @@
   width: 25px;
   border: none;
   background: none;
+}
+
+/*Default theme*/
+.article-view-wrapper.default > .article-view-wrapper {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.article-view-wrapper.default > .article-view > .main-article > .article-label {
+  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+}
+
+.article-view-wrapper.default .article-view-form > .label-input {
+  background: rgba(255, 255, 255, 0.2);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+.article-view-wrapper.default .article-view-form > .content-input {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.article-view-wrapper.default .article-view-form > .label-input {
+  background: rgba(255, 255, 255, 0.2);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+.article-view-wrapper.default .article-sub-section-form > .label-input {
+  background: rgba(255, 255, 255, 0.2);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+.article-view-wrapper.default .article-sub-section-form > .content-input {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.article-view-wrapper.default .article-sub-section-feature > .btn {
   color: #dc3545;
 }

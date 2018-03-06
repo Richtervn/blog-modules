@@ -7,7 +7,7 @@ const YugiohPocMods = new Schema({
   Credits: [String],
   Rating: Number,
   Description: String,
-  Introduction: String,
-})
+  Introduction: String
+});
 
 export default YugiohPocMods;

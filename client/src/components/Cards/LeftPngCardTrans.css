@@ -2,9 +2,7 @@
   width: 100%;
   margin: 0 10px 10px 0;
   display: flex;
-  border: solid 1px rgba(255, 255, 255, 0.35);
   border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.2);
   padding: 10px;
 }
 
@@ -16,4 +14,9 @@
 .left-png-card-trans > .content {
   flex: 1;
   position: relative;
+}
+
+.left-png-card-trans.default > {
+  border: solid 1px rgba(255, 255, 255, 0.35);
+  background-color: rgba(0, 0, 0, 0.2);
 }
