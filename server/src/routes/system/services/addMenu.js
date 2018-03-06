@@ -4,4 +4,4 @@ export default async (category, item, readFile, writeFile) => {
   menu[category].items.push(item);
   await writeFile('./src/routes/system/data/menu.json', JSON.stringify(menu, null, 2));
   return menu;
-}
+};

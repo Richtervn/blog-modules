@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { ModalHeader, ModalFooter } from 'components/Modal';
 import { FormGroupRow, FormGroupArea } from 'components/FormTools';
-import {commonFormChange} from 'helpers';
+import { commonFormChange } from 'helpers';
+import { hideModal } from 'common/Modal';
 
 const initialFormValue = {
   Name: '',
@@ -36,7 +37,7 @@ class FlashGamesForm extends Component {
   handleSubmit() {
     const { edit, onAddGame, onEditGame } = this.props;
     edit ? onEditGame(this.state.value) : onAddGame(this.state.value);
-    window.$('#modal').modal('hide');
+    hideModal();
   }
 
   componentWillReceiveProps(nextProps) {
