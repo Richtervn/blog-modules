@@ -3,6 +3,7 @@ import { Schema } from 'mongoose';
 const MuOnlineCharacters = new Schema({
   Name: String,
   Class: String,
+  Description: String,
   Strength: Number,
   Agility: Number,
   Vitality: Number,

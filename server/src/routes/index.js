@@ -25,6 +25,8 @@ const routes = (models, factories) => {
     GamingHistoryGuide,
     GamingHistoryOverview,
     MangasReading,
+    MuOnlineCharacters,
+    MuOnlineGuides,
     MuOnlineTools,
     MuOnlineVersions,
     Music,
@@ -48,7 +50,7 @@ const routes = (models, factories) => {
       factories
     ),
     mangas_reading: mangasReadingRouter(MangasReading, factories),
-    mu_online: muOnlineRouter(MuOnlineTools, MuOnlineVersions, factories),
+    mu_online: muOnlineRouter(MuOnlineCharacters, MuOnlineGuides, MuOnlineTools, MuOnlineVersions, factories),
     music: musicRouter(Music, factories),
     profile: profileRouter(factories),
     projects: projectsRouter(Projects, factories),

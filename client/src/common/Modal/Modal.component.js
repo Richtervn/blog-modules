@@ -49,6 +49,8 @@ import {
   YugiohPocDeleteModConfirm
 } from 'pages/Games/YugiohPoc';
 
+import { MuOnlineVersionForm, MuOnlineDeleteVersionConfirm } from 'pages/Games/MuOnline';
+
 export default ({ name }) => {
   let additionProps = {};
   switch (name) {
@@ -117,26 +119,20 @@ export default ({ name }) => {
       {name === 'AddYugiohPocDeck' && <YugiohPocDeckForm />}
       {name === 'EditYugiohPocDeck' && <YugiohPocDeckForm edit />}
       {name === 'DeleteYugiohPocDeck' && <YugiohPocDeleteDeckConfirm />}
+
+      {name === 'AddMuOnlineVersion' && <MuOnlineVersionForm />}
+      {name === 'EditMuOnlineVersion' && <MuOnlineVersionForm edit />}
+      {name === 'DeleteMuOnlineVersion' && <MuOnlineDeleteVersionConfirm />}
     </Modal>
   );
 };
 
 // state = {
 
-
 //   AddMuonlineTool: {
 //     Credits: [''],
 //     Archive: null,
 //     Icon: null,
-//     Rating: 0,
-//     Description: '',
-//     Introduce: '',
-//     Version: ''
-//   },
-
-//   AddMuonlineVersion: {
-//     file: null,
-//     Credits: [''],
 //     Rating: 0,
 //     Description: '',
 //     Introduce: '',
@@ -152,12 +148,6 @@ export default ({ name }) => {
 
 //   switch (id) {
 
-
-//     case 'addMuonlineVersionModal':
-//       return {
-//         header: { icon: makeIcon('mulogo'), label: 'Add Mu Version' },
-//         body: FormAddMuonlineVersion
-//       };
 //     case 'addMuonlineToolModal':
 //       return {
 //         header: { icon: makeIcon('mulogo'), label: 'Add Mu Tool' },

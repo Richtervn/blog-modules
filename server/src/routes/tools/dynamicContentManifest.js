@@ -14,6 +14,16 @@ export default {
     CssField: 'CSS',
     HtmlField: 'HTML'
   },
+  MuOnlineVersions: {
+    DisplayField: 'Name',
+    CssField: 'CSS',
+    HtmlField: 'HTML'
+  },
+  MuOnlineGuides: {
+    DisplayField: 'Name',
+    CssField: 'CSS',
+    HtmlField: 'HTML'
+  },
   StarcraftCampaigns: {
     DisplayField: 'Name',
     CssField: 'CSS',

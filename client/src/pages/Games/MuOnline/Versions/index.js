@@ -1,3 +1,4 @@
 import Versions from './Versions.container';
+import { MuOnlineVersionForm, MuOnlineDeleteVersionConfirm } from './Modals';
 
-export { Versions };
+export { Versions, MuOnlineVersionForm, MuOnlineDeleteVersionConfirm };

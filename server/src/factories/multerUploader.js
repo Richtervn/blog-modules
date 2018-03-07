@@ -20,5 +20,26 @@ export default {
         });
       });
     };
+  },
+
+  createMultipleUpload(destination, filename, fields) {
+    const uploadOptions = fields.map(field => {
+      return {
+        name: field,
+        maxCount: 1
+      };
+    });
+    
+    const storage = multer.diskStorage({ destination, filename });
+    const upload = multer({ storage: storage }).fields(uploadOptions);
+
+    return (req, res) => {
+      return new Promise((resolve, reject) => {
+        upload(req, res, err => {
+          if (err) return reject(err);
+          return resolve(req.body);
+        });
+      });
+    };
   }
 };

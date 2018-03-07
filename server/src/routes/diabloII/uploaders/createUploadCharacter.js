@@ -1,7 +1,7 @@
 import multer from 'multer';
 import Promise from 'bluebird';
 
-const srcPath = './public/Mu Online/Versions';
+const srcPath = './public/DiabloII/Characters';
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
@@ -9,8 +9,7 @@ const storage = multer.diskStorage({
   },
   filename(req, file, cb) {
     const name = file.originalname;
-    req.body.ArchiveUri = `${srcPath}/${name}`;
-    req.body.Name = name;
+    req.body.FileUrl = `${srcPath}/${name}`;
     cb(null, name);
   }
 });
