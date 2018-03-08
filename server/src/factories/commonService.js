@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export default {
   create: async (model, body, arrayFields) => {
     let docBody = body;
@@ -32,11 +34,24 @@ export default {
     let updateForm = { ...body };
     if (arrayFields) {
       arrayFields.forEach(field => {
-        updateForm[field] = body[field].split(',');
+        if (body[field]) {
+          updateForm[field] = body[field].split(',');
+        }
       });
     }
-    await model.update({ _id: body._id }, { $set: updateForm });
-    return updateForm;
+    const result = await model.findOneAndUpdate({ _id: body._id }, { $set: updateForm }, { new: true });
+    return result;
+  },
+  uploadImage: (files, srcPath, fileField = 'file') => {
+    if (!files) {
+      return null;
+    }
+    if (!files[fileField]) {
+      return null;
+    }
+    const filePath = `${srcPath}/${moment().format('MMDDYYYYhhmmss')}.jpg`;
+    files[fileField].mv(filePath);
+    return filePath;
   },
   search: async (model, query, options) => {
     const regexQuery = {};

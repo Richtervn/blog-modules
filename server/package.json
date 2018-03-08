@@ -17,6 +17,7 @@
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
+    "express-fileupload": "^0.4.0",
     "express-winston": "^2.4.0",
     "flat-ioc": "^1.1.1",
     "moment": "^2.18.1",

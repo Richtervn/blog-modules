@@ -1,34 +1,18 @@
 import express from 'express';
-import moment from 'moment';
 
 import quickUpdate from './services/quickUpdate';
-import updateManga from './services/updateManga';
 import sortManga from './services/sortManga';
-
-import multer from 'multer';
-import Promise from 'bluebird';
 
 export default (MangasReading, factories) => {
   const router = express.Router();
   const { wrap, commonService, multerUploader } = factories;
 
-  const srcPath = './public/Mangas Reading'
-
-  const uploadCover = multerUploader.createSingleUpload(
-    srcPath,
-    (req, file, cb) => {
-      const name = moment().format('MMDDYYYYhhmmss') + '.jpg';
-      req.body.CoverUri = `${srcPath}/${name}`;
-      cb(null, name);
-    },
-    'file'
-  );
-
   router.post(
     '/add_manga',
-    wrap(async (req, res, next) => {
-      const body = await uploadCover(req, res);
-      const manga = await commonService.create(MangasReading, req.body, ['Aka', 'Authors', 'Genre']);
+    wrap(async ({ files, body }, res, next) => {
+      const coverUri = commonService.uploadImage(files, './public/Mangas Reading');
+      if (coverUri) body.CoverUri = coverUri;
+      const manga = await commonService.create(MangasReading, body, ['Aka', 'Authors', 'Genre']);
       res.send(manga);
     })
   );
@@ -51,9 +35,10 @@ export default (MangasReading, factories) => {
 
   router.put(
     '/update',
-    wrap(async (req, res, next) => {
-      const body = await uploadCover(req, res);
-      const manga = await updateManga(MangasReading, req);
+    wrap(async ({ files, body }, res, next) => {
+      const coverUri = commonService.uploadImage(files, './public/Mangas Reading');
+      if (coverUri) body.CoverUri = coverUri;
+      const manga = await commonService.update(MangasReading, body, ['Aka', 'Authors', 'Genre']);
       res.send(manga);
     })
   );

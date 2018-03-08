@@ -1,41 +1,39 @@
+const toTitleCase = srcString => srcString.charAt(0).toUpperCase() + srcString.slice(1, srcString.length);
+const urlFragToAka = urlFrag =>
+  urlFrag
+    .split('-')
+    .map(frag => toTitleCase(frag))
+    .join(' ');
+
 export default async (MangasReading, body) => {
   const { url } = body;
   const urlFrags = url.replace('http://', '').split('/');
   const site = urlFrags[0].replace('www.', '');
 
-  let mangaName;
-  let mangaAka, chapter, mangaNameFrags;
-
+  let mangaAka, chapter;
   switch (site) {
     case 'truyentranh.net': {
-      mangaNameFrags = urlFrags[1].split('-');
-      mangaAka = mangaNameFrags.join(' ');
+      mangaAka = urlFragToAka(urlFrags[1]);
       chapter = urlFrags[2].split('-')[1];
-      mangaName = urlFrags[1].split('-').join(' ');
       break;
     }
-
     case 'truyentranh8.net': {
-      mangaNameFrags = urlFrags[1].split('-chap-');
-      chapter = mangaNameFrags[1];
-      mangaName = mangaNameFrags[0]
-        .split('-')
-        .map(frag => frag.charAt(0).toUpperCase() + frag.slice(1, frag.length))
-        .join(' ');
+      let infoUrlFrags = urlFrags[1].split('-chap-');
+      mangaAka = urlFragToAka(infoUrlFrags[0]);
+      chapter = infoUrlFrags[1];
       break;
     }
-
     case 'nettruyen.com': {
-      mangaName = urlFrags[2];
+      mangaAka = urlFragToAka(urlFrags[2]);
       chapter = urlFrags[3].replace('chap-', '');
       break;
     }
   }
 
-  let manga = await MangasReading.findOne({ Aka: mangaName });
-  if (!manga) return { message: 'Not found' };
-  await MangasReading.update({ _id: manga._id }, { $set: { Chapter: chapter, ReadingUrl: url } });
+  let manga = await MangasReading.findOne({ Aka: mangaAka });
+  if (!manga) return { message: 'This manga is not added to tracking' };
   manga.Chapter = chapter;
   manga.ReadingUrl = url;
-  return manga;
+  const result = await manga.save();
+  return result;
 };

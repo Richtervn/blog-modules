@@ -2,6 +2,7 @@ import bodyParser from 'body-parser';
 import cookieParse from 'cookie-parser';
 import express from 'express';
 import expressWinston from 'express-winston';
+import fileUpload from 'express-fileupload';
 import winston from 'winston';
 
 export default (config, routes, MuApps) => {
@@ -39,6 +40,8 @@ export default (config, routes, MuApps) => {
     res.header('Access-Control-Allow-Credentials', 'true');
     next();
   });
+
+  app.use(fileUpload());
 
   for (let key in routes) {
     app.use(`/api/${key}`, routes[key]);
