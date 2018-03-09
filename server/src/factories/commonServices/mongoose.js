@@ -1,14 +1,6 @@
 import Promise from 'bluebird';
 import moment from 'moment';
-
-const deleteFile = link => {
-  new Promise((resolve, reject) => {
-    fs.unlink(link, err => {
-      if (err) return reject(err);
-      resolve();
-    });
-  });
-};
+import deleteFile from '../utils/deleteFile';
 
 export default {
   create: async (model, body, arrayFields) => {

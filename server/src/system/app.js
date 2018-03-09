@@ -47,9 +47,9 @@ export default (config, routes, MuApps) => {
     app.use(`/api/${key}`, routes[key]);
   }
 
-  for (let key in MuApps.router) {
-    if(MuApps.router[key]){
-      app.use(`/api/mu/${key}`, MuApps.router[key]);
+  for (let muApp in MuApps) {
+    for (let route in MuApps[muApp]) {
+      app.use(`/api/${muApp}/${route}`, MuApps[muApp][route]);
     }
   }
 

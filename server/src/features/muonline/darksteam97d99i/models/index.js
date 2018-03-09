@@ -1,9 +1,7 @@
 import Sequelize from 'sequelize';
-import Promise from 'bluebird';
 
-const models = async config => {
-  const sequelize = new Sequelize(config.muDatabase);
-
+export default async config => {
+  const sequelize = new Sequelize(config.muDatabase, { logging: false });
   const authError = await sequelize.authenticate();
 
   if (authError) {
@@ -31,7 +29,7 @@ const models = async config => {
 
   try {
     await sequelize.sync();
-  } catch(e){
+  } catch (e) {
     console.log(e);
   }
 
@@ -53,5 +51,3 @@ const models = async config => {
     UserReceipt
   };
 };
-
-export default models;

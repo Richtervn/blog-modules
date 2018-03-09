@@ -1,4 +1,4 @@
-export default class WQ7 {
+export default class WQ07 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;
 		this.webQuest = webQuest;

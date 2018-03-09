@@ -1,12 +1,24 @@
-import clearExtension from './clearExtension';
-import commonService from './commonService';
-import jsonReader from './jsonReader';
-import multerUploader from './multerUploader';
-import readFile from './readFile';
-import writeFile from './writeFile';
-import wrap from './wrap';
+import clearExtension from './string/clearExtension';
+import toTitleCase from './string/toTitleCase';
 
-const factories = () => ({ readFile, wrap, writeFile, commonService, jsonReader, clearExtension, multerUploader });
+import commonService from './commonServices/mongoose';
+import jsonReader from './commonServices/jsonReader';
+
+import deleteFile from './utils/deleteFile';
+import readFile from './utils/readFile';
+import writeFile from './utils/writeFile';
+import wrap from './utils/wrap';
+
+const factories = () => ({
+  toTitleCase,
+  clearExtension,
+  commonService,
+  jsonReader,
+  deleteFile,
+  readFile,
+  wrap,
+  writeFile
+});
 
 export default {
   name: 'App Factory',

@@ -1,26 +1,22 @@
-import express from 'express';
-import dbModels from './models';
-import initMethods from './methods';
-import * as routes from './routes';
-import * as helpers from './helpers';
-import * as appConfigs from './appConfigs';
+// import initMethods from './methods';
+// import * as helpers from './helpers';
 
-const muApp = async (factories, config) => {
-  const router = express.Router();
-  try {
-    const models = await dbModels(config);
-    const methods = initMethods(models, helpers);
+import initModels from './models';
+import initWorker from './worker';
+import * as routerCreators from './routes';
 
-    for (let key in routes) {
-      routes[key](models, router, factories, helpers, appConfigs, methods);
-    }
+export default async (factories, config, io) => {
+  const models = await initModels(config);
 
-    return { router, models, methods };
-  } catch (e) {
-    console.error(e);
-    console.log('[ERR-MUAPP] Darksteam97d99i database is not active');
-    return router;
+  io.on('connection', client => {
+    // initWorker(models, client);  
+    console.log('connected');  
+  })
+
+  const routers = {};
+  for (let key in routerCreators) {
+    routers[key] = routerCreators[key](models, factories, io);
   }
-};
 
-export default muApp;
+  return routers;
+};
