@@ -1,29 +1,17 @@
 import express from 'express';
 
-import editGame from './services/editGame';
-import getGame from './services/getGame';
-
 import addMenu from '../system/services/addMenu';
 import editMenu from '../system/services/editMenu';
 
 export default (FlashGames, factories) => {
   const router = express.Router();
-  const { wrap, readFile, writeFile, commonService, multerUploader } = factories;
-
-  const uploadGame = multerUploader.createSingleUpload(
-    './public/Flash Games',
-    (req, file, cb) => {
-      let url = `${req.body.Name}.swf`;
-      req.body.Uri = `./public/Flash Games/${url}`;
-      cb(null, url);
-    },
-    'File'
-  );
+  const { wrap, readFile, writeFile, commonService } = factories;
 
   router.post(
     '/add_game',
-    wrap(async (req, res, next) => {
-      const body = await uploadGame(req, res);
+    wrap(async ({ files, body }, res, next) => {
+      const uri = commonService.uploadArchive(files, './public/Flash Games', 'File');
+      if (uri) body.Uri = uri;
       const game = await commonService.create(FlashGames, body);
       const menu = await addMenu('Flash Games', game.Name, readFile, writeFile);
       res.send({ game, menu });
@@ -33,17 +21,20 @@ export default (FlashGames, factories) => {
   router.get(
     '/get_game/:name',
     wrap(async ({ params: { name } }, res, next) => {
-      const game = await getGame(FlashGames, name);
+      const game = await commonService.getOneByParam(FlashGames, { Name: name });
       res.send(game);
     })
   );
 
   router.put(
     '/edit_game',
-    wrap(async (req, res, next) => {
-      const body = await uploadGame(req, res);
-      const { game, menu } = await editGame(FlashGames, body, editMenu, readFile, writeFile);
-      res.send({ game, menu });
+    wrap(async ({ files, body }, res, next) => {
+      const game = await commonService.findOne(FlashGames, body._id);
+      const uri = commonService.uploadArchive(files, './public/Flash Games', 'File');
+      if (uri) body.Uri = uri;
+      const menu = await editMenu('Flash Games', game.Name, body.Name, readFile, writeFile);
+      const gameUpdated = await commonService.update(FlashGames, body, null, ['Uri']);
+      res.send({ game: gameUpdated, menu });
     })
   );
 

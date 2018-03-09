@@ -1,25 +1,18 @@
 import { serviceCaller } from 'helpers';
 
-const {
-  commonPostMultiplePart,
-  commonPutMultiplePart,
-  commonGet,
-  commonPut,
-  commonDelete,
-  commonPost
-} = serviceCaller;
+const { commonPostMultiplePart, commonPutMultiplePart, commonGet, commonPut, commonDelete, commonPost } = serviceCaller;
 
 export default {
   getMaps() {
-    const data = commonGet('starcraft/list_map');
+    const data = commonGet('starcraft/maps');
     return data;
   },
   getMods() {
-    const data = commonGet('starcraft/list_mod');
+    const data = commonGet('starcraft/mods');
     return data;
   },
   getCampaigns() {
-    const data = commonGet('starcraft/list_campaign');
+    const data = commonGet('starcraft/campaigns');
     return data;
   },
   getModDetail(id) {
@@ -31,39 +24,39 @@ export default {
     return data;
   },
   addMap(formBody) {
-    const data = commonPostMultiplePart('starcraft/add_map', formBody);
+    const data = commonPostMultiplePart('starcraft/map', formBody);
     return data;
   },
   addMod(formBody) {
-    const data = commonPost('starcraft/add_mod', formBody);
+    const data = commonPost('starcraft/mod', formBody);
     return data;
   },
   addCampaign(formBody) {
-    const data = commonPostMultiplePart('starcraft/add_campaign', formBody);
+    const data = commonPostMultiplePart('starcraft/campaign', formBody);
     return data;
   },
   editCampaign(formBody) {
-    const data = commonPut('starcraft/edit_campaign', formBody);
+    const data = commonPut('starcraft/campaign', formBody);
     return data;
   },
   editMod(formBody) {
-    const data = commonPut('starcraft/edit_mod', formBody);
+    const data = commonPut('starcraft/mod', formBody);
     return data;
   },
   editMap(formBody) {
-    const data = commonPutMultiplePart('starcraft/edit_map', formBody);
+    const data = commonPutMultiplePart('starcraft/map', formBody);
     return data;
   },
   deleteMap(id) {
-    const data = commonDelete('starcraft/remove_map/' + id);
+    const data = commonDelete('starcraft/map/' + id);
     return data;
   },
   deleteMod(id) {
-    const data = commonDelete('starcraft/remove_mod/' + id);
+    const data = commonDelete('starcraft/mod/' + id);
     return data;
   },
   deleteCampaign(id) {
-    const data = commonDelete('starcraft/remove_campaign/' + id);
+    const data = commonDelete('starcraft/campaign/' + id);
     return data;
   },
   searchMap(text) {

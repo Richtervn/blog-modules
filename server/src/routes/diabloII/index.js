@@ -1,10 +1,4 @@
-import Promise from 'bluebird';
 import express from 'express';
-
-import uploadMod from './services/uploadMod';
-import uploadCharacter from './services/uploadCharacter';
-import uploadTool from './services/uploadTool';
-import uploadSurvivalKit from './services/uploadSurvivalKit';
 
 import getExtra from './services/getExtra';
 import extraLevel from './services/extraLevel';
@@ -16,6 +10,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
   const router = express.Router();
   const { wrap, commonService, readFile, writeFile } = factories;
 
+  /*Diablo II Mod Routing*/
   router.get(
     '/mods',
     wrap(async (req, res, next) => {
@@ -40,6 +35,39 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     })
   );
 
+  router.post(
+    '/mod',
+    wrap(async ({ files, body }, res, next) => {
+      const archiveUrl = commonService.uploadArchive(files, `./public/DiabloII/Mods/${body.Version}`, 'Archive');
+      const iconIrl = commonService.uploadImage(files, './public/DiabloII/Mods/Icon', 'Icon');
+      if (archiveUrl) body.ArchiveUrl = archiveUrl;
+      if (iconUrl) body.IconUrl = iconUrl;
+      const result = await commonService.create(DiabloIIMods, body, ['Overview']);
+      res.send(result);
+    })
+  );
+
+  router.put(
+    '/mod',
+    wrap(async ({ files, body }, res, next) => {
+      const archiveUrl = commonService.uploadArchive(files, `./public/DiabloII/Mods/${body.Version}`, 'Archive');
+      const iconIrl = commonService.uploadImage(files, './public/DiabloII/Mods/Icon', 'Icon');
+      if (archiveUrl) body.ArchiveUrl = archiveUrl;
+      if (iconUrl) body.IconUrl = iconUrl;
+      const result = await commonService.update(DiabloIIMods, body, ['Overview'], ['ArchiveUrl', 'IconUrl']);
+      res.send(result);
+    })
+  );
+
+  router.delete(
+    '/mod/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(DiabloIIMods, id, ['ArchiveUrl', 'IconUrl']);
+      res.send(result);
+    })
+  );
+
+  /*Diablo II Character Routing*/
   router.get(
     '/characters',
     wrap(async (req, res, next) => {
@@ -56,6 +84,35 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     })
   );
 
+  router.post(
+    '/character',
+    wrap(async ({ body, files }, res, next) => {
+      const fileUrl = commonService.uploadArchive(files, './public/DiabloII/Characters');
+      if (fileUrl) body.FileUrl = fileUrl;
+      const result = await commonService.create(DiabloIICharacters, body, ['Overview']);
+      res.send(result);
+    })
+  );
+
+  router.put(
+    '/character',
+    wrap(async ({ body, files }, res, next) => {
+      const fileUrl = commonService.uploadArchive(files, './public/DiabloII/Characters');
+      if (fileUrl) body.FileUrl = fileUrl;
+      const result = await commonService.update(DiabloIICharacters, body, ['Overview'], ['FileUrl']);
+      res.send(result);
+    })
+  );
+
+  router.delete(
+    '/character/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(DiabloIICharacters, id, ['FileUrl']);
+      res.send(result);
+    })
+  );
+
+  /*Diablo II Tool Routing*/
   router.get(
     '/tools',
     wrap(async (req, res, next) => {
@@ -84,6 +141,39 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     })
   );
 
+  router.post(
+    '/tool',
+    wrap(async ({ body, files }, res, next) => {
+      const archiveUrl = commonService.uploadArchive(files, './public/DiabloII/Tools', 'Archive');
+      const iconIrl = commonService.uploadImage(files, './public/DiabloII/Tools/Icons', 'Icon');
+      if (archiveUrl) body.ArchiveUrl = archiveUrl;
+      if (iconUrl) body.IconUrl = iconUrl;
+      const result = await commonService.create(DiabloIITools, body, ['Overview']);
+      res.send(result);
+    })
+  );
+
+  router.put(
+    '/tool',
+    wrap(async ({ body, files }, res, next) => {
+      const archiveUrl = commonService.uploadArchive(files, './public/DiabloII/Tools', 'Archive');
+      const iconIrl = commonService.uploadImage(files, './public/DiabloII/Tools/Icons', 'Icon');
+      if (archiveUrl) body.ArchiveUrl = archiveUrl;
+      if (iconUrl) body.IconUrl = iconUrl;
+      const result = await commonService.update(DiabloIITools, body, ['Overview'], ['ArchiveUrl', 'IconUrl']);
+      res.send(result);
+    })
+  );
+
+  router.delete(
+    '/tool/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(DiabloIITools, id, ['ArchiveUrl', 'IconUrl']);
+      res.send(result);
+    })
+  );
+
+  /*Diablo II Survival Kits Routing*/
   router.get(
     '/survival_kits',
     wrap(async (req, res, next) => {
@@ -101,97 +191,21 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
   );
 
   router.post(
-    '/mod',
-    wrap(async (req, res, next) => {
-      const body = await uploadMod(req, res);
-      const result = await commonService.create(DiabloIIMods, body, ['Overview']);
-      res.send(result);
-    })
-  );
-
-  router.post(
-    '/character',
-    wrap(async (req, res, next) => {
-      const body = await uploadCharacter(req, res);
-      const result = await commonService.create(DiabloIICharacters, body, ['Overview']);
-      res.send(result);
-    })
-  );
-
-  router.post(
-    '/tool',
-    wrap(async (req, res, next) => {
-      const body = await uploadTool(req, res);
-      const result = await commonService.create(DiabloIITools, body, ['Overview']);
-      res.send(result);
-    })
-  );
-
-  router.post(
     '/survival_kit',
-    wrap(async (req, res, next) => {
-      const body = await uploadSurvivalKit(req, res);
+    wrap(async ({ body, files }, res, next) => {
+      const fileUrl = commonService.uploadArchive(files, './public/DiabloII/Survival Kits');
+      if (fileUrl) body.FileUrl = fileUrl;
       const result = await commonService.create(DiabloIISurvivalKits, body, ['Overview']);
       res.send(result);
     })
   );
 
   router.put(
-    '/mod',
-    wrap(async (req, res, next) => {
-      const body = await uploadMod(req, res);
-      const result = await commonService.update(DiabloIIMods, body, ['Overview']);
-      res.send(result);
-    })
-  );
-
-  router.put(
-    '/tool',
-    wrap(async (req, res, next) => {
-      const body = await uploadTool(req, res);
-      const result = await commonService.update(DiabloIITools, body, ['Overview']);
-      res.send(result);
-    })
-  );
-
-  router.put(
     '/survival_kit',
-    wrap(async (req, res, next) => {
-      const body = await uploadSurvivalKit(req, res);
-      const result = await commonService.update(DiabloIISurvivalKits, body, ['Overview']);
-      res.send(result);
-    })
-  );
-
-  router.put(
-    '/character',
-    wrap(async (req, res, next) => {
-      const body = await uploadCharacter(req, res);
-      const result = await commonService.update(DiabloIICharacters, body, ['Overview']);
-      res.send(result);
-    })
-  );
-
-  router.delete(
-    '/mod/:id',
-    wrap(async ({ params: { id } }, res, next) => {
-      const result = await commonService.delete(DiabloIIMods, id);
-      res.send(result);
-    })
-  );
-
-  router.delete(
-    '/tool/:id',
-    wrap(async ({ params: { id } }, res, next) => {
-      const result = await commonService.delete(DiabloIITools, id);
-      res.send(result);
-    })
-  );
-
-  router.delete(
-    '/character/:id',
-    wrap(async ({ params: { id } }, res, next) => {
-      const result = await commonService.delete(DiabloIICharacters, id);
+    wrap(async ({ body, files }, res, next) => {
+      const fileUrl = commonService.uploadArchive(files, './public/DiabloII/Survival Kits');
+      if (fileUrl) body.FileUrl = fileUrl;
+      const result = await commonService.update(DiabloIISurvivalKits, body, ['Overview'], ['FileUrl']);
       res.send(result);
     })
   );
@@ -199,11 +213,12 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
   router.delete(
     '/survival_kit/:id',
     wrap(async ({ params: { id } }, res, next) => {
-      const result = await commonService.delete(DiabloIISurvivalKits, id);
+      const result = await commonService.delete(DiabloIISurvivalKits, id, ['FileUrl']);
       res.send(result);
     })
   );
 
+  /*Diablo II Extra Routing*/
   router.get(
     '/extra',
     wrap(async (req, res, next) => {

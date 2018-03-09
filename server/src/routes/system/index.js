@@ -17,8 +17,8 @@ export default factories => {
 
   router.post(
     '/save_menu',
-    wrap(async (req, res, next) => {
-      const menu = await saveMenu(req.body, readFile, writeFile);
+    wrap(async ({ body }, res, next) => {
+      const menu = await saveMenu(body, readFile, writeFile);
       res.send(menu);
     })
   );

@@ -12,8 +12,7 @@ export default (models, factories) => {
 
   router.get(
     '/content_mirror/get_documents/:tableName',
-    wrap(async (req, res, next) => {
-      const { tableName } = req.params;
+    wrap(async ({ params: { tableName } }, res, next) => {
       const options = { _id: true };
       options[dynamicContentManifest[tableName].DisplayField] = true;
       const documents = await models[tableName].find({}, options);
@@ -23,8 +22,7 @@ export default (models, factories) => {
 
   router.get(
     '/content_mirror/get_document/:tableName/:docId',
-    wrap(async (req, res, next) => {
-      const { tableName, docId } = req.params;
+    wrap(async ({ params: { tableName, docId } }, res, next) => {
       const options = { _id: true };
       options[dynamicContentManifest[tableName].CssField] = true;
       options[dynamicContentManifest[tableName].HtmlField] = true;
@@ -35,15 +33,15 @@ export default (models, factories) => {
 
   router.put(
     '/content_mirror/save_code',
-    wrap(async (req, res, next) => {
-      const { collectionName, documentId } = req.body;
-      const updateForm = { ..._.omit(req.body, 'collectionName', 'documentId') };
+    wrap(async ({ body }, res, next) => {
+      const { collectionName, documentId } = body;
+      const updateForm = { ..._.omit(body, 'collectionName', 'documentId') };
       const doc = await models[collectionName].findOne({ _id: documentId });
       Object.keys(updateForm).forEach(key => {
         doc[key] = updateForm[key];
       });
       await doc.save();
-      res.send(req.body);
+      res.send(body);
     })
   );
 

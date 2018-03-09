@@ -8,12 +8,8 @@ export default (AppDiary, factories) => {
   router.post(
     '/',
     wrap(async ({ body }, res, next) => {
-      const log = new AppDiary({
-        ts: moment(),
-        text: body.text
-      });
-      const result = await log.save();
-      res.send(result);
+      const log = await commonService.create(AppDiary, { ts: moment(), text: body.text });
+      res.send(log);
     })
   );
 

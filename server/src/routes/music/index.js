@@ -1,10 +1,6 @@
 import _ from 'underscore';
 import express from 'express';
-
-import updateMusic from './services/updateMusic';
-import uploadMusic from './services/uploadMusic';
-import searchMusic from './services/searchMusic';
-import deleteMusic from './services/deleteMusic';
+import Promise from 'bluebird';
 
 export default (Music, factories) => {
   const router = express.Router();
@@ -12,8 +8,15 @@ export default (Music, factories) => {
 
   router.post(
     '/add_song',
-    wrap(async (req, res, next) => {
-      const body = await uploadMusic(req, res);
+    wrap(async ({ body, files }, res, next) => {
+      const url = commonService.uploadArchive(files, './public/Music', 'File');
+      if (!url) {
+        return { message: 'No MP3 File' };
+      }
+      const fragments = files.File.split(' - ');
+      body.Artist = fragments[0].trim();
+      bory.Name = fragments[1].replace('.mp3', '').trim();
+      body.Url = url;
       const song = await commonService.create(Music, body);
       res.send(song);
     })
@@ -29,25 +32,34 @@ export default (Music, factories) => {
 
   router.get(
     '/search',
-    wrap(async (req, res, next) => {
-      const songs = await searchMusic(Music, req.query);
+    wrap(async ({ query }, res, next) => {
+      const songs = await commonService.search(Music, query);
       res.send(songs);
     })
   );
 
   router.put(
     '/update',
-    wrap(async (req, res, next) => {
-      const song = await updateMusic(Music, req.body);
+    wrap(async ({ body, files }, res, next) => {
+      const url = commonService.uploadArchive(files, './public/Music', 'File');
+      if (!url) {
+        return { message: 'No MP3 File' };
+      }
+      const fragments = files.File.split(' - ');
+      body.Artist = fragments[0].trim();
+      body.Name = fragments[1].replace('.mp3', '').trim();
+      body.Url = url;
+      const song = await commonService.update(Music, body, null, ['Url']);
       res.send(song);
     })
   );
 
   router.put(
     '/delete_songs',
-    wrap(async (req, res, next) => {
-      const ids = await deleteMusic(Music, req.body);
-      res.send(ids);
+    wrap(async ({ body }, res, next) => {
+      const ids = body.ids;
+      await Promise.map(ids, id => commonService.delete(Music, id, ['Url']));
+      return { ids };
     })
   );
 

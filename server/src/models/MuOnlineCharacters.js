@@ -9,7 +9,8 @@ const MuOnlineCharacters = new Schema({
   Vitality: Number,
   Energy: Number,
   Invertory: String,
-  Version: String
+  Version: String,
+  Rating: Number
 });
 
 export default MuOnlineCharacters;

@@ -7,8 +7,9 @@ const MuOnlineTools = new Schema({
   ArchiveUri: String,
   Rating: Number,
   Description: String,
-  Introduce: String,
-  Version: String
+  Version: String,
+  HTML: String,
+  CSS: String
 });
 
 export default MuOnlineTools;

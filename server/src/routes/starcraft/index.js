@@ -1,142 +1,108 @@
-import Promise from 'bluebird';
 import express from 'express';
-import uploadMap from './services/uploadMap';
-import addMap from './services/addMap';
-import updateMap from './services/updateMap';
-import uploadCampaign from './services/uploadCampaign';
 
 export default (StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories) => {
   const router = express.Router();
   const { wrap, commonService } = factories;
 
+  /*Starcraft Map Routing*/
   router.get(
-    '/list_map',
+    '/maps',
     wrap(async (req, res, next) => {
       const maps = await commonService.getAll(StarcraftMaps);
       res.send(maps);
     })
   );
 
-  router.get(
-    '/list_campaign',
-    wrap(async (req, res, next) => {
-      const campaigns = await StarcraftCampaigns.find({}, { Description: false, HTML: false, CSS: false });
-      res.send(campaigns);
-    })
-  );
-
-  router.get(
-    '/list_mod',
-    wrap(async (req, res, next) => {
-      const mods = await StarcraftMods.find({}, { Description: false, Introduction: false });
-      res.send(mods);
-    })
-  );
-
-  router.get(
-    '/campaign/:id',
-    wrap(async (req, res, next) => {
-      const campaign = await commonService.getOne(StarcraftCampaigns, req.params.id);
-      res.send(JSON.stringify(campaign));
-    })
-  );
-
-  router.get(
-    '/mod/:id',
-    wrap(async (req, res, next) => {
-      const mod = await commonService.getOne(StarcraftMods, req.params.id);
-      res.send(mod);
-    })
-  );
-
   router.post(
-    '/add_map',
-    wrap(async (req, res, next) => {
-      const body = await uploadMap(req, res);
-      const map = await addMap(StarcraftMaps, body);
-      res.send(map);
-    })
-  );
-
-  router.post(
-    '/add_campaign',
-    wrap(async (req, res, next) => {
-      const body = await uploadCampaign(req, res);
-      const campaign = await commonService.create(StarcraftCampaigns, body);
-      res.send(campaign);
-    })
-  );
-
-  router.post(
-    '/add_mod',
-    wrap(async (req, res, next) => {
-      const mod = await commonService.create(StarcraftMods, body);
-      res.send(mod);
-    })
-  );
-
-  router.put(
-    '/edit_map',
-    wrap(async (req, res, next) => {
-      const body = await uploadMap(req, res);
-      const map = await updateMap(StarcraftMaps, body);
+    '/map',
+    wrap(async ({ files, body }, res, next) => {
+      const uri = commonService.uploadArchive(files, './public/Starcraft/Maps', 'File');
+      if (uri) {
+        body.Uri = uri;
+        body.Name = files.File.split('.')[0].trim();
+      }
+      const map = await commonService.create(StarcraftMaps, ['Tipntrick']);
       res.send(map);
     })
   );
 
   router.put(
-    '/edit_campaign',
-    wrap(async (req, res, next) => {
-      const campaign = await commonService.update(StarcraftCampaigns, body);
-      res.send(campaign);
-    })
-  );
-
-  router.put(
-    '/edit_mod',
-    wrap(async (req, res, next) => {
-      const mod = await commonService.update(StarcraftMods, body);
-      res.send(mod);
-    })
-  );
-
-  router.delete(
-    '/remove_map/:id',
-    wrap(async (req, res, next) => {
-      const id = await commonService.delete(StarcraftMaps, req.params.id);
-      res.send(id);
+    '/map',
+    wrap(async ({ files, body }, res, next) => {
+      const uri = commonService.uploadArchive(files, './public/Starcraft/Maps', 'File');
+      if (uri) {
+        body.Uri = uri;
+        body.Name = files.File.name.split('.')[0].trim();
+      }
+      const map = await commonService.update(StarcraftMaps, body, ['Tipntrick'], ['Uri']);
+      res.send(map);
     })
   );
 
   router.delete(
-    '/remove_mod/:id',
-    wrap(async (req, res, next) => {
-      const id = await commonService.delete(StarcraftMods, req.params.id);
-      res.send(id);
-    })
-  );
-
-  router.delete(
-    '/remove_campaign/:id',
-    wrap(async (req, res, next) => {
-      const id = await commonService.delete(StarcraftCampaigns, req.params.id);
-      res.send(id);
+    '/map/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(StarcraftMaps, id, ['Uri']);
+      res.send(result);
     })
   );
 
   router.get(
     '/search_map',
-    wrap(async (req, res, next) => {
-      const maps = await commonService.search(StarcraftMaps, req.query);
+    wrap(async ({ query }, res, next) => {
+      const maps = await commonService.search(StarcraftMaps, query);
       res.send(maps);
     })
   );
 
+  /*Starcraft Campaign Routing*/
   router.get(
-    '/search_mod',
+    '/campaigns',
     wrap(async (req, res, next) => {
-      const mods = await commonService.search(StarcraftMods, req.query, { Description: false, Introduction: false });
-      res.send(mods);
+      const campaigns = await commonService.getAll(StarcraftCampaigns, { Description: false, HTML: false, CSS: false });
+      res.send(campaigns);
+    })
+  );
+
+  router.get(
+    '/campaign/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const campaign = await commonService.getOne(StarcraftCampaigns, id);
+      res.send(campaign);
+    })
+  );
+
+  router.post(
+    '/campaign',
+    wrap(async ({ files, body }, res, next) => {
+      const uri = commonService.uploadArchive(files, './public/Starcraft/Campaigns', 'File');
+      if (uri) {
+        body.Uri = uri;
+        body.Name = files.File.name.split('.')[0].trim();
+      }
+      const campaign = await commonService.create(StarcraftCampaigns, body);
+      res.send(campaign);
+    })
+  );
+
+  router.put(
+    '/campaign',
+    wrap(async ({ files, body }, res, next) => {
+      const uri = commonService.uploadArchive(files, './public/Starcraft/Campaigns', 'File');
+      if (uri) {
+        body.Uri = uri;
+        body.Name = files.File.name.split('.')[0].trim();
+      }
+      const campaign = await commonService.update(StarcraftCampaigns, body, null, ['Uri']);
+      res.send(campaign);
+    })
+  );
+
+  router.delete(
+    '/campaign/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(StarcraftCampaigns, id, ['Uri']);
+      res.send(result);
     })
   );
 
@@ -149,6 +115,55 @@ export default (StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories) => 
         Uri: false
       });
       res.send(maps);
+    })
+  );
+
+  /*Starcraft Mod Routing*/
+  router.get(
+    '/mods',
+    wrap(async (req, res, next) => {
+      const mods = await commonService.getAll(StarcraftMods, { Description: false, Introduction: false });
+      res.send(mods);
+    })
+  );
+
+  router.get(
+    '/mod/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const mod = await commonService.getOne(StarcraftMods, id);
+      res.send(mod);
+    })
+  );
+
+  router.post(
+    '/mod',
+    wrap(async ({ body }, res, next) => {
+      const mod = await commonService.create(StarcraftMods, body);
+      res.send(mod);
+    })
+  );
+
+  router.put(
+    '/mod',
+    wrap(async ({ body }, res, next) => {
+      const mod = await commonService.update(StarcraftMods, body);
+      res.send(mod);
+    })
+  );
+
+  router.delete(
+    '/mod/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(StarcraftMods, req.params.id);
+      res.send(result);
+    })
+  );
+
+  router.get(
+    '/search_mod',
+    wrap(async ({ query }, res, next) => {
+      const mods = await commonService.search(StarcraftMods, query, { Description: false, Introduction: false });
+      res.send(mods);
     })
   );
 

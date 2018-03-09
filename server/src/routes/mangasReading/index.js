@@ -1,11 +1,12 @@
 import express from 'express';
+import Promise from 'bluebird';
 
 import quickUpdate from './services/quickUpdate';
 import sortManga from './services/sortManga';
 
 export default (MangasReading, factories) => {
   const router = express.Router();
-  const { wrap, commonService, multerUploader } = factories;
+  const { wrap, commonService } = factories;
 
   router.post(
     '/add_manga',
@@ -38,7 +39,7 @@ export default (MangasReading, factories) => {
     wrap(async ({ files, body }, res, next) => {
       const coverUri = commonService.uploadImage(files, './public/Mangas Reading');
       if (coverUri) body.CoverUri = coverUri;
-      const manga = await commonService.update(MangasReading, body, ['Aka', 'Authors', 'Genre']);
+      const manga = await commonService.update(MangasReading, body, ['Aka', 'Authors', 'Genre'], ['CoverUri']);
       res.send(manga);
     })
   );
@@ -46,7 +47,7 @@ export default (MangasReading, factories) => {
   router.delete(
     '/remove/:id',
     wrap(async ({ params: { id } }, res, next) => {
-      const result = await commonService.delete(MangasReading, id);
+      const result = await commonService.delete(MangasReading, id, ['CoverUri']);
       res.send(result);
     })
   );

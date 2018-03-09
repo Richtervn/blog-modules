@@ -1,89 +1,92 @@
 import express from 'express';
 
-import addMod from './services/addMod';
-import addDeck from './services/addDeck';
-import editMod from './services/editMod';
-import editDeck from './services/editDeck';
-import uploadModImgs from './services/uploadModImgs';
-import uploadDeckImg from './services/uploadDeckImg';
-
 export default (YugiohPocMods, YugiohPocDecks, factories) => {
   const router = express.Router();
   const { wrap, commonService } = factories;
 
-  router.post(
-    '/add_mod',
-    wrap(async (req, res, next) => {
-      const body = await uploadModImgs(req, res);
-      const mod = await addMod(YugiohPocMods, body);
-      res.send(mod);
-    })
-  );
-
-  router.post(
-    '/add_deck',
-    wrap(async (req, res, next) => {
-      const body = await uploadDeckImg(req, res);
-      const deck = await addDeck(YugiohPocDecks, body);
-      res.send(deck);
-    })
-  );
-
-  router.put(
-    '/edit_mod',
-    wrap(async (req, res, next) => {
-      const body = await uploadModImgs(req, res);
-      const mod = await editMod(YugiohPocMods, body);
-      res.send(mod);
-    })
-  );
-
-  router.put(
-    '/edit_deck',
-    wrap(async (req, res, next) => {
-      const body = await uploadDeckImg(req, res);
-      const deck = await editDeck(YugiohPocDecks, body);
-      res.send(deck);
-    })
-  );
-
+  /*Yugioh Poc Mod Routing*/
   router.get(
-    '/mod_list',
+    '/mods',
     wrap(async (req, res, next) => {
       const mods = await commonService.getAll(YugiohPocMods);
       res.send(mods);
     })
   );
 
-  router.get(
-    '/search_mod',
-    wrap(async (req, res, next) => {
-      const mods = await YugiohPocMods.find({ Name: { $regex: req.query.Name } });
-      res.send(mods);
+  router.post(
+    '/mod',
+    wrap(async ({ body, files }, res, next) => {
+      const icon = commonService.uploadImage(files, './public/Yugioh Poc/mods', 'Icon', 'Icon');
+      const image = commonService.uploadImage(files, './public/Yugioh Poc/mods', 'Image', 'Image');
+      if (icon) body.Icon = icon;
+      if (image) body.Image = image;
+      const mod = await commonService.create(YugiohPocMods, body, ['Credits']);
+      res.send(mod);
+    })
+  );
+
+  router.put(
+    '/mod',
+    wrap(async ({ body, files }, res, next) => {
+      const icon = commonService.uploadImage(files, './public/Yugioh Poc/mods', 'Icon', 'Icon');
+      const image = commonService.uploadImage(files, './public/Yugioh Poc/mods', 'Image', 'Image');
+      if (icon) body.Icon = icon;
+      if (image) body.Image = image;
+      const mod = await commonService.update(YugiohPocMods, body, ['Credits'], ['Image', 'Icon']);
+      res.send(mod);
+    })
+  );
+
+  router.delete(
+    '/mod/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(YugiohPocMods, id, ['Image', ['Icon']]);
+      res.send(result);
     })
   );
 
   router.get(
-    '/deck_list/:modId',
-    wrap(async (req, res, next) => {
-      const decks = await commonService.getByParam(YugiohPocDecks, 'ModId', req.params.modId);
+    '/search_mod',
+    wrap(async ({ query }, res, next) => {
+      const mods = await commonService.search(YugiohPocMods, query);
+      res.send(mods);
+    })
+  );
+
+  /*Yugioh Poc Deck Routing*/
+  router.post(
+    '/deck',
+    wrap(async ({ files, body }, res, next) => {
+      const image = commonService.uploadImage(files, './public/Yugioh Poc/decks', 'Image');
+      if (image) body.Image = image;
+      const deck = await commonService.create(YugiohPocDecks, body, ['Pros', 'Cons']);
+      res.send(deck);
+    })
+  );
+
+  router.put(
+    '/deck',
+    wrap(async ({ files, body }, res, next) => {
+      const image = commonService.uploadImage(files, './public/Yugioh Poc/decks', 'Image');
+      if (image) body.Image = image;
+      const deck = await editDeck(YugiohPocDecks, body, ['Pros', 'Cons'], ['Image']);
+      res.send(deck);
+    })
+  );
+
+  router.get(
+    '/decks/:modId',
+    wrap(async ({ params: { modId } }, res, next) => {
+      const decks = await commonService.getByParam(YugiohPocDecks, 'ModId', modId);
       res.send(decks);
     })
   );
 
   router.delete(
-    '/remove_mod/:id',
-    wrap(async (req, res, next) => {
-      const id = await commonService.delete(YugiohPocMods, req.params.id);
-      res.send(id);
-    })
-  );
-
-  router.delete(
-    '/remove_deck/:id',
-    wrap(async (req, res, next) => {
-      const id = await commonService.delete(YugiohPocDecks, req.params.id);
-      res.send(id);
+    '/deck/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(YugiohPocDecks, id, ['Image']);
+      res.send(result);
     })
   );
 
