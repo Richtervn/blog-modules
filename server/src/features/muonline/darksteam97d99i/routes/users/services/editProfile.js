@@ -1,10 +1,8 @@
-export default async (MembInfo, body, helpers) => {
-  const { makeSmallDateTime } = helpers;
+export default async (MembInfo, body, factories) => {
+  const { makeSmallDateTime } = factories;
   try {
     const account = await MembInfo.findOne({
-      where: {
-        memb_guid: body.MembGuid
-      }
+      where: { memb_guid: body.MembGuid }
     });
 
     const modi_days = makeSmallDateTime();
@@ -24,7 +22,6 @@ export default async (MembInfo, body, helpers) => {
     const editedAccount = await account.update(editForm);
     return editedAccount;
   } catch (e) {
-    console.log(e);
-    return { message: e.message };
+    return e;
   }
 };

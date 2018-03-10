@@ -2,7 +2,7 @@ export default birthday => {
   let data = new Date(birthday)
     .toISOString()
     .replace(/T/, ' ')
-    .replace(/\..+/, '')
+    .replace(/\..+/, '');
 
   let yyyy = data.substring(0, 4);
   let mm = data.substring(5, 7);
@@ -10,4 +10,4 @@ export default birthday => {
 
   const sno__numb = yyyy + mm + dd;
   return sno__numb;
-}
+};

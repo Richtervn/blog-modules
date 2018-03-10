@@ -1,9 +1,10 @@
 import Promise from 'bluebird';
+import { getData } from '../../../helpers';
 
-export default async (MembInfo, ViCurInfo, MembCredit, Banking, body, helpers, appConfigs) => {
-
-  const { makeSmallDateTime, makeSnoNumber } = helpers;
-  const { GameSetting } = appConfigs;
+export default async (models, factories, body) => {
+  const { makeSmallDateTime, makeSnoNumber } = factories;
+  const GameSetting = await getData('GameSetting');
+  const {MembInfo} = models;
 
   const checkExistUsername = async () => {
     let isExist = false;
@@ -75,9 +76,7 @@ export default async (MembInfo, ViCurInfo, MembCredit, Banking, body, helpers, a
     });
 
     return account;
-
-  } catch(e){
-    console.log(e);
-    return false;
+  } catch (e) {
+    return e;
   }
 };

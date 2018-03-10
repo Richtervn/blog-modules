@@ -1,9 +1,8 @@
-export default async (MembInfo, ViCurInfo, Banking, MembCredits, body) => {
+export default async (models, body) => {
+  const { MembInfo, ViCurInfo, Banking, MembCredits } = models;
   try {
     const account = await MembInfo.findOne({
-      where: {
-        memb___id: body.Username
-      }
+      where: { memb___id: body.Username }
     });
 
     if (!account) return { message: 'Wrong Username' };
@@ -38,7 +37,6 @@ export default async (MembInfo, ViCurInfo, Banking, MembCredits, body) => {
 
     return account.dataValues;
   } catch (e) {
-    console.log(e);
-    return false;
+    return e;
   }
 };

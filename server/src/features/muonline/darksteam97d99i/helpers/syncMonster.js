@@ -40,11 +40,11 @@ export default async factories => {
       Money: attributes[20],
       ItemLevel: attributes[21],
       Skill: attributes[22]
-    }
-    if(monster){
+    };
+    if (monster) {
       data.push(monster);
     }
   });
-  await writeFile(`${dataPath}/Monsters.json`, JSON.stringify(data, null, 2))
+  await writeFile(`${dataPath}/Monsters.json`, JSON.stringify(data, null, 2));
   return;
 };

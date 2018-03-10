@@ -1,11 +1,11 @@
 import _ from 'underscore';
 import Promise from 'bluebird';
-import { Categories } from '../../../data';
+import { Categories } from '../data/game';
 
 export default async factories => {
   const { readFile, writeFile } = factories;
-  const sourcePath = './src/features/muonline/darksteam97d99i/sourceData';
-  const dataPath = './src/features/muonline/darksteam97d99i/data';
+  const sourcePath = './src/features/muonline/darksteam97d99i/data/source';
+  const dataPath = './src/features/muonline/darksteam97d99i/data/game';
 
   const sourceBuffer = await readFile(`${sourcePath}/item.txt`);
   const sourceData = sourceBuffer.toString();
@@ -242,5 +242,5 @@ export default async factories => {
     });
   });
 
-  return
+  return;
 };

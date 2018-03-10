@@ -3,6 +3,11 @@ import toTitleCase from './string/toTitleCase';
 
 import commonService from './commonServices/mongoose';
 import jsonReader from './commonServices/jsonReader';
+import commonSequelize from './commonServices/sequelize';
+
+import makeSmallDateTime from './time/makeSmallDateTime';
+import makeSnoNumber from './time/makeSnoNumber';
+import readSnoNumber from './time/readSnoNumber';
 
 import deleteFile from './utils/deleteFile';
 import readFile from './utils/readFile';
@@ -14,6 +19,10 @@ const factories = () => ({
   clearExtension,
   commonService,
   jsonReader,
+  commonSequelize,
+  makeSmallDateTime,
+  makeSnoNumber,
+  readSnoNumber,
   deleteFile,
   readFile,
   wrap,
