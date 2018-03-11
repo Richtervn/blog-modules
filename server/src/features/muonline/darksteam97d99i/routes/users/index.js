@@ -54,8 +54,8 @@ export default (models, factories, socket) => {
   /*admin routing*/
   router.get(
     '/',
-    wrap(async (req, res, next) => {
-      const accounts = await commonSequelize.getAll(MembInfo);
+    wrap(async ({query}, res, next) => {
+      const accounts = await commonSequelize.getAll(MembInfo, query);
       res.send(accounts);
     })
   );

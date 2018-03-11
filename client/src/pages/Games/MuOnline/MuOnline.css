@@ -1,0 +1,43 @@
+.mu-list-row {
+  margin-left: -5px;
+  margin-top: 10px;
+  overflow-y: auto;
+  max-height: calc(100vh - 92px);
+}
+
+.mu-detail-view {
+  position: relative;
+  overflow-y: auto;
+  max-height: calc(100vh - 110px);
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  border: solid 1px;
+  border-radius: 4px;
+}
+
+.mu-detail-view > .feature {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.mu-detail-view > .feature .btn {
+  padding: 0;
+  width: 25px;
+  border-radius: 4px;
+}
+
+.mu-side-bar {
+  height: calc(100vh - 92px);
+  border-right: solid 1px;
+}
+
+.mu-side-bar > .tools-bar {
+  border-bottom: solid 1px;
+}
+
+.mu-side-bar > .list {
+  max-height: calc(100vh - 144px);
+  overflow-y: auto;
+}

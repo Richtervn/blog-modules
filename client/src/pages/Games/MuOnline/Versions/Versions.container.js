@@ -1,7 +1,7 @@
 import Versions from './Versions.component';
 import { connect } from 'react-redux';
 
-import { getVersions } from '../MuOnline.module';
+import { getVersions, setFocusVersion } from '../MuOnline.module';
 
 export default connect(
   ({ muOnline }) => ({
@@ -10,6 +10,9 @@ export default connect(
   dispatch => ({
     onGetVersions() {
       dispatch(getVersions());
+    },
+    onSetFocusVersion(id) {
+      dispatch(setFocusVersion(id));
     }
   })
 )(Versions);

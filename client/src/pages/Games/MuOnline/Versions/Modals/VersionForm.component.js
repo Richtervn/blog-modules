@@ -106,7 +106,7 @@ class MuVersionForm extends Component {
             name="Description"
             label="Description"
             onChange={this.handleChange}
-            value={this.state.Description}
+            value={this.state.value.Description}
           />
           <FormGroupRow
             type="text"

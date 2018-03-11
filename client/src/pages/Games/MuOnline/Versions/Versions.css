@@ -1,6 +1,17 @@
-.mu-versions-list {
-  margin-left: -5px;
-  margin-top: 10px;
-  overflow-y: auto;
-  max-height: calc(100vh - 92px);
+.mu-version-card .content {
+  text-align: center;
+  padding: 10px;
+}
+
+.mu-version-card .content > .name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mu-version-card .content > .credit {
+  position: absolute;
+  bottom: 5px;
+  font-size: 14px;
+  font-style: italic;
+  width: 94.5%;
 }

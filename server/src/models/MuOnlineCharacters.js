@@ -8,7 +8,10 @@ const MuOnlineCharacters = new Schema({
   Agility: Number,
   Vitality: Number,
   Energy: Number,
+  Command: Number,
   Invertory: String,
+  Reset: Number,
+  GrandReset: Number,
   Version: String,
   Rating: Number
 });

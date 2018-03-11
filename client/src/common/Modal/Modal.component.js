@@ -49,7 +49,16 @@ import {
   YugiohPocDeleteModConfirm
 } from 'pages/Games/YugiohPoc';
 
-import { MuOnlineVersionForm, MuOnlineDeleteVersionConfirm } from 'pages/Games/MuOnline';
+import {
+  MuOnlineVersionForm,
+  MuOnlineDeleteVersionConfirm,
+  MuOnlineCharacterForm,
+  MuOnlineDeleteCharacterConfirm,
+  MuOnlineGuideForm,
+  MuOnlineDeleteGuideConfirm,
+  MuOnlineToolForm,
+  MuOnlineDeleteToolConfirm
+} from 'pages/Games/MuOnline';
 
 export default ({ name }) => {
   let additionProps = {};
@@ -123,54 +132,15 @@ export default ({ name }) => {
       {name === 'AddMuOnlineVersion' && <MuOnlineVersionForm />}
       {name === 'EditMuOnlineVersion' && <MuOnlineVersionForm edit />}
       {name === 'DeleteMuOnlineVersion' && <MuOnlineDeleteVersionConfirm />}
+      {name === 'AddMuOnlineGuide' && <MuOnlineGuideForm />}
+      {name === 'EditMuOnlineGuide' && <MuOnlineGuideForm edit />}
+      {name === 'DeleteMuOnlineGuide' && <MuOnlineDeleteGuideConfirm />}
+      {name === 'AddMuOnlineCharacter' && <MuOnlineCharacterForm />}
+      {name === 'EditMuOnlineCharacter' && <MuOnlineCharacterForm edit />}
+      {name === 'DeleteMuOnlineCharacter' && <MuOnlineDeleteCharacterConfirm />}
+      {name === 'AddMuOnlineTool' && <MuOnlineToolForm />}
+      {name === 'EditMuOnlineTool' && <MuOnlineToolForm edit />}
+      {name === 'DeleteMuOnlineTool' && <MuOnlineDeleteToolConfirm />}
     </Modal>
   );
 };
-
-// state = {
-
-//   AddMuonlineTool: {
-//     Credits: [''],
-//     Archive: null,
-//     Icon: null,
-//     Rating: 0,
-//     Description: '',
-//     Introduce: '',
-//     Version: ''
-//   },
-
-//   AddDS9799VipSystem: {
-//     name: '',
-//     price: 0,
-//     duration: 0,
-//     type: 'Account'
-//   },
-
-//   switch (id) {
-
-//     case 'addMuonlineToolModal':
-//       return {
-//         header: { icon: makeIcon('mulogo'), label: 'Add Mu Tool' },
-//         body: FormAddMuonlineTool
-//       };
-//     case 'editMuonlineVersionModal':
-//       return {
-//         header: { icon: makeIcon('mulogo'), label: 'Edit Mu Version' },
-//         body: FormEditMuonlineVersion
-//       };
-//     case 'editMuonlineToolModal':
-//       return {
-//         header: { icon: makeIcon('mulogo'), label: 'Edit Mu Tool' },
-//         body: FormEditMuonlineTool
-//       };
-
-//     case 'addDs9799VipSystemModal':
-//       return {
-//         header: { icon: makeIcon('mulogo'), label: 'Add Vip System' },
-//         body: FormAddDs9799VipSystem
-//       };
-//     case 'editDs9799VipSystemModal':
-//       return {
-//         header: { icon: makeIcon('mulogo'), label: 'Edit Vip System' },
-//         body: FormEditDs9799VipSystem
-//       };

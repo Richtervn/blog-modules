@@ -40,7 +40,11 @@ export default {
     return data;
   },
   addGuide(formBody) {
-    const data = commonPost('mu_online/guide', formBody);
+    const data = commonPostMultiplePart('mu_online/guide', formBody);
+    return data;
+  },
+  addCharacter(formBody){
+    const data = commonPost('mu_online/character', formBody);
     return data;
   },
   editTool(formBody) {
@@ -73,6 +77,10 @@ export default {
   },
   deleteGuide(id) {
     const data = commonDelete('mu_online/guide/' + id);
+    return data;
+  },
+  searchTool(query) {
+    const data = commonGet('mu_online/search_tool', null, query);
     return data;
   }
 };

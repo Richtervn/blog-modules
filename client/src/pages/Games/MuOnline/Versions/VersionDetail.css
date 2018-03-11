@@ -1,0 +1,46 @@
+.mu-detail-view > .image-wrapper,
+.mu-detail-view > .name,
+.mu-detail-view > .version,
+.mu-detail-view > .rating,
+.mu-detail-view > .description,
+.mu-detail-view > .credits {
+  text-align: center;
+}
+
+.mu-detail-view > .name {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.mu-detail-view > .version {
+  font-style: italic;
+}
+
+.mu-detail-view > .rating {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.mu-detail-view > .image-wrapper {
+  margin-bottom: 20px;
+}
+
+.mu-detail-view > .description,
+.mu-detail-view > .credits {
+  font-style: italic;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.mu-detail-view > .html-binding {
+  padding: 10px;
+}
+
+.mu-detail-view > .html-binding > .notice {
+  padding: 40px 0;
+  font-size: 20px;
+  text-align: center;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.5);
+}

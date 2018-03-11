@@ -44,8 +44,7 @@ export default (MuOnlineCharacters, MuOnlineGuides, MuOnlineTools, MuOnlineVersi
       const guides = await commonService.getAll(MuOnlineGuides, {
         HTML: false,
         CSS: false,
-        ImageUrl: false,
-        Credits: false
+        ImageUrl: false
       });
       res.send(guides);
     })
@@ -102,6 +101,19 @@ export default (MuOnlineCharacters, MuOnlineGuides, MuOnlineTools, MuOnlineVersi
   );
 
   router.get(
+    '/search_tool',
+    wrap(async ({ query }, res, next) => {
+      const tools = await commonService.search(MuOnlineTools, query, {
+        Credits: false,
+        HTML: false,
+        CSS: false,
+        Description: false
+      });
+      res.send(tools);
+    })
+  );
+
+  router.get(
     '/tool/:id',
     wrap(async ({ params: { id } }, res, next) => {
       const tool = await commonService.getOne(MuOnlineTools, id);
@@ -148,9 +160,7 @@ export default (MuOnlineCharacters, MuOnlineGuides, MuOnlineTools, MuOnlineVersi
       const versions = await commonService.getAll(MuOnlineVersions, {
         ImageUrl: false,
         HTML: false,
-        CSS: false,
-        Description: false,
-        Credits: false
+        CSS: false
       });
       res.send(versions);
     })
@@ -168,7 +178,7 @@ export default (MuOnlineCharacters, MuOnlineGuides, MuOnlineTools, MuOnlineVersi
     '/version',
     wrap(async ({ body, files }, res, next) => {
       const archiveUri = commonService.uploadArchive(files, './public/Mu Online/Versions', 'Archive');
-      const imageUrl = commonService.uploadImage(files, './public/Mu Online/Versions/Iamges', 'Image');
+      const imageUrl = commonService.uploadImage(files, './public/Mu Online/Versions/Images', 'Image');
       if (archiveUri) body.ArchiveUri = archiveUri;
       if (imageUrl) body.ImageUrl = imageUrl;
       const version = await commonService.create(MuOnlineVersions, body, ['Credits']);
@@ -179,8 +189,8 @@ export default (MuOnlineCharacters, MuOnlineGuides, MuOnlineTools, MuOnlineVersi
   router.put(
     '/version',
     wrap(async ({ body, files }, res, next) => {
-      const archiveUri = commonService.uploadArchive(files, './public/Mu Online/Versions', 'Archive');
-      const imageUrl = commonService.uploadImage(files, './public/Mu Online/Versions/Iamges', 'Image');
+      const archiveUri = await commonService.uploadArchive(files, './public/Mu Online/Versions', 'Archive');
+      const imageUrl = await commonService.uploadImage(files, './public/Mu Online/Versions/Images', 'Image');
       if (archiveUri) body.ArchiveUri = archiveUri;
       if (imageUrl) body.ImageUrl = imageUrl;
       const version = await commonService.update(MuOnlineVersions, body, ['Credits'], ['ArchiveUri', 'ImageUrl']);
@@ -190,8 +200,8 @@ export default (MuOnlineCharacters, MuOnlineGuides, MuOnlineTools, MuOnlineVersi
 
   router.delete(
     '/version/:id',
-    wrap(({ params: { id } }, res, next) => {
-      const result = commonService.delete(MuOnlineVersions, id, ['ArchiveUri', 'ImageUrl']);
+    wrap(async ({ params: { id } }, res, next) => {
+      const result = await commonService.delete(MuOnlineVersions, id, ['ArchiveUri', 'ImageUrl']);
       res.send(result);
     })
   );

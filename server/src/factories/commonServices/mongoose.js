@@ -1,3 +1,4 @@
+import fs from 'fs';
 import Promise from 'bluebird';
 import moment from 'moment';
 import deleteFile from '../utils/deleteFile';
@@ -48,15 +49,19 @@ export default {
         }
       });
     }
-    const result = await model.findOneAndUpdate({ _id: body._id }, { $set: updateForm }, { new: true });
+    const doc = await model.findOne({ _id: body._id });
     if (linkFields) {
       await Promise.map(linkFields, field => {
-        if (updateForm[field]) {
+        if (updateForm[field] && doc[field]) {
           return deleteFile(doc[field]);
         }
         return;
       });
     }
+    for (let key in updateForm) {
+      doc[key] = updateForm[key];
+    }
+    const result = await doc.save();
     return result;
   },
   updateByParam: async (model, option, body, arrayFields) => {
@@ -71,15 +76,18 @@ export default {
     const result = await model.findOneAndUpdate(option, { $set: updateForm }, { new: true });
     return result;
   },
-  uploadImage: (files, srcPath, fileField = 'file', suffix) => {
+  uploadImage: (files, srcPath, fileField = 'file', suffix = '') => {
     if (!files) {
       return null;
     }
     if (!files[fileField]) {
       return null;
     }
-    const filePath = `${srcPath}/${moment().format('MMDDYYYYhhmmss')}${suffix ? `/${suffix}` : null}.jpg`;
-    files[fileField].mv(filePath);
+    const file = files[fileField];
+    const fileExt = file.name.slice(file.name.lastIndexOf('.'), file.name.length);
+    const fileName = `${moment().format('MMDDYYYYhhmmss')}${suffix}${fileExt}`;
+    const filePath = `${srcPath}/${fileName}`;
+    file.mv(filePath);
     return filePath;
   },
   uploadArchive: (files, srcPath, fileField = 'file') => {

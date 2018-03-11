@@ -1,0 +1,81 @@
+.mu-character-card {
+  border: solid 1px #063852;
+  width: 100%;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  text-align: center;
+  background-image: url('/images/backgrounds/mu-chars.jpg');
+  background-size: cover;
+  height: 190px;
+}
+
+.mu-character-card > .overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+}
+
+.mu-character-card > .overlay > .name {
+  font-weight: 700;
+}
+
+.mu-character-card > .overlay > .class {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.mu-character-card > .overlay > .resets {
+  display: flex;
+  font-size: 14px;
+}
+
+.mu-character-card > .overlay > .resets > .reset {
+  border: solid 1px;
+  border-bottom: none;
+  flex: 1;
+}
+
+.mu-character-card > .overlay > .resets > .reset:first-child {
+  border-right: none;
+}
+
+.mu-character-card > .overlay > .stats {
+  display: flex;
+  font-size: 10px;
+}
+
+.mu-character-card > .overlay > .stats > .stat {
+  border: solid 1px;
+  flex: 1;
+}
+
+.mu-character-card > .overlay > .stats > .stat:not(:last-child) {
+  border-right: none;
+}
+
+.mu-character-card > .overlay > .version {
+  position: absolute;
+  bottom: 5px;
+  text-align: center;
+  width: 95%;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.mu-character-card > .overlay > .rs-btn > .btn {
+  padding: 0 60px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.mu-character-card-feature {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}

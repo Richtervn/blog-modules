@@ -8,6 +8,16 @@
   cursor: pointer;
 }
 
+.small-icon-card > .icon-wrapper {
+  width: 32px;
+  height: 32px;
+}
+
+.small-icon-card > .icon-wrapper > img {
+  width: 32px;
+  height: 32px;
+}
+
 .small-icon-card > .content {
   flex: 1;
   text-align: center;

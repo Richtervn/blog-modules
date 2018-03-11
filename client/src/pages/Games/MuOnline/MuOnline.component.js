@@ -1,3 +1,4 @@
+import './MuOnline.css';
 import './MuOnline.theme.css';
 import _ from 'underscore';
 import React, { Component } from 'react';
@@ -8,6 +9,9 @@ import { getSimpleName } from 'helpers';
 
 import TopNavBar from './TopNavBar.container';
 import { Versions } from './Versions';
+import { Tools } from './Tools';
+import { Guides } from './Guides';
+import { Characters } from './Characters';
 
 class MuOnline extends Component {
   componentWillMount() {
@@ -21,7 +25,8 @@ class MuOnline extends Component {
   }
 
   render() {
-    const { activeTab, match: { params, subPage } } = this.props;
+    const { activeTab, match: { params } } = this.props;
+
     if (!params.tab) {
       return <Redirect to="/mu_online/versions" />;
     }
@@ -32,7 +37,10 @@ class MuOnline extends Component {
       <PageContainer backgroundUrl="/images/backgrounds/mg_mu.jpg" opacity={6}>
         <TopNavBar />
         <div className="container-fluid">
-          {activeTab === 'Versions' && <Versions id={subPage} />}
+          {activeTab === 'Versions' && <Versions id={params.subPage} />}
+          {activeTab === 'Tools' && <Tools />}
+          {activeTab === 'Guides' && <Guides id={params.subPage} />}
+          {activeTab === 'Characters' && <Characters />}
         </div>
       </PageContainer>
     );

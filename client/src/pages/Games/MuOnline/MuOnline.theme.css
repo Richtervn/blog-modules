@@ -15,4 +15,104 @@
 .mu-top-nav-bar .tab-content.active {
   background-color: #55bed6;
 }
-/*#1e434c*/
+
+.mu-version-card {
+  border-color: gray;
+}
+
+.mu-version-card .btn {
+  color: rgba(255, 255, 255, 0.5) !important;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.mu-version-card .btn:hover {
+  color: white !important;
+  border-color: white;
+}
+
+.mu-detail-view {
+  border-color: #063852;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mu-detail-view > .feature .btn {
+  color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.mu-detail-view > .feature .btn:hover {
+  color: white;
+  border-color: white;
+}
+
+.mu-side-bar {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-color: #063852;
+}
+
+.mu-side-bar input {
+  background: none;
+  border: solid 1px #063852 !important;
+  color: white;
+}
+
+.mu-side-bar .btn {
+  background: none;
+  border-color: #063852;
+  color: white;
+}
+
+.mu-side-bar .btn:hover {
+  background-color: #487f8c;
+}
+
+.mu-side-bar .btn.active {
+  border-color: #55bed6;
+  background-color: #063852;
+}
+
+.mu-side-bar > .tools-bar {
+  border-color: #063852;
+}
+
+.mu-tool-card {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.mu-tool-card:hover {
+  background-color: #487f8c;
+}
+
+.mu-tool-card.active {
+  border-color: #55bed6;
+  background-color: #063852;
+}
+
+.mu-tool-detail {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.mu-tool-detail .btn {
+  background: none;
+  border-color: #063852;
+  color: white;
+}
+
+.mu-tool-detail .btn:hover {
+  background-color: #487f8c;
+}
+
+.mu-tool-detail > .html-binding {
+  border-color: #063852;
+}
+
+.mu-character-card-feature .btn {
+  background: none;
+  border-color: #063852;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mu-character-card-feature .btn:hover {
+  background-color: #487f8c;
+  color: white;
+}
