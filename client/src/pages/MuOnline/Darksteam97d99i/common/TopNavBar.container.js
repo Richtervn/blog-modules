@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 import TopNavBar from './TopNavBar.component';
 
-import { setActiveTab } from './Darksteam97d99i.module';
+import { setActiveTab } from '../Darksteam97d99i.module';
 
 export default connect(
   ({ ds9799_appControl }) => ({
     activeTab: ds9799_appControl.activeTab,
-    currentUserPage: ds9799_appControl.currentUserPage,
-    currentAdminPage: ds9799_appControl.currentAdminPage,
-    currentServerPage: ds9799_appControl.currentServerPage
+    userPage: ds9799_appControl.userPage,
+    adminPage: ds9799_appControl.adminPage,
+    serverPage: ds9799_appControl.serverPage
   }),
   dispatch => ({
     onSetActiveTab(tab) {

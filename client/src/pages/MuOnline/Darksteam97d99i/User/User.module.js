@@ -1,8 +1,9 @@
 import { actionCreator } from 'helpers';
 import services from '../Darksteam97d99i.services';
+import { toastStrong, toastError } from 'common/Toast';
 
 const LOGIN = 'ds9799_user/LOGIN';
-const REGISTER = 'ds9799_user/REGISTER';
+export const REGISTER = 'ds9799_user/REGISTER';
 
 export const login = formBody => actionCreator(LOGIN, services.login, formBody)();
 export const register = formBody => actionCreator(REGISTER, services.register, formBody)();
@@ -14,7 +15,15 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case `${LOGIN}_SUCCESS`:
+      toastStrong(action.data.memb___id, 'Welcome');
       return { ...state, user: action.data };
+    case `${REGISTER}_SUCCESS`:
+      toastStrong('Register successful');
+      return { ...state, isRegistered: true };
+
+    case `${LOGIN}_FAIL`:
+      toastError(action.error);
+      return state;
     default:
       return state;
   }

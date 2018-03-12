@@ -1,4 +1,5 @@
 import BackgroundTextCard from './BackgroundTextCard';
+import InfoHeaderCard from './InfoHeaderCard';
 import LeftImageCard from './LeftImageCard';
 import LeftImageCardTrans from './LeftImageCardTrans';
 import LeftPngCardTrans from './LeftPngCardTrans';
@@ -8,6 +9,7 @@ import TextPriorityCard from './TextPriorityCard';
 
 export {
   BackgroundTextCard,
+  InfoHeaderCard,
   LeftImageCard,
   LeftImageCardTrans,
   LeftPngCardTrans,

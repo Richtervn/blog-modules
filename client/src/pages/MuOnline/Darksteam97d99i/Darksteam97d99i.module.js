@@ -2,46 +2,56 @@ import { actionCreator } from 'helpers';
 import services from './Darksteam97d99i.services';
 import { toastError } from 'common/Toast';
 // toastSuccess
+import { REGISTER } from './User';
+
 const GET_SERVER_INFO = 'darksteam97d99i/GET_SERVER_INFO';
 const GET_GAME_SETTING = 'darksteam97d99i/GET_GAME_SETTING';
 
+const SET_NON_REGISTERED = 'darksteam97d99i/SET_NON_REGISTERED';
 const SET_ACTIVE_TAB = 'darksteam97d99i/SET_ACTIVE_TAB';
-const SET_CURRENT_USER_PAGE = 'darksteam97d99i/SET_CURRENT_USER_PAGE';
-const SET_CURRENT_ADMIN_PAGE = 'darksteam97d99i/SET_CURRENT_ADMIN_PAGE';
-const SET_CURRENT_SERVER_PAGE = 'darksteam97d99i/SET_CURRENT_SERVER_PAGE';
+const SET_USER_PAGE = 'darksteam97d99i/SET_USER_PAGE';
+const SET_ADMIN_PAGE = 'darksteam97d99i/SET_ADMIN_PAGE';
+const SET_SERVER_PAGE = 'darksteam97d99i/SET_SERVER_PAGE';
 
 export const getServerInfo = actionCreator(GET_SERVER_INFO, services.getServerInfo);
 export const getGameSetting = actionCreator(GET_GAME_SETTING, services.getGameSetting);
 
 export const setActiveTab = tab => ({ type: SET_ACTIVE_TAB, tab });
-export const setCurrentUserPage = page => ({ type: SET_CURRENT_USER_PAGE, page });
-export const setCurrentAdminPage = page => ({ type: SET_CURRENT_ADMIN_PAGE, page });
-export const setCurrentServerPage = page => ({ type: SET_CURRENT_SERVER_PAGE, page });
+export const setUserPage = page => ({ type: SET_USER_PAGE, page });
+export const setAdminPage = page => ({ type: SET_ADMIN_PAGE, page });
+export const setServerPage = page => ({ type: SET_SERVER_PAGE, page });
+export const setNonRegistered = () => ({ type: SET_NON_REGISTERED });
 
 const initialState = {
-  activeTab: 'User',
+  activeTab: '',
   gameSetting: null,
   serverInfo: null,
-  currentUserPage: 'login',
-  currentAdminPage: '',
-  currentServerPage: ''
+  userPage: null,
+  adminPage: null,
+  serverPage: null,
+  isRegistered: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_ACTIVE_TAB:
       return { ...state, activeTab: action.tab };
-    case SET_CURRENT_USER_PAGE:
-      return { ...state, currentUserPage: action.page };
-    case SET_CURRENT_SERVER_PAGE:
-      return { ...state, currentServerPage: action.page };
-    case SET_CURRENT_ADMIN_PAGE:
-      return { ...state, currentAdminPage: action.page };
-      
+    case SET_USER_PAGE:
+      return { ...state, userPage: action.page };
+    case SET_SERVER_PAGE:
+      return { ...state, serverPage: action.page };
+    case SET_ADMIN_PAGE:
+      return { ...state, adminPage: action.page };
+    case SET_NON_REGISTERED:
+      return { ...state, isRegistered: false };
+
     case `${GET_GAME_SETTING}_SUCCESS`:
       return { ...state, gameSetting: action.data };
     case `${GET_SERVER_INFO}_SUCCESS`:
       return { ...state, serverInfo: action.data };
+
+    case `${REGISTER}_SUCCESS`:
+      return { ...state, isRegistered: true };
 
     case `${GET_GAME_SETTING}_FAIL`:
     case `${GET_SERVER_INFO}_FAIL`:

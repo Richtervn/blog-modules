@@ -3,6 +3,7 @@ import { serviceCaller } from 'helpers';
 const { commonPost, commonGet, commonPut, commonDelete, commonPostMultiplePart, commonPutMultiplePart } = serviceCaller;
 
 export default {
+  /* App Control Services */
   getGameSetting() {
     const data = commonGet('darksteam97d99i/system/game_setting');
     return data;
@@ -10,16 +11,18 @@ export default {
   getServerInfo() {
     const data = commonGet('darksteam97d99i/system/server_info');
     return data;
+  },
+
+  /*User Services*/
+  login(formBody) {
+    const data = commonPost('darksteam97d99i/users/login', formBody);
+    return data;
+  },
+  register(formBody) {
+    const data = commonPost('darksteam97d99i/users/register', formBody);
+    return data;
   }
 
-  // register(formBody) {
-  //   const data = commonPost('mu/darksteam97d99i/users/register', formBody);
-  //   return data;
-  // },
-  // login(formBody) {
-  //   const data = commonPost('mu/darksteam97d99i/users/login', formBody);
-  //   return data;
-  // },
   // editProfile(formBody) {
   //   const data = commonPut('mu/darksteam97d99i/users/profile', formBody);
   //   return data;

@@ -1,0 +1,33 @@
+.flat-bar {
+  display: flex;
+  width: 100%;
+}
+
+.flat-bar > .flat-tab {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 2px 0;
+}
+
+.flat-bar > .flat-tab.active {
+  font-weight: 700;
+}
+
+.flat-bar > .flat-tab:hover {
+  font-weight: 700;
+}
+
+.flat-bar.default > .flat-tab {
+  background-color: black;
+}
+
+.flat-bar.default > .flat-tab:hover {
+  background-color: #273448;
+}
+
+.flat-bar.default > .flat-tab.active {
+  background-color: #223a5e;
+}
+

@@ -5,11 +5,11 @@ export default async config => {
   const authError = await sequelize.authenticate();
 
   if (authError) {
-    console.log('[MUAPP] Unable to connect database', authError);
+    console.log('[Darksteam97d99i] Unable to connect database', authError);
     return;
   }
 
-  console.log('[MUAPP] Connect database successfully');
+  console.log('[Darksteam97d99i] Connect database successfully');
 
   const MembInfo = sequelize.import('./MembInfo');
   const AccountCharacter = sequelize.import('./AccountCharacter');

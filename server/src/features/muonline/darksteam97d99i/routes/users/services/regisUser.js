@@ -1,10 +1,10 @@
 import Promise from 'bluebird';
-import { getData } from '../../../helpers';
 
-export default async (models, factories, body) => {
+export default async (models, factories, helpers, body) => {
   const { makeSmallDateTime, makeSnoNumber } = factories;
+  const { getData } = helpers;
   const GameSetting = await getData('GameSetting');
-  const {MembInfo} = models;
+  const { MembInfo } = models;
 
   const checkExistUsername = async () => {
     let isExist = false;

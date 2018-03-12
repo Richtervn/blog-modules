@@ -9,6 +9,9 @@ export default async name => {
     case 'ServerInfo':
       filepath = './src/features/muonline/darksteam97d99i/configs/ServerInfo.json';
       break;
+    case 'WebQuests':
+      filepath = './src/features/muonline/darksteam97d99i/data/app/questList.json';
+      break;
     default:
       break;
   }

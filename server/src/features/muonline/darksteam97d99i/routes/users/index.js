@@ -6,7 +6,7 @@ import loginUser from './services/loginUser';
 import editProfile from './services/editProfile';
 import changePassword from './services/changePassword';
 
-export default (models, factories, io) => {
+export default (models, factories, helpers, io) => {
   const router = express.Router();
   const { wrap, commonSequelize } = factories;
   const { MembInfo } = models;
@@ -14,7 +14,7 @@ export default (models, factories, io) => {
   router.post(
     '/register',
     wrap(async ({ body }, res, next) => {
-      const account = await regisUser(models, factories, body);
+      const account = await regisUser(models, factories, helpers, body);
       res.send(account);
     })
   );
@@ -54,7 +54,7 @@ export default (models, factories, io) => {
   /*admin routing*/
   router.get(
     '/',
-    wrap(async ({query}, res, next) => {
+    wrap(async ({ query }, res, next) => {
       const accounts = await commonSequelize.getAll(MembInfo, query);
       res.send(accounts);
     })
@@ -86,4 +86,3 @@ export default (models, factories, io) => {
 
   return router;
 };
-

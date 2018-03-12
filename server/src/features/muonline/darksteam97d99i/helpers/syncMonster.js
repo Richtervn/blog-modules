@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import Promise from 'bluebird';
-import { Categories } from '../../../data';
+import { Categories } from '../data/game';
 
 export default async factories => {
   const { readFile, writeFile } = factories;

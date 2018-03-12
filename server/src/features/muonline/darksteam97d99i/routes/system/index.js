@@ -1,10 +1,9 @@
 import express from 'express';
 
-import { getData, syncItems, syncMonsters } from '../../helpers';
-
-export default (models, factories, io) => {
+export default (models, factories, helpers, io) => {
   const router = express.Router();
   const { wrap, readFile, writeFile } = factories;
+  const { getData, syncItems, syncMonsters } = helpers;
 
   router.get(
     '/game_setting',

@@ -1,4 +1,3 @@
-import InfoCard from './InfoCard.component';
-import SideNav from './SideNav.component';
+import Ds9799Page from './Ds9799Page';
 
-export { InfoCard, SideNav };
+export { Ds9799Page };

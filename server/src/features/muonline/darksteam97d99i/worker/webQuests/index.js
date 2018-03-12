@@ -1,6 +1,5 @@
 import _ from 'underscore';
 import Promise from 'bluebird';
-import questList from './questList';
 
 import WQ01 from './WQ01';
 import WQ02 from './WQ02';
@@ -43,22 +42,25 @@ const questWorkers = {
 };
 
 class WebQuestWorker {
-	constructor(client, models, methods) {
+	constructor(client, models, methods, helpers) {
+		const { getData } = helpers;
 		this.client = client;
 		this.models = models;
 		this.methods = methods;
+		this.helpers = { getData };
 		this.questWorkers = {};
 	}
 
 	async initial(memb___id) {
 		const { MembInfo, Character, Banking, MembCredits, UserWebQuest } = this.models;
 
-		const [membInfo, characters, banking, membCredits, userWebQuest] = [
+		const [membInfo, characters, banking, membCredits, userWebQuest, questList] = [
 			await MembInfo.findOne({ where: { memb___id: memb___id } }),
 			await Character.findAll({ where: { AccountId: memb___id } }),
 			await Banking.findOne({ where: { memb___id: memb___id } }),
 			await MembCredits.findOne({ where: { memb___id: memb___id } }),
-			await UserWebQuest.findAll({ where: { memb___id: memb___id } })
+			await UserWebQuest.findAll({ where: { memb___id: memb___id } }),
+			await getData('WebQuests')
 		];
 
 		this.membInfo = membInfo;
@@ -141,9 +143,9 @@ class WebQuestWorker {
 		return result;
 	}
 
-	async checkQuest(questId){
+	async checkQuest(questId) {
 		const result = await this.questWorkers[questId].check();
-		return result
+		return result;
 	}
 }
 

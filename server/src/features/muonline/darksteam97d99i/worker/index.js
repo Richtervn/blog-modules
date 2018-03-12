@@ -1,10 +1,10 @@
 import WebQuestWorkers from './WebQuests';
 
-export default (models, client, methods) => {
+export default (models, client, methods, helpers) => {
   let webQuestWorker;
 
   client.on('darksteam97d99i/USER_LOGGED_IN', async memb___id => {
-    webQuestWorker = new WebQuestWorkers(client, models, methods);
+    webQuestWorker = new WebQuestWorkers(client, models, methods, helpers);
     await webQuestWorker.initial(memb___id);
   });
 
