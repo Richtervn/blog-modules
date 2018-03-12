@@ -2,15 +2,15 @@ import _ from 'underscore';
 import Promise from 'bluebird';
 import questList from './questList';
 
-import WQ1 from './WQ1';
-import WQ2 from './WQ2';
-import WQ3 from './WQ3';
-import WQ4 from './WQ4';
-import WQ5 from './WQ5';
-import WQ6 from './WQ6';
-import WQ7 from './WQ7';
-import WQ8 from './WQ8';
-import WQ9 from './WQ9';
+import WQ01 from './WQ01';
+import WQ02 from './WQ02';
+import WQ03 from './WQ03';
+import WQ04 from './WQ04';
+import WQ05 from './WQ05';
+import WQ06 from './WQ06';
+import WQ07 from './WQ07';
+import WQ08 from './WQ08';
+import WQ09 from './WQ09';
 import WQ10 from './WQ10';
 import WQ11 from './WQ11';
 import WQ12 from './WQ12';
@@ -22,15 +22,15 @@ import WQ17 from './WQ17';
 import WQ18 from './WQ18';
 
 const questWorkers = {
-	WQ1,
-	WQ2,
-	WQ3,
-	WQ4,
-	WQ5,
-	WQ6,
-	WQ7,
-	WQ8,
-	WQ9,
+	WQ01,
+	WQ02,
+	WQ03,
+	WQ04,
+	WQ05,
+	WQ06,
+	WQ07,
+	WQ08,
+	WQ09,
 	WQ10,
 	WQ11,
 	WQ12,

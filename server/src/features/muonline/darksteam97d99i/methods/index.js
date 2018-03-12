@@ -3,10 +3,10 @@ import buyVipCharacter from './buyVipCharacter';
 import payByZen from './payByZen';
 import payByBank from './payByBank';
 
-export default (models, helpers) => {
+export default (models, factories) => {
 	return {
-		buyVipAccount: buyVipAccount(models, helpers),
-		buyVipCharacter: buyVipCharacter(models, helpers),
+		buyVipAccount: buyVipAccount(models),
+		buyVipCharacter: buyVipCharacter(models),
 		payByBank: payByBank(models),
 		payByZen: payByZen()
 	};

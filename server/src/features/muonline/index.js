@@ -15,8 +15,10 @@ import darksteam97d99iApp from './darksteam97d99i';
 //   };
 // };
 
-const muApps = async (factories, config, socket) => {
-  const darksteam97d99i = await darksteam97d99iApp(factories, config, socket);
+const muApps = async (factories, config, io) => {
+  const darksteam97d99i = await darksteam97d99iApp(factories, config, io);
+  
+
   return { darksteam97d99i };
 };
 

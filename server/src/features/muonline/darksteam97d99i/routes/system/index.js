@@ -2,7 +2,7 @@ import express from 'express';
 
 import { getData, syncItems, syncMonsters } from '../../helpers';
 
-export default (models, factories, socket) => {
+export default (models, factories, io) => {
   const router = express.Router();
   const { wrap, readFile, writeFile } = factories;
 

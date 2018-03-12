@@ -6,7 +6,7 @@ import loginUser from './services/loginUser';
 import editProfile from './services/editProfile';
 import changePassword from './services/changePassword';
 
-export default (models, factories, socket) => {
+export default (models, factories, io) => {
   const router = express.Router();
   const { wrap, commonSequelize } = factories;
   const { MembInfo } = models;

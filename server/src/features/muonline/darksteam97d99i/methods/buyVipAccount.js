@@ -1,6 +1,6 @@
-export default (models, helpers) => {
+export default (models, factories) => {
 	const { MembInfo, MembCredits } = models;
-	const { increaseUnixDay } = helpers;
+	const { increaseUnixDay } = factories;
 
 	return async (vipSystem, userId) => {
 		const [membCredit, membInfo] = [
