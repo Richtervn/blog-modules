@@ -1,7 +1,8 @@
 .ds9799-user-card {
   border: solid 1px #f44336;
   border-radius: 4px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-top: 5px;
 }
 
 .ds9799-user-card > .header {

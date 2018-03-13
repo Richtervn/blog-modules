@@ -121,7 +121,8 @@ class UserMenu extends Component {
         activeMenu={activePage}
         onClick={menu => onSetPage(menu.route)}
         prefix="/darksteam_97d99i/user/"
-      />
+      />,
+      <btn className="btn btn-block btn-danger">Log out</btn>
     ];
   }
 }
