@@ -4,14 +4,30 @@
 }
 
 .ds9799-intro-home > .intro-image {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.ds9799-intro-home > .intro-image > .content-menu {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px #007bff;
+  padding: 15px;
+  margin-right: 10px;
+}
+
+.ds9799-intro-home > .intro-image > .content-menu > .header {
+  font-weight: 600;
+  padding-bottom: 10px;
+  text-align: center;
 }
 
 .ds9799-intro-home > .intro-data {
   width: 70%;
   margin: auto;
+  padding-bottom: 20px;
 }
 
 .ds9799-intro-home > .intro-data > h4 {
@@ -22,6 +38,17 @@
   color: #f44336;
 }
 
+.ds9799-intro-home > .intro-data > h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
 .ds9799-intro-home > .intro-data > ul {
   font-size: 14px;
+}
+
+.ds9799-intro-home > .intro-data > .img-list {
+  display: flex;
+  margin: 20px -30px;
+  justify-content: space-between;
 }

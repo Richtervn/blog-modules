@@ -1,0 +1,42 @@
+.ds9799-user-card {
+  border: solid 1px #f44336;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.ds9799-user-card > .header {
+  text-align: center;
+  background-color: #f44336;
+  font-weight: 700;
+  font-size: 20px;
+  position: relative;
+}
+
+.ds9799-user-card > .header > .vip-icon {
+  position: absolute;
+  top: -3px;
+  left: 3px;
+}
+
+.ds9799-user-card > .header > .vip-icon > img {
+  width: 20px;
+  height: 20px;
+}
+
+.ds9799-user-card > .content {
+  padding: 10px 40px;
+}
+
+.ds9799-user-card > .content > .wrapper {
+  display: flex;
+}
+
+.ds9799-user-card > .content > .wrapper > .label {
+  font-weight: 600;
+  flex: 1;
+}
+
+.ds9799-user-card > .content > .wrapper > .text {
+  flex: 1;
+  text-align: center;
+}

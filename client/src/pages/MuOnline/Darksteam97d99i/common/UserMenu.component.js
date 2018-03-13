@@ -5,10 +5,22 @@ import { Redirect } from 'react-router-dom';
 import LoginForm from './LoginForm.container';
 import RegisterForm from './RegisterForm.container';
 import ForgotPassword from './ForgotPassword.container';
+import UserCard from './UserCard.container';
 
 import { InfoHeaderCard } from 'components/Cards';
+import { MenuSideBar } from 'components/SideBars';
 
-const userPages = [{ name: 'Dashboard', route: 'dashboard' }];
+const userPages = [
+  { name: 'Dash Board', route: 'dashboard', icon: 'dashboard' },
+  { name: 'Character Manager', route: 'character', icon: 'users' },
+  { name: 'Banking Manager', route: 'banking', icon: 'bank' },
+  { name: 'Vip Manager', route: 'vip', icon: 'credit-card' },
+  { name: 'Web Shop', route: 'web_shop', icon: 'shopping-cart' },
+  { name: 'Luxury Shop', route: 'luxury_shop', icon: 'magic' },
+  { name: 'Web Quest', route: 'web_quest', icon: 'diamond' },
+  { name: 'Upgrade Items', route: 'upgrade_item', icon: 'flash' },
+  { name: 'Blacksmith', route: 'blacksmith', icon: 'gavel' }
+];
 
 class UserMenu extends Component {
   componentWillReceiveProps(nextProps) {
@@ -30,7 +42,7 @@ class UserMenu extends Component {
   }
 
   render() {
-    const { activePage, serverInfo, gameSetting, isLoggedIn } = this.props;
+    const { activePage, serverInfo, gameSetting, isLoggedIn, onSetPage } = this.props;
     if (isLoggedIn) {
       if (!_.contains(_.pluck(userPages, 'route'), activePage)) {
         return <Redirect to="/darksteam_97d99i/user/dashboard" />;
@@ -96,7 +108,21 @@ class UserMenu extends Component {
       }
     }
 
-    return null;
+    if (!isLoggedIn) {
+      return null;
+    }
+
+    return [
+      <UserCard key="uc" />,
+      <MenuSideBar
+        key="um"
+        menus={userPages}
+        customClass="ds9799-side-nav-menu"
+        activeMenu={activePage}
+        onClick={menu => onSetPage(menu.route)}
+        prefix="/darksteam_97d99i/user/"
+      />
+    ];
   }
 }
 

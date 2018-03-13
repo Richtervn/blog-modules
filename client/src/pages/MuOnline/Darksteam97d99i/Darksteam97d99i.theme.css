@@ -45,3 +45,62 @@
 .ds9799-register-form > .feature > .btn:hover {
   background-color: #8b0000;
 }
+
+.ds9799-user-card {
+  border: solid 1px #f44336;
+}
+
+.ds9799-user-card > .header {
+  background-color: #f44336;
+}
+
+.ds9799-hof > .side-bar {
+  background-color: black;
+}
+
+.ds9799-hof > .side-bar > .group > .group-header {
+  background-color: #174223;
+}
+
+.ds9799-hof > .side-bar > .group > .group-header:hover {
+  background-color: #28733d;
+}
+
+.ds9799-hof > .side-bar > .group > .group-header.active {
+  background-color: #2e8847;
+}
+
+.ds9799-hof > .side-bar > .group > .item:hover {
+  background-color: #273448;
+}
+
+.ds9799-hof > .side-bar > .group > .item.active {
+  background-color: #223a5e;
+}
+
+.ds9799-hof > .main-view tr > td:not(:first-child) {
+  border-left: 1px solid #b2a794;
+}
+
+.ds9799-hof > .main-view tr > td {
+  border-bottom: 1px solid #b2a794;
+  background-color: #f6eee1;
+  color: #666666;
+}
+
+.ds9799-hof > .main-view tr > th {
+  background-color: #854e26;
+  font-weight: 600;
+}
+
+.ds9799-side-nav-menu > .menu-btn {
+  border-color: #f44336;
+}
+
+.ds9799-side-nav-menu > .menu-btn:hover {
+  background-color: #7f1d16;
+}
+
+.ds9799-side-nav-menu > .menu-btn.active {
+  background-color: #f44336;
+}

@@ -21,6 +21,7 @@ export default async (factories, config, io) => {
     console.log('[Darksteam97d99i] App started');
     return routers;
   } catch (e) {
+    console.log(e);
     console.log('[Darksteam97d99i] App failed to start');
     return {};
   }

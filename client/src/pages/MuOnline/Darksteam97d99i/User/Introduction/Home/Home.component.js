@@ -4,10 +4,23 @@ import React from 'react';
 export default () => (
   <div className="ds9799-intro-home">
     <div className="intro-image">
+      <div className="content-menu">
+        <div className="header">Contents</div>
+        <a href="#sc1">I. Development History</a>
+        <a href="#sc2">II. Client Updates</a>
+        <a href="#sc3">III. Custom Commands</a>
+        <a href="#sc4">IV. Custom Events</a>
+        <a href="#sc5">V. Other Customs</a>
+        <a href="#sc6">VI. Security</a>
+        <a href="#sc7">VII. Supported OS</a>
+        <a href="#sc8">VIII. Supported SQL Servers</a>
+        <a href="#sc9">IX. Mirror Downloads</a>
+        <a href="#sc10">X. Credits</a>
+      </div>
       <img src="/images/muonline/darksteam97d99i.png" alt="ds9799" />
     </div>
     <div className="intro-data">
-      <h3>I. Development History:</h3>
+      <h3 id="sc1">I. Development History:</h3>
       <h4>[Beta 37.4 Changelog]</h4>
       <ul>
         <li>Tweaked /vault command &amp; fixed dupe bug</li>
@@ -394,244 +407,290 @@ export default () => (
           PvP / NoN PvP Support - <font color="darkorange">Hot!</font>
         </li>
       </ul>
-      <h3>II. Client Updates:</h3>
+      <h3 id="sc2">II. Client Updates:</h3>
       <div>
         <b>1. With this client you can start the game directly from main.exe</b>
       </div>
       <div>
         <b>2. Added a cell in Icarus for Sky Event</b>
       </div>
-      <div>
+      <div className="img-list">
         <img src="http://store.picbg.net/thumb/FE/F4/a6b6a2474e7afef4.jpg" border="0" alt="" />
         <img src="http://store.picbg.net/thumb/BD/92/c85a21026f1dbd92.jpg" border="0" alt="" />
         <img src="http://store.picbg.net/thumb/EB/CF/c88fb61ec430ebcf.jpg" border="0" alt="" />
         <img src="http://store.picbg.net/thumb/C0/9B/9b3078ae147fc09b.jpg" border="0" alt="" />
       </div>
+      <h3 id="sc3">III. Custom Commands</h3>
+      <ul>
+        <li>
+          <b>/post</b>:
+        </li>
+        <li>
+          <b>/addstr</b>:
+        </li>
+        <li>
+          <b>/addagi</b>:
+        </li>
+        <li>
+          <b>/addvit</b>:
+        </li>
+        <li>
+          <b>/addene</b>:
+        </li>
+        <li>
+          <b>/pkclear</b>:
+        </li>
+        <li>
+          <b>/reset</b>:
+        </li>
+        <li>
+          <b>/grandreset</b>:
+        </li>
+        <li>
+          <b>/marry</b>:
+        </li>
+        <li>
+          <b>/acceptmarry</b>:
+        </li>
+        <li>
+          <b>/tracemarry</b>:
+        </li>
+        <li>
+          <b>/marrystatus</b>:
+        </li>
+        <li>
+          <b>/divorce</b>:
+        </li>
+        <li>
+          <b>/getmarry</b>:
+        </li>
+        <li>
+          <b>/time</b>:
+        </li>
+        <li>
+          <b>/exit</b>:
+        </li>
+        <li>
+          <b>/buy</b>:
+        </li>
+        <li>
+          <b>/sell</b>:
+        </li>
+        <li>
+          <b>/online</b>:
+        </li>
+        <li>
+          <b>/clearinventory</b>:
+        </li>
+        <li>
+          <b>/moveall</b>:
+        </li>
+        <li>
+          <b>/vault</b>:
+        </li>
+        <li>
+          <b>/questinfo</b>:
+        </li>
+        <li>
+          <b>/skin</b>:
+        </li>
+        <li>
+          <b>/gg</b>:
+        </li>
+        <li>
+          <b>/drop</b>:
+        </li>
+        <li>
+          <b>/banchar</b>:
+        </li>
+        <li>
+          <b>/unbanchar</b>:
+        </li>
+        <li>
+          <b>/banpost</b>:
+        </li>
+        <li>
+          <b>/unbanpost</b>:
+        </li>
+        <li>
+          <b>/reload</b>:
+        </li>
+        <li>
+          <b>/evo</b>:
+        </li>
+        <li>
+          <b>/pet</b>:
+        </li>
+        <li>
+          <b>/buyvip</b>:
+        </li>
+        <li>
+          <b>/vipinfo</b>:
+        </li>
+        <li>
+          <b>/charinfo</b>:
+        </li>
+        <li>
+          <b>/setlevel</b>:
+        </li>
+        <li>
+          <b>/setzen</b>:
+        </li>
+      </ul>
+      <h3 id="sc4">IV. Custom Events</h3>
+      <ul>
+        <li>Happy Hour</li>
+        <li>Party Exp Bonus</li>
+        <li>Sky Event</li>
+        <li>
+          Lucky Jewels - <font color="Red">Exclusive!</font>
+        </li>
+      </ul>
+      <h3 id="sc5">V. Other Customs</h3>
+      <ul>
+        <li>Advanced Item Drop System</li>
+        <li>Game Master System</li>
+        <li>News System</li>
+        <li>Unique Quest System</li>
+        <li>Move System</li>
+        <li>Trade System</li>
+        <li>Event Manager</li>
+        <li>Golden Archer</li>
+        <li>Blood Castle Ranking</li>
+        <li>Auto Bugged Stats fix on Login</li>
+        <li>
+          Advanced Map System with zones - <font color="Red">Unique!</font>
+        </li>
+        <li>
+          Advanced Blood Castle Rewards - <font color="Red">New!</font>
+        </li>
+        <li>
+          NPC Buffers - <font color="Red">New!</font>
+        </li>
+        <li>
+          Support for Excellent items in shops - <font color="Red">New!</font>
+        </li>
+        <li>
+          Ability to completely disable gameserver logs - <font color="Red">New!</font>
+        </li>
+        <li>
+          Advanced Character Stats system - <font color="Red">New!</font>
+        </li>
+        <li>
+          VIP System - <font color="Red">New!</font>
+        </li>
+        <li>
+          Map Exp System - <font color="Red">New!</font>
+        </li>
+        <li>
+          Anti Afk System - <font color="Red">New!</font>
+        </li>
+        <li>
+          Zen Drop System - <font color="Red">New!</font>
+        </li>
+        <li>
+          Advanced Reset &amp; Grand Reset systems - <font color="Red">New!</font>
+        </li>
+        <li>
+          <font color="red">Over 500 Custom Config Options</font>
+        </li>
+      </ul>
+      <h3 id="sc6">VI. Security</h3>
+      <ul>
+        <li>
+          <b>Anti Disconnect Hack</b>
+        </li>
+        <li>
+          <b>Anti Guild Crash</b>
+        </li>
+        <li>
+          Anti Vault Dupe - <font color="Red">Improved!</font>
+        </li>
+        <li>Anti Bad Symbols in Character Name</li>
+        <li>
+          Anti Guild Notice Inject - <font color="Red">New!</font>
+        </li>
+        <li>
+          Anti NPC Trade Crash - <font color="Red">New!</font>
+        </li>
+        <li>
+          Anti Trade Hack - <font color="Red">New!</font>
+        </li>
+        <li>
+          Anti Zombie Hack - <font color="Red">New!</font>
+        </li>
+        <li>
+          Anti Twisting Slash Hack - <font color="Red">New!</font>
+        </li>
+        <li>
+          Anti Shadow Bug - <font color="Red">New!</font>
+        </li>
+        <li>
+          Anti Trade Dupe - <font color="Red">Unique!</font>
+        </li>
+        <li>
+          Anti Syn Flood - <font color="Red">Unique!</font>
+        </li>
+        <li>
+          Anti Golden Archer Dupe -<font color="Red">Unique!</font>
+        </li>
+      </ul>
+      <h3 id="sc7">VII. Supported OS</h3>
+      <ul>
+        <li>Windows XP</li>
+        <li>Windows Server 2003/2008/2012/2016</li>
+        <li>Windows Vista</li>
+        <li>Windows 7</li>
+        <li>Windows 8</li>
+        <li>Windows 10</li>
+      </ul>
+      <h3 id="sc8">VIII. Supported SQL Servers</h3>
+      <ul>
+        <li>2000, 2005, 2008, 2012, 2014, 2016 (All)</li>
+      </ul>
+      <h3 id="sc9">IX. Mirror Downloads</h3>
+      <ul>
+        <li>
+          Base package (beta 36.1 ready):{' '}
+          <a
+            rel="nofollow"
+            href="https://darksteam.net/attachment.php?attachmentid=4110&amp;d=1484815490"
+            title={`Name:  DarksTeam MuServer 97d99i.rar 
+Size:  2.09 MB`}>
+            DarksTeam MuServer 97d99i.rar
+          </a>
+        </li>
+        <li>
+          Upgrade patch:{' '}
+          <a
+            rel="nofollow"
+            href="https://darksteam.net/attachment.php?attachmentid=4230&amp;d=1516718014"
+            title={`Name:  Beta 37.4 Patch.rar 
+Size:  312.0 KB`}>
+            Beta 37.4 Patch.rar
+          </a>
+        </li>
+        <li>
+          Full client with Sky event cell in Icarus:{' '}
+          <a
+            href="https://mega.nz/#%21hFhXRSBD%217dvescr18EqFtw6hxSDBiEGo0VM9nuHWZ8dpTlRm5fE"
+            target="_blank"
+            rel="noopener noreferrer">
+            Click Here
+          </a>
+          (ip in main: 127.0.0.1)
+        </li>
+      </ul>
+      <h3 id="sc10">IX. Credits</h3>
+      <div className="text-center">
+        <img src="/images/muonline/darksteam.gif" alt="DarksTeam"/>
+        <br/>
+        <font color="red">
+          <b>
+            Credits: WebZen &amp; DarksTeam <u>only</u>
+          </b>
+        </font>
+      </div>
     </div>
   </div>
 );
-
-//       <div align="center">
-//         <b>
-
-//         </b>{' '}
-
-//         <br />
-//         <br />
-//         <div align="center">
-//           -----------------------------------------------------------------------------------------------------------------
-//         </div>
-//         <br />
-//         <div align="center">
-//           <b>
-//             <font color="purple">- :: Custom Commands :: -</font>
-//           </b>
-//           <br />{' '}
-//           <b>
-//             /post, /addstr, /addagi, /addvit, /addene, /pkclear, /reset, /grandreset, /marry, /acceptmarry, /tracemarry,
-//             /marrystatus, /divorce, /getmarry,
-//           </b>
-//           <br />{' '}
-//           <b>
-//             /time, /exit, /buy, /sell, /online, /clearinventory, /moveall, /vault, /questinfo, /skin, /gg, /drop,
-//             /banchar, /unbanchar, /banpost, /unbanpost, /reload, /evo, /pet, /buyvip, /vipinfo, /charinfo, /setlevel,
-//             /setzen<br />
-//           </b>
-//         </div>
-//         <br />
-//         <div align="center">
-//           <b>
-//             <font color="purple">- :: Custom Events :: -</font>
-//           </b>
-//           <br /> <b>Happy Hour</b>
-//           <br /> <b>Party Exp Bonus</b>
-//           <br />{' '}
-//           <b>
-//             Sky Event<br />
-//             Lucky Jewels - <font color="Red">Exclusive!</font>
-//             <br />
-//           </b>
-//         </div>
-//         <br />
-//         <div align="center">
-//           <b>
-//             <font color="purple">- :: Other Customs :: -</font>
-//           </b>
-//           <br /> <b>Advanced Item Drop System</b>
-//           <br /> <b>Game Master System</b>
-//           <br /> <b>News System</b>
-//           <br /> <b>Unique Quest System</b>
-//           <br /> <b>Move System</b>
-//           <br /> <b>Trade System</b>
-//           <br /> <b>Event Manager</b>
-//           <br /> <b>Golden Archer</b>
-//           <br /> <b>Blood Castle Ranking</b>
-//           <br /> <b>Auto Bugged Stats fix on Login</b>
-//           <br />{' '}
-//           <b>
-//             Advanced Map System with zones - <font color="Red">Unique!</font>
-//           </b>
-//           <br />{' '}
-//           <b>
-//             Advanced Blood Castle Rewards - <font color="Red">New!</font>
-//           </b>
-//           <br />{' '}
-//           <b>
-//             NPC Buffers - <font color="Red">New!</font>
-//           </b>
-//           <br />{' '}
-//           <b>
-//             Support for Excellent items in shops - <font color="Red">New!</font>
-//           </b>
-//           <br />{' '}
-//           <b>
-//             Ability to completely disable gameserver logs - <font color="Red">New!</font>
-//           </b>
-//           <br />{' '}
-//           <b>
-//             Advanced Character Stats system - <font color="Red">New!</font>
-//             <br />
-//             VIP System - <font color="Red">New!</font>
-//             <br />
-//             Map Exp System - <font color="Red">New!</font>
-//             <br />
-//             Anti Afk System - <font color="Red">New!</font>
-//           </b>
-//           <br />{' '}
-//           <b>
-//             Zen Drop System - <font color="Red">New!</font>
-//           </b>
-//           <br />{' '}
-//           <b>
-//             Advanced Reset &amp; Grand Reset systems - <font color="Red">New!</font>
-//           </b>
-//           <br />{' '}
-//           <b>
-//             <font color="red">Over 500 Custom Config Options</font>
-//           </b>
-//         </div>
-//         <br />
-//         <div align="center">
-//           <b>
-//             <font color="purple">- :: Security :: -</font>
-//           </b>
-//           <br /> <b>Anti Disconnect Hack</b>
-//           <br /> <b>Anti Guild Crash</b>
-//           <br />{' '}
-//           <b>
-//             Anti Vault Dupe - <font color="Red">Improved!</font>
-//             <br />
-//             Anti Bad Symbols in Character Name<br />
-//             Anti Guild Notice Inject - <font color="Red">New!</font>
-//             <br />
-//             Anti NPC Trade Crash - <font color="Red">New!</font>
-//             <br />
-//             Anti Trade Hack - <font color="Red">New!</font>
-//             <font color="Red">
-//               <br />
-//             </font>Anti Zombie Hack - <font color="Red">New!</font>
-//           </b>
-//           <br />{' '}
-//           <b>
-//             Anti Twisting Slash Hack -{' '}
-//             <font color="Red">
-//               <b>
-//                 <font color="Red">
-//                   New!<br />
-//                 </font>
-//               </b>
-//             </font>Anti Shadow Bug -
-//             <font color="Red">
-//               <b>
-//                 <font color="Red">
-//                   New!<br />
-//                 </font>
-//               </b>
-//             </font>Anti Trade Dupe -
-//             <font color="Red">
-//               Unique<b>
-//                 <font color="Red">
-//                   !<br />
-//                 </font>
-//               </b>
-//             </font>Anti Syn Flood -
-//             <font color="Red">
-//               <b>
-//                 <font color="Red">
-//                   New!<br />
-//                 </font>
-//               </b>
-//             </font>Anti Golden Archer Dupe -
-//             <font color="Red">
-//               <b>
-//                 <font color="Red">
-//                   New!<br />
-//                   <br />
-//                   <font color="Purple">- :: Supported OS :: -</font>
-//                   <br />
-//                 </font>
-//               </b>
-//             </font>Windows XP
-//             <br /> Windows Server 2003/2008/2012/2016
-//             <br /> Windows Vista
-//             <br /> Windows 7
-//             <br /> Windows 8
-//             <br /> Windows 10
-//             <br />
-//             <br />
-//             <font color="Purple">- :: Supported SQL Servers :: -</font>
-//             <br /> 2000, 2005, 2008, 2012, 2014, 2016 (All)
-//             <br />
-//             <br />
-//             <font color="Purple">- :: Downloads :: -</font>
-//             <br /> Base package (beta 36.1 ready):{' '}
-//             <a
-//               rel="nofollow"
-//               href="https://darksteam.net/attachment.php?attachmentid=4110&amp;d=1484815490"
-//               title="Name:  DarksTeam MuServer 97d99i.rar
-// Views: 12495
-// Size:  2.09 MB">
-//               DarksTeam MuServer 97d99i.rar
-//             </a>
-//           </b>
-//           <br />{' '}
-//           <b>
-//             <b>
-//               <b>
-//                 Upgrade patch:{' '}
-//                 <a
-//                   rel="nofollow"
-//                   href="https://darksteam.net/attachment.php?attachmentid=4230&amp;d=1516718014"
-//                   title="Name:  Beta 37.4 Patch.rar
-// Views: 7760
-// Size:  312.0 KB">
-//                   Beta 37.4 Patch.rar
-//                 </a>
-//               </b>
-//               <b>
-//                 <b>
-//                   <br />
-//                   <br />
-//                   Full client with Sky event cell in Icarus:{' '}
-//                   <a href="https://mega.nz/#%21hFhXRSBD%217dvescr18EqFtw6hxSDBiEGo0VM9nuHWZ8dpTlRm5fE" target="_blank">
-//                     Click Here
-//                   </a>{' '}
-//                   (ip in main: 127.0.0.1)<br />
-//                 </b>
-//               </b>
-//             </b>
-//             <br />{' '}
-//           </b>
-//         </div>
-//         <div align="center">
-//           <font size="3">
-//             <font color="red">
-//               <b>
-//                 Credits: WebZen &amp; DarksTeam <u>only</u>
-//               </b>
-//             </font>
-//           </font>
-//         </div>
-//       </div>
-//     </div>
-//   </div>

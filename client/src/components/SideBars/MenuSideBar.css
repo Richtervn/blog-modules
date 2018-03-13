@@ -1,0 +1,19 @@
+.menu-side-bar > .menu-btn {
+  border: solid 1px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.menu-side-bar > .menu-btn > i {
+  padding-right: 40px;
+  padding-left: 10px;
+}
+
+.menu-side-bar > .menu-btn:hover {
+  font-weight: 700;
+}
+.menu-side-bar > .menu-btn.active {
+  font-weight: 700;
+}

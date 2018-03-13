@@ -1,3 +1,4 @@
 import BasicSideBar from './BasicSideBar';
+import MenuSideBar from './MenuSideBar';
 
-export { BasicSideBar };
+export { BasicSideBar, MenuSideBar };

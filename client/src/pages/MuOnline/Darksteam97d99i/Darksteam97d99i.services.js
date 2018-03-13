@@ -4,19 +4,19 @@ const { commonPost, commonGet, commonPut, commonDelete, commonPostMultiplePart, 
 
 export default {
   /* Admin Accounts Manager Services*/
-  adminGetAccounts(query){
+  adminGetAccounts(query) {
     const data = commonGet('darksteam97d99i/users', null, query);
     return data;
   },
-  adminAddAccount(formBody){
+  adminAddAccount(formBody) {
     const data = commonPost('darksteam97d99i/users', formBody);
     return data;
   },
-  adminEditAccount(formBody){
+  adminEditAccount(formBody) {
     const data = commonPut('darksteam97d99i/users', formBody);
     return data;
   },
-  adminDeleteAccount(id){
+  adminDeleteAccount(id) {
     const data = commonDelete('darksteam97d99i/users/' + id);
     return data;
   },
@@ -38,6 +38,22 @@ export default {
   },
   register(formBody) {
     const data = commonPost('darksteam97d99i/users/register', formBody);
+    return data;
+  },
+  getTopPoints(query) {
+    const data = commonGet('darksteam97d99i/ranking/top_points', null, query);
+    return data;
+  },
+  getTopResets(query) {
+    const data = commonGet('darksteam97d99i/ranking/top_resets', null, query);
+    return data;
+  },
+  getTopZen() {
+    const data = commonGet('darksteam97d99i/ranking/top_zen');
+    return data;
+  },
+  getTopCredits() {
+    const data = commonGet('darksteam97d99i/ranking/top_credits');
     return data;
   }
 

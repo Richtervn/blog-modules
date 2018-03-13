@@ -1,7 +1,7 @@
 import express from 'express';
 
 import addCharacter from './services/addCharacter';
-import editCharacter from './services/editCharacter'l
+import editCharacter from './services/editCharacter';
 import deleteCharacter from './services/deleteCharacter';
 
 import addPoints from './services/addPoints';
