@@ -15,7 +15,7 @@ export default async (factories, config, io) => {
 
     const routers = {};
     for (let key in routerCreators) {
-      routers[key] = routerCreators[key](models, factories, helpers, io);
+      routers[key] = routerCreators[key](models, methods, factories, helpers, io);
     }
 
     console.log('[Darksteam97d99i] App started');

@@ -1,12 +1,13 @@
 import express from 'express';
 import moment from 'moment';
 
+import addUser from './services/addUser';
 import regisUser from './services/regisUser';
 import loginUser from './services/loginUser';
 import editProfile from './services/editProfile';
 import changePassword from './services/changePassword';
 
-export default (models, factories, helpers, io) => {
+export default (models, methods, factories, helpers, io) => {
   const router = express.Router();
   const { wrap, commonSequelize } = factories;
   const { MembInfo } = models;
@@ -37,8 +38,8 @@ export default (models, factories, helpers, io) => {
 
   router.put(
     '/change_password',
-    wrap(async (req, res, next) => {
-      const account = await changePassword(MembInfo, req.body);
+    wrap(async ({ body }, res, next) => {
+      const account = await changePassword(MembInfo, body);
       res.send(account);
     })
   );
@@ -71,7 +72,7 @@ export default (models, factories, helpers, io) => {
   router.post(
     '/',
     wrap(async ({ body }, res, next) => {
-      const account = await regisUser(models, factories, body);
+      const account = await addUser(models, factories, helpers, body);
       res.send(account);
     })
   );

@@ -1,6 +1,16 @@
 import _ from 'underscore';
 
 export default {
+  create: async (model, body, { transform }) => {
+    if (transform) {
+      transform.forEach(field => {
+        if (body[field] !== undefined) {
+          body[field] = body[field] ? 1 : 0;
+        }
+      });
+    }
+    const record = await model.create(body);
+  },
   delete: async (model, id) => {
     const priKey = model.primaryKeyAttribute;
     await model.destroy({ where: { [priKey]: id } });
@@ -9,6 +19,10 @@ export default {
   getAll: async (model, query) => {
     const option = {};
     if (query) {
+      option.where = {};
+      for (let key in query) {
+        option.where[query[key]] = { $like: `%${query[key]}` };
+      }
       option.where = query;
     }
     const records = await model.findAll(option);

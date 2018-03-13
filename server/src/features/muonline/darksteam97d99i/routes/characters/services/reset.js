@@ -1,6 +1,6 @@
 import _ from 'underscore';
 
-export default async (Character, Banking, MembCredits, query, GameSetting, methods) => {
+export default async (models, methods, GameSetting, query) => {
   const {
     RESET_KEEP_POINTS,
     RESET_MIN_LEVEL,
@@ -14,7 +14,7 @@ export default async (Character, Banking, MembCredits, query, GameSetting, metho
     BASE_STATS,
     GRAND_RESET_POINTS
   } = GameSetting;
-
+  const { Character, MembCredits } = models;
   const { name, isUseBank } = query;
   const { payByBank, payByZen } = methods;
 
@@ -37,7 +37,7 @@ export default async (Character, Banking, MembCredits, query, GameSetting, metho
   });
 
   let updateForm = { cLevel: 1, Resets: character.Resets + 1 };
-  let resp = {Resets: character.Resets + 1};
+  let resp = { Resets: character.Resets + 1 };
 
   let requireLevel = RESET_MIN_LEVEL + character.Resets * RESET_LEVEL_GAP;
   if (requireLevel > RESET_MAX_LEVEL) requireLevel = RESET_MAX_LEVEL;
@@ -59,10 +59,10 @@ export default async (Character, Banking, MembCredits, query, GameSetting, metho
   }
 
   if (!RESET_KEEP_POINTS) {
-    if (_.contains([0, 1], character.Class)) updateForm = {...updateForm, ...BASE_STATS.DW};
-    if (_.contains([16, 17], character.Class)) updateForm = {...updateForm, ...BASE_STATS.DK};
-    if (_.contains([32, 33], character.Class)) updateForm = {...updateForm, ...BASE_STATS.ELF};
-    if (_.contains([48], character.Class)) updateForm = {...updateForm, ...BASE_STATS.MG};
+    if (_.contains([0, 1], character.Class)) updateForm = { ...updateForm, ...BASE_STATS.DW };
+    if (_.contains([16, 17], character.Class)) updateForm = { ...updateForm, ...BASE_STATS.DK };
+    if (_.contains([32, 33], character.Class)) updateForm = { ...updateForm, ...BASE_STATS.ELF };
+    if (_.contains([48], character.Class)) updateForm = { ...updateForm, ...BASE_STATS.MG };
 
     let resetPoints = FIRST_RESET_POINT;
     if (character.Resets > 0 && character.Resets < 5) {
@@ -79,17 +79,17 @@ export default async (Character, Banking, MembCredits, query, GameSetting, metho
     updateForm.LevelUpPoint = resetPoints;
   }
 
-  if(RESET_AWARD_CREDITS){
+  if (RESET_AWARD_CREDITS) {
     const membCredit = await MembCredits.findOne({
       memb___id: character.AccountID
     });
-    const totalCredits = membCredit.credits + RESET_AWARD_CREDITS
-    membCredit.update({credits: totalCredits});
-    resp.credits = totalCredits
+    const totalCredits = membCredit.credits + RESET_AWARD_CREDITS;
+    membCredit.update({ credits: totalCredits });
+    resp.credits = totalCredits;
   }
 
   await character.update(updateForm);
-  resp = {...resp, ...updateForm};
+  resp = { ...resp, ...updateForm };
 
   return resp;
 };

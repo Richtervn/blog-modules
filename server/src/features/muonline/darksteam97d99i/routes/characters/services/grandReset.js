@@ -1,6 +1,6 @@
 import _ from 'underscore';
 
-export default async (Character, Banking, query, appConfigs, methods) => {
+export default async (models, methods, GameSetting, query) => {
   const {
     RESET_KEEP_POINTS,
     GRAND_RESET_FEE,
@@ -12,8 +12,9 @@ export default async (Character, Banking, query, appConfigs, methods) => {
     RESET_MAX_LEVEL,
     RESET_LEVEL_GAP,
     FIRST_RESET_POINT
-  } = appConfigs.GameSetting;
+  } = GameSetting;
   const { name, isUseBank } = query;
+  const { Character, MembCredits } = models;
   const { payByBank, payByZen } = methods;
 
   const character = await Character.findOne({
@@ -75,8 +76,7 @@ export default async (Character, Banking, query, appConfigs, methods) => {
     if (remainReset < resetWithGap) {
       totalLevel = minTotalLevel + RESET_LEVEL_GAP * remainReset;
     } else {
-      totalLevel =
-        minTotalLevel + RESET_LEVEL_GAP * remainReset + (remainReset - resetWithGap) * RESET_MAX_LEVEL;
+      totalLevel = minTotalLevel + RESET_LEVEL_GAP * remainReset + (remainReset - resetWithGap) * RESET_MAX_LEVEL;
     }
     updateForm.LevelUpPoint = character.Class == 48 ? totalLevel * 7 : totalLevel * 5;
   } else {

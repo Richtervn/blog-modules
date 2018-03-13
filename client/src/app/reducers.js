@@ -19,13 +19,14 @@ import { reducer as contentMirror } from 'pages/Tools/ContentMirror';
 
 import { reducer as endedManga } from 'pages/Archived/EndedManga';
 
-import { ds9799_appControl, ds9799_user, ds9799_introduction } from 'pages/MuOnline/Darksteam97d99i';
+import { ds9799_admin, ds9799_appControl, ds9799_user, ds9799_introduction } from 'pages/MuOnline/Darksteam97d99i';
 
 export default combineReducers({
   appControl,
   appDiary,
   contentMirror,
   diabloII,
+  ds9799_admin,
   ds9799_appControl,
   ds9799_introduction,
   ds9799_user,

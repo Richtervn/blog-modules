@@ -3,6 +3,24 @@ import { serviceCaller } from 'helpers';
 const { commonPost, commonGet, commonPut, commonDelete, commonPostMultiplePart, commonPutMultiplePart } = serviceCaller;
 
 export default {
+  /* Admin Accounts Manager Services*/
+  adminGetAccounts(query){
+    const data = commonGet('darksteam97d99i/users', null, query);
+    return data;
+  },
+  adminAddAccount(formBody){
+    const data = commonPost('darksteam97d99i/users', formBody);
+    return data;
+  },
+  adminEditAccount(formBody){
+    const data = commonPut('darksteam97d99i/users', formBody);
+    return data;
+  },
+  adminDeleteAccount(id){
+    const data = commonDelete('darksteam97d99i/users/' + id);
+    return data;
+  },
+
   /* App Control Services */
   getGameSetting() {
     const data = commonGet('darksteam97d99i/system/game_setting');
@@ -13,7 +31,7 @@ export default {
     return data;
   },
 
-  /*User Services*/
+  /* User Services */
   login(formBody) {
     const data = commonPost('darksteam97d99i/users/login', formBody);
     return data;
@@ -100,10 +118,7 @@ export default {
   //   const data = commonGet('mu/darksteam97d99i/admin/memb_info', null, query);
   //   return data;
   // },
-  // adminGetCharacters(query) {
-  //   const data = commonGet('mu/darksteam97d99i/admin/character', null, query);
-  //   return data;
-  // },
+
   // adminGetBankings() {
   //   const data = commonGet('mu/darksteam97d99i/admin/banking');
   //   return data;
@@ -120,18 +135,12 @@ export default {
   //   const data = commonPut('mu/darksteam97d99i/admin/credit', formBody);
   //   return data;
   // },
-  // adminEditAccount(formBody) {
-  //   const data = commonPut('mu/darksteam97d99i/admin/memb_info', formBody);
-  //   return data;
-  // },
+
   // adminEditCharacter(formBody) {
   //   const data = commonPut('mu/darksteam97d99i/admin/character', formBody);
   //   return data;
   // },
-  // adminAddAccount(formBody) {
-  //   const data = commonPost('mu/darksteam97d99i/admin/memb_info', formBody);
-  //   return data;
-  // },
+
   // adminAddCharacter(formBody) {
   //   const data = commonPost('mu/darksteam97d99i/admin/character', formBody);
   //   return data;
@@ -140,10 +149,7 @@ export default {
   //   const data = commonDelete('mu/darksteam97d99i/admin/character/' + id);
   //   return data;
   // },
-  // adminDeleteAccount(id) {
-  //   const data = commonDelete('mu/darksteam97d99i/admin/memb_info/' + id);
-  //   return data;
-  // },
+
   // addWebShopPackage(formBody) {
   //   formBody.items = JSON.stringify(formBody.items);
   //   const data = commonPostMultiplePart('mu/darksteam97d99i/admin/web_shop', formBody);

@@ -1,7 +1,8 @@
-export default async (Character, Banking, query, appConfigs, methods) => {
+export default async (models, methods, GameSetting, query) => {
   const { name, point, type, isUseBank } = query;
   const { payByBank, payByZen } = methods;
-
+  const { Character } = models;
+  
   const character = await Character.findOne({
     attributes: ['AccountID', 'Name', 'Dexterity', 'Strength', 'Vitality', 'Energy', 'LevelUpPoint', 'Money'],
     where: {
@@ -21,11 +22,11 @@ export default async (Character, Banking, query, appConfigs, methods) => {
   const resp = { LevelUpPoint: character.LevelUpPoint - point, isUseBank: isUseBank, type: type };
 
   if (isUseBank == 'true') {
-    charged = await payByBank(character.AccountID, appConfigs.GameSetting.ADD_POINT_FEE);
+    charged = await payByBank(character.AccountID, GameSetting.ADD_POINT_FEE);
     if (charged.message) return charged;
     resp.zen_balance = charged.zen_balance;
   } else {
-    charged = payByZen(character, appConfigs.GameSetting.ADD_POINT_FEE);
+    charged = payByZen(character, GameSetting.ADD_POINT_FEE);
     if (charged.message) return charged;
     updateForm.Money = charged.Money;
     resp.Money = charged.Money;

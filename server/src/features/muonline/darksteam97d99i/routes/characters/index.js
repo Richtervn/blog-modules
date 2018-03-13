@@ -1,49 +1,95 @@
+import express from 'express';
+
+import addCharacter from './services/addCharacter';
+import editCharacter from './services/editCharacter'l
+import deleteCharacter from './services/deleteCharacter';
+
 import addPoints from './services/addPoints';
+import getAccountCharacters from './services/getAccountCharacters';
 import getCharacters from './services/getCharacters';
 import grandReset from './services/grandReset';
 import questReset from './services/questReset';
 import reset from './services/reset';
 
-export default (models, router, factories, helpers, appConfigs, methods) => {
-  const { wrap, commonService } = factories;
-  const { MembInfo, AccountCharacter, Character, MembCredits, Banking, ViCurInfo } = models;
+export default (models, methods, factories, helpers, io) => {
+  const router = express.Router();
+  const { wrap, commonSequelize } = factories;
+  const { getData } = helpers;
+  const { Character } = models;
 
   router.get(
-    '/characters/get_chars/:id',
-    wrap(async (req, res, next) => {
-      const characters = await getCharacters(Character, req.params.id);
+    '/account/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const characters = await getAccountCharacters(Character, id);
       res.send(characters);
     })
   );
 
   router.get(
-    '/characters/add_point',
-    wrap(async (req, res, next) => {
-      const result = await addPoints(Character, Banking, req.query, appConfigs, methods);
+    '/add_points',
+    wrap(async ({ query }, res, next) => {
+      const GameSetting = await getData('GameSetting');
+      const result = await addPoints(models, methods, GameSetting, query);
       res.send(result);
     })
   );
 
   router.get(
-    '/characters/reset',
-    wrap(async (req, res, next) => {
-      const result = await reset(Character, Banking, MembCredits, req.query, appConfigs.GameSetting, methods);
+    '/reset',
+    wrap(async ({ query }, res, next) => {
+      const GameSetting = await getData('GameSetting');
+      const result = await reset(models, methods, GameSetting, query);
       res.send(result);
     })
   );
 
   router.get(
-    '/characters/grand_reset',
-    wrap(async (req, res, next) => {
-      const result = await grandReset(Character, Banking, MembCredits, req.query, appConfigs, methods);
+    '/grand_reset',
+    wrap(async ({ query }, res, next) => {
+      const GameSetting = await getData('GameSetting');
+      const result = await grandReset(models, methods, GameSetting, query);
       res.send(result);
     })
   );
 
   router.get(
-    '/characters/quest_reset',
-    wrap(async (req, res, next) => {
-      const result = await questReset(Character, Banking, req.query, appConfigs, methods);
+    '/quest_reset',
+    wrap(async ({ query }, res, next) => {
+      const GameSetting = await getData('GameSetting');
+      const result = await questReset(models, methods, GameSetting, query);
+      res.send(result);
+    })
+  );
+
+  /* admin routing */
+  router.get(
+    '/',
+    wrap(async ({ query }, res, next) => {
+      const characters = await getCharacters(Character, query);
+      res.send(characters);
+    })
+  );
+
+  router.post(
+    '/',
+    wrap(async ({ body }, res, next) => {
+      const character = await addCharacter(models, helpers, body);
+      res.send(character);
+    })
+  );
+
+  router.put(
+    '/',
+    wrap(async ({ body }, res, next) => {
+      const character = await editCharacter(models, body);
+      res.send(character);
+    })
+  );
+
+  router.delete(
+    '/:name',
+    wrap(async ({ params: { name } }, res, next) => {
+      const result = await deleteCharacter(models, name);
       res.send(result);
     })
   );
