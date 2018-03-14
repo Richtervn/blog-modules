@@ -7,17 +7,22 @@ import PageContainer from 'common/PageContainer';
 
 import { TopNavBar, SideNavBar } from './common';
 import { User } from './User';
+import { Admin } from './Admin';
+import { Server } from './Server';
 
 const availableTabs = ['user', 'admin', 'server'];
 
 class Darksteam97d99i extends Component {
   componentWillMount() {
-    const { match: { params }, onSetActiveTab } = this.props;
+    const { match: { params }, onSetActiveTab, onSetUserPage, onSetAdminPage, onSetServerPage } = this.props;
     if (!params.tab) {
       onSetActiveTab('user');
     } else {
       if (_.contains(availableTabs, params.tab)) {
         onSetActiveTab(params.tab);
+        if (params.page && params.tab === 'user') onSetUserPage(params.page);
+        if (params.page && params.tab === 'admin') onSetAdminPage(params.page);
+        if (params.page && params.tab === 'server') onSetServerPage(params.page);
       }
     }
   }
@@ -39,6 +44,8 @@ class Darksteam97d99i extends Component {
           <div className="row">
             <SideNavBar />
             {activeTab === 'user' && <User />}
+            {activeTab === 'admin' && <Admin />}
+            {activeTab === 'server' && <Server />}
           </div>
         </div>
       </PageContainer>

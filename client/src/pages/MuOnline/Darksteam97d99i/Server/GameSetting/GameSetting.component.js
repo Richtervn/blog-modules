@@ -1,0 +1,178 @@
+import './GameSetting.css';
+import React, { Component } from 'react';
+import { ColLoader } from 'common/Loaders';
+
+class GameSetting extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentWillMount() {
+    this.props.onGetGameSetting();
+  }
+
+  componentWillReceiveProps(nextProps) {}
+
+  render() {
+    const { gameSetting } = this.props;
+    if (!gameSetting) {
+      return <ColLoader />;
+    }
+
+    return <div id="ds9799-game-setting">.</div>;
+  }
+}
+
+export default GameSetting;
+
+// {
+//   "NEW_REGISTER_ZEN": 0,
+//   "NEW_REGISTER_CREDIT": 0,
+//   "ADD_POINT_FEE": 10000,
+//   "RESET_KEEP_POINTS": true,
+//   "RESET_MIN_LEVEL": 200,
+//   "RESET_MAX_LEVEL": 350,
+//   "FIRST_RESET_POINT": 500,
+//   "NEXT_4_RESET_POINT": 400,
+//   "RESET_POINTS": 300,
+//   "RESET_AWARD_CREDITS": 100,
+//   "RESET_LEVEL_GAP": 10,
+//   "RESET_FEE": 1000000000,
+//   "QUEST_RESET_FEE": 1000000000,
+//   "GRAND_RESET_FEE": 2000000000,
+//   "GRAND_RESET_POINTS": 2000,
+//   "GRAND_RESET_REQUIRED": {
+//     "Level": 0,
+//     "Resets": 20
+//   },
+//   "GRAND_RESET_AWARD_CREDITS": 1000,
+//   "BASE_STATS": {
+//     "DK": { "Strength": 28, "Dexterity": 20, "Vitality": 25, "Energy": 10 },
+//     "DW": { "Strength": 18, "Dexterity": 18, "Vitality": 15, "Energy": 30 },
+//     "MG": { "Strength": 26, "Dexterity": 26, "Vitality": 26, "Energy": 16 },
+//     "ELF": { "Strength": 22, "Dexterity": 25, "Vitality": 20, "Energy": 15 }
+//   },
+//   "BANKING_DEPOSIT_FEE": {
+//     "isPercentage": true,
+//     "charge": 0.01
+//   },
+//   "BANKING_WITHDRAW_FEE": {
+//     "isPercentage": false,
+//     "charge": 10000
+//   },
+//   "BANKING_LOAN_SETTING": {
+//     "maxValue": 10000000000,
+//     "isPercentage": true,
+//     "charge": 0.01
+//   },
+//   "BANKING_TRANSFER_FEE": {
+//     "isPercentage": false,
+//     "charge": 10000
+//   },
+//   "CREDIT_PRICE": {
+//     "buy": 300000,
+//     "sell": 200000
+//   },
+//   "SELL_RECEIPT_RATIO": 0.7,
+//   "UPGRADE_ITEM_PRICE": {
+//     "LEVEL_BELOW_9": 20,
+//     "LEVEL_10": 50,
+//     "LEVEL_11": 80,
+//     "LEVEL_12": 120,
+//     "LEVEL_13": 150,
+//     "LEVEL_14": 200,
+//     "LEVEL_15": 300,
+//     "OPTION": 100,
+//     "LUCK": 200,
+//     "SKILL": 200,
+//     "EXC1": 500,
+//     "EXC2": 450,
+//     "EXC3": 400,
+//     "EXC4": 350,
+//     "EXC5": 300,
+//     "EXC6": 250
+//   },
+//   "UPGRADE_ITEM_BASE_PRICE": {
+//     "Swords": {
+//       "BASE": 10,
+//       "STEP": 10,
+//       "MULTIPLE": 1
+//     },
+//     "Axes": {
+//       "BASE": 50,
+//       "STEP": 10,
+//       "MULTIPLE": 1
+//     },
+//     "Maces": {
+//       "BASE": 20,
+//       "STEP": 10,
+//       "MULTIPLE": 1
+//     },
+//     "Spears": {
+//       "BASE": 50,
+//       "STEP": 20,
+//       "MULTIPLE": 1.5
+//     },
+//     "Bows": {
+//       "BASE": 50,
+//       "STEP": 20,
+//       "MULTIPLE": 2
+//     },
+//     "Staffs": {
+//       "BASE": 100,
+//       "STEP": 50,
+//       "MULTIPLE": 2
+//     },
+//     "Shields": {
+//       "BASE": 100,
+//       "STEP": 20,
+//       "MULTIPLE": 3
+//     },
+//     "Helms": {
+//       "BASE": 20,
+//       "STEP": 10,
+//       "MULTIPLE": 1
+//     },
+//     "Armors": {
+//       "BASE": 50,
+//       "STEP": 20,
+//       "MULTIPLE": 1.5
+//     },
+//     "Pants": {
+//       "BASE": 50,
+//       "STEP": 15,
+//       "MULTIPLE": 1.5
+//     },
+//     "Gloves": {
+//       "BASE": 50,
+//       "STEP": 20,
+//       "MULTIPLE": 1
+//     },
+//     "Boots": {
+//       "BASE": 50,
+//       "STEP": 20,
+//       "MULTIPLE": 1
+//     },
+//     "Wings": {
+//       "BASE": 100,
+//       "STEP": 20,
+//       "MULTIPLE": 2
+//     },
+//     "Pets": {
+//       "BASE": 100,
+//       "STEP": 20,
+//       "MULTIPLE": 2
+//     },
+//     "Misc": {
+//       "BASE": 100,
+//       "STEP": 10,
+//       "MULTIPLE": 5
+//     },
+//     "Scrolls": {
+//       "BASE": 100,
+//       "STEP": 10,
+//       "MULTIPLE": 5
+//     }
+//   }
+// }

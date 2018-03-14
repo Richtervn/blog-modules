@@ -22,7 +22,7 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { onLogin, onSetPage, history } = this.props;
+    const { onLogin, onSetPage, history, onSetNonRegistered } = this.props;
 
     return (
       <div className="ds9799-login-form">
@@ -50,6 +50,7 @@ class LoginForm extends Component {
             className="btn"
             onClick={() => {
               onSetPage('register');
+              onSetNonRegistered();
               history.push('/darksteam_97d99i/user/register');
             }}>
             Register

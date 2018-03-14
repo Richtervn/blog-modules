@@ -51,7 +51,7 @@ export default async (models, factories, helpers, body) => {
     loan_money: 0
   });
 
-  MembCredit.create({
+  MembCredits.create({
     memb___id: body.Username,
     credits: GameSetting.NEW_REGISTER_CREDIT
   });

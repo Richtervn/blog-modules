@@ -12,17 +12,27 @@ import { MenuSideBar } from 'components/SideBars';
 
 const userPages = [
   { name: 'Dash Board', route: 'dashboard', icon: 'dashboard' },
-  { name: 'Character Manager', route: 'character', icon: 'users' },
-  { name: 'Banking Manager', route: 'banking', icon: 'bank' },
-  { name: 'Vip Manager', route: 'vip', icon: 'credit-card' },
+  { name: 'Character Manager', route: 'character_manager', icon: 'users' },
+  { name: 'Banking Manager', route: 'banking_manager', icon: 'bank' },
+  { name: 'Vip Manager', route: 'vip_manager', icon: 'credit-card' },
   { name: 'Web Shop', route: 'web_shop', icon: 'shopping-cart' },
   { name: 'Luxury Shop', route: 'luxury_shop', icon: 'magic' },
   { name: 'Web Quest', route: 'web_quest', icon: 'diamond' },
-  { name: 'Upgrade Items', route: 'upgrade_item', icon: 'flash' },
+  { name: 'Upgrade Items', route: 'upgrade_items', icon: 'flash' },
   { name: 'Blacksmith', route: 'blacksmith', icon: 'gavel' }
 ];
 
 class UserMenu extends Component {
+  componentWillMount() {
+    const { activePage, serverInfo, gameSetting, onGetServerInfo, onGetGameSetting } = this.props;
+    if (!serverInfo && activePage === 'login') {
+      onGetServerInfo();
+    }
+    if (!gameSetting && activePage === 'register') {
+      onGetGameSetting();
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     const { serverInfo, gameSetting, onGetServerInfo, onGetGameSetting, onSetPage } = this.props;
     const { activePage, isLoggedIn } = nextProps;

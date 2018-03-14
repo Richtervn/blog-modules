@@ -1,11 +1,13 @@
 import { actionCreator } from 'helpers';
 import services from './Darksteam97d99i.services';
-import { toastError } from 'common/Toast';
-// toastSuccess
+import { toastError, toastSuccess } from 'common/Toast';
+
 import { REGISTER } from './User';
 
 const GET_SERVER_INFO = 'darksteam97d99i/GET_SERVER_INFO';
 const GET_GAME_SETTING = 'darksteam97d99i/GET_GAME_SETTING';
+const EDIT_SERVER_INFO = 'darksteam97d99i/EDIT_SERVER_INFO';
+const EDIT_GAME_SETTING = 'darksteam97d99i/EDIT_GAME_SETTING';
 
 const SET_NON_REGISTERED = 'darksteam97d99i/SET_NON_REGISTERED';
 const SET_ACTIVE_TAB = 'darksteam97d99i/SET_ACTIVE_TAB';
@@ -15,6 +17,8 @@ const SET_SERVER_PAGE = 'darksteam97d99i/SET_SERVER_PAGE';
 
 export const getServerInfo = actionCreator(GET_SERVER_INFO, services.getServerInfo);
 export const getGameSetting = actionCreator(GET_GAME_SETTING, services.getGameSetting);
+export const editServerInfo = formBody => actionCreator(EDIT_SERVER_INFO, services.editServerInfo, formBody)();
+export const editGameSetting = formBody => actionCreator(EDIT_GAME_SETTING, services.editGameSetting, formBody)();
 
 export const setActiveTab = tab => ({ type: SET_ACTIVE_TAB, tab });
 export const setUserPage = page => ({ type: SET_USER_PAGE, page });
@@ -49,12 +53,20 @@ export default (state = initialState, action) => {
       return { ...state, gameSetting: action.data };
     case `${GET_SERVER_INFO}_SUCCESS`:
       return { ...state, serverInfo: action.data };
+    case `${EDIT_GAME_SETTING}_SUCCESS`:
+      toastSuccess('Saved Game Setting')
+      return {...state, gameSetting: action.data};
+    case `${EDIT_SERVER_INFO}_SUCCESS`:
+      toastSuccess('Saved Server Info')
+      return {...state, serverInfo: action.data};
 
     case `${REGISTER}_SUCCESS`:
       return { ...state, isRegistered: true };
 
     case `${GET_GAME_SETTING}_FAIL`:
     case `${GET_SERVER_INFO}_FAIL`:
+    case `${EDIT_GAME_SETTING}_FAIL`:
+    case `${EDIT_SERVER_INFO}_FAIL`:
       toastError(action.error);
       return state;
     default:

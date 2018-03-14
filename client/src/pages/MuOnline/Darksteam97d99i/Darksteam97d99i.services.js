@@ -30,6 +30,14 @@ export default {
     const data = commonGet('darksteam97d99i/system/server_info');
     return data;
   },
+  editServerInfo(formBody){
+    const data = commonPut('darksteam97d99i/system/server_info', formBody);
+    return data;
+  },
+  editGameSetting(formBody){
+    const data = commonPut('darksteam97d99i/system/game_setting', formBody);
+    return data;
+  },
 
   /* User Services */
   login(formBody) {

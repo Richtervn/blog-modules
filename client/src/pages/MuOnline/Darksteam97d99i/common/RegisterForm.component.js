@@ -2,7 +2,7 @@ import './RegisterForm.css';
 import React, { Component } from 'react';
 import { InputGroupIcon } from 'components/FormTools';
 
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 class RegisterForm extends Component {
   constructor(props) {
@@ -26,7 +26,10 @@ class RegisterForm extends Component {
   }
 
   render() {
-    const { history, onSetPage } = this.props;
+    const { history, onSetPage, onRegister, isRegistered } = this.props;
+    if (isRegistered) {
+      return <Redirect to="/user/login" />;
+    }
 
     return (
       <div className="ds9799-register-form">
@@ -79,7 +82,9 @@ class RegisterForm extends Component {
           placeholder="Birth Day"
         />
         <div className="feature">
-          <button className="btn">OK</button>
+          <button className="btn" onClick={() => onRegister(this.state.value)}>
+            OK
+          </button>
           <button
             className="btn"
             onClick={() => {

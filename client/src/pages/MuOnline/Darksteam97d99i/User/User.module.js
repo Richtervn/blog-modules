@@ -22,6 +22,7 @@ export default (state = initialState, action) => {
       return { ...state, isRegistered: true };
 
     case `${LOGIN}_FAIL`:
+    case `${REGISTER}_FAIL`:
       toastError(action.error);
       return state;
     default:
