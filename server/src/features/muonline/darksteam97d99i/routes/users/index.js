@@ -48,7 +48,7 @@ export default (models, methods, factories, helpers, io) => {
   router.get(
     '/recover_password/:id',
     wrap(async ({ params: { id } }, res, next) => {
-      const account = await commonSequelize.getOne(MembInfo, id);
+      const account = await commonSequelize.getOne(MembInfo, id, { attributes: ['memb__pwd'] });
       res.send(account);
     })
   );
@@ -57,8 +57,16 @@ export default (models, methods, factories, helpers, io) => {
   router.get(
     '/',
     wrap(async ({ query }, res, next) => {
-      const accounts = await commonSequelize.getAll(MembInfo, query);
+      const accounts = await commonSequelize.getAll(MembInfo, query, { attributes: ['memb___id'] });
       res.send(accounts);
+    })
+  );
+
+  router.get(
+    '/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const account = await commonSequelize.getOne(MembInfo, id);
+      res.send(account);
     })
   );
 

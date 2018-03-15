@@ -1,45 +1,7 @@
 import Sequelize from 'sequelize';
 
-// $notLike: Op.notLike,
-// $iLike: Op.iLike,
-// $notILike: Op.notILike,
-// $regexp: Op.regexp,
-// $notRegexp: Op.notRegexp,
-// $iRegexp: Op.iRegexp,
-// $notIRegexp: Op.notIRegexp,
-// $between: Op.between,
-// $notBetween: Op.notBetween,
-// $overlap: Op.overlap,
-// $contains: Op.contains,
-// $contained: Op.contained,
-// $adjacent: Op.adjacent,
-// $strictLeft: Op.strictLeft,
-// $strictRight: Op.strictRight,
-// $noExtendRight: Op.noExtendRight,
-// $noExtendLeft: Op.noExtendLeft,
-// $and: Op.and,
-// $or: Op.or,
-// $any: Op.any,
-// $all: Op.all,
-// $values: Op.values,
-// $col: Op.col
-// $notIn: Op.notIn,
-// $is: Op.is  // $eq: Op.eq,
-// $ne: Op.ne,
-// $gte: Op.gte,
-// $gt: Op.gt,
-// $lte: Op.lte,
-// $lt: Op.lt,
-// $not: Op.not,
-
-const Op = Sequelize.Op;
-const operatorsAliases = {
-  $in: Op.in,
-  $like: Op.like
-};
-
 export default async config => {
-  const sequelize = new Sequelize(config.muDatabase, { logging: false, operatorsAliases });
+  const sequelize = new Sequelize(config.muDatabase, { logging: false });
   const authError = await sequelize.authenticate();
 
   if (authError) {

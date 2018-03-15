@@ -1,0 +1,18 @@
+.search-input {
+  position: relative;
+}
+
+.search-input > .form-control {
+  line-height: 1.2;
+  padding-right: 20px;
+}
+
+.search-input > .icon {
+  position: absolute;
+  right: 5px;
+  top: 4px;
+}
+
+.search-input.default > .icon {
+  color: rgba(0, 0, 0, 0.5);
+}

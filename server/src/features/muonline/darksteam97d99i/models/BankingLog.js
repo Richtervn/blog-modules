@@ -20,7 +20,7 @@ export default (sequelize, DataTypes) => {
         allowNull: false
       },
       action: {
-        type: DataTypes.SRING,
+        type: DataTypes.STRING,
         allowNull: false
       },
       type: {

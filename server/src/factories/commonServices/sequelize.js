@@ -20,23 +20,29 @@ export default {
     await model.destroy({ where: query });
     return query;
   },
-  getAll: async (model, query) => {
-    const option = {};
+  getAll: async (model, query, options) => {
+    let option = {};
     if (query) {
       option.where = {};
       for (let key in query) {
-        option.where[query[key]] = { $like: `%${query[key]}` };
+        option.where[key] = { $like: `%${query[key]}%` };
       }
-      option.where = query;
+    }
+    if (options) {
+      option = { ...option, ...options };
     }
     const records = await model.findAll(option);
     return records;
   },
-  getOne: async (model, id) => {
-    const record = await model.findOne({ where: { [model.primaryKeyAttribute]: id } });
+  getOne: async (model, id, options) => {
+    let option = { where: { [model.primaryKeyAttribute]: id } };
+    if (options) {
+      option = { ...option, ...options };
+    }
+    const record = await model.findOne(option);
     return record;
   },
-  update: async (model, body, { transform }) => {
+  update: async (model, body, { transform, returnNew }) => {
     const priKey = model.primaryKeyAttribute;
     const updateForm = _.omit(body, [priKey]);
     if (transform) {
@@ -46,7 +52,11 @@ export default {
         }
       });
     }
-    await MembInfo.update(updateForm, { where: { [priKey]: body[priKey] } });
+    await model.update(updateForm, { where: { [priKey]: body[priKey] } });
+    if (returnNew) {
+      const data = await model.findOne({ where: { [priKey]: body[priKey] } });
+      return data;
+    }
     return body;
   }
 };

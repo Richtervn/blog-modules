@@ -28,7 +28,8 @@ class RegisterForm extends Component {
   render() {
     const { history, onSetPage, onRegister, isRegistered } = this.props;
     if (isRegistered) {
-      return <Redirect to="/user/login" />;
+      onSetPage('login');
+      return <Redirect to="/darksteam_97d99i/user/login" />;
     }
 
     return (

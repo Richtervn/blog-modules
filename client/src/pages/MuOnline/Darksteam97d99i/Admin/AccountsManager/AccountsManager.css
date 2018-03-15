@@ -1,0 +1,73 @@
+#ds9799-accounts-manager {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+#ds9799-accounts-manager > .side-bar {
+  width: 280px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#ds9799-accounts-manager > .side-bar > .search-wrapper {
+  padding: 10px;
+}
+
+#ds9799-accounts-manager > .side-bar > .list-accounts {
+  height: calc(100vh - 145px);
+  overflow-y: auto;
+}
+
+#ds9799-accounts-manager .account-card {
+  background-color: white;
+  padding: 10px 10px 10px 20px;
+  color: black;
+  box-shadow: 2px 2px 1px #666;
+  font-weight: 700;
+  border-left: solid 8px #f44336;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#ds9799-accounts-manager .account-card:not(:first-child) {
+  margin-top: 10px;
+}
+
+#ds9799-accounts-manager .account-card:hover {
+  background-color: #284228;
+  color: white;
+}
+
+#ds9799-accounts-manager .account-card.active {
+  background-color: #175a17;
+  color: white;
+}
+
+.ds9799-search-box {
+  box-shadow: 2px 2px 1px #666;
+}
+
+.ds9799-search-box > .form-control {
+  border-radius: 0;
+}
+
+.ds9799-search-box > .icon {
+  color: black;
+}
+
+#ds9799-accounts-manager > .main-view {
+  width: 100%;
+}
+
+#ds9799-accounts-manager .add-account-btn {
+  border: dashed 1px rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 10px 10px 5px 10px;
+}

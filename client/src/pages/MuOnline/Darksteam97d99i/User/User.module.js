@@ -1,15 +1,18 @@
 import { actionCreator } from 'helpers';
 import services from '../Darksteam97d99i.services';
-import { toastStrong, toastError } from 'common/Toast';
+import { toastStrong, toastError, toastSuccess } from 'common/Toast';
 
 const LOGIN = 'ds9799_user/LOGIN';
 export const REGISTER = 'ds9799_user/REGISTER';
+const RECOVER_PASSWORD = 'ds9799_user/RECOVER_PASSWORD';
 
 export const login = formBody => actionCreator(LOGIN, services.login, formBody)();
 export const register = formBody => actionCreator(REGISTER, services.register, formBody)();
+export const recoverPassword = id => actionCreator(RECOVER_PASSWORD, services.recoverPassword, id)();
 
 const initialState = {
-  user: null
+  user: null,
+  lostPassword: ''
 };
 
 export default (state = initialState, action) => {
@@ -20,9 +23,13 @@ export default (state = initialState, action) => {
     case `${REGISTER}_SUCCESS`:
       toastStrong('Register successful');
       return { ...state, isRegistered: true };
+    case `${RECOVER_PASSWORD}_SUCCESS`:
+      toastSuccess('Password recovered');
+      return { ...state, lostPassword: action.data.memb__pwd };
 
     case `${LOGIN}_FAIL`:
     case `${REGISTER}_FAIL`:
+    case `${RECOVER_PASSWORD}_FAIL`:
       toastError(action.error);
       return state;
     default:

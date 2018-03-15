@@ -8,6 +8,10 @@ export default {
     const data = commonGet('darksteam97d99i/users', null, query);
     return data;
   },
+  adminGetAccountDetail(id){
+    const data = commonGet('darksteam97d99i/users', [id]);
+    return data;
+  },
   adminAddAccount(formBody) {
     const data = commonPost('darksteam97d99i/users', formBody);
     return data;
@@ -62,6 +66,10 @@ export default {
   },
   getTopCredits() {
     const data = commonGet('darksteam97d99i/ranking/top_credits');
+    return data;
+  },
+  recoverPassword(id){
+    const data = commonGet('darksteam97d99i/users/recover_password', [id]);
     return data;
   }
 
