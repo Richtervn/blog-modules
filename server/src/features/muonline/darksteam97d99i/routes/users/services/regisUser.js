@@ -4,7 +4,7 @@ export default async (models, factories, helpers, body) => {
   const { makeSmallDateTime, makeSnoNumber } = factories;
   const { getData, checkExist } = helpers;
   const GameSetting = await getData('GameSetting');
-  const { MembInfo, MembCredits, ViCurInfo, Banking } = models;
+  const { MembInfo, MembCredits, ViCurInfo, Banking, BankingLog, UserBankingLog, UserCreditLog } = models;
 
   const [isUsernameExist, isEmailExist] = [
     await checkExist(MembInfo, 'memb___id', body.Username),
@@ -55,6 +55,24 @@ export default async (models, factories, helpers, body) => {
     memb___id: body.Username,
     credits: GameSetting.NEW_REGISTER_CREDIT
   });
+
+  if (GameSetting.NEW_REGISTER_CREDIT) {
+    UserCreditLog.create({
+      memb___id: body.Username,
+      description: 'New register reward',
+      type: 'add',
+      credits: GameSetting.NEW_REGISTER_CREDIT
+    });
+  }
+
+  if (GameSetting.NEW_REGISTER_ZEN) {
+    UserBankingLog.create({
+      memb___id: body.Username,
+      description: 'New register reward',
+      type: 'add',
+      money: GameSetting.NEW_REGISTER_ZEN
+    });
+  }
 
   return account;
 };

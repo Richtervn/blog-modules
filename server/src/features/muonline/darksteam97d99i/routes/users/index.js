@@ -2,6 +2,7 @@ import express from 'express';
 import moment from 'moment';
 
 import addUser from './services/addUser';
+
 import regisUser from './services/regisUser';
 import loginUser from './services/loginUser';
 import editProfile from './services/editProfile';
@@ -10,7 +11,7 @@ import changePassword from './services/changePassword';
 export default (models, methods, factories, helpers, io) => {
   const router = express.Router();
   const { wrap, commonSequelize } = factories;
-  const { MembInfo } = models;
+  const { MembInfo, MembCredits, AccountCharacter, UserReceipt, UserWebQuest, Banking, Character } = models;
 
   router.post(
     '/register',
@@ -80,8 +81,16 @@ export default (models, methods, factories, helpers, io) => {
   router.delete(
     '/:id',
     wrap(async ({ params: { id } }, res, next) => {
-      const result = await commonSequelize.delete(MembInfo, id);
-      res.send(result);
+      [
+        await commonSequelize.delete(MembInfo, id),
+        await commonSequelize.delete(MembCredits, id),
+        await commonSequelize.delete(Banking, id),
+        await commonSequelize.delete(AccountCharacter, id),
+        await commonSequelize.deleteAll(Character, { AccountID: id }),
+        await commonSequelize.deleteAll(UserReceipt, { memb___id: id }),
+        await commonSequelize.deleteAll(UserWebQuest, { memb___id: id })
+      ];
+      res.send({ id });
     })
   );
 

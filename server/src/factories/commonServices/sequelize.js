@@ -16,6 +16,10 @@ export default {
     await model.destroy({ where: { [priKey]: id } });
     return { id };
   },
+  deleteAll: async (model, query) => {
+    await model.destroy({ where: query });
+    return query;
+  },
   getAll: async (model, query) => {
     const option = {};
     if (query) {
