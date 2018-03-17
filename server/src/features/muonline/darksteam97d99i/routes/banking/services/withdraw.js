@@ -1,5 +1,7 @@
-export default async (Banking, Character, query, GameSetting, bankLogger) => {
+export default async (models, factories, query, GameSetting, bankProfitLog, io) => {
   const { BANKING_WITHDRAW_FEE: { isPercentage, charge } } = GameSetting;
+  const { Banking, Character, BankingLog, UserBankingLog } = models;
+  const { findSocket } = factories;
 
   let { name, amount } = query;
   amount = parseInt(amount);
@@ -37,15 +39,35 @@ export default async (Banking, Character, query, GameSetting, bankLogger) => {
     Type: 'Withdraw'
   };
 
-  [
+  const [bankingLog, userBankingLog] = [
+    await BankingLog.create({
+      memb___id: character.AccountID,
+      character_name: character.Name,
+      description: `${character.AccountID} withdraw`,
+      type: 'add',
+      money: charged
+    }),
+    await UserBankingLog.create({
+      memb___id: character.AccountID,
+      description: 'Withdraw',
+      type: 'minus',
+      money: amount
+    }),
     await banking.update({ zen_balance: zen_balance.toString() }),
     await character.update({ Money: Money }),
-    await bankLogger(record, charged)
+    await bankProfitLog(charged)
   ];
+
+  const client = findSocket(io, 'ds9799_id', character.AccountID);
+
+  if (client) {
+    client.emit('darksteam97d99i/BANKING_LOG_UPDATE', bankingLog);
+    client.emit('darksteam97d99i/USER_BANKING_LOG_UPDATE', userBankingLog);
+  }
 
   return {
     Money,
     zen_balance: zen_balance,
     Name: character.Name
-  }
+  };
 };

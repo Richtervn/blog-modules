@@ -64,14 +64,17 @@ class Darksteam97d99i extends Component {
       onSetAdminPage,
       onSetServerPage,
       onGetServerInfo,
-      onGetGameSetting,
-      isLoggedIn
+      onGetGameSetting
     } = this.props;
+
+    const { isHaveServerInfo, isHaveGameSetting, isLoggedIn } = nextProps;
 
     if (!tab && !page) {
       onSetActiveTab('user');
       onSetUserPage('login');
-      onGetServerInfo();
+      if (!isHaveServerInfo) {
+        onGetServerInfo();
+      }
     }
 
     if (tab && _.contains(availableTabs, tab)) {
@@ -80,10 +83,10 @@ class Darksteam97d99i extends Component {
         onSetUserPage(page);
       }
       if (tab === 'user' && _.contains(['login', 'register'], page) && !isLoggedIn) {
-        if (page === 'login') {
+        if (page === 'login' && !isHaveServerInfo) {
           onGetServerInfo();
         }
-        if (page === 'register') {
+        if (page === 'register' && !isHaveGameSetting) {
           onGetGameSetting();
         }
         onSetUserPage(page);

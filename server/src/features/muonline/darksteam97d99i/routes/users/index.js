@@ -33,8 +33,8 @@ export default (models, methods, factories, helpers, io) => {
 
   router.post(
     '/login',
-    wrap(async ({ body }, res, next) => {
-      const account = await loginUser(models, body);
+    wrap(async (req, res, next) => {
+      const account = await loginUser(models, req.body);
       res.send(account);
     })
   );

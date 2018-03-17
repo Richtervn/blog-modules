@@ -1,5 +1,5 @@
 import bodyParser from 'body-parser';
-import cookieParse from 'cookie-parser';
+import cookieParser from 'cookie-parser';
 import express from 'express';
 import expressWinston from 'express-winston';
 import fileUpload from 'express-fileupload';
@@ -17,6 +17,8 @@ export default (config, routes, MuApps) => {
   });
   logger.cli();
 
+  // trust first proxy
+
   app.use(
     expressWinston.logger({
       winstonInstance: logger,
@@ -27,8 +29,7 @@ export default (config, routes, MuApps) => {
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(cookieParse());
-  app.use(express.static('public'));
+  app.use(cookieParser());
 
   app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -41,6 +42,7 @@ export default (config, routes, MuApps) => {
     next();
   });
 
+  app.use(express.static('public'));
   app.use(fileUpload());
 
   for (let key in routes) {

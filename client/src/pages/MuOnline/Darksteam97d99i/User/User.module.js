@@ -5,6 +5,7 @@ import { toastStrong, toastError, toastSuccess } from 'common/Toast';
 const LOGIN = 'ds9799_user/LOGIN';
 export const REGISTER = 'ds9799_user/REGISTER';
 const RECOVER_PASSWORD = 'ds9799_user/RECOVER_PASSWORD';
+const GET_CURRENT_USER = 'ds9799_user/GET_CURRENT_USER';
 
 export const login = formBody => actionCreator(LOGIN, services.login, formBody)();
 export const register = formBody => actionCreator(REGISTER, services.register, formBody)();
@@ -26,6 +27,10 @@ export default (state = initialState, action) => {
     case `${RECOVER_PASSWORD}_SUCCESS`:
       toastSuccess('Password recovered');
       return { ...state, lostPassword: action.data.memb__pwd };
+    case `${GET_CURRENT_USER}_SUCCESS`:
+      console.log('successful');
+      console.log(action.data);
+      return state;
 
     case `${LOGIN}_FAIL`:
     case `${REGISTER}_FAIL`:

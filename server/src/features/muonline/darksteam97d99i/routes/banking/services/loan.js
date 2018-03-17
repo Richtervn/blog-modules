@@ -1,5 +1,7 @@
-export default async (Banking, Character, query, GameSetting, bankLogger) => {
+export default async (models, factories, query, GameSetting, bankProfitLog, io) => {
   const { BANKING_LOAN_SETTING: { maxValue, isPercentage, charge } } = GameSetting;
+  const { Banking, Character, BankingLog, UserBankingLog } = models;
+  const { findSocket } = factories;
 
   let { name, amount } = query;
   amount = parseInt(amount);
@@ -28,17 +30,33 @@ export default async (Banking, Character, query, GameSetting, bankLogger) => {
   let Money = character.Money + realGiveaway;
   updateBankForm.loan_money = (banking.loan_money + amount).toString();
 
-  const record = {
-    AccountID: character.AccountID,
-    CharName: character.Name,
-    Amount: amount,
-    Type: 'Loan'
-  };
-  [
+  const [bankingLog, userBankingLog] = [
+    await BankingLog.create({
+      memb___id: character.AccountID,
+      character_name: character.Name,
+      description: `${character.AccountID} loan`,
+      type: 'add',
+      money: charged,
+      indept_type: 'add',
+      indept: amount
+    }),
+    await UserBankingLog.create({
+      memb___id: character.AccountID,
+      description: 'Loan',
+      type: 'add',
+      money: amount
+    }),
+    await bankProfitLog(charged, amount, 'add'),
     await banking.update(updateBankForm),
-    await character.update({ Money: Money }),
-    await bankLogger(record, charged, amount)
+    await character.update({ Money: Money })
   ];
+
+  const client = findSocket(io, 'ds9799_id', character.AccountID);
+
+  if (client) {
+    client.emit('darksteam97d99i/BANKING_LOG_UPDATE', bankingLog);
+    client.emit('darksteam97d99i/USER_BANKING_LOG_UPDATE', userBankingLog);
+  }
 
   return {
     Money,

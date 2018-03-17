@@ -1,4 +1,7 @@
-export default async (Banking, Character, query, GameSetting, bankLogger) => {
+export default async (models, factories, query, GameSetting, io) => {
+  const { Banking, Character, BankingLog, UserBankingLog, UserCreditsLog, MembCredits } = models;
+  const { findSocket } = factories;
+
   let { name, amount } = query;
   const { CREDIT_PRICE } = GameSetting;
   amount = parseInt(amount);
@@ -29,23 +32,32 @@ export default async (Banking, Character, query, GameSetting, bankLogger) => {
     return { message: 'Your zen balance is not enough' };
   }
 
-  const record = {
-    AccountID: character.AccountID,
-    CharName: character.Name,
-    Amount: amount,
-    Type: 'BuyCredit'
-  };
-
-  [
+  const [userBankingLog, userCreditsLog] = [
+    await UserBankingLog.create({
+      memb___id: character.AccountID,
+      description: 'Buy credits',
+      type: 'minus',
+      money: charged
+    }),
+    await UserCreditsLog.create({
+      memb___id: character.AccountID,
+      description: 'Bought with zen',
+      type: 'add',
+      credits: amount
+    }),
     await banking.update({ zen_balance: (banking.zen_balance - charged).toString() }),
-    await membCredits.update({ credits: membCredits.credits + amount }),
-    await bankLogger(record)
+    await membCredits.update({ credits: membCredits.credits + amount })
   ];
+  
+  const client = findSocket(io, 'ds9799_id', character.AccountID);
+  if (client) {
+    client.emit('darksteam97d99i/USER_CREDITS_LOG_UPDATE', userCreditsLog);
+    client.emit('darksteam97d99i/USER_BANKING_LOG_UPDATE', userBankingLog);
+  }
 
   return {
     credits: membCredits.credits + amount,
     zen_balance: banking.zen_balance - charged,
     Name: character.Name
-  }
-
+  };
 };

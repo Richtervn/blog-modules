@@ -27,6 +27,14 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0
+      },
+      indept: {
+        type: DataTypes.STRING,
+        allowNull: true
+      },
+      indept_type: {
+        type: DataTypes.STRING,
+        allowNull: true
       }
     },
     {

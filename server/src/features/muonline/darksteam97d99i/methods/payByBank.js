@@ -7,18 +7,19 @@ export default (models, factories, io) => {
 			where: { memb___id: accountId }
 		});
 		banking.zen_balance = parseInt(banking.zen_balance);
+
 		if (banking.zen_balance < charge) {
 			return { message: 'Your Banking balance is not enough' };
 		}
-		const [bankingLog, userBankingLog] = [
-			await BankingLog.create({ memb___id: accountId, character_name, description, type: 'add', money: charge }),
-			await UserBankingLog.create({ memb___id: accountId, description, type: 'add', money: charge }),
+
+		const [userBankingLog] = [
+			await UserBankingLog.create({ memb___id: accountId, description, type: 'minus', money: charge }),
 			await banking.update({ zen_balance: banking.zen_balance - charge })
 		];
+
 		const client = findSocket(io, 'ds9799_id', accountId);
 
 		if (client) {
-			client.emit('darksteam97d99i/BANKING_LOG_UPDATE', bankingLog);
 			client.emit('darksteam97d99i/USER_BANKING_LOG_UPDATE', userBankingLog);
 		}
 

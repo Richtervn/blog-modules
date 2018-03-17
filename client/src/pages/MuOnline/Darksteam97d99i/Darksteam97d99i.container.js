@@ -16,7 +16,9 @@ export default connect(
     isLoggedIn: !!ds9799_user.user,
     userPage: ds9799_appControl.userPage,
     adminPage: ds9799_appControl.adminPage,
-    serverPage: ds9799_appControl.serverPage
+    serverPage: ds9799_appControl.serverPage,
+    isHaveServerInfo: !!ds9799_appControl.serverInfo,
+    isHaveGameSetting: !!ds9799_appControl.getGameSetting
   }),
   dispatch => ({
     onSetActiveTab(tab) {
