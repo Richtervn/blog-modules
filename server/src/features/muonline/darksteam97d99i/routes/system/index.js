@@ -3,7 +3,7 @@ import express from 'express';
 export default (models, methods, factories, helpers, io) => {
   const router = express.Router();
   const { wrap, readFile, writeFile } = factories;
-  const { getData, syncItems, syncMonsters } = helpers;
+  const { getData, getGameData, syncItems, syncMonsters } = helpers;
 
   router.get(
     '/game_setting',
@@ -32,6 +32,14 @@ export default (models, methods, factories, helpers, io) => {
     })
   );
 
+  router.get(
+    '/data/:fileName',
+    wrap(async ({ params: { fileName } }, res, next) => {
+      const data = await getGameData(fileName);
+      res.sned(data);
+    })
+  );
+
   router.put(
     '/server_info',
     wrap(async ({ body }, res, next) => {
@@ -41,7 +49,7 @@ export default (models, methods, factories, helpers, io) => {
   );
 
   router.get(
-    '/system/sync_items',
+    '/sync_items',
     wrap(async (req, res, next) => {
       await syncItems(factories);
       res.sendStatus(200);
@@ -49,7 +57,7 @@ export default (models, methods, factories, helpers, io) => {
   );
 
   router.get(
-    '/system/sync_monsters',
+    '/sync_monsters',
     wrap(async (req, res, next) => {
       await syncMonsters(factories);
       res.sendStatus(200);

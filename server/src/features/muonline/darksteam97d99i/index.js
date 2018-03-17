@@ -7,7 +7,7 @@ import * as routerCreators from './routes';
 export default async (factories, config, io) => {
   try {
     const models = await initModels(config);
-    const methods = initMethods(models, factories);
+    const methods = initMethods(models, factories, io);
 
     io.on('connection', client => {
       initWorker(models, client, methods, helpers);

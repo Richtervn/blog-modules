@@ -4,6 +4,7 @@ export default (models, client, methods, helpers) => {
   let webQuestWorker;
 
   client.on('darksteam97d99i/USER_LOGGED_IN', async memb___id => {
+    client.ds9799_id = memb___id;
     webQuestWorker = new WebQuestWorkers(client, models, methods, helpers);
     await webQuestWorker.initial(memb___id);
   });

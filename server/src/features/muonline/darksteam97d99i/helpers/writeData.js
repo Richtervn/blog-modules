@@ -1,6 +1,6 @@
-import readFile from '../../../../factories/utils/readFile';
+import writeFile from '../../../../factories/utils/writeFile';
 
-export default async name => {
+export default async (name, data) => {
   let filepath = '';
   switch (name) {
     case 'GameSetting':
@@ -19,6 +19,6 @@ export default async name => {
       break;
   }
 
-  const data = await readFile(filepath);
-  return JSON.parse(data.toString());
+  await writeFile(filepath, JSON.stringify(data, null, 2));
+  return data;
 };

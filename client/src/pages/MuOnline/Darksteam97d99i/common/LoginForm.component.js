@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { InputGroupIcon } from 'components/FormTools';
+import { Redirect } from 'react-router-dom';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -22,8 +23,10 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { onLogin, onSetPage, history, onSetNonRegistered } = this.props;
-
+    const { onLogin, onSetPage, history, onSetNonRegistered, isLoggedIn } = this.props;
+    if (isLoggedIn) {
+      return <Redirect to="/darksteam_97d99i/user/dashboard" />;
+    }
     return (
       <div className="ds9799-login-form">
         <InputGroupIcon

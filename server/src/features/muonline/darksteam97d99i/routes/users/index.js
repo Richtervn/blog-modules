@@ -11,7 +11,17 @@ import changePassword from './services/changePassword';
 export default (models, methods, factories, helpers, io) => {
   const router = express.Router();
   const { wrap, commonSequelize } = factories;
-  const { MembInfo, MembCredits, AccountCharacter, UserReceipt, UserWebQuest, Banking, Character } = models;
+  const {
+    MembInfo,
+    MembCredits,
+    AccountCharacter,
+    UserReceipt,
+    UserWebQuest,
+    Banking,
+    Character,
+    UserBankingLog,
+    UserCreditsLog
+  } = models;
 
   router.post(
     '/register',
@@ -50,6 +60,22 @@ export default (models, methods, factories, helpers, io) => {
     wrap(async ({ params: { id } }, res, next) => {
       const account = await commonSequelize.getOne(MembInfo, id, { attributes: ['memb__pwd'] });
       res.send(account);
+    })
+  );
+
+  router.get(
+    '/banking_log/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const logs = await commonSequelize.getAll(UserBankingLog, { memb___id: id });
+      res.send(logs);
+    })
+  );
+
+  router.get(
+    '/credits_log/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const logs = await commonSequelize.getAll(UserCreditsLog, { memb___id: id });
+      res.send(logs);
     })
   );
 

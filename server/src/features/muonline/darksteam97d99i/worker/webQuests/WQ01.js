@@ -63,7 +63,7 @@ export default class WQ1 {
   async giveReward() {
     this.membCredits = await this.MembCredits.findOne({ where: { memb___id: this.membInfo.memb___id } });
     const { reward } = this.webQuest;
-    this.membCredits.credits += 50;
+    this.membCredits.credits += reward;
 
     await this.membCredits.update({
       credits: this.membCredits.credits

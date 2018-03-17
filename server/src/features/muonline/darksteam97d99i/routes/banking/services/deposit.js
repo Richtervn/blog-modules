@@ -1,4 +1,5 @@
-export default async (Banking, Character, query, GameSetting, bankLogger) => {
+export default async (models, query, GameSetting, bankProfitLog) => {
+  const { Banking, Character, BankingLog, UserBankingLog } = models;
   const { BANKING_DEPOSIT_FEE: { isPercentage, charge } } = GameSetting;
 
   let { name, amount } = query;
@@ -57,7 +58,20 @@ export default async (Banking, Character, query, GameSetting, bankLogger) => {
   [
     await banking.update(updateBankForm),
     await character.update({ Money: Money }),
-    await bankLogger(record, charged, indeptPaid)
+    await bankProfitLog(charged, indeptPaid, 'minus'),
+    await BankingLog.create({
+      memb___id: character.AccountID,
+      character_name: character.Name,
+      description: `${character.AccountID} deposited`,
+      type: 'add',
+      money: realDeposit
+    }),
+    await UserBankingLog.create({
+      memb___id: character.AccountID,
+      description: 'Deposit',
+      type: 'add',
+      money: realDeposit
+    })
   ];
 
   return {

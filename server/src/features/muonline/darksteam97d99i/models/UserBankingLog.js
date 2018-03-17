@@ -28,7 +28,7 @@ export default (sequelize, DataTypes) => {
     {
       tableName: 'USER_BANKING_LOG',
       freezeTableName: true,
-      timestamps: false
+      timestamps: true
     }
   );
 };

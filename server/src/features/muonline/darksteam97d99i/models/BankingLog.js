@@ -19,15 +19,11 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false
       },
-      action: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
       type: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      credits: {
+      money: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0
@@ -36,7 +32,7 @@ export default (sequelize, DataTypes) => {
     {
       tableName: 'BANKING_LOG',
       freezeTableName: true,
-      timestamps: false
+      timestamps: true
     }
   );
 };

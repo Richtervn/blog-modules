@@ -2,12 +2,10 @@ export default async (models, methods, GameSetting, query) => {
   const { name, point, type, isUseBank } = query;
   const { payByBank, payByZen } = methods;
   const { Character } = models;
-  
+
   const character = await Character.findOne({
     attributes: ['AccountID', 'Name', 'Dexterity', 'Strength', 'Vitality', 'Energy', 'LevelUpPoint', 'Money'],
-    where: {
-      Name: name
-    }
+    where: { Name: name }
   });
 
   if (character.LevelUpPoint < point) {

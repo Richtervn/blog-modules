@@ -4,6 +4,32 @@ import { toastError, toastSuccess } from 'common/Toast';
 
 import { REGISTER } from './User';
 
+export const userPages = [
+  { name: 'Dash Board', route: 'dashboard', icon: 'dashboard' },
+  { name: 'Character Manager', route: 'character_manager', icon: 'users' },
+  { name: 'Banking Manager', route: 'banking_manager', icon: 'bank' },
+  { name: 'Vip Manager', route: 'vip_manager', icon: 'credit-card' },
+  { name: 'Web Shop', route: 'web_shop', icon: 'shopping-cart' },
+  { name: 'Luxury Shop', route: 'luxury_shop', icon: 'magic' },
+  { name: 'Web Quest', route: 'web_quest', icon: 'diamond' },
+  { name: 'Upgrade Items', route: 'upgrade_items', icon: 'flash' },
+  { name: 'Blacksmith', route: 'blacksmith', icon: 'gavel' }
+];
+
+export const adminPages = [
+  { name: 'Accounts Manager', icon: 'user', route: 'accounts_manager' },
+  { name: 'Characters Manager', icon: 'users', route: 'characters_manager' }
+];
+
+export const serverPages = [
+  { name: 'Bag Items Editor', icon: 'magic', route: 'bag_items_editor' },
+  { name: 'Monsters Set Base', icon: 'drupal', route: 'monsters_set_base' },
+  { name: 'Quests Editor', icon: 'first-order', route: 'quests_editor' },
+  { name: 'Shops Editor', icon: 'shopping-cart', route: 'shops_editor' },
+  { name: 'Game Setting', icon: 'gear', route: 'game_setting' },
+  { name: 'Server Info', icon: 'info-circle', route: 'server_info' }
+];
+
 const GET_SERVER_INFO = 'darksteam97d99i/GET_SERVER_INFO';
 const GET_GAME_SETTING = 'darksteam97d99i/GET_GAME_SETTING';
 const EDIT_SERVER_INFO = 'darksteam97d99i/EDIT_SERVER_INFO';

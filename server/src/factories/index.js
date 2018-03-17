@@ -11,6 +11,8 @@ import makeSnoNumber from './time/makeSnoNumber';
 import readSnoNumber from './time/readSnoNumber';
 
 import deleteFile from './utils/deleteFile';
+import emitToClient from './utils/emitToClient';
+import findSocket from './utils/findSocket';
 import readFile from './utils/readFile';
 import writeFile from './utils/writeFile';
 import wrap from './utils/wrap';
@@ -26,6 +28,8 @@ const factories = () => ({
   makeSnoNumber,
   readSnoNumber,
   deleteFile,
+  emitToClient,
+  findSocket,
   readFile,
   wrap,
   writeFile

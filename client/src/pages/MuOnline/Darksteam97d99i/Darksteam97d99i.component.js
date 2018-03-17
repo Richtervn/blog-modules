@@ -10,30 +10,101 @@ import { User } from './User';
 import { Admin } from './Admin';
 import { Server } from './Server';
 
+import { userPages, adminPages, serverPages } from './Darksteam97d99i.module';
+
 const availableTabs = ['user', 'admin', 'server'];
 
 class Darksteam97d99i extends Component {
   componentWillMount() {
-    const { match: { params }, onSetActiveTab, onSetUserPage, onSetAdminPage, onSetServerPage } = this.props;
-    if (!params.tab) {
+    const {
+      match: { params },
+      onSetActiveTab,
+      onSetUserPage,
+      onSetAdminPage,
+      onSetServerPage,
+      onGetServerInfo,
+      onGetGameSetting,
+      isLoggedIn
+    } = this.props;
+
+    const { tab, page } = params;
+
+    if (!tab && !page) {
       onSetActiveTab('user');
-    } else {
-      if (_.contains(availableTabs, params.tab)) {
-        onSetActiveTab(params.tab);
-        if (params.page && params.tab === 'user') onSetUserPage(params.page);
-        if (params.page && params.tab === 'admin') onSetAdminPage(params.page);
-        if (params.page && params.tab === 'server') onSetServerPage(params.page);
+      onSetUserPage('login');
+      onGetServerInfo();
+    }
+
+    if (tab && _.contains(availableTabs, tab)) {
+      onSetActiveTab(tab);
+      if (tab === 'user' && _.contains(_.pluck(userPages, 'route'), page) && isLoggedIn) {
+        onSetUserPage(page);
+      }
+      if (tab === 'user' && _.contains(['login', 'register'], page) && !isLoggedIn) {
+        onSetUserPage(page);
+        if (page === 'register') {
+          onGetGameSetting();
+        }
+      }
+      if (tab === 'admin' && _.contains(_.pluck(adminPages, 'route'), page)) {
+        onSetAdminPage(page);
+      }
+      if (tab === 'server' && _.contains(_.pluck(serverPages, 'route'), page)) {
+        onSetServerPage(page);
+      }
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { match: { params } } = nextProps;
+    const { tab, page } = params;
+    const {
+      onSetActiveTab,
+      onSetUserPage,
+      onSetAdminPage,
+      onSetServerPage,
+      onGetServerInfo,
+      onGetGameSetting,
+      isLoggedIn
+    } = this.props;
+
+    if (!tab && !page) {
+      onSetActiveTab('user');
+      onSetUserPage('login');
+      onGetServerInfo();
+    }
+
+    if (tab && _.contains(availableTabs, tab)) {
+      onSetActiveTab(tab);
+      if (tab === 'user' && _.contains(_.pluck(userPages, 'route'), page) && isLoggedIn) {
+        onSetUserPage(page);
+      }
+      if (tab === 'user' && _.contains(['login', 'register'], page) && !isLoggedIn) {
+        if (page === 'login') {
+          onGetServerInfo();
+        }
+        if (page === 'register') {
+          onGetGameSetting();
+        }
+        onSetUserPage(page);
+      }
+      if (tab === 'admin' && _.contains(_.pluck(adminPages, 'route'), page)) {
+        onSetAdminPage(page);
+      }
+      if (tab === 'server' && _.contains(_.pluck(serverPages, 'route'), page)) {
+        onSetServerPage(page);
       }
     }
   }
 
   render() {
-    const { match: { params }, activeTab } = this.props;
-    if (!params.tab) {
-      return <Redirect to="/darksteam_97d99i/user" />;
+    const { match: { params: { tab } }, activeTab } = this.props;
+
+    if (!tab) {
+      return <Redirect to="/darksteam_97d99i/user/login" />;
     }
 
-    if (params.tab && !_.contains(availableTabs, params.tab)) {
+    if (!_.contains(availableTabs, tab)) {
       return <Redirect to="/404" />;
     }
 
