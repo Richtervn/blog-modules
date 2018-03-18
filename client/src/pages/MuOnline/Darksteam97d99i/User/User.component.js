@@ -13,28 +13,22 @@ const availableUserPages = _.pluck(userPages, 'route');
 
 class User extends Component {
   componentWillMount() {
-    const { isCheckedCurrentUser, isLoggedIn, onGetCurrentUser } = this.props;
+    const { isCheckedCurrentUser, isLoggedIn, onGetCurrentUser, onSetPage, pageParam } = this.props;
     if (!isCheckedCurrentUser && !isLoggedIn) {
       onGetCurrentUser();
     }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-    const { onSetPage } = this.props;
-    const { pageParam, isCheckedCurrentUser } = nextProps;
     onSetPage(pageParam);
   }
 
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.page === this.props.pageParam){
-      return false;
+  componentWillReceiveProps(nextProps) {
+    const { onSetPage } = this.props;
+    if (nextProps.pageParam !== this.props.pageParam) {
+      onSetPage(nextProps.pageParam);
     }
-    return true;
   }
 
   render() {
-    const { page, pageParam, isLoggedIn, isCheckedCurrentUser } = this.props;
+    const { pageParam, page, isLoggedIn, isCheckedCurrentUser } = this.props;
     if (!isCheckedCurrentUser) {
       return (
         <Ds9799Page>
@@ -43,26 +37,28 @@ class User extends Component {
       );
     }
 
-    if (!isLoggedIn && !pageParam) {
+    if (!isLoggedIn && !pageParam && !page) {
       return <Redirect to="/darksteam_97d99i/user/login" />;
     }
+
     if (!isLoggedIn && pageParam) {
       if (!_.contains(['login', 'register'], pageParam)) {
         return <Redirect to="/404" />;
       } else {
-        return <Redirect to={`/darksteam_97d99i/user/${pageParam}`} />;
+        if (page && pageParam !== page) {
+          return <Redirect to={`/darksteam_97d99i/user/${pageParam}`} />;
+        }
       }
     }
 
-    if (pageParam && !_.contains(availableUserPages, pageParam)) {
+    if (isLoggedIn && pageParam && !_.contains(availableUserPages, pageParam)) {
       return <Redirect to="/404" />;
     }
 
-    if (!pageParam) {
+    if (isLoggedIn && !pageParam) {
       return <Redirect to="/darksteam_97d99i/user/dashboard" />;
     }
-    console.log('pageParam');
-    console.log(pageParam);
+
     return (
       <Ds9799Page>
         {_.contains(['login', 'register'], pageParam) && <Introduction />}

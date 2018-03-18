@@ -10,12 +10,7 @@ import { User } from './User';
 import { Admin } from './Admin';
 import { Server } from './Server';
 
-import { userPages, adminPages, serverPages } from './Darksteam97d99i.module';
-
 const availableTabs = ['user', 'admin', 'server'];
-const availableUserPages = _.pluck(userPages, 'route');
-const availableAdminPages = _.pluck(adminPages, 'route');
-const availableServerPages = _.pluck(serverPages, 'route');
 
 class Darksteam97d99i extends Component {
   componentWillMount() {
