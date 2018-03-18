@@ -4,18 +4,6 @@ import { toastError, toastSuccess } from 'common/Toast';
 
 import { REGISTER } from './User';
 
-export const userPages = [
-  { name: 'Dash Board', route: 'dashboard', icon: 'dashboard' },
-  { name: 'Character Manager', route: 'character_manager', icon: 'users' },
-  { name: 'Banking Manager', route: 'banking_manager', icon: 'bank' },
-  { name: 'Vip Manager', route: 'vip_manager', icon: 'credit-card' },
-  { name: 'Web Shop', route: 'web_shop', icon: 'shopping-cart' },
-  { name: 'Luxury Shop', route: 'luxury_shop', icon: 'magic' },
-  { name: 'Web Quest', route: 'web_quest', icon: 'diamond' },
-  { name: 'Upgrade Items', route: 'upgrade_items', icon: 'flash' },
-  { name: 'Blacksmith', route: 'blacksmith', icon: 'gavel' }
-];
-
 export const adminPages = [
   { name: 'Accounts Manager', icon: 'user', route: 'accounts_manager' },
   { name: 'Characters Manager', icon: 'users', route: 'characters_manager' }

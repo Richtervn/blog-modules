@@ -11,7 +11,7 @@ import { MenuSideBar } from 'components/SideBars';
 import ServerInfoCard from './ServerInfoCard.container';
 import GameSettingCard from './GameSettingCard.container';
 
-import { userPages } from '../Darksteam97d99i.module';
+import { userPages } from '../User/User.module';
 
 export default ({ activePage, onSetPage }) => {
   if (activePage === 'login') {

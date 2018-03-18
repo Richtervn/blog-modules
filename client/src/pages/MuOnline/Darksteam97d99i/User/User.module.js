@@ -2,6 +2,18 @@ import { actionCreator } from 'helpers';
 import services from '../Darksteam97d99i.services';
 import { toastStrong, toastError, toastSuccess } from 'common/Toast';
 
+export const userPages = [
+  { name: 'Dash Board', route: 'dashboard', icon: 'dashboard' },
+  { name: 'Character Manager', route: 'character_manager', icon: 'users' },
+  { name: 'Banking Manager', route: 'banking_manager', icon: 'bank' },
+  { name: 'Vip Manager', route: 'vip_manager', icon: 'credit-card' },
+  { name: 'Web Shop', route: 'web_shop', icon: 'shopping-cart' },
+  { name: 'Luxury Shop', route: 'luxury_shop', icon: 'magic' },
+  { name: 'Web Quest', route: 'web_quest', icon: 'diamond' },
+  { name: 'Upgrade Items', route: 'upgrade_items', icon: 'flash' },
+  { name: 'Blacksmith', route: 'blacksmith', icon: 'gavel' }
+];
+
 const LOGIN = 'ds9799_user/LOGIN';
 export const REGISTER = 'ds9799_user/REGISTER';
 const RECOVER_PASSWORD = 'ds9799_user/RECOVER_PASSWORD';

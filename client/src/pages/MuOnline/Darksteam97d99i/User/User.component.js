@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import { Ds9799Page } from '../components';
-import { userPages } from '../Darksteam97d99i.module';
+import { userPages } from './User.module';
 import { ContainerLoader } from 'common/Loaders';
 
 import { Introduction } from './Introduction';
@@ -50,7 +50,8 @@ class User extends Component {
         }
       }
     }
-
+    console.log(pageParam);
+    console.log(availableUserPages);
     if (isLoggedIn && pageParam && !_.contains(availableUserPages, pageParam)) {
       return <Redirect to="/404" />;
     }
