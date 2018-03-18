@@ -10,10 +10,12 @@ const GET_CURRENT_USER = 'ds9799_user/GET_CURRENT_USER';
 export const login = formBody => actionCreator(LOGIN, services.login, formBody)();
 export const register = formBody => actionCreator(REGISTER, services.register, formBody)();
 export const recoverPassword = id => actionCreator(RECOVER_PASSWORD, services.recoverPassword, id)();
+export const getCurrentUser = actionCreator(GET_CURRENT_USER, services.getCurrentUser);
 
 const initialState = {
   user: null,
-  lostPassword: ''
+  lostPassword: '',
+  isCheckedCurrentUser: false
 };
 
 export default (state = initialState, action) => {
@@ -28,9 +30,10 @@ export default (state = initialState, action) => {
       toastSuccess('Password recovered');
       return { ...state, lostPassword: action.data.memb__pwd };
     case `${GET_CURRENT_USER}_SUCCESS`:
-      console.log('successful');
-      console.log(action.data);
-      return state;
+      if (!action.data.memb___id) {
+        return { state, isCheckedCurrentUser: true };
+      }
+      return { ...state, user: action.data, isCheckedCurrentUser: true };
 
     case `${LOGIN}_FAIL`:
     case `${REGISTER}_FAIL`:

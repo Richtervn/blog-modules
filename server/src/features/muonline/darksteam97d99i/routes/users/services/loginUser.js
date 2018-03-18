@@ -31,9 +31,9 @@ export default async (models, body) => {
 
     const [vipInfo, bankInfo, creditInfo] = [await getVipInfo(), await getBanking(), await getMembCredit()];
 
-    account.dataValues.ViCurInfo = vipInfo;
-    account.dataValues.Banking = bankInfo;
-    account.dataValues.MembCredits = creditInfo;
+    account.dataValues.ViCurInfo = vipInfo.dataValues;
+    account.dataValues.Banking = bankInfo.dataValues;
+    account.dataValues.MembCredits = creditInfo.dataValues;
 
     return account.dataValues;
   } catch (e) {

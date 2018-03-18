@@ -23,6 +23,8 @@ export default (models, methods, factories, helpers, io) => {
     UserCreditsLog
   } = models;
 
+  let userCache = {};
+
   router.post(
     '/register',
     wrap(async ({ body }, res, next) => {
@@ -35,9 +37,14 @@ export default (models, methods, factories, helpers, io) => {
     '/login',
     wrap(async (req, res, next) => {
       const account = await loginUser(models, req.body);
+      userCache  =account;
       res.send(account);
     })
   );
+
+  router.get('/current', wrap(async(req, res, next) => {
+    res.send(userCache);
+  }))
 
   router.put(
     '/profile',

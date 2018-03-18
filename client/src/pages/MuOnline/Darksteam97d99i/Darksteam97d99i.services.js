@@ -8,7 +8,7 @@ export default {
     const data = commonGet('darksteam97d99i/users', null, query);
     return data;
   },
-  adminGetAccountDetail(id){
+  adminGetAccountDetail(id) {
     const data = commonGet('darksteam97d99i/users', [id]);
     return data;
   },
@@ -34,11 +34,11 @@ export default {
     const data = commonGet('darksteam97d99i/system/server_info');
     return data;
   },
-  editServerInfo(formBody){
+  editServerInfo(formBody) {
     const data = commonPut('darksteam97d99i/system/server_info', formBody);
     return data;
   },
-  editGameSetting(formBody){
+  editGameSetting(formBody) {
     const data = commonPut('darksteam97d99i/system/game_setting', formBody);
     return data;
   },
@@ -68,8 +68,12 @@ export default {
     const data = commonGet('darksteam97d99i/ranking/top_credits');
     return data;
   },
-  recoverPassword(id){
+  recoverPassword(id) {
     const data = commonGet('darksteam97d99i/users/recover_password', [id]);
+    return data;
+  },
+  getCurrentUser() {
+    const data = commonGet('darksteam97d99i/users/current');
     return data;
   }
 
