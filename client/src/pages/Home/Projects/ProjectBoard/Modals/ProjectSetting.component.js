@@ -19,8 +19,11 @@ class ProjectSetting extends Component {
 
   initStateValue(project) {
     const stateValue = {};
-    const { TagColor } = project;
-    stateValue.TagColor = TagColor.length > 0 ? TagColor : [{ Label: '', Color: '' }];
+    if(project && project.TagColor.length > 0){
+      stateValue.TagColor = project.TagColor.slice(0);
+    } else {
+      stateValue.TagColor = [{ Label: '', Color: '' }]
+    }
     return stateValue;
   }
 
