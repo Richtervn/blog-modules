@@ -18,16 +18,24 @@ const LOGIN = 'ds9799_user/LOGIN';
 export const REGISTER = 'ds9799_user/REGISTER';
 const RECOVER_PASSWORD = 'ds9799_user/RECOVER_PASSWORD';
 const GET_CURRENT_USER = 'ds9799_user/GET_CURRENT_USER';
+const GET_CHARACTERS = 'ds9799_user/GET_CHARACTERS';
+
+const SET_FOCUS_CHARACTER = 'ds9799_user/SET_FOCUS_CHARACTER';
 
 export const login = formBody => actionCreator(LOGIN, services.login, formBody)();
 export const register = formBody => actionCreator(REGISTER, services.register, formBody)();
 export const recoverPassword = id => actionCreator(RECOVER_PASSWORD, services.recoverPassword, id)();
 export const getCurrentUser = actionCreator(GET_CURRENT_USER, services.getCurrentUser);
+export const getCharacters = id => actionCreator(GET_CHARACTERS, services.getCharacters, id)();
+
+export const setFocusCharacter = name => ({ type: SET_FOCUS_CHARACTER, name });
 
 const initialState = {
   user: null,
   lostPassword: '',
-  isCheckedCurrentUser: false
+  isCheckedCurrentUser: false,
+  characters: null,
+  focusCharacter: null
 };
 
 export default (state = initialState, action) => {
@@ -46,10 +54,16 @@ export default (state = initialState, action) => {
         return { state, isCheckedCurrentUser: true };
       }
       return { ...state, user: action.data, isCheckedCurrentUser: true };
+    case `${GET_CHARACTERS}_SUCCESS`:
+      return { ...state, characters: action.data, focusCharacter: action.data.length > 0 ? action.data[0].Name : null };
+
+    case SET_FOCUS_CHARACTER:
+      return { ...state, focusCharacter: action.name };
 
     case `${LOGIN}_FAIL`:
     case `${REGISTER}_FAIL`:
     case `${RECOVER_PASSWORD}_FAIL`:
+    case `${GET_CHARACTERS}_FAIL`:
       toastError(action.error);
       return state;
     default:

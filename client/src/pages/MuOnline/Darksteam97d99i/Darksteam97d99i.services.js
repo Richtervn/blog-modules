@@ -1,5 +1,5 @@
 import { serviceCaller } from 'helpers';
-
+// eslint-disable-next-line
 const { commonPost, commonGet, commonPut, commonDelete, commonPostMultiplePart, commonPutMultiplePart } = serviceCaller;
 
 export default {
@@ -74,6 +74,10 @@ export default {
   },
   getCurrentUser() {
     const data = commonGet('darksteam97d99i/users/current');
+    return data;
+  },
+  getCharacters(id){
+    const data = commonGet('darksteam97d99i/characters/account', [id]);
     return data;
   }
 

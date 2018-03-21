@@ -8,6 +8,7 @@ import { ContainerLoader } from 'common/Loaders';
 
 import { Introduction } from './Introduction';
 import { Dashboard } from './Dashboard';
+import { CharacterManager } from './CharacterManager';
 
 const availableUserPages = _.pluck(userPages, 'route');
 
@@ -50,8 +51,7 @@ class User extends Component {
         }
       }
     }
-    console.log(pageParam);
-    console.log(availableUserPages);
+
     if (isLoggedIn && pageParam && !_.contains(availableUserPages, pageParam)) {
       return <Redirect to="/404" />;
     }
@@ -64,6 +64,7 @@ class User extends Component {
       <Ds9799Page>
         {_.contains(['login', 'register'], pageParam) && <Introduction />}
         {pageParam === 'dashboard' && <Dashboard />}
+        {pageParam === 'character_manager' && <CharacterManager />}
       </Ds9799Page>
     );
   }

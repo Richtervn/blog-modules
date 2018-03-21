@@ -1,0 +1,91 @@
+#ds9799-character-detail {
+  margin: 10px;
+  border: solid 1px #f44336;
+  border-radius: 4px;
+  padding: 27px 100px;
+  background: white;
+}
+
+#ds9799-character-detail-card {
+  border: solid 1px #f44336;
+  color: black;
+  box-shadow: 1px 2px 3px #666;
+  width: 300px;
+}
+
+#ds9799-character-detail-card > .header {
+  background: #f44336;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#ds9799-character-detail-card > .content {
+  padding: 10px 20px;
+}
+
+#ds9799-character-detail-card > .content > .level {
+  font-style: italic;
+  text-align: center;
+  font-weight: 600;
+}
+
+#ds9799-character-detail-card > .content > .level-up-points {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+#ds9799-character-detail-card > .content > .stats {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+#ds9799-character-detail-card > .content > .stats > .stat {
+  width: 140px;
+  font-weight: 600;
+}
+
+#ds9799-character-detail-card > .content > .stats > .stat-input {
+  display: flex;
+  align-items: center;
+}
+
+#ds9799-character-detail-card > .content > .stats > .stat-input > input {
+  line-height: 1;
+  width: 65px;
+  padding-left: 5px;
+  padding-right: 0px;
+}
+
+#ds9799-character-detail-card > .content > .stats > .stat-input > .fa {
+  font-size: 35px;
+  color: #f44336;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+#ds9799-character-detail-card > .content > .stats > .stat-input > .fa:hover {
+  color: #dc3545;
+}
+
+#ds9799-character-detail-card > .content > .zen,
+#ds9799-character-detail-card > .content > .resets,
+#ds9799-character-detail-card > .content > .grand-resets {
+  font-weight: 600;
+}
+
+#ds9799-character-detail-card > .content > .zen {
+  margin-top: 20px;
+}
+
+#ds9799-character-detail-card > .content > .grand-resets {
+  margin-bottom: 20px;
+}
+
+#ds9799-character-detail-card > .content > .form-check {
+  margin-bottom: 20px;
+  font-weight: 600;
+}

@@ -1,0 +1,23 @@
+#ds9799-character-manager {
+  display: flex;
+}
+
+#ds9799-character-manager > .rule-box {
+  color: black;
+  margin: 10px 0 10px;
+  padding: 10px;
+  border: solid 1px #f44336;
+  border-radius: 4px;
+  font-size: 14px;
+  background: white;
+}
+
+#ds9799-character-manager > .rule-box > .label {
+  padding-top: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#ds9799-character-manager > .rule-box > ul {
+  margin-left: -15px;
+}

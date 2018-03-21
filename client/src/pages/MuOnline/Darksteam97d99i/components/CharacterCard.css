@@ -1,0 +1,52 @@
+.ds9799-character-card {
+  display: flex;
+  border: solid 1px #f44336;
+  margin-top: 10px;
+  position: relative;
+  background: white;
+  color: black;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ds9799-character-card:hover {
+  border-color: #275a27;
+  background: #275a27;
+  color: white;
+}
+
+.ds9799-character-card.active {
+  border-color: #02a502;
+  background: #275a27;
+  color: white;
+}
+
+.ds9799-character-card > .avatar > img {
+  height: 100%;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.ds9799-character-card > .vip-icon {
+  position: absolute;
+  top: 0px;
+  right: 2px;
+}
+
+.ds9799-character-card > .vip-icon > img {
+  width: 20px;
+  height: 20px;
+}
+
+.ds9799-character-card > .content {
+  width: 180px;
+  padding: 6px 15px;
+  font-size: 14px;
+}
+
+.ds9799-character-card > .content > .name {
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+}
