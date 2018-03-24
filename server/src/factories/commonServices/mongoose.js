@@ -78,10 +78,10 @@ export default {
   },
   uploadImage: (files, srcPath, fileField = 'file', suffix = '') => {
     if (!files) {
-      return null;
+      return false;
     }
     if (!files[fileField]) {
-      return null;
+      return false;
     }
     const file = files[fileField];
     const fileExt = file.name.slice(file.name.lastIndexOf('.'), file.name.length);
@@ -92,10 +92,10 @@ export default {
   },
   uploadArchive: (files, srcPath, fileField = 'file') => {
     if (!files) {
-      return null;
+      return false;
     }
     if (!files[fileField]) {
-      return null;
+      return false;
     }
     const file = files[fileField];
     const filePath = `${srcPath}/${file.name}`;

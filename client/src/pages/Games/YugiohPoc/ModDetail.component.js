@@ -77,7 +77,7 @@ export default ({ mod, decks, onSetFocusDeck }) => (
             </div>
             <div className="description">
               <strong>Description : </strong>
-              <p>{mod.Description}</p>
+              <p>{deck.Description}</p>
             </div>
             <div className="compare">
               <fieldset>
