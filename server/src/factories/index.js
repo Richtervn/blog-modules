@@ -5,6 +5,7 @@ import commonService from './commonServices/mongoose';
 import jsonReader from './commonServices/jsonReader';
 import commonSequelize from './commonServices/sequelize';
 
+import convertUnixTimestamp from './time/convertUnixTimestamp';
 import increaseUnixDay from './time/increaseUnixDay';
 import makeSmallDateTime from './time/makeSmallDateTime';
 import makeSnoNumber from './time/makeSnoNumber';
@@ -23,6 +24,7 @@ const factories = () => ({
   commonService,
   jsonReader,
   commonSequelize,
+  convertUnixTimestamp,
   increaseUnixDay,
   makeSmallDateTime,
   makeSnoNumber,

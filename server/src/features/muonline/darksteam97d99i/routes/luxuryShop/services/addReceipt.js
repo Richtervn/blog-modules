@@ -2,7 +2,6 @@ import Promise from 'bluebird';
 
 export default async (Receipt, Material, body) => {
 	const receiptForm = {
-		image_url: body.image_url,
 		name: body.name,
 		price: body.price,
 		charge_price: body.charge_price,
@@ -22,6 +21,10 @@ export default async (Receipt, Material, body) => {
 		exc5: body.exc5 == 'true' ? 1 : 0,
 		exc6: body.exc6 == 'true' ? 1 : 0
 	};
+
+	if (body.image_url) {
+		receiptForm.image_url = body.image_url;
+	}
 
 	body.materials = JSON.parse(body.materials);
 

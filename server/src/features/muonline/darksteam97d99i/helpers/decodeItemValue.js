@@ -1,4 +1,4 @@
-import { Categories } from '../data';
+import { Categories } from '../data/game';
 
 const isEmptyItem = itemArr => {
   const checked = [];

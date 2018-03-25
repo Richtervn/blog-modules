@@ -7,7 +7,9 @@ export default async (Receipt, Material, id) => {
 		await Material.findAll({ where: { receipt_id: id } })
 	];
 
-	fs.unlinkSync(receipt.image_url);
+	if (receipt.image_url) {
+		fs.unlinkSync(receipt.image_url);
+	}
 
 	[
 		await Receipt.destroy({ where: { id } }),

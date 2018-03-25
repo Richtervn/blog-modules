@@ -1,51 +1,65 @@
+import express from 'express';
+
 import getPackages from './services/getPackages';
 import buyPackage from './services/buyPackage';
 
-export default (models, router, factories, helpers, appConfigs, methods) => {
-	const { wrap } = factories;
-	const { WebShopItem, WebShopPackage } = models;
+import addWebShopPackage from './services/addWebShopPackage';
+import editWebShopPackage from './services/editWebShopPackage';
+import deleteWebShopPackage from './services/deleteWebShopPackage';
 
-	router.get(
-		'/web_shop/packages/:id',
-		wrap(async (req, res, next) => {
-			const packages = await getPackages(WebShopPackage, WebShopItem, req.params.id);
-			res.send(packages);
-		})
-	);
+export default (models, methods, factories, helpers) => {
+  const { wrap, deleteFile } = factories;
+  const { WebShopItem, WebShopPackage } = models;
 
-	router.get(
-		'/web_shop/buy/:packageId/:characterName',
-		wrap(async (req, res, next) => {
-			const result = await buyPackage(models, helpers, req.params.characterName, req.params.packageId);
-			res.send(result);
-		})
-	);
+  const router = express.Router();
 
-	  router.post(
-    '/admin/web_shop',
-    wrap(async (req, res, next) => {
-      req.body = await uploadWebShopPackageImage(req, res);
-      const response = await addWebShopPackage(WebShopPackage, WebShopItem, req.body);
+  router.get(
+    '/packages/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const packages = await getPackages(WebShopPackage, WebShopItem, id);
+      res.send(packages);
+    })
+  );
+
+  router.get(
+    '/buy/:packageId/:characterName',
+    wrap(async ({ params: { packageId, characterName } }, res, next) => {
+      const result = await buyPackage(models, helpers, characterName, packageId);
+      res.send(result);
+    })
+  );
+
+  router.post(
+    '/',
+    wrap(async ({ files, body }, res, next) => {
+      const imageUrl = commonSequelize.uploadImage(files, './public/Mu Online/Darksteam97d99i/Web Shop');
+      if (imageUrl) {
+        body.image_url = imageUrl;
+      }
+      const response = await addWebShopPackage(WebShopPackage, WebShopItem, body);
       res.send(response);
     })
   );
 
   router.put(
-    '/admin/web_shop',
-    wrap(async (req, res, next) => {
-      req.body = await uploadWebShopPackageImage(req, res);
-      const response = await updateWebShopPackage(WebShopPackage, WebShopItem, req.body);
+    '/',
+    wrap(async ({ files, body }, res, next) => {
+      const imageUrl = commonSequelize.uploadImage(files, './public/Mu Online/Darksteam97d99i/Web Shop');
+      if (imageUrl) {
+        body.image_url = imageUrl;
+      }
+      const response = await editWebShopPackage(WebShopPackage, WebShopItem, body, deleteFile);
       res.send(response);
     })
   );
 
   router.delete(
-    '/admin/web_shop/:id',
-    wrap(async (req, res, next) => {
-      await deleteWebShopPackage(WebShopPackage, WebShopItem, req.params.id);
-      res.send({ id: req.params.id });
+    '/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      await deleteWebShopPackage(WebShopPackage, WebShopItem, id);
+      res.send({ id });
     })
   );
 
-	return router;
+  return router;
 };

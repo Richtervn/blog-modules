@@ -1,7 +1,7 @@
 import _ from 'underscore';
 import Promise from 'bluebird';
 
-export default async (Receipt, Material, body) => {
+export default async (Receipt, Material, body, deleteFile) => {
 	const [oldMaterials, receipt] = [
 		await Material.findAll({ where: { receipt_id: body.id }, attributes: ['id'] }),
 		await Receipt.findOne({ where: { id: body.id } })
@@ -28,7 +28,12 @@ export default async (Receipt, Material, body) => {
 		exc6: body.exc6 == 'true' ? 1 : 0
 	};
 
-	body.image_url ? (receiptForm.image_url = body.image_url) : (body.image_url = receipt.dataValues.image_url);
+	if (body.image_url) {
+		receiptForm.image_url = body.image_url;
+		if (receipt.image_url) {
+			await deleteFile(receipt.image_url);
+		}
+	}
 
 	const newMaterialsId = _.pluck(body.materials, 'id');
 

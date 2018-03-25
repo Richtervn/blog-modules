@@ -1,4 +1,4 @@
-import { Categories } from '../data';
+import { Categories } from '../data/game';
 
 export default item => {
   const indexes = {};

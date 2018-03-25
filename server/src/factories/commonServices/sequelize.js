@@ -58,5 +58,19 @@ export default {
       return data;
     }
     return body;
+  },
+  uploadImage: (files, srcPath, fileField = 'file', suffix = '') => {
+    if (!files) {
+      return false;
+    }
+    if (!files[fileField]) {
+      return false;
+    }
+    const file = files[fileField];
+    const fileExt = file.name.slice(file.name.lastIndexOf('.'), file.name.length);
+    const fileName = `${moment().format('MMDDYYYYhhmmss')}${suffix}${fileExt}`;
+    const filePath = `${srcPath}/${fileName}`;
+    file.mv(filePath);
+    return filePath;
   }
 };
