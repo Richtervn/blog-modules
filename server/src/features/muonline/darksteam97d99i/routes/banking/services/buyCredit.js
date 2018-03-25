@@ -1,6 +1,5 @@
-export default async (models, factories, query, GameSetting, io) => {
+export default async (models, query, GameSetting) => {
   const { Banking, Character, BankingLog, UserBankingLog, UserCreditsLog, MembCredits } = models;
-  const { findSocket } = factories;
 
   let { name, amount } = query;
   const { CREDIT_PRICE } = GameSetting;
@@ -48,12 +47,6 @@ export default async (models, factories, query, GameSetting, io) => {
     await banking.update({ zen_balance: (banking.zen_balance - charged).toString() }),
     await membCredits.update({ credits: membCredits.credits + amount })
   ];
-  
-  const client = findSocket(io, 'ds9799_id', character.AccountID);
-  if (client) {
-    client.emit('darksteam97d99i/USER_CREDITS_LOG_UPDATE', userCreditsLog);
-    client.emit('darksteam97d99i/USER_BANKING_LOG_UPDATE', userBankingLog);
-  }
 
   return {
     credits: membCredits.credits + amount,

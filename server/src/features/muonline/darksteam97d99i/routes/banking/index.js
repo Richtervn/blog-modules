@@ -6,7 +6,7 @@ import transfer from './services/transfer';
 import buyCredit from './services/buyCredit';
 import withdraw from './services/withdraw';
 
-export default (models, methods, factories, helpers, io) => {
+export default (models, methods, factories, helpers) => {
   const router = express.Router();
   const { wrap, commonSequelize } = factories;
   const { BankingLog, Banking } = models;
@@ -24,7 +24,7 @@ export default (models, methods, factories, helpers, io) => {
     '/deposit',
     wrap(async ({ query }, res, next) => {
       const GameSetting = await getData('GameSetting');
-      const result = await deposit(models, factories, query, GameSetting, bankProfitLog, io);
+      const result = await deposit(models, query, GameSetting, bankProfitLog);
       res.send(result);
     })
   );
@@ -33,7 +33,7 @@ export default (models, methods, factories, helpers, io) => {
     '/loan',
     wrap(async ({ query }, res, next) => {
       const GameSetting = await getData('GameSetting');
-      const result = await loan(models, factories, query, GameSetting, bankProfitLog, io);
+      const result = await loan(models, query, GameSetting, bankProfitLog);
       res.send(result);
     })
   );
@@ -42,7 +42,7 @@ export default (models, methods, factories, helpers, io) => {
     '/withdraw',
     wrap(async ({ query }, res, next) => {
       const GameSetting = await getData('GameSetting');
-      const result = await withdraw(models, factories, query, GameSetting, bankProfitLog, io);
+      const result = await withdraw(models, query, GameSetting, bankProfitLog);
       res.send(result);
     })
   );
@@ -51,7 +51,7 @@ export default (models, methods, factories, helpers, io) => {
     '/transfer',
     wrap(async ({ query }, res, next) => {
       const GameSetting = await getData('GameSetting');
-      const result = await transfer(models, factories, query, GameSetting, bankProfitLog, io);
+      const result = await transfer(models, query, GameSetting, bankProfitLog);
       res.send(result);
     })
   );
@@ -60,7 +60,7 @@ export default (models, methods, factories, helpers, io) => {
     '/buy_credit',
     wrap(async ({ query }, res, next) => {
       const GameSetting = await getData('GameSetting');
-      const result = await buyCredit(models, factories, query, GameSetting, io);
+      const result = await buyCredit(models, query, GameSetting);
       res.send(result);
     })
   );

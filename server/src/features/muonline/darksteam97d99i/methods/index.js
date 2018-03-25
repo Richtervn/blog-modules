@@ -3,11 +3,11 @@ import buyVipCharacter from './buyVipCharacter';
 import payByZen from './payByZen';
 import payByBank from './payByBank';
 
-export default (models, factories, io) => {
+export default (models, factories) => {
   return {
     buyVipAccount: buyVipAccount(models, factories),
     buyVipCharacter: buyVipCharacter(models, factories),
-    payByBank: payByBank(models, factories, io),
+    payByBank: payByBank(models, factories),
     payByZen: payByZen()
   };
 };

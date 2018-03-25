@@ -1,25 +1,20 @@
 import initModels from './models';
-import initWorker from './worker';
 import initMethods from './methods';
 import * as helpers from './helpers';
 import * as routerCreators from './routes';
 
-export default async (factories, config, io) => {
+export default async (factories, config) => {
   try {
     const models = await initModels(config);
-    const methods = initMethods(models, factories, io);
-
-    io.on('connection', client => {
-      initWorker(models, client, methods, helpers);
-    });
+    const methods = initMethods(models, factories);
 
     const routers = {};
     for (let key in routerCreators) {
-      routers[key] = routerCreators[key](models, methods, factories, helpers, io);
+      routers[key] = routerCreators[key](models, methods, factories, helpers);
     }
 
     console.log('[Darksteam97d99i] App started');
-    return routers;
+    return { routers, models, methods };
   } catch (e) {
     console.log(e);
     console.log('[Darksteam97d99i] App failed to start');

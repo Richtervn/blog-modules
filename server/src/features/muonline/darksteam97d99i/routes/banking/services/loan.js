@@ -1,7 +1,6 @@
-export default async (models, factories, query, GameSetting, bankProfitLog, io) => {
+export default async (models, query, GameSetting, bankProfitLog) => {
   const { BANKING_LOAN_SETTING: { maxValue, isPercentage, charge } } = GameSetting;
   const { Banking, Character, BankingLog, UserBankingLog } = models;
-  const { findSocket } = factories;
 
   let { name, amount } = query;
   amount = parseInt(amount);
@@ -52,11 +51,6 @@ export default async (models, factories, query, GameSetting, bankProfitLog, io) 
   ];
 
   const client = findSocket(io, 'ds9799_id', character.AccountID);
-
-  if (client) {
-    client.emit('darksteam97d99i/BANKING_LOG_UPDATE', bankingLog);
-    client.emit('darksteam97d99i/USER_BANKING_LOG_UPDATE', userBankingLog);
-  }
 
   return {
     Money,

@@ -1,6 +1,6 @@
 import express from 'express';
 
-export default (models, methods, factories, helpers, io) => {
+export default (models, methods, factories, helpers) => {
   const router = express.Router();
   const { wrap, readFile, writeFile } = factories;
   const { getData, getGameData, syncItems, syncMonsters } = helpers;

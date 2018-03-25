@@ -50,8 +50,8 @@ export default (config, routes, MuApps) => {
   }
 
   for (let muApp in MuApps) {
-    for (let route in MuApps[muApp]) {
-      app.use(`/api/${muApp}/${route}`, MuApps[muApp][route]);
+    for (let route in MuApps[muApp].routers) {
+      app.use(`/api/${muApp}/${route}`, MuApps[muApp].routers[route]);
     }
   }
 

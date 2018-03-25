@@ -8,7 +8,7 @@ import loginUser from './services/loginUser';
 import editProfile from './services/editProfile';
 import changePassword from './services/changePassword';
 
-export default (models, methods, factories, helpers, io) => {
+export default (models, methods, factories, helpers) => {
   const router = express.Router();
   const { wrap, commonSequelize } = factories;
   const {

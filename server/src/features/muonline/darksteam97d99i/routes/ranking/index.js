@@ -5,7 +5,7 @@ import getTopResets from './services/getTopResets';
 import getTopZen from './services/getTopZen';
 import getTopCredits from './services/getTopCredits';
 
-export default (models, methods, factories, helpers, io) => {
+export default (models, methods, factories, helpers) => {
   const router = express.Router();
   const { wrap } = factories;
   const { Character } = models;

@@ -40,7 +40,7 @@ export default (YugiohPocMods, YugiohPocDecks, factories) => {
   router.delete(
     '/mod/:id',
     wrap(async ({ params: { id } }, res, next) => {
-      const result = await commonService.delete(YugiohPocMods, id, ['Image', ['Icon']]);
+      const result = await commonService.delete(YugiohPocMods, id, ['Image', 'Icon']);
       res.send(result);
     })
   );
