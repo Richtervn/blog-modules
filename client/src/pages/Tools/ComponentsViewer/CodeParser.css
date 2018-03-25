@@ -1,0 +1,5 @@
+#cv-code-parser {
+  width: 100%;
+  height: calc(100vh - 45px);
+  overflow-y: auto;
+}

@@ -1,0 +1,32 @@
+#cv-cpns-selector {
+  height: calc(100vh - 45px);
+  overflow-y: auto;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+}
+
+#cv-cpns-selector > .category-group {
+  margin-bottom: 15px;
+}
+
+#cv-cpns-selector > .category-group > .category {
+  font-weight: 600;
+  font-size: 16px;
+  background-color: #37653e;
+  text-align: center;
+}
+
+#cv-cpns-selector > .category-group > .items > .item {
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+#cv-cpns-selector > .category-group > .items > .item:hover {
+  background-color: #000;
+}
+
+#cv-cpns-selector > .category-group > .items > .item.active {
+  background-color: #980098;
+}
+

@@ -2,7 +2,7 @@ import { shuffleList, sortList } from './array';
 import { commonAddArray, commonFormChange, commonRemoveArray } from './form';
 import { formatNumber } from './number';
 import { actionCreator, serviceCaller, serviceWrapper } from './service';
-import { connectString, getFullName, getMuClass, getSimpleName, getStarcraftRaces } from './string';
+import { connectString, getFullName, getMuClass, getSimpleName, getStarcraftRaces, toTitle } from './string';
 import { toInputDate, unixTime } from './time';
 
 export {
@@ -20,6 +20,7 @@ export {
   getMuClass,
   getSimpleName,
   getStarcraftRaces,
+  toTitle,
   toInputDate,
   unixTime
 };

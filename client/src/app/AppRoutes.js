@@ -11,6 +11,7 @@ import { GamingHistory } from 'pages/Collections/GamingHistory';
 import { FlashGames } from 'pages/FlashGames';
 import { Home } from 'pages/Home';
 
+import { ComponentsViewer } from 'pages/Tools/ComponentsViewer';
 import { ContentMirror } from 'pages/Tools/ContentMirror';
 import { IconChooser } from 'pages/Tools/IconChooser';
 
@@ -41,6 +42,7 @@ const AppRoutes = () => (
       <Route path="/diablo_ii/:tab?/:subPage?" component={DiabloII} />
       <Route path="/mu_online/:tab?/:subPage?" component={MuOnline} />
       <Route path="/darksteam_97d99i/:tab?/:page?" component={Darksteam97d99i} />
+      <Route exact path="/components_viewer" component={ComponentsViewer} />
       <Route path="/content_mirror/:table?/:record?" component={ContentMirror} />
       <Route path="/gaming_history/:game?/:tab?/:subPage?" component={GamingHistory} />
       <Route path="/flash_games/:name" component={FlashGames} />
