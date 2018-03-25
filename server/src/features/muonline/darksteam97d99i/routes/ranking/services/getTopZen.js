@@ -16,5 +16,5 @@ export default async models => {
     return { memb___id: account.memb___id, TotalZen: totalZen };
   });
 
-  return _.sortBy(result, 'TotalZen');
+  return _.sortBy(result, 'TotalZen').reverse();
 };

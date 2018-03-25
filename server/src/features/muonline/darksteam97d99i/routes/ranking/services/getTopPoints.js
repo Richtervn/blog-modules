@@ -2,8 +2,20 @@ import _ from 'underscore';
 
 export default async (Character, query, BASE_STATS) => {
   const options = {
-    attributes: ['AccountID', 'Name', 'Class', 'Strength', 'Dexterity', 'Vitality', 'Energy', 'Resets', 'GrandResets']
+    attributes: [
+      'AccountID',
+      'Name',
+      'Class',
+      'Strength',
+      'Dexterity',
+      'Vitality',
+      'Energy',
+      'Resets',
+      'GrandResets',
+      'LevelUpPoint'
+    ]
   };
+
   if (query) {
     options.where = {};
     if (query.Class == 'ELF') {
@@ -26,29 +38,33 @@ export default async (Character, query, BASE_STATS) => {
   for (let charClass in BASE_STATS) {
     const { Strength, Dexterity, Vitality, Energy } = BASE_STATS[charClass];
     baseStats[charClass] = Strength + Dexterity + Vitality + Energy;
+    console.log(baseStats);
   }
 
   const result = characters.map(character => {
-    const { Strength, Dexterity, Vitality, Energy, LevelUpPoint } = character;
-    const totalPoints = Strength + Dexterity + Vitality + Energy + LevelUpPoint;
+    const { Strength, Dexterity, Vitality, Energy, LevelUpPoint } = character.dataValues;
+    const totalPoints =
+      parseInt(Strength) + parseInt(Dexterity) + parseInt(Vitality) + parseInt(Energy) + parseInt(LevelUpPoint);
 
     let realPoints;
-    if (_.contains(['32', '33'], character.Class)) {
+    if (_.contains(['32', '33'], character.Class.toString())) {
       realPoints = totalPoints - baseStats.ELF;
     }
-    if (_.contains(['16', '17'], character.Class)) {
+    if (_.contains(['16', '17'], character.Class.toString())) {
       realPoints = totalPoints - baseStats.DK;
     }
-    if (_.contains(['0', '1'], character.Class)) {
+    if (_.contains(['0', '1'], character.Class.toString())) {
       realPoints = totalPoints - baseStats.DW;
     }
-    if (character.Class == '48') {
+    if (character.Class.toString() == '48') {
       realPoints = totalPoints - baseStats.MG;
     }
-    character.RealPoints = realPoints;
+
+    character.dataValues.RealPoints = realPoints;
 
     return character;
   });
-
-  return _.sortBy(result, 'RealPoints');
+  const ranked = _.sortBy(result.map(char => char.dataValues), 'RealPoints').reverse();
+  
+  return ranked;
 };
