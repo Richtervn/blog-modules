@@ -68,7 +68,7 @@ export default (YugiohPocMods, YugiohPocDecks, factories) => {
     '/deck',
     wrap(async ({ files, body }, res, next) => {
       const image = commonService.uploadImage(files, './public/Yugioh Poc/decks', 'Image');
-      if (image) body.Image = image;
+      if (image) body.Image = image;     
       const deck = await commonService.update(YugiohPocDecks, body, ['Pros', 'Cons'], ['Image']);
       res.send(deck);
     })

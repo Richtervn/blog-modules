@@ -1,6 +1,6 @@
 import React from 'react';
 import { MenuSideBar } from 'components/SideBars';
-import { adminPages } from '../Darksteam97d99i.module';
+import { adminPages } from '../Admin/Admin.module';
 
 export default ({ activePage, onSetPage }) => (
   <MenuSideBar

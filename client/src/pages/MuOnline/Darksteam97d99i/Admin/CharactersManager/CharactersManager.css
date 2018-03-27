@@ -1,0 +1,100 @@
+#ds9799-characters-manager {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+#ds9799-characters-manager > .side-bar {
+  width: 320px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#ds9799-characters-manager > .side-bar > .search-wrapper {
+  padding: 10px;
+}
+
+#ds9799-characters-manager > .side-bar > .list-characters {
+  height: calc(100vh - 145px);
+  overflow-y: auto;
+}
+
+#ds9799-characters-manager .character-card {
+  background-color: white;
+  display: flex;
+  color: black;
+  box-shadow: 2px 2px 1px #666;
+  border-left: solid 8px #f44336;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#ds9799-characters-manager .character-card > .img-wrapper > img {
+  width: 80px;
+}
+
+#ds9799-characters-manager .character-card > .content {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#ds9799-characters-manager .character-card > .content > .name {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 5px;
+}
+#ds9799-characters-manager .character-card > .content > .info {
+  font-size: 12px;
+  margin-bottom: 5px;
+  padding-left: 10px;
+}
+#ds9799-characters-manager .character-card > .content > .acc {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+#ds9799-characters-manager .character-card:not(:first-child) {
+  margin-top: 10px;
+}
+
+#ds9799-characters-manager .character-card:hover {
+  background-color: #284228;
+  color: white;
+}
+
+#ds9799-characters-manager .character-card.active {
+  background-color: #175a17;
+  color: white;
+}
+
+.ds9799-search-box {
+  box-shadow: 2px 2px 1px #666;
+}
+
+.ds9799-search-box > .form-control {
+  border-radius: 0;
+}
+
+.ds9799-search-box > .icon {
+  color: black;
+}
+
+#ds9799-characters-manager > .main-view {
+  width: 100%;
+}
+
+#ds9799-characters-manager .add-character-btn {
+  border: dashed 1px rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 10px 10px 5px 10px;
+}

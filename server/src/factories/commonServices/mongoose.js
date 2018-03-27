@@ -52,7 +52,7 @@ export default {
     const doc = await model.findOne({ _id: body._id });
     if (linkFields) {
       await Promise.map(linkFields, field => {
-        if (updateForm[field] && doc[field]) {
+        if (updateForm[field] && updateForm[field] !== 'null' && doc[field]) {
           return deleteFile(doc[field]);
         }
         return;
@@ -78,10 +78,10 @@ export default {
   },
   uploadImage: (files, srcPath, fileField = 'file', suffix = '') => {
     if (!files) {
-      return false;
+      return null;
     }
     if (!files[fileField]) {
-      return false;
+      return null;
     }
     const file = files[fileField];
     const fileExt = file.name.slice(file.name.lastIndexOf('.'), file.name.length);
@@ -92,10 +92,10 @@ export default {
   },
   uploadArchive: (files, srcPath, fileField = 'file') => {
     if (!files) {
-      return false;
+      return null;
     }
     if (!files[fileField]) {
-      return false;
+      return null;
     }
     const file = files[fileField];
     const filePath = `${srcPath}/${file.name}`;

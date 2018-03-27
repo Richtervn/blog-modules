@@ -70,6 +70,42 @@ export default (models, methods, factories, helpers) => {
     })
   );
 
+  router.get(
+    '/detail/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const character = await Character.findOne({
+        where: { Name: id },
+        attributes: [
+          'AccountID',
+          'Name',
+          'cLevel',
+          'LevelUpPoint',
+          'Class',
+          'Strength',
+          'Dexterity',
+          'Vitality',
+          'Energy',
+          'Money',
+          'MapNumber',
+          'MapPosX',
+          'MapPosY',
+          'CtlCode',
+          'Resets',
+          'GrandResets',
+          'IsMarried',
+          'MarryName',
+          'QuestNumber',
+          'QuestMonsters',
+          'SkyEventWins',
+          'IsVip',
+          'VipExpirationTime',
+          'Inventory'
+        ]
+      });
+      res.send(character);
+    })
+  );
+
   router.post(
     '/',
     wrap(async ({ body }, res, next) => {

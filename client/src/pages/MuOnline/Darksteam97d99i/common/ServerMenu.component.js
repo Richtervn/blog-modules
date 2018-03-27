@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { serverPages } from '../Darksteam97d99i.module';
+import { serverPages } from '../Server/Server.module';
 import { MenuSideBar } from 'components/SideBars';
 
 export default ({ activePage, onSetPage }) => (

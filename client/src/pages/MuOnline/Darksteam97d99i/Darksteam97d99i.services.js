@@ -76,19 +76,40 @@ export default {
     const data = commonGet('darksteam97d99i/users/current');
     return data;
   },
+
+  /* Character Services */
+
+  adminGetCharacters(query){
+    const data = commonGet('darksteam97d99i/characters', null, query);
+    return data;
+  },
+  adminGetCharacterDetail(id){
+    const data = commonGet('darksteam97d99i/characters/detail', [id]);
+    return data;
+  },
+  adminAddCharacter(formBody){
+    const data = commonPost('darksteam97d99i/characters', formBody);
+    return data;
+  },
+  adminEditCharacter(formBody){
+    const data = commonPut('darksteam97d99i/characters', formBody);
+    return data;
+  },
+  adminDeleteCharacter(id){
+    const data = commonDelete('darksteam97d99i/characters/' + id);
+    return data;
+  },
   getCharacters(id){
     const data = commonGet('darksteam97d99i/characters/account', [id]);
     return data;
   }
 
+
   // editProfile(formBody) {
   //   const data = commonPut('mu/darksteam97d99i/users/profile', formBody);
   //   return data;
   // },
-  // getCharacters(id) {
-  //   const data = commonGet('mu/darksteam97d99i/characters/get_chars', [id]);
-  //   return data;
-  // },
+
   // addPoint(query) {
   //   const data = commonGet('mu/darksteam97d99i/characters/add_point', null, query);
   //   return data;
@@ -154,10 +175,6 @@ export default {
   //   });
   //   return data;
   // },
-  // adminGetAccounts(query) {
-  //   const data = commonGet('mu/darksteam97d99i/admin/memb_info', null, query);
-  //   return data;
-  // },
 
   // adminGetBankings() {
   //   const data = commonGet('mu/darksteam97d99i/admin/banking');
@@ -173,20 +190,6 @@ export default {
   // },
   // adminEditCredit(formBody) {
   //   const data = commonPut('mu/darksteam97d99i/admin/credit', formBody);
-  //   return data;
-  // },
-
-  // adminEditCharacter(formBody) {
-  //   const data = commonPut('mu/darksteam97d99i/admin/character', formBody);
-  //   return data;
-  // },
-
-  // adminAddCharacter(formBody) {
-  //   const data = commonPost('mu/darksteam97d99i/admin/character', formBody);
-  //   return data;
-  // },
-  // adminDeleteCharacter(id) {
-  //   const data = commonDelete('mu/darksteam97d99i/admin/character/' + id);
   //   return data;
   // },
 

@@ -41,5 +41,5 @@ export default async (models, factories, helpers, body) => {
       credits: GameSetting.NEW_REGISTER_CREDIT
     })
   ];
-  return body;
+  return account;
 };

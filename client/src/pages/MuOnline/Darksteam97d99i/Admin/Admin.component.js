@@ -1,21 +1,35 @@
+import _ from 'underscore';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Ds9799Page } from '../components';
 
 import { AccountsManager } from './AccountsManager';
+import { CharactersManager } from './CharactersManager';
+
+import { adminPages } from './Admin.module';
+const availableAdminPages = _.pluck(adminPages, 'route');
 
 class Admin extends Component {
   componentWillMount() {
-    const { page, onSetPage } = this.props;
-    if (!page) {
+    const { pageParam, onSetPage } = this.props;
+    if (!pageParam) {
       onSetPage('accounts_manager');
+    } else {
+      if (_.contains(availableAdminPages, pageParam)) {
+        onSetPage(pageParam);
+      }
     }
   }
 
   render() {
-    const { page } = this.props;
-    if (!page) return <Redirect to="/darksteam_97d99i/admin/accounts" />;
-    return <Ds9799Page>{page === 'accounts_manager' && <AccountsManager />}</Ds9799Page>;
+    const { pageParam } = this.props;
+    if (!pageParam) return <Redirect to="/darksteam_97d99i/admin/accounts_manager" />;
+    return (
+      <Ds9799Page>
+        {pageParam === 'accounts_manager' && <AccountsManager />}
+        {pageParam === 'characters_manager' && <CharactersManager />}
+      </Ds9799Page>
+    );
   }
 }
 

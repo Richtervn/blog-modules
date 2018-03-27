@@ -4,19 +4,28 @@ import { toastError, toastSuccess } from 'common/Toast';
 
 import { REGISTER } from './User';
 
-export const adminPages = [
-  { name: 'Accounts Manager', icon: 'user', route: 'accounts_manager' },
-  { name: 'Characters Manager', icon: 'users', route: 'characters_manager' }
-];
+export const characterList = {
+  'Dark Wizard': '0',
+  'Soul Master': '1',
+  'Dark Knight': '16',
+  'Blade Knight': '17',
+  Elf: '32',
+  'Muse Elf': '33',
+  'Magic Gladiator': '48'
+};
 
-export const serverPages = [
-  { name: 'Bag Items Editor', icon: 'magic', route: 'bag_items_editor' },
-  { name: 'Monsters Set Base', icon: 'drupal', route: 'monsters_set_base' },
-  { name: 'Quests Editor', icon: 'first-order', route: 'quests_editor' },
-  { name: 'Shops Editor', icon: 'shopping-cart', route: 'shops_editor' },
-  { name: 'Game Setting', icon: 'gear', route: 'game_setting' },
-  { name: 'Server Info', icon: 'info-circle', route: 'server_info' }
-];
+export const mapList = {
+  Lorencia: 0,
+  Dungeon: 1,
+  Davias: 2,
+  Noria: 3,
+  'Lost Tower': 4,
+  Exile: 5,
+  Stadium: 6,
+  Atlans: 7,
+  Tarkan: 8,
+  Icarus: 10
+};
 
 const GET_SERVER_INFO = 'darksteam97d99i/GET_SERVER_INFO';
 const GET_GAME_SETTING = 'darksteam97d99i/GET_GAME_SETTING';
@@ -68,11 +77,11 @@ export default (state = initialState, action) => {
     case `${GET_SERVER_INFO}_SUCCESS`:
       return { ...state, serverInfo: action.data };
     case `${EDIT_GAME_SETTING}_SUCCESS`:
-      toastSuccess('Saved Game Setting')
-      return {...state, gameSetting: action.data};
+      toastSuccess('Saved Game Setting');
+      return { ...state, gameSetting: action.data };
     case `${EDIT_SERVER_INFO}_SUCCESS`:
-      toastSuccess('Saved Server Info')
-      return {...state, serverInfo: action.data};
+      toastSuccess('Saved Server Info');
+      return { ...state, serverInfo: action.data };
 
     case `${REGISTER}_SUCCESS`:
       return { ...state, isRegistered: true };

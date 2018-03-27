@@ -43,7 +43,7 @@ class ComponentsViewer extends Component {
 
   render() {
     const { components, selectedCpn, language, jsxCode, cssCode } = this.state;
-    console.log(React.cloneElement(Cards.BackgroundTextCard))
+
     return (
       <PageContainer>
         <div className="row">
