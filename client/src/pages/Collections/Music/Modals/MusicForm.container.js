@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import MusicForm from './MusicForm.component';
 
-import { addSong } from '../Music.module';
+import { addSongs } from '../Music.module';
 
 const mapDispatchToProps = dispatch => ({
-  onAddSong(formBody) {
-    dispatch(addSong(formBody));
+  onAddSongs(formBody) {
+    dispatch(addSongs(formBody));
   }
 });
 

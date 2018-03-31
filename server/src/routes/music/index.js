@@ -7,18 +7,30 @@ export default (Music, factories) => {
   const { wrap, commonService } = factories;
 
   router.post(
-    '/add_song',
+    '/add_songs',
     wrap(async ({ body, files }, res, next) => {
-      const url = commonService.uploadArchive(files, './public/Music', 'File');
-      if (!url) {
-        return { message: 'No MP3 File' };
+      const fileCount = parseInt(body._fileCount);
+      if (fileCount < 1) {
+        return res.send({ message: 'No MP3 Files' });
       }
-      const fragments = files.File.split(' - ');
-      body.Artist = fragments[0].trim();
-      bory.Name = fragments[1].replace('.mp3', '').trim();
-      body.Url = url;
-      const song = await commonService.create(Music, body);
-      res.send(song);
+      const records = [];
+      for (let i = 0; i < fileCount; i++) {
+        const record = {};
+        const url = commonService.uploadArchive(files, './public/Music', `File${i}`);
+        record.Url = url;
+        const fragments = files[`File${i}`].name.split(' - ');
+        record.Artist = fragments[0].trim();
+        record.Name = fragments[1].replace('.mp3', '').trim();
+        record.Rating = body.Rating;
+        record.Genre = body.Genre;
+        records.push(record);
+      }
+      const results = [];
+      await Promise.map(records, async rec => {
+        const result = await commonService.create(Music, rec);
+        results.push(result);
+      });
+      res.send(results);
     })
   );
 
@@ -42,13 +54,12 @@ export default (Music, factories) => {
     '/update',
     wrap(async ({ body, files }, res, next) => {
       const url = commonService.uploadArchive(files, './public/Music', 'File');
-      if (!url) {
-        return { message: 'No MP3 File' };
+      if (url) {
+        const fragments = files.File.split(' - ');
+        body.Artist = fragments[0].trim();
+        body.Name = fragments[1].replace('.mp3', '').trim();
+        body.Url = url;
       }
-      const fragments = files.File.split(' - ');
-      body.Artist = fragments[0].trim();
-      body.Name = fragments[1].replace('.mp3', '').trim();
-      body.Url = url;
       const song = await commonService.update(Music, body, null, ['Url']);
       res.send(song);
     })

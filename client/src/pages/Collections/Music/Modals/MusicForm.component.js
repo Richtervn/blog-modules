@@ -22,7 +22,7 @@ class MusicForm extends Component {
     const valueState = { ...this.state.value };
     switch (name) {
       case 'File':
-        valueState.File = event.target.files[0];
+        valueState.File = event.target.files;
         break;
       default:
         valueState[name] = value;
@@ -36,8 +36,8 @@ class MusicForm extends Component {
   }
 
   handleSubmit() {
+    this.props.onAddSongs(this.state.value);
     this.setState({ value: initialFormValue });
-    this.props.onAddSong(this.state.value);
   }
 
   render() {
@@ -45,7 +45,7 @@ class MusicForm extends Component {
       <ModalHeader key="m_h" iconUrl="/images/icons/music.png" label="Add Favorite Song" />,
       <div key="m_b" className="modal-body">
         <form className="text-right">
-          <FormGroupRow type="file" name="File" onChange={this.handleChange} label="Mp3 File" />
+          <FormGroupRow type="file" name="File" onChange={this.handleChange} label="Mp3 File" multiple/>
           <FormGroupRating rating={this.state.value.Rating} label="Rating" onRating={this.handleRating} />
           <FormGroupRow
             type="text"

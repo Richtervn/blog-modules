@@ -1,10 +1,10 @@
 import { serviceCaller } from 'helpers';
 
-const { commonPostMultiplePart, commonGet, commonPut } = serviceCaller;
+const { commonPostMultipleFile, commonGet, commonPut } = serviceCaller;
 
 export default {
-  addSong(formBody) {
-    const data = commonPostMultiplePart('music/add_song', formBody);
+  addSongs(formBody) {
+    const data = commonPostMultipleFile('music/add_songs', formBody);
     return data;
   },
   getSongs() {

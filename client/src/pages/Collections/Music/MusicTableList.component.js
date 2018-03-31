@@ -70,7 +70,7 @@ class MusicTableList extends Component {
   }
 
   handleGenreSelect(song, i) {
-    this.setState({ editing: true, rowIndex: i, value: { Genre: song.Genre } });
+    this.setState({ editing: true, rowIndex: i, value: { Genre: song.Genre || '' } });
   }
 
   handleChange(event) {
@@ -95,9 +95,9 @@ class MusicTableList extends Component {
     this.setState({ selectedSongs: selectedSongs.filter(song => song._id !== songId) });
   }
 
-  handleClickPlaySelected(){
+  handleClickPlaySelected() {
     this.props.onPlaySongs(this.state.selectedSongs);
-    this.setState({selectedSongs: []})
+    this.setState({ selectedSongs: [] });
   }
 
   renderSortIcon(header) {
@@ -159,7 +159,8 @@ class MusicTableList extends Component {
               className={`music-table-row ${_.contains(selectedSongsId, song._id) ? 'selected' : ''}`}
               key={i}
               onClick={() =>
-                _.contains(selectedSongsId, song._id) ? this.handleUnselect(song._id) : this.handleSelect(song, i)}>
+                _.contains(selectedSongsId, song._id) ? this.handleUnselect(song._id) : this.handleSelect(song, i)
+              }>
               <div className="artist-col">{song.Artist}</div>
               <div className="name-col">{song.Name}</div>
               <div className="rating-col">

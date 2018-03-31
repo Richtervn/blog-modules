@@ -5,7 +5,7 @@ import { toastError, toastSuccess } from 'common/Toast';
 
 import services from './Music.services';
 
-const ADD_SONG = 'music/ADD_SONG';
+const ADD_SONGS = 'music/ADD_SONGS';
 const EDIT_SONG = 'music/EDIT_SONG';
 const GET_SONGS = 'music/GET_SONGS';
 const SEARCH_SONG = 'music/SEARCH_SONG';
@@ -29,7 +29,7 @@ const PREVIOUS_SONG = 'music/PREVIOUS_SONG';
 const SET_PLAYED_TIME = 'music/SET_PLAYED_TIME';
 const SET_DURATION = 'music/SET_DURATION';
 
-export const addSong = formBody => actionCreator(ADD_SONG, services.addSong, formBody)();
+export const addSongs = formBody => actionCreator(ADD_SONGS, services.addSongs, formBody)();
 export const editSong = formBody => actionCreator(EDIT_SONG, services.editSong, formBody)();
 export const getSongs = actionCreator(GET_SONGS, services.getSongs);
 export const searchSong = query => actionCreator(SEARCH_SONG, services.searchSong, query)();
@@ -68,16 +68,10 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case `${ADD_SONG}_SUCCESS`:
-      if (state.songs) {
-        state.songs.push(action.data);
-      }
-      toastSuccess(() => (
-        <div>
-          Added <strong>{`${action.data.Artist} - ${action.data.Name}.mp3`}</strong>
-        </div>
-      ));
-      return { ...state, songs: state.songs ? state.songs.slice(0) : null };
+    case `${ADD_SONGS}_SUCCESS`:
+      toastSuccess('Added Songs Successfull');
+      return { ...state, songs: _.union(state.songs, action.data) };
+
     case `${GET_SONGS}_START`:
       return { ...state, isLoading: true };
     case `${GET_SONGS}_SUCCESS`:
@@ -203,7 +197,6 @@ export default (state = initialState, action) => {
           } else {
             stateWillChange.currentSongIndex = state.currentSongIndex + 1;
           }
-
         }
       }
       return { ...state, ...stateWillChange };
@@ -284,7 +277,7 @@ export default (state = initialState, action) => {
 
     case `${DELETE_SONGS}_FAIL`:
     case `${GET_SONGS}_FAIL`:
-    case `${ADD_SONG}_FAIL`:
+    case `${ADD_SONGS}_FAIL`:
     case `${EDIT_SONG}_FAIL`:
     case `${SEARCH_SONG}_FAIL`:
       toastError(action.error);

@@ -63,6 +63,7 @@
   text-align: center;
   text-overflow: ellipsis;
   cursor: pointer;
+  min-height: 20px;
 }
 
 .music-table-header-sort-icon {
