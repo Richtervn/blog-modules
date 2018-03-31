@@ -2,7 +2,7 @@ import _ from 'underscore';
 import { connect } from 'react-redux';
 import ModDetail from './ModDetail.component';
 
-import { setFocusDeck } from './YugiohPoc.module';
+import { setFocusDeck, editMod, editDeck } from './YugiohPoc.module';
 
 export default connect(
   ({ yugiohPoc }) => ({
@@ -12,6 +12,12 @@ export default connect(
   dispatch => ({
     onSetFocusDeck(id) {
       dispatch(setFocusDeck(id));
+    },
+    onEditMod(formBody) {
+      dispatch(editMod(formBody));
+    },
+    onEditDeck(formBody) {
+      dispatch(editDeck(formBody));
     }
   })
 )(ModDetail);

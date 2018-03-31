@@ -1,6 +1,7 @@
 import { actionCreator } from 'helpers';
 import services from '../Darksteam97d99i.services';
 import { toastStrong, toastError, toastSuccess } from 'common/Toast';
+import socket from 'app/socketInstance';
 
 export const userPages = [
   { name: 'Dash Board', route: 'dashboard', icon: 'dashboard' },
@@ -42,6 +43,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case `${LOGIN}_SUCCESS`:
       toastStrong(action.data.memb___id, 'Welcome');
+      socket.emit('darksteam97d99i/USER_LOGGED_IN', action.data.memb___id);
       return { ...state, user: action.data };
     case `${REGISTER}_SUCCESS`:
       toastStrong('Register successful');
@@ -53,6 +55,7 @@ export default (state = initialState, action) => {
       if (!action.data.memb___id) {
         return { state, isCheckedCurrentUser: true };
       }
+      socket.emit('darksteam97d99i/USER_LOGGED_IN', action.data.memb___id);
       return { ...state, user: action.data, isCheckedCurrentUser: true };
     case `${GET_CHARACTERS}_SUCCESS`:
       return { ...state, characters: action.data, focusCharacter: action.data.length > 0 ? action.data[0].Name : null };

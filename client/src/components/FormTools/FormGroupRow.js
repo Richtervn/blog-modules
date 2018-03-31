@@ -1,20 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default ({ name, label, type, placeholder, onChange, value }) => {
-  return (
-    <div className="form-group row">
-      <label htmlFor={`${name}Input`} className="col-sm-3 col-form-label col-form-label-sm"><strong>{label}:</strong></label>
-      <div className="col-sm-9">
-        <input
-          type={type}
-          className="form-control form-control-sm"
-          id={`${name}Input`}
-          placeholder={placeholder}
-          onChange={onChange}
-          name={name}
-          value={value}
-        />
+class FormGroupRow extends Component {
+  render() {
+    const { name, label, type, placeholder, onChange, value } = this.props;
+    const additionProps = {};
+    if (type === 'file') {
+      additionProps.onClick = e => (e.target.value = null);
+    }
+    return (
+      <div className="form-group row">
+        <label htmlFor={`${name}Input`} className="col-sm-3 col-form-label col-form-label-sm">
+          <strong>{label}:</strong>
+        </label>
+        <div className="col-sm-9">
+          <input
+            ref={node => (this.inputNode = node)}
+            type={type}
+            className="form-control form-control-sm"
+            id={`${name}Input`}
+            placeholder={placeholder}
+            onChange={onChange}
+            name={name}
+            value={value}
+            {...additionProps}
+          />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
+
+export default FormGroupRow;

@@ -32,7 +32,7 @@ class YugiohPocModForm extends Component {
       Name: mod.Name,
       Icon: null,
       Image: null,
-      Credits: mod.Credits,
+      Credits: mod.Credits.slice(0),
       Introduction: mod.Introduction,
       Description: mod.Description,
       Rating: mod.Rating
@@ -45,6 +45,8 @@ class YugiohPocModForm extends Component {
       onEditMod({ ...this.state.value, _id: mod._id });
     } else {
       onAddMod(this.state.value);
+      this.iconInput.inputNode.value = null;
+      this.imageInput.inputNode.value = null;
       this.setState({ value: this.initStateValue({ ...initialValue }) });
     }
     hideModal();
@@ -84,8 +86,20 @@ class YugiohPocModForm extends Component {
       />,
       <div key="ym_b" className="modal-body">
         <form className="text-right">
-          <FormGroupRow type="file" name="Icon" label="Icon File" onChange={this.handleChange} />
-          <FormGroupRow type="file" name="Image" label="Image File" onChange={this.handleChange} />
+          <FormGroupRow
+            type="file"
+            name="Icon"
+            label="Icon File"
+            onChange={this.handleChange}
+            ref={node => (this.iconInput = node)}
+          />
+          <FormGroupRow
+            type="file"
+            name="Image"
+            label="Image File"
+            onChange={this.handleChange}
+            ref={node => (this.imageInput = node)}
+          />
           <FormGroupRow
             type="text"
             name="Name"

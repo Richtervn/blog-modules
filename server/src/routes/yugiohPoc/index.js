@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import express from 'express';
 
 export default (YugiohPocMods, YugiohPocDecks, factories) => {
@@ -78,7 +79,7 @@ export default (YugiohPocMods, YugiohPocDecks, factories) => {
     '/decks/:modId',
     wrap(async ({ params: { modId } }, res, next) => {
       const decks = await commonService.getByParam(YugiohPocDecks, 'ModId', modId);
-      res.send(decks);
+      res.send(_.sortBy(decks, 'Name'));
     })
   );
 

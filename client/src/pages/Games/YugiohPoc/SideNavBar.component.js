@@ -7,7 +7,7 @@ import { SmallIconCard } from 'components/Cards';
 import { openModal } from 'common/Modal';
 import { sortList } from 'helpers';
 
-export default ({ focusMod, mods, onGetDecks, onSetFocusMod, onSort, sortKey, sortOption, onSearch }) => {
+export default ({ focusMod, mods, onGetDecks, onSetFocusMod, onSort, sortKey, sortOption, onSearch, onEditMod }) => {
   const sortedMods = sortList(mods, sortKey, sortOption);
   return (
     <div className="col-3">
@@ -32,6 +32,7 @@ export default ({ focusMod, mods, onGetDecks, onSetFocusMod, onSort, sortKey, so
                   onSetFocusMod(mod._id);
                 }
               }}
+              onRating={value => onEditMod({ _id: mod._id, Rating: value })}
             />
           ))}
         </BasicSideBar>

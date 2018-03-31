@@ -53,7 +53,8 @@ class WebQuestWorker {
 
 	async initial(memb___id) {
 		const { MembInfo, Character, Banking, MembCredits, UserWebQuest } = this.models;
-
+		const { getData } = this.helpers;
+		
 		const [membInfo, characters, banking, membCredits, userWebQuest, questList] = [
 			await MembInfo.findOne({ where: { memb___id: memb___id } }),
 			await Character.findAll({ where: { AccountId: memb___id } }),

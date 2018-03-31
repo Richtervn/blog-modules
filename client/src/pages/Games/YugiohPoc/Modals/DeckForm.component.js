@@ -7,6 +7,7 @@ import { commonFormChange, commonAddArray, commonRemoveArray } from 'helpers';
 import { hideModal } from 'common/Modal';
 
 const initialValue = {
+  Image: null,
   Name: '',
   Description: '',
   Winrate: 0,
@@ -34,8 +35,8 @@ class YugiohPocDeckForm extends Component {
       Name: deck.Name,
       Description: deck.Description,
       Winrate: deck.Winrate,
-      Pros: deck.Pros,
-      Cons: deck.Cons,
+      Pros: deck.Pros.slice(0),
+      Cons: deck.Cons.slice(0),
       Rating: deck.Rating
     };
   }
@@ -46,6 +47,7 @@ class YugiohPocDeckForm extends Component {
       onEditDeck({ ...this.state.value, _id: deck._id, ModId: modId });
     } else {
       onAddDeck({ ...this.state.value, ModId: modId });
+      this.fileInput.inputNode.value = null;
       this.setState({ value: this.initStateValue({ ...initialValue }) });
     }
     hideModal();
@@ -85,7 +87,13 @@ class YugiohPocDeckForm extends Component {
       />,
       <div key="yd_b" className="modal-body">
         <form className="text-right">
-          <FormGroupRow type="file" name="Image" label="Image File" onChange={this.handleChange} />
+          <FormGroupRow
+            type="file"
+            name="Image"
+            label="Image File"
+            onChange={this.handleChange}
+            ref={node => (this.fileInput = node)}
+          />
           <FormGroupRow
             type="text"
             name="Name"

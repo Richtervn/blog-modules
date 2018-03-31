@@ -4,7 +4,7 @@ import StarRating from 'react-star-rating-component';
 
 import { openModal } from 'common/Modal';
 
-export default ({ mod, decks, onSetFocusDeck }) => (
+export default ({ mod, decks, onSetFocusDeck, onEditMod, onEditDeck }) => (
   <div className="col-9">
     <div className="row">
       <div id="ygo-mod-detail">
@@ -19,7 +19,11 @@ export default ({ mod, decks, onSetFocusDeck }) => (
         <div className="label">Yugioh! Power of Chaos</div>
         <div className="name">{mod.Name}</div>
         <div className="rating">
-          <StarRating value={mod.Rating} name="ygo-mod-detail" />
+          <StarRating
+            value={mod.Rating}
+            name="ygo-mod-detail"
+            onStarClick={value => onEditMod({ _id: mod._id, Rating: value })}
+          />
         </div>
         <div className="image-wrapper">
           <img src={mod.Image} alt={mod.Name} />
@@ -70,7 +74,11 @@ export default ({ mod, decks, onSetFocusDeck }) => (
               </div>
             </div>
             <div className="rating">
-              <StarRating value={deck.Rating} name={`deck_${deck._id}`} />
+              <StarRating
+                value={deck.Rating}
+                name={`deck_${deck._id}`}
+                onStarClick={value => onEditDeck({ _id: deck._id, Rating: value })}
+              />
             </div>
             <div className="image-wrapper">
               <img src={deck.Image} alt={deck.Name} />

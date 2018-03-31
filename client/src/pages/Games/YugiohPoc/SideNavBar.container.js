@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SideNavBar from './SideNavBar.component';
 
-import { getDecks, setFocusMod, sortMod, searchMod } from './YugiohPoc.module';
+import { getDecks, setFocusMod, sortMod, searchMod, editMod } from './YugiohPoc.module';
 
 export default connect(
   ({ yugiohPoc }) => ({
@@ -22,6 +22,9 @@ export default connect(
     },
     onSearch(query) {
       dispatch(searchMod(query));
+    },
+    onEditMod(formBody) {
+      dispatch(editMod(formBody));
     }
   })
 )(SideNavBar);
