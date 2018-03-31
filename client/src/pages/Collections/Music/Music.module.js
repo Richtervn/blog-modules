@@ -1,5 +1,4 @@
 import _ from 'underscore';
-import React from 'react';
 import { actionCreator, shuffleList as shuffle } from 'helpers';
 import { toastError, toastSuccess } from 'common/Toast';
 
@@ -63,14 +62,17 @@ const initialState = {
   playedTime: null,
   canNextSong: false,
   canPreviousSong: false,
+  isAddModalLoading: false,
   sort: {}
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case `${ADD_SONGS}_START`:
+      return { ...this.state, isAddModalLoading: true };
     case `${ADD_SONGS}_SUCCESS`:
       toastSuccess('Added Songs Successfull');
-      return { ...state, songs: _.union(state.songs, action.data) };
+      return { ...state, songs: _.union(state.songs, action.data), isAddModalLoading: false };
 
     case `${GET_SONGS}_START`:
       return { ...state, isLoading: true };
@@ -275,9 +277,11 @@ export default (state = initialState, action) => {
       };
     }
 
+    case `${ADD_SONGS}_FAIL`:
+      return { ...state, isAddModalLoading: false };
+
     case `${DELETE_SONGS}_FAIL`:
     case `${GET_SONGS}_FAIL`:
-    case `${ADD_SONGS}_FAIL`:
     case `${EDIT_SONG}_FAIL`:
     case `${SEARCH_SONG}_FAIL`:
       toastError(action.error);

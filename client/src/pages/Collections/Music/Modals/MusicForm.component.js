@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ModalHeader, ModalFooter } from 'components/Modal';
 import { FormGroupRow, FormGroupRating } from 'components/FormTools';
+import { ModalLoader } from 'common/Loaders';
 
 const initialFormValue = {
   File: null,
@@ -41,11 +42,13 @@ class MusicForm extends Component {
   }
 
   render() {
+    const { isLoading } = this.props;
+
     return [
-      <ModalHeader key="m_h" iconUrl="/images/icons/music.png" label="Add Favorite Song" />,
+      <ModalHeader key="m_h" iconUrl="/images/icons/music.png" label="Add Favorite Songs" />,
       <div key="m_b" className="modal-body">
         <form className="text-right">
-          <FormGroupRow type="file" name="File" onChange={this.handleChange} label="Mp3 File" multiple/>
+          <FormGroupRow type="file" name="File" onChange={this.handleChange} label="Mp3 Files" multiple />
           <FormGroupRating rating={this.state.value.Rating} label="Rating" onRating={this.handleRating} />
           <FormGroupRow
             type="text"
@@ -55,6 +58,7 @@ class MusicForm extends Component {
             label="Genre"
           />
         </form>
+        {isLoading && <ModalLoader />}
       </div>,
       <ModalFooter key="m_f" onClickSubmit={() => this.handleSubmit()} />
     ];
