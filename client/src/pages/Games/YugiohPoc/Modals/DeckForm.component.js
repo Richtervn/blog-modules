@@ -32,12 +32,12 @@ class YugiohPocDeckForm extends Component {
   initStateValue(deck) {
     return {
       Image: null,
-      Name: deck.Name,
-      Description: deck.Description,
-      Winrate: deck.Winrate,
-      Pros: deck.Pros.slice(0),
-      Cons: deck.Cons.slice(0),
-      Rating: deck.Rating
+      Name: deck.Name || '',
+      Description: deck.Description || '',
+      Winrate: deck.Winrate || 0,
+      Pros: deck.Pros ? deck.Pros.slice(0) : [''],
+      Cons: deck.Cons ? deck.Cons.slice(0) : [''],
+      Rating: deck.Rating || 0
     };
   }
 

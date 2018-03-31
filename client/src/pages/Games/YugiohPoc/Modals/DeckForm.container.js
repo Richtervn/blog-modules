@@ -7,7 +7,7 @@ import { addDeck, editDeck } from '../YugiohPoc.module';
 export default connect(
   ({ yugiohPoc }) => ({
     modId: yugiohPoc.focusMod,
-    deck: _.findWhere(yugiohPoc.decks, { _id: yugiohPoc.focusDeck })
+    deck: _.findWhere(yugiohPoc.decks, { _id: yugiohPoc.focusDeck }) || {}
   }),
   dispatch => ({
     onAddDeck(formBody) {
