@@ -54,7 +54,7 @@ class WebQuestWorker {
 	async initial(memb___id) {
 		const { MembInfo, Character, Banking, MembCredits, UserWebQuest } = this.models;
 		const { getData } = this.helpers;
-		
+
 		const [membInfo, characters, banking, membCredits, userWebQuest, questList] = [
 			await MembInfo.findOne({ where: { memb___id: memb___id } }),
 			await Character.findAll({ where: { AccountId: memb___id } }),
@@ -135,8 +135,12 @@ class WebQuestWorker {
 	}
 
 	async checkPointQuest(questId, ...params) {
-		const result = await this.questWorkers[questId].checkPoint(...params);
-		return result;
+		try {
+			const result = await this.questWorkers[questId].checkPoint(...params);
+			return result;
+		} catch (e) {
+			console.log(e);
+		}
 	}
 
 	async getQuestReward(questId) {

@@ -19,8 +19,8 @@ export default async (MembInfo, body, factories) => {
     if (JobCode) editForm.job__code = JobCode;
     if (MailAddr) editForm.mail_addr = MailAddr;
 
-    const editedAccount = await account.update(editForm);
-    return editedAccount;
+    await account.update(editForm);
+    return editForm;
   } catch (e) {
     return e;
   }

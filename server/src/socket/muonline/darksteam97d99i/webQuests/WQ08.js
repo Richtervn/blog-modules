@@ -1,4 +1,4 @@
-export default class WQ8 {
+export default class WQ08 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.characters = characters;
 		this.baseRecord = baseRecord;
@@ -30,7 +30,7 @@ export default class WQ8 {
 		});
 
 		return {
-			_id: 'WQ8',
+			_id: 'WQ08',
 			credits: this.membCredits.credits,
 			status: 'done'
 		};

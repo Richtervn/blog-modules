@@ -1,0 +1,15 @@
+.cv-close-col {
+  background: #151515;
+}
+
+.cv-close-col > .header {
+  background-color: #2e2f2f;
+  padding: 5px;
+}
+
+.cv-close-col > .header > .btn {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  transition: all 0.5s;
+}

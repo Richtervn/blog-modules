@@ -3,3 +3,14 @@
   height: calc(100vh - 45px);
   overflow-y: auto;
 }
+
+#cv-code-parser > .viewer {
+  margin: 10px;
+}
+
+#cv-code-parser > .documentation {
+  background: #333;
+  color: white;
+  margin: 10px;
+  padding: 10px;
+}

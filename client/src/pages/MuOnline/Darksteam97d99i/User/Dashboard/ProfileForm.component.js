@@ -6,27 +6,33 @@ import { InputGroupIcon } from 'components/FormTools';
 class ProfileForm extends Component {
   constructor(props) {
     super(props);
-    const { user } = this.props;
 
     this.state = {
-      value: {
-        MembGuid: user.memb_guid,
-        Name: user.memb_name,
-        User: user.memb___id,
-        MailAddr: user.mail_addr || '',
-        PostCode: user.post_code || '',
-        AddrInfo: user.addr_info || '',
-        AddrDeta: user.addr_deta || '',
-        TelNumb: user.tel__numb || '',
-        PhonNumb: user.phon_numb || '',
-        FpasQues: user.fpas_ques || '',
-        FpasAnsw: user.fpas_answ || '',
-        JobCode: user.job__code || ''
-      },
+      value: this.getDefaultValueState(),
       editing: false
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+  }
+
+  getDefaultValueState() {
+    const user = { ...this.props.user };
+    return {
+      MembGuid: user.memb_guid,
+      Name: user.memb_name,
+      User: user.memb___id,
+      MailAddr: user.mail_addr || '',
+      PostCode: user.post_code || '',
+      AddrInfo: user.addr_info || '',
+      AddrDeta: user.addr_deta || '',
+      TelNumb: user.tel__numb || '',
+      PhonNumb: user.phon_numb || '',
+      FpasQues: user.fpas_ques || '',
+      FpasAnsw: user.fpas_answ || '',
+      JobCode: user.job__code || ''
+    };
   }
 
   handleChange(event) {
@@ -49,6 +55,15 @@ class ProfileForm extends Component {
     }
 
     this.setState(nextState);
+  }
+
+  handleSubmit() {
+    this.props.onEditProfile(this.state.value);
+    this.setState({ editing: false });
+  }
+
+  handleCancel() {
+    this.setState({ editing: false, value: this.getDefaultValueState() });
   }
 
   render() {
@@ -153,10 +168,10 @@ class ProfileForm extends Component {
             </button>
           )}
           {this.state.editing && [
-            <button className="btn btn-primary" key="bs">
+            <button className="btn btn-primary" key="bs" onClick={() => this.handleSubmit()}>
               Submit
             </button>,
-            <button className="btn btn-danger" key="cc">
+            <button className="btn btn-danger" key="cc" onClick={() => this.handleCancel()}>
               Cancel
             </button>
           ]}
@@ -167,29 +182,3 @@ class ProfileForm extends Component {
 }
 
 export default ProfileForm;
-
-// class ProfileCard extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.enableEditing = this.enableEditing.bind(this);
-//     this.save = this.save.bind(this);
-//     this.handleChange = this.handleChange.bind(this);
-//   }
-
-//   enableEditing() {
-//     this.setState({ editing: true });
-//   }
-
-//   save() {
-//     this.props.onEditProfile(this.state.value);
-//     this.setState({ editing: false });
-//   }
-
-//   render() {
-//     const { editing } = this.state;
-//     return (
-
-//     );
-//   }
-// }

@@ -3,6 +3,45 @@ import services from '../Darksteam97d99i.services';
 import { toastStrong, toastError, toastSuccess } from 'common/Toast';
 import socket from 'app/socketInstance';
 
+// const SET_QUEST_LIST = 'darksteam97d99i/webQuest/SET_QUEST_LIST';
+// const REQUEST_QUEST_REWARD = 'darksteam97d99i/webQuest/REQUEST_QUEST_REWARD';
+// export const REFRESH_QUEST_LIST = 'darksteam97d99i/webQuest/REFRESH_QUEST_LIST';
+
+// export const setQuestList = questList => ({ type: SET_QUEST_LIST, questList });
+// export const requestReward = questId => ({ type: REQUEST_QUEST_REWARD, questId });
+// export const refreshQuestList = data => ({ type: REFRESH_QUEST_LIST, data });
+
+// export default (
+//   state = {
+//     questList: null
+//   },
+//   action
+// ) => {
+//   if (action.type == REQUEST_QUEST_REWARD) {
+//     socket.emit('darksteam97d99i/REQUEST_QUEST_REWARD', action.questId);
+//   }
+
+//   switch (action.type) {
+//     case SET_QUEST_LIST:
+//       return { ...state, questList: action.questList };
+//     case REFRESH_QUEST_LIST:
+//       const { data } = action;
+//       state.questList = state.questList.map(quest => {
+//         if (quest._id == data._id) {
+//           return { ...quest, ...data };
+//         }
+//         return quest;
+//       });
+//       return {
+//         ...state,
+//         questList: state.questList.slice(0)
+//       };
+//     default:
+//       return state;
+//   }
+// };
+
+
 export const userPages = [
   { name: 'Dash Board', route: 'dashboard', icon: 'dashboard' },
   { name: 'Character Manager', route: 'character_manager', icon: 'users' },
@@ -20,6 +59,7 @@ export const REGISTER = 'ds9799_user/REGISTER';
 const RECOVER_PASSWORD = 'ds9799_user/RECOVER_PASSWORD';
 const GET_CURRENT_USER = 'ds9799_user/GET_CURRENT_USER';
 const GET_CHARACTERS = 'ds9799_user/GET_CHARACTERS';
+const EDIT_PROFILE = 'ds9799_user/EDIT_PROFILE';
 
 const SET_FOCUS_CHARACTER = 'ds9799_user/SET_FOCUS_CHARACTER';
 
@@ -28,6 +68,7 @@ export const register = formBody => actionCreator(REGISTER, services.register, f
 export const recoverPassword = id => actionCreator(RECOVER_PASSWORD, services.recoverPassword, id)();
 export const getCurrentUser = actionCreator(GET_CURRENT_USER, services.getCurrentUser);
 export const getCharacters = id => actionCreator(GET_CHARACTERS, services.getCharacters, id)();
+export const editProfile = formBody => actionCreator(EDIT_PROFILE, services.editProfile, formBody)();
 
 export const setFocusCharacter = name => ({ type: SET_FOCUS_CHARACTER, name });
 
@@ -42,8 +83,20 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case `${LOGIN}_SUCCESS`:
-      toastStrong(action.data.memb___id, 'Welcome');
+    case `${GET_CURRENT_USER}_SUCCESS`:
       socket.emit('darksteam97d99i/USER_LOGGED_IN', action.data.memb___id);
+      break;
+    case `${EDIT_PROFILE}_SUCCESS`:
+      socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ01');
+      break;
+    default:
+      break;
+  }
+
+  switch (action.type) {
+    case `${LOGIN}_SUCCESS`:
+      toastStrong(action.data.memb___id, 'Welcome');
+
       return { ...state, user: action.data };
     case `${REGISTER}_SUCCESS`:
       toastStrong('Register successful');
@@ -59,6 +112,9 @@ export default (state = initialState, action) => {
       return { ...state, user: action.data, isCheckedCurrentUser: true };
     case `${GET_CHARACTERS}_SUCCESS`:
       return { ...state, characters: action.data, focusCharacter: action.data.length > 0 ? action.data[0].Name : null };
+    case `${EDIT_PROFILE}_SUCCESS`:
+      toastSuccess('Profile Updated');
+      return { ...state, user: { ...state.user, ...action.data } };
 
     case SET_FOCUS_CHARACTER:
       return { ...state, focusCharacter: action.name };
@@ -67,6 +123,7 @@ export default (state = initialState, action) => {
     case `${REGISTER}_FAIL`:
     case `${RECOVER_PASSWORD}_FAIL`:
     case `${GET_CHARACTERS}_FAIL`:
+    case `${EDIT_PROFILE}_FAIL`:
       toastError(action.error);
       return state;
     default:
@@ -105,44 +162,9 @@ export default (state = initialState, action) => {
 //   CRAFT_ITEM_SUCCESS
 // } from './luxuryShop';
 
-// const REGISTER_START = 'darksteam97d99i/user/REGISTER_START';
-// export const REGISTER_SUCCESS = 'darksteam97d99i/user/REGISTER_SUCCESS';
-// const REGISTER_FAIL = 'darksteam97d99i/user/REGISTER_FAIL';
-
-// const LOGIN_START = 'darksteam97d99i/user/LOGIN_START';
-// export const LOGIN_SUCCESS = 'darksteam97d99i/user/LOGIN_SUCCESS';
-// const LOGIN_FAIL = 'darksteam97d99i/user/LOGIN_FAIL';
-
-// const EDIT_PROFILE_START = 'darksteam97d99i/user/EDIT_PROFILE_START';
-// const EDIT_PROFILE_FAIL = 'darksteam97d99i/user/EDIT_PROFILE_FAIL';
-// const EDIT_PROFILE_SUCCESS = 'darksteam97d99i/user/EDIT_PROFILE_SUCCESS';
-
 // const BUY_VIP_START = 'darksteam97d99i/user/BUY_VIP_START';
 // export const BUY_VIP_SUCCESS = 'darksteam97d99i/user/BUY_VIP_SUCCESS';
 // const BUY_VIP_FAIL = 'darksteam97d99i/user/BUY_VIP_FAIL';
-
-// export const editProfile = formBody =>
-//   actionCreator(
-//     EDIT_PROFILE_START,
-//     EDIT_PROFILE_SUCCESS,
-//     EDIT_PROFILE_FAIL,
-//     darksteam97d99i.editProfile,
-//     formBody
-//   )();
-
-// export const LOGOUT = 'darksteam97d99i/LOGOUT';
-
-// export const logout = () => ({ type: LOGOUT });
-// export const register = formBody =>
-//   actionCreator(
-//     REGISTER_START,
-//     REGISTER_SUCCESS,
-//     REGISTER_FAIL,
-//     darksteam97d99i.register,
-//     formBody
-//   )();
-// export const login = formBody =>
-//   actionCreator(LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, darksteam97d99i.login, formBody)();
 
 // let packageType;
 // export const buyVip = (vipPackage, user, focusCharacter) => {
@@ -165,9 +187,7 @@ export default (state = initialState, action) => {
 //     case LOGIN_SUCCESS:
 //       socket.emit('darksteam97d99i/USER_LOGGED_IN', action.data.memb___id);
 //       break;
-//     case EDIT_PROFILE_SUCCESS:
-//       socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ1');
-//       break;
+
 //     case BUY_VIP_SUCCESS:
 //       if (packageType == 'Character') socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ10');
 //       if (packageType == 'Account') socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ11');
@@ -285,8 +305,6 @@ export default (state = initialState, action) => {
 //         }
 //       };
 
-//     case EDIT_PROFILE_SUCCESS:
-//       return { ...state, user: { ...state.user, ...action.data } };
 //     case LOGOUT:
 //       return { ...initialState };
 //     case REFRESH_QUEST_LIST: {

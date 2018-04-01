@@ -1,7 +1,7 @@
 import _ from 'underscore';
 import Promise from 'bluebird';
 
-export default class WQ3 {
+export default class WQ03 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecords = baseRecord;
 		this.characters = characters;
@@ -38,7 +38,7 @@ export default class WQ3 {
 		);
 
 		return {
-			_id: 'WQ3',
+			_id: 'WQ03',
 			progress: _.max(this.baseRecords, 'progress')
 		};
 	}
@@ -70,7 +70,7 @@ export default class WQ3 {
 		const { isDone } = this.check();
 
 		return {
-			_id: 'WQ3',
+			_id: 'WQ03',
 			credits: this.membCredits.credits,
 			isDone
 		};

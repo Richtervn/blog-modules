@@ -49,6 +49,7 @@
   },
   "Tools": {
     "items": [
+      "Components Viewer",
       "Content Mirror",
       "Icon Chooser"
     ],
@@ -74,8 +75,7 @@
   },
   "Documentations": {
     "items": [
-      "Guideline",
-      "Components Viewer"
+      "Guideline"
     ],
     "author": "After Forever - Empty Memories",
     "quote": "Times changed forever that night. Leaving only empty memories",

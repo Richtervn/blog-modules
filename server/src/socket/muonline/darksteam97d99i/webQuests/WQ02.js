@@ -1,4 +1,4 @@
-export default class WQ2 {
+export default class WQ02 {
   constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
     this.webQuest = webQuest;
     this.baseRecord = baseRecord;
@@ -25,7 +25,7 @@ export default class WQ2 {
       progress: this.baseRecord.progress
     });
 
-    return { _id: 'WQ2', progress: this.baseRecord.progress };
+    return { _id: 'WQ02', progress: this.baseRecord.progress };
   }
 
   async giveReward() {
@@ -49,7 +49,7 @@ export default class WQ2 {
     });
 
     return {
-      _id: 'WQ2',
+      _id: 'WQ02',
       progress: 0,
       credits: this.membCredits.credits,
       finish_times: this.finish_times,

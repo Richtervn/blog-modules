@@ -28,9 +28,12 @@ const injectableComponents = {
   ...TopBars
 };
 
-export default ({ jsxCode, cssCode }) => (
+export default ({ jsxCode, cssCode, documentation, suitedTheme }) => (
   <div id="cv-code-parser">
-    <JsxParser components={injectableComponents} jsx={jsxCode} showWarnings={false} />
+    <div className="viewer" style={{ background: suitedTheme.background, color: suitedTheme.color }}>
+      <JsxParser components={injectableComponents} jsx={jsxCode} showWarnings={false} />
+    </div>
+    {documentation && <div className="documentation">{documentation}</div>}
     {cssCode && <style>{cssCode}</style>}
   </div>
 );

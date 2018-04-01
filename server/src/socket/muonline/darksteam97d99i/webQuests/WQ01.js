@@ -44,13 +44,14 @@ const validateMembInfo = membInfo => {
   return message;
 };
 
-export default class WQ1 {
+export default class WQ01 {
   constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
     this.baseRecord = baseRecord;
     this.webQuest = webQuest;
     this.membInfo = membInfo;
     this.membCredits = membCredits;
     this.MembCredits = models.MembCredits;
+    this.MembInfo = models.MembInfo;
   }
 
   check() {
@@ -58,6 +59,12 @@ export default class WQ1 {
     const isDone = message == '';
 
     return { message, isDone };
+  }
+
+  async checkPoint() {
+    this.membInfo = await this.MembInfo.findOne({ where: { memb___id: this.membInfo.memb___id } });
+    const { isDone } = this.check();
+    return { _id: 'WQ01', isDone };
   }
 
   async giveReward() {
@@ -74,7 +81,7 @@ export default class WQ1 {
     });
 
     return {
-      _id: 'WQ1',
+      _id: 'WQ01',
       credits: this.membCredits.credits,
       status: 'done'
     };

@@ -23,7 +23,7 @@ export default class WQ07 {
 			checkpoint: this.baseRecord.checkpoint
 		});
 		return {
-			_id: 'WQ7',
+			_id: 'WQ07',
 			progress: this.baseRecord.progress
 		};
 	}
@@ -48,7 +48,7 @@ export default class WQ07 {
 		const { isDone } = this.check();
 
 		return {
-			_id: 'WQ7',
+			_id: 'WQ07',
 			credits: this.membCredits.credits,
 			progress: 0,
 			finish_times: this.baseRecord.finish_times,

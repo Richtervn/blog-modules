@@ -37,19 +37,23 @@ export default (models, methods, factories, helpers) => {
     '/login',
     wrap(async (req, res, next) => {
       const account = await loginUser(models, req.body);
-      userCache  =account;
+      userCache = account;
       res.send(account);
     })
   );
 
-  router.get('/current', wrap(async(req, res, next) => {
-    res.send(userCache);
-  }))
+  router.get(
+    '/current',
+    wrap(async (req, res, next) => {
+      res.send(userCache);
+    })
+  );
 
   router.put(
     '/profile',
     wrap(async ({ body }, res, next) => {
       const account = await editProfile(MembInfo, body, factories);
+      userCache = { ...userCache, ...account };
       res.send(account);
     })
   );

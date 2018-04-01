@@ -1,4 +1,4 @@
-export default class WQ6 {
+export default class WQ06 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;
 		this.webQuest = webQuest;
@@ -23,7 +23,7 @@ export default class WQ6 {
 			checkpoint: this.baseRecord.checkpoint
 		});
 		return {
-			_id: 'WQ6',
+			_id: 'WQ06',
 			progress: this.baseRecord.progress
 		};
 	}
@@ -48,7 +48,7 @@ export default class WQ6 {
 		const { isDone } = this.check();
 
 		return {
-			_id: 'WQ6',
+			_id: 'WQ06',
 			credits: this.membCredits.credits,
 			progress: 0,
 			finish_times: this.baseRecord.finish_times,

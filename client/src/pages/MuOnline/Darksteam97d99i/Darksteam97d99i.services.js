@@ -52,6 +52,20 @@ export default {
     const data = commonPost('darksteam97d99i/users/register', formBody);
     return data;
   },
+  editProfile(formBody) {
+    const data = commonPut('darksteam97d99i/users/profile', formBody);
+    return data;
+  },
+  recoverPassword(id) {
+    const data = commonGet('darksteam97d99i/users/recover_password', [id]);
+    return data;
+  },
+  getCurrentUser() {
+    const data = commonGet('darksteam97d99i/users/current');
+    return data;
+  },
+
+  /* Ranking Services */
   getTopPoints(query) {
     const data = commonGet('darksteam97d99i/ranking/top_points', null, query);
     return data;
@@ -68,17 +82,9 @@ export default {
     const data = commonGet('darksteam97d99i/ranking/top_credits');
     return data;
   },
-  recoverPassword(id) {
-    const data = commonGet('darksteam97d99i/users/recover_password', [id]);
-    return data;
-  },
-  getCurrentUser() {
-    const data = commonGet('darksteam97d99i/users/current');
-    return data;
-  },
+
 
   /* Character Services */
-
   adminGetCharacters(query){
     const data = commonGet('darksteam97d99i/characters', null, query);
     return data;
@@ -105,10 +111,6 @@ export default {
   }
 
 
-  // editProfile(formBody) {
-  //   const data = commonPut('mu/darksteam97d99i/users/profile', formBody);
-  //   return data;
-  // },
 
   // addPoint(query) {
   //   const data = commonGet('mu/darksteam97d99i/characters/add_point', null, query);
