@@ -60,7 +60,7 @@ class MusicForm extends Component {
         </form>
         {isLoading && <ModalLoader />}
       </div>,
-      <ModalFooter key="m_f" onClickSubmit={() => this.handleSubmit()} />
+      <ModalFooter key="m_f" onClickSubmit={() => this.handleSubmit()} submitDisable={!this.state.value.File} />
     ];
   }
 }

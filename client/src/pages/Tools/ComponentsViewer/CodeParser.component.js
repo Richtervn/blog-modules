@@ -1,4 +1,5 @@
 import './CodeParser.css';
+import _ from 'underscore';
 import React from 'react';
 import JsxParser from 'react-jsx-parser';
 
@@ -33,7 +34,21 @@ export default ({ jsxCode, cssCode, documentation, suitedTheme }) => (
     <div className="viewer" style={{ background: suitedTheme.background, color: suitedTheme.color }}>
       <JsxParser components={injectableComponents} jsx={jsxCode} showWarnings={false} />
     </div>
-    {documentation && <div className="documentation">{documentation}</div>}
+    {!documentation && <div className="documentation">No documentation</div>}
+    {documentation && (
+      <div className="documentation">
+        {documentation.props && (
+          <ul className="cpn-props">
+            {_.sortBy(Object.keys(documentation.props)).map((key, i) => (
+              <li key={i}>
+                <span className="prop-name">{key}</span>
+                <span className="prop-desc"> : {documentation.props[key]}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    )}
     {cssCode && <style>{cssCode}</style>}
   </div>
 );

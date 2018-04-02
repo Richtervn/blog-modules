@@ -10,7 +10,17 @@
 
 #cv-code-parser > .documentation {
   background: #333;
+  max-height: 300px;
+  overflow-y: auto;
   color: white;
   margin: 10px;
   padding: 10px;
+}
+
+#cv-code-parser > .documentation > .cpn-props {
+  font-size: 14px;
+}
+
+#cv-code-parser > .documentation > .cpn-props .prop-name {
+  color: #4dce61;
 }

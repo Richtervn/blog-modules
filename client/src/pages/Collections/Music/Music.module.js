@@ -69,7 +69,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case `${ADD_SONGS}_START`:
-      return { ...this.state, isAddModalLoading: true };
+      return { ...state, isAddModalLoading: true };
     case `${ADD_SONGS}_SUCCESS`:
       toastSuccess('Added Songs Successfull');
       return { ...state, songs: _.union(state.songs, action.data), isAddModalLoading: false };

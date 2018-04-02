@@ -14,7 +14,7 @@ export default ({ components, onClickItem, activeItem }) => (
             <div
               key={cpn}
               className={classNames('item', { active: cpn === activeItem })}
-              onClick={() => onClickItem(cpn)}>
+              onClick={() => onClickItem({ key: cpn, cpn: components[category][cpn] })}>
               {toTitle(cpn)}
             </div>
           ))}

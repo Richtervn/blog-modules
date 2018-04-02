@@ -1,6 +1,7 @@
 import './ComponentsViewer.css';
 import React, { Component } from 'react';
 import PageContainer from 'common/PageContainer';
+import jsxToString from 'jsx-to-string';
 
 import * as AboutBuilder from 'components/AboutBuilder';
 import * as Buttons from 'components/Buttons';
@@ -14,7 +15,7 @@ import * as SideBars from 'components/SideBars';
 import * as ToolsBars from 'components/ToolsBars';
 import * as TopBars from 'components/TopBars';
 
-import getDocumentations from './getDocumentations';
+import getDocumentations from './Documentations';
 import ComponentsSelector from './ComponentsSelector.component';
 import CodeEditor from './CodeEditor.component';
 import CodeParser from './CodeParser.component';
@@ -47,22 +48,11 @@ class ComponentsViewer extends Component {
     this.handleItemClick = this.handleItemClick.bind(this);
   }
 
-  handleItemClick(cpn) {
-    const doc = getDocumentations(cpn);
-    let documentation, defaultProps;
-    let suitedTheme = {};
-    if (doc) {
-      documentation = doc.documentation;
-      defaultProps = doc.defaultProps;
-      suitedTheme = doc.suitedTheme;
-    }
-    let source = `<${cpn}`;
-    if (defaultProps) {
-      for (let key in defaultProps) {
-        source += ` ${key}={${JSON.stringify(defaultProps[key])}}`;
-      }
-    }
-    source += `/>`;
+  handleItemClick({ key, cpn }) {
+    const { documentation, suitedTheme, defaultProps } = getDocumentations(key);
+    console.log(getDocumentations(key));
+    const displayComponent = <cpn {...defaultProps} />;
+    const source = jsxToString(displayComponent, { displayName: key, shortBooleanSyntax: true });
 
     this.setState({
       selectedCpn: cpn,
