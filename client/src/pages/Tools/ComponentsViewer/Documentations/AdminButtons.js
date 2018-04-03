@@ -7,7 +7,7 @@ export default {
       onClickDelete: 'func'
     },
     innerClass: {
-      'root > .btn' : 'Access to css of buttons'
+      'root > .btn': 'Access to css of buttons'
     }
   }
 };

@@ -1,12 +1,36 @@
+import { toTitle } from 'helpers';
+
 import AddCardButton from './AddCardButton';
 import AdminButtons from './AdminButtons';
 import ArticleView from './ArticleView';
+import BackgroundTextCard from './BackgroundTextCard';
 import ButtonsNavBar from './ButtonsNavBar';
 import ContentCard from './ContentCard';
+import InfoHeaderCard from './InfoHeaderCard';
 import IntroductionCard from './IntroductionCard';
+import LeftImageCard from './LeftImageCard';
+import LeftImageCardTrans from './LeftImageCardTrans';
+import LeftPngCardTrans from './LeftPngCardTrans';
 import ProgressBadgesCard from './ProgressBadgesCard';
+import SmallIconCard from './SmallIconCard';
+import TextPriorityCard from './TextPriorityCard';
 
-const documentations = { AddCardButton, AdminButtons, ArticleView, ButtonsNavBar, ContentCard, ProgressBadgesCard, IntroductionCard };
+const documentations = {
+  AddCardButton,
+  AdminButtons,
+  ArticleView,
+  BackgroundTextCard,
+  ButtonsNavBar,
+  ContentCard,
+  InfoHeaderCard,
+  IntroductionCard,
+  LeftImageCard,
+  LeftImageCardTrans,
+  LeftPngCardTrans,
+  ProgressBadgesCard,
+  SmallIconCard,
+  TextPriorityCard
+};
 
 const themes = {
   dark: {
@@ -42,6 +66,9 @@ const makeDocumentaion = doc => {
     if (doc.documentation.props[key] === 'label') {
       transformDoc.documentation.props[key] = 'Example string to show';
     }
+    if (doc.documentation.props[key] === 'link') {
+      transformDoc.documentation.props[key] = 'String of url';
+    }
     if (doc.documentation.props[key] === 'badges') {
       transformDoc.documentation.props[key] = 'List badges in array';
     }
@@ -52,7 +79,10 @@ const makeDocumentaion = doc => {
       transformDoc.documentation.props[key] = 'Component can contain children';
     }
     if (doc.documentation.props[key] === 'func') {
-      transformDoc.documentation.props[key] = 'Function to be called';
+      transformDoc.documentation.props[key] = 'Function to be called ' + toTitle(key);
+    }
+    if (doc.documentation.props[key] === 'rating') {
+      transformDoc.documentation.props[key] = 'Number of stars rating';
     }
     if (doc.documentation.props[key] === 'route') {
       transformDoc.documentation.props[key] = 'Click will redirect to this route';
