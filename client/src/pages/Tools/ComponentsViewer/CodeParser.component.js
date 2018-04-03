@@ -37,15 +37,36 @@ export default ({ jsxCode, cssCode, documentation, suitedTheme }) => (
     {!documentation && <div className="documentation">No documentation</div>}
     {documentation && (
       <div className="documentation">
+        {documentation.description && [
+          <div className="label">Description : </div>,
+          <p className="description">{documentation.description}</p>
+        ]}
         {documentation.props && (
-          <ul className="cpn-props">
-            {_.sortBy(Object.keys(documentation.props)).map((key, i) => (
-              <li key={i}>
-                <span className="prop-name">{key}</span>
-                <span className="prop-desc"> : {documentation.props[key]}</span>
-              </li>
-            ))}
-          </ul>
+          [
+            <div className="label" key="cp-p-l">Props :</div>,
+            <ul className="cpn-props" key="cp-p-m">
+              {_.sortBy(Object.keys(documentation.props)).map((key, i) => (
+                <li key={i}>
+                  <span className="prop-name">{key}</span>
+                  <span className="prop-desc"> : {documentation.props[key]}</span>
+                </li>
+              ))}
+            </ul>
+
+          ]
+        )}
+        {documentation.innerClass && (
+          [
+            <div className="label" key="cp-ic-l">Inner Css Classes :</div>,
+            <ul className="cpn-props" key='cp-ic-m'>
+              {Object.keys(documentation.innerClass).map((key, i) => (
+                <li key={i}>
+                  <span className="prop-name">{key}</span>
+                  <span className="prop-desc"> : {documentation.innerClass[key]}</span>
+                </li>
+              ))}
+            </ul>,
+          ]
         )}
       </div>
     )}

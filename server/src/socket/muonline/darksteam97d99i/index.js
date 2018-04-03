@@ -1,4 +1,4 @@
-import WebQuestWorkers from './WebQuests';
+import WebQuestWorkers from './webQuests';
 
 export default (models, client, methods, helpers) => {
   let webQuestWorker;

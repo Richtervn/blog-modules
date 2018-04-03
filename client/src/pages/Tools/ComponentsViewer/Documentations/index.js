@@ -1,4 +1,12 @@
+import AddCardButton from './AddCardButton';
+import AdminButtons from './AdminButtons';
+import ArticleView from './ArticleView';
+import ButtonsNavBar from './ButtonsNavBar';
+import ContentCard from './ContentCard';
+import IntroductionCard from './IntroductionCard';
 import ProgressBadgesCard from './ProgressBadgesCard';
+
+const documentations = { AddCardButton, AdminButtons, ArticleView, ButtonsNavBar, ContentCard, ProgressBadgesCard, IntroductionCard };
 
 const themes = {
   dark: {
@@ -10,8 +18,6 @@ const themes = {
     color: 'black'
   }
 };
-
-const documentations = { ProgressBadgesCard };
 
 const makeDocumentaion = doc => {
   const transformDoc = { ...doc };
@@ -50,6 +56,9 @@ const makeDocumentaion = doc => {
     }
     if (doc.documentation.props[key] === 'route') {
       transformDoc.documentation.props[key] = 'Click will redirect to this route';
+    }
+    if (doc.documentation.props[key] === 'customClass') {
+      transformDoc.documentation.props[key] = 'Add a css class to wrapper element. Default value is default';
     }
   }
   return transformDoc;

@@ -6,6 +6,7 @@
 
 #cv-code-parser > .viewer {
   margin: 10px;
+  padding: 10px;
 }
 
 #cv-code-parser > .documentation {
@@ -23,4 +24,13 @@
 
 #cv-code-parser > .documentation > .cpn-props .prop-name {
   color: #4dce61;
+}
+
+#cv-code-parser > .documentation > .description {
+  font-size: 14px;
+}
+
+#cv-code-parser > .documentation > .label {
+  font-weight: 600;
+  font-size: 14px;
 }

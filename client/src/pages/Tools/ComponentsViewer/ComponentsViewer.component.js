@@ -50,7 +50,6 @@ class ComponentsViewer extends Component {
 
   handleItemClick({ key, cpn }) {
     const { documentation, suitedTheme, defaultProps } = getDocumentations(key);
-    console.log(getDocumentations(key));
     const displayComponent = <cpn {...defaultProps} />;
     const source = jsxToString(displayComponent, { displayName: key, shortBooleanSyntax: true });
 
