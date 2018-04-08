@@ -1,3 +1,3 @@
-import BagItemsEditor from './BagItemsEditor.component';
+import BagItemsEditor from './BagItemsEditor.container';
 
 export { BagItemsEditor };

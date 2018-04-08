@@ -63,7 +63,7 @@ class ArticleView extends Component {
     const sectionsValue = this.state.Sections;
     sectionsValue.push(this.state.addSection);
     this.props.onSave(sectionsValue);
-    this.setState({ adding: false, addSection: { ...newSection } });
+    this.setState({ adding: false, addSection: { ...newSection, SubSections: [] } });
   }
 
   handleAddingSubSection() {

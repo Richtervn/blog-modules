@@ -1,0 +1,41 @@
+#ds9799-bag-items-editor {
+  display: flex;
+  margin: 10px;
+}
+
+#ds9799-bag-items-editor > .options-box {
+  flex: 0.4;
+}
+
+#ds9799-bag-items-editor > .options-box > .item-selector {
+  margin-top: 10px;
+}
+
+#ds9799-bag-items-editor > .options-box > .btn {
+  margin-top: 10px;
+}
+
+#ds9799-bag-items-editor > .generated-box {
+  flex: 1;
+  margin-left: 10px;
+  border: solid 1px #f44336;
+  background: #fff;
+  color: #343434;
+  padding: 10px;
+  border-radius: 4px;
+  height: calc(100vh - 115px);
+  overflow-y: auto;
+}
+
+#ds9799-bag-items-editor > .generated-box > .header-comment {
+  margin-bottom: 10px;
+}
+
+#ds9799-bag-items-editor > .generated-box .btn {
+  padding: 0;
+  width: 25px;
+}
+
+#ds9799-bag-items-editor > .generated-box .generated-line {
+  margin-bottom: 2px;
+}

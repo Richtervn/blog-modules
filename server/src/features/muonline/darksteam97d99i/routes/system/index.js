@@ -36,7 +36,7 @@ export default (models, methods, factories, helpers) => {
     '/data/:fileName',
     wrap(async ({ params: { fileName } }, res, next) => {
       const data = await getGameData(fileName);
-      res.sned(data);
+      res.send(data);
     })
   );
 

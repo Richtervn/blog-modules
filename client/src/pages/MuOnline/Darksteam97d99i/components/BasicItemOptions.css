@@ -1,0 +1,20 @@
+.ds9799-basic-item-opts > .skill-luck {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.ds9799-basic-item-opts > .skill-luck > .form-check-input {
+  margin-left: 0;
+}
+
+
+.ds9799-basic-item-opts > .level-opt {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.ds9799-basic-item-opts > .level-opt .form-control {
+  margin-left: 5px;
+}

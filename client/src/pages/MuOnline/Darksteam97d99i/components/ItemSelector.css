@@ -1,0 +1,11 @@
+.ds9799-item-selector > .item-preview {
+  text-align: center;
+}
+
+.ds9799-item-selector > .item-preview > img {
+  margin: 10px 0;
+}
+
+.ds9799-item-selector > .item-preview > .form-control {
+  margin-top: 10px;
+}

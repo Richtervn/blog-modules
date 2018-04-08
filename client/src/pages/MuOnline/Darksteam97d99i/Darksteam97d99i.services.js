@@ -108,6 +108,12 @@ export default {
   getCharacters(id){
     const data = commonGet('darksteam97d99i/characters/account', [id]);
     return data;
+  },
+
+  /* Server Service */
+  getServerData(fileName){
+    const data = commonGet('darksteam97d99i/system/data', [fileName]);
+    return data;
   }
 
 
