@@ -25,17 +25,26 @@
   border-radius: 4px;
   height: calc(100vh - 115px);
   overflow-y: auto;
+  white-space: pre-wrap;
 }
 
 #ds9799-bag-items-editor > .generated-box > .header-comment {
   margin-bottom: 10px;
 }
 
-#ds9799-bag-items-editor > .generated-box .btn {
+#ds9799-bag-items-editor > .generated-box > .generated-data {
+  height: calc(100vh - 270px);
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+#ds9799-bag-items-editor > .generated-box > .generated-data > .generated-line {
+  margin-bottom: 2px;
+}
+
+#ds9799-bag-items-editor > .generated-box > .generated-data > .generated-line .btn {
   padding: 0;
   width: 25px;
 }
 
-#ds9799-bag-items-editor > .generated-box .generated-line {
-  margin-bottom: 2px;
-}
+

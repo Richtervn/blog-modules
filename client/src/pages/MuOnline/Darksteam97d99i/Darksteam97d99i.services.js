@@ -114,9 +114,11 @@ export default {
   getServerData(fileName){
     const data = commonGet('darksteam97d99i/system/data', [fileName]);
     return data;
+  },
+  generateTextFile(formBody){
+    const data = commonPost('darksteam97d99i/system/generate_text_file', formBody);
+    return data;
   }
-
-
 
   // addPoint(query) {
   //   const data = commonGet('mu/darksteam97d99i/characters/add_point', null, query);

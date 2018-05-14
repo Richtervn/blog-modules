@@ -64,5 +64,14 @@ export default (models, methods, factories, helpers) => {
     })
   );
 
+  router.post(
+    '/generate_text_file',
+    wrap(async ({ body }, res, next) => {
+      const { fileName, content } = body;
+      await writeFile(`./public/Mu Online/Darksteam97d99i/Generated Files/${fileName}.txt`, content);
+      res.send({ file: `./public/Mu Online/Darksteam97d99i/Generated Files/${fileName}.txt` });
+    })
+  );
+
   return router;
 };

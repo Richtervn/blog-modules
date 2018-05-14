@@ -7,11 +7,12 @@ class ItemSelector extends Component {
     const { data, onGetData } = this.props;
     if (!data.Categories) {
       onGetData('Categories');
+      onGetData('Swords');
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.category && !this.props.data[nextProps.category]) {
+    if (this.props.category !== nextProps.category && !nextProps.data[nextProps.category]) {
       this.props.onGetData(nextProps.category);
     }
   }
