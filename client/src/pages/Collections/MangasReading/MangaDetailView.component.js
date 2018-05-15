@@ -54,9 +54,9 @@ export default ({
             onClick={e => {
               e.stopPropagation();
               if (activeTool !== 'Search') onChangeActiveTool('Search');
-              if (search.option !== 'Author') onChangeSearchOption('Author');
+              if (search.option !== 'Authors') onChangeSearchOption('Authors');
               onChangeSearchValue(author);
-              onSearchManga({ Author: author });
+              onSearchManga({ Authors: author });
             }}>
             {author}
           </span>

@@ -130,7 +130,7 @@ export default (state = initialState, action) => {
       };
 
     case `${SEARCH_MANGA}_SUCCESS`: {
-      const nextState = { ...state, mangas: action.data.slice(0) };
+      const nextState = { ...state, mangas: action.data.filter(manga => manga.Chapter.indexOf(' - END') === -1) };
       if (action.data.length < 1) {
         nextState.noSearchResult = true;
       } else {

@@ -16,9 +16,11 @@ class MangasList extends Component {
     }
     if (willScroll) {
       const focusManga = document.getElementsByClassName('left-image-card active')[0];
-      focusManga.scrollIntoView({
-        behavior: 'smooth'
-      });
+      if (focusManga) {
+        focusManga.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
     }
   }
 
@@ -60,8 +62,7 @@ class MangasList extends Component {
                 col={4}
                 imgUrl={manga.CoverUri}
                 onClick={() => onSetFocusManga(manga._id)}
-                isActive={manga._id === focusManga}
-                >
+                isActive={manga._id === focusManga}>
                 <div className="text-center">
                   <strong>{manga.Name}</strong>
                   <br />
