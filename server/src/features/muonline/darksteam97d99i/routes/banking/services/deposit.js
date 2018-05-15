@@ -31,6 +31,7 @@ export default async (models, query, GameSetting, bankProfitLog) => {
 
   let realDeposit = amount - charged;
   let updateBankForm = {};
+  
   let indeptPaid = null;
   let bankingLogForm = {
     memb___id: character.AccountID,

@@ -50,8 +50,6 @@ export default async (models, query, GameSetting, bankProfitLog) => {
     await character.update({ Money: Money })
   ];
 
-  const client = findSocket(io, 'ds9799_id', character.AccountID);
-
   return {
     Money,
     zen_balance: updateBankForm.zen_balance,
