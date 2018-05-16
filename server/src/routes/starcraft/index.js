@@ -19,9 +19,9 @@ export default (StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories) => 
       const uri = commonService.uploadArchive(files, './public/Starcraft/Maps', 'File');
       if (uri) {
         body.Uri = uri;
-        body.Name = files.File.split('.')[0].trim();
+        body.Name = files.File.name.split('.')[0].trim();
       }
-      const map = await commonService.create(StarcraftMaps, ['Tipntrick']);
+      const map = await commonService.create(StarcraftMaps, body, ['Tipntrick']);
       res.send(map);
     })
   );
