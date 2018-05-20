@@ -1,6 +1,6 @@
 import React from 'react';
 import { actionCreator } from 'helpers';
-import { toastError, toastSuccess } from 'common/Toast';
+import { toastSuccess } from 'common/Toast';
 
 import services from './GamingHistory.services';
 
@@ -28,23 +28,28 @@ const SET_GAME_INFO = 'gamingHistory/SET_GAME_INFO';
 const SET_FOCUS_GUIDE = 'gamingHistory/SET_FOCUS_GUIDE';
 const SET_FOCUS_OVERVIEW = 'gamingHistory/SET_FOCUS_OVERVIEW';
 
-export const getList = actionCreator(GET_LIST, services.getList);
-export const getGuides = gameId => actionCreator(GET_GUIDES, services.getGuides, gameId)();
-export const getOverviews = gameId => actionCreator(GET_OVERVIEWS, services.getOverviews, gameId)();
-export const getAboutContent = gameId => actionCreator(GET_ABOUT, services.getAbout, gameId)();
-export const getGuide = id => actionCreator(GET_GUIDE, services.getGuide, id)();
-export const getOverview = id => actionCreator(GET_OVERVIEW, services.getOverview, id)();
-export const addGame = formBody => actionCreator(ADD_GAME, services.addGame, formBody)();
-export const addGuide = formBody => actionCreator(ADD_GUIDE, services.addGuide, formBody)();
-export const addOverview = formBody => actionCreator(ADD_OVERVIEW, services.addOverview, formBody)();
-export const editGame = formBody => actionCreator(EDIT_GAME, services.editGame, formBody)();
-export const editGuide = formBody => actionCreator(EDIT_GUIDE, services.editGuide, formBody)();
-export const editOverview = formBody => actionCreator(EDIT_OVERVIEW, services.editOverview, formBody)();
-export const editOverviewDetail = formBody => actionCreator(EDIT_OVERVIEW_DETAIL, services.editOverview, formBody)();
-export const deleteGame = id => actionCreator(DELETE_GAME, services.deleteGame, id)();
-export const deleteGuide = id => actionCreator(DELETE_GUIDE, services.deleteGuide, id)();
-export const deleteOverview = id => actionCreator(DELETE_OVERVIEW, services.deleteOverview, id)();
-export const editAboutContent = formBody => actionCreator(EDIT_ABOUT, services.editAbout, formBody)();
+export const getList = () => actionCreator(GET_LIST, services.getList)();
+export const getGuides = gameId => actionCreator(GET_GUIDES, services.getGuides, { payload: { gameId } })();
+export const getOverviews = gameId => actionCreator(GET_OVERVIEWS, services.getOverviews, { payload: { gameId } })();
+export const getAboutContent = gameId => actionCreator(GET_ABOUT, services.getAbout, { payload: { gameId } })();
+export const getGuide = id => actionCreator(GET_GUIDE, services.getGuide, { payload: { id } })();
+export const getOverview = id => actionCreator(GET_OVERVIEW, services.getOverview, { payload: { id } })();
+
+export const addGame = formBody => actionCreator(ADD_GAME, services.addGame, { payload: { formBody } })();
+export const addGuide = formBody => actionCreator(ADD_GUIDE, services.addGuide, { payload: { formBody } })();
+export const addOverview = formBody => actionCreator(ADD_OVERVIEW, services.addOverview, { payload: { formBody } })();
+
+export const editGame = formBody => actionCreator(EDIT_GAME, services.editGame, { payload: { formBody } })();
+export const editGuide = formBody => actionCreator(EDIT_GUIDE, services.editGuide, { payload: { formBody } })();
+export const editOverview = formBody =>
+  actionCreator(EDIT_OVERVIEW, services.editOverview, { payload: { formBody } })();
+export const editOverviewDetail = formBody =>
+  actionCreator(EDIT_OVERVIEW_DETAIL, services.editOverview, { payload: { formBody } })();
+export const deleteGame = id => actionCreator(DELETE_GAME, services.deleteGame, { payload: { id } })();
+
+export const deleteGuide = id => actionCreator(DELETE_GUIDE, services.deleteGuide, { payload: { id } })();
+export const deleteOverview = id => actionCreator(DELETE_OVERVIEW, services.deleteOverview, { payload: { id } })();
+export const editAboutContent = formBody => actionCreator(EDIT_ABOUT, services.editAbout, { payload: { formBody } })();
 
 export const setFocusGame = game => ({ type: SET_FOCUS_GAME, game });
 export const setActiveTab = tabName => ({ type: SET_ACTIVE_TAB, tabName });
@@ -69,100 +74,100 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case `${GET_LIST}_SUCCESS`:
-      return { ...state, list: action.data };
+      return { ...state, list: action.payload };
     case `${GET_GUIDES}_SUCCESS`:
-      return { ...state, guides: action.data };
+      return { ...state, guides: action.payload };
     case `${GET_OVERVIEWS}_SUCCESS`:
-      return { ...state, overviews: action.data };
+      return { ...state, overviews: action.payload };
 
     case `${ADD_GAME}_SUCCESS`:
-      state.list.push(action.data);
+      state.list.push(action.payload);
       toastSuccess(() => (
         <p>
-          Added <strong>{action.data.Name}</strong>
+          Added <strong>{action.payload.Name}</strong>
         </p>
       ));
       return { ...state, list: state.list.slice(0) };
     case `${EDIT_GAME}_SUCCESS`:
       state.list = state.list.map(game => {
-        if (game._id === action.data._id) {
-          return action.data;
+        if (game._id === action.payload._id) {
+          return action.payload;
         }
         return game;
       });
       toastSuccess(() => (
         <p>
-          Updated <strong>{action.data.Name}</strong>
+          Updated <strong>{action.payload.Name}</strong>
         </p>
       ));
-      return { ...state, list: state.list.slice(0), focusGame: { ...action.data } };
+      return { ...state, list: state.list.slice(0), focusGame: { ...action.payload } };
 
     case `${ADD_OVERVIEW}_SUCCESS`:
-      state.overviews.push(action.data);
+      state.overviews.push(action.payload);
       toastSuccess(() => (
         <p>
-          Added <strong>{action.data.title}</strong>
+          Added <strong>{action.payload.title}</strong>
         </p>
       ));
       return { ...state, overviews: state.overviews.slice(0) };
     case `${EDIT_OVERVIEW}_SUCCESS`:
       state.overviews = state.overviews.map(overview => {
-        if (overview._id === action.data._id) {
-          return action.data;
+        if (overview._id === action.payload._id) {
+          return action.payload;
         }
         return overview;
       });
       toastSuccess(() => (
         <p>
-          Updated <strong>{action.data.Title}</strong>
+          Updated <strong>{action.payload.Title}</strong>
         </p>
       ));
       return { ...state, overviews: state.overviews.slice(0) };
 
     case `${ADD_GUIDE}_SUCCESS`:
-      state.guides.push(action.data);
+      state.guides.push(action.payload);
       toastSuccess(() => (
         <p>
-          Added <strong>{action.data.Title}</strong>
+          Added <strong>{action.payload.Title}</strong>
         </p>
       ));
       return { ...state, guides: state.guides.slice(0) };
     case `${EDIT_GUIDE}_SUCCESS`:
       state.guides = state.guides.map(guide => {
-        if (guide._id === action.data._id) {
-          return action.data;
+        if (guide._id === action.payload._id) {
+          return action.payload;
         }
         return guide;
       });
       toastSuccess(() => (
         <p>
-          Updated <strong>{action.data.Title}</strong>
+          Updated <strong>{action.payload.Title}</strong>
         </p>
       ));
       return { ...state, guides: state.guides.slice(0) };
 
     case `${GET_ABOUT}_SUCCESS`:
-      return { ...state, aboutContent: action.data };
+      return { ...state, aboutContent: action.payload };
     case `${EDIT_ABOUT}_SUCCESS`:
       toastSuccess('Edited page content');
-      return { ...state, aboutContent: { ...state.aboutContent, ...action.data } };
+      return { ...state, aboutContent: { ...state.aboutContent, ...action.payload } };
     case `${EDIT_OVERVIEW_DETAIL}_SUCCESS`:
-      return { ...state, overviewDetail: { ...state.overviewDetail, Sections: action.data.Sections.slice(0) } };
+      return { ...state, overviewDetail: { ...state.overviewDetail, Sections: action.payload.Sections.slice(0) } };
 
     case `${GET_GUIDE}_SUCCESS`:
-      return { ...state, guideDetail: action.data };
+      return { ...state, guideDetail: action.payload };
     case `${GET_OVERVIEW}_SUCCESS`:
-      return { ...state, overviewDetail: action.data };
+      return { ...state, overviewDetail: action.payload };
 
     case `${DELETE_GAME}_SUCCESS`:
-      return { ...state, list: state.list.filter(game => game._id !== parseInt(action.data._id, 10).slice(0)) };
+      return { ...state, list: state.list.filter(game => game._id !== parseInt(action.payload._id, 10).slice(0)) };
     case `${DELETE_OVERVIEW}_SUCCESS`:
       return {
         ...state,
-        overviews: state.overviews.filter(overview => overview._id !== parseInt(action.data._id, 10).slice(0))
+        overviews: state.overviews.filter(overview => overview._id !== parseInt(action.payload._id, 10).slice(0))
       };
     case `${DELETE_GUIDE}_SUCCESS`:
-      return { ...state, guides: state.guides.filter(guide => guide._id !== parseInt(action.data._id, 10).slice(0)) };
+      return { ...state, guides: state.guides.filter(guide => guide._id !== parseInt(action.payload._id, 10).slice(0)) };
 
     case SET_FOCUS_GAME:
       return { ...state, focusGame: action.game };
@@ -175,25 +180,6 @@ export default (state = initialState, action) => {
     case SET_FOCUS_OVERVIEW:
       return { ...state, focusOverview: action.overview };
 
-    case `${GET_LIST}_FAIL`:
-    case `${ADD_GAME}_FAIL`:
-    case `${ADD_OVERVIEW}_FAIL`:
-    case `${ADD_GUIDE}_FAIL`:
-    case `${EDIT_GAME}_FAIL`:
-    case `${EDIT_OVERVIEW}_FAIL`:
-    case `${EDIT_OVERVIEW_DETAIL}_FAIL`:
-    case `${EDIT_GUIDE}_FAIL`:
-    case `${EDIT_ABOUT}_FAIL`:
-    case `${DELETE_GAME}_FAIL`:
-    case `${DELETE_GUIDE}_FAIL`:
-    case `${DELETE_OVERVIEW}_FAIL`:
-    case `${GET_ABOUT}_FAIL`:
-    case `${GET_OVERVIEW}_FAIL`:
-    case `${GET_OVERVIEWS}_FAIL`:
-    case `${GET_GUIDE}_FAIL`:
-    case `${GET_GUIDES}_FAIL`:
-      toastError(action.error);
-      return state;
     default:
       return state;
   }

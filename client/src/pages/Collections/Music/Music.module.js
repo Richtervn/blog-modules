@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import { actionCreator, shuffleList as shuffle } from 'helpers';
-import { toastError, toastSuccess } from 'common/Toast';
+import { toastSuccess } from 'common/Toast';
 
 import services from './Music.services';
 
@@ -28,11 +28,11 @@ const PREVIOUS_SONG = 'music/PREVIOUS_SONG';
 const SET_PLAYED_TIME = 'music/SET_PLAYED_TIME';
 const SET_DURATION = 'music/SET_DURATION';
 
-export const addSongs = formBody => actionCreator(ADD_SONGS, services.addSongs, formBody)();
-export const editSong = formBody => actionCreator(EDIT_SONG, services.editSong, formBody)();
-export const getSongs = actionCreator(GET_SONGS, services.getSongs);
-export const searchSong = query => actionCreator(SEARCH_SONG, services.searchSong, query)();
-export const deleteSongs = ids => actionCreator(DELETE_SONGS, services.deleteSongs, ids)();
+export const addSongs = formBody => actionCreator(ADD_SONGS, services.addSongs, { payload: { formBody } })();
+export const editSong = formBody => actionCreator(EDIT_SONG, services.editSong, { payload: { formBody } })();
+export const getSongs = () => actionCreator(GET_SONGS, services.getSongs)();
+export const searchSong = query => actionCreator(SEARCH_SONG, services.searchSong, { payload: { query } })();
+export const deleteSongs = ids => actionCreator(DELETE_SONGS, services.deleteSongs, { payload: { ids } })();
 
 export const addToList = songs => ({ type: ADD_TO_LIST, songs });
 export const nextSong = () => ({ type: NEXT_SONG });
@@ -72,34 +72,34 @@ export default (state = initialState, action) => {
       return { ...state, isAddModalLoading: true };
     case `${ADD_SONGS}_SUCCESS`:
       toastSuccess('Added Songs Successfull');
-      return { ...state, songs: _.union(state.songs, action.data), isAddModalLoading: false };
+      return { ...state, songs: _.union(state.songs, action.payload), isAddModalLoading: false };
 
     case `${GET_SONGS}_START`:
       return { ...state, isLoading: true };
     case `${GET_SONGS}_SUCCESS`:
       return {
         ...state,
-        songs: [...action.data],
-        playList: [...action.data],
+        songs: [...action.payload],
+        playList: [...action.payload],
         isLoading: false,
-        canNextSong: action.data.length > 1
+        canNextSong: action.payload.length > 1
       };
     case `${EDIT_SONG}_SUCCESS`:
       state.songs = state.songs.map(song => {
-        if (song._id === action.data._id) {
-          return action.data;
+        if (song._id === action.payload._id) {
+          return action.payload;
         }
         return song;
       });
       state.playList = state.playList.map(song => {
-        if (song._id === action.data._id) {
-          return action.data;
+        if (song._id === action.payload._id) {
+          return action.payload;
         }
         return song;
       });
       return { ...state, playList: state.playList.slice(0), songs: state.songs.slice(0) };
     case `${SEARCH_SONG}_SUCCESS`:
-      return { ...state, songs: action.data.slice(0) };
+      return { ...state, songs: action.payload.slice(0) };
 
     case NEXT_SONG: {
       const stateWillChange = {};
@@ -238,8 +238,8 @@ export default (state = initialState, action) => {
 
     case `${DELETE_SONGS}_SUCCESS`: {
       const stateWillChange = {};
-      stateWillChange.playList = state.playList.filter(song => !_.contains(action.data.ids, song._id));
-      stateWillChange.songs = state.songs.filter(song => !_.contains(action.data.ids, song._id));
+      stateWillChange.playList = state.playList.filter(song => !_.contains(action.payload.ids, song._id));
+      stateWillChange.songs = state.songs.filter(song => !_.contains(action.payload.ids, song._id));
       if (!state.isLoopList) {
         stateWillChange.canNextSong = state.currentSongIndex + 1 <= stateWillChange.playList.length;
         stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
@@ -279,13 +279,6 @@ export default (state = initialState, action) => {
 
     case `${ADD_SONGS}_FAIL`:
       return { ...state, isAddModalLoading: false };
-
-    case `${DELETE_SONGS}_FAIL`:
-    case `${GET_SONGS}_FAIL`:
-    case `${EDIT_SONG}_FAIL`:
-    case `${SEARCH_SONG}_FAIL`:
-      toastError(action.error);
-      return state;
 
     case SORT_SONGS:
       let sort = {};

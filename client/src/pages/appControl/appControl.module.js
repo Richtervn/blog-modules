@@ -1,6 +1,5 @@
 import _ from 'underscore';
 import { actionCreator } from 'helpers';
-import { toastError } from 'common/Toast';
 import { ADD_GAME } from 'pages/FlashGames';
 
 import services from './appControl.services';
@@ -16,8 +15,9 @@ const SHOW_HEADER_MENU = 'appControl/SHOW_HEADER_MENU';
 const HIDE_HEADER_MENU = 'appControl/HIDE_HEADER_MENU';
 const TOGGLE_MENU_GROUP = 'appControl/TOGGLE_MENU_GROUP';
 
-export const getMenuTree = actionCreator(GET_MENU_TREE, services.getMenuTree);
-export const saveMenuTree = formBody => actionCreator(SAVE_MENU_TREE, services.saveMenuTree, formBody)();
+export const getMenuTree = () => actionCreator(GET_MENU_TREE, services.getMenuTree)();
+export const saveMenuTree = formBody =>
+  actionCreator(SAVE_MENU_TREE, services.saveMenuTree, { payload: { formBody } })();
 
 export const setActiveGroup = group => ({ type: SET_ACTIVE_GROUP, group });
 export const setActiveItem = item => ({ type: SET_ACTIVE_ITEM, item });
@@ -43,9 +43,9 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case `${GET_MENU_TREE}_SUCCESS`:
-      return { ...state, menuTree: action.data };
+      return { ...state, menuTree: action.payload };
     case `${SAVE_MENU_TREE}_SUCCESS`:
-      return { ...state, menuTree: action.data };
+      return { ...state, menuTree: action.payload };
     case SET_ACTIVE_GROUP:
       return { ...state, activeGroup: action.group };
     case SET_ACTIVE_ITEM:
@@ -70,12 +70,8 @@ export default (state = initialState, action) => {
       return { ...state, openedGroups };
     }
     case `${ADD_GAME}_SUCCESS`:
-      return { ...state, menuTree: { ...action.data.menu } };
+      return { ...state, menuTree: { ...action.payload.menu } };
 
-    case `${GET_MENU_TREE}_FAIL`:
-    case `${SAVE_MENU_TREE}_FAIL`:
-      toastError(action.error);
-      return state;
     default:
       return state;
   }

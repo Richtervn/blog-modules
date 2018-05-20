@@ -1,6 +1,6 @@
 import { actionCreator } from 'helpers';
 import services from '../Darksteam97d99i.services';
-import { toastStrong, toastError, toastSuccess } from 'common/Toast';
+import { toastStrong, toastSuccess } from 'common/Toast';
 import socket from 'app/socketInstance';
 
 // const SET_QUEST_LIST = 'darksteam97d99i/webQuest/SET_QUEST_LIST';
@@ -41,7 +41,6 @@ import socket from 'app/socketInstance';
 //   }
 // };
 
-
 export const userPages = [
   { name: 'Dash Board', route: 'dashboard', icon: 'dashboard' },
   { name: 'Character Manager', route: 'character_manager', icon: 'users' },
@@ -63,12 +62,12 @@ const EDIT_PROFILE = 'ds9799_user/EDIT_PROFILE';
 
 const SET_FOCUS_CHARACTER = 'ds9799_user/SET_FOCUS_CHARACTER';
 
-export const login = formBody => actionCreator(LOGIN, services.login, formBody)();
-export const register = formBody => actionCreator(REGISTER, services.register, formBody)();
-export const recoverPassword = id => actionCreator(RECOVER_PASSWORD, services.recoverPassword, id)();
-export const getCurrentUser = actionCreator(GET_CURRENT_USER, services.getCurrentUser);
-export const getCharacters = id => actionCreator(GET_CHARACTERS, services.getCharacters, id)();
-export const editProfile = formBody => actionCreator(EDIT_PROFILE, services.editProfile, formBody)();
+export const login = formBody => actionCreator(LOGIN, services.login, { payload: { formBody } })();
+export const register = formBody => actionCreator(REGISTER, services.register, { payload: { formBody } })();
+export const recoverPassword = id => actionCreator(RECOVER_PASSWORD, services.recoverPassword, { payload: { id } })();
+export const getCurrentUser = () => actionCreator(GET_CURRENT_USER, services.getCurrentUser)();
+export const getCharacters = id => actionCreator(GET_CHARACTERS, services.getCharacters, { payload: { id } })();
+export const editProfile = formBody => actionCreator(EDIT_PROFILE, services.editProfile, { payload: { formBody } })();
 
 export const setFocusCharacter = name => ({ type: SET_FOCUS_CHARACTER, name });
 
@@ -84,7 +83,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case `${LOGIN}_SUCCESS`:
     case `${GET_CURRENT_USER}_SUCCESS`:
-      socket.emit('darksteam97d99i/USER_LOGGED_IN', action.data.memb___id);
+      socket.emit('darksteam97d99i/USER_LOGGED_IN', action.payload.memb___id);
       break;
     case `${EDIT_PROFILE}_SUCCESS`:
       socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ01');
@@ -95,37 +94,34 @@ export default (state = initialState, action) => {
 
   switch (action.type) {
     case `${LOGIN}_SUCCESS`:
-      toastStrong(action.data.memb___id, 'Welcome');
+      toastStrong(action.payload.memb___id, 'Welcome');
 
-      return { ...state, user: action.data };
+      return { ...state, user: action.payload };
     case `${REGISTER}_SUCCESS`:
       toastStrong('Register successful');
       return { ...state, isRegistered: true };
     case `${RECOVER_PASSWORD}_SUCCESS`:
       toastSuccess('Password recovered');
-      return { ...state, lostPassword: action.data.memb__pwd };
+      return { ...state, lostPassword: action.payload.memb__pwd };
     case `${GET_CURRENT_USER}_SUCCESS`:
-      if (!action.data.memb___id) {
+      if (!action.payload.memb___id) {
         return { state, isCheckedCurrentUser: true };
       }
-      socket.emit('darksteam97d99i/USER_LOGGED_IN', action.data.memb___id);
-      return { ...state, user: action.data, isCheckedCurrentUser: true };
+      socket.emit('darksteam97d99i/USER_LOGGED_IN', action.payload.memb___id);
+      return { ...state, user: action.payload, isCheckedCurrentUser: true };
     case `${GET_CHARACTERS}_SUCCESS`:
-      return { ...state, characters: action.data, focusCharacter: action.data.length > 0 ? action.data[0].Name : null };
+      return {
+        ...state,
+        characters: action.payload,
+        focusCharacter: action.payload.length > 0 ? action.payload[0].Name : null
+      };
     case `${EDIT_PROFILE}_SUCCESS`:
       toastSuccess('Profile Updated');
-      return { ...state, user: { ...state.user, ...action.data } };
+      return { ...state, user: { ...state.user, ...action.payload } };
 
     case SET_FOCUS_CHARACTER:
       return { ...state, focusCharacter: action.name };
 
-    case `${LOGIN}_FAIL`:
-    case `${REGISTER}_FAIL`:
-    case `${RECOVER_PASSWORD}_FAIL`:
-    case `${GET_CHARACTERS}_FAIL`:
-    case `${EDIT_PROFILE}_FAIL`:
-      toastError(action.error);
-      return state;
     default:
       return state;
   }
@@ -185,7 +181,7 @@ export default (state = initialState, action) => {
 // export default (state = initialState, action) => {
 //   switch (action.type) {
 //     case LOGIN_SUCCESS:
-//       socket.emit('darksteam97d99i/USER_LOGGED_IN', action.data.memb___id);
+//       socket.emit('darksteam97d99i/USER_LOGGED_IN', action.payload.memb___id);
 //       break;
 
 //     case BUY_VIP_SUCCESS:
@@ -203,13 +199,13 @@ export default (state = initialState, action) => {
 
 //   switch (action.type) {
 //     case LOGIN_SUCCESS:
-//       toast.success(`Welcome ${action.data.memb___id}`, {
+//       toast.success(`Welcome ${action.payload.memb___id}`, {
 //         position: toast.POSITION.BOTTOM_LEFT,
 //         className: 'toast-success'
 //       });
 //       return {
 //         ...state,
-//         user: action.data,
+//         user: action.payload,
 //         viewControl: { ...state.viewControl, userPage: 'Dash Board' }
 //       };
 //     case LOGIN_FAIL:
@@ -234,31 +230,31 @@ export default (state = initialState, action) => {
 //         ...state,
 //         user: {
 //           ...state.user,
-//           MembCredits: { ...state.user.MembCredits, credits: action.data.credits }
+//           MembCredits: { ...state.user.MembCredits, credits: action.payload.credits }
 //         }
 //       };
 
 //     case RESET_QUEST_SUCCESS:
 //     case ADD_POINT_SUCCESS:
-//       if (action.data.isUseBank == 'true') {
+//       if (action.payload.isUseBank == 'true') {
 //         return {
 //           ...state,
 //           user: {
 //             ...state.user,
-//             Banking: { ...state.user.Banking, zen_balance: action.data.zen_balance }
+//             Banking: { ...state.user.Banking, zen_balance: action.payload.zen_balance }
 //           }
 //         };
 //       }
 //       return state;
 //     case GRAND_RESET_SUCCESS:
 //     case RESET_SUCCESS:
-//       if (action.data.isUseBank == 'true') {
+//       if (action.payload.isUseBank == 'true') {
 //         return {
 //           ...state,
 //           user: {
 //             ...state.user,
-//             Banking: { ...state.user.Banking, zen_balance: action.data.zen_balance },
-//             MembCredits: { ...state.user.MembCredits, credits: action.data.credits }
+//             Banking: { ...state.user.Banking, zen_balance: action.payload.zen_balance },
+//             MembCredits: { ...state.user.MembCredits, credits: action.payload.credits }
 //           }
 //         };
 //       }
@@ -271,8 +267,8 @@ export default (state = initialState, action) => {
 //           ...state.user,
 //           Banking: {
 //             ...state.user.Banking,
-//             zen_balance: action.data.zen_balance,
-//             loan_money: action.data.loan_money
+//             zen_balance: action.payload.zen_balance,
+//             loan_money: action.payload.loan_money
 //           }
 //         }
 //       };
@@ -282,7 +278,7 @@ export default (state = initialState, action) => {
 //         ...state,
 //         user: {
 //           ...state.user,
-//           Banking: { ...state.user.Banking, loan_money: action.data.loan_money }
+//           Banking: { ...state.user.Banking, loan_money: action.payload.loan_money }
 //         }
 //       };
 
@@ -292,7 +288,7 @@ export default (state = initialState, action) => {
 //         ...state,
 //         user: {
 //           ...state.user,
-//           Banking: { ...state.user.Banking, zen_balance: action.data.zen_balance }
+//           Banking: { ...state.user.Banking, zen_balance: action.payload.zen_balance }
 //         }
 //       };
 
@@ -301,7 +297,7 @@ export default (state = initialState, action) => {
 //         ...state,
 //         user: {
 //           ...state.user,
-//           Credits: { ...state.user.MembCredits, credits: action.data.credits }
+//           Credits: { ...state.user.MembCredits, credits: action.payload.credits }
 //         }
 //       };
 
@@ -309,11 +305,11 @@ export default (state = initialState, action) => {
 //       return { ...initialState };
 //     case REFRESH_QUEST_LIST: {
 //       const nextState = { ...state };
-//       if (action.data.credits) {
-//         nextState.user.MembCredits.credits = action.data.credits;
+//       if (action.payload.credits) {
+//         nextState.user.MembCredits.credits = action.payload.credits;
 //       }
-//       if (action.data.zen_balance) {
-//         nextState.user.Banking.zen_balance = action.data.zen_balance;
+//       if (action.payload.zen_balance) {
+//         nextState.user.Banking.zen_balance = action.payload.zen_balance;
 //       }
 //       return {
 //         ...state,

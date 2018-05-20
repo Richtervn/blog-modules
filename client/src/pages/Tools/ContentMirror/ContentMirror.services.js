@@ -7,15 +7,15 @@ export default {
     const data = commonGet('tools/content_mirror/get_tables');
     return data;
   },
-  getDocuments(collection) {
+  getDocuments({ collection }) {
     const data = commonGet('tools/content_mirror/get_documents', [collection]);
     return data;
   },
-  getDocument(tableName, docId) {
+  getDocument({ tableName, docId }) {
     const data = commonGet('tools/content_mirror/get_document', [tableName, docId]);
     return data;
   },
-  saveCode(body) {
+  saveCode({ body }) {
     const data = commonPut('tools/content_mirror/save_code', body);
     return data;
   }

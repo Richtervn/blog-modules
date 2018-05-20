@@ -7,7 +7,7 @@ export default {
     const menu = commonGet('system/get_menu');
     return menu;
   },
-  saveMenuTree(formBody) {
+  saveMenuTree({ formBody }) {
     const menu = commonPost('system/save_menu', formBody);
     return menu;
   }

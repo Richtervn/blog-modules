@@ -53,7 +53,10 @@ export default {
     if (linkFields) {
       await Promise.map(linkFields, field => {
         if (updateForm[field] && updateForm[field] !== 'null' && doc[field]) {
-          return deleteFile(doc[field]);
+          if (updateForm[field] !== doc[field]) {
+            return deleteFile(doc[field]);
+          }
+          return;
         }
         return;
       });

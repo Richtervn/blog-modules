@@ -7,35 +7,35 @@ export default {
     const data = commonGet('projects/get_all');
     return data;
   },
-  getProjectDetail(id) {
+  getProjectDetail({ id }) {
     const data = commonGet('projects/get_detail', [id]);
     return data;
   },
-  addProject(formBody) {
+  addProject({ formBody }) {
     const data = commonPost('projects/add', formBody);
     return data;
   },
-  deleteProject(id) {
+  deleteProject({ id }) {
     const data = commonDelete(`projects/remove/${id}`);
     return data;
   },
-  editProject(formBody) {
+  editProject({ formBody }) {
     const data = commonPut('projects/edit', formBody);
     return data;
   },
-  updateSetting(formBody) {
+  updateSetting({ formBody }) {
     const data = commonPut('projects/setting', formBody);
     return data;
   },
-  addProjectItem(formBody) {
+  addProjectItem({ formBody }) {
     const data = commonPost('projects/add_item', formBody);
     return data;
   },
-  moveCardToList(formBody) {
+  moveCardToList({ formBody }) {
     const data = commonPut('projects/move_item', formBody);
     return data;
   },
-  editItem(formBody) {
+  editItem({ formBody }) {
     const data = commonPut('projects/edit_item', formBody);
     return data;
   }

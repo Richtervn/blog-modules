@@ -7,7 +7,7 @@ export default {
     const data = commonGet('app_diary');
     return data;
   },
-  addLog(formBody) {
+  addLog({ formBody }) {
     const data = commonPost('app_diary', formBody);
     return data;
   }

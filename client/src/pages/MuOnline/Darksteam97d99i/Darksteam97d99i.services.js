@@ -4,23 +4,23 @@ const { commonPost, commonGet, commonPut, commonDelete, commonPostMultiplePart, 
 
 export default {
   /* Admin Accounts Manager Services*/
-  adminGetAccounts(query) {
+  adminGetAccounts({ query }) {
     const data = commonGet('darksteam97d99i/users', null, query);
     return data;
   },
-  adminGetAccountDetail(id) {
+  adminGetAccountDetail({ id }) {
     const data = commonGet('darksteam97d99i/users', [id]);
     return data;
   },
-  adminAddAccount(formBody) {
+  adminAddAccount({ formBody }) {
     const data = commonPost('darksteam97d99i/users', formBody);
     return data;
   },
-  adminEditAccount(formBody) {
+  adminEditAccount({ formBody }) {
     const data = commonPut('darksteam97d99i/users', formBody);
     return data;
   },
-  adminDeleteAccount(id) {
+  adminDeleteAccount({ id }) {
     const data = commonDelete('darksteam97d99i/users/' + id);
     return data;
   },
@@ -34,29 +34,29 @@ export default {
     const data = commonGet('darksteam97d99i/system/server_info');
     return data;
   },
-  editServerInfo(formBody) {
+  editServerInfo({ formBody }) {
     const data = commonPut('darksteam97d99i/system/server_info', formBody);
     return data;
   },
-  editGameSetting(formBody) {
+  editGameSetting({ formBody }) {
     const data = commonPut('darksteam97d99i/system/game_setting', formBody);
     return data;
   },
 
   /* User Services */
-  login(formBody) {
+  login({ formBody }) {
     const data = commonPost('darksteam97d99i/users/login', formBody);
     return data;
   },
-  register(formBody) {
+  register({ formBody }) {
     const data = commonPost('darksteam97d99i/users/register', formBody);
     return data;
   },
-  editProfile(formBody) {
+  editProfile({ formBody }) {
     const data = commonPut('darksteam97d99i/users/profile', formBody);
     return data;
   },
-  recoverPassword(id) {
+  recoverPassword({ id }) {
     const data = commonGet('darksteam97d99i/users/recover_password', [id]);
     return data;
   },
@@ -66,11 +66,11 @@ export default {
   },
 
   /* Ranking Services */
-  getTopPoints(query) {
+  getTopPoints({ query }) {
     const data = commonGet('darksteam97d99i/ranking/top_points', null, query);
     return data;
   },
-  getTopResets(query) {
+  getTopResets({ query }) {
     const data = commonGet('darksteam97d99i/ranking/top_resets', null, query);
     return data;
   },
@@ -83,39 +83,38 @@ export default {
     return data;
   },
 
-
   /* Character Services */
-  adminGetCharacters(query){
+  adminGetCharacters({ query }) {
     const data = commonGet('darksteam97d99i/characters', null, query);
     return data;
   },
-  adminGetCharacterDetail(id){
+  adminGetCharacterDetail({ id }) {
     const data = commonGet('darksteam97d99i/characters/detail', [id]);
     return data;
   },
-  adminAddCharacter(formBody){
+  adminAddCharacter({ formBody }) {
     const data = commonPost('darksteam97d99i/characters', formBody);
     return data;
   },
-  adminEditCharacter(formBody){
+  adminEditCharacter({ formBody }) {
     const data = commonPut('darksteam97d99i/characters', formBody);
     return data;
   },
-  adminDeleteCharacter(id){
+  adminDeleteCharacter({ id }) {
     const data = commonDelete('darksteam97d99i/characters/' + id);
     return data;
   },
-  getCharacters(id){
+  getCharacters(id) {
     const data = commonGet('darksteam97d99i/characters/account', [id]);
     return data;
   },
 
   /* Server Service */
-  getServerData(fileName){
+  getServerData({ fileName }) {
     const data = commonGet('darksteam97d99i/system/data', [fileName]);
     return data;
   },
-  generateTextFile(formBody){
+  generateTextFile({ formBody }) {
     const data = commonPost('darksteam97d99i/system/generate_text_file', formBody);
     return data;
   }

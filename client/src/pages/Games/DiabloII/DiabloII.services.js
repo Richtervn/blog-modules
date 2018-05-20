@@ -19,75 +19,75 @@ export default {
     const data = commonGet('diabloII/characters');
     return data;
   },
-  searchMods(query) {
+  searchMods({ query }) {
     const data = commonGet('diabloII/search_mods', null, query);
     return data;
   },
-  searchTools(query){
+  searchTools({ query }) {
     const data = commonGet('diabloII/search_tools', null, query);
     return data;
   },
-  searchCharacters(query){
+  searchCharacters({ query }) {
     const data = commonGet('diabloII/search_characters', null, query);
     return data;
   },
-  searchSurvivalKits(query){
+  searchSurvivalKits({ query }) {
     const data = commonGet('diabloII/search_survial_kits', null, query);
     return data;
   },
-  editMod(body) {
-    const data = commonPutMultiplePart('diabloII/mod', body);
+  editMod({ formBody }) {
+    const data = commonPutMultiplePart('diabloII/mod', formBody);
     return data;
   },
-  editTool(body) {
-    const data = commonPutMultiplePart('diabloII/tool', body);
+  editTool({ formBody }) {
+    const data = commonPutMultiplePart('diabloII/tool', formBody);
     return data;
   },
-  editCharacter(body) {
-    const data = commonPutMultiplePart('diabloII/character', body);
+  editCharacter({ formBody }) {
+    const data = commonPutMultiplePart('diabloII/character', formBody);
     return data;
   },
-  editSurvivalKit(body) {
-    const data = commonPutMultiplePart('diabloII/survival_kit', body);
+  editSurvivalKit({ formBody }) {
+    const data = commonPutMultiplePart('diabloII/survival_kit', formBody);
     return data;
   },
-  addMod(body) {
-    const data = commonPostMultiplePart('diabloII/mod', body);
+  addMod({ formBody }) {
+    const data = commonPostMultiplePart('diabloII/mod', formBody);
     return data;
   },
-  addCharacter(body) {
-    const data = commonPostMultiplePart('diabloII/character', body);
+  addCharacter({ formBody }) {
+    const data = commonPostMultiplePart('diabloII/character', formBody);
     return data;
   },
-  addTool(body) {
-    const data = commonPostMultiplePart('diabloII/tool', body);
+  addTool({ formBody }) {
+    const data = commonPostMultiplePart('diabloII/tool', formBody);
     return data;
   },
-  addSurvivalKit(body) {
-    const data = commonPostMultiplePart('diabloII/survival_kit', body);
+  addSurvivalKit({ formBody }) {
+    const data = commonPostMultiplePart('diabloII/survival_kit', formBody);
     return data;
   },
-  deleteMod(id) {
+  deleteMod({ id }) {
     const data = commonDelete('diabloII/mod/' + id);
     return data;
   },
-  deleteTool(id) {
+  deleteTool({ id }) {
     const data = commonDelete('diabloII/tool/' + id);
     return data;
   },
-  deleteCharacter(id) {
+  deleteCharacter({ id }) {
     const data = commonDelete('diabloII/character/' + id);
     return data;
   },
-  deleteSurvivalKit(id) {
+  deleteSurvivalKit({ id }) {
     const data = commonDelete('diabloII/survival_kit/' + id);
     return data;
   },
-  getModDetail(id) {
+  getModDetail({ id }) {
     const data = commonGet('diabloII/mod', [id]);
     return data;
   },
-  getToolDetail(id) {
+  getToolDetail({ id }) {
     const data = commonGet('diabloII/tool', [id]);
     return data;
   },
@@ -95,20 +95,20 @@ export default {
     const data = commonGet('diabloII/extra');
     return data;
   },
-  extraLevel(level) {
+  extraLevel({ level }) {
     const data = commonGet('diabloII/extra/level', [level]);
     return data;
   },
-  extraGold(amount, type) {
+  extraGold({ amount, type }) {
     const data = commonGet('diabloII/extra/gold', null, { amount, type });
     return data;
   },
-  extraSkill(amount, type) {
+  extraSkill({ amount, type }) {
     const data = commonGet('diabloII/extra/skill', null, { amount, type });
     return data;
   },
-  editExtraData(body) {
-    const data = commonPut('diabloII/extra', body);
+  editExtraData({ formBody }) {
+    const data = commonPut('diabloII/extra', formBody);
     return data;
   }
 };

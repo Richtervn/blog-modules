@@ -1,6 +1,6 @@
 import { actionCreator } from 'helpers';
 import services from './Darksteam97d99i.services';
-import { toastError, toastSuccess } from 'common/Toast';
+import { toastSuccess } from 'common/Toast';
 
 import { REGISTER } from './User';
 
@@ -38,10 +38,12 @@ const SET_USER_PAGE = 'darksteam97d99i/SET_USER_PAGE';
 const SET_ADMIN_PAGE = 'darksteam97d99i/SET_ADMIN_PAGE';
 const SET_SERVER_PAGE = 'darksteam97d99i/SET_SERVER_PAGE';
 
-export const getServerInfo = actionCreator(GET_SERVER_INFO, services.getServerInfo);
-export const getGameSetting = actionCreator(GET_GAME_SETTING, services.getGameSetting);
-export const editServerInfo = formBody => actionCreator(EDIT_SERVER_INFO, services.editServerInfo, formBody)();
-export const editGameSetting = formBody => actionCreator(EDIT_GAME_SETTING, services.editGameSetting, formBody)();
+export const getServerInfo = () => actionCreator(GET_SERVER_INFO, services.getServerInfo)();
+export const getGameSetting = () => actionCreator(GET_GAME_SETTING, services.getGameSetting)();
+export const editServerInfo = formBody =>
+  actionCreator(EDIT_SERVER_INFO, services.editServerInfo, { payload: { formBody } })();
+export const editGameSetting = formBody =>
+  actionCreator(EDIT_GAME_SETTING, services.editGameSetting, { payload: { formBody } })();
 
 export const setActiveTab = tab => ({ type: SET_ACTIVE_TAB, tab });
 export const setUserPage = page => ({ type: SET_USER_PAGE, page });
@@ -73,25 +75,19 @@ export default (state = initialState, action) => {
       return { ...state, isRegistered: false };
 
     case `${GET_GAME_SETTING}_SUCCESS`:
-      return { ...state, gameSetting: action.data };
+      return { ...state, gameSetting: action.payload };
     case `${GET_SERVER_INFO}_SUCCESS`:
-      return { ...state, serverInfo: action.data };
+      return { ...state, serverInfo: action.payload };
     case `${EDIT_GAME_SETTING}_SUCCESS`:
       toastSuccess('Saved Game Setting');
-      return { ...state, gameSetting: action.data };
+      return { ...state, gameSetting: action.payload };
     case `${EDIT_SERVER_INFO}_SUCCESS`:
       toastSuccess('Saved Server Info');
-      return { ...state, serverInfo: action.data };
+      return { ...state, serverInfo: action.payload };
 
     case `${REGISTER}_SUCCESS`:
       return { ...state, isRegistered: true };
 
-    case `${GET_GAME_SETTING}_FAIL`:
-    case `${GET_SERVER_INFO}_FAIL`:
-    case `${EDIT_GAME_SETTING}_FAIL`:
-    case `${EDIT_SERVER_INFO}_FAIL`:
-      toastError(action.error);
-      return state;
     default:
       return state;
   }

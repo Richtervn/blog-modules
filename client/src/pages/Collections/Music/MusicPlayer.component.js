@@ -9,15 +9,7 @@ class MusicPlayer extends Component {
   }
 
   render() {
-    const {
-      playList,
-      currentSongIndex,
-      isPlaying,
-      onSetPlayedTime,
-      onSetDuration,
-      onPlayEnd,
-      isLoopSong
-    } = this.props;
+    const { playList, currentSongIndex, isPlaying, onSetPlayedTime, onSetDuration, onPlayEnd, isLoopSong } = this.props;
 
     if (!playList || playList.length < 1) {
       return null;

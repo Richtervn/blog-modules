@@ -1,6 +1,6 @@
 import { actionCreator } from 'helpers';
 import services from './MuOnline.services';
-import { toastError, toastStrong } from 'common/Toast';
+import { toastStrong } from 'common/Toast';
 
 const SET_ACTIVE_TAB = 'muonline/SET_ACTIVE_TAB';
 const SET_FOCUS_VERSION = 'muonline/SET_FOCUS_VERSION';
@@ -37,30 +37,33 @@ export const setFocusVersion = id => ({ type: SET_FOCUS_VERSION, id });
 export const setFocusCharacter = id => ({ type: SET_FOCUS_CHARACTER, id });
 export const setFocusGuide = id => ({ type: SET_FOCUS_GUIDE, id });
 
-export const getVersions = actionCreator(GET_VERSIONS, services.getVersions);
-export const getVersionDetail = id => actionCreator(GET_VERSION_DETAIL, services.getVersionDetail, id)();
-export const addVersion = formBody => actionCreator(ADD_VERSION, services.addVersion, formBody)();
-export const editVersion = formBody => actionCreator(EDIT_VERSION, services.editVersion, formBody)();
-export const deleteVersion = id => actionCreator(DELETE_VERSION, services.deleteVersion, id)();
+export const getVersions = () => actionCreator(GET_VERSIONS, services.getVersions)();
+export const getVersionDetail = id =>
+  actionCreator(GET_VERSION_DETAIL, services.getVersionDetail, { payload: { id } })();
+export const addVersion = formBody => actionCreator(ADD_VERSION, services.addVersion, { payload: { formBody } })();
+export const editVersion = formBody => actionCreator(EDIT_VERSION, services.editVersion, { payload: { formBody } })();
+export const deleteVersion = id => actionCreator(DELETE_VERSION, services.deleteVersion, { payload: { id } })();
 
-export const getTools = actionCreator(GET_TOOLS, services.getTools);
-export const getToolDetail = id => actionCreator(GET_TOOL_DETAIL, services.getToolDetail, id)();
-export const addTool = formBody => actionCreator(ADD_TOOL, services.addTool, formBody)();
-export const editTool = formBody => actionCreator(EDIT_TOOL, services.editTool, formBody)();
-export const deleteTool = id => actionCreator(DELETE_TOOL, services.deleteTool, id)();
-export const searchTool = query => actionCreator(SEARCH_TOOL, services.searchTool, query)();
+export const getTools = () => actionCreator(GET_TOOLS, services.getTools)();
+export const getToolDetail = id => actionCreator(GET_TOOL_DETAIL, services.getToolDetail, { payload: { id } })();
+export const addTool = formBody => actionCreator(ADD_TOOL, services.addTool, { payload: { formBody } })();
+export const editTool = formBody => actionCreator(EDIT_TOOL, services.editTool, { payload: { formBody } })();
+export const deleteTool = id => actionCreator(DELETE_TOOL, services.deleteTool, { payload: { id } })();
+export const searchTool = query => actionCreator(SEARCH_TOOL, services.searchTool, { payload: { query } })();
 export const sortTool = (sortKey, sortOption) => ({ type: SORT_TOOL, sortKey, sortOption });
 
-export const getGuides = actionCreator(GET_GUIDES, services.getGuides);
-export const getGuideDetail = id => actionCreator(GET_GUIDE_DETAIL, services.getGuideDetail, id)();
-export const addGuide = formBody => actionCreator(ADD_GUIDE, services.addGuide, formBody)();
-export const editGuide = formBody => actionCreator(EDIT_GUIDE, services.editGuide, formBody)();
-export const deleteGuide = id => actionCreator(DELETE_GUIDE, services.deleteGuide, id)();
+export const getGuides = () => actionCreator(GET_GUIDES, services.getGuides)();
+export const getGuideDetail = id => actionCreator(GET_GUIDE_DETAIL, services.getGuideDetail, { payload: { id } })();
+export const addGuide = formBody => actionCreator(ADD_GUIDE, services.addGuide, { payload: { formBody } })();
+export const editGuide = formBody => actionCreator(EDIT_GUIDE, services.editGuide, { payload: { formBody } })();
+export const deleteGuide = id => actionCreator(DELETE_GUIDE, services.deleteGuide, { payload: { id } })();
 
-export const getCharacters = actionCreator(GET_CHARACTERS, services.getCharacters);
-export const addCharacter = formBody => actionCreator(ADD_CHARACTER, services.addCharacter, formBody)();
-export const editCharacter = formBody => actionCreator(EDIT_CHARACTER, services.editCharacter, formBody)();
-export const deleteCharacter = id => actionCreator(DELETE_CHARACTER, services.deleteCharacter, id)();
+export const getCharacters = () => actionCreator(GET_CHARACTERS, services.getCharacters)();
+export const addCharacter = formBody =>
+  actionCreator(ADD_CHARACTER, services.addCharacter, { payload: { formBody } })();
+export const editCharacter = formBody =>
+  actionCreator(EDIT_CHARACTER, services.editCharacter, { payload: { formBody } })();
+export const deleteCharacter = id => actionCreator(DELETE_CHARACTER, services.deleteCharacter, { payload: { id } })();
 
 const initialState = {
   activeTab: null,
@@ -90,113 +93,91 @@ export default (state = initialState, action) => {
       return { ...state, focusCharacter: action.id };
 
     case `${GET_VERSIONS}_SUCCESS`:
-      return { ...state, versions: action.data };
+      return { ...state, versions: action.payload };
     case `${GET_VERSION_DETAIL}_SUCCESS`:
-      return { ...state, versionDetail: action.data };
+      return { ...state, versionDetail: action.payload };
     case `${ADD_VERSION}_SUCCESS`:
-      state.versions.push(action.data);
-      toastStrong(action.data.Name, 'Added');
+      state.versions.push(action.payload);
+      toastStrong(action.payload.Name, 'Added');
       return { ...state, versions: state.versions.slice(0) };
     case `${EDIT_VERSION}_SUCCESS`:
       state.versions = state.versions.map(version => {
-        if (version._id === action.data._id) {
-          return { ...version, ...action.data };
+        if (version._id === action.payload._id) {
+          return { ...version, ...action.payload };
         }
         return version;
       });
-      toastStrong(action.data.Name, 'Updated');
+      toastStrong(action.payload.Name, 'Updated');
       return { ...state, versions: state.versions.slice(0) };
     case `${DELETE_VERSION}_SUCCESS`:
-      state.versions = state.versions.filter(version => version._id !== action.data_id);
+      state.versions = state.versions.filter(version => version._id !== action.payload_id);
       return { ...state, versions: state.versions.slice(0) };
 
     case `${GET_TOOLS}_SUCCESS`:
-      return { ...state, tools: action.data };
+      return { ...state, tools: action.payload };
     case `${GET_TOOL_DETAIL}_SUCCESS`:
-      return { ...state, toolDetail: action.data };
+      return { ...state, toolDetail: action.payload };
     case `${ADD_TOOL}_SUCCESS`:
-      state.tools.push(action.data);
-      toastStrong(action.data.Name, 'Added');
+      state.tools.push(action.payload);
+      toastStrong(action.payload.Name, 'Added');
       return { ...state, tools: state.tools.slice(0) };
     case `${EDIT_TOOL}_SUCCESS`:
       state.tools = state.tools.map(tool => {
-        if (tool._id === action.data._id) {
-          return { ...tool, ...action.data };
+        if (tool._id === action.payload._id) {
+          return { ...tool, ...action.payload };
         }
         return tool;
       });
-      toastStrong(action.data.Name, 'Updated');
-      return { ...state, tools: state.tools.slice(0), toolDetail: action.data };
+      toastStrong(action.payload.Name, 'Updated');
+      return { ...state, tools: state.tools.slice(0), toolDetail: action.payload };
     case `${DELETE_TOOL}_SUCCESS`:
-      state.tools = state.tools.filter(tool => tool._id !== action.data._id);
+      state.tools = state.tools.filter(tool => tool._id !== action.payload._id);
       return { ...state, tools: state.tools.slice(0) };
     case `${SEARCH_TOOL}_SUCCESS`:
-      return { ...state, tools: action.data };
+      return { ...state, tools: action.payload };
     case SORT_TOOL:
       return { ...state, sortToolKey: action.sortKey, sortToolOption: action.sortOption };
 
     case `${GET_CHARACTERS}_SUCCESS`:
-      return { ...state, characters: action.data };
+      return { ...state, characters: action.payload };
     case `${ADD_CHARACTER}_SUCCESS`:
-      state.characters.push(action.data);
-      toastStrong(action.data.Name, 'Added');
+      state.characters.push(action.payload);
+      toastStrong(action.payload.Name, 'Added');
       return { ...state, characters: state.characters.slice(0) };
     case `${EDIT_CHARACTER}_SUCCESS`:
       state.characters = state.characters.map(character => {
-        if (character._id === action.data._id) {
-          return { ...character, ...action.data };
+        if (character._id === action.payload._id) {
+          return { ...character, ...action.payload };
         }
         return character;
       });
-      toastStrong(action.data.Name, 'Updated');
+      toastStrong(action.payload.Name, 'Updated');
       return { ...state, characters: state.characters.slice(0) };
     case `${DELETE_CHARACTER}_SUCCESS`:
-      state.characters = state.characters.filter(character => character._id !== action.data._id);
+      state.characters = state.characters.filter(character => character._id !== action.payload._id);
       return { ...state, characters: state.characters.slice(0) };
 
     case `${GET_GUIDES}_SUCCESS`:
-      return { ...state, guides: action.data };
+      return { ...state, guides: action.payload };
     case `${GET_GUIDE_DETAIL}_SUCCESS`:
-      return { ...state, guideDetail: action.data };
+      return { ...state, guideDetail: action.payload };
     case `${ADD_GUIDE}_SUCCESS`:
-      state.guides.push(action.data);
-      toastStrong(action.data.Name, 'Added');
+      state.guides.push(action.payload);
+      toastStrong(action.payload.Name, 'Added');
       return { ...state, guides: state.guides.slice(0) };
     case `${EDIT_GUIDE}_SUCCESS`:
       state.guides = state.guides.map(guide => {
-        if (guide._id === action.data._id) {
-          return { ...guide, ...action.data };
+        if (guide._id === action.payload._id) {
+          return { ...guide, ...action.payload };
         }
         return guide;
       });
-      toastStrong(action.data.Name, 'Updated');
+      toastStrong(action.payload.Name, 'Updated');
       return { ...state, guides: state.guides.slice(0) };
     case `${DELETE_GUIDE}_SUCCESS`:
-      state.guides = state.guides.filter(guide => guide._id !== action.data._id);
+      state.guides = state.guides.filter(guide => guide._id !== action.payload._id);
       return { ...state, guides: state.guides.slice(0) };
 
-    case `${GET_VERSIONS}_FAIL`:
-    case `${GET_VERSION_DETAIL}_FAIL`:
-    case `${ADD_VERSION}_FAIL`:
-    case `${EDIT_VERSION}_FAIL`:
-    case `${DELETE_VERSION}_FAIL`:
-    case `${GET_GUIDES}_FAIL`:
-    case `${GET_GUIDE_DETAIL}_FAIL`:
-    case `${ADD_GUIDE}_FAIL`:
-    case `${EDIT_GUIDE}_FAIL`:
-    case `${DELETE_GUIDE}_FAIL`:
-    case `${GET_CHARACTERS}_FAIL`:
-    case `${EDIT_CHARACTER}_FAIL`:
-    case `${DELETE_CHARACTER}_FAIL`:
-    case `${ADD_CHARACTER}_FAIL`:
-    case `${GET_TOOLS}_FAIL`:
-    case `${GET_TOOL_DETAIL}_FAIL`:
-    case `${ADD_TOOL}_FAIL`:
-    case `${EDIT_TOOL}_FAIL`:
-    case `${DELETE_TOOL}_FAIL`:
-    case `${SEARCH_TOOL}_FAIL`:
-      toastError(action.error);
-      return state;
     default:
       return state;
   }

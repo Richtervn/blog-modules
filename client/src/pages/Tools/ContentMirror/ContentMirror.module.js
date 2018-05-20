@@ -1,5 +1,5 @@
 import { actionCreator } from 'helpers';
-import { toastError, toastSuccess } from 'common/Toast';
+import { toastSuccess } from 'common/Toast';
 
 import services from './ContentMirror.services';
 
@@ -28,10 +28,12 @@ export const changeOpacity = opacity => ({ type: CHANGE_OPACITY, opacity });
 export const changeCollectionValue = collection => ({ type: CHANGE_COLLECTION_VALUE, collection });
 export const changeDocumentValue = doc => ({ type: CHANGE_DOCUMENT_VALUE, doc });
 
-export const getTables = actionCreator(GET_TABLES, services.getTables);
-export const getDocuments = collection => actionCreator(GET_DOCUMENTS, services.getDocuments, collection)();
-export const getDocument = (tableName, docId) => actionCreator(GET_DOCUMENT, services.getDocument, tableName, docId)();
-export const saveCode = formBody => actionCreator(SAVE_CODE, services.saveCode, formBody)();
+export const getTables = () => actionCreator(GET_TABLES, services.getTables)();
+export const getDocuments = collection =>
+  actionCreator(GET_DOCUMENTS, services.getDocuments, { payload: { collection } })();
+export const getDocument = (tableName, docId) =>
+  actionCreator(GET_DOCUMENT, services.getDocument, { payload: { tableName, docId } })();
+export const saveCode = formBody => actionCreator(SAVE_CODE, services.saveCode, { payload: { formBody } })();
 
 const initialState = {
   isShareView: true,
@@ -93,32 +95,26 @@ export default (state = initialState, action) => {
     case CHANGE_DOCUMENT_VALUE:
       return { ...state, documentValue: action.doc };
     case `${GET_DOCUMENT}_SUCCESS`: {
-      const table = state.tables[action.params['0']];
+      const table = state.tables[action.params.tableName];
       return {
         ...state,
-        cssCode: action.data[table.CssField] || '',
-        cssSource: action.data[table.CssField] || '',
-        htmlCode: action.data[table.HtmlField] || '',
-        htmlSource: action.data[table.HtmlField] || ''
+        cssCode: action.payload[table.CssField] || '',
+        cssSource: action.payload[table.CssField] || '',
+        htmlCode: action.payload[table.HtmlField] || '',
+        htmlSource: action.payload[table.HtmlField] || ''
       };
     }
 
     case `${GET_TABLES}_SUCCESS`:
-      return { ...state, tables: action.data };
+      return { ...state, tables: action.payload };
     case `${GET_DOCUMENTS}_SUCCESS`:
-      return { ...state, documents: action.data };
+      return { ...state, documents: action.payload };
     case `${SAVE_CODE}_SUCCESS`: {
-      const table = state.tables[action.data.collectionName];
+      const table = state.tables[action.payload.collectionName];
       toastSuccess('Saved code');
-      return { ...state, cssSource: action.data[table.CssField], htmlSource: action.data[table.HtmlField] };
+      return { ...state, cssSource: action.payload[table.CssField], htmlSource: action.payload[table.HtmlField] };
     }
 
-    case `${GET_TABLES}_FAIL`:
-    case `${GET_DOCUMENTS}_FAIL`:
-    case `${GET_DOCUMENT}_FAIL`:
-    case `${SAVE_CODE}_FAIL`:
-      toastError(action.error);
-      return state;
     default:
       return state;
   }

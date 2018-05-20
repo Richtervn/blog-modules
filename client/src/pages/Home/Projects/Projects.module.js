@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import { actionCreator } from 'helpers';
-import { toastError, toastSuccess } from 'common/Toast';
+import { toastSuccess } from 'common/Toast';
 
 import React from 'react';
 import services from './Projects.services';
@@ -21,13 +21,16 @@ const SET_ITEM_ON_DETAIL = 'projects/SET_ITEM_ON_DETAIL';
 const MOVE_CARD_TO_LIST = 'projects/MOVE_CARD_TO_LIST';
 
 export const getProjects = actionCreator(GET_PROJECTS, services.getProjects);
-export const getProjectDetail = id => actionCreator(GET_PROJECT_DETAIL, services.getProjectDetail, id)();
-export const addProject = formBody => actionCreator(ADD_PROJECT, services.addProject, formBody)();
-export const editProject = formBody => actionCreator(EDIT_PROJECT, services.editProject, formBody)();
-export const deleteProject = id => actionCreator(DELETE_PROJECT, services.deleteProject, id)();
-export const updateSetting = formBody => actionCreator(UPDATE_SETTING, services.updateSetting, formBody)();
-export const addProjectItem = formBody => actionCreator(ADD_PROJECT_ITEM, services.addProjectItem, formBody)();
-export const editItem = formBody => actionCreator(EDIT_ITEM, services.editItem, formBody)();
+export const getProjectDetail = id =>
+  actionCreator(GET_PROJECT_DETAIL, services.getProjectDetail, { payload: { id } })();
+export const addProject = formBody => actionCreator(ADD_PROJECT, services.addProject, { payload: { formBody } })();
+export const editProject = formBody => actionCreator(EDIT_PROJECT, services.editProject, { payload: { formBody } })();
+export const deleteProject = id => actionCreator(DELETE_PROJECT, services.deleteProject, { payload: { id } })();
+export const updateSetting = formBody =>
+  actionCreator(UPDATE_SETTING, services.updateSetting, { payload: { formBody } })();
+export const addProjectItem = formBody =>
+  actionCreator(ADD_PROJECT_ITEM, services.addProjectItem, { payload: { formBody } })();
+export const editItem = formBody => actionCreator(EDIT_ITEM, services.editItem, { payload: { formBody } })();
 
 export const setCurrentProject = project => ({ type: SET_CURRENT_PROJECT, project });
 export const setColumnOnAdd = column => ({ type: SET_COLUMN_ON_ADD, column });
@@ -44,7 +47,7 @@ export const moveCardToList = (item, column, oldColumn, ProjectId) => {
 
   return dispatch => {
     dispatch(moveToList(item, column, oldColumn));
-    dispatch(actionCreator(MOVE_CARD_TO_LIST, services.moveCardToList, formBody)());
+    dispatch(actionCreator(MOVE_CARD_TO_LIST, services.moveCardToList, { payload: { formBody } })());
   };
 };
 
@@ -59,38 +62,38 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case `${GET_PROJECTS}_SUCCESS`:
-      return { ...state, projects: action.data };
+      return { ...state, projects: action.payload };
     case `${ADD_PROJECT}_SUCCESS`:
       toastSuccess(() => (
         <p>
-          Added <strong>{action.data.name}</strong> project
+          Added <strong>{action.payload.name}</strong> project
         </p>
       ));
-      state.projects.push(action.data);
+      state.projects.push(action.payload);
       return { ...state, projects: state.projects.slice(0) };
     case `${EDIT_PROJECT}_SUCCESS`:
       toastSuccess(() => (
         <p>
-          Saved <strong>{action.data.name}</strong> project
+          Saved <strong>{action.payload.name}</strong> project
         </p>
       ));
       return {
         ...state,
-        currentProject: { ...action.data },
+        currentProject: { ...action.payload },
         projects: state.projects
           .map(project => {
-            if (project._id === action.data._id) {
-              return action.data;
+            if (project._id === action.payload._id) {
+              return action.payload;
             }
             return project;
           })
           .slice(0)
       };
     case `${DELETE_PROJECT}_SUCCESS`:
-      state.projects = state.projects.filter(project => project._id !== action.data._id);
+      state.projects = state.projects.filter(project => project._id !== action.payload._id);
       return { ...state, currentProject: { Technologies: [''] }, projects: state.projects.slice(0) };
     case `${GET_PROJECT_DETAIL}_SUCCESS`:
-      return { ...state, projectOnBoard: action.data };
+      return { ...state, projectOnBoard: action.payload };
 
     case SET_CURRENT_PROJECT:
       return { ...state, currentProject: { ...action.project } };
@@ -101,10 +104,10 @@ export default (state = initialState, action) => {
 
     case `${UPDATE_SETTING}_SUCCESS`:
       toastSuccess('Saved Setting');
-      return { ...state, projectOnBoard: { ...state.projectOnBoard, ...action.data } };
+      return { ...state, projectOnBoard: { ...state.projectOnBoard, ...action.payload } };
 
     case `${ADD_PROJECT_ITEM}_SUCCESS`:
-      return { ...state, projectOnBoard: { ...action.data } };
+      return { ...state, projectOnBoard: { ...action.payload } };
 
     case MOVE_CARD_TO_LIST:
       state.projectOnBoard[action.column.key].push(action.item);
@@ -121,10 +124,10 @@ export default (state = initialState, action) => {
       };
 
     case `${EDIT_ITEM}_SUCCESS`:
-      let editedItem = _.omit(action.data, 'Column');
+      let editedItem = _.omit(action.payload, 'Column');
 
-      state.projectOnBoard[action.data.Column] = state.projectOnBoard[action.data.Column].map(item => {
-        if (item._id === action.data._id) {
+      state.projectOnBoard[action.payload.Column] = state.projectOnBoard[action.payload.Column].map(item => {
+        if (item._id === action.payload._id) {
           return editedItem;
         }
         return item;
@@ -135,21 +138,9 @@ export default (state = initialState, action) => {
         itemOnDetail: { ...state.itemOnDetail, item: { ...editedItem } },
         projectOnBoard: {
           ...state.projectOnBoard,
-          [action.data.Column]: state.projectOnBoard[action.data.Column].slice(0)
+          [action.payload.Column]: state.projectOnBoard[action.payload.Column].slice(0)
         }
       };
-
-    case `${UPDATE_SETTING}_FAIL`:
-    case `${GET_PROJECTS}_FAIL`:
-    case `${ADD_PROJECT}_FAIL`:
-    case `${EDIT_PROJECT}_FAIL`:
-    case `${DELETE_PROJECT}_FAIL`:
-    case `${ADD_PROJECT_ITEM}_FAIL`:
-    case `${GET_PROJECT_DETAIL}_FAIL`:
-    case `${MOVE_CARD_TO_LIST}_FAIL`:
-    case `${EDIT_ITEM}_FAIL`:
-      toastError(action.error);
-      return state;
 
     default:
       return state;

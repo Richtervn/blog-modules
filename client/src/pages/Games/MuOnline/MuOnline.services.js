@@ -19,67 +19,67 @@ export default {
     const data = commonGet('mu_online/characters');
     return data;
   },
-  getToolDetail(id) {
+  getToolDetail({ id }) {
     const data = commonGet('mu_online/tool', [id]);
     return data;
   },
-  getVersionDetail(id) {
+  getVersionDetail({ id }) {
     const data = commonGet('mu_online/version', [id]);
     return data;
   },
-  getGuideDetail(id) {
+  getGuideDetail({ id }) {
     const data = commonGet('mu_online/guide', [id]);
     return data;
   },
-  addTool(formBody) {
+  addTool({ formBody }) {
     const data = commonPostMultiplePart('mu_online/tool', formBody);
     return data;
   },
-  addVersion(formBody) {
+  addVersion({ formBody }) {
     const data = commonPostMultiplePart('mu_online/version', formBody);
     return data;
   },
-  addGuide(formBody) {
+  addGuide({ formBody }) {
     const data = commonPostMultiplePart('mu_online/guide', formBody);
     return data;
   },
-  addCharacter(formBody){
+  addCharacter({ formBody }) {
     const data = commonPost('mu_online/character', formBody);
     return data;
   },
-  editTool(formBody) {
+  editTool({ formBody }) {
     const data = commonPutMultiplePart('mu_online/tool', formBody);
     return data;
   },
-  editVersion(formBody) {
+  editVersion({ formBody }) {
     const data = commonPutMultiplePart('mu_online/version', formBody);
     return data;
   },
-  editGuide(formBody) {
+  editGuide({ formBody }) {
     const data = commonPut('mu_online/guide', formBody);
     return data;
   },
-  editCharacter(formBody) {
+  editCharacter({ formBody }) {
     const data = commonPut('mu_online/character', formBody);
     return data;
   },
-  deleteTool(id) {
+  deleteTool({ id }) {
     const data = commonDelete('mu_online/tool/' + id);
     return data;
   },
-  deleteVersion(id) {
+  deleteVersion({ id }) {
     const data = commonDelete('mu_online/version/' + id);
     return data;
   },
-  deleteCharacter(id) {
+  deleteCharacter({ id }) {
     const data = commonDelete('mu_online/character/' + id);
     return data;
   },
-  deleteGuide(id) {
+  deleteGuide({ id }) {
     const data = commonDelete('mu_online/guide/' + id);
     return data;
   },
-  searchTool(query) {
+  searchTool({ query }) {
     const data = commonGet('mu_online/search_tool', null, query);
     return data;
   }

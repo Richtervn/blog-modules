@@ -8,19 +8,19 @@ export const serverPages = [
   { name: 'Shops Editor', icon: 'shopping-cart', route: 'shops_editor' },
   { name: 'Game Setting', icon: 'gear', route: 'game_setting' },
   { name: 'Server Info', icon: 'info-circle', route: 'server_info' },
-  { name: 'Banking Logs', icon: 'bank', route: 'banking_logs'}
+  { name: 'Banking Logs', icon: 'bank', route: 'banking_logs' }
 ];
 
 const GET_DATA = 'darksteam97d99i/server/GET_DATA';
 
-export const getData = fileName => actionCreator(GET_DATA, services.getServerData, fileName)();
+export const getData = fileName => actionCreator(GET_DATA, services.getServerData, { payload: { fileName } })();
 
 const initialState = { data: {} };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case `${GET_DATA}_SUCCESS`:
-      return { ...state, data: { ...state.data, [action.params['0']]: action.data } };
+      return { ...state, data: { ...state.data, [action.params.fileName]: action.payload } };
     default:
       return state;
   }
