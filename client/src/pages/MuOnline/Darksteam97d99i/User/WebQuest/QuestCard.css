@@ -1,0 +1,74 @@
+.ds9799-quest-card {
+  height: 100px;
+  border: solid 1px #f44336;
+  display: flex;
+  border-radius: 4px;
+  padding: 10px;
+}
+.ds9799-quest-card.done {
+  background-color: rgba(0, 255, 0, 0.25);
+  cursor: pointer;
+}
+
+.ds9799-quest-card > .img-wrapper > img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+}
+
+.ds9799-quest-card > .content {
+  flex: 1;
+  padding: 0 10px;
+  position: relative;
+}
+
+.ds9799-quest-card > .content > .title {
+  font-weight: 600;
+}
+
+.ds9799-quest-card > .content > .subtitle {
+  font-size: 12px;
+}
+
+.ds9799-quest-card > .content > .progress {
+  position: absolute;
+  bottom: 0;
+  width: 97%;
+}
+
+.ds9799-quest-card > .content > .quest-info {
+  position: absolute;
+  display: flex;
+  top: -5px;
+  right: 0;
+}
+
+.ds9799-quest-card .quest-info > .icon-wrapper {
+  display: flex;
+}
+
+.ds9799-quest-card .quest-info > .icon-wrapper > img {
+  width: 15px;
+  height: 15px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.ds9799-quest-card .quest-info > .icon-wrapper > .rw {
+}
+
+.ds9799-quest-card .quest-info > .repeatable {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.ds9799-quest-card .quest-info > .repeatable > .fa {
+  font-size: 10px;
+}
+
+.ds9799-quest-card .quest-info > .repeatable > span {
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 5px;
+}

@@ -25,6 +25,50 @@ export default {
     return data;
   },
 
+  /* Admin Characters Manager Services */
+  adminGetCharacters({ query }) {
+    const data = commonGet('darksteam97d99i/characters', null, query);
+    return data;
+  },
+  adminGetCharacterDetail({ id }) {
+    const data = commonGet('darksteam97d99i/characters/detail', [id]);
+    return data;
+  },
+  adminAddCharacter({ formBody }) {
+    const data = commonPost('darksteam97d99i/characters', formBody);
+    return data;
+  },
+  adminEditCharacter({ formBody }) {
+    const data = commonPut('darksteam97d99i/characters', formBody);
+    return data;
+  },
+  adminDeleteCharacter({ id }) {
+    const data = commonDelete('darksteam97d99i/characters/' + id);
+    return data;
+  },
+
+  /* Admin Banking Manager Services */
+  adminGetBankings() {
+    const data = commonGet('darksteam97d99i/banking');
+    return data;
+  },
+  adminEditBanking({ formBody }) {
+    const data = commonPut('darksteam97d99i/banking', formBody);
+    return data;
+  },
+  adminAddBanking({ formBody }) {
+    const data = commonPost('darksteam97d99i/banking', formBody);
+    return data;
+  },
+  adminDeleteBanking({ id }) {
+    const data = commonDelete('darksteam97d99i/banking/' + id);
+    return data;
+  },
+  adminGetBankingsLogs(){
+    const data = commonGet('darksteam97d99i/banking/logs');
+    return data;
+  },
+
   /* App Control Services */
   getGameSetting() {
     const data = commonGet('darksteam97d99i/system/game_setting');
@@ -83,28 +127,7 @@ export default {
     return data;
   },
 
-  /* Character Services */
-  adminGetCharacters({ query }) {
-    const data = commonGet('darksteam97d99i/characters', null, query);
-    return data;
-  },
-  adminGetCharacterDetail({ id }) {
-    const data = commonGet('darksteam97d99i/characters/detail', [id]);
-    return data;
-  },
-  adminAddCharacter({ formBody }) {
-    const data = commonPost('darksteam97d99i/characters', formBody);
-    return data;
-  },
-  adminEditCharacter({ formBody }) {
-    const data = commonPut('darksteam97d99i/characters', formBody);
-    return data;
-  },
-  adminDeleteCharacter({ id }) {
-    const data = commonDelete('darksteam97d99i/characters/' + id);
-    return data;
-  },
-  getCharacters(id) {
+  getCharacters({ id }) {
     const data = commonGet('darksteam97d99i/characters/account', [id]);
     return data;
   },
@@ -116,6 +139,12 @@ export default {
   },
   generateTextFile({ formBody }) {
     const data = commonPost('darksteam97d99i/system/generate_text_file', formBody);
+    return data;
+  },
+
+  /* Banking Services */
+  getBankingLogs({ query }) {
+    const data = commonGet('darksteam97d99i/banking/logs', null, query);
     return data;
   }
 

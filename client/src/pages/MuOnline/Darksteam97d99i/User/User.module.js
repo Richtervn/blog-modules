@@ -1,45 +1,9 @@
+import Promise from 'bluebird';
 import { actionCreator } from 'helpers';
 import services from '../Darksteam97d99i.services';
 import { toastStrong, toastSuccess } from 'common/Toast';
-import socket from 'app/socketInstance';
 
-// const SET_QUEST_LIST = 'darksteam97d99i/webQuest/SET_QUEST_LIST';
-// const REQUEST_QUEST_REWARD = 'darksteam97d99i/webQuest/REQUEST_QUEST_REWARD';
-// export const REFRESH_QUEST_LIST = 'darksteam97d99i/webQuest/REFRESH_QUEST_LIST';
-
-// export const setQuestList = questList => ({ type: SET_QUEST_LIST, questList });
-// export const requestReward = questId => ({ type: REQUEST_QUEST_REWARD, questId });
-// export const refreshQuestList = data => ({ type: REFRESH_QUEST_LIST, data });
-
-// export default (
-//   state = {
-//     questList: null
-//   },
-//   action
-// ) => {
-//   if (action.type == REQUEST_QUEST_REWARD) {
-//     socket.emit('darksteam97d99i/REQUEST_QUEST_REWARD', action.questId);
-//   }
-
-//   switch (action.type) {
-//     case SET_QUEST_LIST:
-//       return { ...state, questList: action.questList };
-//     case REFRESH_QUEST_LIST:
-//       const { data } = action;
-//       state.questList = state.questList.map(quest => {
-//         if (quest._id == data._id) {
-//           return { ...quest, ...data };
-//         }
-//         return quest;
-//       });
-//       return {
-//         ...state,
-//         questList: state.questList.slice(0)
-//       };
-//     default:
-//       return state;
-//   }
-// };
+import { REFRESH_QUEST_LIST } from './WebQuest/WebQuest.module';
 
 export const userPages = [
   { name: 'Dash Board', route: 'dashboard', icon: 'dashboard' },
@@ -62,12 +26,40 @@ const EDIT_PROFILE = 'ds9799_user/EDIT_PROFILE';
 
 const SET_FOCUS_CHARACTER = 'ds9799_user/SET_FOCUS_CHARACTER';
 
-export const login = formBody => actionCreator(LOGIN, services.login, { payload: { formBody } })();
+const socketInitialize = (socket, memb___id) => {
+  return new Promise(resolve => {
+    socket.emit('darksteam97d99i/USER_LOGGED_IN', memb___id);
+    socket.once('darksteam97d99i/USER_WEB_QUEST_INITIALIZED', () => {
+      return resolve();
+    });
+  });
+};
+
+export const login = formBody =>
+  actionCreator(LOGIN, services.login, {
+    payload: { formBody },
+    onBeforeSuccess: async ({ data, socket }) => {
+      await socketInitialize(socket, data.memb___id);
+    }
+  })();
+export const getCurrentUser = () =>
+  actionCreator(GET_CURRENT_USER, services.getCurrentUser, {
+    onBeforeSuccess: async ({ data, socket }) => {
+      if (data.memb___id) {
+        await socketInitialize(socket, data.memb___id);
+      }
+    }
+  })();
 export const register = formBody => actionCreator(REGISTER, services.register, { payload: { formBody } })();
 export const recoverPassword = id => actionCreator(RECOVER_PASSWORD, services.recoverPassword, { payload: { id } })();
-export const getCurrentUser = () => actionCreator(GET_CURRENT_USER, services.getCurrentUser)();
 export const getCharacters = id => actionCreator(GET_CHARACTERS, services.getCharacters, { payload: { id } })();
-export const editProfile = formBody => actionCreator(EDIT_PROFILE, services.editProfile, { payload: { formBody } })();
+export const editProfile = formBody =>
+  actionCreator(EDIT_PROFILE, services.editProfile, {
+    payload: { formBody },
+    onAfterSuccess({ socket }) {
+      socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ01');
+    }
+  })();
 
 export const setFocusCharacter = name => ({ type: SET_FOCUS_CHARACTER, name });
 
@@ -76,22 +68,11 @@ const initialState = {
   lostPassword: '',
   isCheckedCurrentUser: false,
   characters: null,
-  focusCharacter: null
+  focusCharacter: null,
+  questList: null
 };
 
 export default (state = initialState, action) => {
-  switch (action.type) {
-    case `${LOGIN}_SUCCESS`:
-    case `${GET_CURRENT_USER}_SUCCESS`:
-      socket.emit('darksteam97d99i/USER_LOGGED_IN', action.payload.memb___id);
-      break;
-    case `${EDIT_PROFILE}_SUCCESS`:
-      socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ01');
-      break;
-    default:
-      break;
-  }
-
   switch (action.type) {
     case `${LOGIN}_SUCCESS`:
       toastStrong(action.payload.memb___id, 'Welcome');
@@ -105,9 +86,8 @@ export default (state = initialState, action) => {
       return { ...state, lostPassword: action.payload.memb__pwd };
     case `${GET_CURRENT_USER}_SUCCESS`:
       if (!action.payload.memb___id) {
-        return { state, isCheckedCurrentUser: true };
+        return { ...state, isCheckedCurrentUser: true };
       }
-      socket.emit('darksteam97d99i/USER_LOGGED_IN', action.payload.memb___id);
       return { ...state, user: action.payload, isCheckedCurrentUser: true };
     case `${GET_CHARACTERS}_SUCCESS`:
       return {
@@ -121,6 +101,24 @@ export default (state = initialState, action) => {
 
     case SET_FOCUS_CHARACTER:
       return { ...state, focusCharacter: action.name };
+
+    case REFRESH_QUEST_LIST: {
+      const nextState = { ...state };
+      if (action.data.credits) {
+        nextState.user.MembCredits.credits = action.data.credits;
+      }
+      if (action.payload.zen_balance) {
+        nextState.user.Banking.zen_balance = action.data.zen_balance;
+      }
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          Credits: { ...nextState.user.MembCredits },
+          Banking: { ...nextState.user.Banking }
+        }
+      };
+    }
 
     default:
       return state;
@@ -180,9 +178,6 @@ export default (state = initialState, action) => {
 
 // export default (state = initialState, action) => {
 //   switch (action.type) {
-//     case LOGIN_SUCCESS:
-//       socket.emit('darksteam97d99i/USER_LOGGED_IN', action.payload.memb___id);
-//       break;
 
 //     case BUY_VIP_SUCCESS:
 //       if (packageType == 'Character') socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ10');
@@ -303,23 +298,7 @@ export default (state = initialState, action) => {
 
 //     case LOGOUT:
 //       return { ...initialState };
-//     case REFRESH_QUEST_LIST: {
-//       const nextState = { ...state };
-//       if (action.payload.credits) {
-//         nextState.user.MembCredits.credits = action.payload.credits;
-//       }
-//       if (action.payload.zen_balance) {
-//         nextState.user.Banking.zen_balance = action.payload.zen_balance;
-//       }
-//       return {
-//         ...state,
-//         user: {
-//           ...state.user,
-//           Credits: { ...state.user.MembCredits },
-//           Banking: { ...state.user.Banking }
-//         }
-//       };
-//     }
+
 //     default:
 //       return state;
 //   }

@@ -1,0 +1,36 @@
+#ds9799-banking-manager {
+  display: flex;
+}
+
+#ds9799-banking-manager > .side-col > .banking-card {
+  color: black;
+  margin: 10px 0 10px;
+  border: solid 1px #f44336;
+  border-radius: 4px;
+  font-size: 14px;
+  background: white;
+}
+
+
+#ds9799-banking-manager > .side-col > .banking-card > .label {
+  color: #fff;
+  background: #f44336;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+#ds9799-banking-manager > .side-col > .banking-card > .content {
+  padding: 10px;
+}
+
+#ds9799-banking-manager > .side-col > .banking-card .row-wrapper {
+  display: flex;
+}
+
+#ds9799-banking-manager > .side-col > .banking-card .title-col {
+  width: 40%;
+  text-align: right;
+  font-weight: 600;
+  margin-right: 10px;
+}

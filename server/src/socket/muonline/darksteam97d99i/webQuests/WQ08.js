@@ -48,6 +48,7 @@ export default class WQ08 {
 			reward,
 			reward_unit,
 			isDone,
+			progress: isDone ? 100 : 0,
 			isJumpStep,
 			rules,
 			status

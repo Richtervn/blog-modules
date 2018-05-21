@@ -28,32 +28,32 @@ export default (type, process, options = {}) => {
   };
 
   const action = () => {
-    return async (dispatch, getState) => {
+    return async (dispatch, getState, socket) => {
       if (onBeforeStart) {
-        await onBeforeStart({ payload, dispatch, getState });
+        await onBeforeStart({ payload, dispatch, getState, socket });
       }
       dispatch(actionStart());
       if (onAfterStart) {
-        await onAfterStart({ payload, dispatch, getState });
+        await onAfterStart({ payload, dispatch, getState, socket });
       }
 
       if (transformPayload) {
-        payload = await transformPayload({ payload, dispatch, getState });
+        payload = await transformPayload({ payload, dispatch, getState, socket });
       }
 
       if (validate) {
-        const isValid = validate({ payload, dispatch, getState });
+        const isValid = validate({ payload, dispatch, getState, socket });
         if (!isValid) {
           return;
         }
       }
 
       if (preProcess) {
-        await preProcess({ payload, dispatch, getState });
+        await preProcess({ payload, dispatch, getState, socket });
       }
 
       try {
-        let data = await process(payload);
+        let data = await process(payload, { dispatch, getState, socket });
 
         if (data && data.message) {
           return dispatch(actionFail(data.message));
@@ -63,11 +63,11 @@ export default (type, process, options = {}) => {
           data = transformData({ data, getState });
         }
         if (onBeforeSuccess) {
-          await onBeforeSuccess({ data, dispatch, getState });
+          await onBeforeSuccess({ data, dispatch, getState, socket });
         }
         dispatch(actionSuccess(data));
         if (onAfterSuccess) {
-          await onAfterSuccess({ data, dispatch, getState });
+          await onAfterSuccess({ data, dispatch, getState, socket });
         }
       } catch (e) {
         console.log(e);

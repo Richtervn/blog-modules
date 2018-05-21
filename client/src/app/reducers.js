@@ -24,7 +24,8 @@ import {
   ds9799_appControl,
   ds9799_user,
   ds9799_introduction,
-  ds9799_server
+  ds9799_server,
+  ds9799_webQuest
 } from 'pages/MuOnline/Darksteam97d99i';
 
 export default combineReducers({
@@ -37,6 +38,7 @@ export default combineReducers({
   ds9799_introduction,
   ds9799_user,
   ds9799_server,
+  ds9799_webQuest,
   endedManga,
   flashGames,
   gamingHistory,

@@ -11,6 +11,7 @@ export default (models, client, methods, helpers) => {
     webQuestWorker = new WebQuestWorkers(client, models, methods, helpers);
     try {
       await webQuestWorker.initial(memb___id);
+      client.emit('darksteam97d99i/USER_WEB_QUEST_INITIALIZED');
     } catch (e) {
       console.error(e);
     }
@@ -34,5 +35,9 @@ export default (models, client, methods, helpers) => {
     } catch (e) {
       console.error(e);
     }
+  });
+
+  client.on('disconnect', () => {
+    webQuestWorker = null;
   });
 };

@@ -1,0 +1,13 @@
+#ds9799-web-quest {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+}
+
+#ds9799-web-quest > .wrapper {
+  width: 50%;
+  padding: 0px 10px 0 0;
+  margin-bottom: 10px;
+}

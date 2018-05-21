@@ -5,6 +5,7 @@ import { Ds9799Page } from '../components';
 
 import { AccountsManager } from './AccountsManager';
 import { CharactersManager } from './CharactersManager';
+import { BankingManager } from './BankingManager';
 
 import { adminPages } from './Admin.module';
 const availableAdminPages = _.pluck(adminPages, 'route');
@@ -28,6 +29,7 @@ class Admin extends Component {
       <Ds9799Page>
         {pageParam === 'accounts_manager' && <AccountsManager />}
         {pageParam === 'characters_manager' && <CharactersManager />}
+        {pageParam === 'banking_manager' && <BankingManager />}
       </Ds9799Page>
     );
   }

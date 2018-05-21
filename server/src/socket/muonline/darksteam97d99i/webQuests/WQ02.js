@@ -74,7 +74,7 @@ export default class WQ02 {
       rules
     };
     result.reward = this.currentReward;
-    result.requirement = this.requirement;
+    result.requirement = this.currentRequirement;
 
     return result;
   }

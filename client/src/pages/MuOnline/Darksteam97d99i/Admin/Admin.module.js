@@ -4,7 +4,8 @@ import { toastStrong } from 'common/Toast';
 
 export const adminPages = [
   { name: 'Accounts Manager', icon: 'user', route: 'accounts_manager' },
-  { name: 'Characters Manager', icon: 'users', route: 'characters_manager' }
+  { name: 'Characters Manager', icon: 'users', route: 'characters_manager' },
+  { name: 'Banking Manager', icon: 'bank', route: 'banking_manager' }
 ];
 
 const GET_ACCOUNTS = 'darksteam97d99i/Admin/GET_ACCOUNTS';
@@ -23,7 +24,9 @@ const DELETE_CHARACTER = 'darksteam97d99i/Admin/DELETE_CHARACTER';
 const SEARCH_CHARACTER = 'darksteam97d99i/Admin/SEARCH_CHARACTER';
 const CLEAR_CHARACTER_DETAIL = 'darksteam97d99i/Admin/CLEAR_CHARACTER_DETAIL';
 
-export const getAccounts = () => actionCreator(GET_ACCOUNTS, services.adminGetAccounts)();
+const GET_BANKINGS = 'darksteam97d99i/Admin/GET_BANKINGS';
+
+export const getAccounts = () => actionCreator(GET_ACCOUNTS, services.adminGetAccounts, { payload: { query: {} } })();
 export const getAccountDetail = id =>
   actionCreator(GET_ACCOUNT_DETAIL, services.adminGetAccountDetail, { payload: { id } })();
 export const searchAccounts = query =>
@@ -34,7 +37,8 @@ export const editAccount = formBody =>
 export const deleteAccount = id => actionCreator(DELETE_ACCOUNT, services.adminDeleteAccount, { payload: { id } })();
 export const clearAccountDetail = () => ({ type: CLEAR_ACCOUNT_DETAIL });
 
-export const getCharacters = () => actionCreator(GET_CHARACTERS, services.adminGetCharacters)();
+export const getCharacters = () =>
+  actionCreator(GET_CHARACTERS, services.adminGetCharacters, { payload: { query: {} } })();
 export const getCharacterDetail = id =>
   actionCreator(GET_CHARACTER_DETAIL, services.adminGetCharacterDetail, { payload: { id } })();
 export const searchCharacters = query =>
@@ -47,11 +51,14 @@ export const deleteCharacter = id =>
   actionCreator(DELETE_CHARACTER, services.adminDeleteCharacter, { payload: { id } })();
 export const clearCharacterDetail = () => ({ type: CLEAR_CHARACTER_DETAIL });
 
+export const getBankings = () => actionCreator(GET_BANKINGS, services.adminGetBankings)();
+
 const initialState = {
   accounts: null,
   accountDetail: {},
   characters: null,
-  characterDetail: {}
+  characterDetail: {},
+  bankings: null
 };
 
 export default (state = initialState, action) => {
@@ -93,6 +100,9 @@ export default (state = initialState, action) => {
       return { ...state, characters: state.characters.slice(0), characterDetail: {} };
     case CLEAR_CHARACTER_DETAIL:
       return { ...state, characterDetail: {} };
+
+    case `${GET_BANKINGS}_SUCCESS`:
+      return { ...state, bankings: action.payload };
 
     default:
       return state;
