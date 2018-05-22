@@ -18,7 +18,15 @@ class BankingManager extends Component {
   }
 
   render() {
-    const { characters, gameSetting, focusCharacter, onSetFocusCharacter, banking } = this.props;
+    const {
+      userId,
+      characters,
+      gameSetting,
+      focusCharacter,
+      onSetFocusCharacter,
+      zen_balance,
+      loan_money
+    } = this.props;
 
     if (!characters || !gameSetting) {
       return <ContainerLoader />;
@@ -39,18 +47,18 @@ class BankingManager extends Component {
         <BankingFeature />
         <div className="side-col">
           <div className="banking-card">
-            <div className="label">{banking.memb___id}</div>
+            <div className="label">{userId}</div>
             <div className="content">
               <div className="row-wrapper">
                 <div className="title-col">Zen Balance :</div>
                 <div className="desc-col">
-                  <b>{banking.zen_balance.toLocaleString()}</b> Zen
+                  <b>{zen_balance.toLocaleString()}</b> Zen
                 </div>
               </div>
               <div className="row-wrapper">
                 <div className="title-col">Loan :</div>
                 <div className="desc-col">
-                  <b>{banking.loan_money.toLocaleString()}</b> Zen
+                  <b>{loan_money.toLocaleString()}</b> Zen
                 </div>
               </div>
             </div>

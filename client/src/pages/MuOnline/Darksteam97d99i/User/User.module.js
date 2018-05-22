@@ -1,9 +1,8 @@
+import _ from 'underscore';
 import Promise from 'bluebird';
 import { actionCreator } from 'helpers';
 import services from '../Darksteam97d99i.services';
 import { toastStrong, toastSuccess } from 'common/Toast';
-
-import { REFRESH_QUEST_LIST } from './WebQuest/WebQuest.module';
 
 export const userPages = [
   { name: 'Dash Board', route: 'dashboard', icon: 'dashboard' },
@@ -17,14 +16,12 @@ export const userPages = [
   { name: 'Blacksmith', route: 'blacksmith', icon: 'gavel' }
 ];
 
-const LOGIN = 'ds9799_user/LOGIN';
+export const LOGIN = 'ds9799_user/LOGIN';
 export const REGISTER = 'ds9799_user/REGISTER';
 const RECOVER_PASSWORD = 'ds9799_user/RECOVER_PASSWORD';
 const GET_CURRENT_USER = 'ds9799_user/GET_CURRENT_USER';
-const GET_CHARACTERS = 'ds9799_user/GET_CHARACTERS';
-const EDIT_PROFILE = 'ds9799_user/EDIT_PROFILE';
 
-const SET_FOCUS_CHARACTER = 'ds9799_user/SET_FOCUS_CHARACTER';
+const EDIT_PROFILE = 'ds9799_user/EDIT_PROFILE';
 
 const socketInitialize = (socket, memb___id) => {
   return new Promise(resolve => {
@@ -40,19 +37,21 @@ export const login = formBody =>
     payload: { formBody },
     onBeforeSuccess: async ({ data, socket }) => {
       await socketInitialize(socket, data.memb___id);
+    },
+    onAfterSuccess: ({ payload }) => {
+      window.localStorage.setItem('ds9799User', JSON.stringify(payload.formBody));
     }
   })();
 export const getCurrentUser = () =>
-  actionCreator(GET_CURRENT_USER, services.getCurrentUser, {
-    onBeforeSuccess: async ({ data, socket }) => {
-      if (data.memb___id) {
-        await socketInitialize(socket, data.memb___id);
-      }
+  actionCreator(GET_CURRENT_USER, (payload, { dispatch }) => {
+    const formBody = window.localStorage.getItem('ds9799User');
+    if (formBody) {
+      dispatch(login(JSON.parse(formBody)));
     }
   })();
 export const register = formBody => actionCreator(REGISTER, services.register, { payload: { formBody } })();
 export const recoverPassword = id => actionCreator(RECOVER_PASSWORD, services.recoverPassword, { payload: { id } })();
-export const getCharacters = id => actionCreator(GET_CHARACTERS, services.getCharacters, { payload: { id } })();
+
 export const editProfile = formBody =>
   actionCreator(EDIT_PROFILE, services.editProfile, {
     payload: { formBody },
@@ -61,14 +60,10 @@ export const editProfile = formBody =>
     }
   })();
 
-export const setFocusCharacter = name => ({ type: SET_FOCUS_CHARACTER, name });
-
 const initialState = {
   user: null,
   lostPassword: '',
   isCheckedCurrentUser: false,
-  characters: null,
-  focusCharacter: null,
   questList: null
 };
 
@@ -76,49 +71,17 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case `${LOGIN}_SUCCESS`:
       toastStrong(action.payload.memb___id, 'Welcome');
+      return { ...state, user: _.omit(action.payload, ['Banking', 'MembCredits']), isCheckedCurrentUser: true };
 
-      return { ...state, user: action.payload };
     case `${REGISTER}_SUCCESS`:
       toastStrong('Register successful');
       return { ...state, isRegistered: true };
     case `${RECOVER_PASSWORD}_SUCCESS`:
       toastSuccess('Password recovered');
       return { ...state, lostPassword: action.payload.memb__pwd };
-    case `${GET_CURRENT_USER}_SUCCESS`:
-      if (!action.payload.memb___id) {
-        return { ...state, isCheckedCurrentUser: true };
-      }
-      return { ...state, user: action.payload, isCheckedCurrentUser: true };
-    case `${GET_CHARACTERS}_SUCCESS`:
-      return {
-        ...state,
-        characters: action.payload,
-        focusCharacter: action.payload.length > 0 ? action.payload[0].Name : null
-      };
     case `${EDIT_PROFILE}_SUCCESS`:
       toastSuccess('Profile Updated');
       return { ...state, user: { ...state.user, ...action.payload } };
-
-    case SET_FOCUS_CHARACTER:
-      return { ...state, focusCharacter: action.name };
-
-    case REFRESH_QUEST_LIST: {
-      const nextState = { ...state };
-      if (action.data.credits) {
-        nextState.user.MembCredits.credits = action.data.credits;
-      }
-      if (action.payload.zen_balance) {
-        nextState.user.Banking.zen_balance = action.data.zen_balance;
-      }
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          Credits: { ...nextState.user.MembCredits },
-          Banking: { ...nextState.user.Banking }
-        }
-      };
-    }
 
     default:
       return state;
@@ -133,10 +96,7 @@ export default (state = initialState, action) => {
 // import { CHANGE_USER_PAGE } from './navigator';
 
 // import {
-//   ADD_POINT_SUCCESS,
-//   RESET_SUCCESS,
-//   GRAND_RESET_SUCCESS,
-//   RESET_QUEST_SUCCESS,
+
 //   DEPOSIT_SUCCESS,
 //   WITHDRAW_SUCCESS,
 //   TRANSFER_SUCCESS,
@@ -192,28 +152,6 @@ export default (state = initialState, action) => {
 //       break;
 //   }
 
-//   switch (action.type) {
-//     case LOGIN_SUCCESS:
-//       toast.success(`Welcome ${action.payload.memb___id}`, {
-//         position: toast.POSITION.BOTTOM_LEFT,
-//         className: 'toast-success'
-//       });
-//       return {
-//         ...state,
-//         user: action.payload,
-//         viewControl: { ...state.viewControl, userPage: 'Dash Board' }
-//       };
-//     case LOGIN_FAIL:
-//       return { ...state, errorLogin: action.error };
-//     case REGISTER_SUCCESS:
-//       toast.success(`Registerd New User`, {
-//         position: toast.POSITION.BOTTOM_LEFT,
-//         className: 'toast-success'
-//       });
-//       return state;
-//     case REGISTER_FAIL:
-//       return { ...state, errorRegister: action.error };
-
 //     case UPGRADE_ITEM_SUCCESS:
 //     case SELL_RECEIPT_SUCCESS:
 //     case CRAFT_ITEM_SUCCESS:
@@ -228,32 +166,6 @@ export default (state = initialState, action) => {
 //           MembCredits: { ...state.user.MembCredits, credits: action.payload.credits }
 //         }
 //       };
-
-//     case RESET_QUEST_SUCCESS:
-//     case ADD_POINT_SUCCESS:
-//       if (action.payload.isUseBank == 'true') {
-//         return {
-//           ...state,
-//           user: {
-//             ...state.user,
-//             Banking: { ...state.user.Banking, zen_balance: action.payload.zen_balance }
-//           }
-//         };
-//       }
-//       return state;
-//     case GRAND_RESET_SUCCESS:
-//     case RESET_SUCCESS:
-//       if (action.payload.isUseBank == 'true') {
-//         return {
-//           ...state,
-//           user: {
-//             ...state.user,
-//             Banking: { ...state.user.Banking, zen_balance: action.payload.zen_balance },
-//             MembCredits: { ...state.user.MembCredits, credits: action.payload.credits }
-//           }
-//         };
-//       }
-//       return state;
 
 //     case DEPOSIT_SUCCESS:
 //       return {

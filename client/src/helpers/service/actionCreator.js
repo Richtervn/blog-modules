@@ -60,14 +60,14 @@ export default (type, process, options = {}) => {
         }
 
         if (transformData) {
-          data = transformData({ data, getState });
+          data = transformData({ payload, data, getState });
         }
         if (onBeforeSuccess) {
-          await onBeforeSuccess({ data, dispatch, getState, socket });
+          await onBeforeSuccess({ payload, data, dispatch, getState, socket });
         }
         dispatch(actionSuccess(data));
         if (onAfterSuccess) {
-          await onAfterSuccess({ data, dispatch, getState, socket });
+          await onAfterSuccess({ payload, data, dispatch, getState, socket });
         }
       } catch (e) {
         console.log(e);

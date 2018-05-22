@@ -16,15 +16,15 @@ export default class WQ02 {
     return { isDone };
   }
 
-  async checkPoint() {
-    this.baseRecord.checkpoint += 1;
-    this.baseRecord.progress = this.baseRecord.checkpoint / 10 * 100;
-
-    await this.baseRecord.update({
-      checkpoint: this.baseRecord.checkpoint,
-      progress: this.baseRecord.progress
-    });
-
+  async checkPoint(amount) {
+    if (parseInt(amount) > this.currentRequirement) {
+      this.baseRecord.checkpoint += 1;
+      this.baseRecord.progress = this.baseRecord.checkpoint / 10 * 100;
+      await this.baseRecord.update({
+        checkpoint: this.baseRecord.checkpoint,
+        progress: this.baseRecord.progress
+      });
+    }
     return { _id: 'WQ02', progress: this.baseRecord.progress };
   }
 

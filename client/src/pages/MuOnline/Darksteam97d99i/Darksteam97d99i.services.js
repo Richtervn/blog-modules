@@ -64,7 +64,7 @@ export default {
     const data = commonDelete('darksteam97d99i/banking/' + id);
     return data;
   },
-  adminGetBankingsLogs(){
+  adminGetBankingsLogs() {
     const data = commonGet('darksteam97d99i/banking/logs');
     return data;
   },
@@ -146,24 +146,26 @@ export default {
   getBankingLogs({ query }) {
     const data = commonGet('darksteam97d99i/banking/logs', null, query);
     return data;
+  },
+
+  /* Character Services */
+  addPoint({ query }) {
+    const data = commonGet('darksteam97d99i/characters/add_points', null, query);
+    return data;
+  },
+  reset({ query }) {
+    const data = commonGet('darksteam97d99i/characters/reset', null, query);
+    return data;
+  },
+  grandReset({ query }) {
+    const data = commonGet('darksteam97d99i/characters/grand_reset', null, query);
+    return data;
+  },
+  resetQuest({ query }) {
+    const data = commonGet('darksteam97d99i/characters/quest_reset', null, query);
+    return data;
   }
 
-  // addPoint(query) {
-  //   const data = commonGet('mu/darksteam97d99i/characters/add_point', null, query);
-  //   return data;
-  // },
-  // reset(query) {
-  //   const data = commonGet('mu/darksteam97d99i/characters/reset', null, query);
-  //   return data;
-  // },
-  // grandReset(query) {
-  //   const data = commonGet('mu/darksteam97d99i/characters/grand_reset', null, query);
-  //   return data;
-  // },
-  // resetQuest(query) {
-  //   const data = commonGet('mu/darksteam97d99i/characters/quest_reset', null, query);
-  //   return data;
-  // },
   // deposit(query) {
   //   const data = commonGet('mu/darksteam97d99i/banking/deposit', null, query);
   //   return data;

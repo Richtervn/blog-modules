@@ -16,11 +16,11 @@ export const toastError = message => {
   });
 };
 
-export const toastStrong = (boldText = 'Added', prefix) => {
+export const toastStrong = (boldText = 'Added', prefix, surfix) => {
   toast.success(
     () => (
       <p>
-        {prefix}&nbsp;<strong>{boldText}</strong>
+        {prefix}&nbsp;<strong>{boldText}</strong>&nbsp;{surfix && surfix}
       </p>
     ),
     {

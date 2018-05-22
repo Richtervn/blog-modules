@@ -68,13 +68,7 @@ class CharacterDetail extends Component {
   }
 
   render() {
-    const {
-      character
-      // onClearAddPointError,
-      // onClearResetError,
-      // onClearResetQuestError,
-      // onClearGrandResetError
-    } = this.props;
+    const { character } = this.props;
 
     if (!character) {
       return <div>No Character</div>;
@@ -102,7 +96,6 @@ class CharacterDetail extends Component {
                   onChange={this.handleChange}
                   value={this.state.Strength}
                 />
-
                 <i className="fa fa-plus-square" onClick={() => this.addPoint('Strength')} />
               </div>
             </div>
@@ -117,7 +110,6 @@ class CharacterDetail extends Component {
                   onChange={this.handleChange}
                   value={this.state.Dexterity}
                 />
-
                 <i className="fa fa-plus-square ds9799-character-button" onClick={() => this.addPoint('Dexterity')} />
               </div>
             </div>
@@ -133,7 +125,6 @@ class CharacterDetail extends Component {
                   onChange={this.handleChange}
                   value={this.state.Vitality}
                 />
-
                 <i className="fa fa-plus-square" onClick={() => this.addPoint('Vitality')} />
               </div>
             </div>
@@ -148,7 +139,6 @@ class CharacterDetail extends Component {
                   value={this.state.Energy}
                   name="Energy"
                 />
-
                 <i className="fa fa-plus-square" onClick={() => this.addPoint('Energy')} />
               </div>
             </div>
