@@ -6,9 +6,9 @@ export default (models, methods, factories, helpers) => {
   const { wrap, commonSequelize } = factories;
 
   router.get(
-    '/logs',
-    wrap(async ({ query }, res, next) => {
-      const logs = await commonSequelize.getAll(UserCreditsLog, query);
+    '/user_logs/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const logs = await commonSequelize.getAll(UserCreditsLog, { memb___id: id });
       res.send(logs);
     })
   );

@@ -52,7 +52,6 @@ export default async (models, query, GameSetting, bankProfitLog) => {
 
   return {
     Money,
-    zen_balance: updateBankForm.zen_balance,
     loan_money: updateBankForm.loan_money,
     Name: character.Name
   };

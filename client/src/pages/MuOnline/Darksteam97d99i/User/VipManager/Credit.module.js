@@ -1,4 +1,4 @@
-import { actionCreator, formatNumber } from 'helpers';
+import { actionCreator } from 'helpers';
 import services from '../../Darksteam97d99i.services';
 
 import { LOGIN } from '../User.module';

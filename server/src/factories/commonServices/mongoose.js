@@ -2,6 +2,7 @@ import fs from 'fs';
 import Promise from 'bluebird';
 import moment from 'moment';
 import deleteFile from '../utils/deleteFile';
+import config from '../../config.json';
 
 export default {
   create: async (model, body, arrayFields) => {
@@ -53,7 +54,7 @@ export default {
     if (linkFields) {
       await Promise.map(linkFields, field => {
         if (updateForm[field] && updateForm[field] !== 'null' && doc[field]) {
-          if (updateForm[field] !== doc[field]) {
+          if (updateForm[field].replace(`http://localhost:${config.port}`, './public') !== doc[field]) {
             return deleteFile(doc[field]);
           }
           return;

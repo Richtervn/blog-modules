@@ -50,7 +50,7 @@ export default async (models, query, GameSetting) => {
 
   return {
     credits: membCredits.credits + amount,
-    zen_balance: banking.zen_balance - charged,
+    zen_balance: banking.zen_balance,
     Name: character.Name
   };
 };

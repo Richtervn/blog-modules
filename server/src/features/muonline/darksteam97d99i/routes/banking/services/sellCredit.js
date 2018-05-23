@@ -26,7 +26,7 @@ export default async (models, query, GameSetting) => {
     return { message: `You don't have enough credits to sell` };
   }
 
-  const charged = amount * CREDIT_PRICE.sell;
+  const charged = parseInt(amount) * CREDIT_PRICE.sell;
 
   const [userBankingLog, userCreditsLog] = [
     await UserBankingLog.create({
@@ -47,7 +47,7 @@ export default async (models, query, GameSetting) => {
 
   return {
     credits: membCredits.credits - amount,
-    zen_balance: banking.zen_balance + charged,
+    zen_balance: banking.zen_balance,
     Name: character.Name
   };
 };

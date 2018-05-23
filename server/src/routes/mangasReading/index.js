@@ -39,8 +39,9 @@ export default (MangasReading, factories) => {
     wrap(async ({ files, body }, res, next) => {
       const coverUri = commonService.uploadImage(files, './public/Mangas Reading');
       if (coverUri) body.CoverUri = coverUri;
+
       const manga = await commonService.update(MangasReading, body, ['Aka', 'Authors', 'Genre'], ['CoverUri']);
-      res.send(manga);
+      // res.send(manga);
     })
   );
 
