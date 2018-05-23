@@ -1,6 +1,7 @@
 import './QuestCard.css';
 import React from 'react';
 import classnames from 'classnames';
+import { formatNumber } from 'helpers';
 
 export default ({ quest, icon, onRequestReward }) => (
   <div
@@ -28,7 +29,7 @@ export default ({ quest, icon, onRequestReward }) => (
             src={quest.reward_unit === 'Credits' ? '/images/icons/cash.png' : '/images/icons/gold-coins.png'}
             alt="reward-type"
           />
-          <div className={quest.reward_unit === 'Credits' ? 'rw credits' : 'rw zen'}>{quest.reward.toLocaleString()}</div>
+          <div className={quest.reward_unit === 'Credits' ? 'rw credits' : 'rw zen'}>{formatNumber(quest.reward)}</div>
         </div>
         {quest.isRepeatable && (
           <div className="repeatable">

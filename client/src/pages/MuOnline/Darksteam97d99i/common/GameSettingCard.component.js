@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { InfoHeaderCard } from 'components/Cards';
+import { formatNumber } from 'helpers';
 
 class GameSettingCard extends Component {
   componentWillMount() {
@@ -17,11 +18,11 @@ class GameSettingCard extends Component {
       <InfoHeaderCard key="pr_c" label="Promotions">
         <div>
           <strong>New account rewarded : </strong>
-          {`${gameSetting.NEW_REGISTER_CREDIT.toLocaleString()} Credits`}
+          {`${formatNumber(gameSetting.NEW_REGISTER_CREDIT)} Credits`}
         </div>
         <div>
           <strong>New account rewarded : </strong>
-          {`${gameSetting.NEW_REGISTER_ZEN.toLocaleString()} Zen`}
+          {`${formatNumber(gameSetting.NEW_REGISTER_ZEN)} Zen`}
         </div>
       </InfoHeaderCard>
     );

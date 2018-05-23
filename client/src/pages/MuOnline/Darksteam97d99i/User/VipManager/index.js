@@ -1,3 +1,4 @@
 import ds9799_credit from './Credit.module';
+import CreditLogs from './CreditLogs.container';
 
-export { ds9799_credit };
+export { CreditLogs, ds9799_credit };

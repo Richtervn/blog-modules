@@ -1,7 +1,5 @@
-export default (number, seperator) => {
-  let formatedNumber = number.toLocaleString();
-  if (seperator) {
-    formatedNumber = formatedNumber.replace(/./g, seperator);
-  }
-  return formatedNumber;
+import numeral from 'numeral';
+
+export default number => {
+  return numeral(number).format('0,0');
 };

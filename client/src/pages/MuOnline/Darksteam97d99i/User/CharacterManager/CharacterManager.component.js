@@ -1,6 +1,7 @@
 import './CharacterManager.css';
 import React, { Component } from 'react';
 import { ContainerLoader } from 'common/Loaders';
+import { formatNumber } from 'helpers';
 
 import CharacterCard from '../../components/CharacterCard';
 import CharacterDetail from './CharacterDetail.container';
@@ -57,27 +58,27 @@ class CharacterManager extends Component {
           <ul>
             {ADD_POINT_FEE && (
               <li>
-                Add point cost: <b>{ADD_POINT_FEE.toLocaleString()}</b> Zen per time.
+                Add point cost: <b>{formatNumber(ADD_POINT_FEE)}</b> Zen per time.
               </li>
             )}
             {RESET_FEE && (
               <li>
-                Reset cost: <b>{RESET_FEE.toLocaleString()}</b> Zen per time.
+                Reset cost: <b>{formatNumber(RESET_FEE)}</b> Zen per time.
               </li>
             )}
             {QUEST_RESET_FEE && (
               <li>
-                Quest reset cost: <b>{QUEST_RESET_FEE.toLocaleString()}</b> Zen per time.
+                Quest reset cost: <b>{formatNumber(QUEST_RESET_FEE)}</b> Zen per time.
               </li>
             )}
             {GRAND_RESET_FEE && (
               <li>
-                Grand reset cost: <b>{GRAND_RESET_FEE.toLocaleString()}</b> Zen per time.
+                Grand reset cost: <b>{formatNumber(GRAND_RESET_FEE)}</b> Zen per time.
               </li>
             )}
             {CHANGE_NAME_FEE && (
               <li>
-                Change name cost: <b>{CHANGE_NAME_FEE.toLocaleString()}</b> Zen per time.
+                Change name cost: <b>{formatNumber(CHANGE_NAME_FEE)}</b> Zen per time.
               </li>
             )}
           </ul>

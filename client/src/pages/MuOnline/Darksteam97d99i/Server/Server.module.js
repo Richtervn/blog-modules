@@ -8,7 +8,8 @@ export const serverPages = [
   { name: 'Shops Editor', icon: 'shopping-cart', route: 'shops_editor' },
   { name: 'Game Setting', icon: 'gear', route: 'game_setting' },
   { name: 'Server Info', icon: 'info-circle', route: 'server_info' },
-  { name: 'Banking Logs', icon: 'bank', route: 'banking_logs' }
+  { name: 'Banking Logs', icon: 'bank', route: 'banking_logs' },
+  { name: 'Web Quests Editor', icon: 'diamond', route: 'web_quests_editor' }
 ];
 
 const GET_DATA = 'darksteam97d99i/server/GET_DATA';

@@ -1,0 +1,60 @@
+#ds9799-banking-logs {
+  width: 100%;
+  background: #fff;
+  color: #000;
+  border: solid 1px #f44336;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#ds9799-banking-logs > .label {
+  background: #f44336;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+#ds9799-banking-logs .logs-table {
+  margin: 10px auto;
+  width: 95%;
+  border: solid 1px rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
+}
+
+#ds9799-banking-logs .logs-table > .logs-table-row {
+  display: flex;
+  text-align: center;
+  padding: 5px;
+}
+
+#ds9799-banking-logs .logs-table > .logs-table-row:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#ds9799-banking-logs .logs-table > .logs-table-row.header {
+  background: #f44336;
+  font-weight: 700;
+  color: #fff;
+}
+
+#ds9799-banking-logs .logs-table > .logs-table-row > .time-col {
+  flex: 1.5;
+}
+
+#ds9799-banking-logs .logs-table > .logs-table-row > .description-col {
+  flex: 1;
+}
+
+#ds9799-banking-logs .logs-table > .logs-table-row > .balance-col {
+  flex: 1;
+}
+
+#ds9799-banking-logs .logs-table > .logs-table-row > .balance-col.add {
+  color: #02a502;
+}
+
+#ds9799-banking-logs .logs-table > .logs-table-row > .balance-col.minus {
+  color: #f44336;
+}

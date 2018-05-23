@@ -1,10 +1,12 @@
 import './BankingManager.css';
 import React, { Component } from 'react';
+import { formatNumber } from 'helpers';
 
 import { ContainerLoader } from 'common/Loaders';
 import CharacterCard from '../../components/CharacterCard';
 import BankingFeature from './BankingFeature.container';
 import BankingRule from './BankingRule.container';
+import BankingLogs from './BankingLogs.container';
 
 class BankingManager extends Component {
   componentWillMount() {
@@ -52,18 +54,21 @@ class BankingManager extends Component {
               <div className="row-wrapper">
                 <div className="title-col">Zen Balance :</div>
                 <div className="desc-col">
-                  <b>{zen_balance.toLocaleString()}</b> Zen
+                  <b>{formatNumber(zen_balance)}</b> Zen
                 </div>
               </div>
               <div className="row-wrapper">
                 <div className="title-col">Loan :</div>
                 <div className="desc-col">
-                  <b>{loan_money.toLocaleString()}</b> Zen
+                  <b>{formatNumber(loan_money)}</b> Zen
                 </div>
               </div>
             </div>
           </div>
           <BankingRule />
+          <div className="logs">
+            <BankingLogs maxTableHeight={291}/>
+          </div>
         </div>
       </div>
     );

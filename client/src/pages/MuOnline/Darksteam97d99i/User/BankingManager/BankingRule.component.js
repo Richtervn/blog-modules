@@ -1,5 +1,6 @@
 import './BankingRule.css';
 import React from 'react';
+import { formatNumber } from 'helpers';
 
 export default ({ gameSetting }) => {
   const {
@@ -19,7 +20,7 @@ export default ({ gameSetting }) => {
           <b>
             {BANKING_DEPOSIT_FEE.isPercentage
               ? BANKING_DEPOSIT_FEE.charge * 100
-              : BANKING_DEPOSIT_FEE.charge.toLocaleString()}
+              : formatNumber(BANKING_DEPOSIT_FEE.charge)}
           </b>
           {BANKING_DEPOSIT_FEE.isPercentage ? '% of your withdraw amount' : ' Zen'}
         </li>
@@ -28,7 +29,7 @@ export default ({ gameSetting }) => {
           <b>
             {BANKING_WITHDRAW_FEE.isPercentage
               ? BANKING_WITHDRAW_FEE.charge * 100
-              : BANKING_WITHDRAW_FEE.charge.toLocaleString()}
+              : formatNumber(BANKING_WITHDRAW_FEE.charge)}
           </b>
           {BANKING_WITHDRAW_FEE.isPercentage ? '% of your withdraw' : ' Zen'}
         </li>
@@ -37,27 +38,27 @@ export default ({ gameSetting }) => {
           <b>
             {BANKING_LOAN_SETTING.isPercentage
               ? BANKING_LOAN_SETTING.charge * 100
-              : BANKING_LOAN_SETTING.charge.toLocaleString()}
+              : formatNumber(BANKING_LOAN_SETTING.charge)}
           </b>
           {BANKING_LOAN_SETTING.isPercentage ? '% of your loan' : ' Zen'}
         </li>
         <li>
-          You can't loan more than <b>{BANKING_LOAN_SETTING.maxValue.toLocaleString()}</b> Zen
+          You can't loan more than <b>{formatNumber(BANKING_LOAN_SETTING.maxValue)}</b> Zen
         </li>
         <li>
           Transfer money cost you{' '}
           <b>
             {BANKING_TRANSFER_FEE.isPercentage
               ? BANKING_TRANSFER_FEE.charge * 100
-              : BANKING_TRANSFER_FEE.charge.toLocaleString()}
+              : formatNumber(BANKING_TRANSFER_FEE.charge)}
           </b>
           {BANKING_TRANSFER_FEE.isPercentage ? '% of your transfer' : ' Zen'}
         </li>
         <li>
-          You can buy credits for <b>{CREDIT_PRICE.buy.toLocaleString()}</b> zen each
+          You can buy credits for <b>{formatNumber(CREDIT_PRICE.buy)}</b> zen each
         </li>
         <li>
-          You can sell credits for <b>{CREDIT_PRICE.sell.toLocaleString()}</b> zen each
+          You can sell credits for <b>{formatNumber(CREDIT_PRICE.sell)}</b> zen each
         </li>
       </ul>
     </div>

@@ -1,11 +1,11 @@
 import _ from 'underscore';
-import './BankingLogs.css';
+import './CreditLogs.css';
 import moment from 'moment';
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { formatNumber } from 'helpers';
 
-class BankingLogs extends Component {
+class CreditLogs extends Component {
   componentWillMount() {
     this.props.onGetLogs();
   }
@@ -16,8 +16,8 @@ class BankingLogs extends Component {
       return null;
     }
     return (
-      <div id="ds9799-banking-logs">
-        <div className="label">Banking History</div>
+      <div id="ds9799-credit-logs">
+        <div className="label">Credits History</div>
         <div className="content">
           {_.isEmpty(logs) && <div className="no-content">No history recorded</div>}
           {!_.isEmpty(logs) && (
@@ -32,7 +32,9 @@ class BankingLogs extends Component {
                   <div className="time-col">{moment(log.updatedAt).format('DD/MM/YYYY HH:mm:ss')}</div>
                   <div className="description-col">{log.description}</div>
                   <div className={classnames('balance-col', { add: log.type === 'add', minus: log.type === 'minus' })}>
-                    <i className={`fa fa-caret-${log.type === 'add' ? 'up' : 'down'}`} />&nbsp;{formatNumber(log.money)}
+                    <i className={`fa fa-caret-${log.type === 'add' ? 'up' : 'down'}`} />&nbsp;{formatNumber(
+                      log.credits
+                    )}
                   </div>
                 </div>
               ))}
@@ -44,4 +46,4 @@ class BankingLogs extends Component {
   }
 }
 
-export default BankingLogs;
+export default CreditLogs;

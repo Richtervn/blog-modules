@@ -143,8 +143,32 @@ export default {
   },
 
   /* Banking Services */
-  getBankingLogs({ query }) {
-    const data = commonGet('darksteam97d99i/banking/logs', null, query);
+  getUserBankingLogs({ id }) {
+    const data = commonGet('darksteam97d99i/banking/user_logs', [id]);
+    return data;
+  },
+  deposit({ query }) {
+    const data = commonGet('darksteam97d99i/banking/deposit', null, query);
+    return data;
+  },
+  withdraw({ query }) {
+    const data = commonGet('darksteam97d99i/banking/withdraw', null, query);
+    return data;
+  },
+  loan({ query }) {
+    const data = commonGet('darksteam97d99i/banking/loan', null, query);
+    return data;
+  },
+  transfer({ query }) {
+    const data = commonGet('darksteam97d99i/banking/transfer', null, query);
+    return data;
+  },
+  buyCredit({ query }) {
+    const data = commonGet('darksteam97d99i/banking/buy_credit', null, query);
+    return data;
+  },
+  sellCredit({ query }) {
+    const data = commonGet('darksteam97d99i/banking/sell_credit', null, query);
     return data;
   },
 
@@ -164,28 +188,13 @@ export default {
   resetQuest({ query }) {
     const data = commonGet('darksteam97d99i/characters/quest_reset', null, query);
     return data;
-  }
+  },
 
-  // deposit(query) {
-  //   const data = commonGet('mu/darksteam97d99i/banking/deposit', null, query);
-  //   return data;
-  // },
-  // withdraw(query) {
-  //   const data = commonGet('mu/darksteam97d99i/banking/withdraw', null, query);
-  //   return data;
-  // },
-  // loan(query) {
-  //   const data = commonGet('mu/darksteam97d99i/banking/loan', null, query);
-  //   return data;
-  // },
-  // transfer(query) {
-  //   const data = commonGet('mu/darksteam97d99i/banking/transfer', null, query);
-  //   return data;
-  // },
-  // buyCredit(query) {
-  //   const data = commonGet('mu/darksteam97d99i/banking/buy_credit', null, query);
-  //   return data;
-  // },
+  /* Credits Services */
+  getUserCreditLogs({ id }) {
+    const data = commonGet('darksteam97d99i/credits/user_logs', [id]);
+    return data;
+  }
 
   // getMuData(file) {
   //   const data = commonGet('mu/darksteam97d99i/tools/data', [file]);

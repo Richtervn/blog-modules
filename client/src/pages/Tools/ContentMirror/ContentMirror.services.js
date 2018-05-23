@@ -15,8 +15,8 @@ export default {
     const data = commonGet('tools/content_mirror/get_document', [tableName, docId]);
     return data;
   },
-  saveCode({ body }) {
-    const data = commonPut('tools/content_mirror/save_code', body);
+  saveCode({ formBody }) {
+    const data = commonPut('tools/content_mirror/save_code', formBody);
     return data;
   }
 };

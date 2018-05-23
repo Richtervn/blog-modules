@@ -1,5 +1,5 @@
-.ds9799-profile-form {
-  margin-top: 10px;
+.ds9799-profile-form.info-header-card {
+  margin-top: 0px;
 }
 
 .ds9799-profile-form .input-group-text {
@@ -26,7 +26,7 @@
   font-weight: 600;
 }
 
-.ds9799-profile-form .feature > .btn:not(.btn-up){
+.ds9799-profile-form .feature > .btn:not(.btn-up) {
   width: 50%;
 }
 

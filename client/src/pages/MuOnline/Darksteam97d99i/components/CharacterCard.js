@@ -1,6 +1,7 @@
 import './CharacterCard.css';
 import React from 'react';
 import classNames from 'classnames';
+import { formatNumber } from 'helpers';
 
 export default ({ character, isActive, onClick }) => {
   return (
@@ -21,7 +22,7 @@ export default ({ character, isActive, onClick }) => {
         </div>
         <div className="zen">
           <strong>Zen : </strong>
-          {character.Money.toLocaleString()}
+          {formatNumber(character.Money)}
         </div>
         <div className="resets">
           <strong>Resets : </strong>

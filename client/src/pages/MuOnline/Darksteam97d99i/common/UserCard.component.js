@@ -1,5 +1,6 @@
 import './UserCard.css';
 import React from 'react';
+import { formatNumber } from 'helpers';
 
 export default ({ user, zen_balance, credits }) => {
   if (!user) {
@@ -18,11 +19,11 @@ export default ({ user, zen_balance, credits }) => {
       <div className="content">
         <div className="wrapper">
           <div className="label">Credits:</div>
-          <div className="text">{credits.toLocaleString()}</div>
+          <div className="text">{formatNumber(credits)}</div>
         </div>
         <div className="wrapper">
           <div className="label">Zen Balance:</div>
-          <div className="text">{zen_balance.toLocaleString()}</div>
+          <div className="text">{formatNumber(zen_balance)}</div>
         </div>
       </div>
     </div>

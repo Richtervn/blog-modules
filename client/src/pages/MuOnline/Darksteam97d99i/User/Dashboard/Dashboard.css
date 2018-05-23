@@ -4,5 +4,13 @@
 
 #ds9799-dashboard > .half {
   flex: 1;
-  margin-right: 10px;
+  margin-top: 10px;
+}
+
+#ds9799-dashboard > .half:last-child {
+  margin-left: 10px;
+}
+
+#ds9799-dashboard .credit-log {
+  margin-top: 10px;
 }

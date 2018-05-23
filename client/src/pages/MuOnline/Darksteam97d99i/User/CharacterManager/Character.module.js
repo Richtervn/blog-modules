@@ -3,6 +3,8 @@ import { toastSuccess } from 'common/Toast';
 
 import services from '../../Darksteam97d99i.services';
 
+import { LOAN, DEPOSIT, WITHDRAW } from '../BankingManager/Banking.module';
+
 const GET_CHARACTERS = 'ds9799_character/GET_CHARACTERS';
 const SET_FOCUS_CHARACTER = 'ds9799_character/SET_FOCUS_CHARACTER';
 
@@ -72,7 +74,7 @@ export default (state = initialState, action) => {
       });
       toastSuccess('Added point successfully');
       return { ...state, characters: state.characters.slice(0) };
-      
+
     case `${RESET_QUEST}_SUCCESS`:
     case `${GRAND_RESET}_SUCCESS`:
     case `${RESET}_SUCCESS`:
@@ -94,6 +96,17 @@ export default (state = initialState, action) => {
           if (action.payload.GrandResets) character.GrandResets = action.payload.GrandResets;
           character.Resets = action.payload.Resets;
           character.cLevel = action.payload.cLevel;
+        }
+        return character;
+      });
+      return { ...state, characters: state.characters.slice(0) };
+
+    case `${LOAN}_SUCCESS`:
+    case `${DEPOSIT}_SUCCESS`:
+    case `${WITHDRAW}_SUCCESS`:
+      state.characters = state.characters.map(character => {
+        if (character.Name === action.payload.Name) {
+          character.Money = action.payload.Money;
         }
         return character;
       });

@@ -13,7 +13,7 @@ import GameSettingCard from './GameSettingCard.container';
 
 import { userPages } from '../User/User.module';
 
-export default ({ activePage, onSetPage }) => {
+export default ({ activePage, onSetPage, onLogout }) => {
   if (activePage === 'login') {
     return [
       <LoginForm key="lg_f" />,
@@ -56,7 +56,7 @@ export default ({ activePage, onSetPage }) => {
       onClick={menu => onSetPage(menu.route)}
       prefix="/darksteam_97d99i/user/"
     />,
-    <button key="lg" className="btn btn-block btn-danger">
+    <button key="lg" className="btn btn-block btn-danger" onClick={() => onLogout()}>
       Log out
     </button>
   ];

@@ -73,7 +73,7 @@ class StarcraftCampaignForm extends Component {
       />,
       <div key="sm_b" className="modal-body">
         <form className="text-right">
-          <FormGroupRow type="file" name="File" label="Map File" onChange={this.handleChange} />
+          <FormGroupRow type="file" name="File" label="Archive File" onChange={this.handleChange} />
           <FormGroupRating label="Rating" rating={this.state.value.Rating} onRating={this.handleRating} />
           <FormGroupRow
             type="text"

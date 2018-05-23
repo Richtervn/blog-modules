@@ -1,6 +1,6 @@
 import './CharacterDetail.css';
 import React, { Component } from 'react';
-import { getMuClass } from 'helpers';
+import { getMuClass, formatNumber } from 'helpers';
 
 class CharacterDetail extends Component {
   constructor(props) {
@@ -143,7 +143,7 @@ class CharacterDetail extends Component {
               </div>
             </div>
 
-            <div className="zen">{`Zen : ${character.Money.toLocaleString()}`}</div>
+            <div className="zen">{`Zen : ${formatNumber(character.Money)}`}</div>
             <div className="resets">{`Resets : ${character.Resets}`}</div>
             <div className="grand-resets">{`Grand Resets : ${character.GrandResets}`}</div>
 

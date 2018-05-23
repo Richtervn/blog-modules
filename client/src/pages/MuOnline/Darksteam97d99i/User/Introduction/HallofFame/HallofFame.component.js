@@ -1,6 +1,7 @@
 import './HallofFame.css';
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import { formatNumber } from 'helpers';
 
 import { ContainerLoader } from 'common/Loaders';
 import CharactersTable from './CharactersTable.component';
@@ -128,7 +129,7 @@ class HallofFame extends Component {
                           {i === 0 ? <img className="troopy" src="/images/icons/troopy.png" alt="troopy" /> : i + 1}
                         </td>
                         <td>{account.memb___id}</td>
-                        <td>{account.TotalZen.toLocaleString()}</td>
+                        <td>{formatNumber(account.TotalZen)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -152,7 +153,7 @@ class HallofFame extends Component {
                           {i === 0 ? <img className="troopy" src="/images/icons/troopy.png" alt="troopy" /> : i + 1}
                         </td>
                         <td>{account.memb___id}</td>
-                        <td>{account.credits.toLocaleString()}</td>
+                        <td>{formatNumber(account.credits)}</td>
                       </tr>
                     ))}
                   </tbody>

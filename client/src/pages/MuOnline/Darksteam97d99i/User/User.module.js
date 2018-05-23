@@ -17,9 +17,11 @@ export const userPages = [
 ];
 
 export const LOGIN = 'ds9799_user/LOGIN';
+export const LOGOUT = 'ds9799_user/LOGOUT';
 export const REGISTER = 'ds9799_user/REGISTER';
 const RECOVER_PASSWORD = 'ds9799_user/RECOVER_PASSWORD';
 const GET_CURRENT_USER = 'ds9799_user/GET_CURRENT_USER';
+const SET_CHECKED_USER = 'ds9799_user/SET_CHECKED_USER';
 
 const EDIT_PROFILE = 'ds9799_user/EDIT_PROFILE';
 
@@ -32,22 +34,25 @@ const socketInitialize = (socket, memb___id) => {
   });
 };
 
+const setCheckedUser = value => ({ type: SET_CHECKED_USER, value });
 export const login = formBody =>
   actionCreator(LOGIN, services.login, {
     payload: { formBody },
     onBeforeSuccess: async ({ data, socket }) => {
       await socketInitialize(socket, data.memb___id);
     },
-    onAfterSuccess: ({ payload }) => {
+    onAfterSuccess: ({ payload, dispatch }) => {
       window.localStorage.setItem('ds9799User', JSON.stringify(payload.formBody));
+      dispatch(setCheckedUser(true));
     }
   })();
 export const getCurrentUser = () =>
   actionCreator(GET_CURRENT_USER, (payload, { dispatch }) => {
     const formBody = window.localStorage.getItem('ds9799User');
     if (formBody) {
-      dispatch(login(JSON.parse(formBody)));
+      return dispatch(login(JSON.parse(formBody)));
     }
+    dispatch(setCheckedUser(true));
   })();
 export const register = formBody => actionCreator(REGISTER, services.register, { payload: { formBody } })();
 export const recoverPassword = id => actionCreator(RECOVER_PASSWORD, services.recoverPassword, { payload: { id } })();
@@ -59,6 +64,10 @@ export const editProfile = formBody =>
       socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ01');
     }
   })();
+export const logout = () => dispatch => {
+  window.localStorage.removeItem('ds9799User');
+  return { type: LOGOUT };
+};
 
 const initialState = {
   user: null,
@@ -71,7 +80,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case `${LOGIN}_SUCCESS`:
       toastStrong(action.payload.memb___id, 'Welcome');
-      return { ...state, user: _.omit(action.payload, ['Banking', 'MembCredits']), isCheckedCurrentUser: true };
+      return { ...state, user: _.omit(action.payload, ['Banking', 'MembCredits']) };
 
     case `${REGISTER}_SUCCESS`:
       toastStrong('Register successful');
@@ -82,25 +91,17 @@ export default (state = initialState, action) => {
     case `${EDIT_PROFILE}_SUCCESS`:
       toastSuccess('Profile Updated');
       return { ...state, user: { ...state.user, ...action.payload } };
+    case SET_CHECKED_USER:
+      return { ...state, isCheckedCurrentUser: action.value };
 
+    case LOGOUT:
+      return { ...state, user: null };
     default:
       return state;
   }
 };
 
-// import actionCreator from 'factories/actionCreator';
-// import { darksteam97d99i } from 'services';
-// import socket from 'factories/socketInstance';
-// import { toast } from 'react-toastify';
-
-// import { CHANGE_USER_PAGE } from './navigator';
-
 // import {
-
-//   DEPOSIT_SUCCESS,
-//   WITHDRAW_SUCCESS,
-//   TRANSFER_SUCCESS,
-//   LOAN_SUCCESS,
 //   BUY_CREDIT_SUCCESS,
 //   UPGRADE_ITEM_SUCCESS
 // } from './character';
@@ -164,47 +165,6 @@ export default (state = initialState, action) => {
 //         user: {
 //           ...state.user,
 //           MembCredits: { ...state.user.MembCredits, credits: action.payload.credits }
-//         }
-//       };
-
-//     case DEPOSIT_SUCCESS:
-//       return {
-//         ...state,
-//         user: {
-//           ...state.user,
-//           Banking: {
-//             ...state.user.Banking,
-//             zen_balance: action.payload.zen_balance,
-//             loan_money: action.payload.loan_money
-//           }
-//         }
-//       };
-
-//     case LOAN_SUCCESS:
-//       return {
-//         ...state,
-//         user: {
-//           ...state.user,
-//           Banking: { ...state.user.Banking, loan_money: action.payload.loan_money }
-//         }
-//       };
-
-//     case TRANSFER_SUCCESS:
-//     case WITHDRAW_SUCCESS:
-//       return {
-//         ...state,
-//         user: {
-//           ...state.user,
-//           Banking: { ...state.user.Banking, zen_balance: action.payload.zen_balance }
-//         }
-//       };
-
-//     case BUY_CREDIT_SUCCESS:
-//       return {
-//         ...state,
-//         user: {
-//           ...state.user,
-//           Credits: { ...state.user.MembCredits, credits: action.payload.credits }
 //         }
 //       };
 
