@@ -65,6 +65,12 @@ export default (models, methods, factories, helpers) => {
     })
   );
 
+  router.get('/sell_credit', wrap(async({query}, res, next) => {
+    const GameSetting = await getData('GameSetting');
+    const result = await sellCredit(models, query, GameSetting);
+    res.send(result);
+  }))
+
   router.get(
     '/',
     wrap(async ({ query }, res, next) => {

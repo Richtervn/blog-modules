@@ -1,5 +1,3 @@
-// loan, deposit, transfer,logs, buy_credit, withdraw
-
 import './BankingFeature.css';
 
 import React, { Component } from 'react';
@@ -7,51 +5,96 @@ import React, { Component } from 'react';
 class BankingFeature extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loan: '',
+      deposit: '',
+      withdraw: '',
+      transferName: '',
+      transferAmount: '',
+      buyCredit: '',
+      sellCredit: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e){
+    const {name, value} = e;
+    this.setState([name]: value);
+  }
+
+  loan(){
+    const query = {};
+    this.props.onLoan(query);
+  }
+
+  deposit(){
+    const query = {};
+    this.props.onDeposit(query);
+  }
+
+  withdraw(){
+    const query = {};
+    this.props.onWithdraw(query);
+  }
+
+  transfer(){
+    const query = {};
+    this.props.onTransfer(query);
+  }
+
+  buyCredit(){
+    const query = {};
+    this.props.onBuyCredit(query);
+  }
+
+  sellCredit(){
+    const query = {};
+    this.props.onSellCredit(query);
   }
 
   render() {
+    const {loan, withdraw, transferName, transferAmount, deposit, buyCredit, sellCredit} = this.state;
     return (
       <div id="ds9799-banking-feature">
         <div className="feature-box">
           <div className="label">Loan</div>
           <div className="content">
-            <input className="form-control" type="number" />
-            <button className="btn btn-danger btn-block">Loan</button>
+            <input className="form-control" type="number" name="loan" value={loan} onChange={this.handleChange} placeholder="Loan amount"/>
+            <button className="btn btn-danger btn-block" onClick={() => this.loan()}>Loan</button>
           </div>
         </div>
         <div className="feature-box">
           <div className="label">Deposit</div>
           <div className="content">
-            <input className="form-control" type="number" />
-            <button className="btn btn-danger btn-block">Deposit</button>
+            <input className="form-control" type="number" name="deposit" value={deposit} onChange={this.handleChange} placeholder="Deposit amount"/>
+            <button className="btn btn-danger btn-block" onClick={() => this.deposit()}>Deposit</button>
           </div>
         </div>
         <div className="feature-box">
           <div className="label">Withdraw</div>
           <div className="content">
-            <input className="form-control" type="number" />
-            <button className="btn btn-danger btn-block">Withdraw</button>
+            <input className="form-control" type="number" name="withdraw" value={withdraw} onChange={this.handleChange} placeholder="Withdraw amount"/>
+            <button className="btn btn-danger btn-block" onClick={() => this.withdraw()}>Withdraw</button>
           </div>
         </div>
         <div className="feature-box">
           <div className="label">Transfer</div>
           <div className="content">
-            <input className="form-control" type="number" />
-            <input className="form-control" type="text" />
-            <button className="btn btn-danger btn-block">Transfer</button>
+            <input className="form-control" type="number" name="transferName" value={transferName} onChange={this.handleChange} placeholder="Account receive"/>
+            <input className="form-control" type="text" name="transferAmount" value={transferAmount} onChange={this.handleChange} placeholder="Transfer amount"/>
+            <button className="btn btn-danger btn-block" onClick={() => this.transfer()}>Transfer</button>
           </div>
         </div>
         <div className="feature-box">
           <div className="label">Exchange Credits</div>
           <div className="content">
             <div className="exchange">
-              <input className="form-control" type="number" />
-              <button className="btn btn-danger">Buy</button>
+              <input className="form-control" type="number" name="buyCredit" value={buyCredit} onChange={this.handleChange} placeholder="Buy amount"/>
+              <button className="btn btn-danger" onClick={() => this.buyCredit()}>Buy</button>
             </div>
             <div className="exchange">
-              <input className="form-control" type="number" />
-              <button className="btn btn-danger">Sell</button>
+              <input className="form-control" type="number" name="sellCredit" value={sellCredit} onChange={this.handleChange} placeholder="Sell amount"/>
+              <button className="btn btn-danger" onClick={() => this.sellCredit()}>Sell</button>
             </div>
           </div>
         </div>
