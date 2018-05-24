@@ -1,5 +1,5 @@
 export default (models, factories) => {
-	const { MembInfo, MembCredits } = models;
+	const { MembInfo, MembCredits, UserCreditsLog } = models;
 	const { increaseUnixDay } = factories;
 
 	return async (vipSystem, userId) => {
@@ -20,7 +20,14 @@ export default (models, factories) => {
 				? increaseUnixDay(membInfo.VipExpirationTime, vipSystem.duration)
 				: increaseUnixDay(null, vipSystem.duration)
 		});
+		UserCreditsLog.create({
+      memb___id: membInfo.memb___id,
+      description: 'Buy Vip for account',
+      type: 'minus',
+      credits: vipSystem.price
+    })
 
 		return { credits: remainCredits };
 	};
 };
+

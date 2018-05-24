@@ -113,7 +113,6 @@ export default (state = initialState, action) => {
 // } from './character';
 
 // import { REFRESH_QUEST_LIST } from './webQuest';
-// import { BUY_PACKAGE_SUCCESS } from './webShop';
 
 // import {
 //   TRADE_EXCHANGE_SUCCESS,
@@ -146,10 +145,7 @@ export default (state = initialState, action) => {
 // export default (state = initialState, action) => {
 //   switch (action.type) {
 
-//     case BUY_VIP_SUCCESS:
-//       if (packageType == 'Character') socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ10');
-//       if (packageType == 'Account') socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ11');
-//       break;
+
 //     case CHANGE_USER_PAGE:
 //       if (action.page == 'Web Quest') {
 //         socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ16');

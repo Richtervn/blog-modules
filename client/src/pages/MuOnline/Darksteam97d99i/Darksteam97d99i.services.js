@@ -243,15 +243,6 @@ export default {
   //   return data;
   // },
 
-  // buyVip(vipPackage, user, focusCharacter) {
-  //   const data = commonGet('mu/darksteam97d99i/vip_system/buy', null, {
-  //     packageId: vipPackage.id,
-  //     userId: user.memb___id,
-  //     characterId: focusCharacter.Name
-  //   });
-  //   return data;
-  // },
-
   // addWebShopPackage(formBody) {
   //   formBody.items = JSON.stringify(formBody.items);
   //   const data = commonPostMultiplePart('mu/darksteam97d99i/admin/web_shop', formBody);
