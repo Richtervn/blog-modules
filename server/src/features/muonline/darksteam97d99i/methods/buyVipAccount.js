@@ -20,6 +20,7 @@ export default (models, factories) => {
 				? increaseUnixDay(membInfo.VipExpirationTime, vipSystem.duration)
 				: increaseUnixDay(null, vipSystem.duration)
 		});
+		
 		UserCreditsLog.create({
       memb___id: membInfo.memb___id,
       description: 'Buy Vip for account',
