@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import BankingManager from './BankingManager.component';
 
-import { getBankings } from '../Admin.module';
+import { getBankings, addBanking, editBanking, deleteBanking } from '../Admin.module';
 
 export default connect(
   ({ ds9799_admin }) => ({
@@ -10,6 +10,15 @@ export default connect(
   dispatch => ({
     onGetBankings() {
       dispatch(getBankings());
+    },
+    onAddBanking(formBody) {
+      dispatch(addBanking(formBody));
+    },
+    onEditBanking(formBody) {
+      dispatch(editBanking(formBody));
+    },
+    onDeleteBanking(id) {
+      dispatch(deleteBanking(id));
     }
   })
 )(BankingManager);

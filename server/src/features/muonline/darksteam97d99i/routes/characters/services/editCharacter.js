@@ -7,7 +7,9 @@ export default async (models, helpers, body) => {
   updateForm.IsVip == true ? '1' : '0';
   updateForm.IsMarried == true ? '1' : '0';
 
-  if (updateForm.Name) {
+  const character = await Character.findOne({ where: { Name: updateForm.Name } });
+
+  if (updateForm.Name !== character.Name) {
     const isNameExist = checkExist(Character, 'Name', updateForm.Name);
     if (isNameExist) {
       return { message: 'Name has been taken' };
@@ -23,10 +25,10 @@ export default async (models, helpers, body) => {
     }
     await accountCharacter.update({ [currentField]: updateForm.Name });
     delete updateForm.OldName;
-    const character = await Character.update(updateForm, { where: { Name: body.OldName } });
-    return character;
+    const result = await Character.update(updateForm, { where: { Name: body.OldName } });
+    return result;
   } else {
-    const character = await Character.update(updateForm, { where: { Name: body.Name } });
-    return character;
+    const result = await Character.update(updateForm, { where: { Name: body.Name } });
+    return result;
   }
 };

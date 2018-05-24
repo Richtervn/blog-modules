@@ -1,10 +1,10 @@
-import './BankingManager.css';
+import './CreditsManager.css';
 import React, { Component } from 'react';
 import { ContainerLoader } from 'common/Loaders';
 
 import { PureAddCardButton } from 'components/Buttons';
 
-class BankingManager extends Component {
+class CreditManager extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,8 +14,7 @@ class BankingManager extends Component {
       value: {},
       addingValue: {
         memb___id: '',
-        loan_money: '',
-        zen_balance: ''
+        credits: ''
       }
     };
     this.handleChange = this.handleChange.bind(this);
@@ -23,7 +22,7 @@ class BankingManager extends Component {
   }
 
   componentWillMount() {
-    this.props.onGetBankings();
+    this.props.onGetCredits();
   }
 
   handleChange(e) {
@@ -41,28 +40,28 @@ class BankingManager extends Component {
   }
 
   handleSubmit() {
-    this.props.onAddBanking(this.state.addingValue);
-    this.setState({ adding: false, addingValue: { memb___id: '', loan_money: '', zen_balance: '' } });
+    this.props.onAddCredit(this.state.addingValue);
+    this.setState({ adding: false, addingValue: { memb___id: '', credits: '' } });
   }
 
   handleSave() {
-    this.props.onEditBanking(this.state.value);
+    this.props.onEditCredit(this.state.value);
     this.setState({ editing: false, value: {} });
   }
 
   render() {
-    const { bankings, onDeleteBanking } = this.props;
+    const { credits, onDeleteCredit } = this.props;
     const { editing, editingIndex, value, adding, addingValue } = this.state;
-    if (!bankings) {
+    if (!credits) {
       return <ContainerLoader />;
     }
     return (
-      <div id="ds9799-banking-manager">
-        {bankings.map((banking, i) => (
+      <div id="ds9799-credit-manager">
+        {credits.map((credit, i) => (
           <div className="wrapper" key={i}>
-            <div className="banking-card">
+            <div className="credit-card">
               <div className="label">
-                {banking.memb___id}
+                {credit.memb___id}
                 {editing && editingIndex === i ? (
                   <div className="feature">
                     <button className="btn" onClick={() => this.handleSave()}>
@@ -83,13 +82,13 @@ class BankingManager extends Component {
                           editing: true,
                           editingIndex: i,
                           value: {
-                            ...banking
+                            ...credit
                           }
                         })
                       }>
                       <i className="fa fa-pencil" />
                     </button>
-                    <button className="btn" onClick={() => onDeleteBanking(banking.memb___id)}>
+                    <button className="btn" onClick={() => onDeleteCredit(credit.memb___id)}>
                       <i className="fa fa-times" />
                     </button>
                   </div>
@@ -97,21 +96,11 @@ class BankingManager extends Component {
               </div>
               <div className="content">
                 <div className="row-wrapper">
-                  <label>Zen Balance :</label>
+                  <label>Credits :</label>
                   <input
-                    name="zen_balance"
+                    name="credits"
                     className="form-control"
-                    value={editing && editingIndex === i ? value.zen_balance : banking.zen_balance}
-                    onChange={this.handleChange}
-                    disabled={!editing || editingIndex !== i}
-                  />
-                </div>
-                <div className="row-wrapper">
-                  <label>Loan Money :</label>
-                  <input
-                    name="loan_money"
-                    className="form-control"
-                    value={editing && editingIndex === i ? value.loan_money : banking.loan_money}
+                    value={editing && editingIndex === i ? value.credits : credit.credits}
                     onChange={this.handleChange}
                     disabled={!editing || editingIndex !== i}
                   />
@@ -121,13 +110,13 @@ class BankingManager extends Component {
           </div>
         ))}
         {!adding && (
-          <div className="add-banking-btn">
+          <div className="add-credit-btn">
             <PureAddCardButton onClick={() => this.setState({ adding: true })} />
           </div>
         )}
         {adding && (
           <div className="form-wrapper">
-            <div className="add-banking-form">
+            <div className="add-credit-form">
               <input
                 className="form-control"
                 type="text"
@@ -139,18 +128,10 @@ class BankingManager extends Component {
               <input
                 type="number"
                 className="form-control"
-                placeholder="Zen Balance"
-                name="zen_balance"
+                placeholder="Credits"
+                name="credits"
                 onChange={this.handleAddChange}
-                value={addingValue.zen_balance}
-              />
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Loan Money"
-                name="loan_money"
-                onChange={this.handleAddChange}
-                value={addingValue.loan_money}
+                value={addingValue.credits}
               />
               <div className="feature">
                 <button className="btn btn-primary" onClick={() => this.handleSubmit()}>
@@ -179,4 +160,4 @@ class BankingManager extends Component {
   }
 }
 
-export default BankingManager;
+export default CreditManager;

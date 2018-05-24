@@ -69,6 +69,38 @@ export default {
     return data;
   },
 
+  /*Admin Credit Manager Services */
+  adminGetCredits() {
+    const data = commonGet('darksteam97d99i/credits');
+    return data;
+  },
+  adminAddCredit({ formBody }) {
+    const data = commonPost('darksteam97d99i/credits', formBody);
+    return data;
+  },
+  adminEditCredit({ formBody }) {
+    const data = commonPut('darksteam97d99i/credits', formBody);
+    return data;
+  },
+  adminDeleteCredit({ id }) {
+    const data = commonDelete('darksteam97d99i/credits/' + id);
+    return data;
+  },
+
+  /*Admin Vip System Services */
+  adminEditVipPackage({ formBody }) {
+    const data = commonPut('darksteam97d99i/vip_system', formBody);
+    return data;
+  },
+  adminAddVipPackage({ formBody }) {
+    const data = commonPost('darksteam97d99i/vip_system', formBody);
+    return data;
+  },
+  adminDeleteVipPackage({ id }) {
+    const data = commonDelete('darksteam97d99i/vip_system' + id);
+    return data;
+  },
+
   /* App Control Services */
   getGameSetting() {
     const data = commonGet('darksteam97d99i/system/game_setting');
@@ -194,51 +226,29 @@ export default {
   getUserCreditLogs({ id }) {
     const data = commonGet('darksteam97d99i/credits/user_logs', [id]);
     return data;
+  },
+
+  /* Vip System Services */
+  getVipPackages() {
+    const data = commonGet('darksteam97d99i/vip_system');
+    return data;
+  },
+  buyVip({ query }) {
+    const data = commonGet('darksteam97d99i/vip_system/buy', null, query);
+    return data;
   }
 
   // getMuData(file) {
   //   const data = commonGet('mu/darksteam97d99i/tools/data', [file]);
   //   return data;
   // },
-  // getVipSystems() {
-  //   const data = commonGet('mu/darksteam97d99i/vip_system/get_all');
-  //   return data;
-  // },
-  // addVipSystem(formBody) {
-  //   const data = commonPost('mu/darksteam97d99i/vip_system/add', formBody);
-  //   return data;
-  // },
-  // editVipSystem(formBody) {
-  //   const data = commonPut('mu/darksteam97d99i/vip_system/update', formBody);
-  //   return data;
-  // },
-  // deleteVipSystem(id) {
-  //   const data = commonDelete('mu/darksteam97d99i/vip_system/' + id);
-  //   return data;
-  // },
+
   // buyVip(vipPackage, user, focusCharacter) {
   //   const data = commonGet('mu/darksteam97d99i/vip_system/buy', null, {
   //     packageId: vipPackage.id,
   //     userId: user.memb___id,
   //     characterId: focusCharacter.Name
   //   });
-  //   return data;
-  // },
-
-  // adminGetBankings() {
-  //   const data = commonGet('mu/darksteam97d99i/admin/banking');
-  //   return data;
-  // },
-  // adminGetCredits() {
-  //   const data = commonGet('mu/darksteam97d99i/admin/credit');
-  //   return data;
-  // },
-  // adminEditBanking(formBody) {
-  //   const data = commonPut('mu/darksteam97d99i/admin/banking', formBody);
-  //   return data;
-  // },
-  // adminEditCredit(formBody) {
-  //   const data = commonPut('mu/darksteam97d99i/admin/credit', formBody);
   //   return data;
   // },
 

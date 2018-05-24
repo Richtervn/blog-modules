@@ -1,0 +1,92 @@
+#ds9799-vip-manager {
+  display: flex;
+}
+
+#ds9799-vip-manager .vip-features {
+  flex: 1;
+}
+
+#ds9799-vip-manager .vip-status {
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 10px;
+  background: #fff;
+  border: solid 1px #f44336;
+  color: #000;
+  border-radius: 4px;
+}
+
+#ds9799-vip-manager .vip-status .content {
+  padding: 10px;
+}
+
+#ds9799-vip-manager .vip-status ul {
+  margin: 0;
+}
+
+#ds9799-vip-manager .packages {
+  flex: 1;
+  display: flex;
+}
+
+#ds9799-vip-manager .packages-list {
+  flex: 1 1 auto;
+  margin-top: 10px;
+  margin-left: 10px;
+  background: #fff;
+  border: solid 1px #f44336;
+  color: #000;
+  border-radius: 4px;
+}
+
+#ds9799-vip-manager .vip-status > .label,
+#ds9799-vip-manager .packages-list > .label {
+  color: #fff;
+  text-align: center;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  background: #f44336;
+  font-weight: 600;
+}
+
+#ds9799-vip-manager .packages-list > .content {
+  padding: 10px 30px;
+  height: calc(100% - 25px);
+  overflow-y: auto;
+}
+
+#ds9799-vip-manager .package-card {
+  background: #fff;
+  color: #000;
+  border: solid 1px #f44336;
+  margin-bottom: 10px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+#ds9799-vip-manager .package-card > .label {
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  background: #f44336;
+  font-weight: 600;
+}
+
+#ds9799-vip-manager .package-card > .buy {
+  width: 50%;
+  margin: 10px auto;
+}
+
+#ds9799-vip-manager .buy .price {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+}
+
+#ds9799-vip-manager .buy .price > .amount {
+  font-weight: 600;
+}
+
+#ds9799-vip-manager .buy .slogan {
+  font-weight: 700;
+  font-size: 16px;
+}

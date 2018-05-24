@@ -10,6 +10,7 @@ import { Introduction } from './Introduction';
 import { Dashboard } from './Dashboard';
 import { CharacterManager } from './CharacterManager';
 import { BankingManager } from './BankingManager';
+import { VipManager } from './VipManager';
 import { WebQuest } from './WebQuest';
 
 const availableUserPages = _.pluck(userPages, 'route');
@@ -68,6 +69,7 @@ class User extends Component {
         {pageParam === 'dashboard' && <Dashboard />}
         {pageParam === 'character_manager' && <CharacterManager />}
         {pageParam === 'banking_manager' && <BankingManager />}
+        {pageParam === 'vip_manager' && <VipManager />}
         {pageParam === 'web_quest' && <WebQuest />}
       </Ds9799Page>
     );

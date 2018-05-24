@@ -1,11 +1,12 @@
 import { actionCreator } from 'helpers';
 import services from '../Darksteam97d99i.services';
-import { toastStrong } from 'common/Toast';
+import { toastStrong, toastSuccess } from 'common/Toast';
 
 export const adminPages = [
   { name: 'Accounts Manager', icon: 'user', route: 'accounts_manager' },
   { name: 'Characters Manager', icon: 'users', route: 'characters_manager' },
-  { name: 'Banking Manager', icon: 'bank', route: 'banking_manager' }
+  { name: 'Banking Manager', icon: 'bank', route: 'banking_manager' },
+  { name: 'Credits Manager', icon: 'credit-card', route: 'credits_manager' }
 ];
 
 const GET_ACCOUNTS = 'darksteam97d99i/Admin/GET_ACCOUNTS';
@@ -25,6 +26,14 @@ const SEARCH_CHARACTER = 'darksteam97d99i/Admin/SEARCH_CHARACTER';
 const CLEAR_CHARACTER_DETAIL = 'darksteam97d99i/Admin/CLEAR_CHARACTER_DETAIL';
 
 const GET_BANKINGS = 'darksteam97d99i/Admin/GET_BANKINGS';
+const ADD_BANKING = 'darksteam97d99i/Admin/ADD_BANKING';
+const EDIT_BANKING = 'darksteam97d99i/Admin/EDIT_BANKING';
+const DELETE_BANKING = 'darksteam97d99i/Admin/DELETE_BANKING';
+
+const GET_CREDITS = 'darksteam97d99i/Admin/GET_CREDITS';
+const ADD_CREDIT = 'darksteam97d99i/Admin/ADD_CREDIT';
+const EDIT_CREDIT = 'darksteam97d99i/Admin/EDIT_CREDIT';
+const DELETE_CREDIT = 'darksteam97d99i/Admin/DELETE_CREDIT';
 
 export const getAccounts = () => actionCreator(GET_ACCOUNTS, services.adminGetAccounts, { payload: { query: {} } })();
 export const getAccountDetail = id =>
@@ -52,13 +61,23 @@ export const deleteCharacter = id =>
 export const clearCharacterDetail = () => ({ type: CLEAR_CHARACTER_DETAIL });
 
 export const getBankings = () => actionCreator(GET_BANKINGS, services.adminGetBankings)();
+export const addBanking = formBody => actionCreator(ADD_BANKING, services.adminAddBanking, { payload: { formBody } })();
+export const editBanking = formBody =>
+  actionCreator(EDIT_BANKING, services.adminEditBanking, { payload: { formBody } })();
+export const deleteBanking = id => actionCreator(DELETE_BANKING, services.adminDeleteBanking, { payload: { id } })();
+
+export const getCredits = () => actionCreator(GET_CREDITS, services.adminGetCredits)();
+export const addCredit = formBody => actionCreator(ADD_CREDIT, services.adminAddCredit, { payload: { formBody } })();
+export const editCredit = formBody => actionCreator(EDIT_CREDIT, services.adminEditCredit, { payload: { formBody } })();
+export const deleteCredit = id => actionCreator(DELETE_CREDIT, services.adminDeleteCredit, { payload: { id } })();
 
 const initialState = {
   accounts: null,
   accountDetail: {},
   characters: null,
   characterDetail: {},
-  bankings: null
+  bankings: null,
+  credits: null
 };
 
 export default (state = initialState, action) => {
@@ -96,6 +115,7 @@ export default (state = initialState, action) => {
       toastStrong(action.payload.Name, 'Edited');
       return { ...state, characterDetail: action.payload };
     case `${DELETE_CHARACTER}_SUCCESS`:
+      toastStrong(action.payload.Name, 'Deleted');
       state.characters = state.characters.filter(char => char.Name !== action.payload.id);
       return { ...state, characters: state.characters.slice(0), characterDetail: {} };
     case CLEAR_CHARACTER_DETAIL:
@@ -103,6 +123,43 @@ export default (state = initialState, action) => {
 
     case `${GET_BANKINGS}_SUCCESS`:
       return { ...state, bankings: action.payload };
+    case `${ADD_BANKING}_SUCCESS`:
+      state.bankings.push(action.payload);
+      toastSuccess('Add banking success');
+      return { ...state, bankings: state.bankings.slice(0) };
+    case `${EDIT_BANKING}_SUCCESS`:
+      state.bankings = state.bankings.map(banking => {
+        if (banking.memb___id === action.payload.memb___id) {
+          return action.payload;
+        }
+        return banking;
+      });
+      toastSuccess('Edit banking success');
+      return { ...state, banking: state.bankings.slice(0) };
+    case `${DELETE_BANKING}_SUCCESS`:
+      state.bankings = state.bankings.filter(banking => banking.memb___id !== action.payload.id);
+      toastSuccess('Delete banking success');
+      return { ...state, banking: state.banking.slice(0) };
+
+    case `${GET_CREDITS}_SUCCESS`:
+      return { ...state, credits: action.payload };
+    case `${EDIT_CREDIT}_SUCCESS`:
+      state.credits = state.credits.map(credit => {
+        if (credit.memb___id === action.payload.memb___id) {
+          return action.payload;
+        }
+        return credit;
+      });
+      toastSuccess('Edit credit success');
+      return { ...state, credits: state.credits.slice(0) };
+    case `${ADD_CREDIT}_SUCCESS`:
+      state.credits.push(action.payload);
+      toastSuccess('Add credit success');
+      return { ...state, credits: state.credits.slice(0) };
+    case `${DELETE_CREDIT}_SUCCESS`:
+      toastSuccess('Delete credit success');
+      state.credits = state.credits.filter(credit => credit.memb___id !== action.payload.id);
+      return { ...state, credits: state.credits.slice(0) };
 
     default:
       return state;

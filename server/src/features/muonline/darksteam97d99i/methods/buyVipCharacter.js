@@ -2,10 +2,10 @@ export default (models, factories) => {
 	const { Character, MembCredits } = models;
 	const { increaseUnixDay } = factories;
 
-	return async (vipSystem, characterId) => {
+	return async (vipSystem, characterId, userId) => {
 		const [membCredit, character] = [
 			await MembCredits.findOne({ where: { memb___id: userId } }),
-			await Character.findOne({ where: { Name: characterId }, attributes: ['IsVip', 'VipExpirationTime'] })
+			await Character.findOne({ where: { Name: characterId }, attributes: ['IsVip', 'VipExpirationTime', 'Name'] })
 		];
 
 		if (membCredit.credits < vipSystem.price) {

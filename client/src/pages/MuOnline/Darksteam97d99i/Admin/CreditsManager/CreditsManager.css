@@ -1,22 +1,22 @@
-#ds9799-banking-manager {
+#ds9799-credit-manager {
   display: flex;
   flex-wrap: wrap;
 }
 
-#ds9799-banking-manager > .wrapper {
+#ds9799-credit-manager > .wrapper {
   width: 25%;
   margin-top: 10px;
   padding: 0 0 0 10px;
 }
 
-#ds9799-banking-manager > .wrapper > .banking-card {
+#ds9799-credit-manager > .wrapper > .credit-card {
   color: black;
   border: solid 1px #f44336;
   border-radius: 4px;
   background: white;
 }
 
-#ds9799-banking-manager > .wrapper > .banking-card > .label {
+#ds9799-credit-manager > .wrapper > .credit-card > .label {
   background: #f44336;
   color: #fff;
   height: 35px;
@@ -27,14 +27,14 @@
   position: relative;
 }
 
-#ds9799-banking-manager > .wrapper > .banking-card > .label > .feature {
+#ds9799-credit-manager > .wrapper > .credit-card > .label > .feature {
   position: absolute;
   top: 2px;
   right: 3px;
   display: none;
 }
 
-#ds9799-banking-manager .label > .feature > .btn {
+#ds9799-credit-manager .label > .feature > .btn {
   border: solid 1px #fff;
   color: #fff;
   padding: 0;
@@ -43,40 +43,40 @@
   margin-left: 2px;
 }
 
-#ds9799-banking-manager .label > .feature > .btn:hover {
+#ds9799-credit-manager .label > .feature > .btn:hover {
   background: #fff;
   color: #f44336;
 }
 
-#ds9799-banking-manager > .wrapper > .banking-card:hover > .label > .feature {
+#ds9799-credit-manager > .wrapper > .credit-card:hover > .label > .feature {
   display: block;
 }
 
-#ds9799-banking-manager > .wrapper > .banking-card > .content {
+#ds9799-credit-manager > .wrapper > .credit-card > .content {
   padding: 10px 10px 0 10px;
 }
 
-#ds9799-banking-manager .content label {
+#ds9799-credit-manager .content label {
   margin: 0;
   font-weight: 700;
 }
 
-#ds9799-banking-manager .content input {
+#ds9799-credit-manager .content input {
   margin-bottom: 10px;
 }
 
-#ds9799-banking-manager .add-banking-btn {
+#ds9799-credit-manager .add-credit-btn {
   width: 25%;
   padding: 10px 0px 0 10px;
-  height: 200px;
+  height: 129px;
 }
 
-#ds9799-banking-manager > .form-wrapper {
+#ds9799-credit-manager > .form-wrapper {
   width: 25%;
   padding: 10px 0px 0 10px;
-  height: 200px;
+  height: 129px;
 }
-#ds9799-banking-manager > .form-wrapper > .add-banking-form {
+#ds9799-credit-manager > .form-wrapper > .add-credit-form {
   width: 100%;
   height: 100%;
   display: flex;
@@ -88,14 +88,19 @@
   border-radius: 4px;
 }
 
-#ds9799-banking-manager > .form-wrapper > .add-banking-form > .feature {
+#ds9799-credit-manager > .form-wrapper > .add-credit-form > .feature {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
 }
 
-#ds9799-banking-manager > .form-wrapper > .add-banking-form > .feature > .btn {
+#ds9799-credit-manager > .form-wrapper > .add-credit-form > .form-control {
+  line-height: 1;
+  padding: 5px;
+}
+
+#ds9799-credit-manager > .form-wrapper > .add-credit-form > .feature > .btn {
   padding: 0;
-  margin-top: 5px;
+  margin-top: 2px;
   width: 100px;
 }

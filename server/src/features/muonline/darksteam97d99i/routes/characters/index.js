@@ -117,7 +117,7 @@ export default (models, methods, factories, helpers) => {
   router.put(
     '/',
     wrap(async ({ body }, res, next) => {
-      const character = await editCharacter(models, body);
+      const character = await editCharacter(models, helpers, body);
       res.send(character);
     })
   );

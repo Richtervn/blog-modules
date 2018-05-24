@@ -1,0 +1,21 @@
+.pure-add-card-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: dashed 1px;
+  border-radius: 4px;
+}
+
+.pure-add-card-button.default {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.pure-add-card-button.default:hover {
+  border-color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.pure-add-card-button.default:hover > .fa {
+  color: white;
+}

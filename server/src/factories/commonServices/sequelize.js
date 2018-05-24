@@ -1,7 +1,12 @@
 import _ from 'underscore';
 
 export default {
-  create: async (model, body, { transform }) => {
+  create: async (model, body, options) => {
+    let transform;
+    if (options) {
+      transform = options.transform;
+    }
+
     if (transform) {
       transform.forEach(field => {
         if (body[field] !== undefined) {
@@ -10,6 +15,7 @@ export default {
       });
     }
     const record = await model.create(body);
+    return record;
   },
   delete: async (model, id) => {
     const priKey = model.primaryKeyAttribute;
@@ -42,7 +48,13 @@ export default {
     const record = await model.findOne(option);
     return record;
   },
-  update: async (model, body, { transform, returnNew }) => {
+  update: async (model, body, options) => {
+    let transform, returnNew;
+    if (options) {
+      transform = options.transform;
+      returnNew = options.returnNew;
+    }
+
     const priKey = model.primaryKeyAttribute;
     const updateForm = _.omit(body, [priKey]);
     if (transform) {

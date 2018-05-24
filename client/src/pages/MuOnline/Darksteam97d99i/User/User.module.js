@@ -19,6 +19,7 @@ export const userPages = [
 export const LOGIN = 'ds9799_user/LOGIN';
 export const LOGOUT = 'ds9799_user/LOGOUT';
 export const REGISTER = 'ds9799_user/REGISTER';
+const SET_VIP_ACCOUNT = 'ds9799_user/SET_VIP_ACCOUNT';
 const RECOVER_PASSWORD = 'ds9799_user/RECOVER_PASSWORD';
 const GET_CURRENT_USER = 'ds9799_user/GET_CURRENT_USER';
 const SET_CHECKED_USER = 'ds9799_user/SET_CHECKED_USER';
@@ -64,10 +65,13 @@ export const editProfile = formBody =>
       socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ01');
     }
   })();
-export const logout = () => dispatch => {
+
+export const logout = () => {
   window.localStorage.removeItem('ds9799User');
   return { type: LOGOUT };
 };
+
+export const setVipAccount = () => ({ type: SET_VIP_ACCOUNT });
 
 const initialState = {
   user: null,
@@ -93,6 +97,8 @@ export default (state = initialState, action) => {
       return { ...state, user: { ...state.user, ...action.payload } };
     case SET_CHECKED_USER:
       return { ...state, isCheckedCurrentUser: action.value };
+    case SET_VIP_ACCOUNT:
+      return { ...state, user: { ...state.user, isVip: 1 } };
 
     case LOGOUT:
       return { ...state, user: null };

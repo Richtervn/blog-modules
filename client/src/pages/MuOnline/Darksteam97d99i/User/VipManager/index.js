@@ -1,4 +1,5 @@
 import ds9799_credit from './Credit.module';
 import CreditLogs from './CreditLogs.container';
+import VipManager from './VipManager.container';
 
-export { CreditLogs, ds9799_credit };
+export { CreditLogs, VipManager, ds9799_credit };

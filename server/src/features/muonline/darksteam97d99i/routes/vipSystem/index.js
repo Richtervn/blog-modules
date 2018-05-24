@@ -47,7 +47,7 @@ export default (models, methods, factories, helper) => {
       const vipSystem = await VipSystem.findOne({ where: { id: packageId } });
       let result;
       if (vipSystem.type == 'Character') {
-        result = await buyVipCharacter(vipSystem, characterId);
+        result = await buyVipCharacter(vipSystem, characterId, userId);
       }
       if (vipSystem.type == 'Account') {
         result = await buyVipAccount(vipSystem, userId);

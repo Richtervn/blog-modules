@@ -61,7 +61,7 @@ class CharacterForm extends Component {
       QuestNumber: character.QuestNumber || 0,
       QuestMonsters: character.QuestMonsters || 0,
       SkyEventWins: character.SkyEventWins || 0,
-      IsVip: character.IsVip === '1' ? true : false,
+      IsVip: parseInt(character.IsVip, 10) === 1 ? true : false,
       VipExpirationTime: character.VipExpirationTime ? unixTime.toInputDate(character.VipExpirationTime) : ''
     };
   }

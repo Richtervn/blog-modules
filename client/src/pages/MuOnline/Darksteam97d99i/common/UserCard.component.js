@@ -2,6 +2,18 @@ import './UserCard.css';
 import React from 'react';
 import { formatNumber } from 'helpers';
 
+const VipIcon = ({isVip}) => {
+  if(!isVip && isVip.toString() !== '1'){
+    return null;
+  }
+
+  return (
+    <div className="vip-icon">
+      <img src="/images/icons/vip.png" alt="vip" />
+    </div>
+  );
+};
+
 export default ({ user, zen_balance, credits }) => {
   if (!user) {
     return null;
@@ -9,11 +21,7 @@ export default ({ user, zen_balance, credits }) => {
   return (
     <div className="ds9799-user-card">
       <div className="header">
-        {user.IsVip && (
-          <div className="vip-icon">
-            <img src="/images/icons/vip.png" alt="vip" />
-          </div>
-        )}
+        <VipIcon isVip={user.IsVip}/>
         <div className="name">{user.memb___id}</div>
       </div>
       <div className="content">

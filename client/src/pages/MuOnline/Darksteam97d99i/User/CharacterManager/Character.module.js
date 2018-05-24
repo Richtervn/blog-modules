@@ -7,6 +7,7 @@ import { LOAN, DEPOSIT, WITHDRAW } from '../BankingManager/Banking.module';
 
 const GET_CHARACTERS = 'ds9799_character/GET_CHARACTERS';
 const SET_FOCUS_CHARACTER = 'ds9799_character/SET_FOCUS_CHARACTER';
+const SET_VIP_CHARACTER = 'ds9799_character/SET_VIP_CHARACTER';
 
 export const RESET = 'ds9799_character/RESET';
 export const ADD_POINT = 'ds9799_character/ADD_POINT';
@@ -44,6 +45,8 @@ export const resetQuest = query =>
       socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ05');
     }
   })();
+
+export const setVipCharacter = name => ({ type: SET_VIP_CHARACTER, name });
 
 const initialState = {
   characters: null,
@@ -107,6 +110,15 @@ export default (state = initialState, action) => {
       state.characters = state.characters.map(character => {
         if (character.Name === action.payload.Name) {
           character.Money = action.payload.Money;
+        }
+        return character;
+      });
+      return { ...state, characters: state.characters.slice(0) };
+
+    case SET_VIP_CHARACTER:
+      state.characters = state.characters.map(character => {
+        if (character.Name === action.name) {
+          character.IsVip = 1;
         }
         return character;
       });

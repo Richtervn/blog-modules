@@ -15,6 +15,7 @@ export default async (Character, id) => {
       'PkCount',
       'PkLevel',
       'Money',
+      'VipExpirationTime',
       'IsVip'
     ],
     where: {

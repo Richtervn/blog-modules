@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import LoginForm from './LoginForm.container';
 import RegisterForm from './RegisterForm.container';
@@ -13,7 +14,7 @@ import GameSettingCard from './GameSettingCard.container';
 
 import { userPages } from '../User/User.module';
 
-export default ({ activePage, onSetPage, onLogout }) => {
+const UserMenu = ({ activePage, onSetPage, onLogout, history }) => {
   if (activePage === 'login') {
     return [
       <LoginForm key="lg_f" />,
@@ -56,8 +57,17 @@ export default ({ activePage, onSetPage, onLogout }) => {
       onClick={menu => onSetPage(menu.route)}
       prefix="/darksteam_97d99i/user/"
     />,
-    <button key="lg" className="btn btn-block btn-danger" onClick={() => onLogout()}>
+    <button
+      key="lg"
+      className="btn btn-block btn-danger"
+      onClick={() => {
+        onLogout();
+        history.push('/darksteam_97d99i/user/login');
+        onSetPage('login');
+      }}>
       Log out
     </button>
   ];
 };
+
+export default withRouter(UserMenu);
