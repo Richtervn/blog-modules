@@ -238,10 +238,7 @@ export default {
     return data;
   }
 
-  // getMuData(file) {
-  //   const data = commonGet('mu/darksteam97d99i/tools/data', [file]);
-  //   return data;
-  // },
+
 
   // addWebShopPackage(formBody) {
   //   formBody.items = JSON.stringify(formBody.items);

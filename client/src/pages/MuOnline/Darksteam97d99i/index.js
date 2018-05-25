@@ -6,13 +6,21 @@ import {
   ds9799_webQuest,
   ds9799_character,
   ds9799_banking,
-  ds9799_credit
+  ds9799_credit,
+  ds9799_blacksmith,
+ds9799_luxuryShop,
+ds9799_upgrageItems,
+ds9799_webShop
 } from './User';
 import { ds9799_admin } from './Admin';
 import { ds9799_server } from './Server';
 
 export {
   ds9799_admin,
+  ds9799_blacksmith,
+ds9799_luxuryShop,
+ds9799_upgrageItems,
+ds9799_webShop,
   ds9799_banking,
   ds9799_appControl,
   ds9799_character,

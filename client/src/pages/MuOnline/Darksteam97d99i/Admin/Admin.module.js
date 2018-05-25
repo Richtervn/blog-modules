@@ -6,7 +6,10 @@ export const adminPages = [
   { name: 'Accounts Manager', icon: 'user', route: 'accounts_manager' },
   { name: 'Characters Manager', icon: 'users', route: 'characters_manager' },
   { name: 'Banking Manager', icon: 'bank', route: 'banking_manager' },
-  { name: 'Credits Manager', icon: 'credit-card', route: 'credits_manager' }
+  { name: 'Credits Manager', icon: 'credit-card', route: 'credits_manager' },
+  {name: 'Vip Packages Manager', icon: 'bank', route: 'vip_packages'},
+  {name: 'Web Shop Manager', icon: 'bank', route: 'web_shop_manager'},
+  {name: 'Luxury Shop Manager', icon: 'bank', route: 'luxury_shop_manager'}
 ];
 
 const GET_ACCOUNTS = 'darksteam97d99i/Admin/GET_ACCOUNTS';

@@ -140,11 +140,8 @@ export default (state = initialState, action) => {
 //   )();
 // };
 
-// const initialState = { user: null, errorLogin: null, errorRegister: null };
-
 // export default (state = initialState, action) => {
 //   switch (action.type) {
-
 
 //     case CHANGE_USER_PAGE:
 //       if (action.page == 'Web Quest') {
@@ -169,11 +166,3 @@ export default (state = initialState, action) => {
 //           MembCredits: { ...state.user.MembCredits, credits: action.payload.credits }
 //         }
 //       };
-
-//     case LOGOUT:
-//       return { ...initialState };
-
-//     default:
-//       return state;
-//   }
-// };

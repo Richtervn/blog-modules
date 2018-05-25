@@ -23,12 +23,16 @@ import {
   ds9799_admin,
   ds9799_appControl,
   ds9799_banking,
+  ds9799_blacksmith,
   ds9799_character,
   ds9799_credit,
   ds9799_user,
   ds9799_introduction,
+  ds9799_luxuryShop,
   ds9799_server,
-  ds9799_webQuest
+  ds9799_upgrageItems,
+  ds9799_webQuest,
+  ds9799_webShop
 } from 'pages/MuOnline/Darksteam97d99i';
 
 export default combineReducers({
@@ -39,12 +43,16 @@ export default combineReducers({
   ds9799_admin,
   ds9799_appControl,
   ds9799_banking,
+  ds9799_blacksmith,
   ds9799_character,
   ds9799_credit,
-  ds9799_introduction,
   ds9799_user,
+  ds9799_introduction,
+  ds9799_luxuryShop,
   ds9799_server,
+  ds9799_upgrageItems,
   ds9799_webQuest,
+  ds9799_webShop,
   endedManga,
   flashGames,
   gamingHistory,

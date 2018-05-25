@@ -12,6 +12,10 @@ import { CharacterManager } from './CharacterManager';
 import { BankingManager } from './BankingManager';
 import { VipManager } from './VipManager';
 import { WebQuest } from './WebQuest';
+import {WebShop} from './WebShop';
+import {Blacksmith} from './Blacksmith';
+import {LuxuryShop} from './LuxuryShop';
+import {UpgrageItems} from './UpgrageItems';
 
 const availableUserPages = _.pluck(userPages, 'route');
 
@@ -71,6 +75,10 @@ class User extends Component {
         {pageParam === 'banking_manager' && <BankingManager />}
         {pageParam === 'vip_manager' && <VipManager />}
         {pageParam === 'web_quest' && <WebQuest />}
+        {pageParam === 'web_shop' && <WebShop />}
+        {pageParam === 'blacksmith' && <Blacksmith/>}
+        {pageParam === 'luxury_shop' && <LuxuryShop/>}
+        {pageParam === 'upgrage_items' && <UpgrageItems/>}
       </Ds9799Page>
     );
   }
