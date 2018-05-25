@@ -295,7 +295,7 @@ export default {
   },
 
   /* Webshop Services */
-  getWebShopPackage({ id }) {
+  getWebShopPackages({ id }) {
     const data = commonGet('darksteam97d99i/web_shop/packages', [id]);
     return data;
   },

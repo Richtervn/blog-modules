@@ -57,7 +57,6 @@ export default {
           if (updateForm[field].replace(`http://localhost:${config.port}`, './public') !== doc[field]) {
             return deleteFile(doc[field]);
           }
-          return;
         }
         return;
       });

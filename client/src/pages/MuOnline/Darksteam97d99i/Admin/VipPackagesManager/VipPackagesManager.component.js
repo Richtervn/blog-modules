@@ -33,7 +33,7 @@ class VipPackagesManager extends Component {
     return (
       <div id="ds9799-vip-packages-manager">
         {vipPackages.map((pack, i) => (
-          <div className="wrapper">
+          <div className="wrapper" key={pack.id}>
             {!editing && (
               <div className="feature">
                 <button className="btn" onClick={() => this.setState({ editing: true, editingIndex: i })}>
@@ -52,7 +52,7 @@ class VipPackagesManager extends Component {
                 onSubmit={formBody => onEdit(formBody)}
               />
             ) : (
-              <div className="package-card" key={pack.id}>
+              <div className="package-card">
                 <div className="header">{pack.name}</div>
                 <div className="content">
                   <div className="card-row">
