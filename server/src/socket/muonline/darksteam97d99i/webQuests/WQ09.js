@@ -1,3 +1,5 @@
+/* Buy credits */
+
 export default class WQ09 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;

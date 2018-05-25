@@ -1,3 +1,5 @@
+/* Buy 1 Account VIP package */
+
 export default class WQ10 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;
@@ -6,6 +8,7 @@ export default class WQ10 {
 		this.banking = banking;
 		this.Banking = models.Banking;
 		this.membInfo = membInfo;
+		this.UserBankingLog = models.UserBankingLog;
 	}
 
 	check() {
@@ -39,6 +42,13 @@ export default class WQ10 {
 			zen_balance: this.banking.zen_balance.toString()
 		});
 
+		await this.UserBankingLog.create({
+			memb___id: this.membInfo.memb___id,
+			description: `Finish quest ${this.webQuest.description} reward`,
+			type: 'add',
+			money: this.webQuest.reward
+		});
+
 		await this.baseRecord.update({
 			progress: 0,
 			finish_times: this.baseRecord.finish_times
@@ -56,16 +66,7 @@ export default class WQ10 {
 	}
 
 	buildResult() {
-		const {
-			_id,
-			description,
-			isRepeatable,
-			type,
-			reward,
-			reward_unit,
-			isJumpStep,
-			rules
-		} = this.webQuest;
+		const { _id, description, isRepeatable, type, reward, reward_unit, isJumpStep, rules } = this.webQuest;
 		const { progress, finish_times } = this.baseRecord;
 		const { isDone } = this.check();
 		const result = {

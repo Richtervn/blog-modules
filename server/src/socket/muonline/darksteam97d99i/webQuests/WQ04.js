@@ -1,3 +1,5 @@
+/* Perform grand reset 1 time */
+
 export default class WQ04 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;

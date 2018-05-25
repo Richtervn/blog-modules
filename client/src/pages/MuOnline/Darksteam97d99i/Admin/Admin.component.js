@@ -7,9 +7,9 @@ import { AccountsManager } from './AccountsManager';
 import { CharactersManager } from './CharactersManager';
 import { BankingManager } from './BankingManager';
 import { CreditsManager } from './CreditsManager';
-import {LuxuryShopManager} from './LuxuryShopManager';
-import {VipPackagesManager} from './VipPackagesManager';
-import {WebShopManager} from './WebShopManager';
+import { LuxuryShopManager } from './LuxuryShopManager';
+import { VipPackagesManager } from './VipPackagesManager';
+import { WebShopManager } from './WebShopManager';
 
 import { adminPages } from './Admin.module';
 const availableAdminPages = _.pluck(adminPages, 'route');
@@ -35,9 +35,9 @@ class Admin extends Component {
         {pageParam === 'characters_manager' && <CharactersManager />}
         {pageParam === 'banking_manager' && <BankingManager />}
         {pageParam === 'credits_manager' && <CreditsManager />}
-        {pageParam === 'luxury_shop_manager' && <LuxuryShopManager/>}
-        {pageParam === 'vip_packages_manager' && <VipPackagesManager/>}
-        {pageParam === 'web_shop_manager' && <WebShopManager/>}
+        {pageParam === 'luxury_shop_manager' && <LuxuryShopManager />}
+        {pageParam === 'vip_packages' && <VipPackagesManager />}
+        {pageParam === 'web_shop_manager' && <WebShopManager />}
       </Ds9799Page>
     );
   }

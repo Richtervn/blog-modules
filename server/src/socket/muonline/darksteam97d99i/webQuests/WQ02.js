@@ -1,3 +1,5 @@
+/* Use add points 10 times */
+
 export default class WQ02 {
   constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
     this.webQuest = webQuest;
@@ -46,6 +48,13 @@ export default class WQ02 {
     await this.baseRecord.update({
       checkpoint: 0,
       progress: 0
+    });
+
+     await this.UserCreditsLog.create({
+      memb___id: this.membInfo.memb___id,
+      description: `Finish quest ${this.webQuest.description} reward`,
+      type: 'add',
+      credits: reward
     });
 
     return {

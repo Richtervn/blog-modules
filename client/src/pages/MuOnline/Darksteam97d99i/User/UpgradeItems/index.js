@@ -1,4 +1,4 @@
-import ds9799_upgrageItems from './UpgrageItems.module';
-import UpgrageItems from './UpgrageItems.container';
+import ds9799_upgradeItems from './UpgradeItems.module';
+import UpgradeItems from './UpgradeItems.container';
 
-export {UpgrageItems, ds9799_upgrageItems};
+export { UpgradeItems, ds9799_upgradeItems };

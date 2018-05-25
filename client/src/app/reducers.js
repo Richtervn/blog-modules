@@ -30,7 +30,7 @@ import {
   ds9799_introduction,
   ds9799_luxuryShop,
   ds9799_server,
-  ds9799_upgrageItems,
+  ds9799_upgradeItems,
   ds9799_webQuest,
   ds9799_webShop
 } from 'pages/MuOnline/Darksteam97d99i';
@@ -50,7 +50,7 @@ export default combineReducers({
   ds9799_introduction,
   ds9799_luxuryShop,
   ds9799_server,
-  ds9799_upgrageItems,
+  ds9799_upgradeItems,
   ds9799_webQuest,
   ds9799_webShop,
   endedManga,

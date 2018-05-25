@@ -1,3 +1,5 @@
+/* Buy 1 Character VIP package */
+
 export default class WQ11 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;

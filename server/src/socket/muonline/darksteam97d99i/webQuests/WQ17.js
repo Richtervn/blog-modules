@@ -1,3 +1,5 @@
+/* Buy 1 recipe from Luxury Shop */
+
 export default class WQ17 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;

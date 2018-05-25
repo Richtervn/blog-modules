@@ -1,3 +1,5 @@
+/* Perform reset quests 1 time */
+
 export default class WQ05 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;

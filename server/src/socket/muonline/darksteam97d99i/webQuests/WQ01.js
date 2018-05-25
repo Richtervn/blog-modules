@@ -1,3 +1,5 @@
+/* Fill profile quest */
+
 const validateMembInfo = membInfo => {
   let message = '';
 
@@ -52,6 +54,7 @@ export default class WQ01 {
     this.membCredits = membCredits;
     this.MembCredits = models.MembCredits;
     this.MembInfo = models.MembInfo;
+    this.UserCreditsLog = models.UserCreditsLog;
   }
 
   check() {
@@ -74,6 +77,13 @@ export default class WQ01 {
 
     await this.membCredits.update({
       credits: this.membCredits.credits
+    });
+
+    await this.UserCreditsLog.create({
+      memb___id: this.membInfo.memb___id,
+      description: `Finish quest ${this.webQuest.description} reward`,
+      type: 'add',
+      credits: reward
     });
 
     this.baseRecord = await this.baseRecord.update({

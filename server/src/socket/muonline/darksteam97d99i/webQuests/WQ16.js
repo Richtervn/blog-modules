@@ -1,3 +1,5 @@
+/* Finish 5 Ingame Quest */
+
 import _ from 'underscore';
 import Promise from 'bluebird';
 

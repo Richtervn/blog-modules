@@ -53,7 +53,7 @@
 		"description": "Perform reset quests 1 time",
 		"reward": 100,
 		"reward_unit": "Credits",
-		"rules": ["Quest's requirement will become higher and higher, even more than it benefit."],
+		"rules": ["Quest's requirement will become higher and higher, even more than it benefit"],
 		"isRepeatable": true,
 		"isJumpStep": false,
 		"type": "Account"

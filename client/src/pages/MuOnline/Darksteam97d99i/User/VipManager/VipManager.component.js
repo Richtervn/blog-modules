@@ -20,18 +20,21 @@ const VipStatus = ({ user, characters }) => {
   } else {
     vipCharacters.forEach(character =>
       data.push(
-        `${character.Name}'s VIP status expiration time : ${moment.unix(character.VipExpirationTime).format('DD-MM-YYYY')}`
+        `${character.Name}'s VIP status expiration time : ${moment
+          .unix(character.VipExpirationTime)
+          .format('DD-MM-YYYY')}`
       )
     );
   }
   return <ul>{data.map((line, i) => <li key={i}>{line}</li>)}</ul>;
 };
 
+let settedHeight = 0;
 class VipManager extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listHeight: 0
+      listHeight: settedHeight
     };
     this.isSetHeight = false;
   }
@@ -48,8 +51,9 @@ class VipManager extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const vipStatus = document.getElementsByClassName('vip-status')[0];
-    if (vipStatus && !this.isSetHeight) {
-      this.setState({ listHeight: window.innerHeight - vipStatus.clientHeight - 127 });
+    if (vipStatus && !this.isSetHeight && !settedHeight) {
+      settedHeight = window.innerHeight - vipStatus.clientHeight - 127;
+      this.setState({ listHeight: settedHeight });
       this.isSetHeight = true;
     }
   }

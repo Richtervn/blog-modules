@@ -1,3 +1,5 @@
+/* Reset 1 character 5 times */
+
 import _ from 'underscore';
 import Promise from 'bluebird';
 

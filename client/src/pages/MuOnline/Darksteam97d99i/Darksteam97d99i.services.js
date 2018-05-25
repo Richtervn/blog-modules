@@ -1,5 +1,5 @@
 import { serviceCaller } from 'helpers';
-// eslint-disable-next-line
+
 const { commonPost, commonGet, commonPut, commonDelete, commonPostMultiplePart, commonPutMultiplePart } = serviceCaller;
 
 export default {
@@ -69,7 +69,7 @@ export default {
     return data;
   },
 
-  /*Admin Credit Manager Services */
+  /* Admin Credit Manager Services */
   adminGetCredits() {
     const data = commonGet('darksteam97d99i/credits');
     return data;
@@ -87,7 +87,7 @@ export default {
     return data;
   },
 
-  /*Admin Vip System Services */
+  /* Admin Vip System Services */
   adminEditVipPackage({ formBody }) {
     const data = commonPut('darksteam97d99i/vip_system', formBody);
     return data;
@@ -98,6 +98,62 @@ export default {
   },
   adminDeleteVipPackage({ id }) {
     const data = commonDelete('darksteam97d99i/vip_system' + id);
+    return data;
+  },
+
+  /* Admin Webshop Services */
+  adminAddWebShopPackage({ formBody }) {
+    formBody.items = JSON.stringify(formBody.items);
+    const data = commonPostMultiplePart('darksteam97d99i/web_shop', formBody);
+    return data;
+  },
+  adminEditWebShopPackage({ formBody }) {
+    formBody.items = JSON.stringify(formBody.items);
+    const data = commonPutMultiplePart('darksteam97d99i/web_shop', formBody);
+    return data;
+  },
+  adminDeleteWebShopPackage({ id }) {
+    const data = commonDelete('darksteam97d99i/web_shop/' + id);
+    return data;
+  },
+
+  /* Admin Luxury Shop Services */
+  adminAddExchange({ formBody }) {
+    const data = commonPostMultiplePart('darksteam97d99i/luxury_shop/exchange', formBody);
+    return data;
+  },
+  adminEditExchange({ formBody }) {
+    const data = commonPutMultiplePart('darksteam97d99i/luxury_shop/exchange', formBody);
+    return data;
+  },
+  adminDeleteExchange({ id }) {
+    const data = commonDelete('darksteam97d99i/luxury_shop/exchange/' + id);
+    return data;
+  },
+  adminAddConsumable({ formBody }) {
+    const data = commonPostMultiplePart('darksteam97d99i/luxury_shop/consumable', formBody);
+    return data;
+  },
+  adminEditConsumable({ formBody }) {
+    const data = commonPutMultiplePart('darksteam97d99i/luxury_shop/consumable', formBody);
+    return data;
+  },
+  adminDeleteConsumable({ id }) {
+    const data = commonDelete('darksteam97d99i/luxury_shop/consumable/' + id);
+    return data;
+  },
+  adminAddReceipt({ formBody }) {
+    formBody.materials = JSON.stringify(formBody.materials);
+    const data = commonPostMultiplePart('darksteam97d99i/luxury_shop/receipt', formBody);
+    return data;
+  },
+  adminEditReceipt({ formBody }) {
+    formBody.materials = JSON.stringify(formBody.materials);
+    const data = commonPutMultiplePart('darksteam97d99i/luxury_shop/receipt', formBody);
+    return data;
+  },
+  adminDeleteReceipt({ id }) {
+    const data = commonDelete('darksteam97d99i/luxury_shop/receipt/' + id);
     return data;
   },
 
@@ -236,120 +292,73 @@ export default {
   buyVip({ query }) {
     const data = commonGet('darksteam97d99i/vip_system/buy', null, query);
     return data;
+  },
+
+  /* Webshop Services */
+  getWebShopPackage({ id }) {
+    const data = commonGet('darksteam97d99i/web_shop/packages', [id]);
+    return data;
+  },
+  buyWebShopPackage({ packageId, characterName }) {
+    const data = commonGet('darksteam97d99i/web_shop/buy', [packageId, characterName]);
+    return data;
+  },
+
+  /* Luxury Shop Services */
+  getExchange() {
+    const data = commonGet('darksteam97d99i/luxury_shop/exchange');
+    return data;
+  },
+  getConsumable() {
+    const data = commonGet('darksteam97d99i/luxury_shop/consumable');
+    return data;
+  },
+  getReceipt() {
+    const data = commonGet('darksteam97d99i/luxury_shop/receipt');
+    return data;
+  },
+  getExchangeCount({ memb___id, exchangeId }) {
+    const data = commonGet('darksteam97d99i/luxury_shop/exchange/count', [memb___id, exchangeId]);
+    return data;
+  },
+  tradeExchange({ query }) {
+    const data = commonGet('darksteam97d99i/luxury_shop/exchange/trade', null, query);
+    return data;
+  },
+  buyReceipt({ memb___id, receiptId }) {
+    const data = commonGet('darksteam97d99i/luxury_shop/receipt/buy', [memb___id, receiptId]);
+    return data;
+  },
+  buyConsumable({ query }) {
+    const data = commonGet('darksteam97d99i/luxury_shop/consumable/buy', null, query);
+    return data;
+  },
+
+  /* Blacksmith Services */
+  getUserReceipts({ memb___id }) {
+    const data = commonGet('darksteam97d99i/luxury_shop/user_receipt', [memb___id]);
+    return data;
+  },
+  getCountMaterials({ memb___id, receiptId }) {
+    const data = commonGet('darksteam97d99i/luxury_shop/user_receipt/count', [memb___id, receiptId]);
+    return data;
+  },
+  craftItem({ characterName, receiptId }) {
+    const data = commonGet('darksteam97d99i/luxury_shop/user_receipt/craft', [characterName, receiptId]);
+    return data;
+  },
+  sellReceipt({ memb___id, receiptId }) {
+    const data = commonGet('darksteam97d99i/luxury_shop/user_receipt/sell', [memb___id, receiptId]);
+    return data;
+  },
+
+  /* UpgradeItems Services */
+  getCharacterInventory({ characterName }) {
+    const data = commonGet('darksteam97d99i/upgrade_items/inventory', [characterName]);
+    return data;
+  },
+  upgradeItem({ formBody }) {
+    const data = commonPut('darksteam97d99i/upgrade_items', formBody);
+    return data;
   }
-
-
-
-  // addWebShopPackage(formBody) {
-  //   formBody.items = JSON.stringify(formBody.items);
-  //   const data = commonPostMultiplePart('mu/darksteam97d99i/admin/web_shop', formBody);
-  //   return data;
-  // },
-  // getWebShopPackage(id) {
-  //   const data = commonGet('mu/darksteam97d99i/web_shop/packages', [id]);
-  //   return data;
-  // },
-  // editWebShopPackage(formBody) {
-  //   formBody.items = JSON.stringify(formBody.items);
-  //   const data = commonPutMultiplePart('mu/darksteam97d99i/admin/web_shop', formBody);
-  //   return data;
-  // },
-  // deleteWebShopPackage(id) {
-  //   const data = commonDelete('mu/darksteam97d99i/admin/web_shop/' + id);
-  //   return data;
-  // },
-  // buyWebShopPackage(packageId, characterName) {
-  //   const data = commonGet('mu/darksteam97d99i/web_shop/buy', [packageId, characterName]);
-  //   return data;
-  // },
-  // adminAddExchange(formBody) {
-  //   const data = commonPostMultiplePart('mu/darksteam97d99i/luxury_shop/exchange', formBody);
-  //   return data;
-  // },
-  // adminEditExchange(formBody) {
-  //   const data = commonPutMultiplePart('mu/darksteam97d99i/luxury_shop/exchange', formBody);
-  //   return data;
-  // },
-  // deleteExchange(id) {
-  //   const data = commonDelete('mu/darksteam97d99i/luxury_shop/exchange/' + id);
-  //   return data;
-  // },
-  // getExchange() {
-  //   const data = commonGet('mu/darksteam97d99i/luxury_shop/exchange');
-  //   return data;
-  // },
-  // adminAddConsumable(formBody) {
-  //   const data = commonPostMultiplePart('mu/darksteam97d99i/luxury_shop/consumable', formBody);
-  //   return data;
-  // },
-  // adminEditConsumable(formBody) {
-  //   const data = commonPutMultiplePart('mu/darksteam97d99i/luxury_shop/consumable', formBody);
-  //   return data;
-  // },
-  // getConsumable() {
-  //   const data = commonGet('mu/darksteam97d99i/luxury_shop/consumable');
-  //   return data;
-  // },
-  // deleteConsumable(id) {
-  //   const data = commonDelete('mu/darksteam97d99i/luxury_shop/consumable/' + id);
-  //   return data;
-  // },
-  // adminAddReceipt(formBody) {
-  //   formBody.materials = JSON.stringify(formBody.materials);
-  //   const data = commonPostMultiplePart('mu/darksteam97d99i/luxury_shop/receipt', formBody);
-  //   return data;
-  // },
-  // adminEditReceipt(formBody) {
-  //   formBody.materials = JSON.stringify(formBody.materials);
-  //   const data = commonPutMultiplePart('mu/darksteam97d99i/luxury_shop/receipt', formBody);
-  //   return data;
-  // },
-  // getReceipt() {
-  //   const data = commonGet('mu/darksteam97d99i/luxury_shop/receipt');
-  //   return data;
-  // },
-  // deleteReceipt(id) {
-  //   const data = commonDelete('mu/darksteam97d99i/luxury_shop/receipt/' + id);
-  //   return data;
-  // },
-  // getExchangeCount(memb___id, exchangeId) {
-  //   const data = commonGet('mu/darksteam97d99i/luxury_shop/exchange/count', [memb___id, exchangeId]);
-  //   return data;
-  // },
-  // tradeExchange(query) {
-  //   const data = commonGet('mu/darksteam97d99i/luxury_shop/exchange/trade', null, query);
-  //   return data;
-  // },
-  // buyReceipt(memb___id, receiptId) {
-  //   const data = commonGet('mu/darksteam97d99i/luxury_shop/receipt/buy', [memb___id, receiptId]);
-  //   return data;
-  // },
-  // buyConsumable(query) {
-  //   const data = commonGet('mu/darksteam97d99i/luxury_shop/consumable/buy', null, query);
-  //   return data;
-  // },
-  // getUserReceipts(memb___id) {
-  //   const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt', [memb___id]);
-  //   return data;
-  // },
-  // getCountMaterials(memb___id, receiptId) {
-  //   const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt/count', [memb___id, receiptId]);
-  //   return data;
-  // },
-  // craftItem(characterName, receiptId) {
-  //   const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt/craft', [characterName, receiptId]);
-  //   return data;
-  // },
-  // sellReceipt(memb___id, receiptId) {
-  //   const data = commonGet('mu/darksteam97d99i/luxury_shop/user_receipt/sell', [memb___id, receiptId]);
-  //   return data;
-  // },
-  // getCharacterInventory(characterName) {
-  //   const data = commonGet('mu/darksteam97d99i/upgrade_items/inventory', [characterName]);
-  //   return data;
-  // },
-  // upgradeItem(body) {
-  //   const data = commonPut('mu/darksteam97d99i/upgrade_items', body);
-  //   return data;
-  // }
 };

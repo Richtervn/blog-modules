@@ -1,4 +1,6 @@
-export default class WQ17 {
+/* Craft 1 Item with Blacksmith */
+
+export default class WQ18 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;
 		this.banking = banking;

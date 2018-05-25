@@ -1,3 +1,5 @@
+/* Loan 5 billions zen from Bank */
+
 export default class WQ06 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;

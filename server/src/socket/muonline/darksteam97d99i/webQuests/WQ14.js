@@ -1,3 +1,5 @@
+/* Enhance Item using Upgrade Item */
+
 export default class WQ14 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;

@@ -1,7 +1,7 @@
-import './UpgrageItems.css';
+import './UpgradeItems.css';
 import React, {Component} from 'react';
 
-class UpgrageItems extends Component {
+class UpgradeItems extends Component {
   componentWillMount() {
     
   }
@@ -11,4 +11,4 @@ class UpgrageItems extends Component {
   }
 }
 
-export default UpgrageItems;
+export default UpgradeItems;

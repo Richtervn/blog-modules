@@ -1,3 +1,5 @@
+/* Pay 1 billion zen for the Bank */
+
 export default class WQ07 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;

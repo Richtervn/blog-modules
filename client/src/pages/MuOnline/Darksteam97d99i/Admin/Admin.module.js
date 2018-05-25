@@ -7,9 +7,9 @@ export const adminPages = [
   { name: 'Characters Manager', icon: 'users', route: 'characters_manager' },
   { name: 'Banking Manager', icon: 'bank', route: 'banking_manager' },
   { name: 'Credits Manager', icon: 'credit-card', route: 'credits_manager' },
-  {name: 'Vip Packages Manager', icon: 'bank', route: 'vip_packages'},
-  {name: 'Web Shop Manager', icon: 'bank', route: 'web_shop_manager'},
-  {name: 'Luxury Shop Manager', icon: 'bank', route: 'luxury_shop_manager'}
+  { name: 'Vip Packages Manager', icon: 'gift', route: 'vip_packages' },
+  { name: 'Web Shop Manager', icon: 'shopping-cart', route: 'web_shop_manager' },
+  { name: 'Luxury Shop Manager', icon: 'magic', route: 'luxury_shop_manager' }
 ];
 
 const GET_ACCOUNTS = 'darksteam97d99i/Admin/GET_ACCOUNTS';
@@ -80,9 +80,12 @@ export const editCredit = formBody => actionCreator(EDIT_CREDIT, services.adminE
 export const deleteCredit = id => actionCreator(DELETE_CREDIT, services.adminDeleteCredit, { payload: { id } })();
 
 export const getVipPackages = () => actionCreator(GET_VIP_PACKAGES, services.getVipPackages)();
-export const addVipPackage = formBody => actionCreator(ADD_VIP_PACKAGE, services.addVipPackages, {payload: {formBody}})();
-export const editVipPackage = formBody => actionCreator(EDIT_VIP_PACKAGE, services.editVipPackage, {payload: {formBody}})();
-export const deleteVipPackage = id => actionCreator(DELETE_VIP_PACKAGE, services.deleteVipPackage, {payload: {formBody}})();
+export const addVipPackage = formBody =>
+  actionCreator(ADD_VIP_PACKAGE, services.addVipPackages, { payload: { formBody } })();
+export const editVipPackage = formBody =>
+  actionCreator(EDIT_VIP_PACKAGE, services.editVipPackage, { payload: { formBody } })();
+export const deleteVipPackage = id =>
+  actionCreator(DELETE_VIP_PACKAGE, services.deleteVipPackage, { payload: { id } })();
 
 const initialState = {
   accounts: null,
@@ -176,24 +179,24 @@ export default (state = initialState, action) => {
       return { ...state, credits: state.credits.slice(0) };
 
     case `${GET_VIP_PACKAGES}_SUCCESS`:
-      return {...state, vipPackages: action.payload};
+      return { ...state, vipPackages: action.payload };
     case `${ADD_VIP_PACKAGE}_SUCCESS`:
       toastStrong(action.payload.name, 'Added');
       state.vipPackages.push(action.payload);
-      return {...state, vipPackages: state.vipPackages.slice(0)}
+      return { ...state, vipPackages: state.vipPackages.slice(0) };
     case `${EDIT_VIP_PACKAGE}_SUCCESS`:
       toastSuccess('Package edited');
       state.vipPackages = state.vipPackages.map(pack => {
-        if(pack.id === action.payload.id){
+        if (pack.id === action.payload.id) {
           return action.payload;
         }
         return pack;
-      })
-      return {...state, vipPackages: state.vipPackages.slice(0)}
+      });
+      return { ...state, vipPackages: state.vipPackages.slice(0) };
     case `${DELETE_VIP_PACKAGE}_SUCCESS`:
       toastSuccess('Package deleted');
       state.vipPackages = state.vipPackages.filter(pack => pack.id !== action.payload.id);
-      return {...state, vipPackages: state.vipPackages.slice(0)}
+      return { ...state, vipPackages: state.vipPackages.slice(0) };
 
     default:
       return state;

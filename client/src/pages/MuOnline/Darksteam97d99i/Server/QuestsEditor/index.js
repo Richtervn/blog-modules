@@ -1,3 +1,3 @@
-import QuestEditor from './QuestEditor.container';
+import QuestsEditor from './QuestsEditor.container';
 
-export {QuestEditor};
+export { QuestsEditor };

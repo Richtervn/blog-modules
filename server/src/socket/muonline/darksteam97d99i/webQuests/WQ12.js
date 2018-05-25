@@ -1,3 +1,5 @@
+/* Buy 1 package from Webshop */
+
 export default class WQ12 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.baseRecord = baseRecord;

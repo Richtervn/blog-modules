@@ -1,4 +1,24 @@
-import {connect} from 'react-redux';
-import VipPackagesManager from './VipPackagesManager.container';
+import { connect } from 'react-redux';
+import VipPackagesManager from './VipPackagesManager.component';
 
-export default connect()(VipPackagesManager);
+import { getVipPackages, addVipPackage, editVipPackage, deleteVipPackage } from '../Admin.module';
+
+export default connect(
+  ({ ds9799_admin }) => ({
+    vipPackages: ds9799_admin.vipPackages
+  }),
+  dispatch => ({
+    onGetPackages() {
+      dispatch(getVipPackages());
+    },
+    onAdd(formBody) {
+      dispatch(addVipPackage(formBody));
+    },
+    onEdit(formBody) {
+      dispatch(editVipPackage(formBody));
+    },
+    onDelete(id) {
+      dispatch(deleteVipPackage(id));
+    }
+  })
+)(VipPackagesManager);

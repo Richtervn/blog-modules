@@ -1,3 +1,5 @@
+/* Create Magic Gladiator character */
+
 export default class WQ08 {
 	constructor(models, methods, membInfo, characters, banking, membCredits, webQuest, baseRecord) {
 		this.characters = characters;

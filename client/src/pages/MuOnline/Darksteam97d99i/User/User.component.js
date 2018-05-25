@@ -12,10 +12,10 @@ import { CharacterManager } from './CharacterManager';
 import { BankingManager } from './BankingManager';
 import { VipManager } from './VipManager';
 import { WebQuest } from './WebQuest';
-import {WebShop} from './WebShop';
-import {Blacksmith} from './Blacksmith';
-import {LuxuryShop} from './LuxuryShop';
-import {UpgrageItems} from './UpgrageItems';
+import { WebShop } from './WebShop';
+import { Blacksmith } from './Blacksmith';
+import { LuxuryShop } from './LuxuryShop';
+import { UpgradeItems } from './UpgradeItems';
 
 const availableUserPages = _.pluck(userPages, 'route');
 
@@ -76,9 +76,9 @@ class User extends Component {
         {pageParam === 'vip_manager' && <VipManager />}
         {pageParam === 'web_quest' && <WebQuest />}
         {pageParam === 'web_shop' && <WebShop />}
-        {pageParam === 'blacksmith' && <Blacksmith/>}
-        {pageParam === 'luxury_shop' && <LuxuryShop/>}
-        {pageParam === 'upgrage_items' && <UpgrageItems/>}
+        {pageParam === 'blacksmith' && <Blacksmith />}
+        {pageParam === 'luxury_shop' && <LuxuryShop />}
+        {pageParam === 'upgrage_items' && <UpgradeItems />}
       </Ds9799Page>
     );
   }
