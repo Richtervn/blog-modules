@@ -5,6 +5,7 @@ import LeftImageCardTrans from './LeftImageCardTrans';
 import LeftPngCardTrans from './LeftPngCardTrans';
 import ProgressBadgesCard from './ProgressBadgesCard';
 import SmallIconCard from './SmallIconCard';
+import TextLabelCard from './TextLabelCard';
 import TextPriorityCard from './TextPriorityCard';
 
 export {
@@ -15,5 +16,6 @@ export {
   LeftPngCardTrans,
   ProgressBadgesCard,
   SmallIconCard,
-  TextPriorityCard
+  TextLabelCard,
+  TextPriorityCard,
 };

@@ -38,6 +38,11 @@ const ADD_CREDIT = 'darksteam97d99i/Admin/ADD_CREDIT';
 const EDIT_CREDIT = 'darksteam97d99i/Admin/EDIT_CREDIT';
 const DELETE_CREDIT = 'darksteam97d99i/Admin/DELETE_CREDIT';
 
+const GET_VIP_PACKAGES = 'darksteam97d99i/Admin/GET_VIP_PACKAGES';
+const ADD_VIP_PACKAGE = 'darksteam97d99i/Admin/ADD_VIP_PACKAGE';
+const EDIT_VIP_PACKAGE = 'darksteam97d99i/Admin/EDIT_VIP_PACKAGE';
+const DELETE_VIP_PACKAGE = 'darksteam97d99i/Admin/DELETE_VIP_PACKAGE';
+
 export const getAccounts = () => actionCreator(GET_ACCOUNTS, services.adminGetAccounts, { payload: { query: {} } })();
 export const getAccountDetail = id =>
   actionCreator(GET_ACCOUNT_DETAIL, services.adminGetAccountDetail, { payload: { id } })();
@@ -74,13 +79,19 @@ export const addCredit = formBody => actionCreator(ADD_CREDIT, services.adminAdd
 export const editCredit = formBody => actionCreator(EDIT_CREDIT, services.adminEditCredit, { payload: { formBody } })();
 export const deleteCredit = id => actionCreator(DELETE_CREDIT, services.adminDeleteCredit, { payload: { id } })();
 
+export const getVipPackages = () => actionCreator(GET_VIP_PACKAGES, services.getVipPackages)();
+export const addVipPackage = formBody => actionCreator(ADD_VIP_PACKAGE, services.addVipPackages, {payload: {formBody}})();
+export const editVipPackage = formBody => actionCreator(EDIT_VIP_PACKAGE, services.editVipPackage, {payload: {formBody}})();
+export const deleteVipPackage = id => actionCreator(DELETE_VIP_PACKAGE, services.deleteVipPackage, {payload: {formBody}})();
+
 const initialState = {
   accounts: null,
   accountDetail: {},
   characters: null,
   characterDetail: {},
   bankings: null,
-  credits: null
+  credits: null,
+  vipPackages: null
 };
 
 export default (state = initialState, action) => {
@@ -163,6 +174,26 @@ export default (state = initialState, action) => {
       toastSuccess('Delete credit success');
       state.credits = state.credits.filter(credit => credit.memb___id !== action.payload.id);
       return { ...state, credits: state.credits.slice(0) };
+
+    case `${GET_VIP_PACKAGES}_SUCCESS`:
+      return {...state, vipPackages: action.payload};
+    case `${ADD_VIP_PACKAGE}_SUCCESS`:
+      toastStrong(action.payload.name, 'Added');
+      state.vipPackages.push(action.payload);
+      return {...state, vipPackages: state.vipPackages.slice(0)}
+    case `${EDIT_VIP_PACKAGE}_SUCCESS`:
+      toastSuccess('Package edited');
+      state.vipPackages = state.vipPackages.map(pack => {
+        if(pack.id === action.payload.id){
+          return action.payload;
+        }
+        return pack;
+      })
+      return {...state, vipPackages: state.vipPackages.slice(0)}
+    case `${DELETE_VIP_PACKAGE}_SUCCESS`:
+      toastSuccess('Package deleted');
+      state.vipPackages = state.vipPackages.filter(pack => pack.id !== action.payload.id);
+      return {...state, vipPackages: state.vipPackages.slice(0)}
 
     default:
       return state;
