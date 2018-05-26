@@ -7,6 +7,7 @@ export default class WQ18 {
 		this.webQuest = webQuest;
 		this.Banking = models.Banking;
 		this.membInfo = membInfo;
+		this.UserBankingLog = models.UserBankingLog;
 	}
 
 	check() {
@@ -24,7 +25,7 @@ export default class WQ18 {
 			progress: this.baseRecord.progress
 		});
 
-				return {
+		return {
 			_id: 'WQ18',
 			progress: this.baseRecord.progress
 		};
@@ -43,6 +44,13 @@ export default class WQ18 {
 		await this.baseRecord.update({
 			progress: 0,
 			finish_times: this.baseRecord.finish_times
+		});
+
+		await this.UserBankingLog.create({
+			memb___id: this.membInfo.memb___id,
+			description: `Finish quest ${this.webQuest.description} reward`,
+			type: 'add',
+			money: this.webQuest.reward
 		});
 
 		const { isDone } = this.check();

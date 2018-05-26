@@ -40,6 +40,13 @@ export default class WQ11 {
 			zen_balance: this.banking.zen_balance.toString()
 		});
 
+		await this.UserBankingLog.create({
+			memb___id: this.membInfo.memb___id,
+			description: `Finish quest ${this.webQuest.description} reward`,
+			type: 'add',
+			money: this.webQuest.reward
+		});
+
 		await this.baseRecord.update({
 			progress: 0,
 			finish_times: this.baseRecord.finish_times

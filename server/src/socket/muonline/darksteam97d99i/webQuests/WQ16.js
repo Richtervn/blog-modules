@@ -11,6 +11,7 @@ export default class WQ16 {
 		this.characters = characters;
 		this.membInfo = membInfo;
 		this.MembCredits = models.MembCredits;
+		this.UserCreditsLog = models.UserCreditsLog;
 	}
 
 	check() {
@@ -69,6 +70,13 @@ export default class WQ16 {
 				});
 			}
 			return baseRecord;
+		});
+
+		await this.UserCreditsLog.create({
+			memb___id: this.membInfo.memb___id,
+			description: `Finish quest ${this.webQuest.description} reward`,
+			type: 'add',
+			credits: this.webQuest.reward
 		});
 
 		await this.membCredits.update({

@@ -9,6 +9,7 @@ export default class WQ13 {
 		this.currentReward = this.webQuest.reward + this.baseRecord.finish_times * this.webQuest.step.reward;
 		this.MembCredits = models.MembCredits;
 		this.membInfo = membInfo;
+		this.UserCreditsLog = models.UserCreditsLog;
 	}
 
 	check() {
@@ -44,6 +45,14 @@ export default class WQ13 {
 		await this.membCredits.update({
 			credits: this.membCredits.credits
 		});
+
+		await this.UserCreditsLog.create({
+			memb___id: this.membInfo.memb___id,
+			description: `Finish quest ${this.webQuest.description} reward`,
+			type: 'add',
+			credits: this.currentReward
+		});
+
 		await this.baseRecord.update({
 			progress: 0,
 			checkpoint: 0,

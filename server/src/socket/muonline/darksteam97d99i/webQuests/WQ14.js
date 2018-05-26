@@ -7,6 +7,7 @@ export default class WQ14 {
 		this.webQuest = webQuest;
 		this.MembCredits = models.MembCredits;
 		this.membInfo = membInfo;
+		this.UserCreditsLog = models.UserCreditsLog;
 	}
 
 	check() {
@@ -39,6 +40,13 @@ export default class WQ14 {
 		await this.membCredits.update({
 			credits: this.membCredits.credits
 		});
+
+		await this.UserCreditsLog.create({
+      memb___id: this.membInfo.memb___id,
+      description: `Finish quest ${this.webQuest.description} reward`,
+      type: 'add',
+      credits: this.webQuest.reward
+    });
 
 		await this.baseRecord.update({
 			progress: 0,

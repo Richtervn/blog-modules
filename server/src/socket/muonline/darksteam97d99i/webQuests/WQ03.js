@@ -10,6 +10,7 @@ export default class WQ03 {
 		this.webQuest = webQuest;
 		this.membCredits = membCredits;
 		this.MembCredits = models.MembCredits;
+		this.UserCreditsLog = model.UserCreditsLog;
 		this.membInfo = membInfo;
 	}
 
@@ -63,6 +64,13 @@ export default class WQ03 {
 				return baseRecord;
 			})
 		);
+
+		await this.UserCreditsLog.create({
+      memb___id: this.membInfo.memb___id,
+      description: `Finish quest ${this.webQuest.description} reward`,
+      type: 'add',
+      credits: this.webQuest.reward
+    });
 
 		await this.membCredits.update({
 			credits: this.membCredits.credits

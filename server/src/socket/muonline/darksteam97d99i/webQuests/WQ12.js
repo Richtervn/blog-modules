@@ -7,6 +7,7 @@ export default class WQ12 {
 		this.webQuest = webQuest;
 		this.MembCredits = models.MembCredits;
 		this.membInfo = membInfo;
+		this.UserCreditsLog = models.UserCreditsLog;
 	}
 
 	check() {
@@ -44,6 +45,13 @@ export default class WQ12 {
 			progress: 0,
 			finish_times: this.baseRecord.finish_times
 		});
+
+		await this.UserCreditsLog.create({
+      memb___id: this.membInfo.memb___id,
+      description: `Finish quest ${this.webQuest.description} reward`,
+      type: 'add',
+      credits: this.webQuest.reward
+    });
 
 		const { isDone } = this.check();
 

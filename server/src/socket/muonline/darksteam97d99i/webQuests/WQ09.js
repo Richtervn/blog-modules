@@ -9,6 +9,7 @@ export default class WQ09 {
 		this.currentReward = this.webQuest.reward + this.baseRecord.finish_times * this.webQuest.step.reward;
 		this.membInfo = membInfo;
 		this.Banking = models.Banking;
+		this.UserBankingLog = models.UserBankingLog;
 	}
 
 	check() {
@@ -44,6 +45,13 @@ export default class WQ09 {
 		await this.banking.update({
 			zen_balance: this.banking.zen_balance.toString()
 		});
+
+		await this.UserBankingLog.create({
+      memb___id: this.membInfo.memb___id,
+      description: `Finish quest ${this.webQuest.description} reward`,
+      type: 'add',
+      money: this.currentReward
+    });
 
 		await this.baseRecord.update({
 			progress: 0,
