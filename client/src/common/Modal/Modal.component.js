@@ -60,6 +60,12 @@ import {
   MuOnlineDeleteToolConfirm
 } from 'pages/Games/MuOnline';
 
+import {
+  BuyDs9799WebShopPackage,
+  WebShopPackageForm,
+  DeleteWebShopPackageConfirm
+} from 'pages/MuOnline/Darksteam97d99i';
+
 export default ({ name }) => {
   let additionProps = {};
   switch (name) {
@@ -67,6 +73,8 @@ export default ({ name }) => {
       additionProps.dialogStyles = { maxWidth: 'max-content', minWidth: '500px' };
       break;
     case 'ProjectItemDetail':
+    case 'AddDs9799WebShopPackage':
+    case 'EditDs9799WebShopPackage':
       additionProps.dialogStyles = { maxWidth: '800px' };
       break;
     default:
@@ -141,6 +149,11 @@ export default ({ name }) => {
       {name === 'AddMuOnlineTool' && <MuOnlineToolForm />}
       {name === 'EditMuOnlineTool' && <MuOnlineToolForm edit />}
       {name === 'DeleteMuOnlineTool' && <MuOnlineDeleteToolConfirm />}
+
+      {name === 'BuyDs9799WebShopPackage' && <BuyDs9799WebShopPackage />}
+      {name === 'AddDs9799WebShopPackage' && <WebShopPackageForm />}
+      {name === 'EditDs9799WebShopPackage' && <WebShopPackageForm edit />}
+      {name === 'DeleteDs9799WebShopPackage' && <DeleteWebShopPackageConfirm />}
     </Modal>
   );
 };

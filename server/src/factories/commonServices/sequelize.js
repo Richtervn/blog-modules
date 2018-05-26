@@ -1,4 +1,5 @@
 import _ from 'underscore';
+import moment from 'moment';
 
 export default {
   create: async (model, body, options) => {

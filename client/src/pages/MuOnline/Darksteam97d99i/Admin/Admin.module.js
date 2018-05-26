@@ -1,6 +1,7 @@
 import { actionCreator } from 'helpers';
 import services from '../Darksteam97d99i.services';
 import { toastStrong, toastSuccess } from 'common/Toast';
+import { hideModal } from 'common/Modal';
 
 export const adminPages = [
   { name: 'Accounts Manager', icon: 'user', route: 'accounts_manager' },
@@ -20,29 +21,6 @@ const DELETE_ACCOUNT = 'darksteam97d99i/Admin/DELETE_ACCOUNT';
 const SEARCH_ACCOUNT = 'darksteam97d99i/Admin/SEARCH_ACCOUNT';
 const CLEAR_ACCOUNT_DETAIL = 'darksteam97d99i/Admin/CLEAR_ACCOUNT_DETAIL';
 
-const GET_CHARACTERS = 'darksteam97d99i/Admin/GET_CHARACTERS';
-const GET_CHARACTER_DETAIL = 'darksteam97d99i/Admin/GET_CHARACTER_DETAIL';
-const ADD_CHARACTER = 'darksteam97d99i/Admin/ADD_CHARACTER';
-const EDIT_CHARACTER = 'darksteam97d99i/Admin/EDIT_CHARACTER';
-const DELETE_CHARACTER = 'darksteam97d99i/Admin/DELETE_CHARACTER';
-const SEARCH_CHARACTER = 'darksteam97d99i/Admin/SEARCH_CHARACTER';
-const CLEAR_CHARACTER_DETAIL = 'darksteam97d99i/Admin/CLEAR_CHARACTER_DETAIL';
-
-const GET_BANKINGS = 'darksteam97d99i/Admin/GET_BANKINGS';
-const ADD_BANKING = 'darksteam97d99i/Admin/ADD_BANKING';
-const EDIT_BANKING = 'darksteam97d99i/Admin/EDIT_BANKING';
-const DELETE_BANKING = 'darksteam97d99i/Admin/DELETE_BANKING';
-
-const GET_CREDITS = 'darksteam97d99i/Admin/GET_CREDITS';
-const ADD_CREDIT = 'darksteam97d99i/Admin/ADD_CREDIT';
-const EDIT_CREDIT = 'darksteam97d99i/Admin/EDIT_CREDIT';
-const DELETE_CREDIT = 'darksteam97d99i/Admin/DELETE_CREDIT';
-
-const GET_VIP_PACKAGES = 'darksteam97d99i/Admin/GET_VIP_PACKAGES';
-const ADD_VIP_PACKAGE = 'darksteam97d99i/Admin/ADD_VIP_PACKAGE';
-const EDIT_VIP_PACKAGE = 'darksteam97d99i/Admin/EDIT_VIP_PACKAGE';
-const DELETE_VIP_PACKAGE = 'darksteam97d99i/Admin/DELETE_VIP_PACKAGE';
-
 export const getAccounts = () => actionCreator(GET_ACCOUNTS, services.adminGetAccounts, { payload: { query: {} } })();
 export const getAccountDetail = id =>
   actionCreator(GET_ACCOUNT_DETAIL, services.adminGetAccountDetail, { payload: { id } })();
@@ -53,6 +31,14 @@ export const editAccount = formBody =>
   actionCreator(EDIT_ACCOUNT, services.adminEditAccount, { payload: { formBody } })();
 export const deleteAccount = id => actionCreator(DELETE_ACCOUNT, services.adminDeleteAccount, { payload: { id } })();
 export const clearAccountDetail = () => ({ type: CLEAR_ACCOUNT_DETAIL });
+
+const GET_CHARACTERS = 'darksteam97d99i/Admin/GET_CHARACTERS';
+const GET_CHARACTER_DETAIL = 'darksteam97d99i/Admin/GET_CHARACTER_DETAIL';
+const ADD_CHARACTER = 'darksteam97d99i/Admin/ADD_CHARACTER';
+const EDIT_CHARACTER = 'darksteam97d99i/Admin/EDIT_CHARACTER';
+const DELETE_CHARACTER = 'darksteam97d99i/Admin/DELETE_CHARACTER';
+const SEARCH_CHARACTER = 'darksteam97d99i/Admin/SEARCH_CHARACTER';
+const CLEAR_CHARACTER_DETAIL = 'darksteam97d99i/Admin/CLEAR_CHARACTER_DETAIL';
 
 export const getCharacters = () =>
   actionCreator(GET_CHARACTERS, services.adminGetCharacters, { payload: { query: {} } })();
@@ -68,16 +54,31 @@ export const deleteCharacter = id =>
   actionCreator(DELETE_CHARACTER, services.adminDeleteCharacter, { payload: { id } })();
 export const clearCharacterDetail = () => ({ type: CLEAR_CHARACTER_DETAIL });
 
+const GET_BANKINGS = 'darksteam97d99i/Admin/GET_BANKINGS';
+const ADD_BANKING = 'darksteam97d99i/Admin/ADD_BANKING';
+const EDIT_BANKING = 'darksteam97d99i/Admin/EDIT_BANKING';
+const DELETE_BANKING = 'darksteam97d99i/Admin/DELETE_BANKING';
+
 export const getBankings = () => actionCreator(GET_BANKINGS, services.adminGetBankings)();
 export const addBanking = formBody => actionCreator(ADD_BANKING, services.adminAddBanking, { payload: { formBody } })();
 export const editBanking = formBody =>
   actionCreator(EDIT_BANKING, services.adminEditBanking, { payload: { formBody } })();
 export const deleteBanking = id => actionCreator(DELETE_BANKING, services.adminDeleteBanking, { payload: { id } })();
 
+const GET_CREDITS = 'darksteam97d99i/Admin/GET_CREDITS';
+const ADD_CREDIT = 'darksteam97d99i/Admin/ADD_CREDIT';
+const EDIT_CREDIT = 'darksteam97d99i/Admin/EDIT_CREDIT';
+const DELETE_CREDIT = 'darksteam97d99i/Admin/DELETE_CREDIT';
+
 export const getCredits = () => actionCreator(GET_CREDITS, services.adminGetCredits)();
 export const addCredit = formBody => actionCreator(ADD_CREDIT, services.adminAddCredit, { payload: { formBody } })();
 export const editCredit = formBody => actionCreator(EDIT_CREDIT, services.adminEditCredit, { payload: { formBody } })();
 export const deleteCredit = id => actionCreator(DELETE_CREDIT, services.adminDeleteCredit, { payload: { id } })();
+
+const GET_VIP_PACKAGES = 'darksteam97d99i/Admin/GET_VIP_PACKAGES';
+const ADD_VIP_PACKAGE = 'darksteam97d99i/Admin/ADD_VIP_PACKAGE';
+const EDIT_VIP_PACKAGE = 'darksteam97d99i/Admin/EDIT_VIP_PACKAGE';
+const DELETE_VIP_PACKAGE = 'darksteam97d99i/Admin/DELETE_VIP_PACKAGE';
 
 export const getVipPackages = () => actionCreator(GET_VIP_PACKAGES, services.getVipPackages)();
 export const addVipPackage = formBody =>
@@ -87,6 +88,29 @@ export const editVipPackage = formBody =>
 export const deleteVipPackage = id =>
   actionCreator(DELETE_VIP_PACKAGE, services.deleteVipPackage, { payload: { id } })();
 
+const GET_WEB_SHOP_PACKAGES = 'darksteam97d99i/Admin/GET_WEB_SHOP_PACKAGES';
+const ADD_WEB_SHOP_PACKAGE = 'darksteam97d99i/Admin/ADD_WEB_SHOP_PACKAGE';
+const EDIT_WEB_SHOP_PACKAGE = 'darksteam97d99i/Admin/EDIT_WEB_SHOP_PACKAGE';
+const DELETE_WEB_SHOP_PACKAGE = 'darksteam97d99i/Admin/EDIT_WEB_SHOP_PACKAGE';
+const SET_FOCUS_WEB_SHOP_PACKAGE = 'darksteam97d99i/Admin/SET_FOCUS_WEB_SHOP_PACKAGE';
+const SET_FOCUS_WEB_SHOP_CATEGORY = 'darksteam97d99i/Admin/SET_FOCUS_WEB_SHOP_CATEGORY';
+
+export const getWebShopPackages = id =>
+  actionCreator(GET_WEB_SHOP_PACKAGES, services.getWebShopPackages, { payload: { id } })();
+export const addWebShopPackage = formBody =>
+  actionCreator(ADD_WEB_SHOP_PACKAGE, services.adminAddWebShopPackage, {
+    payload: { formBody },
+    onAfterSuccess() {
+      hideModal();
+    }
+  })();
+export const editWebShopPackage = formBody =>
+  actionCreator(EDIT_WEB_SHOP_PACKAGE, services.adminEditWebShopPackage, { payload: { formBody } })();
+export const deleteWebShopPackage = (id, categoryId) =>
+  actionCreator(DELETE_WEB_SHOP_PACKAGE, services.adminDeleteWebShopPackage, { payload: { id } })();
+export const setFocusWebShopPackage = pack => ({ type: SET_FOCUS_WEB_SHOP_PACKAGE, pack });
+export const setFocusWebShopCategory = categoryId => ({ type: SET_FOCUS_WEB_SHOP_CATEGORY, categoryId });
+
 const initialState = {
   accounts: null,
   accountDetail: {},
@@ -94,7 +118,21 @@ const initialState = {
   characterDetail: {},
   bankings: null,
   credits: null,
-  vipPackages: null
+  vipPackages: null,
+  webShopCategories: [
+    { _id: 0, Name: 'Swords', Icon: 'ws-sword' },
+    { _id: 1, Name: 'Axes', Icon: 'ws-axe' },
+    { _id: 2, Name: 'Maces', Icon: 'ws-mace' },
+    { _id: 3, Name: 'Spears', Icon: 'ws-spear' },
+    { _id: 4, Name: 'Bows', Icon: 'ws-bow' },
+    { _id: 5, Name: 'Staffs', Icon: 'ws-staff' },
+    { _id: 6, Name: 'Shields', Icon: 'ws-shield' },
+    { _id: 7, Name: 'Wings', Icon: 'ws-wing' },
+    { _id: 8, Name: 'Sets', Icon: 'ws-set' }
+  ],
+  webShopPackages: {},
+  focusWebShopPackage: {},
+  focusWebShopCategory: 0
 };
 
 export default (state = initialState, action) => {
@@ -197,6 +235,52 @@ export default (state = initialState, action) => {
       toastSuccess('Package deleted');
       state.vipPackages = state.vipPackages.filter(pack => pack.id !== action.payload.id);
       return { ...state, vipPackages: state.vipPackages.slice(0) };
+
+    case `${GET_WEB_SHOP_PACKAGES}_SUCCESS`:
+      return { ...state, webShopPackages: { ...state.webShopPackages, [action.params.id]: action.payload } };
+    case `${ADD_WEB_SHOP_PACKAGE}_SUCCESS`:
+      toastStrong(action.payload.name, 'Added');
+      state.webShopPackages[action.params.formBody.category_id].push(action.payload);
+      return {
+        ...state,
+        webShopPackages: {
+          ...state.webShopPackages,
+          [action.params.formBody.category_id]: state.webShopPackages[action.params.formBody.category_id].slice(0)
+        }
+      };
+    case `${EDIT_WEB_SHOP_PACKAGE}_SUCCESS`:
+      toastStrong(action.payload.name, 'Edited');
+      state.webShopPackages[action.params.formBody.category_id] = state.webShopPackages[
+        action.params.formBody.category_id
+      ].map(pack => {
+        if (pack.id === action.payload.id) {
+          return action.payload;
+        }
+        return pack;
+      });
+      return {
+        ...state,
+        webShopPackages: {
+          ...state.webShopPackages,
+          [action.params.formBody.category_id]: state.webShopPackages[action.params.formBody.category_id].slice(0)
+        }
+      };
+    case `${DELETE_WEB_SHOP_PACKAGE}_SUCCESS`:
+      toastSuccess('Package deleted');
+      state.webShopPackages[action.params.categoryId] = state.webShopPackages[action.params.categoryId].filter(
+        pack => pack.id !== action.payload.id
+      );
+      return {
+        ...state,
+        webShopPackages: {
+          ...state.webShopPackages,
+          [action.params.categoryId]: state.webShopPackages[action.params.categoryId].slice(0)
+        }
+      };
+    case SET_FOCUS_WEB_SHOP_PACKAGE:
+      return { ...state, focusWebShopPackage: action.pack };
+    case SET_FOCUS_WEB_SHOP_CATEGORY:
+      return { ...state, focusWebShopCategory: action.categoryId };
 
     default:
       return state;

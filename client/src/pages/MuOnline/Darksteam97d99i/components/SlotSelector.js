@@ -24,7 +24,8 @@ export default ({ onSelect }) => {
   }
 
   return (
-    <select className="ds9799-slot-selector" onChange={onSelect}>
+    <select className="ds9799-slot-select form-control" onChange={onSelect}>
+      <option value=''>Select slot</option>
       {Inventory.map((slot, i) => (
         <option key={i} value={slot.value}>
           {slot.name}

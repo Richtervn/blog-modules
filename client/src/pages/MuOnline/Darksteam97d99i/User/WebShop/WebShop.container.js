@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import WebShop from './WebShop.component';
 
-import { getPackages, setFocusCategory } from './WebShop.module';
+import { getPackages, setFocusCategory, setFocusPackage } from './WebShop.module';
 
 export default connect(
   ({ ds9799_webShop }) => ({
@@ -16,6 +16,9 @@ export default connect(
     onSelectCategory(id) {
       dispatch(setFocusCategory(id));
       dispatch(getPackages(id));
+    },
+    onSetFocusPackage(pack) {
+      dispatch(setFocusPackage(pack));
     }
   })
 )(WebShop);

@@ -1,0 +1,15 @@
+.ds9799-bws.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ds9799-bws.character-list {
+  margin-bottom: 10px;
+}
+
+.ds9799-bws-mf > .btn {
+  padding: 0;
+  width: 100px;
+  margin-left: 10px;
+}

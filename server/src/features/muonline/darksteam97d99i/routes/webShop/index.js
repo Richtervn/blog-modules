@@ -8,7 +8,7 @@ import editWebShopPackage from './services/editWebShopPackage';
 import deleteWebShopPackage from './services/deleteWebShopPackage';
 
 export default (models, methods, factories, helpers) => {
-  const { wrap, deleteFile } = factories;
+  const { wrap, deleteFile, commonSequelize } = factories;
   const { WebShopItem, WebShopPackage } = models;
 
   const router = express.Router();
@@ -47,6 +47,8 @@ export default (models, methods, factories, helpers) => {
       const imageUrl = commonSequelize.uploadImage(files, './public/Mu Online/Darksteam97d99i/Web Shop');
       if (imageUrl) {
         body.image_url = imageUrl;
+      } else {
+        body.image_url = null;
       }
       const response = await editWebShopPackage(WebShopPackage, WebShopItem, body, deleteFile);
       res.send(response);

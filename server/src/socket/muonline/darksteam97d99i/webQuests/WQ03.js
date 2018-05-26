@@ -10,7 +10,7 @@ export default class WQ03 {
 		this.webQuest = webQuest;
 		this.membCredits = membCredits;
 		this.MembCredits = models.MembCredits;
-		this.UserCreditsLog = model.UserCreditsLog;
+		this.UserCreditsLog = models.UserCreditsLog;
 		this.membInfo = membInfo;
 	}
 

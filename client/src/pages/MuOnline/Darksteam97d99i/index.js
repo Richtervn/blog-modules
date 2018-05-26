@@ -10,9 +10,10 @@ import {
   ds9799_blacksmith,
   ds9799_luxuryShop,
   ds9799_upgradeItems,
-  ds9799_webShop
+  ds9799_webShop,
+  BuyDs9799WebShopPackage
 } from './User';
-import { ds9799_admin } from './Admin';
+import { ds9799_admin, WebShopPackageForm, DeleteWebShopPackageConfirm } from './Admin';
 import { ds9799_server } from './Server';
 
 export {
@@ -29,5 +30,8 @@ export {
   ds9799_introduction,
   ds9799_server,
   ds9799_webQuest,
-  Darksteam97d99i
+  Darksteam97d99i,
+  BuyDs9799WebShopPackage,
+  WebShopPackageForm,
+  DeleteWebShopPackageConfirm
 };

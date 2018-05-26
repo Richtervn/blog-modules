@@ -11,10 +11,10 @@ export default () => (
     </div>
     <div className="half">
       <div className="banking-log">
-        <BankingLogs maxTableHeight={290} />
+        <BankingLogs maxTableHeight={285} />
       </div>
       <div className="credit-log">
-        <CreditLogs maxTableHeight={290} />
+        <CreditLogs maxTableHeight={285} />
       </div>
     </div>
   </div>

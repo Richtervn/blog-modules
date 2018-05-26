@@ -4,10 +4,14 @@ import { getMuItemName, getMuItemImage } from 'helpers';
 
 class ItemSelector extends Component {
   componentWillMount() {
-    const { data, onGetData } = this.props;
+    const { data, onGetData, category } = this.props;
     if (!data.Categories) {
       onGetData('Categories');
-      onGetData('Swords');
+      onGetData(category ? category : 'Swords');
+    } else {
+      if (!data[category]) {
+        onGetData(category);
+      }
     }
   }
 

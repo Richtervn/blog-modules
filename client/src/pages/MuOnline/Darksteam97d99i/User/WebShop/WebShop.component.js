@@ -5,6 +5,7 @@ import classnames from 'classnames';
 
 import { ContainerLoader } from 'common/Loaders';
 import { formatNumber } from 'helpers';
+import { openModal } from 'common/Modal';
 
 const VipIcon = ({ isVip }) => {
   if (!isVip && isVip.toString() !== '1') {
@@ -27,7 +28,7 @@ class WebShop extends Component {
   }
 
   render() {
-    const { packages, categories, focusCategory, onSelectCategory } = this.props;
+    const { packages, categories, focusCategory, onSelectCategory, onSetFocusPackage } = this.props;
     return (
       <div id="ds9799-web-shop">
         <div className="category-list">
@@ -63,7 +64,12 @@ class WebShop extends Component {
                     <img src={pack.image_url} alt={pack.name} />
                   </div>
                   <div className="buy-btn">
-                    <button className="btn btn-danger btn-block">
+                    <button
+                      className="btn btn-danger btn-block"
+                      onClick={() => {
+                        onSetFocusPackage(pack);
+                        openModal('BuyDs9799WebShopPackage');
+                      }}>
                       <div className="slogan">Buy :</div>
                       <div className="price">&nbsp;{formatNumber(pack.price)}</div>
                       <div className="unit">&nbsp;Credits</div>

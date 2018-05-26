@@ -8,6 +8,7 @@ import { LOGIN, setVipAccount } from '../User.module';
 import { REFRESH_QUEST_LIST } from '../WebQuest/WebQuest.module';
 import { GRAND_RESET, RESET, setVipCharacter } from '../CharacterManager/Character.module';
 import { BUY_CREDIT, SELL_CREDIT } from '../BankingManager/Banking.module';
+import { BUY_WEB_SHOP_PACKAGE } from '../WebShop/WebShop.module';
 
 const GET_LOGS = 'ds9799_credit/GET_LOGS';
 const GET_PACKAGES = 'ds9799_credit/GET_PACKAGES';
@@ -68,6 +69,8 @@ export default (state = initialState, action) => {
     case `${GET_PACKAGES}_SUCCESS`:
       return { ...state, packages: action.payload };
     case `${BUY_PACKAGE}_SUCCESS`:
+      return { ...state, credits: action.payload.credits };
+    case `${BUY_WEB_SHOP_PACKAGE}_SUCCESS`:
       return { ...state, credits: action.payload.credits };
 
     default:

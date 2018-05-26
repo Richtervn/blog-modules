@@ -6,7 +6,7 @@ export default async (WebShopPackage, WebShopItem, body) => {
     category_id: body.category_id,
     name: body.name,
     price: body.price,
-    is_vip_require: body.isVipRequire == 'true' ? 1 : 0
+    is_vip_require: body.is_vip_require == 'true' ? 1 : 0
   };
 
   if(body.image_url){

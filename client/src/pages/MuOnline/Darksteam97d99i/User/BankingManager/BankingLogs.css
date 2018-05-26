@@ -45,6 +45,9 @@
 
 #ds9799-banking-logs .logs-table > .logs-table-row > .description-col {
   flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #ds9799-banking-logs .logs-table > .logs-table-row > .balance-col {
