@@ -31,7 +31,7 @@ class ItemSelector extends Component {
     }
     return (
       <div className="ds9799-item-selector">
-        <select className="form-control" onChange={onSelectCategory} defaultValue={category}>
+        <select className="form-control" onChange={onSelectCategory} value={category}>
           {data.Categories.map((category, i) => (
             <option key={i} value={category.Name}>
               {category.Name}
@@ -40,7 +40,7 @@ class ItemSelector extends Component {
         </select>
         {category && (
           <div className="item-preview">
-            <select className="form-control" onChange={onSelectItem} defaultValue={itemId}>
+            <select className="form-control" onChange={onSelectItem} value={itemId}>
               {data[category].map((item, i) => (
                 <option key={i} value={item._id}>
                   {getMuItemName(category, item, itemLvl)}

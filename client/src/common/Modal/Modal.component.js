@@ -62,8 +62,14 @@ import {
 
 import {
   BuyDs9799WebShopPackage,
-  WebShopPackageForm,
-  DeleteWebShopPackageConfirm
+  Ds9799WebShopPackageForm,
+  Ds9799DeleteWebShopPackageConfirm,
+  Ds9799ConsumableForm,
+  Ds9799ExchangeForm,
+  Ds9799ReceiptForm,
+  Ds9799DeleteConsumableConfirm,
+  Ds9799DeleteExchangeConfirm,
+  Ds9799DeleteReceiptConfirm
 } from 'pages/MuOnline/Darksteam97d99i';
 
 export default ({ name }) => {
@@ -75,7 +81,15 @@ export default ({ name }) => {
     case 'ProjectItemDetail':
     case 'AddDs9799WebShopPackage':
     case 'EditDs9799WebShopPackage':
+    case 'AddDs9799Consumable':
+    case 'EditDs9799Consumable':
+    case 'AddDs9799Exchange':
+    case 'EditDs9799Exchange':
       additionProps.dialogStyles = { maxWidth: '800px' };
+      break;
+    case 'AddDs9799Receipt':
+    case 'EditDs9799Receipt':
+      additionProps.dialogStyles = { maxWidth: '1200px' };
       break;
     default:
       additionProps = {};
@@ -151,9 +165,18 @@ export default ({ name }) => {
       {name === 'DeleteMuOnlineTool' && <MuOnlineDeleteToolConfirm />}
 
       {name === 'BuyDs9799WebShopPackage' && <BuyDs9799WebShopPackage />}
-      {name === 'AddDs9799WebShopPackage' && <WebShopPackageForm />}
-      {name === 'EditDs9799WebShopPackage' && <WebShopPackageForm edit />}
-      {name === 'DeleteDs9799WebShopPackage' && <DeleteWebShopPackageConfirm />}
+      {name === 'AddDs9799WebShopPackage' && <Ds9799WebShopPackageForm />}
+      {name === 'EditDs9799WebShopPackage' && <Ds9799WebShopPackageForm edit />}
+      {name === 'DeleteDs9799WebShopPackage' && <Ds9799DeleteWebShopPackageConfirm />}
+      {name === 'AddDs9799Consumable' && <Ds9799ConsumableForm />}
+      {name === 'EditDs9799Consumable' && <Ds9799ConsumableForm edit />}
+      {name === 'DeleteDs9799Consumable' && <Ds9799DeleteConsumableConfirm />}
+      {name === 'AddDs9799Exchange' && <Ds9799ExchangeForm />}
+      {name === 'EditDs9799Exchange' && <Ds9799ExchangeForm edit />}
+      {name === 'DeleteDs9799Exchange' && <Ds9799DeleteExchangeConfirm />}
+      {name === 'AddDs9799Receipt' && <Ds9799ReceiptForm />}
+      {name === 'EditDs9799Receipt' && <Ds9799ReceiptForm edit />}
+      {name === 'DeleteDs9799Receipt' && <Ds9799DeleteReceiptConfirm />}
     </Modal>
   );
 };

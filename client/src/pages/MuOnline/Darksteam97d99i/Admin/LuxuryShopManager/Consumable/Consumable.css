@@ -1,0 +1,73 @@
+#ds9799-lxm-consumable {
+  margin: 10px;
+  border: solid 2px #f44336;
+  padding: 0 10px;
+  border-radius: 4px;
+}
+
+#ds9799-lxm-consumable > .consumables-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+  height: calc(100vh - 180px);
+  overflow-y: auto;
+}
+
+#ds9799-lxm-consumable > .consumables-list > .wrapper {
+  width: 20%;
+  padding: 10px;
+}
+
+#ds9799-lxm-consumable > .consumables-list .consumable-card {
+  border: solid 1px #f44336;
+  border-radius: 4px;
+  background: white;
+}
+
+#ds9799-lxm-consumable .consumable-card > .label {
+  color: white;
+  font-weight: 600;
+  background: #f44336;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  padding: 5px;
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#ds9799-lxm-consumable .consumable-card > .image {
+  text-align: center;
+  padding: 20px 0;
+}
+
+#ds9799-lxm-consumable .consumable-card > .image > img {
+  width: 120px;
+  height: 120px;
+}
+#ds9799-lxm-consumable .consumable-card > .feature {
+  margin: 0 auto 10px auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#ds9799-lxm-consumable .consumable-card  > .feature .btn {
+  width: 70px;
+}
+#ds9799-lxm-consumable .consumable-card  > .price {
+  text-align: center;
+  color: black;
+  margin-bottom: 10px;
+}
+#ds9799-lxm-consumable .consumable-card  > .price > span {
+  font-weight: 600;
+}
+
+#ds9799-lxm-consumable .add-consumable-btn {
+  width: 20%;
+  padding: 10px 10px 0;
+  height: 312px;
+}

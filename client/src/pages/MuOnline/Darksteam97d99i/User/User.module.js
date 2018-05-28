@@ -29,6 +29,7 @@ const EDIT_PROFILE = 'ds9799_user/EDIT_PROFILE';
 const socketInitialize = (socket, memb___id) => {
   return new Promise(resolve => {
     socket.emit('darksteam97d99i/USER_LOGGED_IN', memb___id);
+    socket.on('reconnect', () => socket.emit('darksteam97d99i/USER_LOGGED_IN', memb___id));
     socket.once('darksteam97d99i/USER_WEB_QUEST_INITIALIZED', () => {
       return resolve();
     });

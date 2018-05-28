@@ -1,4 +1,4 @@
 import WebShopManager from './WebShopManager.container';
-import { WebShopPackageForm, DeleteWebShopPackageConfirm } from './Modals';
+import { Ds9799WebShopPackageForm, Ds9799DeleteWebShopPackageConfirm } from './Modals';
 
-export { WebShopManager, WebShopPackageForm, DeleteWebShopPackageConfirm };
+export { WebShopManager, Ds9799WebShopPackageForm, Ds9799DeleteWebShopPackageConfirm };

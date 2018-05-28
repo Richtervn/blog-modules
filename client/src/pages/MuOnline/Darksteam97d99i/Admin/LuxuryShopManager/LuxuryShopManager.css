@@ -1,3 +1,35 @@
-#ds9799-luxury-shop-manager {
+#ds9799-lx-manager > .menu-bar {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  margin-top: 10px;
+}
 
+#ds9799-lx-manager > .menu-bar > .menu-tab {
+  border: solid 1px #f44336;
+  border-radius: 4px;
+  width: 30%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  color: black;
+  cursor: pointer;
+}
+#ds9799-lx-manager > .menu-bar > .menu-tab:hover {
+  border: solid 2px #02a502;
+}
+#ds9799-lx-manager > .menu-bar > .menu-tab.active {
+  border: solid 2px #02a502;
+  background: #d8fbd8;
+}
+#ds9799-lx-manager > .menu-bar > .menu-tab > img {
+  width: 30px;
+  height: 30px;
+}
+#ds9799-lx-manager > .menu-bar > .menu-tab > .label {
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 20px;
 }

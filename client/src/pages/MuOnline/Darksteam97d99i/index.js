@@ -1,5 +1,6 @@
 import Darksteam97d99i from './Darksteam97d99i.container';
 import ds9799_appControl from './Darksteam97d99i.module';
+
 import {
   ds9799_user,
   ds9799_introduction,
@@ -13,7 +14,19 @@ import {
   ds9799_webShop,
   BuyDs9799WebShopPackage
 } from './User';
-import { ds9799_admin, WebShopPackageForm, DeleteWebShopPackageConfirm } from './Admin';
+
+import {
+  ds9799_admin,
+  Ds9799WebShopPackageForm,
+  Ds9799DeleteWebShopPackageConfirm,
+  Ds9799ConsumableForm,
+  Ds9799ExchangeForm,
+  Ds9799ReceiptForm,
+  Ds9799DeleteConsumableConfirm,
+  Ds9799DeleteExchangeConfirm,
+  Ds9799DeleteReceiptConfirm
+} from './Admin';
+
 import { ds9799_server } from './Server';
 
 export {
@@ -32,6 +45,12 @@ export {
   ds9799_webQuest,
   Darksteam97d99i,
   BuyDs9799WebShopPackage,
-  WebShopPackageForm,
-  DeleteWebShopPackageConfirm
+  Ds9799WebShopPackageForm,
+  Ds9799DeleteWebShopPackageConfirm,
+  Ds9799ConsumableForm,
+  Ds9799ExchangeForm,
+  Ds9799ReceiptForm,
+  Ds9799DeleteConsumableConfirm,
+  Ds9799DeleteExchangeConfirm,
+  Ds9799DeleteReceiptConfirm
 };

@@ -9,7 +9,16 @@ class MusicPlayer extends Component {
   }
 
   render() {
-    const { playList, currentSongIndex, isPlaying, onSetPlayedTime, onSetDuration, onPlayEnd, isLoopSong } = this.props;
+    const {
+      playList,
+      currentSongIndex,
+      isPlaying,
+      onSetPlayedTime,
+      onSetDuration,
+      onPlayEnd,
+      isLoopSong,
+      duration
+    } = this.props;
 
     if (!playList || playList.length < 1) {
       return null;
@@ -19,13 +28,21 @@ class MusicPlayer extends Component {
       <ReactPlayer
         url={playList[currentSongIndex].Url}
         playing={isPlaying}
-        onProgress={obj => onSetPlayedTime(obj.playedSeconds)}
+        onProgress={obj => {
+          if (obj.playedSeconds > 0 && obj.playedSeconds >= duration - 1) {
+            onSetPlayedTime(0);
+            onPlayEnd();
+          } else {
+            onSetPlayedTime(obj.playedSeconds);
+          }
+        }}
         onDuration={duration => onSetDuration(duration)}
         loop={isLoopSong}
-        onEnded={() => onPlayEnd()}
       />
     );
   }
 }
 
 export default MusicPlayer;
+
+// onEnded={() => onPlayEnd()}

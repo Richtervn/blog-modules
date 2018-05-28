@@ -8,7 +8,8 @@ const mapStateToProps = ({ music }) => ({
   currentSongIndex: music.currentSongIndex,
   isPlaying: music.isPlaying,
   isLoopSong: music.isLoopSong,
-  isLoopList: music.isLoopList
+  isLoopList: music.isLoopList,
+  duration: music.duration
 });
 
 const mapDispatchToProps = dispatch => ({

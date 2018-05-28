@@ -1,0 +1,59 @@
+#ds9799-lx-consumable {
+  margin: 10px;
+  border: solid 2px #f44336;
+  padding: 0 10px;
+  border-radius: 4px;
+}
+
+#ds9799-lx-consumable > .consumables-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+  height: calc(100vh - 180px);
+  overflow-y: auto;
+}
+
+#ds9799-lx-consumable > .consumables-list > .wrapper {
+  width: 20%;
+  padding: 10px;
+}
+
+#ds9799-lx-consumable > .consumables-list .consumable-card {
+  border: solid 1px #f44336;
+  border-radius: 4px;
+  background: white;
+}
+
+#ds9799-lx-consumable .consumable-card > .label {
+  color: white;
+  font-weight: 600;
+  background: #f44336;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  padding: 5px;
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#ds9799-lx-consumable .consumable-card > .image {
+  text-align: center;
+  padding: 20px 0;
+}
+
+#ds9799-lx-consumable .consumable-card > .image > img {
+  width: 120px;
+  height: 120px;
+}
+
+#ds9799-lx-consumable .consumable-card > .btn {
+  border-radius: 4px;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+#ds9799-lx-consumable .consumable-card .slogan > span {
+  font-weight: 600;
+}

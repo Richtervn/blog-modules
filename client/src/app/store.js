@@ -1,11 +1,8 @@
-import appConfig from './config';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import io from 'socket.io-client';
+import socket from './socket';
 
 import allReducer from './reducers';
-
-const socket = io.connect(appConfig.SOCKET_HOST);
 
 const store = createStore(
   allReducer,

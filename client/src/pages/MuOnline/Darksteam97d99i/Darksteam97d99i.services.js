@@ -305,15 +305,15 @@ export default {
   },
 
   /* Luxury Shop Services */
-  getExchange() {
+  getExchanges() {
     const data = commonGet('darksteam97d99i/luxury_shop/exchange');
     return data;
   },
-  getConsumable() {
+  getConsumables() {
     const data = commonGet('darksteam97d99i/luxury_shop/consumable');
     return data;
   },
-  getReceipt() {
+  getReceipts() {
     const data = commonGet('darksteam97d99i/luxury_shop/receipt');
     return data;
   },

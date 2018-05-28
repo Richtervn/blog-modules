@@ -100,7 +100,3 @@ class WebShopManager extends Component {
 
 export default WebShopManager;
 
-// onGetPackages
-// onAddPackage
-// onEditPackage
-// onDeletePackage
