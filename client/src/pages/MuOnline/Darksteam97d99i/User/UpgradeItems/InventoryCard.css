@@ -1,0 +1,54 @@
+#ds9799-inventory {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px #f44336;
+  width: 445px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+#ds9799-inventory > .inventory-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 10px;
+}
+
+#ds9799-inventory > .inventory-row > .inventory-box {
+  background-color: black;
+  border: solid 2px #7b7b7b;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#ds9799-inventory > .inventory-row > .inventory-box.small {
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#ds9799-inventory > .inventory-row > .inventory-box.medium {
+  height: 100px;
+  width: 100px;
+}
+
+#ds9799-inventory > .inventory-row > .inventory-box.large {
+  height: 150px;
+  width: 100px;
+}
+
+#ds9799-inventory > .inventory-row > .inventory-box:hover {
+  background-color: #275a27;
+  border-color: #275a27;
+}
+
+#ds9799-inventory > .inventory-row > .inventory-box.selected {
+  background-color: #275a27;
+  border-color: #02a502;
+}

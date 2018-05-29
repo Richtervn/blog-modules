@@ -145,7 +145,9 @@ class WebShopPackageForm extends Component {
 
   submit() {
     const { edit, onAdd, onEdit } = this.props;
-    edit ? onEdit(this.state) : onAdd(this.state);
+    edit
+      ? onEdit({ ...this.state, items: this.state.items.slice(0) })
+      : onAdd({ ...this.state, items: this.state.items.slice(0) });
   }
 
   render() {
@@ -211,7 +213,10 @@ class WebShopPackageForm extends Component {
             <div className="ds9799-ws-items">
               {this.state.items.map((item, i) => (
                 <div key={i} className="ws-item">
-                  <SlotSelector onSelect={event => this.onSelectItemSlot(event.target.value, i)} />
+                  <SlotSelector
+                    onSelect={event => this.onSelectItemSlot(event.target.value, i)}
+                    value={this.state.items[i].slot}
+                  />
                   <ItemSelector
                     category={this.state.items[i].category}
                     onSelectCategory={event => this.onSelectItemCategory(event.target.value, i)}

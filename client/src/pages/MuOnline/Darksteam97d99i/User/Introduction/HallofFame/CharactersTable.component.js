@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMuClass } from 'helpers';
+import { getClass } from 'helpers/mu';
 
 export default ({ characters }) => (
   <table>
@@ -21,7 +21,7 @@ export default ({ characters }) => (
           <td>{i === 0 ? <img className="troopy" src="/images/icons/troopy.png" alt="troopy" /> : i + 1}</td>
           <td>{character.Name}</td>
           <td>{character.AccountID}</td>
-          <td>{getMuClass(character.Class)}</td>
+          <td>{getClass(character.Class)}</td>
           <td>{character.Resets}</td>
           <td>{character.Strength}</td>
           <td>{character.Dexterity}</td>

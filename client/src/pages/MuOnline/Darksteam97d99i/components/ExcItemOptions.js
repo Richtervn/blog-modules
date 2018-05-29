@@ -1,9 +1,9 @@
 import React from 'react';
-import { getMuExcText } from 'helpers/string';
+import { getExcText } from 'helpers/mu';
 
 export default ({ onChangeCheck, category, exc, itemId }) => {
   let { exc1, exc2, exc3, exc4, exc5, exc6 } = exc;
-  let { excOpt1, excOpt2, excOpt3, excOpt4, excOpt5, excOpt6 } = getMuExcText(category, itemId);
+  let { excOpt1, excOpt2, excOpt3, excOpt4, excOpt5, excOpt6 } = getExcText(category, itemId);
 
   if (!excOpt1) return null;
 

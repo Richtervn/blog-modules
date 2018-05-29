@@ -354,7 +354,7 @@ export default {
 
   /* UpgradeItems Services */
   getCharacterInventory({ characterName }) {
-    const data = commonGet('darksteam97d99i/upgrade_items/inventory', [characterName]);
+    const data = commonGet('darksteam97d99i/upgrade_items', [characterName]);
     return data;
   },
   upgradeItem({ formBody }) {

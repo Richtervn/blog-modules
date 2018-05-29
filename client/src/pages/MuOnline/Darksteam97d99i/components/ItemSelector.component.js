@@ -1,6 +1,6 @@
 import './ItemSelector.css';
 import React, { Component } from 'react';
-import { getMuItemName, getMuItemImage } from 'helpers';
+import { getItemName, getItemImage } from 'helpers/mu';
 
 class ItemSelector extends Component {
   componentWillMount() {
@@ -43,11 +43,11 @@ class ItemSelector extends Component {
             <select className="form-control" onChange={onSelectItem} value={itemId}>
               {data[category].map((item, i) => (
                 <option key={i} value={item._id}>
-                  {getMuItemName(category, item, itemLvl)}
+                  {getItemName(category, item, itemLvl)}
                 </option>
               ))}
             </select>
-            <img src={getMuItemImage(category, itemId, itemLvl)} alt="MU Item" />
+            <img src={getItemImage(category, itemId, itemLvl)} alt="MU Item" />
           </div>
         )}
       </div>

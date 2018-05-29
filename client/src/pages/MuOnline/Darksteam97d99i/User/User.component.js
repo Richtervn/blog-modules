@@ -78,7 +78,7 @@ class User extends Component {
         {pageParam === 'web_shop' && <WebShop />}
         {pageParam === 'blacksmith' && <Blacksmith />}
         {pageParam === 'luxury_shop' && <LuxuryShop />}
-        {pageParam === 'upgrage_items' && <UpgradeItems />}
+        {pageParam === 'upgrade_items' && <UpgradeItems />}
       </Ds9799Page>
     );
   }

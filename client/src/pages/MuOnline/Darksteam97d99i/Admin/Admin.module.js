@@ -105,7 +105,12 @@ export const addWebShopPackage = formBody =>
     }
   })();
 export const editWebShopPackage = formBody =>
-  actionCreator(EDIT_WEB_SHOP_PACKAGE, services.adminEditWebShopPackage, { payload: { formBody } })();
+  actionCreator(EDIT_WEB_SHOP_PACKAGE, services.adminEditWebShopPackage, {
+    payload: { formBody },
+    onAfterSuccess() {
+      hideModal();
+    }
+  })();
 export const deleteWebShopPackage = (id, categoryId) =>
   actionCreator(DELETE_WEB_SHOP_PACKAGE, services.adminDeleteWebShopPackage, { payload: { id } })();
 export const setFocusWebShopPackage = pack => ({ type: SET_FOCUS_WEB_SHOP_PACKAGE, pack });
@@ -301,7 +306,7 @@ export default (state = initialState, action) => {
       state.webShopPackages[action.params.formBody.category_id] = state.webShopPackages[
         action.params.formBody.category_id
       ].map(pack => {
-        if (pack.id === action.payload.id) {
+        if (parseInt(pack.id, 10) === parseInt(action.payload.id, 10)) {
           return action.payload;
         }
         return pack;

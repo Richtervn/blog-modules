@@ -1,7 +1,7 @@
 import './SlotSelector.css';
 import React from 'react';
 
-export default ({ onSelect }) => {
+export default ({ onSelect, value }) => {
   const Inventory = [
     { name: 'Right hand', value: 'RightHand' },
     { name: 'Left hand', value: 'LeftHand' },
@@ -24,8 +24,8 @@ export default ({ onSelect }) => {
   }
 
   return (
-    <select className="ds9799-slot-select form-control" onChange={onSelect}>
-      <option value=''>Select slot</option>
+    <select className="ds9799-slot-select form-control" onChange={onSelect} value={value}>
+      <option value='' hidden>Select slot</option>
       {Inventory.map((slot, i) => (
         <option key={i} value={slot.value}>
           {slot.name}

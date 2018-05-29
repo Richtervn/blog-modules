@@ -1,6 +1,6 @@
 import './CharacterDetail.css';
 import React, { Component } from 'react';
-import { getMuClass, formatNumber } from 'helpers';
+import { getClass, formatNumber } from 'helpers';
 
 class CharacterDetail extends Component {
   constructor(props) {
@@ -74,7 +74,7 @@ class CharacterDetail extends Component {
       return <div>No Character</div>;
     }
 
-    const charClass = getMuClass(character.Class);
+    const charClass = getClass(character.Class);
 
     return (
       <div id="ds9799-character-detail">

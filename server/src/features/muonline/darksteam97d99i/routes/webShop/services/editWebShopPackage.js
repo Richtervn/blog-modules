@@ -11,7 +11,7 @@ export default async (WebShopPackage, WebShopItem, body, deleteFile) => {
     category_id: body.category_id,
     name: body.name,
     price: body.price,
-    is_vip_require: body.isVipRequire == 'true' ? 1 : 0
+    is_vip_require: body.is_vip_require == 'true' ? 1 : 0
   };
 
   if (body.image_url) {
@@ -19,10 +19,12 @@ export default async (WebShopPackage, WebShopItem, body, deleteFile) => {
     if (webShopPackage.image_url) {
       await deleteFile(webShopPackage.image_url);
     }
+  } else {
+    body.image_url = webShopPackage.image_url;
   }
 
+  body.items = JSON.parse(body.items);
   const newItemsId = _.pluck(body.items, 'id');
-
   oldItems.forEach(async item => {
     if (!_.contains(newItemsId, item.dataValues.id)) {
       await WebShopItem.destroy({ where: { id: item.dataValues.id } });
@@ -30,9 +32,9 @@ export default async (WebShopPackage, WebShopItem, body, deleteFile) => {
   });
 
   await WebShopPackage.update(webShopPackageForm, { where: { id: body.id } });
-  body.items = JSON.parse(body.items);
   body.items = await Promise.map(body.items, async item => {
     const webShopItemForm = {
+      package_id: webShopPackage.id,
       slot: item.slot,
       category: item.category,
       duration: item.duration,
@@ -59,6 +61,6 @@ export default async (WebShopPackage, WebShopItem, body, deleteFile) => {
     }
   });
 
-  body.is_vip_require = body.isVipRequire == 'true' ? 1 : 0;
+  body.is_vip_require = body.is_vip_require == 'true' ? 1 : 0;
   return body;
 };
