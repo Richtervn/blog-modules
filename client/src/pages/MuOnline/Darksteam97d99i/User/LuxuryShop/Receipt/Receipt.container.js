@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Receipt from './Receipt.component';
 
-import { getReceipts } from '../LuxuryShop.module';
+import { getReceipts, setFocusReceipt } from '../LuxuryShop.module';
 
 export default connect(
   ({ ds9799_luxuryShop }) => ({
@@ -10,6 +10,9 @@ export default connect(
   dispatch => ({
     onGetReceipts() {
       dispatch(getReceipts());
+    },
+    onSetFocusReceipt(receipt) {
+      dispatch(setFocusReceipt(receipt));
     }
   })
 )(Receipt);

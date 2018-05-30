@@ -1,0 +1,24 @@
+#ds9799-trade-exchange > .character-list {
+  width: 300px;
+  margin: 0 auto 10px;
+}
+
+#ds9799-trade-exchange > .character-list .exchange-count {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+#ds9799-trade-exchange > .character-list .exchange-form {
+  margin-left: 10px;
+  display: flex;
+}
+#ds9799-trade-exchange .exchange-form > .form-control {
+  width: 65px;
+  margin-right: 5px;
+}
+#ds9799-trade-exchange .character-card {
+  height: 125px;
+}
+#ds9799-trade-exchange .all-btn {
+  width: 300px;
+  margin: auto;
+}

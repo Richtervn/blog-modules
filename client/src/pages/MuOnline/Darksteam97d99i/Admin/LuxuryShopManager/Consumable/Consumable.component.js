@@ -20,6 +20,11 @@ class Consumable extends Component {
       <div id="ds9799-lxm-consumable">
         <div className="consumables-list">
           {!consumables && <ContainerLoader />}
+          {consumables && (
+            <div className="add-consumable-btn">
+              <PureAddCardButton onClick={() => openModal('AddDs9799Consumable')} />
+            </div>
+          )}
           {consumables &&
             consumables.map(consumable => (
               <div className="wrapper" key={consumable.id}>
@@ -52,11 +57,6 @@ class Consumable extends Component {
                 </div>
               </div>
             ))}
-          {consumables && (
-            <div className="add-consumable-btn">
-              <PureAddCardButton onClick={() => openModal('AddDs9799Consumable')} />
-            </div>
-          )}
         </div>
       </div>
     );

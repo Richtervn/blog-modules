@@ -12,7 +12,10 @@ import {
   ds9799_luxuryShop,
   ds9799_upgradeItems,
   ds9799_webShop,
-  BuyDs9799WebShopPackage
+  BuyDs9799WebShopPackage,
+  BuyDs9799Consumable,
+  BuyDs9799Receipt,
+  TradeDs9799Exchange
 } from './User';
 
 import {
@@ -52,5 +55,8 @@ export {
   Ds9799ReceiptForm,
   Ds9799DeleteConsumableConfirm,
   Ds9799DeleteExchangeConfirm,
-  Ds9799DeleteReceiptConfirm
+  Ds9799DeleteReceiptConfirm,
+  BuyDs9799Consumable,
+  BuyDs9799Receipt,
+  TradeDs9799Exchange
 };

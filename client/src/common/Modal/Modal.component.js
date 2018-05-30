@@ -69,7 +69,10 @@ import {
   Ds9799ReceiptForm,
   Ds9799DeleteConsumableConfirm,
   Ds9799DeleteExchangeConfirm,
-  Ds9799DeleteReceiptConfirm
+  Ds9799DeleteReceiptConfirm,
+  BuyDs9799Consumable,
+  BuyDs9799Receipt,
+  TradeDs9799Exchange
 } from 'pages/MuOnline/Darksteam97d99i';
 
 export default ({ name }) => {
@@ -177,6 +180,9 @@ export default ({ name }) => {
       {name === 'AddDs9799Receipt' && <Ds9799ReceiptForm />}
       {name === 'EditDs9799Receipt' && <Ds9799ReceiptForm edit />}
       {name === 'DeleteDs9799Receipt' && <Ds9799DeleteReceiptConfirm />}
+      {name === 'BuyDs9799Consumable' && <BuyDs9799Consumable />}
+      {name === 'BuyDs9799Receipt' && <BuyDs9799Receipt />}
+      {name === 'TradeDs9799Exchange' && <TradeDs9799Exchange />}
     </Modal>
   );
 };

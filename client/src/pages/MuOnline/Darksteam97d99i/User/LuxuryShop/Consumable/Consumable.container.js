@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Consumable from './Consumable.component';
 
-import { getConsumables } from '../LuxuryShop.module';
+import { getConsumables, setFocusConsumable } from '../LuxuryShop.module';
 
 export default connect(
   ({ ds9799_luxuryShop }) => ({
@@ -10,6 +10,9 @@ export default connect(
   dispatch => ({
     onGetConsumables() {
       dispatch(getConsumables());
+    },
+    onSetFocusConsumable(consumable) {
+      dispatch(setFocusConsumable(consumable));
     }
   })
 )(Consumable);

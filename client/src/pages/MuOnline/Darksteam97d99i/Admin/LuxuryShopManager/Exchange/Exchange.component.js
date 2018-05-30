@@ -20,6 +20,11 @@ class Exchange extends Component {
       <div id="ds9799-lxm-exchange">
         <div className="exchanges-list">
           {!exchanges && <ContainerLoader />}
+          {exchanges && (
+            <div className="add-exchange-btn">
+              <PureAddCardButton onClick={() => openModal('AddDs9799Exchange')} />
+            </div>
+          )}
           {exchanges &&
             exchanges.map(exchange => (
               <div className="wrapper" key={exchange.id}>
@@ -52,11 +57,6 @@ class Exchange extends Component {
                 </div>
               </div>
             ))}
-          {exchanges && (
-            <div className="add-exchange-btn">
-              <PureAddCardButton onClick={() => openModal('AddDs9799Exchange')} />
-            </div>
-          )}
         </div>
       </div>
     );

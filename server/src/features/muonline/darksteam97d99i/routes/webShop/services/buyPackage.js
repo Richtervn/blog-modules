@@ -1,5 +1,5 @@
 export default async (models, helpers, characterName, packageId) => {
-	const { Character, WebShopPackage, WebShopItem, MembCredits } = models;
+	const { Character, WebShopPackage, WebShopItem, MembCredits, UserCreditsLog } = models;
 	const { readInventory, makeInventory, makeItemValue } = helpers;
 
 	const [character, webShopPackage, webShopItems] = [
@@ -14,6 +14,14 @@ export default async (models, helpers, characterName, packageId) => {
 	if (membCredits.credits < webShopPackage.price) {
 		return { message: 'You do not have enough credits' };
 	}
+
+	UserCreditsLog.create({
+		memb___id: character.AccountID,
+		description: `Buy ${webShopPackage.name} from web shop`,
+		type: 'minus',
+		credits: webShopPackage.price
+	});
+
 	const inventory = readInventory(character.Inventory);
 	webShopItems.forEach(item => {
 		const itemValue = makeItemValue(item);

@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 export default async (Consumable, body) => {
-	const consumalbeForm = {
+	const consumableForm = {
 		name: body.name,
 		price: body.price,
 		itemId: body.itemId,
@@ -19,12 +19,14 @@ export default async (Consumable, body) => {
 		exc6: body.exc6 == true ? 1 : 0
 	};
 
+	const consumable = await Consumable.findOne({ where: { id: body.id }, attributes: ['image_url'] });
 	if (body.image_url) {
-		const consumalbe = await Consumable.findOne({ where: { id: body.id }, attributes: ['image_url'] });
-		fs.unlinkSync(consumalbe.image_url);
-		consumalbeForm.image_url = body.image_url;
+		fs.unlinkSync(consumable.image_url);
+		consumableForm.image_url = body.image_url;
+	} else {
+		body.image_url = consumable.image_url;
 	}
 
-	const result = await Consumable.update(consumalbeForm, { where: { id: body.id } });
+	const result = await Consumable.update(consumableForm, { where: { id: body.id } });
 	return result;
 };

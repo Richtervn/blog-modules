@@ -3,6 +3,7 @@ import _ from 'underscore';
 import React, { Component } from 'react';
 import { ContainerLoader } from 'common/Loaders';
 
+import { openModal } from 'common/Modal';
 import { getItemImage, formatNumber } from 'helpers';
 
 class Receipt extends Component {
@@ -14,7 +15,7 @@ class Receipt extends Component {
   }
 
   render() {
-    const { receipts } = this.props;
+    const { receipts, onSetFocusReceipt } = this.props;
     return (
       <div id="ds9799-lx-receipt">
         <div className="receipts-list">
@@ -43,7 +44,12 @@ class Receipt extends Component {
                     ))}
                   </div>
                   <div className="feature">
-                    <button className="btn btn-danger btn-block">
+                    <button
+                      className="btn btn-danger btn-block"
+                      onClick={() => {
+                        onSetFocusReceipt(receipt);
+                        openModal('BuyDs9799Receipt');
+                      }}>
                       Buy : <span>{formatNumber(receipt.price)}</span> Credits
                     </button>
                   </div>

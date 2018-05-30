@@ -33,6 +33,8 @@ export default async (Receipt, Material, body, deleteFile) => {
 		if (receipt.image_url) {
 			await deleteFile(receipt.image_url);
 		}
+	} else {
+		body.image_url = receiptForm.image_url;
 	}
 
 	const newMaterialsId = _.pluck(body.materials, 'id');

@@ -19,10 +19,12 @@ export default async (Exchange, body) => {
 		exc6: body.exc6 == true ? 1 : 0
 	};
 
+	const exchange = await Exchange.findOne({ where: { id: body.id }, attributes: ['image_url'] });
 	if (body.image_url) {
-		const exchange = await Exchange.findOne({ where: { id: body.id }, attributes: ['image_url'] });
 		fs.unlinkSync(exchange.image_url);
 		exchangeForm.image_url = body.image_url;
+	} else {
+		body.image_url = exchange.image_url;
 	}
 
 	const result = await Exchange.update(exchangeForm, { where: { id: body.id } });

@@ -1,5 +1,5 @@
 export default async (models, characterName, receiptId, readInventory, makeInventory) => {
-  const { Character, Receipt, MembCredits, Material } = models;
+  const { Character, Receipt, MembCredits, Material, UserCreditsLog } = models;
   const emptyItemValue = [255, 255, 255, 255, 255, 255, 255, 255, 255, 255];
 
   const [character, receipt, materials] = [
@@ -23,11 +23,7 @@ export default async (models, characterName, receiptId, readInventory, makeInven
 
     for (let i = 0; i < slots.length; i++) {
       const inventoryValue = inventory[slot[i]];
-      if (
-        inventoryValue[0] == itemValue[0] &&
-        inventoryValue[1] == itemValue[1] &&
-        inventoryValue[7] == itemValue[7]
-      ) {
+      if (inventoryValue[0] == itemValue[0] && inventoryValue[1] == itemValue[1] && inventoryValue[7] == itemValue[7]) {
         inventory[slot[i]] = emptyItemValue;
         count++;
       }
@@ -39,6 +35,13 @@ export default async (models, characterName, receiptId, readInventory, makeInven
 
   const craftItemValue = makeItemValue(receipt);
   inventory[receipt.slot] = craftItemValue;
+
+  UserCreditsLog.create({
+    memb___id: character.AccountID,
+    description: `Craft ${receipt.name}`,
+    type: 'minus',
+    credits: receipt.charge_price
+  });
 
   await character.update({ Inventory: makeInventory(inventory) });
   await membCredits.update({ credits: remainCredit });

@@ -37,10 +37,12 @@ export default (models, methods, factories, helpers) => {
 
   router.put(
     '/exchange',
-    wrap(async (req, res, next) => {
+    wrap(async ({ body, files }, res, next) => {
       const imageUrl = commonSequelize.uploadImage(files, './public/Mu Online/Darksteam97d99i/Luxury Shop/Exchange');
       if (imageUrl) {
         body.image_url = imageUrl;
+      } else {
+        body.image_url = null;
       }
       const exchange = await editExchange(Exchange, body);
       res.send(exchange);
@@ -93,6 +95,8 @@ export default (models, methods, factories, helpers) => {
       const imageUrl = commonSequelize.uploadImage(files, './public/Mu Online/Darksteam97d99i/Luxury Shop/Consumable');
       if (imageUrl) {
         body.image_url = imageUrl;
+      } else {
+        body.image_url = null;
       }
       const consumable = await editConsumable(Consumable, body);
       res.send(consumable);
@@ -137,6 +141,8 @@ export default (models, methods, factories, helpers) => {
       const imageUrl = commonSequelize.uploadImage(files, './public/Mu Online/Darksteam97d99i/Luxury Shop/Receipt');
       if (imageUrl) {
         body.image_url = imageUrl;
+      } else {
+        body.image_url = null;
       }
       const receipt = await editReceipt(Receipt, Material, body, deleteFile);
       res.send(receipt);
@@ -162,15 +168,7 @@ export default (models, methods, factories, helpers) => {
   router.get(
     '/exchange/trade',
     wrap(async ({ query }, res, next) => {
-      const result = await tradeExchange(
-        Exchange,
-        Character,
-        MembCredits,
-        query,
-        readInventory,
-        makeItemValue,
-        makeInventory
-      );
+      const result = await tradeExchange(models, query, readInventory, makeItemValue, makeInventory);
       res.send(result);
     })
   );
@@ -178,7 +176,7 @@ export default (models, methods, factories, helpers) => {
   router.get(
     '/receipt/buy/:memb___id/:receiptId',
     wrap(async ({ params: { memb___id, receiptId } }, res, next) => {
-      const result = await buyReceipt(Receipt, MembCredits, UserReceipt, memb___id, receiptId);
+      const result = await buyReceipt(models, memb___id, receiptId);
       res.send(result);
     })
   );
@@ -186,15 +184,7 @@ export default (models, methods, factories, helpers) => {
   router.get(
     '/consumable/buy',
     wrap(async ({ query }, res, next) => {
-      const result = await buyConsumable(
-        Consumable,
-        MembCredits,
-        Character,
-        query,
-        readInventory,
-        makeItemValue,
-        makeInventory
-      );
+      const result = await buyConsumable(models, query, readInventory, makeItemValue, makeInventory);
       res.send(result);
     })
   );
@@ -218,7 +208,7 @@ export default (models, methods, factories, helpers) => {
   );
 
   router.get(
-    '/luxury_shop/user_receipt/craft/:characterName/:receiptId',
+    '/user_receipt/craft/:characterName/:receiptId',
     wrap(async ({ params: { characterName, receiptId } }, res, next) => {
       const result = await craftItem(models, characterName, receiptId, readInventory, makeItemValue);
       res.send(result);
@@ -229,7 +219,7 @@ export default (models, methods, factories, helpers) => {
     '/user_receipt/sell/:memb___id/:receiptId',
     wrap(async ({ params: { memb___id, receiptId } }, res, next) => {
       const GameSetting = await getData('GameSetting');
-      const result = await sellReceipt(MembCredits, Receipt, UserReceipt, memb___id, receiptId, GameSetting);
+      const result = await sellReceipt(models, memb___id, receiptId, GameSetting);
       res.send(result);
     })
   );

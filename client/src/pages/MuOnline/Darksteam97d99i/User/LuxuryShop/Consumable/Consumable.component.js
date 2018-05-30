@@ -2,6 +2,7 @@ import './Consumable.css';
 import React, { Component } from 'react';
 import { ContainerLoader } from 'common/Loaders';
 import { formatNumber } from 'helpers';
+import { openModal } from 'common/Modal';
 
 class Consumable extends Component {
   componentWillMount() {
@@ -12,7 +13,7 @@ class Consumable extends Component {
   }
 
   render() {
-    const { consumables } = this.props;
+    const { consumables, onSetFocusConsumable } = this.props;
     return (
       <div id="ds9799-lx-consumable">
         <div className="consumables-list">
@@ -25,7 +26,12 @@ class Consumable extends Component {
                   <div className="image">
                     <img src={consumable.image_url} alt={consumable.name} />
                   </div>
-                  <button className="btn btn-block btn-danger">
+                  <button
+                    className="btn btn-block btn-danger"
+                    onClick={() => {
+                      onSetFocusConsumable(consumable);
+                      openModal('BuyDs9799Consumable');
+                    }}>
                     <div className="slogan">
                       Buy : <span>{formatNumber(consumable.price)}</span> Credits
                     </div>

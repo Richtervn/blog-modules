@@ -1,4 +1,6 @@
-export default async (Receipt, MembCredits, UserReceipt, memb___id, receiptId) => {
+export default async (models, memb___id, receiptId) => {
+	const { Receipt, MembCredits, UserReceipt, UserCreditsLog } = models;
+
 	const [membCredits, receipt] = [
 		await MembCredits.findOne({ where: { memb___id } }),
 		await Receipt.findOne({ where: { id: receiptId } })
@@ -8,6 +10,12 @@ export default async (Receipt, MembCredits, UserReceipt, memb___id, receiptId) =
 	}
 
 	await membCredits.update({ credits: membCredits.credits - receipt.price });
+	UserCreditsLog.create({
+		memb___id: memb___id,
+		description: `Buy ${receipt.name} receipt`,
+		type: 'minus',
+		credits: receipt.price
+	});
 
 	const userReceipt = await UserReceipt.create({
 		memb___id: memb___id,

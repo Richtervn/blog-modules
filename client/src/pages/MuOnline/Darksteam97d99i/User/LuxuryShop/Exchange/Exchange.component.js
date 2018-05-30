@@ -2,6 +2,7 @@ import './Exchange.css';
 import React, { Component } from 'react';
 import { ContainerLoader } from 'common/Loaders';
 import { formatNumber } from 'helpers';
+import { openModal } from 'common/Modal';
 
 class Exchange extends Component {
   componentWillMount() {
@@ -12,7 +13,7 @@ class Exchange extends Component {
   }
 
   render() {
-    const { exchanges } = this.props;
+    const { exchanges, onGetExchangeCount, onSetFocusExchange } = this.props;
     return (
       <div id="ds9799-lx-exchange">
         <div className="exchanges-list">
@@ -25,7 +26,13 @@ class Exchange extends Component {
                   <div className="image">
                     <img src={exchange.image_url} alt={exchange.name} />
                   </div>
-                  <button className="btn btn-block btn-danger">
+                  <button
+                    className="btn btn-block btn-danger"
+                    onClick={() => {
+                      onSetFocusExchange(exchange);
+                      onGetExchangeCount(exchange.id);
+                      openModal('TradeDs9799Exchange');
+                    }}>
                     <div className="slogan">
                       Exchange : <span>{formatNumber(exchange.price)}</span> Credits
                     </div>

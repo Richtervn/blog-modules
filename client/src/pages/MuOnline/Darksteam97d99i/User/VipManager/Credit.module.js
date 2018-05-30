@@ -9,6 +9,7 @@ import { REFRESH_QUEST_LIST } from '../WebQuest/WebQuest.module';
 import { GRAND_RESET, RESET, setVipCharacter } from '../CharacterManager/Character.module';
 import { BUY_CREDIT, SELL_CREDIT } from '../BankingManager/Banking.module';
 import { BUY_WEB_SHOP_PACKAGE } from '../WebShop/WebShop.module';
+import { BUY_RECEIPT, BUY_CONSUMABLE, TRADE_EXCHANGE } from '../LuxuryShop/LuxuryShop.module';
 
 const GET_LOGS = 'ds9799_credit/GET_LOGS';
 const GET_PACKAGES = 'ds9799_credit/GET_PACKAGES';
@@ -55,22 +56,21 @@ export default (state = initialState, action) => {
       return { ...state, credits: action.payload.MembCredits.credits };
     case REFRESH_QUEST_LIST:
       return { ...state, credits: action.data.credits ? action.data.credits : state.credits };
-    case `${GRAND_RESET}_SUCCESS`:
-    case `${RESET}_SUCCESS`:
-      return { ...state, credits: action.payload.credits };
-
-    case `${BUY_CREDIT}_SUCCESS`:
-      return { ...state, credits: action.payload.credits };
-    case `${SELL_CREDIT}_SUCCESS`:
-      return { ...state, credits: action.payload.credits };
 
     case `${GET_LOGS}_SUCCESS`:
       return { ...state, logs: action.payload };
     case `${GET_PACKAGES}_SUCCESS`:
       return { ...state, packages: action.payload };
+
     case `${BUY_PACKAGE}_SUCCESS`:
-      return { ...state, credits: action.payload.credits };
     case `${BUY_WEB_SHOP_PACKAGE}_SUCCESS`:
+    case `${GRAND_RESET}_SUCCESS`:
+    case `${RESET}_SUCCESS`:
+    case `${BUY_CREDIT}_SUCCESS`:
+    case `${SELL_CREDIT}_SUCCESS`:
+    case `${BUY_RECEIPT}_SUCCESS`:
+    case `${BUY_CONSUMABLE}_SUCCESS`:
+    case `${TRADE_EXCHANGE}_SUCCESS`:
       return { ...state, credits: action.payload.credits };
 
     default:
