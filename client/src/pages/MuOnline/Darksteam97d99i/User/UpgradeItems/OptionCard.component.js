@@ -130,13 +130,13 @@ class OptionCard extends Component {
   }
 
   handleUpgrade() {
-    const { onUpgradeItem, user, character, slot } = this.props;
+    const { onUpgradeItem, userId, characterName, selectedSlot } = this.props;
     onUpgradeItem({
-      memb___id: user.memb___id,
+      memb___id: userId,
       output: { ...this.state.output },
       price: this.state.price,
-      characterName: character.Name,
-      slot: slot
+      characterName: characterName,
+      slot: selectedSlot
     });
   }
 

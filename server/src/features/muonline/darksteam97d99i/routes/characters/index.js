@@ -10,6 +10,7 @@ import getCharacters from './services/getCharacters';
 import grandReset from './services/grandReset';
 import questReset from './services/questReset';
 import reset from './services/reset';
+import changeName from './services/changeName';
 
 export default (models, methods, factories, helpers) => {
   const router = express.Router();
@@ -57,6 +58,15 @@ export default (models, methods, factories, helpers) => {
     wrap(async ({ query }, res, next) => {
       const GameSetting = await getData('GameSetting');
       const result = await questReset(models, methods, GameSetting, query);
+      res.send(result);
+    })
+  );
+
+  router.put(
+    '/change_name',
+    wrap(async ({ body }, res, next) => {
+      const GameSetting = await getData('GameSetting');
+      const result = await changeName(models, methods, GameSetting, body);
       res.send(result);
     })
   );

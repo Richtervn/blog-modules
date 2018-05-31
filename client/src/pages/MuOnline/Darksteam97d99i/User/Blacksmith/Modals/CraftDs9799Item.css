@@ -1,0 +1,26 @@
+.ds9799-ci.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ds9799-ci.alert > span {
+  padding-right: 10px;
+}
+
+.ds9799-ci.character-list {
+  width: 300px;
+  margin: 0 auto 10px;
+}
+
+.ds9799-ci-mf > .btn {
+  padding: 5px;
+  width: 200px;
+  margin-left: 10px;
+}
+
+.ds9799-ci .materials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

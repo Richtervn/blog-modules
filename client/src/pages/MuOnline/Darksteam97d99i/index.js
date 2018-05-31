@@ -15,7 +15,9 @@ import {
   BuyDs9799WebShopPackage,
   BuyDs9799Consumable,
   BuyDs9799Receipt,
-  TradeDs9799Exchange
+  TradeDs9799Exchange,
+  CraftDs9799Item,
+  SellDs9799Receipt
 } from './User';
 
 import {
@@ -58,5 +60,7 @@ export {
   Ds9799DeleteReceiptConfirm,
   BuyDs9799Consumable,
   BuyDs9799Receipt,
-  TradeDs9799Exchange
+  TradeDs9799Exchange,
+  CraftDs9799Item,
+  SellDs9799Receipt
 };

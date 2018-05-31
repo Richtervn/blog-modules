@@ -1,6 +1,7 @@
 import { actionCreator } from 'helpers';
 import services from '../../Darksteam97d99i.services';
 import { hideModal } from 'common/Modal';
+import { toastSuccess } from 'common/Toast';
 
 const GET_RECEIPTS = 'ds9799_luxury/GET_RECEIPTS';
 const GET_EXCHANGES = 'ds9799_luxury/GET_EXCHANGES';
@@ -103,8 +104,16 @@ export default (state = initialState, action) => {
           parseInt(nextState.exchangeCount[action.params.query.characterName], 10) -
           parseInt(action.params.query.count, 10);
       }
-
+      toastSuccess(`Exchange success`);
       return { ...nextState, exchangeCount: { ...nextState.exchangeCount } };
+
+    case `${BUY_RECEIPT}_SUCCESS`:
+      toastSuccess('You bought new receipt');
+      return state;
+    case `${BUY_CONSUMABLE}_SUCCESS`:
+      toastSuccess('You bought an consumable package');
+      return state;
+
     default:
       return state;
   }

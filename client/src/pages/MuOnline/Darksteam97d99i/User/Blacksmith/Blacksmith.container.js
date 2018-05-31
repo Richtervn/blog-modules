@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Blacksmith from './Blacksmith.component';
 
-import { getReceipts, setFocusReceipt } from './Blacksmith.module';
+import { getReceipts, setFocusReceipt, getCountMaterials } from './Blacksmith.module';
 
 export default connect(
   ({ ds9799_blacksmith }) => ({
@@ -13,6 +13,9 @@ export default connect(
     },
     onSetFocusReceipt(receipt) {
       dispatch(setFocusReceipt(receipt));
+    },
+    onGetCountMeterials(receiptId) {
+      dispatch(getCountMaterials(receiptId));
     }
   })
 )(Blacksmith);

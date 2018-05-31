@@ -4,6 +4,11 @@
   padding: 5px 10px;
 }
 
+.manga-detail-view img {
+  max-width: 176px;
+  max-height: 264px;
+}
+
 .mr-aka-tag {
   white-space: pre-wrap;
   margin-right: 2px;

@@ -9,9 +9,12 @@ import PriceCard from './PriceCard.container';
 
 class UpgradeItems extends Component {
   componentWillMount() {
-    const { onGetCharacters, userId, characters } = this.props;
+    const { onGetCharacters, userId, characters, focusCharacter, inventories, onGetInventory } = this.props;
     if (!characters) {
       onGetCharacters(userId);
+    }
+    if (focusCharacter && !inventories[focusCharacter]) {
+      onGetInventory(focusCharacter);
     }
   }
 

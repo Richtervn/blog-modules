@@ -53,7 +53,7 @@ export default async (models, methods, GameSetting, query) => {
 
   let charged;
   if (isUseBank == 'true') {
-    charged = await payByBank(character.AccountID, RESET_FEE);
+    charged = await payByBank(character.AccountID, RESET_FEE, 'Grand reset');
     if (charged.message) return charged;
     resp.zen_balance = charged.zen_balance;
   } else {

@@ -14,7 +14,7 @@ class Blacksmith extends Component {
   }
 
   render() {
-    const { receipts, onSetFocusReceipt } = this.props;
+    const { receipts, onSetFocusReceipt, onGetCountMeterials } = this.props;
     if (!receipts) {
       return <ContainerLoader />;
     }
@@ -54,7 +54,8 @@ class Blacksmith extends Component {
                       className="btn btn-primary"
                       onClick={() => {
                         onSetFocusReceipt(receipt);
-                        openModal('CraftDs9799Receipt');
+                        onGetCountMeterials(receipt.id);
+                        openModal('CraftDs9799Item');
                       }}>
                       Craft
                     </button>

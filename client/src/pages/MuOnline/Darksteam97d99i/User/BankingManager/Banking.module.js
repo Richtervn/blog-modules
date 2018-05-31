@@ -22,7 +22,7 @@ export const deposit = query =>
     payload: { query },
     onAfterSuccess({ payload, data, socket }) {
       if (data.loan_money) {
-        socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ08', payload.query.amount);
+        socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ07', payload.query.amount);
       } else {
         socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ15', payload.query.amount);
       }

@@ -19,6 +19,7 @@
     "Resets": 20
   },
   "GRAND_RESET_AWARD_CREDITS": 1000,
+  "CHANGE_NAME_FEE": 2000000000,
   "BASE_STATS": {
     "DK": { "Strength": 28, "Dexterity": 20, "Vitality": 25, "Energy": 10 },
     "DW": { "Strength": 18, "Dexterity": 18, "Vitality": 15, "Energy": 30 },

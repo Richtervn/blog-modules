@@ -1,7 +1,7 @@
 export default (models, factories) => {
 	const { Banking, BankingLog, UserBankingLog } = models;
 
-	return async (accountId, charge, { description, character_name }) => {
+	return async (accountId, charge, description ) => {
 		const banking = await Banking.findOne({
 			where: { memb___id: accountId }
 		});

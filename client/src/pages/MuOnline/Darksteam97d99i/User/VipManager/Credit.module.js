@@ -10,6 +10,8 @@ import { GRAND_RESET, RESET, setVipCharacter } from '../CharacterManager/Charact
 import { BUY_CREDIT, SELL_CREDIT } from '../BankingManager/Banking.module';
 import { BUY_WEB_SHOP_PACKAGE } from '../WebShop/WebShop.module';
 import { BUY_RECEIPT, BUY_CONSUMABLE, TRADE_EXCHANGE } from '../LuxuryShop/LuxuryShop.module';
+import { UPGRADE_ITEMS } from '../UpgradeItems/UpgradeItems.module';
+import { CRAFT_ITEM, SELL_RECEIPT } from '../Blacksmith/Blacksmith.module';
 
 const GET_LOGS = 'ds9799_credit/GET_LOGS';
 const GET_PACKAGES = 'ds9799_credit/GET_PACKAGES';
@@ -71,6 +73,9 @@ export default (state = initialState, action) => {
     case `${BUY_RECEIPT}_SUCCESS`:
     case `${BUY_CONSUMABLE}_SUCCESS`:
     case `${TRADE_EXCHANGE}_SUCCESS`:
+    case `${UPGRADE_ITEMS}_SUCCESS`:
+    case `${CRAFT_ITEM}_SUCCESS`:
+    case `${SELL_RECEIPT}_SUCCESS`:
       return { ...state, credits: action.payload.credits };
 
     default:

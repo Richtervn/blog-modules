@@ -13,6 +13,7 @@ import editExchange from './services/editExchange';
 import editConsumable from './services/editConsumable';
 import editReceipt from './services/editReceipt';
 import getReceipt from './services/getReceipt';
+import getUserReceipts from './services/getUserReceipts';
 import sellReceipt from './services/sellReceipt';
 import tradeExchange from './services/tradeExchange';
 
@@ -192,10 +193,8 @@ export default (models, methods, factories, helpers) => {
   router.get(
     '/user_receipt/:memb___id',
     wrap(async ({ params: { memb___id } }, res, next) => {
-      const userReceipts = await UserReceipt.findAll({
-        where: { memb___id }
-      });
-      res.send(userReceipts);
+      const result = await getUserReceipts(models, memb___id);
+      res.send(result);
     })
   );
 
