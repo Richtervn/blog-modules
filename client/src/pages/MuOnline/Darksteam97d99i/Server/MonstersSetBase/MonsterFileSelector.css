@@ -1,0 +1,9 @@
+.ds9799-monster-file-selector > .form-control {
+  width: 142px;
+  padding-left: 2px;
+}
+
+.ds9799-monster-file-selector img {
+  margin-top: 10px;
+  max-width: 142px;
+}

@@ -1,0 +1,80 @@
+#ds9799-msb {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 100%;
+}
+
+#ds9799-msb .dectecting-coors {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+#ds9799-msb .setted-coors {
+  display: flex;
+  justify-content: space-between;
+}
+
+#ds9799-msb .coors-input {
+  display: flex;
+}
+
+#ds9799-msb .coors-input > .form-control {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#ds9799-msb .coors-input > .prepend {
+  border: solid 1px #ced4da;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  font-weight: 600;
+  justify-content: center;
+  background: #ced4da;
+  color: black;
+}
+
+#ds9799-msb .form-generate {
+  margin-left: 10px;
+  flex: 1;
+}
+
+#ds9799-msb .msb-form {
+  display: flex;
+  flex: 1;
+  margin-right: 5px;
+}
+
+#ds9799-msb .msb-form .form-control {
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+#ds9799-msb .msb-form .msb-input-form {
+  margin-left: 10px;
+  flex: 1;
+}
+
+#ds9799-msb .msb-box {
+  border: solid 1px;
+  height: calc(100vh - 380px);
+  overflow: auto;
+  background: white;
+  border-radius: 4px;
+  color: black;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+#ds9799-msb .msb-box p {
+  margin-bottom: 5px;
+}
+
+#ds9799-msb .msb-box .btn {
+  width: 25px;
+  padding: 0;
+}

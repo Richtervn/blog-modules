@@ -1,3 +1,4 @@
+import './MapFileSelector.css';
 import React, { Component } from 'react';
 
 class MapFileSelector extends Component {
@@ -10,15 +11,14 @@ class MapFileSelector extends Component {
 
   render() {
     const { data, onSelect, mapId, onChooseCoordinate, onSetCoordinate } = this.props;
-    console.log('RENDER');
-    console.log(data);
+
     if (!data) {
       return null;
     }
-    console.log(data);
+
     return (
-      <div className="text-center">
-        <select className="ds9799-form-selector" onChange={onSelect}>
+      <div className="ds9799-map-file-selector">
+        <select className="form-control" onChange={onSelect}>
           {data.map((map, i) => (
             <option key={i} value={map._id}>
               {map.Name}
@@ -30,6 +30,7 @@ class MapFileSelector extends Component {
           style={{ width: '500px' }}
           onMouseMove={onChooseCoordinate}
           onClick={onSetCoordinate}
+          alt="Mu Map"
         />
       </div>
     );
