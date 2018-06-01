@@ -1,0 +1,101 @@
+#ds9799-game-setting {
+  flex: 1;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: calc(100vh - 110px);
+  overflow-y: auto;
+}
+
+#ds9799-game-setting section {
+  border: solid 1px #f44336;
+  background: white;
+  border-radius: 4px;
+  color: black;
+  margin-bottom: 10px;
+}
+
+#ds9799-game-setting section .content {
+  padding: 10px;
+}
+
+#ds9799-game-setting h2 {
+  font-weight: 600;
+  color: white;
+  background: #f44336;
+  font-size: 16px;
+  padding: 5px;
+  margin-bottom: 0;
+}
+
+#ds9799-game-setting label {
+  margin-bottom: 0;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#ds9799-game-setting .checkbox-field {
+  display: flex;
+  align-items: center;
+}
+
+#ds9799-game-setting > #blacksmith-setting .form-control,
+#ds9799-game-setting > #credit-price .form-control,
+#ds9799-game-setting > #register-gift .form-control {
+  width: 200px;
+  margin-left: 10px;
+}
+
+#ds9799-game-setting > #base-stats > .content,
+#ds9799-game-setting > #credit-price > .content,
+#ds9799-game-setting > #grand-reset-settings > .content,
+#ds9799-game-setting > #register-gift > .content {
+  display: flex;
+  flex: 1;
+}
+
+#ds9799-game-setting > #blacksmith-setting .input-wrapper,
+#ds9799-game-setting > #credit-price .input-wrapper,
+#ds9799-game-setting > #register-gift .input-wrapper {
+  display: flex;
+  flex: 1;
+  padding: 0 10px;
+  align-items: center;
+}
+
+#ds9799-game-setting > #banking-settings > .content,
+#ds9799-game-setting > #character-services > .content {
+  display: flex;
+  justify-content: space-around;
+}
+
+#ds9799-game-setting > #upgrade-item > .content,
+#ds9799-game-setting > #reset-settings > .content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#ds9799-game-setting > #base-stats .input-wrapper,
+#ds9799-game-setting > #upgrade-item .input-wrapper,
+#ds9799-game-setting > #reset-settings .input-wrapper {
+  width: 25%;
+  padding: 0 10px 10px 0;
+}
+
+#ds9799-game-setting > #banking-settings .input-wrapper,
+#ds9799-game-setting > #grand-reset-settings .input-wrapper {
+  width: 25%;
+  padding: 0 10px;
+}
+
+#ds9799-game-setting > #upgrade-item .input-frag,
+#ds9799-game-setting > #banking-settings .input-frag {
+  margin-top: 10px;
+}
+
+#ds9799-game-setting > #base-stats .title,
+#ds9799-game-setting > #upgrade-item .title,
+#ds9799-game-setting > #banking-settings .title {
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}

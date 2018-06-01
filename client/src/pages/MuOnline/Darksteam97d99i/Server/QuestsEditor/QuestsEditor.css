@@ -1,3 +1,71 @@
 #ds9799-quests-editor {
-  
+  display: flex;
+}
+
+#ds9799-quests-editor > .quest-col-I {
+  margin: 10px 10px 0 10px;
+  width: 255px;
+  text-align: center;
+}
+
+#ds9799-quests-editor > .quest-col-I .form-control {
+  margin-bottom: 10px;
+}
+
+#ds9799-quests-editor .ds9799-monster-selector .form-control {
+  width: 100%;
+}
+
+#ds9799-quests-editor .ds9799-monster-selector img {
+  margin-bottom: 10px;
+}
+
+#ds9799-quests-editor > .quest-col-II {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+#ds9799-quests-editor .item-lvl-opt {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+}
+
+#ds9799-quests-editor .form-select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#ds9799-quests-editor .form-select label {
+  margin-bottom: 0;
+}
+
+#ds9799-quests-editor .item-lvl-opt .form-control {
+  line-height: 1;
+  width: 50px;
+  padding: 2px;
+  height: auto;
+  margin-left: 5px;
+}
+
+#ds9799-quests-editor .form-wrapper .form-control {
+  margin-bottom: 10px;
+}
+
+#ds9799-quests-editor > .quest-col-III {
+  flex: 1;
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
+#ds9799-quests-editor .ds9799-quest-box {
+  border: solid 1px #f44336;
+  height: 170px;
+  overflow: auto;
+  background: white;
+  border-radius: 4px;
+  color: black;
+  padding: 10px;
+  margin-top: 5px;
 }

@@ -1,7 +1,7 @@
-import './MonsterFileSelector.css';
+import './MonsterSelector.css';
 import React, { Component } from 'react';
 
-class MonsterFileSelector extends Component {
+class MonsterSelector extends Component {
   componentWillMount() {
     const { data, onGetData } = this.props;
     if (!data) {
@@ -15,7 +15,7 @@ class MonsterFileSelector extends Component {
       return null;
     }
     return (
-      <div className="ds9799-monster-file-selector">
+      <div className="ds9799-monster-selector">
         <select className="form-control" onChange={onSelect}>
           {data.map((mon, i) => (
             <option key={i} value={mon._id}>
@@ -29,4 +29,4 @@ class MonsterFileSelector extends Component {
   }
 }
 
-export default MonsterFileSelector;
+export default MonsterSelector;

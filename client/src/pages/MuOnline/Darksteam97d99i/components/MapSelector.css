@@ -1,7 +1,7 @@
-.ds9799-map-file-selector {
+.ds9799-map-selector {
   display: flex;
   flex-direction: column;
 }
-.ds9799-map-file-selector img {
+.ds9799-map-selector img {
   margin-top: 10px;
 }

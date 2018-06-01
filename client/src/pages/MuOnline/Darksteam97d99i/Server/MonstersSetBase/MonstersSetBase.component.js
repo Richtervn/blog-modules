@@ -2,8 +2,7 @@ import './MonstersSetBase.css';
 import _ from 'underscore';
 import React, { Component } from 'react';
 
-import MapFileSelector from './MapFileSelector.container';
-import MonsterFileSelector from './MonsterFileSelector.container';
+import { MapSelector, MonsterSelector } from '../../components';
 import MapDirectionSelector from './MapDirectionSelector.component';
 
 class MonstersSetBase extends Component {
@@ -93,7 +92,7 @@ class MonstersSetBase extends Component {
     return (
       <div id="ds9799-msb">
         <div className="map-selector">
-          <MapFileSelector
+          <MapSelector
             mapId={mapId}
             onSelect={e => this.setState({ mapId: e.target.value })}
             onChooseCoordinate={({ nativeEvent }) =>
@@ -141,7 +140,7 @@ class MonstersSetBase extends Component {
         </div>
         <div className="form-generate">
           <div className="msb-form">
-            <MonsterFileSelector monId={monId} onSelect={e => this.setState({ monId: e.target.value })} />
+            <MonsterSelector monId={monId} onSelect={e => this.setState({ monId: e.target.value })} />
             <div className="msb-input-form">
               <MapDirectionSelector
                 onSelect={e => this.setState({ monDirection: e.target.value })}
@@ -194,14 +193,14 @@ class MonstersSetBase extends Component {
           </div>
           <div className="msb-box">
             {msb.map((msbCode, i) => (
-              <p key={i}>
+              <div className="msb-generated-code" key={i}>
                 {msbCode}
                 <div className="pull-right">
                   <button className="btn btn-danger" onClick={() => this.removeMsb(i)}>
                     <i className="fa fa-times" />
                   </button>
                 </div>
-              </p>
+              </div>
             ))}
           </div>
         </div>

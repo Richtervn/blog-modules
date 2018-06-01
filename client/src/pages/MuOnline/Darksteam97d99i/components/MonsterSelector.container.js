@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import MonsterFileSelector from './MonsterFileSelector.component';
+import MonsterSelector from './MonsterSelector.component';
 
-import { getData } from '../Server.module';
+import { getData } from '../Server/Server.module';
 
 export default connect(
   ({ ds9799_server }) => ({
@@ -12,4 +12,4 @@ export default connect(
       dispatch(getData('Monsters'));
     }
   })
-)(MonsterFileSelector);
+)(MonsterSelector);

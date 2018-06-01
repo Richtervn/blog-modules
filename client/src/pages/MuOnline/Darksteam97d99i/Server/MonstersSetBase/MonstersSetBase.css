@@ -60,7 +60,7 @@
 }
 
 #ds9799-msb .msb-box {
-  border: solid 1px;
+  border: solid 1px #f44336;
   height: calc(100vh - 380px);
   overflow: auto;
   background: white;
@@ -70,7 +70,7 @@
   margin-top: 5px;
 }
 
-#ds9799-msb .msb-box p {
+#ds9799-msb .msb-box .msb-generated-code {
   margin-bottom: 5px;
 }
 
