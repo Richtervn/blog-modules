@@ -3,21 +3,6 @@ import React, { Component } from 'react';
 import { ContainerLoader } from 'common/Loaders';
 import QuestCard from './QuestCard.component';
 
-// const REFRESH_QUEST_LIST = 'darksteam97d99i/webQuest/REFRESH_QUEST_LIST';
-// export const refreshQuestList = data => ({ type: REFRESH_QUEST_LIST, data });
-//     case REFRESH_QUEST_LIST:
-//       const { data } = action;
-//       state.questList = state.questList.map(quest => {
-//         if (quest._id == data._id) {
-//           return { ...quest, ...data };
-//         }
-//         return quest;
-//       });
-//       return {
-//         ...state,
-//         questList: state.questList.slice(0)
-//       };
-
 const questIcons = {
   WQ01: 'wq-fill-form',
   WQ02: 'wq-add-points',

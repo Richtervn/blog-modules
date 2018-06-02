@@ -1,3 +1,90 @@
 #ds9799-web-quests-editor {
-  
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#ds9799-web-quests-editor .quest-table {
+  text-align: center;
+  background: #fff;
+  color: black;
+  height: calc(100vh - 180px);
+  overflow: auto;
+  font-size: 14px;
+}
+
+#ds9799-web-quests-editor .quest-table-row {
+  display: flex;
+  padding: 5px;
+}
+
+#ds9799-web-quests-editor .quest-table-row:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#ds9799-web-quests-editor .quest-table-row.header {
+  font-weight: 600;
+  color: white;
+  background: #f44336;
+  padding: 5px;
+}
+
+#ds9799-web-quests-editor .quest-table-row .id-col {
+  width: 50px;
+}
+
+#ds9799-web-quests-editor .quest-table-row .description-col {
+  width: 200px;
+}
+
+#ds9799-web-quests-editor .quest-table-row .type-col {
+  width: 65px;
+}
+#ds9799-web-quests-editor .quest-table-row .reward-col {
+  width: 60px;
+}
+
+#ds9799-web-quests-editor .quest-table-row .reward-unit-col {
+  width: 55px;
+}
+
+#ds9799-web-quests-editor .quest-table-row .requirement-col {
+  width: 95px;
+}
+
+#ds9799-web-quests-editor .quest-table-row .rules-col {
+  flex: 1;
+}
+
+#ds9799-web-quests-editor .quest-table-row .repeatable-col {
+  width: 75px;
+}
+
+#ds9799-web-quests-editor .quest-table-row .jump-col {
+  width: 50px;
+}
+
+#ds9799-web-quests-editor .quest-table-row .step-reward-col {
+  width: 80px;
+}
+
+#ds9799-web-quests-editor .quest-table-row .step-requirement-col {
+  width: 125px;
+}
+
+#ds9799-web-quests-editor .form-control {
+  line-height: 1;
+  height: auto;
+  padding: 2px;
+  font-size: 14px;
+}
+
+#ds9799-web-quests-editor .feature {
+  width: 60%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+#ds9799-web-quests-editor .feature > .btn {
+  width: 180px;
 }

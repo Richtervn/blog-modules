@@ -40,7 +40,7 @@ class GameSetting extends Component {
   }
 
   render() {
-    const { gameSetting } = this.props;
+    const { gameSetting, onEditGameSetting } = this.props;
     if (!gameSetting) {
       return <ColLoader />;
     }
@@ -718,7 +718,7 @@ class GameSetting extends Component {
           <h2>Characters base stats</h2>
           <div className="content">
             {Object.keys(this.state.BASE_STATS).map(key => (
-              <div className="input-wrapper">
+              <div className="input-wrapper" key={key}>
                 <div className="title">{characterDisplay[key]}</div>
                 {['Strength', 'Dexterity', 'Vitality', 'Energy'].map(type => (
                   <div className="input-frag" key={type}>
@@ -742,6 +742,14 @@ class GameSetting extends Component {
             ))}
           </div>
         </section>
+        <div className="feature">
+          <button className="btn btn-primary" onClick={() => onEditGameSetting(this.state)}>
+            Save
+          </button>
+          <button className="btn btn-danger" onClick={() => this.setState(this.initState(gameSetting))}>
+            Undo
+          </button>
+        </div>
       </div>
     );
   }

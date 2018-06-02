@@ -4,7 +4,7 @@
 		"description": "Fill dashboard",
 		"reward": 50,
 		"reward_unit": "Credits",
-		"rules": ["Serious player always have full filled profile"],
+		"rules": "Serious player always have full filled profile",
 		"isRepeatable": false,
 		"isJumpStep": false,
 		"type": "Account"
@@ -15,10 +15,8 @@
 		"reward": 50,
 		"requirement": 100,
 		"reward_unit": "Credits",
-		"rules": [
-			"Add points system with cheap price is great tool to faster your performance",
-			"Points to add must be greater than %(requirement)"
-		],
+		"rules":
+			"Add points system with cheap price is great tool to faster your performance. Points to add must be greater than %(requirement)",
 		"isRepeatable": true,
 		"isJumpStep": true,
 		"step": {
@@ -33,7 +31,7 @@
 		"requirement": 5,
 		"reward": 50,
 		"reward_unit": "Credits",
-		"rules": ["Stronger character is a greatest benefit of all RPG games", "Tracked on each character"],
+		"rules": "Stronger character is a greatest benefit of all RPG games. Tracked on each character",
 		"isRepeatable": true,
 		"isJumpStep": false,
 		"type": "Character"
@@ -43,7 +41,7 @@
 		"description": "Perform grand reset 1 time",
 		"reward": 200,
 		"reward_unit": "Credits",
-		"rules": ["Grand reset bring a lot of benifit. Do it as soon as possible"],
+		"rules": "Grand reset bring a lot of benifit. Do it as soon as possible",
 		"isRepeatable": true,
 		"isJumpStep": false,
 		"type": "Account"
@@ -53,7 +51,7 @@
 		"description": "Perform reset quests 1 time",
 		"reward": 100,
 		"reward_unit": "Credits",
-		"rules": ["Quest's requirement will become higher and higher, even more than it benefit"],
+		"rules": "Quest's requirement will become higher and higher, even more than it benefit",
 		"isRepeatable": true,
 		"isJumpStep": false,
 		"type": "Account"
@@ -63,7 +61,7 @@
 		"description": "Loan 5 billions zen from Bank",
 		"reward": 50,
 		"reward_unit": "Credits",
-		"rules": ["Banking system is a great way to have money fast"],
+		"rules": "Banking system is a great way to have money fast",
 		"isRepeatable": true,
 		"isJumpStep": false,
 		"type": "Account"
@@ -73,7 +71,7 @@
 		"description": "Pay 1 billion zen for the Bank",
 		"reward": 20,
 		"reward_unit": "Credits",
-		"rules": ["Pay your dept when you have money, and you can borrow it back when you need"],
+		"rules": "Pay your dept when you have money, and you can borrow it back when you need",
 		"isRepeatable": true,
 		"isJumpStep": false,
 		"type": "Account"
@@ -83,7 +81,7 @@
 		"description": "Create Magic Gladiator character",
 		"reward": 20,
 		"reward_unit": "Credits",
-		"rules": ["Magic Gladiator is a great character that can only be created with high level character"],
+		"rules": "Magic Gladiator is a great character that can only be created with high level character",
 		"isRepeatable": false,
 		"isJumpStep": false,
 		"type": "Account"
@@ -93,7 +91,7 @@
 		"description": "Buy %(requirement) credits",
 		"reward": 100000000,
 		"requirement": 500,
-		"rules": ["Banking also sell credits by Zen"],
+		"rules": "Banking also sell credits by Zen",
 		"reward_unit": "Zen",
 		"isRepeatable": true,
 		"isJumpStep": true,
@@ -108,7 +106,7 @@
 		"description": "Buy 1 Account VIP package",
 		"reward": 100000000,
 		"reward_unit": "Zen",
-		"rules": ["VIP Account can have more helper and benefit from the game"],
+		"rules": "VIP Account can have more helper and benefit from the game",
 		"isRepeatable": true,
 		"isJumpStep": false,
 		"type": "Account"
@@ -118,7 +116,7 @@
 		"description": "Buy 1 Character VIP package",
 		"reward": 150000000,
 		"reward_unit": "Zen",
-		"rules": ["VIP Character have higher quality to trainning faster"],
+		"rules": "VIP Character have higher quality to trainning faster",
 		"isRepeatable": true,
 		"isJumpStep": false,
 		"type": "Account"
@@ -127,7 +125,7 @@
 		"_id": "WQ12",
 		"description": "Buy 1 package from Webshop",
 		"reward": 20,
-		"rules": ["Webshop sell many great packages"],
+		"rules": "Webshop sell many great packages",
 		"reward_unit": "Credits",
 		"isRepeatable": true,
 		"isJumpStep": false,
@@ -138,7 +136,7 @@
 		"description": "Make %(requirement) credits from Luxury Shop",
 		"reward": 20,
 		"requirement": 200,
-		"rules": ["Luxury Shop buy items with credits. Look at what it need"],
+		"rules": "Luxury Shop buy items with credits. Look at what it need",
 		"reward_unit": "Credits",
 		"isRepeatable": true,
 		"isJumpStep": true,
@@ -153,7 +151,7 @@
 		"description": "Enhance Item using Upgrade Item",
 		"reward": 20,
 		"reward_unit": "Credits",
-		"rules": ["Not every item can be upgrade in-game. But not for VIP in Upgrade Item system"],
+		"rules": "Not every item can be upgrade in-game. But not for VIP in Upgrade Item system",
 		"isRepeatable": true,
 		"isJumpStep": false,
 		"type": "Account"
@@ -164,7 +162,7 @@
 		"reward": 20,
 		"requirement": 1000000000,
 		"reward_unit": "Credits",
-		"rules": ["Deposit your zen to banking to break the in-game zen limit"],
+		"rules": "Deposit your zen to banking to break the in-game zen limit",
 		"isRepeatable": true,
 		"isJumpStep": true,
 		"step": {
@@ -178,7 +176,7 @@
 		"description": "Finish 5 Ingame Quest",
 		"reward": 50,
 		"reward_unit": "Credits",
-		"rules": ["In-game quest is the quickiest way to gather good items"],
+		"rules": "In-game quest is the quickiest way to gather good items",
 		"isRepeatable": true,
 		"isJumpStep": false,
 		"type": "Character"
@@ -188,7 +186,7 @@
 		"description": "Buy 1 recipe from Luxury Shop",
 		"reward": 50000000,
 		"reward_unit": "Zen",
-		"rules": ["Recipes can light your way to your style"],
+		"rules": "Recipes can light your way to your style",
 		"isRepeatable": true,
 		"isJumpStep": false,
 		"type": "Account"
@@ -197,7 +195,7 @@
 		"_id": "WQ18",
 		"description": "Craft 1 Item with Blacksmith",
 		"reward": 1000000000,
-		"rules": ["Crafting is the greatest way to have the right item for you"],
+		"rules": "Crafting is the greatest way to have the right item for you",
 		"reward_unit": "Zen",
 		"isRepeatable": true,
 		"isJumpStep": false,

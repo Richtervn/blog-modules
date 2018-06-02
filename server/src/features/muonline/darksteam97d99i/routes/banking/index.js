@@ -16,8 +16,8 @@ export default (models, methods, factories, helpers) => {
   router.get(
     '/logs',
     wrap(async ({ query }, res, next) => {
-      const logs = await commonSequelize.getAll(BankingLog, query);
-      res.send(logs);
+      const [logs, profit] = [await commonSequelize.getAll(BankingLog, query), await getData('BankProfit')];
+      res.send({ logs, profit });
     })
   );
 

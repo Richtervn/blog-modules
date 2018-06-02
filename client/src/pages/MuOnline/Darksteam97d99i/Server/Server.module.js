@@ -1,5 +1,6 @@
 import { actionCreator } from 'helpers';
 import services from '../Darksteam97d99i.services';
+import { toastSuccess } from 'common/Toast';
 
 export const serverPages = [
   { name: 'Bag Items Editor', icon: 'magic', route: 'bag_items_editor' },
@@ -12,16 +13,30 @@ export const serverPages = [
   { name: 'Web Quests Editor', icon: 'diamond', route: 'web_quests_editor' }
 ];
 
-const GET_DATA = 'darksteam97d99i/server/GET_DATA';
+const GET_DATA = 'ds9799_server/GET_DATA';
+const GET_BANKING_LOGS = 'ds9799_server/GET_BANKING_LOGS';
+const GET_WEB_QUESTS = 'ds9799_server/GET_WEB_QUESTS';
+const EDIT_WEB_QUESTS = 'ds9799_server/EDIT_WEB_QUESTS';
 
 export const getData = fileName => actionCreator(GET_DATA, services.getServerData, { payload: { fileName } })();
+export const getBankingLogs = () => actionCreator(GET_BANKING_LOGS, services.adminGetBankingsLogs)();
+export const getWebQuests = () => actionCreator(GET_WEB_QUESTS, services.getWebQuests)();
+export const editWebQuests = formBody =>
+  actionCreator(EDIT_WEB_QUESTS, services.editWebQuests, { payload: { formBody } })();
 
-const initialState = { data: {} };
+const initialState = { data: {}, bankingLogs: null, webQuests: null };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case `${GET_DATA}_SUCCESS`:
       return { ...state, data: { ...state.data, [action.params.fileName]: action.payload } };
+    case `${GET_BANKING_LOGS}_SUCCESS`:
+      return { ...state, bankingLogs: action.payload };
+    case `${GET_WEB_QUESTS}_SUCCESS`:
+      return { ...state, webQuests: action.payload };
+    case `${EDIT_WEB_QUESTS}_SUCCESS`:
+      toastSuccess('Saved Web quests success');
+      return { ...state, webQuests: action.payload };
     default:
       return state;
   }

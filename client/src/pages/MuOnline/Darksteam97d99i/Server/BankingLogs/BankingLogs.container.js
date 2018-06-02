@@ -1,5 +1,15 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import BankingLogs from './BankingLogs.component';
 
-export default connect()(BankingLogs);
+import { getBankingLogs } from '../Server.module';
 
+export default connect(
+  ({ ds9799_server }) => ({
+    logs: ds9799_server.bankingLogs
+  }),
+  dispatch => ({
+    onGetLogs() {
+      dispatch(getBankingLogs());
+    }
+  })
+)(BankingLogs);

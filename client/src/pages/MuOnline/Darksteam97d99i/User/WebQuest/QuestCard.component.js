@@ -15,7 +15,7 @@ export default ({ quest, icon, onRequestReward }) => (
     <div className="content">
       <div className="title">{quest.description.replace('%(requirement)', quest.requirement)}</div>
       <div className="subtitle">
-        {quest.rules.map((rule, i) => <i key={i}>{rule.replace('%(requirement)', quest.requirement)}.&nbsp;</i>)}
+        <i>{quest.rules.replace('%(requirement)', quest.requirement)}</i>
       </div>
       <div className="progress">
         <div

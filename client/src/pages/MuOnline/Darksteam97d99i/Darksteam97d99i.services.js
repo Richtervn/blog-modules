@@ -229,6 +229,14 @@ export default {
     const data = commonPost('darksteam97d99i/system/generate_text_file', formBody);
     return data;
   },
+  getWebQuests() {
+    const data = commonGet('darksteam97d99i/system/web_quests');
+    return data;
+  },
+  editWebQuests({ formBody }) {
+    const data = commonPut('darksteam97d99i/system/web_quests', formBody);
+    return data;
+  },
 
   /* Banking Services */
   getUserBankingLogs({ id }) {

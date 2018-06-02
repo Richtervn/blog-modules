@@ -99,3 +99,15 @@
   margin-bottom: 10px;
   text-decoration: underline;
 }
+
+#ds9799-game-setting > .feature {
+  margin: auto;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+#ds9799-game-setting > .feature > .btn {
+  width: 250px;
+}

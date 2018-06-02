@@ -33,6 +33,22 @@ export default (models, methods, factories, helpers) => {
   );
 
   router.get(
+    '/web_quests',
+    wrap(async (req, res, next) => {
+      const quests = await getData('WebQuests');
+      res.send(quests);
+    })
+  );
+
+  router.put(
+    '/web_quests',
+    wrap(async ({ body }, res, next) => {
+      await writeFile('./src/features/muonline/darksteam97d99i/app/QuestList.json', JSON.stringify(body, null, 2));
+      res.send(body);
+    })
+  );
+
+  router.get(
     '/data/:fileName',
     wrap(async ({ params: { fileName } }, res, next) => {
       const data = await getGameData(fileName);
