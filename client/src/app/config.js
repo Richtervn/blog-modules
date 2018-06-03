@@ -1,3 +1,7 @@
+import moment from 'moment';
+
+moment.locale('vi');
+
 const appConfig = {
   API_HOST: 'http://localhost:3000',
   SOCKET_HOST: 'http://localhost:3001'

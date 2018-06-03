@@ -4,7 +4,6 @@ import Home from './Home.component';
 import { setActiveTab } from 'pages/appControl';
 
 const mapStateToProps = ({ appControl }) => ({
-  tabs: appControl.homeTabs,
   activeTab: appControl.activeTab
 });
 

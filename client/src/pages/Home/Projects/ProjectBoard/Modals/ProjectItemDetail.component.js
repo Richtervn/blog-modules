@@ -56,7 +56,7 @@ class ProjectItemDetail extends Component {
   }
 
   calcProgress(subTasks) {
-    const progress = subTasks.filter(subTask => subTask.IsDone).length / subTasks.length * 100;
+    const progress = subTasks.filter(subTask => subTask.IsDone && subTask.Label).length / subTasks.length * 100;
     return progress;
   }
 
@@ -216,9 +216,9 @@ class ProjectItemDetail extends Component {
             </div>,
             <div key="st-p" className="progress">
               <div
-                className={`progress-bar bg-success progress-bar-striped ${progress < 100
-                  ? 'progress-bar-animated'
-                  : ''}`}
+                className={`progress-bar bg-success progress-bar-striped ${
+                  progress < 100 ? 'progress-bar-animated' : ''
+                }`}
                 style={{ width: `${progress || 0}%` }}
               />
             </div>

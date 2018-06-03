@@ -37,7 +37,7 @@ const collect = (connect, monitor) => {
 class BoardCard extends Component {
   render() {
     const { connectDragSource, isDragging, item, TagColor, onSetItemOnDetail, column } = this.props;
-    const progress = Math.round(item.SubTasks.filter(task => task.IsDone).length / item.SubTasks.length * 100);
+    const progress = Math.round(item.SubTasks.filter(task => task.IsDone && task.Label).length / item.SubTasks.length * 100);
 
     return connectDragSource(
       <div>
