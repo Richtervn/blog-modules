@@ -89,7 +89,7 @@ export default (state = initialState, action) => {
 
     case `${REGISTER}_SUCCESS`:
       toastStrong('Register successful');
-      return { ...state, isRegistered: true };
+      return state;
     case `${RECOVER_PASSWORD}_SUCCESS`:
       toastSuccess('Password recovered');
       return { ...state, lostPassword: action.payload.memb__pwd };
@@ -107,63 +107,3 @@ export default (state = initialState, action) => {
       return state;
   }
 };
-
-// import {
-//   BUY_CREDIT_SUCCESS,
-//   UPGRADE_ITEM_SUCCESS
-// } from './character';
-
-// import { REFRESH_QUEST_LIST } from './webQuest';
-
-// import {
-//   TRADE_EXCHANGE_SUCCESS,
-//   BUY_CONSUMABLE_SUCCESS,
-//   BUY_RECEIPT_SUCCESS,
-//   SELL_RECEIPT_SUCCESS,
-//   CRAFT_ITEM_SUCCESS
-// } from './luxuryShop';
-
-// const BUY_VIP_START = 'darksteam97d99i/user/BUY_VIP_START';
-// export const BUY_VIP_SUCCESS = 'darksteam97d99i/user/BUY_VIP_SUCCESS';
-// const BUY_VIP_FAIL = 'darksteam97d99i/user/BUY_VIP_FAIL';
-
-// let packageType;
-// export const buyVip = (vipPackage, user, focusCharacter) => {
-//   packageType = vipPackage.type;
-//   actionCreator(
-//     BUY_VIP_START,
-//     BUY_VIP_SUCCESS,
-//     BUY_VIP_FAIL,
-//     darksteam97d99i.buyVip,
-//     vipPackage,
-//     user,
-//     focusCharacter
-//   )();
-// };
-
-// export default (state = initialState, action) => {
-//   switch (action.type) {
-
-//     case CHANGE_USER_PAGE:
-//       if (action.page == 'Web Quest') {
-//         socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ16');
-//       }
-//       break;
-//     default:
-//       break;
-//   }
-
-//     case UPGRADE_ITEM_SUCCESS:
-//     case SELL_RECEIPT_SUCCESS:
-//     case CRAFT_ITEM_SUCCESS:
-//     case BUY_CONSUMABLE_SUCCESS:
-//     case BUY_RECEIPT_SUCCESS:
-//     case TRADE_EXCHANGE_SUCCESS:
-//     case BUY_PACKAGE_SUCCESS:
-//       return {
-//         ...state,
-//         user: {
-//           ...state.user,
-//           MembCredits: { ...state.user.MembCredits, credits: action.payload.credits }
-//         }
-//       };

@@ -1,5 +1,7 @@
+import _ from 'underscore';
 import './ShopsEditor.css';
 import React, { Component } from 'react';
+import services from '../../Darksteam97d99i.services';
 
 import ShopSelector from './ShopSelector.container';
 import { ExcItemOptions, ItemSelector, BasicItemOptions } from '../../components';
@@ -47,6 +49,24 @@ class ShopsEditor extends Component {
   changeLevel(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
+  }
+
+  async generateFile() {
+    const { data: { ShopList } } = this.props;
+    const { fileData } = this.state;
+    let fileName = _.findWhere(ShopList, { Name: fileData[1].replace('//', '') }).File;
+
+    const { file } = await services.generateTextFile({
+      formBody: {
+        fileName: fileName.replace('.txt', ''),
+        content: fileData.join('\n')
+      }
+    });
+
+    const aTag = document.createElement('a');
+    aTag.href = file;
+    aTag.download = fileName;
+    aTag.click();
   }
 
   generate() {
@@ -138,18 +158,28 @@ class ShopsEditor extends Component {
           </button>
         </div>
         <div className="shop-col">
-          {this.state.fileData.map((line, i) => (
-            <div key={i} className="generated-line">
+          {this.state.fileData.filter((line, i) => i <= 2).map((line, i) => (
+            <div className="generated-line" key={i}>
               {line}
-              {i > 2 && (
+            </div>
+          ))}
+          <div className="preview-body">
+            {this.state.fileData.filter((line, i) => i > 2).map((line, i) => (
+              <div className="generated-line" key={i}>
+                {line}
                 <span className="pull-right">
-                  <button className="btn btn-danger btn-sm" onClick={() => this.removeLine(i)}>
+                  <button className="btn btn-danger btn-sm" onClick={() => this.removeLine(i + 2)}>
                     <i className="fa fa-times" />
                   </button>
                 </span>
-              )}
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
+          <div className="preview-feature">
+            <button className="btn btn-primary btn-block" onClick={() => this.generateFile()}>
+              Generate Text File
+            </button>
+          </div>
         </div>
       </div>
     );

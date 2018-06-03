@@ -26,7 +26,7 @@ const getRoute = (tabName, userPage, adminPage, serverPage) => {
 const TopNavBar = ({ activeTab, userPage, adminPage, serverPage, onSetActiveTab, history }) => (
   <div className="row">
     <div className="ds9799-top-nav-bar">
-      <div className="left">
+      <div className="left" onClick={() => history.push('/darksteam_97d99i/user/introduction')}>
         <img className="logo" src="/images/icons/mulogo.png" alt="mu-logo" />
         <div className="label">Classic MU</div>
       </div>

@@ -18,6 +18,7 @@ import { LuxuryShop } from './LuxuryShop';
 import { UpgradeItems } from './UpgradeItems';
 
 const availableUserPages = _.pluck(userPages, 'route');
+availableUserPages.push('introduction');
 
 class User extends Component {
   componentWillMount() {
@@ -46,11 +47,11 @@ class User extends Component {
     }
 
     if (!isLoggedIn && !pageParam && !page) {
-      return <Redirect to="/darksteam_97d99i/user/login" />;
+      return <Redirect to="/darksteam_97d99i/user/introduction" />;
     }
 
     if (!isLoggedIn && pageParam) {
-      if (!_.contains(['login', 'register'], pageParam)) {
+      if (!_.contains(availableUserPages, pageParam)) {
         return <Redirect to="/404" />;
       } else {
         if (page && pageParam !== page) {
@@ -59,17 +60,13 @@ class User extends Component {
       }
     }
 
-    if (isLoggedIn && pageParam && !_.contains(availableUserPages, pageParam)) {
-      return <Redirect to="/404" />;
-    }
-
     if (isLoggedIn && !pageParam) {
       return <Redirect to="/darksteam_97d99i/user/dashboard" />;
     }
 
     return (
       <Ds9799Page>
-        {_.contains(['login', 'register'], pageParam) && <Introduction />}
+        {pageParam === 'introduction' && <Introduction />}
         {pageParam === 'dashboard' && <Dashboard />}
         {pageParam === 'character_manager' && <CharacterManager />}
         {pageParam === 'banking_manager' && <BankingManager />}

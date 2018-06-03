@@ -92,16 +92,17 @@ class BagItemsEditor extends Component {
   async generateFile() {
     const { data: { EventItemBagList } } = this.props;
     const { fileData } = this.state;
-    const fileName = _.findWhere(EventItemBagList, { Name: fileData[1].replace('//', '') }).File;
+    let fileName = _.findWhere(EventItemBagList, { Name: fileData[1].replace('//', '') }).File;
     const { file } = await services.generateTextFile({
-      fileName: fileName.replace('.txt', ''),
-      content: fileData.join('\n')
+      formBody: {
+        fileName: fileName.replace('.txt', ''),
+        content: fileData.join('\n')
+      }
     });
     const aTag = document.createElement('a');
     aTag.href = file;
     aTag.download = fileName;
     aTag.click();
-    console.log(file);
   }
 
   render() {

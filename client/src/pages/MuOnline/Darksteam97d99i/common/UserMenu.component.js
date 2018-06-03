@@ -14,8 +14,8 @@ import GameSettingCard from './GameSettingCard.container';
 
 import { userPages } from '../User/User.module';
 
-const UserMenu = ({ activePage, onSetPage, onLogout, history }) => {
-  if (activePage === 'login') {
+const UserMenu = ({ activePage, onSetPage, onLogout, history, isLoggedIn, activeForm, onSetActiveForm }) => {
+  if (!isLoggedIn && activeForm === 'login') {
     return [
       <LoginForm key="lg_f" />,
       <ServerInfoCard key="si_c" />,
@@ -43,7 +43,7 @@ const UserMenu = ({ activePage, onSetPage, onLogout, history }) => {
     ];
   }
 
-  if (activePage === 'register') {
+  if (!isLoggedIn && activeForm === 'register') {
     return [<RegisterForm key="rg_f" />, <GameSettingCard key="gs_c" />, <ForgotPassword key="fg_f" />];
   }
 
@@ -62,8 +62,8 @@ const UserMenu = ({ activePage, onSetPage, onLogout, history }) => {
       className="btn btn-block btn-danger"
       onClick={() => {
         onLogout();
-        history.push('/darksteam_97d99i/user/login');
-        onSetPage('login');
+        history.push('/darksteam_97d99i/user/introduction');
+        onSetPage('introduction');
       }}>
       Log out
     </button>

@@ -2,8 +2,6 @@ import './RegisterForm.css';
 import React, { Component } from 'react';
 import { InputGroupIcon } from 'components/FormTools';
 
-import { withRouter, Redirect } from 'react-router-dom';
-
 class RegisterForm extends Component {
   constructor(props) {
     super(props);
@@ -26,11 +24,7 @@ class RegisterForm extends Component {
   }
 
   render() {
-    const { history, onSetPage, onRegister, isRegistered } = this.props;
-    if (isRegistered) {
-      onSetPage('login');
-      return <Redirect to="/darksteam_97d99i/user/login" />;
-    }
+    const { onRegister, onSetActiveForm } = this.props;
 
     return (
       <div className="ds9799-register-form">
@@ -86,12 +80,7 @@ class RegisterForm extends Component {
           <button className="btn" onClick={() => onRegister(this.state.value)}>
             OK
           </button>
-          <button
-            className="btn"
-            onClick={() => {
-              onSetPage('login');
-              history.push('/darksteam_97d99i/user/login');
-            }}>
+          <button className="btn" onClick={() => onSetActiveForm('login')}>
             Cancel
           </button>
         </div>
@@ -100,4 +89,4 @@ class RegisterForm extends Component {
   }
 }
 
-export default withRouter(RegisterForm);
+export default RegisterForm;

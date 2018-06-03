@@ -1,6 +1,11 @@
 export default async (models, memb___id, receiptId) => {
 	const { Receipt, MembCredits, UserReceipt, UserCreditsLog } = models;
 
+	const existReceipt = UserReceipt.findOne({ where: { memb___id, receipt_id: receiptId } });
+	if (existReceipt) {
+		return { message: 'You already own this receipt' };
+	}
+
 	const [membCredits, receipt] = [
 		await MembCredits.findOne({ where: { memb___id } }),
 		await Receipt.findOne({ where: { id: receiptId } })
