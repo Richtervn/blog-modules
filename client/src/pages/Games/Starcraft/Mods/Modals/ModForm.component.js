@@ -69,7 +69,7 @@ class StarcraftModForm extends Component {
       />,
       <div key="sm_b" className="modal-body">
         <form className="text-right">
-          <FormGroupRow type="file" name="File" label="Mod File" onChange={this.handleChange} />
+          <FormGroupRow type="file" name="File" label="Mod File" onChange={this.handleChange} accept=".zip, .rar, .7z"/>
           <FormGroupRating label="Rating" rating={this.state.value.Rating} onRating={this.handleRating} />
           <FormGroupArea
             name="Description"

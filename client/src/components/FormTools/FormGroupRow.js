@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 class FormGroupRow extends Component {
   render() {
-    const { name, label, type, placeholder, onChange, value, multiple } = this.props;
+    const { name, label, type, placeholder, onChange, value, multiple, accept } = this.props;
     const additionProps = {};
     if (type === 'file') {
       additionProps.onClick = e => (e.target.value = null);
+      additionProps.accept = accept;
       if(multiple) additionProps.multiple = true;
     }
     return (
