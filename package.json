@@ -1,6 +1,6 @@
 {
   "name": "blog-modules",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "my-blog",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "server:serve": "cd server && npm run serve",
     "start": "start npm run client:dev && start npm run server:dev",
     "build": "start npm run client:build && start npm run server:build",
-    "serve": "start npm run server:serve && start npm run server:serve",
+    "serve": "start npm run client:serve && start npm run server:serve",
     "client-old": "cd client-old && npm run start"
   },
   "prettier": {

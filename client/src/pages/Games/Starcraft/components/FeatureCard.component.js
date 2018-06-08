@@ -2,11 +2,12 @@ import './FeatureCard.css';
 import React from 'react';
 import StarRating from 'react-star-rating-component';
 import { getStarcraftRaces } from 'helpers';
+import classnames from 'classnames';
 
 const FeatureCard = ({ rating, label, uri, matchUp, isActive, onClick, version }) => {
   const { playerRaces, opponentRaces } = getStarcraftRaces(matchUp);
   return (
-    <div className={`sc-feature-card ${isActive ? 'active' : ''}`} onClick={onClick}>
+    <div className={classnames('sc-feature-card', { active: isActive })} onClick={onClick}>
       <div className="label">{label}</div>
       <div className="content">
         <div className="matchup">

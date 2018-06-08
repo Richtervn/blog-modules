@@ -11,12 +11,15 @@ const Section = new Schema({
   SubSections: [SubSection]
 });
 
-const GamingHistoryOverview = new Schema({
-  GameId: String,
-  Title: String,
-  Priority: String,
-  Description: String,
-  Sections: [Section]
-});
+const GamingHistoryOverview = new Schema(
+  {
+    GameId: String,
+    Title: String,
+    Priority: String,
+    Description: String,
+    Sections: [Section]
+  },
+  { timestamps: true }
+);
 
 export default GamingHistoryOverview;

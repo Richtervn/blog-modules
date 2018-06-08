@@ -25,8 +25,8 @@ export default {
     await model.remove({ _id: id }).exec();
     return { _id: doc._id };
   },
-  getAll: async (model, options) => {
-    const docs = await model.find({}, { ...options });
+  getAll: async (model, options, sort) => {
+    const docs = await model.find({}, { ...options }, { ...sort });
     return docs;
   },
   getByParam: async (model, field, param, options) => {

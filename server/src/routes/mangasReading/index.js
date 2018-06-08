@@ -21,7 +21,7 @@ export default (MangasReading, factories) => {
   router.get(
     '/get_all',
     wrap(async (req, res, next) => {
-      const mangas = await commonService.getAll(MangasReading);
+      const mangas = await commonService.getAll(MangasReading, null, { sort: { updatedAt: 'desc' } });
       res.send(mangas);
     })
   );

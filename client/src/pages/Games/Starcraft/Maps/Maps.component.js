@@ -14,6 +14,13 @@ class Maps extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const currentCard = document.getElementsByClassName('sc-feature-card active')[0];
+    if (currentCard) {
+      currentCard.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   render() {
     const { maps, onSetFocusMap, focusMap, onSearchMap, onSortMap } = this.props;
 

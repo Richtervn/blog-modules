@@ -104,7 +104,7 @@ export default (state = initialState, action) => {
           Added <strong>{action.payload.Name}</strong>
         </p>
       ));
-      return { ...state, maps: state.maps.slice(0) };
+      return { ...state, maps: state.maps.slice(0), focusMap: action.payload._id };
     case `${EDIT_MAP}_SUCCESS`:
       state.maps = state.maps.map(scmap => {
         if (scmap._id === action.payload._id) {

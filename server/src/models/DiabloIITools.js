@@ -1,14 +1,17 @@
 import { Schema } from 'mongoose';
 
-const DiabloIITools = new Schema({
-  ArchiveUrl: String,
-  Name: String,
-  Description: String,
-  Overview: [String],
-  Rating: Number,
-  IconUrl: String,
-  HTML: String,
-  CSS: String
-});
+const DiabloIITools = new Schema(
+  {
+    ArchiveUrl: String,
+    Name: String,
+    Description: String,
+    Overview: [String],
+    Rating: Number,
+    IconUrl: String,
+    HTML: String,
+    CSS: String
+  },
+  { timestamps: true }
+);
 
 export default DiabloIITools;

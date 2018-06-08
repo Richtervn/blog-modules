@@ -1,14 +1,17 @@
 import { Schema } from 'mongoose';
 
-const StarcraftCampaigns = new Schema({
-  Name: String,
-  Rating: Number,
-  Matchup: String,
-  Description: String,
-  Version: String,
-  HTML: String,
-  CSS: String,
-  Uri: String
-});
+const StarcraftCampaigns = new Schema(
+  {
+    Name: String,
+    Rating: Number,
+    Matchup: String,
+    Description: String,
+    Version: String,
+    HTML: String,
+    CSS: String,
+    Uri: String
+  },
+  { timestamps: true }
+);
 
 export default StarcraftCampaigns;

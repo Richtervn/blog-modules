@@ -17,17 +17,20 @@ const TagColor = new Schema({
   Color: String
 });
 
-const Projects = new Schema({
-  Name: String,
-  Technologies: [String],
-  StartTime: Date,
-  EndTime: Date,
-  Color: String,
-  TagColor: [TagColor],
-  Plans: [ProjectItem],
-  Doing: [ProjectItem],
-  Done: [ProjectItem],
-  Bugs: [ProjectItem]
-});
+const Projects = new Schema(
+  {
+    Name: String,
+    Technologies: [String],
+    StartTime: Date,
+    EndTime: Date,
+    Color: String,
+    TagColor: [TagColor],
+    Plans: [ProjectItem],
+    Doing: [ProjectItem],
+    Done: [ProjectItem],
+    Bugs: [ProjectItem]
+  },
+  { timestamps: true }
+);
 
 export default Projects;
