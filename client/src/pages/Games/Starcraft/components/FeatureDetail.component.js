@@ -20,7 +20,7 @@ export default ({
   if (matchup) {
     const matchUpDecoded = getStarcraftRaces(matchup);
     playerRaces = matchUpDecoded.playerRaces;
-    opponentRaces = matchUpDecoded.playerRaces;
+    opponentRaces = matchUpDecoded.opponentRaces;
   }
 
   return (

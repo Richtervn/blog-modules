@@ -23,6 +23,7 @@ export default async (MangasReading, body) => {
       chapter = urlFrags[2].split('-')[1];
       break;
     }
+    case 'mangak.info':
     case 'truyentranh8.net': {
       let infoUrlFrags = urlFrags[1].split('-chap-');
       mangaAka = urlFragToAka(infoUrlFrags[0]);
