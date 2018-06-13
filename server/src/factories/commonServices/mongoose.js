@@ -9,7 +9,12 @@ export default {
     let docBody = body;
     if (arrayFields) {
       arrayFields.forEach(field => {
-        docBody[field] = docBody[field].split(',');
+        docBody[field] = docBody[field].split(',').map(prop => {
+          if (typeof prop === 'string') {
+            return prop.trim();
+          }
+          return prop;
+        });
       });
     }
     const schema = new model(docBody);

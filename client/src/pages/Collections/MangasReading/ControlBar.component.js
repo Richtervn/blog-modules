@@ -11,6 +11,7 @@ import MangaDeleteView from './MangaDeleteView';
 
 const tools = [
   { name: 'QuickUpdate', icon: 'fa-plus-circle', tooltip: 'Open quick update tool' },
+  { name: 'Crawl', icon: 'fa-copy', tooltip: 'Crawl a link' },
   { name: 'Search', icon: 'fa-search', tooltip: 'Open search tool' },
   { name: 'Sort', icon: 'fa-sort', tooltip: 'Open sort tool' }
 ];
@@ -27,6 +28,7 @@ class ControlBar extends Component {
     super(props);
     this.state = {
       quickUrl: '',
+      crawl: '',
       sort: {
         option: 'default',
         value: 'ASC'
@@ -68,6 +70,11 @@ class ControlBar extends Component {
   handleQuickUpdate() {
     this.props.onQuickUpdate({ url: this.state.quickUrl });
     this.setState({ quickUrl: '' });
+  }
+
+  handleCrawl() {
+    this.props.onCrawl({ url: this.state.crawl });
+    this.setState({ crawl: '' });
   }
 
   render() {
@@ -119,6 +126,19 @@ class ControlBar extends Component {
                 onLeftChange={e => this.handleChange(e, 'sortOption')}
                 onRightChange={e => this.handleChange(e, 'sortValue')}
                 leftPlaceholder="Select field"
+              />
+            )}
+            {activeTool === 'Crawl' && (
+              <InputWithButton
+                value={this.state.crawl}
+                onChange={this.handleChange}
+                name="crawl"
+                btnIcon="plus-circle"
+                btnClass="btn-primary"
+                btnDisabled={!this.state.crawl}
+                onClick={() => this.handleCrawl()}
+                customClass="mgr-quick-update"
+                placeholder="Crawl url"
               />
             )}
           </div>

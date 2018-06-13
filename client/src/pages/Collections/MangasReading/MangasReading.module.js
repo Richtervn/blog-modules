@@ -11,6 +11,7 @@ const UPDATE_MANGA = 'mangasReading/UPDATE_MANGA';
 const DELETE_MANGA = 'mangasReading/DELETE_MANGA';
 const SEARCH_MANGA = 'mangasReading/SEARCH_MANGA';
 const SORT_MANGA = 'mangasReading/SORT_MANGA';
+const CRAWL_MANGA = 'mangasReading/CRAWL_MANGA';
 
 const SET_FOCUS_MANGA = 'mangasReading/SET_FOCUS_MANGA';
 const SET_ACTIVE_VIEW = 'mangasReading/SET_ACTIVE_VIEW';
@@ -38,6 +39,7 @@ export const searchManga = query =>
   actionCreator(SEARCH_MANGA, services.search, { payload: { query }, toast: false })();
 export const sortManga = query => actionCreator(SORT_MANGA, services.sort, { payload: { query } })();
 export const getMangas = () => actionCreator(GET_MANGAS, services.getMangas)();
+export const crawlManga = formBody => actionCreator(CRAWL_MANGA, services.crawl, { payload: { formBody } })();
 
 const initialState = {
   mangas: null,
@@ -48,7 +50,8 @@ const initialState = {
     option: 'Name',
     value: ''
   },
-  noSearchResult: false
+  noSearchResult: false,
+  crawlManga: {}
 };
 
 export default (state = initialState, action) => {
@@ -65,6 +68,8 @@ export default (state = initialState, action) => {
       return { ...state, focusManga: action.id, activeView: 'Detail' };
     case SET_ACTIVE_VIEW:
       return { ...state, activeView: action.name };
+
+    case `${CRAWL_MANGA}_SUCCESS`:
     case `${ADD_MANGA}_SUCCESS`:
       state.mangas.push(action.payload);
       toastSuccess(() => (

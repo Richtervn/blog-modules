@@ -1,6 +1,6 @@
 import { serviceCaller } from 'helpers';
 
-const { commonPostMultiplePart, commonPutMultiplePart, commonGet, commonPut, commonDelete } = serviceCaller;
+const { commonPostMultiplePart, commonPutMultiplePart, commonGet, commonPut, commonPost, commonDelete } = serviceCaller;
 
 export default {
   add({ formBody }) {
@@ -29,6 +29,10 @@ export default {
   },
   sort({ query }) {
     const data = commonGet('mangas_reading/sort', null, query);
+    return data;
+  },
+  crawl({ formBody }) {
+    const data = commonPost('mangas_reading/crawl', formBody);
     return data;
   }
 };

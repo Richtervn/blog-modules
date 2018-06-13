@@ -12,7 +12,8 @@ import {
   searchManga,
   sortManga,
   changeSearchOption,
-  changeSearchValue
+  changeSearchValue,
+  crawlManga
 } from './MangasReading.module';
 
 export default connect(
@@ -29,11 +30,11 @@ export default connect(
     onSetActiveView(name) {
       dispatch(setActiveView(name));
     },
-    onAddManga(body) {
-      dispatch(addManga(body));
+    onAddManga(formBody) {
+      dispatch(addManga(formBody));
     },
-    onEditManga(body) {
-      dispatch(editManga(body));
+    onEditManga(formBody) {
+      dispatch(editManga(formBody));
     },
     onDeleteManga(id) {
       dispatch(deleteManga(id));
@@ -52,6 +53,9 @@ export default connect(
     },
     onChangeSearchValue(value) {
       dispatch(changeSearchValue(value));
+    },
+    onCrawl(formBody) {
+      dispatch(crawlManga(formBody));
     }
   })
 )(ControlBar);

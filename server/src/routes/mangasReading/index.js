@@ -1,6 +1,7 @@
 import express from 'express';
 import Promise from 'bluebird';
 
+import crawl from './services/crawl';
 import quickUpdate from './services/quickUpdate';
 import sortManga from './services/sortManga';
 
@@ -65,6 +66,15 @@ export default (MangasReading, factories) => {
     wrap(async ({ query }, res, next) => {
       const mangas = await sortManga(MangasReading, query);
       res.send(mangas);
+    })
+  );
+
+  router.post(
+    '/crawl',
+    wrap(async ({ body }, res, next) => {
+      const form = await crawl(MangasReading, body);
+      const manga = await commonService.create(MangasReading, form, ['Aka', 'Authors', 'Genre']);
+      res.send(manga);
     })
   );
 
