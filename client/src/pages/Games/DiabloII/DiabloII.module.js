@@ -1,4 +1,4 @@
-import { actionCreator } from 'helpers';
+import { actionCreator, formatNumber } from 'helpers';
 import services from './DiabloII.services';
 import { toastSuccess, toastStrong } from 'common/Toast';
 
@@ -224,7 +224,7 @@ export default (state = initialState, action) => {
       toastSuccess('Modify Extra Data Success');
       return { ...state, extraData: { ...state.extraData, ...action.payload } };
     case `${EXTRA_GOLD}_SUCCESS`:
-      toastSuccess(`You have ${action.payload.SavedGold} Gold`);
+      toastSuccess(`You have ${formatNumber(action.payload.SavedGold)} Gold`);
       return { ...state, extraData: { ...state.extraData, SavedGold: action.payload.SavedGold } };
     case `${EXTRA_LEVEL}_SUCCESS`:
       toastSuccess('Level Increased');

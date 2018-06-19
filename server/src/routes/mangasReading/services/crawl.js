@@ -32,7 +32,7 @@ const crawlTruyenTranhNet = url =>
 
     const requestUrl = url
       .split('/')
-      .filter((frag, i) => i <= 4)
+      .filter((frag, i) => i <= 3)
       .join('/');
 
     crawler.direct({

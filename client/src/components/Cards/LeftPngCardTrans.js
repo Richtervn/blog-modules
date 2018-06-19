@@ -2,7 +2,7 @@ import './LeftPngCardTrans.css';
 import React from 'react';
 import classNames from 'classnames';
 
-export default ({ col, imgUrl, children, customClass }) => (
+export default ({ col, imgUrl, children, customClass = 'default' }) => (
   <div className={`col-${col}`}>
     <div className="row">
       <div className={classNames('left-png-card-trans', customClass)}>

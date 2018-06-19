@@ -107,7 +107,7 @@ class DiabloIICharacterForm extends Component {
       />,
       <div key="d2c_b" className="modal-body">
         <form className="text-right">
-          <FormGroupRow type="file" name="file" label="D2S File" onChange={this.handleChange} />
+          <FormGroupRow type="file" name="file" label="D2S File" onChange={this.handleChange} accept=".d2s"/>
           <FormGroupRow
             type="text"
             name="Name"

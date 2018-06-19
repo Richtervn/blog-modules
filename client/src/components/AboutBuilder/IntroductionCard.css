@@ -20,6 +20,10 @@
   font-weight: 600;
 }
 
+.introduction-card-info > .info-line > .info-value {
+  width: 60%;
+} 
+
 .introduction-card-info > .info-line > input {
   border: none;
 }

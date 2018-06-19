@@ -16,7 +16,7 @@
   position: relative;
 }
 
-.left-png-card-trans.default > {
+.left-png-card-trans.default {
   border: solid 1px rgba(255, 255, 255, 0.35);
   background-color: rgba(0, 0, 0, 0.2);
 }
