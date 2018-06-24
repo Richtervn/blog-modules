@@ -2,6 +2,26 @@ import './MangaDetailView.css';
 import React from 'react';
 import StarRating from 'react-star-rating-component';
 
+const makeGoogleQuery = manga => {
+  let query = manga.Name.split(' ').join('+');
+  if (manga.Chapter) {
+    query += '+chap+';
+    let chapter = manga.Chapter;
+    if (isNaN(parseInt(chapter, 10))) {
+      if (chapter.indexOf('0') === 0) {
+        if (chapter.indexOf('0') === -1) {
+          chapter = chapter.slice(chapter.indexOf('0') + 2, chapter.length);
+        } else {
+          chapter = chapter.slice(chapter.indexOf('0') + 1, chapter.length);
+        }
+      }
+    } else {
+      query += parseInt(chapter, 10).toString();
+    }
+  }
+  return `https://www.google.com/search?q=${query}`;
+};
+
 export default ({
   manga,
   onEditManga,
@@ -22,11 +42,16 @@ export default ({
   return (
     <div className="card-content manga-detail-view">
       <div className="text-center">
-        <h4>{manga.Name}</h4>
-        <img
-          src={manga.CoverUri ? manga.CoverUri : null}
-          alt={`${manga.Name} cover`}
-        />
+        <h4>
+          <a
+            href={makeGoogleQuery(manga)}
+            rel="noreferrer noopener"
+            target="_blank"
+            title={`Search ${manga.Name} by google`}>
+            {manga.Name}
+          </a>
+        </h4>
+        <img src={manga.CoverUri ? manga.CoverUri : null} alt={`${manga.Name} cover`} />
         <br />
         <StarRating
           className="larger-star-rating"

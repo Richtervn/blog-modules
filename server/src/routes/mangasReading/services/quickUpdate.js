@@ -13,26 +13,40 @@ export default async (MangasReading, body) => {
     .replace('http://', '')
     .replace('https://', '')
     .replace('.html', '')
+    .replace('www.', '')
     .split('/');
   const site = urlFrags[0].replace('www.', '');
   let mangaAka, chapter;
 
   switch (site) {
+    case 'blogtruyen.com': {
+      let infoUrlFrags = urlFrags[2].split('-chap-');
+      mangaAka = urlFragToAka(infoUrlFrags[0]);
+      chapter = infoUrlFrags[1];
+      break;
+    }
+    case 'doctruyen.tv': {
+      mangaAka = urlFragToAka(urlFrags[2]);
+      chapter = urlFrags[3].split('-')[1];
+      break;
+    }
+    case 'truyendoc.info': {
+      let infoUrlFrags = urlFrags[3].split('-chap-');
+      mangaAka = urlFragToAka(infoUrlFrags[0]);
+      chapter = infoUrlFrags[1];
+      break;
+    }
     case 'truyentranh.net': {
       mangaAka = urlFragToAka(urlFrags[1]);
       chapter = urlFrags[2].split('-')[1];
       break;
     }
     case 'mangak.info':
+    case 'truyentranhtam.com':
     case 'truyentranh8.net': {
       let infoUrlFrags = urlFrags[1].split('-chap-');
       mangaAka = urlFragToAka(infoUrlFrags[0]);
       chapter = infoUrlFrags[1];
-      break;
-    }
-    case 'nettruyen.com': {
-      mangaAka = urlFragToAka(urlFrags[2]);
-      chapter = urlFrags[3].replace('chap-', '');
       break;
     }
     case 'truyenqq.com': {
@@ -41,6 +55,11 @@ export default async (MangasReading, body) => {
         .map(frag => toTitleCase(frag))
         .join(' ');
       chapter = infoUrlFrags[1];
+      break;
+    }
+    case 'nettruyen.com': {
+      mangaAka = urlFragToAka(urlFrags[2]);
+      chapter = urlFrags[3].replace('chap-', '');
       break;
     }
     case 'vuidoctruyen.com': {
