@@ -22,5 +22,9 @@ export default {
   deleteSongs({ ids }) {
     const data = commonPut('music/delete_songs', ids);
     return data;
+  },
+  getLyrics({ id }) {
+    const data = commonGet('music/lyrics', [id]);
+    return data;
   }
 };

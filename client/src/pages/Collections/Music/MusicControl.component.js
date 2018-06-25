@@ -40,12 +40,16 @@ export default ({
   canNextSong,
   canPreviousSong,
   onSeek,
+  onToggleLyricsBox,
   isLoopSong,
   isLoopList
 }) => {
   const progress = getProgress(duration, playedTime);
   return (
     <div className="music-control">
+      <div className="lyric-box-btn" onClick={() => onToggleLyricsBox()}>
+        <i className="fa fa-music" />
+      </div>
       <div className="music-info">
         <div className="player-avatar">
           <img src="/images/icons/drum-kit.jpg" alt="Music Avatar" />

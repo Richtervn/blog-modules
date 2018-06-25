@@ -2,6 +2,7 @@ import './MiniMusicPlayer.css';
 import React from 'react';
 import StarRating from 'react-star-rating-component';
 import { openModal } from 'common/Modal';
+import classnames from 'classnames';
 
 const getProgress = (duration, played) => {
   if (!duration || !played) {
@@ -17,10 +18,12 @@ export default ({
   isHaveList,
   isLoopSong,
   isLoopList,
+  isShowLyricsBox,
   onToggleLoopSong,
   onToggleLoopList,
   onTogglePlay,
   onShuffleList,
+  onToggleLyricsBox,
   canNextSong,
   canPreviousSong,
   onNextSong,
@@ -88,19 +91,25 @@ export default ({
           <i className="fa fa-plus" />
         </button>
         <button
-          className={`btn ${isLoopSong ? 'active' : ''}`}
+          className={classnames('btn', { active: isLoopSong })}
           onClick={() => onToggleLoopSong()}
           disabled={!currentSong}>
           <i className="fa fa-refresh" />
         </button>
         <button
-          className={`btn ${isLoopList ? 'active' : ''}`}
+          className={classnames('btn', { active: isLoopList })}
           onClick={() => onToggleLoopList()}
           disabled={!isPlaying || !isHaveList}>
           <i className="fa fa-retweet" />
         </button>
         <button className="btn" onClick={() => onShuffleList()} disabled={!isHaveList}>
           <i className="fa fa-random" />
+        </button>
+        <button
+          disabled={!isHaveList}
+          className={classnames('btn', { active: isShowLyricsBox })}
+          onClick={() => onToggleLyricsBox()}>
+          <i className="fa fa-music" />
         </button>
       </div>
     </div>

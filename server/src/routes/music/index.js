@@ -1,6 +1,17 @@
 import _ from 'underscore';
 import express from 'express';
 import Promise from 'bluebird';
+import lyricGet from 'lyric-get';
+
+const getLyric = song =>
+  new Promise((resolve, reject) => {
+    lyricGet.get(song.Artist, song.Name, (err, res) => {
+      if (err) {
+        return resolve('');
+      }
+      return resolve(res);
+    });
+  });
 
 export default (Music, factories) => {
   const router = express.Router();
@@ -71,6 +82,21 @@ export default (Music, factories) => {
       const ids = body.ids;
       await Promise.map(ids, id => commonService.delete(Music, id, ['Url']));
       return { ids };
+    })
+  );
+
+  router.get(
+    '/lyrics/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const song = await commonService.getOne(Music, id);
+      if (song.Lyrics) {
+        return res.send({ lyrics: song.Lyrics });
+      }
+      const lyrics = await getLyric(song);
+      if (lyrics) {
+        await commonService.update(Music, { _id: id, Lyrics: lyrics });
+      }
+      res.send({ lyrics });
     })
   );
 

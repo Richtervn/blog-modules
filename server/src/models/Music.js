@@ -6,6 +6,7 @@ const Music = new Schema(
     Artist: String,
     Rating: Number,
     Genre: String,
+    Lyrics: String,
     Url: String
   },
   { timestamps: true }

@@ -9,10 +9,11 @@ import {
   toggleLoopSong,
   toggleLoopList,
   shuffleList,
-  seek
+  seek,
+  toggleLyricsBox
 } from 'pages/Collections/Music/Music.module';
 
-const mapStateToProps = ({ music, appControl }) => ({
+const mapStateToProps = ({ music }) => ({
   isHaveList: music.playList && music.playList.length > 0,
   currentSong: music.playList ? music.playList[music.currentSongIndex] : null,
   isLoading: music.isLoading,
@@ -22,7 +23,8 @@ const mapStateToProps = ({ music, appControl }) => ({
   isLoopSong: music.isLoopSong,
   isLoopList: music.isLoopList,
   duration: music.duration,
-  playedTime: music.playedTime
+  playedTime: music.playedTime,
+  isShowLyricsBox: music.isShowLyricsBox
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -49,6 +51,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onSeek(time) {
     dispatch(seek(time));
+  },
+  onToggleLyricsBox() {
+    dispatch(toggleLyricsBox());
   }
 });
 

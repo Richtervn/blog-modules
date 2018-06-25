@@ -17,7 +17,7 @@ import { DragDropContext } from 'react-dnd';
 import { ToastContainer } from 'react-toastify';
 import { Modal } from 'common/Modal';
 import { HeaderBar, NavigationBar, HeaderMenu } from 'common/Layout';
-import { MusicPlayer } from 'pages/Collections/Music';
+import { MusicPlayer, LyricsBox } from 'pages/Collections/Music';
 
 import AppRoutes from './AppRoutes';
 
@@ -38,6 +38,7 @@ class App extends Component {
             <ToastContainer autoClose={1500} closeButton={false} />
             <Modal />
             <MusicPlayer />
+            <LyricsBox />
           </div>
         </Router>
       </Provider>

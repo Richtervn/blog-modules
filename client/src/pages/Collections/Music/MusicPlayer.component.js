@@ -12,7 +12,16 @@ class MusicPlayer extends Component {
   }
 
   render() {
-    const { playList, currentSongIndex, isPlaying, onSetPlayedTime, onSetDuration, onPlayEnd, isLoopSong } = this.props;
+    const {
+      playList,
+      currentSongIndex,
+      isPlaying,
+      onSetPlayedTime,
+      onSetDuration,
+      onPlayEnd,
+      isLoopSong,
+      onGetLyrics
+    } = this.props;
 
     if (!playList || playList.length < 1) {
       return null;
@@ -25,7 +34,10 @@ class MusicPlayer extends Component {
         playing={isPlaying}
         onProgress={obj => onSetPlayedTime(obj.playedSeconds)}
         onEnded={() => onPlayEnd()}
-        onDuration={duration => onSetDuration(duration)}
+        onDuration={duration => {
+          onSetDuration(duration);
+          onGetLyrics();
+        }}
         loop={isLoopSong}
       />
     );

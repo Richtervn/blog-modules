@@ -1,0 +1,51 @@
+#lyrics-box {
+  border: solid 1px;
+  position: fixed;
+  background: #5f5f5f;
+  top: 65px;
+  right: 265px;
+  width: 350px;
+  max-height: 500px;
+  border-radius: 5px;
+  box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+#lyrics-box > .header {
+  background: #1995ad;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  padding: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+#lyrics-box > .content {
+  overflow-y: auto;
+  max-height: 420px;
+  padding: 10px;
+  color: white;
+}
+
+#lyrics-box > .content textarea {
+  width: 100%;
+}
+
+#lyrics-box > .content {
+  white-space: pre-wrap;
+}
+
+#lyrics-box > .content::-webkit-scrollbar {
+  display: none;
+}
+
+#lyrics-box > .feature {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+
+#lyrics-box > .feature > .btn {
+  width: 45%;
+  padding: 0px;
+}

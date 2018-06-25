@@ -12,7 +12,8 @@ import {
   editSong,
   removeFormList,
   playSong,
-  seek
+  seek,
+  toggleLyricsBox
 } from './Music.module';
 
 const mapStateToProps = ({ music }) => ({
@@ -60,6 +61,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onSeek(time) {
     dispatch(seek(time));
+  },
+  onToggleLyricsBox() {
+    dispatch(toggleLyricsBox());
   }
 });
 

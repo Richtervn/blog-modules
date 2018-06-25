@@ -9,6 +9,7 @@ const EDIT_SONG = 'music/EDIT_SONG';
 const GET_SONGS = 'music/GET_SONGS';
 const SEARCH_SONG = 'music/SEARCH_SONG';
 const DELETE_SONGS = 'muisc/DELETE_SONGS';
+const GET_LYRICS = 'music/GET_LYRICS';
 
 const ADD_TO_LIST = 'music/ADD_TO_LIST';
 const NEW_PLAYLIST = 'music/NEW_PLAYLIST';
@@ -28,12 +29,21 @@ const PREVIOUS_SONG = 'music/PREVIOUS_SONG';
 const SET_PLAYED_TIME = 'music/SET_PLAYED_TIME';
 const SET_DURATION = 'music/SET_DURATION';
 const SEEK = 'music/SEEK';
+const TOGGLE_LYRICS_BOX = 'music/TOGGLE_LYRICS_BOX';
 
 export const addSongs = formBody => actionCreator(ADD_SONGS, services.addSongs, { payload: { formBody } })();
 export const editSong = formBody => actionCreator(EDIT_SONG, services.editSong, { payload: { formBody } })();
 export const getSongs = () => actionCreator(GET_SONGS, services.getSongs)();
 export const searchSong = query => actionCreator(SEARCH_SONG, services.searchSong, { payload: { query } })();
 export const deleteSongs = ids => actionCreator(DELETE_SONGS, services.deleteSongs, { payload: { ids } })();
+export const getLyrics = () =>
+  actionCreator(GET_LYRICS, services.getLyrics, {
+    transformPayload({ getState }) {
+      const state = getState().music;
+      const currentSong = state.playList[state.currentSongIndex];
+      return { id: currentSong._id };
+    }
+  })();
 
 export const addToList = songs => ({ type: ADD_TO_LIST, songs });
 export const nextSong = () => ({ type: NEXT_SONG });
@@ -51,6 +61,7 @@ export const toggleLoopList = () => ({ type: TOGGLE_LOOP_LIST });
 export const togglePlay = () => ({ type: TOGGLE_PLAY });
 export const playSongs = songs => ({ type: PLAY_SONGS, songs });
 export const seek = time => ({ type: SEEK, time });
+export const toggleLyricsBox = () => ({ type: TOGGLE_LYRICS_BOX });
 
 const initialState = {
   songs: null,
@@ -66,6 +77,8 @@ const initialState = {
   canNextSong: false,
   canPreviousSong: false,
   isAddModalLoading: false,
+  lyrics: '',
+  isShowLyricsBox: false,
   sort: {}
 };
 
@@ -304,6 +317,11 @@ export default (state = initialState, action) => {
 
     case SEEK:
       return { ...state, seek: action.time };
+    case `${GET_LYRICS}_SUCCESS`:
+      return { ...state, lyrics: action.payload.lyrics };
+    case TOGGLE_LYRICS_BOX: {
+      return { ...state, isShowLyricsBox: !state.isShowLyricsBox };
+    }
 
     default:
       return state;

@@ -68,6 +68,7 @@ export default (state = initialState, action) => {
       }
       return { ...state, openedGroups };
     }
+
     case `${ADD_GAME}_SUCCESS`:
       return { ...state, menuTree: { ...action.payload.menu } };
 
