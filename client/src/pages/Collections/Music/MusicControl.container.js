@@ -11,7 +11,8 @@ import {
   newPlaylist,
   editSong,
   removeFormList,
-  playSong
+  playSong,
+  seek
 } from './Music.module';
 
 const mapStateToProps = ({ music }) => ({
@@ -54,8 +55,11 @@ const mapDispatchToProps = dispatch => ({
   onRemoveFromList(songId) {
     dispatch(removeFormList(songId));
   },
-  onPlaySong(index){
+  onPlaySong(index) {
     dispatch(playSong(index));
+  },
+  onSeek(time) {
+    dispatch(seek(time));
   }
 });
 

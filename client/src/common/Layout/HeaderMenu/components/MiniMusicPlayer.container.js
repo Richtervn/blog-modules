@@ -8,7 +8,8 @@ import {
   previousSong,
   toggleLoopSong,
   toggleLoopList,
-  shuffleList
+  shuffleList,
+  seek
 } from 'pages/Collections/Music/Music.module';
 
 const mapStateToProps = ({ music, appControl }) => ({
@@ -16,16 +17,12 @@ const mapStateToProps = ({ music, appControl }) => ({
   currentSong: music.playList ? music.playList[music.currentSongIndex] : null,
   isLoading: music.isLoading,
   isPlaying: music.isPlaying,
-  progress:
-    (appControl.isShowHeaderMenu &&
-      music.duration &&
-      music.playedTime &&
-      Math.floor(music.playedTime / music.duration * 100)) ||
-    0,
   canNextSong: music.canNextSong,
   canPreviousSong: music.canPreviousSong,
   isLoopSong: music.isLoopSong,
-  isLoopList: music.isLoopList
+  isLoopList: music.isLoopList,
+  duration: music.duration,
+  playedTime: music.playedTime
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -49,6 +46,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onShuffleList() {
     dispatch(shuffleList());
+  },
+  onSeek(time) {
+    dispatch(seek(time));
   }
 });
 

@@ -27,6 +27,7 @@ const NEXT_SONG = 'music/NEXT_SONG';
 const PREVIOUS_SONG = 'music/PREVIOUS_SONG';
 const SET_PLAYED_TIME = 'music/SET_PLAYED_TIME';
 const SET_DURATION = 'music/SET_DURATION';
+const SEEK = 'music/SEEK';
 
 export const addSongs = formBody => actionCreator(ADD_SONGS, services.addSongs, { payload: { formBody } })();
 export const editSong = formBody => actionCreator(EDIT_SONG, services.editSong, { payload: { formBody } })();
@@ -49,10 +50,12 @@ export const toggleLoopSong = () => ({ type: TOGGLE_LOOP_SONG });
 export const toggleLoopList = () => ({ type: TOGGLE_LOOP_LIST });
 export const togglePlay = () => ({ type: TOGGLE_PLAY });
 export const playSongs = songs => ({ type: PLAY_SONGS, songs });
+export const seek = time => ({ type: SEEK, time });
 
 const initialState = {
   songs: null,
   playList: null,
+  seek: null,
   currentSongIndex: 0,
   isPlaying: false,
   isLoading: false,
@@ -298,6 +301,9 @@ export default (state = initialState, action) => {
                 .reverse()
                 .slice(0)
       };
+
+    case SEEK:
+      return { ...state, seek: action.time };
 
     default:
       return state;

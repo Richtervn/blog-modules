@@ -124,3 +124,18 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.play-progress {
+  position: relative;
+}
+
+.play-progress > .progress-input {
+  width: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+}
+
+.play-progress > .progress-input::-webkit-slider-thumb {
+  opacity: 0;
+}

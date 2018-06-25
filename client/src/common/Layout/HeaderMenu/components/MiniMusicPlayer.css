@@ -120,3 +120,15 @@
   position: absolute;
   margin-top: -2px;
 }
+
+.song-progress > .progress-input {
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: -8px;
+}
+
+.song-progress > .progress-input::-webkit-slider-thumb {
+  opacity: 0;
+}

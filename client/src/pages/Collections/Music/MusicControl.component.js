@@ -39,6 +39,7 @@ export default ({
   onNewList,
   canNextSong,
   canPreviousSong,
+  onSeek,
   isLoopSong,
   isLoopList
 }) => {
@@ -77,6 +78,14 @@ export default ({
             style={{ width: `${progress}%` }}
           />
         </div>
+        <input
+          type="range"
+          className="progress-input"
+          min={0}
+          max={duration || 100}
+          value={playedTime || 0}
+          onChange={e => onSeek(e.target.value)}
+        />
       </div>
       <div className="play-control">
         <div className="control-feature">

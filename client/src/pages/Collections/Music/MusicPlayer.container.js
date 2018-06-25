@@ -9,7 +9,7 @@ const mapStateToProps = ({ music }) => ({
   isPlaying: music.isPlaying,
   isLoopSong: music.isLoopSong,
   isLoopList: music.isLoopList,
-  duration: music.duration
+  seek: music.seek
 });
 
 const mapDispatchToProps = dispatch => ({

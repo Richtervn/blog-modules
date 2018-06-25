@@ -3,6 +3,13 @@ import React from 'react';
 import StarRating from 'react-star-rating-component';
 import { openModal } from 'common/Modal';
 
+const getProgress = (duration, played) => {
+  if (!duration || !played) {
+    return 0;
+  }
+  return played / duration * 100;
+};
+
 export default ({
   currentSong,
   isPlaying,
@@ -14,12 +21,14 @@ export default ({
   onToggleLoopList,
   onTogglePlay,
   onShuffleList,
-  progress,
   canNextSong,
   canPreviousSong,
   onNextSong,
   onPreviousSong,
-  onEditSong
+  onEditSong,
+  onSeek,
+  duration,
+  playedTime
 }) => {
   const getPlayButtonClass = () => {
     if (isLoading) {
@@ -34,6 +43,7 @@ export default ({
       return 'fa-play';
     }
   };
+  const progress = getProgress(duration, playedTime);
 
   return (
     <div className="mini-music-player">
@@ -64,6 +74,14 @@ export default ({
       <div className="song-progress">
         <div className="song-play-progress" style={{ width: `${progress}%` }} />
         <div className="song-play-progress-thumb " style={{ marginLeft: `${progress - 2}%` }} />
+        <input
+          className="progress-input"
+          type="range"
+          min={0}
+          max={duration || 100}
+          value={playedTime || 0}
+          onChange={e => onSeek(e.target.value)}
+        />
       </div>
       <div className="player-features">
         <button className="btn" onClick={() => openModal('AddSong')}>

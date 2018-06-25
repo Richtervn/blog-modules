@@ -6,19 +6,13 @@ class MusicPlayer extends Component {
     if (nextProps.isPlaying && !this.props.playList) {
       this.props.onGetSongs();
     }
+    if (nextProps.seek !== this.props.seek) {
+      this.player.seekTo(nextProps.seek);
+    }
   }
 
   render() {
-    const {
-      playList,
-      currentSongIndex,
-      isPlaying,
-      onSetPlayedTime,
-      onSetDuration,
-      onPlayEnd,
-      isLoopSong,
-      duration
-    } = this.props;
+    const { playList, currentSongIndex, isPlaying, onSetPlayedTime, onSetDuration, onPlayEnd, isLoopSong } = this.props;
 
     if (!playList || playList.length < 1) {
       return null;
@@ -26,16 +20,11 @@ class MusicPlayer extends Component {
 
     return (
       <ReactPlayer
+        ref={node => (this.player = node)}
         url={playList[currentSongIndex].Url}
         playing={isPlaying}
-        onProgress={obj => {
-          if (obj.playedSeconds > 0 && obj.playedSeconds >= duration - 1) {
-            onSetPlayedTime(0);
-            onPlayEnd();
-          } else {
-            onSetPlayedTime(obj.playedSeconds);
-          }
-        }}
+        onProgress={obj => onSetPlayedTime(obj.playedSeconds)}
+        onEnded={() => onPlayEnd()}
         onDuration={duration => onSetDuration(duration)}
         loop={isLoopSong}
       />
@@ -44,5 +33,3 @@ class MusicPlayer extends Component {
 }
 
 export default MusicPlayer;
-
-// onEnded={() => onPlayEnd()}
