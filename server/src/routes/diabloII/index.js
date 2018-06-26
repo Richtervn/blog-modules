@@ -39,7 +39,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/mod',
     wrap(async ({ files, body }, res, next) => {
       const archiveUrl = commonService.uploadArchive(files, `./public/DiabloII/Mods/${body.Version}`, 'Archive');
-      const iconIrl = commonService.uploadImage(files, './public/DiabloII/Mods/Icon', 'Icon');
+      const iconUrl = commonService.uploadImage(files, './public/DiabloII/Mods/Icons', 'Icon');
       if (archiveUrl) body.ArchiveUrl = archiveUrl;
       if (iconUrl) body.IconUrl = iconUrl;
       const result = await commonService.create(DiabloIIMods, body, ['Overview']);
@@ -51,7 +51,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/mod',
     wrap(async ({ files, body }, res, next) => {
       const archiveUrl = commonService.uploadArchive(files, `./public/DiabloII/Mods/${body.Version}`, 'Archive');
-      const iconIrl = commonService.uploadImage(files, './public/DiabloII/Mods/Icon', 'Icon');
+      const iconUrl = commonService.uploadImage(files, './public/DiabloII/Mods/Icons', 'Icon');
       if (archiveUrl) body.ArchiveUrl = archiveUrl;
       if (iconUrl) body.IconUrl = iconUrl;
       const result = await commonService.update(DiabloIIMods, body, ['Overview'], ['ArchiveUrl', 'IconUrl']);
@@ -145,7 +145,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/tool',
     wrap(async ({ body, files }, res, next) => {
       const archiveUrl = commonService.uploadArchive(files, './public/DiabloII/Tools', 'Archive');
-      const iconIrl = commonService.uploadImage(files, './public/DiabloII/Tools/Icons', 'Icon');
+      const iconUrl = commonService.uploadImage(files, './public/DiabloII/Tools/Icons', 'Icon');
       if (archiveUrl) body.ArchiveUrl = archiveUrl;
       if (iconUrl) body.IconUrl = iconUrl;
       const result = await commonService.create(DiabloIITools, body, ['Overview']);
@@ -157,7 +157,7 @@ export default (DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurviva
     '/tool',
     wrap(async ({ body, files }, res, next) => {
       const archiveUrl = commonService.uploadArchive(files, './public/DiabloII/Tools', 'Archive');
-      const iconIrl = commonService.uploadImage(files, './public/DiabloII/Tools/Icons', 'Icon');
+      const iconUrl = commonService.uploadImage(files, './public/DiabloII/Tools/Icons', 'Icon');
       if (archiveUrl) body.ArchiveUrl = archiveUrl;
       if (iconUrl) body.IconUrl = iconUrl;
       const result = await commonService.update(DiabloIITools, body, ['Overview'], ['ArchiveUrl', 'IconUrl']);

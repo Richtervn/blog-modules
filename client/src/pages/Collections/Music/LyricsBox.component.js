@@ -24,7 +24,7 @@ class LyricsBox extends Component {
       <div id="lyrics-box">
         <div className="header">
           {song.Name} Lyrics<span className="pull-right">
-            <i className="fa fa-times" />
+            <i className="fa fa-times" onClick={() => onClose()}/>
           </span>
         </div>
         <div className="content">
