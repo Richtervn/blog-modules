@@ -27,7 +27,7 @@ export default (config, routes, MuApps) => {
     })
   );
 
-  app.use(bodyParser.json());
+  app.use(bodyParser.json({ limit: '1000mb' }));
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(cookieParser());
 

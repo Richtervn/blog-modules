@@ -92,11 +92,15 @@ export default (Music, factories) => {
       if (song.Lyrics) {
         return res.send({ lyrics: song.Lyrics });
       }
-      const lyrics = await getLyric(song);
-      if (lyrics) {
-        await commonService.update(Music, { _id: id, Lyrics: lyrics });
+      try {
+        const lyrics = await getLyric(song).timeout(5000);
+        if (lyrics) {
+          await commonService.update(Music, { _id: id, Lyrics: lyrics });
+        }
+        res.send({ lyrics });
+      } catch (e) {
+        res.send({ lyrics: '' });
       }
-      res.send({ lyrics });
     })
   );
 

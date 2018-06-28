@@ -113,7 +113,12 @@ export default (state = initialState, action) => {
         }
         return song;
       });
-      return { ...state, playList: state.playList.slice(0), songs: state.songs.slice(0) };
+      return {
+        ...state,
+        playList: state.playList.slice(0),
+        songs: state.songs.slice(0),
+        lyrics: action.params.formBody.Lyrics ? action.params.formBody.Lyrics : state.lyrics
+      };
     case `${SEARCH_SONG}_SUCCESS`:
       return { ...state, songs: action.payload.slice(0) };
 
