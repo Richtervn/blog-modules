@@ -17,7 +17,7 @@ class LyricsBox extends Component {
   render() {
     const { isShow, song, onSave, onClose } = this.props;
     const { editing, lyrics } = this.state;
-    console.log(this.state);
+
     if (!isShow) {
       return null;
     }
