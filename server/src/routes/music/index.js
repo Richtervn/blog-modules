@@ -31,7 +31,7 @@ export default (Music, factories) => {
         record.Url = url;
         const fragments = files[`File${i}`].name.split(' - ');
         record.Artist = fragments[0].trim();
-        record.Name = fragments[1].replace('.mp3', '').trim();
+        record.Name = fragments[1].replace('.mp3', '').replace('.m4a', '').trim();
         record.Rating = body.Rating;
         record.Genre = body.Genre;
         records.push(record);
@@ -68,7 +68,7 @@ export default (Music, factories) => {
       if (url) {
         const fragments = files.File.split(' - ');
         body.Artist = fragments[0].trim();
-        body.Name = fragments[1].replace('.mp3', '').trim();
+        body.Name = fragments[1].replace('.mp3', '').replace('.m4a', '').trim();
         body.Url = url;
       }
       const song = await commonService.update(Music, body, null, ['Url']);
@@ -81,7 +81,7 @@ export default (Music, factories) => {
     wrap(async ({ body }, res, next) => {
       const ids = body.ids;
       await Promise.map(ids, id => commonService.delete(Music, id, ['Url']));
-      return { ids };
+      res.send({ ids });
     })
   );
 

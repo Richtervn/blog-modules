@@ -212,9 +212,14 @@ export default (state = initialState, action) => {
             stateWillChange.canNextSong = false;
             stateWillChange.isPlaying = false;
           } else {
+            stateWillChange.canNextSong = true;
+            stateWillChange.canPreviousSong = state.currentSongIndex > 0;
             stateWillChange.currentSongIndex = state.currentSongIndex + 1;
           }
+
         } else {
+          stateWillChange.canNextSong = true;
+          stateWillChange.canPreviousSong = true;
           if (state.currentSongIndex + 1 >= state.playList.length) {
             stateWillChange.currentSongIndex = 0;
           } else {
