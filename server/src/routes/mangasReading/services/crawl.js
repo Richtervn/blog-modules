@@ -82,7 +82,7 @@ const crawlTruyenTranhNet = url =>
                 .replace(/;/g, ',')
                 .split(',')
                 .concat(form.Aka);
-              form.Aka = _.uniq(akas).join(',');
+              form.Aka = _.uniq(akas);
             }
             if (text.indexOf('Thể loại') !== -1) {
               form.Genre = detail[i + 1].replace(/;/g, ',');
@@ -93,6 +93,7 @@ const crawlTruyenTranhNet = url =>
             }
           });
 
+          form.Aka = form.Aka.join(',');
           form.Introduce = $('.manga-content p:nth-of-type(2)').text();
           form.ReadingUrl = url;
           form.Rating = 3;
@@ -138,13 +139,14 @@ const crawlNetTruyenCom = url =>
           }
 
           form.Aka = [urlFragToAka(urlFrags[2])];
+
           let otherNames = $('.other-name').text();
           if (otherNames) {
             let akas = otherNames
               .replace(/;/g, ',')
               .split(',')
               .concat(form.Aka);
-            form.Aka = _.uniq(akas).join(',');
+            form.Aka = _.uniq(akas);
           }
 
           const imgSrc = $('.col-image > img').attr('src');
@@ -164,9 +166,10 @@ const crawlNetTruyenCom = url =>
 
           let genres = $('.kind > .col-xs-8').text();
           if (genres) {
-            form.Genres = genres.replace(/ - /g, ',');
+            form.Genre = genres.replace(/ - /g, ',');
           }
 
+          form.Aka = form.Aka.join(',');
           form.Introduce = $('.detail-content > p').text();
           form.ReadingUrl = url;
           form.Rating = 3;
