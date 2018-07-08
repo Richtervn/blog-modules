@@ -4,7 +4,6 @@ import Promise from 'bluebird';
 import crawl from './services/crawl';
 import quickUpdate from './services/quickUpdate';
 import sortManga from './services/sortManga';
-import getNews from './services/getNews';
 
 export default (MangasReading, factories) => {
   const router = express.Router();
@@ -78,14 +77,6 @@ export default (MangasReading, factories) => {
       res.send(manga);
     })
   );
-
-  router.get(
-    '/news',
-    wrap(async (req, res, next) => {
-      const data = await getNews();
-      res.send(data);
-    })
-  )
 
   return router;
 };

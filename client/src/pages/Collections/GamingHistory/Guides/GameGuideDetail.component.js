@@ -6,7 +6,10 @@ import { TabLoader } from 'common/Loaders';
 
 class GameGuideDetail extends Component {
   componentWillMount() {
-    const { subPage, onGetGuide, guide } = this.props;
+    const { subPage, onGetGuide, guide, gameId, onGetGuides, guides } = this.props;
+    if (!guides) {
+      onGetGuides(gameId);
+    }
     if (!guide || guide._id !== parseInt(subPage, 10)) {
       onGetGuide(subPage);
     }

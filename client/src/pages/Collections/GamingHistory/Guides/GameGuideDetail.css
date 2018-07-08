@@ -1,5 +1,4 @@
 .game-guide-detail {
-  padding: 10px;
   overflow-y: auto;
   max-height: calc(100vh - 90px);
   position: relative;

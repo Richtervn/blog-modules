@@ -44,7 +44,7 @@ export const crawlManga = formBody => actionCreator(CRAWL_MANGA, services.crawl,
 const initialState = {
   mangas: null,
   focusManga: null,
-  activeView: 'Add',
+  activeView: 'Detail',
   activeTool: 'QuickUpdate',
   search: {
     option: 'Name',

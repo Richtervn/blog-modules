@@ -80,5 +80,13 @@
     "author": "After Forever - Empty Memories",
     "quote": "Times changed forever that night. Leaving only empty memories",
     "icon": "bookmark"
+  },
+  "Subscribe": {
+    "items": [
+      "Manga News"
+    ],
+    "author": "Linkin Park - One More Light",
+    "quote": "Who cares if one more light goes out?",
+    "icon": "rss"
   }
 }

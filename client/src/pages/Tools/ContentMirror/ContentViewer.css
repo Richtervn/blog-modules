@@ -6,7 +6,6 @@
 .cm-content-viewer > .overlay {
   width: 100%;
   height: calc(100vh - 85px);
-  padding: 10px;
   overflow-y: auto;
 }
 

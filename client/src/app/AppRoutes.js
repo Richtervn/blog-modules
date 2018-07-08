@@ -27,6 +27,8 @@ import { Darksteam97d99i } from 'pages/MuOnline/Darksteam97d99i';
 
 import { Guideline } from 'pages/Documentations/Guideline';
 
+import { MangaNews } from 'pages/Subscribe/MangaNews';
+
 const AppRoutes = () => (
   <Page>
     <Switch>
@@ -39,6 +41,7 @@ const AppRoutes = () => (
       <Route exact path="/app_menu" component={AppMenu} />
       <Route exact path="/guideline" component={Guideline} />
       <Route exact path="/yugioh!_poc" component={YugiohPoc} />
+      <Route exact path="/manga_news" component={MangaNews} />
       <Route path="/diablo_ii/:tab?/:subPage?" component={DiabloII} />
       <Route path="/mu_online/:tab?/:subPage?" component={MuOnline} />
       <Route path="/darksteam_97d99i/:tab?/:page?" component={Darksteam97d99i} />

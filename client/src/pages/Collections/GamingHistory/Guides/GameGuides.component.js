@@ -17,9 +17,9 @@ class GameGuides extends Component {
   }
 
   render() {
-    const { params, guides, onSetFocusGuide } = this.props;
+    const { params, guides, onSetFocusGuide, gameInfo } = this.props;
     if (params.subPage) {
-      return <GameGuideDetail subPage={params.subPage} />;
+      return <GameGuideDetail subPage={params.subPage} gameId={gameInfo._id} />;
     }
     if (!guides) {
       return <TabLoader />;

@@ -8,6 +8,7 @@ import musicRouter from './music';
 import profileRouter from './profile';
 import projectsRouter from './projects';
 import starcraftRouter from './starcraft';
+import subscribeRouter from './subscribe';
 import systemRouter from './system';
 import toolsRouter from './tools';
 import yugiohPocRouter from './yugiohPoc';
@@ -55,6 +56,7 @@ const routes = (models, factories) => {
     profile: profileRouter(factories),
     projects: projectsRouter(Projects, factories),
     starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories),
+    subscribe: subscribeRouter(factories),
     system: systemRouter(factories),
     tools: toolsRouter(models, factories),
     yugioh_poc: yugiohPocRouter(YugiohPocMods, YugiohPocDecks, factories)

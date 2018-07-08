@@ -19,6 +19,8 @@ import { reducer as contentMirror } from 'pages/Tools/ContentMirror';
 
 import { reducer as endedManga } from 'pages/Archived/EndedManga';
 
+import { reducer as subscribe } from 'pages/Subscribe';
+
 import {
   ds9799_admin,
   ds9799_appControl,
@@ -61,5 +63,6 @@ export default combineReducers({
   music,
   projects,
   starcraft,
+  subscribe,
   yugiohPoc
 });
