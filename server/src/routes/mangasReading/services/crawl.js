@@ -165,6 +165,7 @@ const crawlNetTruyenCom = url =>
           }
 
           let genres = $('.kind > .col-xs-8').text();
+          form.Genre = '';
           if (genres) {
             form.Genre = genres.replace(/ - /g, ',');
           }

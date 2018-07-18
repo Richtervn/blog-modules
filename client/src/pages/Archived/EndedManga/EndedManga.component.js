@@ -1,5 +1,6 @@
 import './EndedManga.css';
 import React, { Component } from 'react';
+import _ from 'underscore';
 
 import StarRating from 'react-star-rating-component';
 import { LeftImageCard } from 'components/Cards';
@@ -18,11 +19,13 @@ class EndedManga extends Component {
     if (!mangas) {
       return <PageLoader />;
     }
+    const sortedMangas = _.sortBy(mangas, 'Name')
+
     return (
       <PageContainer backgroundUrl="/images/backgrounds/dark_art.jpg">
         <div className="row ended-mangas-row">
           {mangas.length < 1 && <div className="mangas-list-start-view">Start by adding some reading mangas</div>}
-          {mangas.map((manga, i) => (
+          {sortedMangas.map((manga, i) => (
             <LeftImageCard key={i} col={3} imgUrl={manga.CoverUri} nohover>
               <div className="text-center">
                 <strong>{manga.Name}</strong>
