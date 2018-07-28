@@ -10,7 +10,8 @@ const MangasReading = new Schema(
     Genre: [String],
     Rating: Number,
     CoverUri: String,
-    ReadingUrl: String
+    ReadingUrl: String,
+    Status: String
   },
   { timestamps: true }
 );

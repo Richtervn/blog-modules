@@ -1,5 +1,6 @@
 import express from 'express';
 import Promise from 'bluebird';
+import moment from 'moment';
 
 import crawl from './services/crawl';
 import quickUpdate from './services/quickUpdate';
@@ -40,6 +41,9 @@ export default (MangasReading, factories) => {
     wrap(async ({ files, body }, res, next) => {
       const coverUri = commonService.uploadImage(files, './public/Mangas Reading');
       if (coverUri) body.CoverUri = coverUri;
+      if (body.Chapter.indexOf('END' != -1)) {
+        body.Status = 'End';
+      }
       const manga = await commonService.update(MangasReading, body, ['Aka', 'Authors', 'Genre'], ['CoverUri']);
       res.send(manga);
     })
@@ -73,6 +77,7 @@ export default (MangasReading, factories) => {
     '/crawl',
     wrap(async ({ body }, res, next) => {
       const form = await crawl(MangasReading, body);
+      form.Status = 'OnGoing';
       const manga = await commonService.create(MangasReading, form, ['Aka', 'Authors', 'Genre']);
       res.send(manga);
     })

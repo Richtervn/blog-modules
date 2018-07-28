@@ -7,7 +7,6 @@ import { LeftImageCard } from 'components/Cards';
 class MangasList extends Component {
   componentDidUpdate(prevProps, prevState) {
     let willScroll = false;
-    if (prevProps.mangas.length < this.props.mangas.length && !this.props.noSearchResult) willScroll = true;
     for (let i = 0; i < prevProps.mangas.length; i++) {
       if (prevProps.mangas[i] && this.props.mangas[i] && prevProps.mangas[i].Chapter !== this.props.mangas[i].Chapter) {
         willScroll = true;
@@ -56,42 +55,52 @@ class MangasList extends Component {
                 Start by adding some reading mangas
               </div>
             )}
-            {mangas.map((manga, i) => (
-              <LeftImageCard
-                key={i}
-                col={4}
-                imgUrl={manga.CoverUri}
-                onClick={() => onSetFocusManga(manga._id)}
-                isActive={manga._id === focusManga}>
-                <div className="text-center">
-                  <strong>{manga.Name}</strong>
-                  <br />
-                  <StarRating
-                    name={`mgr-${i}`}
-                    value={parseInt(manga.Rating, 10)}
-                    onStarClick={value => onEditManga({ _id: manga._id, Rating: value })}
-                  />
-                  <br />
-                  {manga.Genre.map((genre, i) => (
-                    <span
-                      className="badge badge-info mgr-genre-tag"
-                      key={i}
-                      onClick={e => {
-                        e.stopPropagation();
-                        if (activeTool !== 'Search') onChangeActiveTool('Search');
-                        if (search.option !== 'Genre') onChangeSearchOption('Genre');
-                        onChangeSearchValue(genre);
-                        onSearchManga({ Genre: genre });
-                      }}>
-                      {genre}
-                    </span>
-                  ))}
-                  <div className="manga-chaper-text">
-                    <strong>CHAPTER : {manga.Chapter}</strong>
+            {mangas.map((manga, i) => {
+              let customClass;
+              if (manga.Status === 'HasNew') {
+                customClass = 'hightlight-card';
+              }
+              if (manga.Status === 'Stone') {
+                customClass = 'gray-card';
+              }
+              return (
+                <LeftImageCard
+                  customClass={customClass}
+                  key={i}
+                  col={4}
+                  imgUrl={manga.CoverUri}
+                  onClick={() => onSetFocusManga(manga._id)}
+                  isActive={manga._id === focusManga}>
+                  <div className="text-center">
+                    <strong>{manga.Name}</strong>
+                    <br />
+                    <StarRating
+                      name={`mgr-${i}`}
+                      value={parseInt(manga.Rating, 10)}
+                      onStarClick={value => onEditManga({ _id: manga._id, Rating: value })}
+                    />
+                    <br />
+                    {manga.Genre.map((genre, i) => (
+                      <span
+                        className="badge badge-info mgr-genre-tag"
+                        key={i}
+                        onClick={e => {
+                          e.stopPropagation();
+                          if (activeTool !== 'Search') onChangeActiveTool('Search');
+                          if (search.option !== 'Genre') onChangeSearchOption('Genre');
+                          onChangeSearchValue(genre);
+                          onSearchManga({ Genre: genre });
+                        }}>
+                        {genre}
+                      </span>
+                    ))}
+                    <div className="manga-chaper-text">
+                      <strong>CHAPTER : {manga.Chapter}</strong>
+                    </div>
                   </div>
-                </div>
-              </LeftImageCard>
-            ))}
+                </LeftImageCard>
+              );
+            })}
           </div>
         </div>
       </div>

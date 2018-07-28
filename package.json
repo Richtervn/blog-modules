@@ -1,6 +1,6 @@
 {
   "name": "blog-modules",
-  "version": "2.1.3",
+  "version": "2.2.1",
   "description": "my-blog",
   "main": "index.js",
   "scripts": {

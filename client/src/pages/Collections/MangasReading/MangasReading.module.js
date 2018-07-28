@@ -71,7 +71,7 @@ export default (state = initialState, action) => {
 
     case `${CRAWL_MANGA}_SUCCESS`:
     case `${ADD_MANGA}_SUCCESS`:
-      state.mangas.push(action.payload);
+      state.mangas.unshift(action.payload);
       toastSuccess(() => (
         <p>
           <strong>{`${action.payload.Name} `}</strong>has been added to your list!

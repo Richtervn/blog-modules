@@ -5,5 +5,6 @@ module.exports = [
   './features/muonline',
   './features/lineage2',
   './system',
-  './socket'
+  './socket',
+  './worker'
 ]

@@ -1,6 +1,6 @@
 {
   "name": "client-rework",
-  "version": "2.1.3",
+  "version": "2.2.1",
   "private": true,
   "dependencies": {
     "bluebird": "^3.5.1",

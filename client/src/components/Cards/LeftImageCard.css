@@ -55,3 +55,12 @@
   background-color: #28a745;
   color: white;
 }
+
+/*Stone Theme*/
+.left-image-card.gray-card {
+  background-color: gray;
+}
+
+.left-image-card.hightlight-card {
+  background-color: darkred;
+}

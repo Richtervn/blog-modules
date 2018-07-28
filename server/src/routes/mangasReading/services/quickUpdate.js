@@ -79,6 +79,7 @@ export default async (MangasReading, body) => {
   if (!manga) return { message: 'This manga is not added to tracking' };
   manga.Chapter = chapter;
   manga.ReadingUrl = url;
+  manga.Status = 'OnGoing';
   const result = await manga.save();
   return result;
 };
