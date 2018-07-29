@@ -41,7 +41,7 @@ export default (MangasReading, factories) => {
     wrap(async ({ files, body }, res, next) => {
       const coverUri = commonService.uploadImage(files, './public/Mangas Reading');
       if (coverUri) body.CoverUri = coverUri;
-      if (body.Chapter.indexOf('END' != -1)) {
+      if (body.Chapter && body.Chapter.indexOf('END' != -1)) {
         body.Status = 'End';
       }
       const manga = await commonService.update(MangasReading, body, ['Aka', 'Authors', 'Genre'], ['CoverUri']);
@@ -60,7 +60,7 @@ export default (MangasReading, factories) => {
   router.get(
     '/search',
     wrap(async ({ query }, res, next) => {
-      const mangas = await commonService.search(MangasReading, query);
+      const mangas = await commonService.search(MangasReading, query, { sort: { updatedAt: 'desc' } });
       res.send(mangas);
     })
   );

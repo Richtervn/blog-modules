@@ -110,12 +110,12 @@ export default {
     file.mv(filePath);
     return filePath;
   },
-  search: async (model, query, options) => {
+  search: async (model, query, options, sort) => {
     const regexQuery = {};
     for (let key in query) {
       regexQuery[key] = { $regex: query[key] };
     }
-    const docs = await model.find(regexQuery, options);
+    const docs = await model.find(regexQuery, options, sort);
     return docs;
   }
 };
