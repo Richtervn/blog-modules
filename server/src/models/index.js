@@ -1,5 +1,6 @@
 import autoIncrement from 'mongoose-auto-increment';
 
+import Account from './Account';
 import AppDiary from './AppDiary';
 import DiabloIICharacters from './DiabloIICharacters';
 import DiabloIIMods from './DiabloIIMods';
@@ -25,6 +26,7 @@ import YugiohPocDecks from './YugiohPocDecks';
 import YugiohPocMods from './YugiohPocMods';
 
 const models = db => {
+  Account.plugin(autoIncrement.plugin, 'Account');
   AppDiary.plugin(autoIncrement.plugin, 'AppDiary');
   DiabloIICharacters.plugin(autoIncrement.plugin, 'DiabloIICharacters');
   DiabloIIMods.plugin(autoIncrement.plugin, 'DiabloIIMods');
@@ -50,6 +52,7 @@ const models = db => {
   YugiohPocDecks.plugin(autoIncrement.plugin, 'YugiohPocDecks');
 
   return {
+    Account: db.model('Account', Account),
     AppDiary: db.model('AppDiary', AppDiary),
     DiabloIICharacters: db.model('DiabloIICharacters', DiabloIICharacters),
     DiabloIITools: db.model('DiabloIITools', DiabloIITools),

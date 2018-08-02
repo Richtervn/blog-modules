@@ -1,0 +1,17 @@
+.accounts-page-row {
+  max-height: calc(100vh - 45px);
+  overflow-y: auto;
+  padding-left: 10px;
+}
+
+.add-account-btn {
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(0, 0, 0, 0.5);
+  margin-top: 10px;
+}
+
+.add-account-btn:hover {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-color: white;
+}

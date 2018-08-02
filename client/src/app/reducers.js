@@ -18,6 +18,7 @@ import { reducer as muOnline } from 'pages/Games/MuOnline';
 import { reducer as contentMirror } from 'pages/Tools/ContentMirror';
 
 import { reducer as endedManga } from 'pages/Archived/EndedManga';
+import { reducer as accounts } from 'pages/Archived/Accounts';
 
 import { reducer as subscribe } from 'pages/Subscribe';
 
@@ -38,6 +39,7 @@ import {
 } from 'pages/MuOnline/Darksteam97d99i';
 
 export default combineReducers({
+  accounts,
   appControl,
   appDiary,
   contentMirror,

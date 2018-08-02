@@ -1,0 +1,75 @@
+.account-card {
+  width: 100%;
+  margin-right: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.account-card .header {
+  position: relative;
+  font-weight: 700;
+  height: 30px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.account-card .content {
+  padding: 10px;
+  min-height: 85px;
+  font-size: 14px;
+}
+
+.account-card .content.locked {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.125);
+}
+
+.account-card .fa {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.account-card .fa.unlock {
+  display: none;
+}
+.account-card .fa.lock {
+  display: block;
+}
+
+.account-card:hover .fa.lock {
+  display: none;
+}
+.account-card:hover .fa.unlock {
+  display: block;
+}
+
+.account-card .site-favicon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+
+.account-card .site-favicon img {
+  width: 24px;
+  height: 24px;
+}
+
+.account-card .info-row {
+  display: flex;
+}
+
+.account-card .label {
+  font-weight: 600;
+  width: 90px;
+  text-align: right;
+}
+
+.account-card .info {
+  margin-left: 10px;
+}

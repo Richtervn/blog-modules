@@ -16,7 +16,6 @@ export default async (factories, config) => {
     console.log('[Darksteam97d99i] App started');
     return { routers, models, methods, helpers };
   } catch (e) {
-    console.log(e);
     console.log('[Darksteam97d99i] App failed to start');
     return {};
   }

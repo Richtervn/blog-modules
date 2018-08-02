@@ -21,6 +21,8 @@ import { YugiohPoc } from 'pages/Games/YugiohPoc';
 import { MuOnline } from 'pages/Games/MuOnline';
 
 import { EndedManga } from 'pages/Archived/EndedManga';
+import { Accounts } from 'pages/Archived/Accounts';
+
 import { AppMenu } from 'pages/Setting/AppMenu';
 
 import { Darksteam97d99i } from 'pages/MuOnline/Darksteam97d99i';
@@ -36,6 +38,7 @@ const AppRoutes = () => (
       <Route path="/home/:tab/:subPage?" component={Home} />
       <Route exact path="/mangas_reading" component={MangasReading} />
       <Route exact path="/ended_manga" component={EndedManga} />
+      <Route exact path="/accounts" component={Accounts} />
       <Route exact path="/icon_chooser" component={IconChooser} />
       <Route exact path="/music" component={Music} />
       <Route exact path="/app_menu" component={AppMenu} />

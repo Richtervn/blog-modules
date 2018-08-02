@@ -1,3 +1,4 @@
+import accountRouter from './account';
 import appDiaryRouter from './appDiary';
 import diabloIIRouter from './diabloII';
 import flashGamesRouter from './flashGames';
@@ -15,6 +16,7 @@ import yugiohPocRouter from './yugiohPoc';
 
 const routes = (models, factories) => {
   const {
+    Account,
     AppDiary,
     DiabloIIMods,
     DiabloIICharacters,
@@ -40,6 +42,7 @@ const routes = (models, factories) => {
   } = models;
 
   return {
+    account: accountRouter(Account, factories),
     app_diary: appDiaryRouter(AppDiary, factories),
     diabloII: diabloIIRouter(DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories),
     flash_games: flashGamesRouter(FlashGames, factories),

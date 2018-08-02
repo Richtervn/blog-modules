@@ -11,7 +11,7 @@ const getTruyenTranhNet = () =>
       uri: 'http://truyentranh.net',
       callback: async (err, res) => {
         if (err) {
-          return reject(err);
+          return [];
         }
         const $ = res.$;
         const results = [];
@@ -76,7 +76,7 @@ const getNetTruyenCom = () =>
       uri: 'https://www.nettruyen.com',
       callback: async (err, res) => {
         if (err) {
-          return reject(err);
+          return [];
         }
         const $ = res.$;
         const results = [];

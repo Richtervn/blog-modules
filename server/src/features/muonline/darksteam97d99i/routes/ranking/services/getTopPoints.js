@@ -38,7 +38,6 @@ export default async (Character, query, BASE_STATS) => {
   for (let charClass in BASE_STATS) {
     const { Strength, Dexterity, Vitality, Energy } = BASE_STATS[charClass];
     baseStats[charClass] = Strength + Dexterity + Vitality + Energy;
-    console.log(baseStats);
   }
 
   const result = characters.map(character => {

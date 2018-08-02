@@ -77,6 +77,8 @@ import {
   SellDs9799Receipt
 } from 'pages/MuOnline/Darksteam97d99i';
 
+import { AccountForm } from 'pages/Archived/Accounts';
+
 export default ({ name }) => {
   let additionProps = {};
   switch (name) {
@@ -95,6 +97,10 @@ export default ({ name }) => {
     case 'AddDs9799Receipt':
     case 'EditDs9799Receipt':
       additionProps.dialogStyles = { maxWidth: '1200px' };
+      break;
+    case 'AddAccount':
+    case 'EditAccount':
+      additionProps.dialogStyles = { maxWidth: '545px' };
       break;
     default:
       additionProps = {};
@@ -187,6 +193,9 @@ export default ({ name }) => {
       {name === 'TradeDs9799Exchange' && <TradeDs9799Exchange />}
       {name === 'CraftDs9799Item' && <CraftDs9799Item />}
       {name === 'SellDs9799Receipt' && <SellDs9799Receipt />}
+
+      {name === 'AddAccount' && <AccountForm />}
+      {name === 'EditAccount' && <AccountForm edit />}
     </Modal>
   );
 };
