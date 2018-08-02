@@ -8,7 +8,15 @@ import { formatNumber } from './number';
 
 import { actionCreator, serviceCaller, serviceWrapper } from './service';
 
-import { connectString, getFullName, getSimpleName, getStarcraftRaces, toTitle, regexp } from './string';
+import {
+  colorConverter,
+  connectString,
+  getFullName,
+  getSimpleName,
+  getStarcraftRaces,
+  toTitle,
+  regexp
+} from './string';
 
 import { toInputDate, unixTime } from './time';
 
@@ -27,6 +35,7 @@ export {
   actionCreator,
   serviceCaller,
   serviceWrapper,
+  colorConverter,
   connectString,
   getFullName,
   getSimpleName,

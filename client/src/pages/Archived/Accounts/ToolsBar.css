@@ -1,0 +1,30 @@
+#account-toolsbar {
+  display: flex;
+  margin: 10px 10px 0px 10px;
+  flex: 1;
+}
+
+#account-toolsbar .search-input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+#account-toolsbar .generated-string {
+  margin-right: 10px;
+  width: 350px;
+}
+
+#account-toolsbar .length-input {
+  margin-right: 10px;
+  width: 100px;
+}
+
+#account-toolsbar .form-control {
+  height: 35px;
+}
+
+#account-toolsbar .btn {
+  height: 35px;
+  width: 120px;
+  padding: 0;
+}

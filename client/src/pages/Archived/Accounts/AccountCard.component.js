@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 
 import { openModal } from 'common/Modal';
-import { regexp } from 'helpers';
+import { regexp, colorConverter } from 'helpers';
 
 class AccountCard extends Component {
   constructor(props) {
@@ -25,6 +25,10 @@ class AccountCard extends Component {
   render() {
     const { account } = this.props;
     const { isLocked } = this.state;
+    const contentStyle = {};
+    if (!isLocked) {
+      contentStyle.background = colorConverter.hexToRgba(account.Color, 0.125);
+    }
     return (
       <div className="col-3">
         <div className="row">
@@ -38,7 +42,7 @@ class AccountCard extends Component {
               </div>
               <div className="site-name">{account.SiteName}</div>
             </div>
-            <div className={classnames('content', { locked: isLocked })}>
+            <div className={classnames('content', { locked: isLocked })} style={contentStyle}>
               {isLocked && <i className="fa fa-lock fa-4x lock" />}
               {isLocked && <i className="fa fa-unlock-alt fa-4x unlock" />}
               {!isLocked && (
