@@ -21,13 +21,13 @@ const UserMenu = ({ activePage, onSetPage, onLogout, history, isLoggedIn, active
       <ServerInfoCard key="si_c" />,
       <InfoHeaderCard key="vi_c" label="Version Info">
         <div>
-          <strong>Story Line: </strong>Chapter I - The Beginning
+          <strong>Server serial: </strong>Darksteam97d99i+
         </div>
         <div>
           <strong>MU Server: </strong>Darksteam 97d+99i
         </div>
         <div>
-          <strong>MU Server Version: </strong>Beta 37.3
+          <strong>MU Server Version: </strong>Beta 40.1
         </div>
         <div>
           <strong>MU Client Version: </strong>0.97.04

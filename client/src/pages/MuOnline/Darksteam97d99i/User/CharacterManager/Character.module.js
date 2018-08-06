@@ -73,7 +73,7 @@ export default (state = initialState, action) => {
         if (!action.params.query.isUseBank) {
           character.Money = action.payload.Money;
         }
-        return character;
+        return { ...character };
       });
       toastSuccess('Added point successfully');
       return { ...state, characters: state.characters.slice(0) };

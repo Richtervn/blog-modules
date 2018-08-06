@@ -21,6 +21,41 @@ export default () => (
     </div>
     <div className="intro-data">
       <h3 id="sc1">I. Development History:</h3>
+      <h4>[Beta 40.1 Changelog]</h4>
+      <ul>
+        <li>Fixed an error in the GoldenArcher.txt file</li>
+        <li>Golden Archer is now enabled by default</li>
+        <li>Small corrections</li>
+      </ul>
+      <h4>[Beta 40 Changelog]</h4>
+      <ul>
+        <li>Added ability to include grand reset points when resetting</li>
+        <li>Added Golden Archer system</li>
+        <li>Added ability to change max item level</li>
+        <li>Added ability to change item duration on the floor</li>
+      </ul>
+      <h4>[Beta 39.1 Changelog]</h4>
+      <ul>
+        <li>Fixed reset & grand reset systems not working properly</li>
+        <li>Fixed /skin, /pet and /tracemarry blocked ids/maps</li>
+      </ul>
+      <h4>[Beta 39 Changelog]</h4>
+      <ul>
+        <li>Added ability to reload most of the customs using /reload 3</li>
+        <li>Added Dynamic Exp System</li>
+        <li>Quest system now supports all monsters</li>
+        <li>Fixed invasion time</li>
+        <li>Fixed Sky Event pvp before event start</li>
+        <li>Fixed dupe bug</li>
+      </ul>
+      <h4>[Beta 38 Changelog]</h4>
+      <ul>
+        <li>Added /resetskills command</li>
+        <li>Added Lucky Mixes event</li>
+        <li>Experience calculation tweaked</li>
+        <li>Added ability to change points per level for each class</li>
+        <li>Added CalCharacter - you can now balance your characters</li>
+      </ul>
       <h4>[Beta 37.4 Changelog]</h4>
       <ul>
         <li>Tweaked /vault command &amp; fixed dupe bug</li>
@@ -683,8 +718,8 @@ Size:  312.0 KB`}>
       </ul>
       <h3 id="sc10">IX. Credits</h3>
       <div className="text-center">
-        <img src="/images/muonline/darksteam.gif" alt="DarksTeam"/>
-        <br/>
+        <img src="/images/muonline/darksteam.gif" alt="DarksTeam" />
+        <br />
         <font color="red">
           <b>
             Credits: WebZen &amp; DarksTeam <u>only</u>

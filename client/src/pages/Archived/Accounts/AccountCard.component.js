@@ -33,7 +33,7 @@ class AccountCard extends Component {
       <div className="col-3">
         <div className="row">
           <div
-            className="account-card"
+            className="archived-account-card"
             onClick={() => this.handleClick()}
             style={{ border: `solid 1px ${account.Color}` }}>
             <div className="header" style={{ borderBottom: `solid 1px ${account.Color}`, background: account.Color }}>
