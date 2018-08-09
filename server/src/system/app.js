@@ -5,7 +5,7 @@ import expressWinston from 'express-winston';
 import fileUpload from 'express-fileupload';
 import winston from 'winston';
 
-export default (config, routes, MuApps) => {
+export default (config, routes, MuApps, L2Apps) => {
   const app = express();
 
   const logger = new winston.Logger({
@@ -52,6 +52,12 @@ export default (config, routes, MuApps) => {
   for (let muApp in MuApps) {
     for (let route in MuApps[muApp].routers) {
       app.use(`/api/${muApp}/${route}`, MuApps[muApp].routers[route]);
+    }
+  }
+
+  for (let l2App in L2Apps) {
+    for (let route in L2Apps[l2App].routers) {
+      app.use(`/api/${l2App}/${route}`, L2Apps[l2App].routers[route]);
     }
   }
 

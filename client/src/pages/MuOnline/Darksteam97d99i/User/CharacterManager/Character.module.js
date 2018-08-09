@@ -69,11 +69,12 @@ export default (state = initialState, action) => {
         if (character.Name === action.params.query.name) {
           character[action.params.query.type] = action.payload[action.params.query.type];
           character.LevelUpPoint = action.payload.LevelUpPoint;
+          if (!action.params.query.isUseBank) {
+            character.Money = action.payload.Money;
+          }
+          return { ...character };
         }
-        if (!action.params.query.isUseBank) {
-          character.Money = action.payload.Money;
-        }
-        return { ...character };
+        return character;
       });
       toastSuccess('Added point successfully');
       return { ...state, characters: state.characters.slice(0) };
@@ -99,6 +100,7 @@ export default (state = initialState, action) => {
           if (action.payload.GrandResets) character.GrandResets = action.payload.GrandResets;
           character.Resets = action.payload.Resets;
           character.cLevel = action.payload.cLevel;
+          return { ...character };
         }
         return character;
       });
@@ -110,6 +112,7 @@ export default (state = initialState, action) => {
       state.characters = state.characters.map(character => {
         if (character.Name === action.payload.Name) {
           character.Money = action.payload.Money;
+          return { ...character };
         }
         return character;
       });
@@ -119,6 +122,7 @@ export default (state = initialState, action) => {
       state.characters = state.characters.map(character => {
         if (character.Name === action.name) {
           character.IsVip = 1;
+          return { ...character };
         }
         return character;
       });

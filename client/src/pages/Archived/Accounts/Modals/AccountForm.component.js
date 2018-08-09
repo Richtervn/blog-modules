@@ -42,7 +42,7 @@ class AccountForm extends Component {
 
   handleSubmit() {
     const { edit, onEdit, onAdd, account } = this.props;
-    console.log(this.state.value);
+
     if (edit) {
       onEdit({ ...this.state.value, _id: account._id });
     } else {

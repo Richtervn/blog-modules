@@ -1,34 +1,24 @@
 import express from 'express';
-import dbModels from './models';
-// import * as routes from './routes';
-// import * as helpers from './helpers';
-// import * as appConfigs from './appConfigs';
+import initModels from './models';
 
-// const muApp = async (factories, config) => {
-//   const router = express.Router();
-//   try {
-//     const models = await dbModels(config);
-//     for (let key in routes) {
-//       routes[key](models, router, factories, helpers, appConfigs);
-//     }
-//     return router;
-//   } catch(e){
-//     console.log('[ERR-MUAPP] Darksteam97d99i database is not active')
-//     return router;
-//   }
-// };
+import * as helpers from './helpers';
+import * as routerCreators from './routes';
 
-// export default muApp;
-
-const l2App = async (factories, config) => {
-  const router = express.Router();
+export default async (factories, config) => {
   try {
-    const models = await dbModels(config);
-  } catch (e) {
-    // console.log(e);
-    console.log('[ERR-L2APP] Freya Portable database is not active');
-  }
-  return router;
-}
+    const models = await initModels(config);
+    // const methods = initMethods(models, factories);
 
-export default l2App;
+    const routers = {};
+    for (let key in routerCreators) {
+      routers[key] = routerCreators[key](models, factories, helpers);
+    }
+
+    console.log('[L2-Freya] App started');
+    return { routers, models, helpers };
+  } catch (e) {
+    console.log(e);
+    console.log('[L2-Freya] App failed to start');
+    return {};
+  }
+};

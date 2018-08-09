@@ -8,10 +8,12 @@ export default (config, MuApps) => {
   const app = express();
   const server = http.createServer(app);
   server.listen(config.socketPort);
+  console.log(`[APP] Socket is listenning on port ${config.socketPort}`)
 
   const io = socketIo(server);
 
   io.on('connection', client => {
+    console.log('socket connected');
     initDs9799SocketHandler(
       MuApps.darksteam97d99i.models,
       client,

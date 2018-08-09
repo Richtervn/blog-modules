@@ -7,6 +7,7 @@ const GET_TOP_POINTS = 'darksteam97d99i/Introduction/GET_TOP_POINTS';
 const GET_TOP_RESETS = 'darksteam97d99i/Introduction/GET_TOP_RESETS';
 const GET_TOP_ZEN = 'darksteam97d99i/Introduction/GET_TOP_ZEN';
 const GET_TOP_CREDITS = 'darksteam97d99i/Introduction/GET_TOP_CREDITS';
+const GET_GUIDES = 'darksteam97d99i/Introduction/GET_GUIDES';
 
 export const setActiveTab = tab => ({ type: SET_ACTIVE_TAB, tab });
 
@@ -14,13 +15,15 @@ export const getTopPoints = query => actionCreator(GET_TOP_POINTS, services.getT
 export const getTopResets = query => actionCreator(GET_TOP_RESETS, services.getTopResets, { payload: { query } })();
 export const getTopZen = () => actionCreator(GET_TOP_ZEN, services.getTopZen)();
 export const getTopCredits = () => actionCreator(GET_TOP_CREDITS, services.getTopCredits)();
+export const getGuides = () => actionCreator(GET_GUIDES, services.getGuides)();
 
 const initialState = {
   activeTab: 'Home',
   topPoints: null,
   topResets: null,
   topZen: null,
-  topCredits: null
+  topCredits: null,
+  guides: null
 };
 
 export default (state = initialState, action) => {
@@ -35,6 +38,8 @@ export default (state = initialState, action) => {
       return { ...state, topResets: action.payload };
     case `${GET_TOP_CREDITS}_SUCCESS`:
       return { ...state, topCredits: action.payload };
+    case `${GET_GUIDES}_SUCCESS`:
+      return { ...state, guides: action.payload };
 
     default:
       return state;

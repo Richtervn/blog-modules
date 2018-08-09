@@ -7,33 +7,23 @@ const models = async config => {
   const authError = await sequelize.authenticate();
 
   if (authError) {
-    console.log('[L2APP] Unable to connect database', authError);
+    console.log('[L2-Freya] Unable to connect database', authError);
     return;
   }
 
-  console.log('[L2APP] Connect database successfully');
+  console.log('[L2-Freya] Connect database successfully');
 
-//   const MembInfo = sequelize.import('./MembInfo');
-//   const AccountCharacter = sequelize.import('./AccountCharacter');
-//   const Character = sequelize.import('./Character');
-//   const MembCredits = sequelize.import('./MembCredits');
-//   const Banking = sequelize.import('./Banking');
-//   const ViCurInfo = sequelize.import('./ViCurInfo');
+  const Accounts = sequelize.import('./Accounts');
 
-//   try {
-//     await sequelize.sync();
-//   } catch(e){
-//     console.log(e);
-//   }
-  return {};
-//   return {
-//     MembInfo,
-//     AccountCharacter,
-//     Character,
-//     MembCredits,
-//     Banking,
-//     ViCurInfo
-//   };
+  //   try {
+  //     await sequelize.sync();
+  //   } catch(e){
+  //     console.log(e);
+  //   }
+
+  return {
+    Accounts
+  };
 };
 
 export default models;

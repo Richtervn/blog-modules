@@ -220,6 +220,16 @@ export default {
     return data;
   },
 
+  /* Guides Services */
+  getGuides() {
+    const data = commonGet('darksteam97d99i/guides');
+    return data;
+  },
+  getGuideDetail({ id }) {
+    const data = commonGet('darksteam97d99i/guides', [id]);
+    return data;
+  },
+
   /* Server Service */
   getServerData({ fileName }) {
     const data = commonGet('darksteam97d99i/system/data', [fileName]);

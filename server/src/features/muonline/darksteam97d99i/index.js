@@ -3,14 +3,14 @@ import initMethods from './methods';
 import * as helpers from './helpers';
 import * as routerCreators from './routes';
 
-export default async (factories, config) => {
+export default async (factories, config, MuOnlineGuides) => {
   try {
     const models = await initModels(config);
     const methods = initMethods(models, factories);
 
     const routers = {};
     for (let key in routerCreators) {
-      routers[key] = routerCreators[key](models, methods, factories, helpers);
+      routers[key] = routerCreators[key](models, methods, factories, helpers, MuOnlineGuides);
     }
 
     console.log('[Darksteam97d99i] App started');

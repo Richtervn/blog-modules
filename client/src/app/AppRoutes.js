@@ -14,6 +14,7 @@ import { Home } from 'pages/Home';
 import { ComponentsViewer } from 'pages/Tools/ComponentsViewer';
 import { ContentMirror } from 'pages/Tools/ContentMirror';
 import { IconChooser } from 'pages/Tools/IconChooser';
+import { CodePlayground } from 'pages/Tools/CodePlayground';
 
 import { Starcraft } from 'pages/Games/Starcraft';
 import { DiabloII } from 'pages/Games/DiabloII';
@@ -40,6 +41,7 @@ const AppRoutes = () => (
       <Route exact path="/ended_manga" component={EndedManga} />
       <Route exact path="/accounts" component={Accounts} />
       <Route exact path="/icon_chooser" component={IconChooser} />
+      <Route exact path="/code_playground" component={CodePlayground} />
       <Route exact path="/music" component={Music} />
       <Route exact path="/app_menu" component={AppMenu} />
       <Route exact path="/guideline" component={Guideline} />

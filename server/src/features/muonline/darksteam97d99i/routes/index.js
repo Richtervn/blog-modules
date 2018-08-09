@@ -1,6 +1,7 @@
 export banking from './banking';
 export characters from './characters';
 export credits from './credits';
+export guides from './guides';
 export luxury_shop from './luxuryShop';
 export ranking from './ranking';
 export system from './system';
