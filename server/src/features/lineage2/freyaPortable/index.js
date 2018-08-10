@@ -17,7 +17,6 @@ export default async (factories, config) => {
     console.log('[L2-Freya] App started');
     return { routers, models, helpers };
   } catch (e) {
-    console.log(e);
     console.log('[L2-Freya] App failed to start');
     return {};
   }

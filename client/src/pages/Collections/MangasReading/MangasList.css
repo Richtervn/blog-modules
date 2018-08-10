@@ -29,3 +29,18 @@
   margin-right: 2px;
   cursor: pointer;
 }
+
+.mgr-new-chapter {
+  position: absolute;
+  color: white;
+  background: #dc3545;
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  font-weight: 600;
+  top: 3px;
+  right: -16px;
+  width: 55px;
+  font-size: 10px;
+  text-align: center;
+}

@@ -8,6 +8,7 @@ export default async MangasReading => {
     const outdateTime = moment().unix() - moment(manga.updatedAt).unix();
     if (manga.Status != 'HasNew' && outdateTime > stoneTime) {
       manga.Status = 'Stone';
+      console.log(`[APP-Manga] ${manga.Name} has stoned`);
       await manga.save();
     }
   });

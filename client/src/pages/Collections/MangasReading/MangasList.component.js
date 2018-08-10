@@ -71,6 +71,10 @@ class MangasList extends Component {
                   imgUrl={manga.CoverUri}
                   onClick={() => onSetFocusManga(manga._id)}
                   isActive={manga._id === focusManga}>
+                  {manga.NewChapter &&
+                    parseFloat(manga.NewChapter) > parseFloat(manga.Chapter) && (
+                      <div className="mgr-new-chapter">{manga.NewChapter}</div>
+                    )}
                   <div className="text-center">
                     <strong>{manga.Name}</strong>
                     <br />

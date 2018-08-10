@@ -34,5 +34,9 @@ export default {
   crawl({ formBody }) {
     const data = commonPost('mangas_reading/crawl', formBody);
     return data;
+  },
+  manualSaveNewChapter({ url }) {
+    const data = commonPut('mangas_reading/manual_save_new_chapter', url);
+    return data;
   }
 };

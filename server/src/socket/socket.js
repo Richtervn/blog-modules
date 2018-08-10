@@ -13,7 +13,6 @@ export default (config, MuApps) => {
   const io = socketIo(server);
 
   io.on('connection', client => {
-    console.log('socket connected');
     initDs9799SocketHandler(
       MuApps.darksteam97d99i.models,
       client,

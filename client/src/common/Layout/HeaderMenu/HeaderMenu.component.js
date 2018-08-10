@@ -8,6 +8,8 @@ class HeaderMenu extends Component {
     this.state = {
       value: {
         mangaUrl: '',
+        crawlMangaUrl: '',
+        newChapterUrl: '',
         appDiary: ''
       }
     };
@@ -26,7 +28,7 @@ class HeaderMenu extends Component {
     this.setState({ value: valueState });
   }
 
-  handleQuickUpdate() {
+  handleQuickUpdateManga() {
     this.props.onQuickUpdateManga({ url: this.state.value.mangaUrl });
     this.setState({ ...this.state, value: { ...this.state.value, mangaUrl: '' } });
   }
@@ -34,6 +36,16 @@ class HeaderMenu extends Component {
   handleAddAppDiary() {
     this.props.onAddAppDiary({ text: this.state.value.appDiary });
     this.setState({ ...this.state, value: { ...this.state.value, appDiary: '' } });
+  }
+
+  handleSaveNewMangaChapter() {
+    this.props.onSaveNewMangaChapter({ url: this.state.value.newChapterUrl });
+    this.setState({ ...this.state, value: { ...this.state.value, newChapterUrl: '' } });
+  }
+
+  handleCrawlManga() {
+    this.props.onCrawlManga({ url: this.state.value.crawlMangaUrl });
+    this.setState({ ...this.state, value: { ...this.state.value, crawlMangaUrl: '' } });
   }
 
   handleSelfHide(event) {
@@ -68,10 +80,45 @@ class HeaderMenu extends Component {
           <button
             className="btn btn-success header-menu-btn"
             disabled={!this.state.value.mangaUrl}
-            onClick={() => this.handleQuickUpdate()}>
+            onClick={() => this.handleQuickUpdateManga()}>
             <i className="fa fa-plus-circle" />
           </button>
         </div>
+
+        <div className="header-menu-input-wrapper-next">
+          <input
+            type="text"
+            className="form-control header-menu-input"
+            name="crawlMangaUrl"
+            value={this.state.value.crawlMangaUrl}
+            onChange={this.handleChange}
+            placeholder="Crawl manga reading url"
+          />
+          <button
+            className="btn btn-info header-menu-btn"
+            disabled={!this.state.value.crawlMangaUrl}
+            onClick={() => this.handleCrawlManga()}>
+            <i className="fa fa-plus-circle" />
+          </button>
+        </div>
+
+        <div className="header-menu-input-wrapper-next">
+          <input
+            type="text"
+            className="form-control header-menu-input"
+            name="newChapterUrl"
+            value={this.state.value.newChapterUrl}
+            onChange={this.handleChange}
+            placeholder="Quick update manga reading url"
+          />
+          <button
+            className="btn btn-warning header-menu-btn"
+            disabled={!this.state.value.newChapterUrl}
+            onClick={() => this.handleSaveNewMangaChapter()}>
+            <i className="fa fa-plus-circle" />
+          </button>
+        </div>
+
         <div className="header-menu-input-wrapper-next">
           <input
             type="text"

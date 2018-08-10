@@ -13,7 +13,8 @@ import {
   sortManga,
   changeSearchOption,
   changeSearchValue,
-  crawlManga
+  crawlManga,
+  manualSaveNewChapter
 } from './MangasReading.module';
 
 export default connect(
@@ -41,6 +42,9 @@ export default connect(
     },
     onQuickUpdate(url) {
       dispatch(quickUpdate(url));
+    },
+    onSaveNewChapter(url) {
+      dispatch(manualSaveNewChapter(url));
     },
     onSearchManga(query) {
       dispatch(searchManga(query));

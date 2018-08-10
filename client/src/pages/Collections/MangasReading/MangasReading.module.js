@@ -12,6 +12,7 @@ const DELETE_MANGA = 'mangasReading/DELETE_MANGA';
 const SEARCH_MANGA = 'mangasReading/SEARCH_MANGA';
 const SORT_MANGA = 'mangasReading/SORT_MANGA';
 const CRAWL_MANGA = 'mangasReading/CRAWL_MANGA';
+const MANUAL_SAVE_NEW_CHAPTER = 'mangasReading/MANUAL_SAVE_NEW_CHAPTER';
 
 const SET_FOCUS_MANGA = 'mangasReading/SET_FOCUS_MANGA';
 const SET_ACTIVE_VIEW = 'mangasReading/SET_ACTIVE_VIEW';
@@ -35,6 +36,8 @@ export const addManga = formBody => actionCreator(ADD_MANGA, services.add, { pay
 export const editManga = formBody => actionCreator(UPDATE_MANGA, services.edit, { payload: { formBody } })();
 export const deleteManga = id => actionCreator(DELETE_MANGA, services.delete, { payload: { id } })();
 export const quickUpdate = url => actionCreator(QUICK_UPDATE, services.quickUpdate, { payload: { url } })();
+export const manualSaveNewChapter = url =>
+  actionCreator(MANUAL_SAVE_NEW_CHAPTER, services.manualSaveNewChapter, { payload: { url } })();
 export const searchManga = query =>
   actionCreator(SEARCH_MANGA, services.search, { payload: { query }, toast: false })();
 export const sortManga = query => actionCreator(SORT_MANGA, services.sort, { payload: { query } })();
@@ -87,6 +90,27 @@ export default (state = initialState, action) => {
       toastSuccess(() => (
         <p>
           Updated<strong>{` ${action.payload.Name} `}</strong>to chapter {action.payload.Chapter}
+        </p>
+      ));
+      return {
+        ...state,
+        activeView: 'Detail',
+        focusManga: state.focusManga ? action.payload._id : null,
+        mangas: state.mangas
+          ? state.mangas
+              .map(manga => {
+                if (parseInt(manga._id, 10) === parseInt(action.payload._id, 10)) {
+                  return action.payload;
+                }
+                return manga;
+              })
+              .slice(0)
+          : null
+      };
+    case `${MANUAL_SAVE_NEW_CHAPTER}_SUCCESS`:
+      toastSuccess(() => (
+        <p>
+          <strong>{`${action.payload.Name} `}</strong>has new chapter {action.payload.NewChapter}
         </p>
       ));
       return {

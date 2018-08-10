@@ -5,6 +5,7 @@ import moment from 'moment';
 import crawl from './services/crawl';
 import quickUpdate from './services/quickUpdate';
 import sortManga from './services/sortManga';
+import manualSaveNewChapter from './services/manualSaveNewChapter';
 
 export default (MangasReading, factories) => {
   const router = express.Router();
@@ -32,6 +33,14 @@ export default (MangasReading, factories) => {
     '/quick_update',
     wrap(async ({ body }, res, next) => {
       const manga = await quickUpdate(MangasReading, body);
+      res.send(manga);
+    })
+  );
+
+  router.put(
+    '/manual_save_new_chapter',
+    wrap(async ({ body }, res, next) => {
+      const manga = await manualSaveNewChapter(MangasReading, body);
       res.send(manga);
     })
   );

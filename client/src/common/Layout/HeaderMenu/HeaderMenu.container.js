@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import HeaderMenu from './HeaderMenu.component';
 
-import { quickUpdate } from 'pages/Collections/MangasReading';
+import { quickUpdate, crawlManga, manualSaveNewChapter } from 'pages/Collections/MangasReading';
 import { hideHeaderMenu } from 'pages/appControl';
 import { addLog } from 'pages/Home/AppDiary';
 
@@ -18,6 +18,12 @@ const mapDispatchToProps = dispatch => ({
   },
   onAddAppDiary(text) {
     dispatch(addLog(text));
+  },
+  onSaveNewMangaChapter(url) {
+    dispatch(manualSaveNewChapter(url));
+  },
+  onCrawlManga(url) {
+    dispatch(crawlManga(url));
   }
 });
 

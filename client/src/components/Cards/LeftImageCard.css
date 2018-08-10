@@ -5,6 +5,7 @@
   margin-right: 10px;
   display: inline-flex;
   transition: 0.2s all;
+  overflow: hidden;
 }
 
 .left-image-card:not(.no-hover) {

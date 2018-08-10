@@ -12,6 +12,7 @@ import MangaDeleteView from './MangaDeleteView';
 const tools = [
   { name: 'QuickUpdate', icon: 'fa-plus-circle', tooltip: 'Open quick update tool' },
   { name: 'Crawl', icon: 'fa-copy', tooltip: 'Crawl a link' },
+  { name: 'NewChapter', icon: 'fa-newspaper-o', tooltip: 'Manual save new chapter' },
   { name: 'Search', icon: 'fa-search', tooltip: 'Open search tool' },
   { name: 'Sort', icon: 'fa-sort', tooltip: 'Open sort tool' }
 ];
@@ -29,6 +30,7 @@ class ControlBar extends Component {
     this.state = {
       quickUrl: '',
       crawl: '',
+      newChapterUrl: '',
       sort: {
         option: 'default',
         value: 'ASC'
@@ -36,6 +38,7 @@ class ControlBar extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleQuickUpdate = this.handleQuickUpdate.bind(this);
+    this.handleSaveNewChapter = this.handleSaveNewChapter.bind(this);
   }
 
   handleChange(event, prefix) {
@@ -65,6 +68,11 @@ class ControlBar extends Component {
         this.setState({ [name]: value });
         break;
     }
+  }
+
+  handleSaveNewChapter() {
+    this.props.onSaveNewChapter({ url: this.state.newChapterUrl });
+    this.setState({ newChapterUrl: '' });
   }
 
   handleQuickUpdate() {
@@ -105,6 +113,19 @@ class ControlBar extends Component {
                 onClick={() => this.handleQuickUpdate()}
                 customClass="mgr-quick-update"
                 placeholder="Reading url"
+              />
+            )}
+            {activeTool === 'NewChapter' && (
+              <InputWithButton
+                value={this.state.newChapterUrl}
+                onChange={this.handleChange}
+                name="newChapterUrl"
+                btnIcon="plus-circle"
+                btnClass="btn-warning"
+                btnDisabled={!this.state.newChapterUrl}
+                onClick={() => this.handleSaveNewChapter()}
+                customClass="mgr-quick-update"
+                placeholder="New chapter url"
               />
             )}
             {activeTool === 'Search' && (
