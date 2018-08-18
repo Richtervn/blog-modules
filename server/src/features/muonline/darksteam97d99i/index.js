@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+
 import initModels from './models';
 import initMethods from './methods';
 import * as helpers from './helpers';
@@ -13,10 +15,10 @@ export default async (factories, config, MuOnlineGuides) => {
       routers[key] = routerCreators[key](models, methods, factories, helpers, MuOnlineGuides);
     }
 
-    console.log('[Darksteam97d99i] App started');
+    console.log(`${chalk.bold.blue('[Darksteam97d99i]')} App started`);
     return { routers, models, methods, helpers };
   } catch (e) {
-    console.log('[Darksteam97d99i] App failed to start');
+    console.log(`${chalk.bold.red('[Darksteam97d99i]')} App failed to start`);
     return {};
   }
 };

@@ -5,7 +5,7 @@ export default {
   description: 'Woker',
   services: {
     worker: {
-      require: ['models', 'factories'],
+      require: ['models', 'factories', 'socket'],
       func: worker
     }
   },

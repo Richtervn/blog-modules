@@ -3,7 +3,7 @@ import Promise from 'bluebird';
 
 import Crawler from 'crawler';
 
-const crawler = new Crawler({ maxConnections: 1 });
+const crawler = new Crawler({ maxConnections: 10 });
 
 const getTruyenTranhNet = () =>
   new Promise((resolve, reject) => {

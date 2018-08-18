@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import http from 'http';
 
 export default (app, config) => {
@@ -33,7 +34,7 @@ export default (app, config) => {
     } else {
       addrInfo = `port ${addr.port}`;
     }
-    console.log(`[APP] Server is running on ${addrInfo}`);
+    console.log(`${chalk.bold.green('[APP]')} Server is running on ${addrInfo}`);
   });
 
   return server;

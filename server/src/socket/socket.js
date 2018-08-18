@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import http from 'http';
 import express from 'express';
 
@@ -8,7 +9,7 @@ export default (config, MuApps) => {
   const app = express();
   const server = http.createServer(app);
   server.listen(config.socketPort);
-  console.log(`[APP] Socket is listenning on port ${config.socketPort}`)
+  console.log(`${chalk.bold.green('[APP]')} Socket is listenning on port ${config.socketPort}`);
 
   const io = socketIo(server);
 

@@ -74,7 +74,10 @@ export default (state = initialState, action) => {
 
     case `${CRAWL_MANGA}_SUCCESS`:
     case `${ADD_MANGA}_SUCCESS`:
-      state.mangas.unshift(action.payload);
+      if (state.mangas) {
+        state.mangas.unshift(action.payload);
+      }
+
       toastSuccess(() => (
         <p>
           <strong>{`${action.payload.Name} `}</strong>has been added to your list!
@@ -82,7 +85,7 @@ export default (state = initialState, action) => {
       ));
       return {
         ...state,
-        mangas: state.mangas.slice(0),
+        mangas: state.mangas ? state.mangas.slice(0) : null,
         focusManga: action.payload._id,
         activeView: 'Detail'
       };

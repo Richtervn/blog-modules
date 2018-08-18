@@ -1,7 +1,7 @@
 import getMangaNews from '../routes/subscribe/services/getMangaNews';
 import getChapterFromUrl from '../routes/mangasReading/services/getChapterFromUrl';
 
-export default async (MangasReading, factories) => {
+export default async (MangasReading, factories, io) => {
   const newData = await getMangaNews();
   newData.forEach(async ({ site, data }) => {
     data.forEach(async newManga => {
@@ -29,6 +29,12 @@ export default async (MangasReading, factories) => {
       manga.Status = 'HasNew';
       manga.NewChapter = newChapter;
       console.log(`[APP-Manga] ${manga.Name} has new chapter ${newChapter}`);
+      io.emit('appManga/notification', {
+        icon: `${manga.CoverUri}`,
+        body: `${manga.Name} has new chapter ${newChapter}`,
+        title: 'Manga checker',
+        link: `${newManga.chapters[0].link}`
+      });
       await manga.save();
     });
   });

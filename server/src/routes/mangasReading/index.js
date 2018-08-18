@@ -2,6 +2,7 @@ import express from 'express';
 import Promise from 'bluebird';
 import moment from 'moment';
 
+import arrangeManga from './services/arrangeManga';
 import crawl from './services/crawl';
 import quickUpdate from './services/quickUpdate';
 import sortManga from './services/sortManga';
@@ -25,7 +26,7 @@ export default (MangasReading, factories) => {
     '/get_all',
     wrap(async (req, res, next) => {
       const mangas = await commonService.getAll(MangasReading, null, { sort: { updatedAt: 'desc' } });
-      res.send(mangas);
+      res.send(arrangeManga(mangas));
     })
   );
 
@@ -69,8 +70,8 @@ export default (MangasReading, factories) => {
   router.get(
     '/search',
     wrap(async ({ query }, res, next) => {
-      const mangas = await commonService.search(MangasReading, query, { sort: { updatedAt: 'desc' } });
-      res.send(mangas);
+      const mangas = await commonService.search(MangasReading, query, null, { sort: { updatedAt: 'desc' } });
+      res.send(arrangeManga(mangas));
     })
   );
 

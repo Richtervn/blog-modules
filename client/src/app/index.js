@@ -3,6 +3,7 @@ import 'whatwg-fetch';
 import './config';
 import './fetchIntercept';
 import './global.css';
+import './notifications';
 
 import React, { Component } from 'react';
 import { Router } from 'react-router-dom';

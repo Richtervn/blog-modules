@@ -59,18 +59,21 @@ export default ({
           </div>
         </div>
       )}
-      <div className="description">
-        <strong>Description : </strong>
-        {description}
-      </div>
-      {tipntrick && (
-        <div className="tipntrick">
-          <div>
-            <strong>Tips And Tricks : </strong>
-          </div>
-          <ul>{tipntrick.map((tnt, i) => <li key={i}>{tnt}</li>)}</ul>
+      {description && (
+        <div className="description">
+          <strong>Description : </strong>
+          {description}
         </div>
       )}
+      {tipntrick &&
+        tipntrick.length > 0 && (
+          <div className="tipntrick">
+            <div>
+              <strong>Tips And Tricks : </strong>
+            </div>
+            <ul>{tipntrick.map((tnt, i) => <li key={i}>{tnt}</li>)}</ul>
+          </div>
+        )}
       {htmlBind && (
         <div className="html-bind-wrapper">
           <div className="html-bind" dangerouslySetInnerHTML={{ __html: htmlBind }} />

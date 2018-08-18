@@ -1,4 +1,5 @@
 import express from 'express';
+import chalk from 'chalk';
 import initModels from './models';
 
 import * as helpers from './helpers';
@@ -14,10 +15,10 @@ export default async (factories, config) => {
       routers[key] = routerCreators[key](models, factories, helpers);
     }
 
-    console.log('[L2-Freya] App started');
+    console.log(`${chalk.bold.blue('[L2-Freya]')} App started`);
     return { routers, models, helpers };
   } catch (e) {
-    console.log('[L2-Freya] App failed to start');
+    console.log(`${chalk.bold.red('[L2-Freya]')} App failed to start`);
     return {};
   }
 };

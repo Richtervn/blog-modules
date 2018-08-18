@@ -1,15 +1,22 @@
+import chalk from 'chalk';
 import Sequelize from 'sequelize';
 
+const Op = Sequelize.Op;
+const operatorsAliases = {
+  $like: Op.like,
+  $in: Op.in
+};
+
 export default async config => {
-  const sequelize = new Sequelize(config.muDatabase, { logging: false });
+  const sequelize = new Sequelize(config.muDatabase, { logging: false, operatorsAliases });
   const authError = await sequelize.authenticate();
 
   if (authError) {
-    console.log('[Darksteam97d99i] Unable to connect database', authError);
+    console.log(`${chalk.bold.red('[Darksteam97d99i]')} Unable to connect database`);
     return;
   }
 
-  console.log('[Darksteam97d99i] Connect database successfully');
+  console.log(`${chalk.bold.blue('[Darksteam97d99i]')} Connect database successfully`);
 
   const AccountCharacter = sequelize.import('./AccountCharacter');
   const Banking = sequelize.import('./Banking');
