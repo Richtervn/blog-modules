@@ -42,6 +42,7 @@ export default url => {
     }
     case 'mangak.info':
     case 'truyentranhtam.com':
+    case 'truyentranhth.net':
     case 'truyentranh8.org':
     case 'truyentranh8.net': {
       let infoUrlFrags = urlFrags[1].split('-chap-');
