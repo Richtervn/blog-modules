@@ -3,6 +3,19 @@ import React from 'react';
 import StarRating from 'react-star-rating-component';
 import { getStarcraftRaces } from 'helpers';
 
+const isNotEmpty = arr => {
+  if (!arr) {
+    return false;
+  }
+  if (arr.length > 1) {
+    return true;
+  }
+  if (arr.length === 1 && !arr[0]) {
+    return false;
+  }
+  return true;
+};
+
 export default ({
   onEditClick,
   onDeleteClick,
@@ -61,19 +74,18 @@ export default ({
       )}
       {description && (
         <div className="description">
-          <strong>Description : </strong>
+          <strong>Description:</strong>
           {description}
         </div>
       )}
-      {tipntrick &&
-        tipntrick.length > 0 && (
-          <div className="tipntrick">
-            <div>
-              <strong>Tips And Tricks : </strong>
-            </div>
-            <ul>{tipntrick.map((tnt, i) => <li key={i}>{tnt}</li>)}</ul>
+      {isNotEmpty(tipntrick) && (
+        <div className="tipntrick">
+          <div>
+            <strong>Tips And Tricks:</strong>
           </div>
-        )}
+          <ul>{tipntrick.map((tnt, i) => <li key={i}>{tnt}</li>)}</ul>
+        </div>
+      )}
       {htmlBind && (
         <div className="html-bind-wrapper">
           <div className="html-bind" dangerouslySetInnerHTML={{ __html: htmlBind }} />
