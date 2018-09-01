@@ -4,6 +4,14 @@ import { DragSource } from 'react-dnd';
 
 import { openModal } from 'common/Modal';
 
+const getTagColor = (TagColor, tag) => {
+  const tagColor = TagColor.filter(tagColor => tagColor.Label === tag)[0];
+  if (tagColor) {
+    return tagColor.Color;
+  }
+  return 'gray';
+};
+
 const Types = {
   CARD: 'card'
 };
@@ -37,7 +45,9 @@ const collect = (connect, monitor) => {
 class BoardCard extends Component {
   render() {
     const { connectDragSource, isDragging, item, TagColor, onSetItemOnDetail, column } = this.props;
-    const progress = Math.round(item.SubTasks.filter(task => task.IsDone && task.Label).length / item.SubTasks.length * 100);
+    const progress = Math.round(
+      item.SubTasks.filter(task => task.IsDone && task.Label).length / item.SubTasks.length * 100
+    );
 
     return connectDragSource(
       <div>
@@ -50,10 +60,7 @@ class BoardCard extends Component {
             }}>
             <div className="project-item-tags">
               {item.Tags.map((tag, i) => (
-                <div
-                  key={i}
-                  className="project-item-tag"
-                  style={{ backgroundColor: TagColor.filter(tagColor => tagColor.Label === tag)[0].Color }}>
+                <div key={i} className="project-item-tag" style={{ backgroundColor: getTagColor(TagColor, tag) }}>
                   {tag}
                 </div>
               ))}
@@ -61,9 +68,9 @@ class BoardCard extends Component {
             <h5>{item.Label}</h5>
             <div className="progress">
               <div
-                className={`progress-bar progress-bar-striped bg-success ${progress < 100
-                  ? 'progress-bar-animated'
-                  : ''}`}
+                className={`progress-bar progress-bar-striped bg-success ${
+                  progress < 100 ? 'progress-bar-animated' : ''
+                }`}
                 style={{ width: `${progress || 0}%` }}>
                 <i>{`${progress}%`}</i>
               </div>

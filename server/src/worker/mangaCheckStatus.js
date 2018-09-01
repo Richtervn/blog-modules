@@ -3,7 +3,7 @@ import moment from 'moment';
 
 const stoneTime = 60 * 60 * 24 * 45;
 
-export default async (MangasReading, io) => {
+export default async (MangasReading, notificationHandler) => {
   const mangas = await MangasReading.find({ Status: { $ne: 'End' } });
 
   mangas.forEach(async manga => {
@@ -14,7 +14,7 @@ export default async (MangasReading, io) => {
 
       console.log(`${chalk.bold.green('[APP-Manga]')} ${manga.Name} has stoned`);
 
-      io.emit('appManga/notification', {
+      notificationHandler.send('appManga/notification', {
         icon: `${manga.CoverUri}`,
         body: `${manga.Name} has became stoned!`,
         title: 'Manga checker'

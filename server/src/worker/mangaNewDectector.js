@@ -15,7 +15,7 @@ const getNewChapterLink = newManga => {
   return newChapterLink;
 };
 
-export default async (MangasReading, factories, io) => {
+export default async (MangasReading, factories, notificationHandler) => {
   const newData = await getMangaNews();
   newData.forEach(async ({ site, data }) => {
     data.forEach(async newManga => {
@@ -46,7 +46,7 @@ export default async (MangasReading, factories, io) => {
 
       console.log(`${chalk.bold.green('[APP-Manga]')} ${manga.Name} has new chapter ${newChapter}`);
 
-      io.emit('appManga/notification', {
+      notificationHandler.send('appManga/notification', {
         icon: `${manga.CoverUri}`,
         body: `${manga.Name} has new chapter ${newChapter}`,
         title: 'Manga checker',

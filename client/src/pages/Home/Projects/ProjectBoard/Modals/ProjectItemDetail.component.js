@@ -2,6 +2,14 @@ import './ProjectItemDetail.css';
 import _ from 'underscore';
 import React, { Component } from 'react';
 
+const getTagColor = (tagColors, tag) => {
+  const TagColor = tagColors.find(tagColor => tagColor.Label === tag);
+  if (TagColor) {
+    return TagColor.Color;
+  }
+  return 'gray';
+};
+
 class ProjectItemDetail extends Component {
   constructor(props) {
     super(props);
@@ -165,10 +173,7 @@ class ProjectItemDetail extends Component {
           </p>
           <div className="item-color-tags">
             {value.Tags.map((tag, i) => (
-              <div
-                key={i}
-                className="item-color-tag"
-                style={{ backgroundColor: tagColors.find(tagColor => tagColor.Label === tag).Color }}>
+              <div key={i} className="item-color-tag" style={{ backgroundColor: getTagColor(tagColors, tag) }}>
                 {tag}
               </div>
             ))}

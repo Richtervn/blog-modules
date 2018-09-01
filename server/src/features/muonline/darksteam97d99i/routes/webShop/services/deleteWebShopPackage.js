@@ -4,7 +4,7 @@ import fs from 'fs';
 export default async (WebShopPackage, WebShopItem, id) => {
   const [webShopItems, webShopPackage] = [
     await WebShopItem.findAll({ where: { package_id: id } }),
-    await webShopPackage.findOne({ where: { id } })
+    await WebShopPackage.findOne({ where: { id } })
   ];
 
   fs.unlinkSync(webShopPackage.image_url);

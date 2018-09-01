@@ -74,14 +74,14 @@ export default ({
       )}
       {description && (
         <div className="description">
-          <strong>Description:</strong>
+          <strong>Description: </strong>
           {description}
         </div>
       )}
       {isNotEmpty(tipntrick) && (
         <div className="tipntrick">
           <div>
-            <strong>Tips And Tricks:</strong>
+            <strong>Tips And Tricks: </strong>
           </div>
           <ul>{tipntrick.map((tnt, i) => <li key={i}>{tnt}</li>)}</ul>
         </div>
