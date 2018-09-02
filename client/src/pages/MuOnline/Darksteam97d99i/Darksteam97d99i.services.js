@@ -340,6 +340,7 @@ export default {
     return data;
   },
   tradeExchange({ query }) {
+    
     const data = commonGet('darksteam97d99i/luxury_shop/exchange/trade', null, query);
     return data;
   },

@@ -87,6 +87,9 @@ export default (MangasReading, factories) => {
     '/crawl',
     wrap(async ({ body }, res, next) => {
       const form = await crawl(MangasReading, body);
+      if (!form) {
+        return res.send({ message: 'Site is not supported yet' });
+      }
       form.Status = 'OnGoing';
       const manga = await commonService.create(MangasReading, form, ['Aka', 'Authors', 'Genre']);
       res.send(manga);

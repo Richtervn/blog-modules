@@ -48,7 +48,10 @@ export default class WQ13 {
 
 		await this.UserCreditsLog.create({
 			memb___id: this.membInfo.memb___id,
-			description: `Finish quest ${this.webQuest.description} reward`,
+			description: `Finish quest ${this.webQuest.description.replace(
+				'%(requirement)',
+				this.webQuest.requirement
+			)} reward`,
 			type: 'add',
 			credits: this.currentReward
 		});

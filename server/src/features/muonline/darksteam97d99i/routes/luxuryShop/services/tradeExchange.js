@@ -16,7 +16,7 @@ export default async (models, query, readInventory, makeItemValue, makeInventory
 
 	if (type == 'all') {
 		userId = memb___id;
-		const characters = await Character.findAll({ where: { AccountId: memb___id } });
+		const characters = await Character.findAll({ where: { AccountID: memb___id } });
 		await Promise.map(characters, async character => {
 			let inventory = readInventory(character.Inventory);
 			for (let key in inventory) {
@@ -35,25 +35,27 @@ export default async (models, query, readInventory, makeItemValue, makeInventory
 		await membCredits.update({ credits: membCredits.credits });
 
 		result.credits = membCredits.credits;
-		result.profit = totalCount * parseInt(exchange.price)
+		result.profit = totalCount * parseInt(exchange.price);
 	}
 
 	if (type == 'single') {
 		let traded = 0;
-		let count = parseInt(count);
+		count = parseInt(count);
 
 		const character = await Character.findOne({ where: { Name: characterName } });
-		userId = character.AccountId;
+		userId = character.AccountID;
 		let inventory = readInventory(character.Inventory);
 
-		for (let key in inventory) {
+		const slots = Object.keys(inventory);
+		for (let i = 0; i < slots.length; i++) {
+			const key = slots[i];
+			if (traded == count) {
+				break;
+			}
 			if (inventory[key][0] == itemValue[0] && inventory[key][1] == itemValue[1] && inventory[key][7] == itemValue[7]) {
 				traded++;
 				inventory[key] = emptyItemValue;
 				membCredits.credits = parseInt(membCredits.credits) + parseInt(exchange.price);
-			}
-			if (traded == count) {
-				break;
 			}
 		}
 

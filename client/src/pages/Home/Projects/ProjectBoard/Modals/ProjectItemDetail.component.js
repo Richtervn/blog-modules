@@ -1,6 +1,7 @@
 import './ProjectItemDetail.css';
 import _ from 'underscore';
 import React, { Component } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 const getTagColor = (tagColors, tag) => {
   const TagColor = tagColors.find(tagColor => tagColor.Label === tag);
@@ -205,7 +206,7 @@ class ProjectItemDetail extends Component {
           </div>
           {item.Description && <div className="paragraph-label">Description : </div>}
           {!item.Description && editing && <div className="paragraph-label">Description : </div>}
-          {!editing && <div>{this.handleItemDescription(item.Description)}</div>}
+          {!editing && <div><ReactMarkdown source={item.Description}/></div>}
           {editing && (
             <textarea
               className="description-input"

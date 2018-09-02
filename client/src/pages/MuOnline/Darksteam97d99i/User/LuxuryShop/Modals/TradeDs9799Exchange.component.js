@@ -54,13 +54,15 @@ class TradeExchange extends Component {
   handleTradeExchange(type, characterName) {
     const { onTradeExchange, userId, exchange } = this.props;
     if (type === 'single') {
-      onTradeExchange({
+      const query = {
         type,
         characterName,
         exchangeId: exchange.id,
         count: this.state.value[characterName],
         memb___id: userId
-      });
+      };
+      console.log(query);
+      onTradeExchange(query);
     }
     if (type === 'all') {
       onTradeExchange({ type, exchangeId: exchange.id, memb___id: userId });
@@ -100,7 +102,7 @@ class TradeExchange extends Component {
                   <button
                     className="btn btn-danger"
                     disabled={exchangeCount[character.Name] < 1}
-                    onClick={() => this.handleTradeExchange('single', character.name)}>
+                    onClick={() => this.handleTradeExchange('single', character.Name)}>
                     Exchange
                   </button>
                 </div>

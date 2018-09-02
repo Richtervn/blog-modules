@@ -35,6 +35,13 @@ export default url => {
       chapter = infoUrlFrags[1];
       break;
     }
+    // Ex: domain/aka/aka-chap-3
+    case 'thichtruyentranh.com': {
+      mangaAka = urlFragToAka(urlFrags[1]);
+      chapter = urlFrags[2].split('-chap-')[1].split('-')[0];
+      break;
+    }
+    // Ex: domain/aka/chap-3
     case 'truyentranh.net': {
       mangaAka = urlFragToAka(urlFrags[1]);
       chapter = urlFrags[2].split('-')[1];
@@ -58,6 +65,7 @@ export default url => {
       chapter = infoUrlFrags[1];
       break;
     }
+    case 'truyenchon.com':
     case 'nettruyen.com': {
       mangaAka = urlFragToAka(urlFrags[2]);
       chapter = urlFrags[3].replace('chap-', '');

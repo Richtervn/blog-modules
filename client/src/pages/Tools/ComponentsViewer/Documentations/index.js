@@ -11,6 +11,8 @@ import IntroductionCard from './IntroductionCard';
 import LeftImageCard from './LeftImageCard';
 import LeftImageCardTrans from './LeftImageCardTrans';
 import LeftPngCardTrans from './LeftPngCardTrans';
+import MenuGroup from './MenuGroup';
+import MenuItem from './MenuItem';
 import ProgressBadgesCard from './ProgressBadgesCard';
 import SmallIconCard from './SmallIconCard';
 import TextPriorityCard from './TextPriorityCard';
@@ -27,6 +29,8 @@ const documentations = {
   LeftImageCard,
   LeftImageCardTrans,
   LeftPngCardTrans,
+  MenuGroup,
+  MenuItem,
   ProgressBadgesCard,
   SmallIconCard,
   TextPriorityCard
