@@ -278,7 +278,7 @@ export default (state = initialState, action) => {
     case `${EDIT_VIP_PACKAGE}_SUCCESS`:
       toastSuccess('Package edited');
       state.vipPackages = state.vipPackages.map(pack => {
-        if (pack.id === action.payload.id) {
+        if (parseInt(pack.id, 10) === parseInt(action.payload.id, 10)) {
           return action.payload;
         }
         return pack;
@@ -286,7 +286,7 @@ export default (state = initialState, action) => {
       return { ...state, vipPackages: state.vipPackages.slice(0) };
     case `${DELETE_VIP_PACKAGE}_SUCCESS`:
       toastSuccess('Package deleted');
-      state.vipPackages = state.vipPackages.filter(pack => pack.id !== action.payload.id);
+      state.vipPackages = state.vipPackages.filter(pack => parseInt(pack.id, 10) !== parseInt(action.payload.id, 10));
       return { ...state, vipPackages: state.vipPackages.slice(0) };
 
     case `${GET_WEB_SHOP_PACKAGES}_SUCCESS`:
@@ -321,7 +321,7 @@ export default (state = initialState, action) => {
     case `${DELETE_WEB_SHOP_PACKAGE}_SUCCESS`:
       toastSuccess('Package deleted');
       state.webShopPackages[action.params.categoryId] = state.webShopPackages[action.params.categoryId].filter(
-        pack => pack.id !== action.payload.id
+        pack => parseInt(pack.id, 10) !== parseInt(action.payload.id, 10)
       );
       return {
         ...state,
@@ -346,7 +346,7 @@ export default (state = initialState, action) => {
     case `${EDIT_EXCHANGE}_SUCCESS`:
       toastStrong(action.payload.name, 'Edited');
       state.exchanges = state.exchanges.map(pack => {
-        if (pack.id === action.payload.id) {
+        if (parseInt(pack.id, 10) === parseInt(action.payload.id, 10)) {
           return action.payload;
         }
         return pack;
@@ -354,7 +354,7 @@ export default (state = initialState, action) => {
       return { ...state, exchanges: state.exchanges.slice(0) };
     case `${DELETE_EXCHANGE}_SUCCESS`:
       toastSuccess('Deleted Exchange Package');
-      state.exchanges = state.exchanges.filter(pack => pack.id !== action.payload.id);
+      state.exchanges = state.exchanges.filter(pack => parseInt(pack.id, 10) !== parseInt(action.payload.id, 10));
       return { ...state, exchanges: state.exchanges.slice(0) };
 
     case `${GET_CONSUMABLES}_SUCCESS`:
@@ -376,7 +376,7 @@ export default (state = initialState, action) => {
       return { ...state, consumables: state.consumables.slice(0) };
     case `${DELETE_CONSUMABLE}_SUCCESS`:
       toastSuccess('Deleted Consumable Package');
-      state.consumables = state.consumables.flter(pack => pack.id !== action.payload.id);
+      state.consumables = state.consumables.flter(pack => parseInt(pack.id, 10) !== parseInt(action.payload.id, 10));
       return { ...state, consumables: state.consumables.slice(0) };
 
     case `${GET_RECEIPTS}_SUCCESS`:
@@ -390,7 +390,7 @@ export default (state = initialState, action) => {
     case `${EDIT_RECEIPT}_SUCCESS`:
       toastStrong(action.payload.name, 'Edited');
       state.receipts = state.receipts.map(pack => {
-        if (pack.id === action.payload.id) {
+        if (parseInt(pack.id, 10) === parseInt(action.payload.id, 10)) {
           return action.payload;
         }
         return pack;
@@ -398,7 +398,7 @@ export default (state = initialState, action) => {
       return { ...state, receipts: state.receipts.slice(0) };
     case `${DELETE_RECEIPT}_SUCCESS`:
       toastSuccess('Deleted Receipt Package');
-      state.receipts = state.receipts.filter(pack => pack.id !== action.payload.id);
+      state.receipts = state.receipts.filter(pack => parseInt(pack.id, 10) !== parseInt(action.payload.id, 10));
       return { ...state, receipts: state.receipts.slice(0) };
 
     default:

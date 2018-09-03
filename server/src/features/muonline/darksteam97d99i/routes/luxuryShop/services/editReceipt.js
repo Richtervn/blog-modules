@@ -28,6 +28,10 @@ export default async (Receipt, Material, body, deleteFile) => {
 		exc6: body.exc6 == 'true' ? 1 : 0
 	};
 
+	if (body.materials) {
+		body.materials = JSON.parse(body.materials);
+	}
+
 	if (body.image_url) {
 		receiptForm.image_url = body.image_url;
 		if (receipt.image_url) {
@@ -40,14 +44,12 @@ export default async (Receipt, Material, body, deleteFile) => {
 	const newMaterialsId = _.pluck(body.materials, 'id');
 
 	oldMaterials.forEach(async item => {
-		if (!_.contains(newItemsId, item.dataValues.id)) {
+		if (!_.contains(newMaterialsId, item.dataValues.id)) {
 			await Material.destroy({ where: { id: item.dataValues.id } });
 		}
 	});
 
 	await Receipt.update(receiptForm, { where: { id: body.id } });
-
-	body.materials = JSON.parse(body.materials);
 
 	body.materials = await Promise.map(body.materials, async item => {
 		const materialForm = {

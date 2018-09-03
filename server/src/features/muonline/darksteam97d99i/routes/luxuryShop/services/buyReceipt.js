@@ -1,7 +1,7 @@
 export default async (models, memb___id, receiptId) => {
 	const { Receipt, MembCredits, UserReceipt, UserCreditsLog } = models;
 
-	const existReceipt = UserReceipt.findOne({ where: { memb___id, receipt_id: receiptId } });
+	const existReceipt = await UserReceipt.findOne({ where: { memb___id, receipt_id: receiptId } });
 	if (existReceipt) {
 		return { message: 'You already own this receipt' };
 	}
@@ -10,6 +10,10 @@ export default async (models, memb___id, receiptId) => {
 		await MembCredits.findOne({ where: { memb___id } }),
 		await Receipt.findOne({ where: { id: receiptId } })
 	];
+	
+	membCredits.credits = parseInt(membCredits.credits);
+	receipt.credits = parseInt(receipt.price);
+
 	if (membCredits.credits < receipt.price) {
 		return { message: 'Your credits is not enough' };
 	}

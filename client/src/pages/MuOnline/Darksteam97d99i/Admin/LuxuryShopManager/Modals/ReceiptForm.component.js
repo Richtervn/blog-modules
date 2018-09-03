@@ -103,6 +103,7 @@ class ModalAddReceipt extends Component {
         nextState[value.target.name] = value.target.value;
         break;
       case 'itemId':
+      case 'slot':
       case 'category':
         nextState[name] = value;
         break;
@@ -284,7 +285,7 @@ class ModalAddReceipt extends Component {
 
           <div className="col-4">
             <div className="ds9799-ws-add-item-wrapper">
-              <SlotSelector onSelect={event => this.onChangeReceiptItem(event.target.value, 'slot')} />
+              <SlotSelector onSelect={event => this.onChangeReceiptItem(event.target.value, 'slot')} value={this.state.slot}/>
               <ItemSelector
                 category={this.state.category}
                 onSelectCategory={event => this.onChangeReceiptItem(event.target.value, 'category')}

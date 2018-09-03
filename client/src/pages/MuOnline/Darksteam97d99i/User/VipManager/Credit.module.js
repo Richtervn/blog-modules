@@ -32,7 +32,7 @@ export const buyPackage = query =>
     payload: { query },
     onAfterSuccess({ getState, payload, data, socket, dispatch }) {
       const { packages } = getState().ds9799_credit;
-      const boughtPackage = _.findWhere(packages, { id: payload.query.packageId });
+      const boughtPackage = _.findWhere(packages, { id: parseInt(payload.query.packageId, 10) });
       if (boughtPackage.type === 'Character') {
         toastSuccess(() => (
           <p>

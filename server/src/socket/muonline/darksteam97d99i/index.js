@@ -36,8 +36,4 @@ export default (models, client, methods, helpers) => {
       console.error(e);
     }
   });
-
-  client.on('disconnect', () => {
-    webQuestWorker = null;
-  });
 };

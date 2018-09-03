@@ -209,7 +209,7 @@ export default (models, methods, factories, helpers) => {
   router.get(
     '/user_receipt/craft/:characterName/:receiptId',
     wrap(async ({ params: { characterName, receiptId } }, res, next) => {
-      const result = await craftItem(models, characterName, receiptId, readInventory, makeItemValue);
+      const result = await craftItem(models, characterName, receiptId, readInventory, makeItemValue, makeInventory);
       res.send(result);
     })
   );

@@ -1,5 +1,7 @@
 import { actionCreator } from 'helpers';
 import services from '../../Darksteam97d99i.services';
+
+import { hideModal } from 'common/Modal';
 import { toastSuccess } from 'common/Toast';
 
 const SET_FOCUS_RECEIPT = 'ds9799_blacksmith/SET_FOCUS_RECEIPT';
@@ -21,6 +23,7 @@ export const craftItem = (characterName, receiptId) =>
   actionCreator(CRAFT_ITEM, services.craftItem, {
     payload: { characterName, receiptId },
     onAfterSuccess({ socket }) {
+      hideModal();
       socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ18');
     }
   })();
@@ -55,11 +58,16 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case SET_FOCUS_RECEIPT:
       return { ...state, focusReceipt: action.receipt };
+    case `${CRAFT_ITEM}_SUCCESS`:
+      toastSuccess('Item crafted');
+      return state;
     case `${GET_RECEIPTS}_SUCCESS`:
       return { ...state, receipts: action.payload };
     case `${SELL_RECEIPT}_SUCCESS`:
       toastSuccess('Receipt sold');
-      state.receipts = state.receipts.filter(receipt => receipt.id !== action.payload.receiptId);
+      state.receipts = state.receipts.filter(
+        receipt => parseInt(receipt.id, 10) !== parseInt(action.payload.receiptId, 10)
+      );
       return { ...state, receipts: state.receipts.slice(0) };
     case `${GET_COUNT_MATERIALS}_SUCCESS`:
       return { ...state, countMaterials: { ...state.countMaterials, [action.params.receiptId]: action.payload } };
