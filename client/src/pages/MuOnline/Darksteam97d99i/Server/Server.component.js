@@ -6,6 +6,8 @@ import { Ds9799Page } from '../components';
 import { BagItemsEditor } from './BagItemsEditor';
 import { ServerInfo } from './ServerInfo';
 import { GameSetting } from './GameSetting';
+import { MonstersList } from './MonstersList';
+import { ItemsList } from './ItemsList';
 import { BankingLogs } from './BankingLogs';
 import { QuestsEditor } from './QuestsEditor';
 import { ShopsEditor } from './ShopsEditor';
@@ -40,6 +42,8 @@ class Server extends Component {
         {pageParam === 'shops_editor' && <ShopsEditor />}
         {pageParam === 'web_quests_editor' && <WebQuestsEditor />}
         {pageParam === 'monsters_set_base' && <MonstersSetBase />}
+        {pageParam === 'monsters_list' && <MonstersList />}
+        {pageParam === 'items_list' && <ItemsList />}
       </Ds9799Page>
     );
   }

@@ -1,6 +1,6 @@
 import './GameSetting.css';
 import React, { Component } from 'react';
-import { ColLoader } from 'common/Loaders';
+import { ContainerLoader } from 'common/Loaders';
 
 const characterDisplay = {
   DK: 'Dark Knight',
@@ -42,7 +42,7 @@ class GameSetting extends Component {
   render() {
     const { gameSetting, onEditGameSetting } = this.props;
     if (!gameSetting) {
-      return <ColLoader />;
+      return <ContainerLoader />;
     }
 
     return (

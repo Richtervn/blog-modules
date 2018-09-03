@@ -1,9 +1,11 @@
+import _ from 'underscore';
 import express from 'express';
+import Promise from 'bluebird';
 
 export default (models, methods, factories, helpers) => {
   const router = express.Router();
   const { wrap, readFile, writeFile } = factories;
-  const { getData, getGameData, syncItems, syncMonsters } = helpers;
+  const { getData, getGameData, syncItem, syncMonster } = helpers;
 
   router.get(
     '/game_setting',
@@ -67,7 +69,7 @@ export default (models, methods, factories, helpers) => {
   router.get(
     '/sync_items',
     wrap(async (req, res, next) => {
-      await syncItems(factories);
+      await syncItem(factories);
       res.sendStatus(200);
     })
   );
@@ -75,7 +77,7 @@ export default (models, methods, factories, helpers) => {
   router.get(
     '/sync_monsters',
     wrap(async (req, res, next) => {
-      await syncMonsters(factories);
+      await syncMonster(factories);
       res.sendStatus(200);
     })
   );
@@ -86,6 +88,33 @@ export default (models, methods, factories, helpers) => {
       const { fileName, content } = body;
       await writeFile(`./public/Mu Online/Darksteam97d99i/Generated Files/${fileName}.txt`, content);
       res.send({ file: `./public/Mu Online/Darksteam97d99i/Generated Files/${fileName}.txt` });
+    })
+  );
+
+  router.get(
+    '/monsters',
+    wrap(async (req, res, next) => {
+      const data = await getGameData('Monsters');
+      res.send(data);
+    })
+  );
+
+  router.get(
+    '/items',
+    wrap(async ({ query }, res, next) => {
+      let fileNames;
+      const result = {};
+      if (query.fileNames) {
+        fileNames = query.fileNames.split(',');
+      } else {
+        const categories = await getGameData('Categories');
+        fileNames = _.pluck(categories, 'Name');
+        result.Categories = categories;
+      }
+      await Promise.map(fileNames, async fileName => {
+        result[fileName] = await getGameData(fileName);
+      });
+      res.send(result);
     })
   );
 

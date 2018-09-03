@@ -1,0 +1,106 @@
+#ds9799-item-list {
+  flex: 1;
+  margin-top: 10px;
+  height: calc(100vh - 110px);
+  overflow-y: auto;
+}
+
+#ds9799-item-list .category-header {
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-left: 40px;
+  margin-bottom: 10px;
+}
+
+#ds9799-item-list .items-table {
+  margin: auto;
+  max-width: 98%;
+  overflow: auto;
+  max-height: 400px;
+  margin-bottom: 10px;
+  border: solid 1px rgba(0, 0, 0, 0.25);
+  background: #fff;
+  color: #000;
+}
+
+#ds9799-item-list .items-table > .items-table-row {
+  display: flex;
+  width: fit-content;
+  padding: 5px;
+}
+
+#ds9799-item-list .items-table > .items-table-row:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#ds9799-item-list .items-table > .items-table-row.header {
+  background: #f44336;
+  font-weight: 700;
+  color: #fff;
+}
+
+#ds9799-item-list .items-table .items-table-col {
+  width: fit-content;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#ds9799-item-list .items-table-col.image {
+  width: 130px;
+}
+
+#ds9799-item-list .items-table-col.image > img {
+  max-width: 120px;
+}
+
+#ds9799-item-list .items-table-col.X,
+#ds9799-item-list .items-table-col.Y,
+#ds9799-item-list .items-table-col._id {
+  width: 30px;
+}
+
+#ds9799-item-list .items-table-col.Option,
+#ds9799-item-list .items-table-col.Drop,
+#ds9799-item-list .items-table-col.Zen,
+#ds9799-item-list .items-table-col.Level,
+#ds9799-item-list .items-table-col.Speed,
+#ds9799-item-list .items-table-col.Value,
+#ds9799-item-list .items-table-col.Serial {
+  width: 60px;
+}
+
+#ds9799-item-list .items-table-col.MinDmg,
+#ds9799-item-list .items-table-col.Duration,
+#ds9799-item-list .items-table-col.Defense,
+#ds9799-item-list .items-table-col.MaxDmg {
+  width: 80px;
+}
+
+#ds9799-item-list .items-table-col.UseByDW_SM,
+#ds9799-item-list .items-table-col.UseByDK_BK,
+#ds9799-item-list .items-table-col.UseByElf_ME,
+#ds9799-item-list .items-table-col.UseByMG,
+#ds9799-item-list .items-table-col.MagicDefense,
+#ds9799-item-list .items-table-col.AttackSpeed,
+#ds9799-item-list .items-table-col.WalkSpeed,
+#ds9799-item-list .items-table-col.MagicDuration {
+  width: 125px;
+}
+
+#ds9799-item-list .items-table-col.RequiredAgility,
+#ds9799-item-list .items-table-col.RequiredLevel,
+#ds9799-item-list .items-table-col.RequiredEnergy,
+#ds9799-item-list .items-table-col.IceResistance,
+#ds9799-item-list .items-table-col.PoisonResistance,
+#ds9799-item-list .items-table-col.LightResistance,
+#ds9799-item-list .items-table-col.FireResistance,
+#ds9799-item-list .items-table-col.RequiredStrength {
+  width: 145px;
+}
+
+#ds9799-item-list .items-table-col.Name {
+  width: 200px;
+}

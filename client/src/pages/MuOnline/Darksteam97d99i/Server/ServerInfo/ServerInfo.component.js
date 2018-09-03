@@ -1,6 +1,6 @@
 import './ServerInfo.css';
 import React, { Component } from 'react';
-import { ColLoader } from 'common/Loaders';
+import { ContainerLoader } from 'common/Loaders';
 
 class ServerInfo extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class ServerInfo extends Component {
     const { serverInfo, onSave } = this.props;
     const { value, isHideNotice } = this.state;
     if (!serverInfo) {
-      return <ColLoader />;
+      return <ContainerLoader />;
     }
 
     return (

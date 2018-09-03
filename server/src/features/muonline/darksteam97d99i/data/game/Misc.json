@@ -27,7 +27,7 @@
     "Y": "1",
     "Serial": "0",
     "Option": "0",
-    "Drop": "1",
+    "Drop": "0",
     "Name": "Medium Heal Pot",
     "Value": "20",
     "Level": "25"
@@ -38,7 +38,7 @@
     "Y": "1",
     "Serial": "0",
     "Option": "0",
-    "Drop": "1",
+    "Drop": "0",
     "Name": "Large Heal Pot",
     "Value": "30",
     "Level": "40"
@@ -60,7 +60,7 @@
     "Y": "1",
     "Serial": "0",
     "Option": "0",
-    "Drop": "1",
+    "Drop": "0",
     "Name": "Medium Mana Pot",
     "Value": "20",
     "Level": "25"
@@ -71,7 +71,7 @@
     "Y": "1",
     "Serial": "0",
     "Option": "0",
-    "Drop": "1",
+    "Drop": "0",
     "Name": "Large Mana Pot",
     "Value": "30",
     "Level": "40"
@@ -82,7 +82,7 @@
     "Y": "1",
     "Serial": "0",
     "Option": "0",
-    "Drop": "1",
+    "Drop": "0",
     "Name": "Antidote",
     "Value": "10",
     "Level": "10"
@@ -93,7 +93,7 @@
     "Y": "2",
     "Serial": "0",
     "Option": "0",
-    "Drop": "1",
+    "Drop": "0",
     "Name": "Alcohol",
     "Value": "30",
     "Level": "15"
@@ -127,7 +127,7 @@
     "Serial": "1",
     "Option": "0",
     "Drop": "1",
-    "Name": "Zen",
+    "Name": "Heart",
     "Value": "0",
     "Level": "0"
   },
@@ -248,7 +248,7 @@
     "Serial": "1",
     "Option": "0",
     "Drop": "1",
-    "Name": "Book of Kings",
+    "Name": "Scrool of Emperor",
     "Value": "0",
     "Level": "0"
   },
@@ -259,7 +259,7 @@
     "Serial": "1",
     "Option": "0",
     "Drop": "1",
-    "Name": "Quest Sword",
+    "Name": "Broken Sword",
     "Value": "0",
     "Level": "0"
   },
@@ -270,7 +270,7 @@
     "Serial": "1",
     "Option": "0",
     "Drop": "1",
-    "Name": "Quest Tear",
+    "Name": "Tear of Elf",
     "Value": "0",
     "Level": "0"
   },
@@ -281,7 +281,7 @@
     "Serial": "1",
     "Option": "0",
     "Drop": "1",
-    "Name": "Quest Crystal",
+    "Name": "Soul of Wizzard",
     "Value": "0",
     "Level": "0"
   }

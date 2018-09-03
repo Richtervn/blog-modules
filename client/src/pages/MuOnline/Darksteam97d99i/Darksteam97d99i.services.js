@@ -247,6 +247,14 @@ export default {
     const data = commonPut('darksteam97d99i/system/web_quests', formBody);
     return data;
   },
+  getMonsters() {
+    const data = commonGet('darksteam97d99i/system/monsters');
+    return data;
+  },
+  getItems({ query }) {
+    const data = commonGet('darksteam97d99i/system/items', null, query);
+    return data;
+  },
 
   /* Banking Services */
   getUserBankingLogs({ id }) {
@@ -340,7 +348,6 @@ export default {
     return data;
   },
   tradeExchange({ query }) {
-    
     const data = commonGet('darksteam97d99i/luxury_shop/exchange/trade', null, query);
     return data;
   },

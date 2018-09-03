@@ -1,0 +1,101 @@
+#ds9799-monsters-list {
+  flex: 1;
+  margin-top: 10px;
+  height: calc(100vh - 110px);
+  overflow-y: auto;
+}
+
+#ds9799-monsters-list .category-header {
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-left: 40px;
+  margin-bottom: 10px;
+}
+
+#ds9799-monsters-list .monsters-table {
+  margin: auto;
+  max-height: calc(100vh - 110px);
+  max-width: 98%;
+  overflow: auto;
+  border: solid 1px rgba(0, 0, 0, 0.25);
+  background: #fff;
+  color: #000;
+}
+
+#ds9799-monsters-list .monsters-table > .monsters-table-row {
+  display: flex;
+  width: fit-content;
+  padding: 5px;
+}
+
+#ds9799-monsters-list .monsters-table > .monsters-table-row:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#ds9799-monsters-list .monsters-table > .monsters-table-row.header {
+  background: #f44336;
+  font-weight: 700;
+  color: #fff;
+}
+
+#ds9799-monsters-list .monsters-table .monsters-table-col {
+  width: fit-content;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#ds9799-monsters-list .monsters-table-col.image {
+  width: 130px;
+}
+
+#ds9799-monsters-list .monsters-table-col.image > img {
+  width: 120px;
+  height: auto;
+}
+
+#ds9799-monsters-list .monsters-table-col._id,
+#ds9799-monsters-list .monsters-table-col.isUsed,
+#ds9799-monsters-list .monsters-table-col.Level,
+#ds9799-monsters-list .monsters-table-col.HP,
+#ds9799-monsters-list .monsters-table-col.MP {
+  width: 60px;
+}
+
+#ds9799-monsters-list .monsters-table-col.MinDmg,
+#ds9799-monsters-list .monsters-table-col.Defense,
+#ds9799-monsters-list .monsters-table-col.Block,
+#ds9799-monsters-list .monsters-table-col.MaxItems,
+#ds9799-monsters-list .monsters-table-col.ResWind,
+#ds9799-monsters-list .monsters-table-col.ResFire,
+#ds9799-monsters-list .monsters-table-col.ResWater,
+#ds9799-monsters-list .monsters-table-col.ResPoison,
+#ds9799-monsters-list .monsters-table-col.ResIce,
+#ds9799-monsters-list .monsters-table-col.MaxDmg {
+  width: 80px;
+}
+
+#ds9799-monsters-list .monsters-table-col.MagicDefense,
+#ds9799-monsters-list .monsters-table-col.MoveRange,
+#ds9799-monsters-list .monsters-table-col.MoveSpeed,
+#ds9799-monsters-list .monsters-table-col.RegenTime,
+#ds9799-monsters-list .monsters-table-col.AttribType,
+#ds9799-monsters-list .monsters-table-col.AttribRange,
+#ds9799-monsters-list .monsters-table-col.AttribSpeed,
+#ds9799-monsters-list .monsters-table-col.AttribRate,
+#ds9799-monsters-list .monsters-table-col.ItemRate,
+#ds9799-monsters-list .monsters-table-col.MoneyRate,
+#ds9799-monsters-list .monsters-table-col.ViewRange,
+#ds9799-monsters-list .monsters-table-col.AttackRating {
+  width: 125px;
+}
+
+/* {
+  width: 145px;
+}*/
+
+#ds9799-monsters-list .monsters-table-col.Name {
+  width: 200px;
+}

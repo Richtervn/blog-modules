@@ -26,8 +26,9 @@
   { "_id": "24", "Name": "Nature Set" },
   { "_id": "25", "Name": "Embroidered Set" },
   { "_id": "26", "Name": "Storm Set" },
-  { "_id": "27", "Name": "Magus Set" },
-  { "_id": "28", "Name": "Adamantine Set" }
+  { "_id": "27", "Name": "Dark Steel Set" },
+  { "_id": "28", "Name": "Dark Master Set" },
+  { "_id": "29", "Name": "Vortex Set" },
+  { "_id": "30", "Name": "Dragonic Set" },
+  { "_id": "31", "Name": "Boss Set" }
 ]
-
-
