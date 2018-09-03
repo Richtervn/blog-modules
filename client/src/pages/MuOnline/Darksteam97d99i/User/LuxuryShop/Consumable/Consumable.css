@@ -1,27 +1,27 @@
 #ds9799-lx-consumable {
   margin: 10px;
   border: solid 2px #f44336;
-  padding: 0 10px;
   border-radius: 4px;
 }
 
 #ds9799-lx-consumable > .consumables-list {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -10px;
+  margin-left: 10px;
   height: calc(100vh - 180px);
   overflow-y: auto;
 }
 
 #ds9799-lx-consumable > .consumables-list > .wrapper {
   width: 20%;
-  padding: 10px;
 }
 
 #ds9799-lx-consumable > .consumables-list .consumable-card {
   border: solid 1px #f44336;
   border-radius: 4px;
   background: white;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 #ds9799-lx-consumable .consumable-card > .label {

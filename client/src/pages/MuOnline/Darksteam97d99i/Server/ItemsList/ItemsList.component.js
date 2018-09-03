@@ -19,6 +19,14 @@ class ItemsList extends Component {
     }
   }
 
+  getTableLabels(category) {
+    const { data } = this.props;
+    if (data[category.Name]) {
+      return Object.keys(data[category.Name][0]);
+    }
+    return [];
+  }
+
   render() {
     const { data } = this.props;
     if (!data.Categories) {
@@ -36,28 +44,29 @@ class ItemsList extends Component {
             style={_.contains(['Sets', 'Misc'], category.Name) ? { width: 'fit-content', marginLeft: '11px' } : {}}>
             <div className="items-table-row header">
               <div className="items-table-col image">Image</div>
-              {Object.keys(data[category.Name][0]).map(label => (
+              {this.getTableLabels(category).map(label => (
                 <div className={`items-table-col ${label}`} key={label}>
                   {label}
                 </div>
               ))}
             </div>
-            {data[category.Name].map(item => (
-              <div className="items-table-row" key={item._id}>
-                <div className="items-table-col image">
-                  <img src={getItemImage(category.Name, item._id)} alt="MU Item" />
-                </div>
-                {Object.keys(item).map(key => (
-                  <div className={`items-table-col ${key}`} key={key}>
-                    {_.contains(boolCols, key) ? (
-                      <input type="checkbox" checked={item[key] === '1'} readOnly disabled />
-                    ) : (
-                      item[key]
-                    )}
+            {data[category.Name] &&
+              data[category.Name].map(item => (
+                <div className="items-table-row" key={item._id}>
+                  <div className="items-table-col image">
+                    <img src={getItemImage(category.Name, item._id)} alt="MU Item" />
                   </div>
-                ))}
-              </div>
-            ))}
+                  {Object.keys(item).map(key => (
+                    <div className={`items-table-col ${key}`} key={key}>
+                      {_.contains(boolCols, key) ? (
+                        <input type="checkbox" checked={item[key] === '1'} readOnly disabled />
+                      ) : (
+                        item[key]
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
           </div>
         ])}
       </div>

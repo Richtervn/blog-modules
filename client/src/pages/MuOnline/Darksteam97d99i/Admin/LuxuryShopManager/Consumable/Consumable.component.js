@@ -21,8 +21,10 @@ class Consumable extends Component {
         <div className="consumables-list">
           {!consumables && <ContainerLoader />}
           {consumables && (
-            <div className="add-consumable-btn">
-              <PureAddCardButton onClick={() => openModal('AddDs9799Consumable')} />
+            <div className="wrapper">
+              <div className="add-consumable-btn">
+                <PureAddCardButton onClick={() => openModal('AddDs9799Consumable')} />
+              </div>
             </div>
           )}
           {consumables &&

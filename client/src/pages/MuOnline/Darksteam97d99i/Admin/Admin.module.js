@@ -146,7 +146,7 @@ export const deleteConsumable = id =>
   actionCreator(DELETE_CONSUMABLE, services.adminDeleteConsumable, { payload: { id } })();
 
 const GET_RECEIPTS = 'ds9799_admin/GET_RECEIPTS';
-const SET_FOCUS_LX_RECEIPT = 'ds9799_admin/SET_FOCUS_LX_EXCHANGE';
+const SET_FOCUS_LX_RECEIPT = 'ds9799_admin/SET_FOCUS_LX_RECEIPT';
 const ADD_RECEIPT = 'ds9799_admin/ADD_RECEIPT';
 const EDIT_RECEIPT = 'ds9799_admin/EDIT_RECEIPT';
 const DELETE_RECEIPT = 'ds9799_admin/DELETE_RECEIPT';

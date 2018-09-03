@@ -1,14 +1,13 @@
 #ds9799-lx-receipt {
   margin: 10px;
   border: solid 2px #f44336;
-  padding: 0 10px;
   border-radius: 4px;
 }
 
 #ds9799-lx-receipt > .receipts-list {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -10px;
+  margin-left: 10px;
   height: calc(100vh - 180px);
   overflow-y: auto;
 }
@@ -25,13 +24,14 @@
 
 #ds9799-lx-receipt > .receipts-list > .wrapper {
   width: 25%;
-  padding: 10px;
 }
 
 #ds9799-lx-receipt > .receipts-list .receipt-card {
   border: solid 1px #f44336;
   border-radius: 4px;
   background: white;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 #ds9799-lx-receipt .receipt-card > .label {
@@ -50,8 +50,8 @@
 }
 
 #ds9799-lx-receipt .receipt-card > .image > img {
-  max-width: 200px;
-  max-height: 250px;
+  width: 200px;
+  height: 250px;
 }
 
 #ds9799-lx-receipt .receipt-card > .description {
@@ -80,6 +80,7 @@
 
 #ds9799-lx-receipt .receipt-card > .materials > .material {
   color: black;
+  min-height: 42px;
   padding: 5px 0px 5px 20px;
   display: flex;
   align-items: center;

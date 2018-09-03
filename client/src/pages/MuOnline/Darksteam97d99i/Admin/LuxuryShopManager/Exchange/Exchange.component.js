@@ -21,8 +21,10 @@ class Exchange extends Component {
         <div className="exchanges-list">
           {!exchanges && <ContainerLoader />}
           {exchanges && (
-            <div className="add-exchange-btn">
-              <PureAddCardButton onClick={() => openModal('AddDs9799Exchange')} />
+            <div className="wrapper">
+              <div className="add-exchange-btn">
+                <PureAddCardButton onClick={() => openModal('AddDs9799Exchange')} />
+              </div>
             </div>
           )}
           {exchanges &&

@@ -1,27 +1,27 @@
 #ds9799-lxm-exchange {
   margin: 10px;
   border: solid 2px #f44336;
-  padding: 0 10px;
   border-radius: 4px;
 }
 
 #ds9799-lxm-exchange > .exchanges-list {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -10px;
   height: calc(100vh - 180px);
   overflow-y: auto;
+  margin-left: 10px;
 }
 
 #ds9799-lxm-exchange > .exchanges-list > .wrapper {
   width: 20%;
-  padding: 10px;
 }
 
 #ds9799-lxm-exchange > .exchanges-list .exchange-card {
   border: solid 1px #f44336;
   border-radius: 4px;
   background: white;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 #ds9799-lxm-exchange .exchange-card > .label {
@@ -64,7 +64,7 @@
 }
 
 #ds9799-lxm-exchange .add-exchange-btn {
-  width: 20%;
-  padding: 10px 10px 0;
-  height: 288px;
+  width: 95%;
+  margin-top: 10px;
+  height: 278px;
 }
