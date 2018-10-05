@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { hideModal } from 'common/Modal';
 import { ModalHeader, ModalFooter } from 'components/Modal';
 import { FormGroupRow, FormGroupArea, FormGroupArray, FormGroupArraySelect } from 'components/FormTools';
 import { commonFormChange } from 'helpers';
@@ -49,6 +50,7 @@ class ProjectItemForm extends Component {
     formValue._id = this.props.project._id;
     formValue.columnKey = this.props.column.key;
     this.props.edit ? this.props.onEditItem(formValue) : this.props.onAddItem(formValue);
+    hideModal();
   }
 
   handleAddArray(name) {

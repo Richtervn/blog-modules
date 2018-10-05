@@ -17,24 +17,24 @@ export default async (models, characterName, receiptId, readInventory, makeItemV
   const inventory = readInventory(character.Inventory);
   const slots = Object.keys(inventory);
 
-  // for (let m = 0; m < materials.length; m++) {
-  //   const material = materials[m];
-  //   material.count = parseInt(material.count);
+  for (let m = 0; m < materials.length; m++) {
+    const material = materials[m];
+    material.count = parseInt(material.count);
 
-  //   let count = 0;
-  //   const itemValue = makeItemValue(material.dataValues);
+    let count = 0;
+    const itemValue = makeItemValue(material.dataValues);
 
-  //   for (let i = 0; i < slots.length; i++) {
-  //     const inventoryValue = inventory[slots[i]];
-  //     if (inventoryValue[0] == itemValue[0] && inventoryValue[1] == itemValue[1] && inventoryValue[7] == itemValue[7]) {
-  //       count++;
-  //     }
-  //   }
+    for (let i = 0; i < slots.length; i++) {
+      const inventoryValue = inventory[slots[i]];
+      if (inventoryValue[0] == itemValue[0] && inventoryValue[1] == itemValue[1] && inventoryValue[7] == itemValue[7]) {
+        count++;
+      }
+    }
 
-  //   if (count < material.count) {
-  //     return { message: 'Not enough materials' };
-  //   }
-  // }
+    if (count < material.count) {
+      return { message: 'Not enough materials' };
+    }
+  }
 
   materials.forEach(material => {
     let count = 0;
@@ -55,8 +55,6 @@ export default async (models, characterName, receiptId, readInventory, makeItemV
 
   const craftItemValue = makeItemValue(receipt);
   inventory[receipt.slot] = craftItemValue;
-  console.log(receipt.slot);
-  console.log(inventory[receipt.slot]);
 
   UserCreditsLog.create({
     memb___id: character.AccountID,

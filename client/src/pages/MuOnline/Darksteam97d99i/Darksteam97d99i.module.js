@@ -44,7 +44,13 @@ export const editGameSetting = formBody =>
   actionCreator(EDIT_GAME_SETTING, services.editGameSetting, { payload: { formBody } })();
 
 export const setActiveTab = tab => ({ type: SET_ACTIVE_TAB, tab });
-export const setUserPage = page => ({ type: SET_USER_PAGE, page });
+export const setUserPage = page => (dispatch, getState, socket) => {
+  const action = () => ({ type: SET_USER_PAGE, page });
+  if (page === 'web_quest') {
+    socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ16');
+  }
+  dispatch(action());
+};
 export const setAdminPage = page => ({ type: SET_ADMIN_PAGE, page });
 export const setServerPage = page => ({ type: SET_SERVER_PAGE, page });
 export const setActiveForm = form => ({ type: SET_ACTIVE_FORM, form });

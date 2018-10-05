@@ -58,13 +58,16 @@ class BoardCard extends Component {
               onSetItemOnDetail(item, column);
               openModal('ProjectItemDetail');
             }}>
-            <div className="project-item-tags">
-              {item.Tags.map((tag, i) => (
-                <div key={i} className="project-item-tag" style={{ backgroundColor: getTagColor(TagColor, tag) }}>
-                  {tag}
+            {item.Tags &&
+              item.Tags[0] !== 'default' && (
+                <div className="project-item-tags">
+                  {item.Tags.map((tag, i) => (
+                    <div key={i} className="project-item-tag" style={{ backgroundColor: getTagColor(TagColor, tag) }}>
+                      {tag}
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              )}
             <h5>{item.Label}</h5>
             <div className="progress">
               <div

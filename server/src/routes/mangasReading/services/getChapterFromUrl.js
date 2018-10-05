@@ -1,9 +1,9 @@
 import _ from 'underscore';
 
-const toTitleCase = srcString => srcString.charAt(0).toUpperCase() + srcString.slice(1, srcString.length);
+const toTitleCase = srcString => srcString.charAt(0).toUpperCase() + srcString.slice(1, srcString.length).toLowerCase();
 const urlFragToAka = urlFrag =>
   urlFrag
-    .split('-')
+    .split(/-|_/)
     .map(frag => toTitleCase(frag))
     .join(' ');
 
@@ -35,10 +35,16 @@ export default url => {
       chapter = infoUrlFrags[1];
       break;
     }
-    // Ex: domain/aka/aka-chap-3
+    // Ex: domain/aka/aka-chap-3 && domain/aka/chapter-3-...
     case 'thichtruyentranh.com': {
       mangaAka = urlFragToAka(urlFrags[1]);
-      chapter = urlFrags[2].split('-chap-')[1].split('-')[0];
+      const frags = urlFrags[2].split('-');
+      if (frags.indexOf('chap') != -1) {
+        chapter = frags[frags.indexOf('chap') + 1];
+      }
+      if (frags.indexOf('chapter') != -1) {
+        chapter = frags[frags.indexOf('chapter') + 1];
+      }
       break;
     }
     // Ex: domain/aka/chap-3
@@ -54,6 +60,7 @@ export default url => {
     case 'truyentranh8.net': {
       let infoUrlFrags = urlFrags[1].split('-chap-');
       mangaAka = urlFragToAka(infoUrlFrags[0]);
+      console.log(mangaAka);
       chapter = infoUrlFrags[1];
       break;
     }
@@ -80,6 +87,13 @@ export default url => {
     case 'vuidu.com': {
       mangaAka = urlFragToAka(urlFrags[2]);
       chapter = urlFrags[3];
+      break;
+    }
+    //Ex: domain/DocTruyen/id/aka_Chap_3
+    case 'otakusan.net': {
+      let infoUrlFrags = urlFrags[3].split('_Chap_');
+      mangaAka = urlFragToAka(infoUrlFrags[0]);
+      chapter = infoUrlFrags[1];
       break;
     }
   }

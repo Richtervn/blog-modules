@@ -100,7 +100,15 @@ export default async (models, methods, GameSetting, query) => {
       memb___id: character.AccountID
     });
     const totalCredits = membCredit.credits + GRAND_RESET_AWARD_CREDITS;
-    membCredit.update({ credits: totalCredits });
+    [
+      await membCredit.update({ credits: totalCredits }),
+      await UserCreditsLog.create({
+        memb___id: character.AccountID,
+        description: `${character.Name} reset reward`,
+        type: 'add',
+        credits: GRAND_RESET_AWARD_CREDITS
+      })
+    ];
     resp.credits = totalCredits;
   }
 

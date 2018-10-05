@@ -4,12 +4,12 @@ import moment from 'moment';
 const stoneTime = 60 * 60 * 24 * 45;
 
 export default async (MangasReading, notificationHandler) => {
-  const mangas = await MangasReading.find({ Status: { $ne: 'End' } });
+  const mangas = await MangasReading.find({ Status: 'OnGoing' });
 
   mangas.forEach(async manga => {
     const outdateTime = moment().unix() - moment(manga.updatedAt).unix();
 
-    if (manga.Status != 'HasNew' && outdateTime > stoneTime) {
+    if (outdateTime > stoneTime) {
       manga.Status = 'Stone';
 
       console.log(`${chalk.bold.green('[APP-Manga]')} ${manga.Name} has stoned`);

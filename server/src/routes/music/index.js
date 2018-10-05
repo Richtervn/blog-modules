@@ -31,7 +31,10 @@ export default (Music, factories) => {
         record.Url = url;
         const fragments = files[`File${i}`].name.split(' - ');
         record.Artist = fragments[0].trim();
-        record.Name = fragments[1].replace('.mp3', '').replace('.m4a', '').trim();
+        record.Name = fragments[1]
+          .replace('.mp3', '')
+          .replace('.m4a', '')
+          .trim();
         record.Rating = body.Rating;
         record.Genre = body.Genre;
         records.push(record);
@@ -48,8 +51,8 @@ export default (Music, factories) => {
   router.get(
     '/get_all',
     wrap(async (req, res, next) => {
-      const songs = await commonService.getAll(Music);
-      res.send(_.sortBy(songs, 'Artist'));
+      const songs = await commonService.getAll(Music, {}, { sort: { Artist: 'asc', Name: 'asc' } });
+      res.send(songs);
     })
   );
 
@@ -68,7 +71,10 @@ export default (Music, factories) => {
       if (url) {
         const fragments = files.File.split(' - ');
         body.Artist = fragments[0].trim();
-        body.Name = fragments[1].replace('.mp3', '').replace('.m4a', '').trim();
+        body.Name = fragments[1]
+          .replace('.mp3', '')
+          .replace('.m4a', '')
+          .trim();
         body.Url = url;
       }
       const song = await commonService.update(Music, body, null, ['Url']);

@@ -153,9 +153,11 @@ class ShopsEditor extends Component {
             category={category}
             itemId={itemId}
           />
-          <button className="btn btn-block btn-danger mgt-10" onClick={() => this.generate()}>
-            Generate
-          </button>
+          <div className="mgt-10">
+            <button className="btn btn-block btn-danger" onClick={() => this.generate()}>
+              Generate
+            </button>
+          </div>
         </div>
         <div className="shop-col">
           {this.state.fileData.filter((line, i) => i <= 2).map((line, i) => (
@@ -168,7 +170,7 @@ class ShopsEditor extends Component {
               <div className="generated-line" key={i}>
                 {line}
                 <span className="pull-right">
-                  <button className="btn btn-danger btn-sm" onClick={() => this.removeLine(i + 2)}>
+                  <button className="btn btn-danger btn-sm" onClick={() => this.removeLine(i + 3)}>
                     <i className="fa fa-times" />
                   </button>
                 </span>

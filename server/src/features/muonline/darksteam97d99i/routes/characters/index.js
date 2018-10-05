@@ -71,6 +71,12 @@ export default (models, methods, factories, helpers) => {
     })
   );
 
+  // TODO: Waiting enough utils function to create page
+  /* pending routing */
+  router.get('/clear_inventory', wrap(async({req, res, next}) => {
+    
+  }))
+
   /* admin routing */
   router.get(
     '/',
