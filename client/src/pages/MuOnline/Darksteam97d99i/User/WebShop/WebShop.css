@@ -41,6 +41,8 @@
   border-radius: 4px;
   margin-left: 10px;
   padding-left: 10px;
+  overflow-y: auto;
+  max-height: calc(100vh - 115px);
 }
 
 #ds9799-web-shop .loader-bg {
@@ -65,9 +67,13 @@
   font-size: 20px;
 }
 
+#ds9799-web-shop > .category-detail {
+  padding-top: 10px;
+}
+
 #ds9799-web-shop > .category-detail > .wrapper {
   width: 33.33%;
-  padding: 10px 10px 0 0;
+  padding: 0 10px 10px 0;
 }
 
 #ds9799-web-shop > .category-detail > .wrapper > .package-card {

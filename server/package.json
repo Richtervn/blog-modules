@@ -25,6 +25,7 @@
     "express-session": "^1.15.6",
     "express-winston": "^2.6.0",
     "flat-ioc": "^1.1.1",
+    "kue": "^0.11.6",
     "lyric-get": "^1.0.3",
     "moment": "^2.22.2",
     "mongoose": "^4.11.8",

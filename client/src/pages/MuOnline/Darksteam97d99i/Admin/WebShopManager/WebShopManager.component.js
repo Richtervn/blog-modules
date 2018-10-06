@@ -88,8 +88,10 @@ class WebShopManager extends Component {
               </div>
             ))}
           {packages[focusCategory] && (
-            <div className="add-web-shop-btn">
-              <PureAddCardButton iconClass="fa-2x" onClick={() => openModal('AddDs9799WebShopPackage')} />
+            <div className="wrapper">
+              <div className="add-web-shop-btn">
+                <PureAddCardButton iconClass="fa-2x" onClick={() => openModal('AddDs9799WebShopPackage')} />
+              </div>
             </div>
           )}
         </div>
@@ -99,4 +101,3 @@ class WebShopManager extends Component {
 }
 
 export default WebShopManager;
-

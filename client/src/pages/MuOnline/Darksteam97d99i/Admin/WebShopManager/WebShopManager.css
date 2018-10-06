@@ -41,6 +41,8 @@
   border-radius: 4px;
   margin-left: 10px;
   padding-left: 10px;
+  overflow-y: auto;
+  max-height: calc(100vh - 115px);
 }
 
 #ds9799-web-shop-manager .loader-bg {
@@ -110,8 +112,7 @@
   font-weight: 600;
 }
 
-#ds9799-web-shop-manager > .category-detail > .add-web-shop-btn {
-  width: 33.33%;
-  padding-top: 10px;
-  height: 396px;
+#ds9799-web-shop-manager > .category-detail .add-web-shop-btn {
+  height: 388px;
+  margin-bottom: 10px;
 }

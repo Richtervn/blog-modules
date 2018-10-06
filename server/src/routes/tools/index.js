@@ -2,6 +2,8 @@ import _ from 'underscore';
 import express from 'express';
 import dynamicContentManifest from './dynamicContentManifest';
 
+// import kue from 'kue';
+
 export default (models, factories) => {
   const router = express.Router();
   const { wrap } = factories;
@@ -44,6 +46,23 @@ export default (models, factories) => {
       res.send(body);
     })
   );
+
+  // let queue
+  // router.get('/create_queue', (req, res, next) => {
+  //   queue = kue.createQueue({
+  //     redis: 'redis://localhost'
+  //   });
+  //   queue.process('test', (job, done) => {
+  //     console.log('done');
+  //   })
+  //   console.log(queue);
+  //   res.sendStatus(200);
+  // });
+
+  // router.get('/create_job', (req, res, next) => {
+  //   queue.create('test', { data: 'dcm' }).save();
+  //   res.sendStatus(200);
+  // })
 
   return router;
 };

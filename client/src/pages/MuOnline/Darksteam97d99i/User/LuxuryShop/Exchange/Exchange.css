@@ -9,7 +9,8 @@
   flex-wrap: wrap;
   height: calc(100vh - 180px);
   overflow-y: auto;
-  margin-left: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 
 #ds9799-lx-exchange > .exchanges-list > .wrapper {
