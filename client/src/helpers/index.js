@@ -15,7 +15,8 @@ import {
   getSimpleName,
   getStarcraftRaces,
   toTitle,
-  regexp
+  regexp,
+  pad
 } from './string';
 
 import { toInputDate, unixTime } from './time';
@@ -42,6 +43,7 @@ export {
   getStarcraftRaces,
   toTitle,
   regexp,
+  pad,
   toInputDate,
   unixTime
 };

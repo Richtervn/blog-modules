@@ -11,7 +11,7 @@ export default (category, itemId, short) => {
     excOpt6 = short ? 'Mana/8' : 'Increases Mana After monster killed +Mana/8';
   }
 
-  if (_.contains(['Armors', 'Boots', 'Gloves', 'Helms', 'Pants', 'Shields'], category)) {
+  if (_.contains(['Armors', 'Boots', 'Gloves', 'Helms', 'Pants', 'Shields', 'Sets'], category)) {
     excOpt1 = short ? 'HP +4%' : 'Increase Max HP +4%';
     excOpt2 = short ? 'MP +4%' : 'Increase Max Mana +4%';
     excOpt3 = short ? 'Dmg -4%' : 'Damage Decrease +4%';

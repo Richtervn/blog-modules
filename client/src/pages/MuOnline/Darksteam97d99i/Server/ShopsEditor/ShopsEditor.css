@@ -26,6 +26,7 @@
   color: black;
   margin-right: 5px;
   padding: 10px;
+  white-space: pre;
 }
 
 #ds9799-shops-editor .generated-line {
@@ -38,5 +39,5 @@
 }
 
 #ds9799-shops-editor .preview-body {
-  height: calc(100vh - 270px);
+  height: calc(100vh - 380px);
 }

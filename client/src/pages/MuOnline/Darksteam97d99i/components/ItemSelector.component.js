@@ -12,12 +12,26 @@ class ItemSelector extends Component {
       if (!data[category]) {
         onGetData(category);
       }
+      if (category === 'Sets') {
+        ['Helms', 'Armors', 'Pants', 'Gloves', 'Boots'].forEach(part => {
+          if (!data[part]) {
+            onGetData(part);
+          }
+        });
+      }
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.category !== nextProps.category && !nextProps.data[nextProps.category]) {
       this.props.onGetData(nextProps.category);
+      if (nextProps.category === 'Sets') {
+        ['Helms', 'Armors', 'Pants', 'Gloves', 'Boots'].forEach(part => {
+          if (!this.props.data[part]) {
+            this.props.onGetData(part);
+          }
+        });
+      }
     }
   }
 
