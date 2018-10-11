@@ -5,7 +5,9 @@ import expressWinston from 'express-winston';
 import fileUpload from 'express-fileupload';
 import winston from 'winston';
 
-export default (config, routes, MuApps, L2Apps) => {
+import pluginsRender from './pluginsRender';
+
+export default (context, config, routes, MuApps, L2Apps) => {
   const app = express();
 
   const logger = new winston.Logger({
@@ -60,6 +62,13 @@ export default (config, routes, MuApps, L2Apps) => {
       app.use(`/api/${l2App}/${route}`, L2Apps[l2App].routers[route]);
     }
   }
+
+  app.get('/plugins', async (req, res) => {
+    const html = await pluginsRender(__dirname, './plugins.hb', {
+      ...context.getInfo()
+    });
+    res.send(html);
+  });
 
   app.use((req, res, next) => {
     const err = new Error('Not found');

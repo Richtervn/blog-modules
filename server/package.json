@@ -1,6 +1,6 @@
 {
   "name": "blog-modules-server",
-  "version": "2.4.3",
+  "version": "2.5.0",
   "description": "my-blog",
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,7 @@
     "express-session": "^1.15.6",
     "express-winston": "^2.6.0",
     "flat-ioc": "^1.1.1",
+    "handlebars": "^4.0.12",
     "kue": "^0.11.6",
     "lyric-get": "^1.0.3",
     "moment": "^2.22.2",

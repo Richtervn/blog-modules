@@ -12,7 +12,8 @@ export const serverPages = [
   { name: 'Banking Logs', icon: 'bank', route: 'banking_logs' },
   { name: 'Web Quests Editor', icon: 'diamond', route: 'web_quests_editor' },
   { name: 'Monsters List', icon: 'qq', route: 'monsters_list' },
-  { name: 'Items List', icon: 'fire', route: 'items_list' }
+  { name: 'Items List', icon: 'fire', route: 'items_list' },
+  { name: 'Util Tools', icon: 'wrench', route: 'util_tools' }
 ];
 
 const GET_DATA = 'ds9799_server/GET_DATA';

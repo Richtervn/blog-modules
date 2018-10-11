@@ -1,0 +1,46 @@
+#ds9799-inventory-manager {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+#ds9799-inventory-manager > .side-bar {
+  width: 320px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#ds9799-inventory-manager > .main-view {
+  display: flex;
+  width: 100%;
+}
+
+#ds9799-inventory-manager > .main-view > .inventory-card-wrapper {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+#ds9799-inventory-manager > .main-view > .item-editor-wrapper {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 100%;
+}
+#ds9799-inventory-manager .feature {
+  display: flex;
+}
+
+#ds9799-inventory-manager .feature > .feature-btn {
+  flex: 1;
+  padding: 10px;
+}
+
+#ds9799-inventory-manager .notice {
+  margin: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#ds9799-inventory-manager .notice > h4 {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}

@@ -1,0 +1,15 @@
+#ds9799-server-utils {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#ds9799-server-utils > .item-wrapper {
+  width: 25%;
+}
+
+#ds9799-server-utils > .item-wrapper > .item {
+  margin-bottom: 10px;
+  margin-right: 10px;
+}

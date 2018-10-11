@@ -5,12 +5,14 @@ import editCharacter from './services/editCharacter';
 import deleteCharacter from './services/deleteCharacter';
 
 import addPoints from './services/addPoints';
+import changeName from './services/changeName';
 import getAccountCharacters from './services/getAccountCharacters';
 import getCharacters from './services/getCharacters';
+import getInventory from './services/getInventory';
 import grandReset from './services/grandReset';
 import questReset from './services/questReset';
+import updateInventory from './services/updateInventory';
 import reset from './services/reset';
-import changeName from './services/changeName';
 
 export default (models, methods, factories, helpers) => {
   const router = express.Router();
@@ -73,9 +75,7 @@ export default (models, methods, factories, helpers) => {
 
   // TODO: Waiting enough utils function to create page
   /* pending routing */
-  router.get('/clear_inventory', wrap(async({req, res, next}) => {
-    
-  }))
+  router.get('/clear_inventory', wrap(async ({ req, res, next }) => {}));
 
   /* admin routing */
   router.get(
@@ -83,6 +83,22 @@ export default (models, methods, factories, helpers) => {
     wrap(async ({ query }, res, next) => {
       const characters = await getCharacters(Character, query);
       res.send(characters);
+    })
+  );
+
+  router.get(
+    '/inventory/:characterName',
+    wrap(async ({ params: { characterName } }, res, next) => {
+      const inventory = await getInventory(Character, characterName, helpers);
+      res.send(inventory);
+    })
+  );
+
+  router.put(
+    '/inventory',
+    wrap(async ({ body }, res, next) => {
+      const result = await updateInventory(Character, body, helpers);
+      res.send(result);
     })
   );
 

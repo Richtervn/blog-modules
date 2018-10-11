@@ -47,6 +47,16 @@ export default {
     return data;
   },
 
+  /* Admin Inventory Manager Services */
+  adminGetInventory({ characterName }) {
+    const data = commonGet('darksteam97d99i/characters/inventory', [characterName]);
+    return data;
+  },
+  adminUpdateInventory({ formBody }) {
+    const data = commonPut('darksteam97d99i/characters/inventory', formBody);
+    return data;
+  },
+
   /* Admin Banking Manager Services */
   adminGetBankings() {
     const data = commonGet('darksteam97d99i/banking');
@@ -237,6 +247,14 @@ export default {
   },
   generateTextFile({ formBody }) {
     const data = commonPost('darksteam97d99i/system/generate_text_file', formBody);
+    return data;
+  },
+  generateItemFile() {
+    const data = commonGet('darksteam97d99i/system/generate_item_file');
+    return data;
+  },
+  generateMonsterFile() {
+    const data = commonGet('darksteam97d99i/system/generate_monster_file');
     return data;
   },
   getWebQuests() {

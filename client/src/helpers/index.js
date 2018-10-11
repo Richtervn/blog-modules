@@ -1,11 +1,8 @@
 import { shuffleList, sortList } from './array';
-
+import { downloadFile } from './element';
 import { commonAddArray, commonFormChange, commonRemoveArray } from './form';
-
 import { getClass, getExcText, getItemName, getItemImage, getItemOptions } from './mu';
-
 import { formatNumber } from './number';
-
 import { actionCreator, serviceCaller, serviceWrapper } from './service';
 
 import {
@@ -24,6 +21,7 @@ import { toInputDate, unixTime } from './time';
 export {
   shuffleList,
   sortList,
+  downloadFile,
   commonAddArray,
   commonFormChange,
   commonRemoveArray,

@@ -10,6 +10,7 @@ import { CreditsManager } from './CreditsManager';
 import { LuxuryShopManager } from './LuxuryShopManager';
 import { VipPackagesManager } from './VipPackagesManager';
 import { WebShopManager } from './WebShopManager';
+import { InventoryManager } from './InventoryManager';
 
 import { adminPages } from './Admin.module';
 const availableAdminPages = _.pluck(adminPages, 'route');
@@ -38,6 +39,7 @@ class Admin extends Component {
         {pageParam === 'luxury_shop_manager' && <LuxuryShopManager />}
         {pageParam === 'vip_packages' && <VipPackagesManager />}
         {pageParam === 'web_shop_manager' && <WebShopManager />}
+        {pageParam === 'inventory_manager' && <InventoryManager />}
       </Ds9799Page>
     );
   }

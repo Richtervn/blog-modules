@@ -11,7 +11,7 @@ export default {
       func: config => config
     },
     app: {
-      require: ['config', 'routes', 'MuApps', 'L2Apps'],
+      require: ['context', 'config', 'routes', 'MuApps', 'L2Apps'],
       func: app
     },
     server: {

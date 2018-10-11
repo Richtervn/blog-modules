@@ -1,7 +1,7 @@
 {
   "port": 3000,
   "mongodbUrl": "mongodb://localhost/BlogModules",
-  "muDatabase":"mssql://sa:123456@127.0.0.1:1433/MuOnline",
+  "muDatabase": "mssql://sa:123456@127.0.0.1:1433/MuOnline",
   "l2Database": {
     "dialect": "mysql",
     "host": "127.0.0.1"

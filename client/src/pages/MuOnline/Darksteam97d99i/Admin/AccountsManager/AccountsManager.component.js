@@ -10,8 +10,9 @@ import AccountForm from './AccountForm.container';
 class AccountsManager extends Component {
   constructor(props) {
     super(props);
+    const { accounts, detailLoaded } = this.props;
     this.state = {
-      didLoaded: false,
+      didLoaded: !!accounts && !!detailLoaded,
       value: ''
     };
   }
@@ -29,7 +30,7 @@ class AccountsManager extends Component {
 
   render() {
     const { accounts, focusAccount, onGetAccountDetail, onClearAccountDetail, onSearch } = this.props;
-    if (!accounts) {
+    if (!this.state.didLoaded) {
       return <ColLoader />;
     }
     return (

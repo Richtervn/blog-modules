@@ -10,7 +10,8 @@ export const adminPages = [
   { name: 'Credits Manager', icon: 'credit-card', route: 'credits_manager' },
   { name: 'Vip Packages Manager', icon: 'gift', route: 'vip_packages' },
   { name: 'Web Shop Manager', icon: 'shopping-cart', route: 'web_shop_manager' },
-  { name: 'Luxury Shop Manager', icon: 'magic', route: 'luxury_shop_manager' }
+  { name: 'Luxury Shop Manager', icon: 'magic', route: 'luxury_shop_manager' },
+  { name: 'Inventory Manager', icon: 'table', route: 'inventory_manager' }
 ];
 
 const GET_ACCOUNTS = 'ds9799_admin/GET_ACCOUNTS';
@@ -158,6 +159,14 @@ export const editReceipt = formBody =>
   actionCreator(EDIT_RECEIPT, services.adminEditReceipt, { payload: { formBody } })();
 export const deleteReceipt = id => actionCreator(DELETE_RECEIPT, services.adminDeleteReceipt, { payload: { id } })();
 
+const GET_INVENTORY = 'ds9799_admin/GET_INVENTORY';
+const UPDATE_INVENTORY = 'ds9799_admin/UPDATE_INVENTORY';
+
+export const getInventory = characterName =>
+  actionCreator(GET_INVENTORY, services.adminGetInventory, { payload: { characterName } })();
+export const updateInventory = formBody =>
+  actionCreator(UPDATE_INVENTORY, services.adminUpdateInventory, { payload: { formBody } })();
+
 const initialState = {
   accounts: null,
   accountDetail: {},
@@ -177,6 +186,7 @@ const initialState = {
     { _id: 7, Name: 'Wings', Icon: 'ws-wing' },
     { _id: 8, Name: 'Sets', Icon: 'ws-set' }
   ],
+  inventory: {},
   webShopPackages: {},
   focusWebShopPackage: {},
   focusWebShopCategory: 0,
@@ -400,6 +410,12 @@ export default (state = initialState, action) => {
       toastSuccess('Deleted Receipt Package');
       state.receipts = state.receipts.filter(pack => parseInt(pack.id, 10) !== parseInt(action.payload.id, 10));
       return { ...state, receipts: state.receipts.slice(0) };
+
+    case `${GET_INVENTORY}_SUCCESS`:
+      return { ...state, inventory: action.payload };
+    case `${UPDATE_INVENTORY}_SUCCESS`:
+      toastSuccess('Inventory updated');
+      return { ...state, inventory: { ...state.inventory, ...action.payload } };
 
     default:
       return state;

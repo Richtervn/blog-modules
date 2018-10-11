@@ -6,7 +6,8 @@ import { getAccounts, getAccountDetail, clearAccountDetail, searchAccounts } fro
 export default connect(
   ({ ds9799_admin }) => ({
     accounts: ds9799_admin.accounts,
-    focusAccount: ds9799_admin.accountDetail.memb___id
+    focusAccount: ds9799_admin.accountDetail.memb___id,
+    detailLoaded: !!ds9799_admin.accountDetail
   }),
   dispatch => ({
     onGetAccounts() {

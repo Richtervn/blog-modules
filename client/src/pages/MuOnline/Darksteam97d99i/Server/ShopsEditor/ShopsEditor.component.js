@@ -5,7 +5,7 @@ import services from '../../Darksteam97d99i.services';
 
 import ShopSelector from './ShopSelector.container';
 import { ExcItemOptions, ItemSelector, BasicItemOptions } from '../../components';
-import { pad } from 'helpers';
+import { pad, downloadFile } from 'helpers';
 
 class ShopsEditor extends Component {
   constructor(props) {
@@ -70,15 +70,7 @@ class ShopsEditor extends Component {
         fileName: fileName.replace('.txt', '')
       }
     });
-
-    const aTag = document.createElement('a');
-    aTag.setAttribute('href', file);
-    aTag.setAttribute('target', '_blank');
-    aTag.setAttribute('download', fileName);
-    aTag.style.display = 'none';
-    document.body.appendChild(aTag);
-    aTag.click();
-    document.body.removeChild(aTag);
+    downloadFile(file, fileName);
   }
 
   generateLine({ category, itemId, level, duration, skill, luck, option, exc1, exc2, exc3, exc4, exc5, exc6 }) {

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import CharactersManager from './CharactersManager.component';
 
-import { getCharacters, getCharacterDetail, clearCharacterDetail } from '../Admin.module';
+import { getCharacterDetail, getCharacters, clearCharacterDetail } from '../Admin.module';
 
 export default connect(
   ({ ds9799_admin }) => ({
@@ -9,11 +9,11 @@ export default connect(
     focusCharacter: ds9799_admin.characterDetail.Name
   }),
   dispatch => ({
-    onGetCharacters() {
-      dispatch(getCharacters());
-    },
     onGetCharacterDetail(id) {
       dispatch(getCharacterDetail(id));
+    },
+    onGetCharacters() {
+      dispatch(getCharacters());
     },
     onClearCharacterDetail() {
       dispatch(clearCharacterDetail());

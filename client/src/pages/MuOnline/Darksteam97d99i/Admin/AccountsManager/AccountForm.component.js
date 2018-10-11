@@ -31,7 +31,8 @@ const initialValue = {
 class AccountForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: initialValue };
+    const { account } = this.props;
+    this.state = { value: this.initStateValue(account.memb___id ? account : initialValue) };
     this.handleChange = this.handleChange.bind(this);
     this.initStateValue = this.initStateValue.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

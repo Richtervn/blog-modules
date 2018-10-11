@@ -1,10 +1,13 @@
 import _ from 'underscore';
 import express from 'express';
-import Promise from 'bluebird';
+
+import getItems from './services/getItems';
+import generateItemFile from './services/generateItemFile';
+import generateMonsterFile from './services/generateMonsterFile';
 
 export default (models, methods, factories, helpers) => {
   const router = express.Router();
-  const { wrap, readFile, writeFile } = factories;
+  const { wrap, readFile, writeFile, pad } = factories;
   const { getData, getGameData, syncItem, syncMonster } = helpers;
 
   router.get(
@@ -102,19 +105,24 @@ export default (models, methods, factories, helpers) => {
   router.get(
     '/items',
     wrap(async ({ query }, res, next) => {
-      let fileNames;
-      const result = {};
-      if (query.fileNames) {
-        fileNames = query.fileNames.split(',');
-      } else {
-        const categories = await getGameData('Categories');
-        fileNames = _.pluck(categories, 'Name');
-        result.Categories = categories;
-      }
-      await Promise.map(fileNames, async fileName => {
-        result[fileName] = await getGameData(fileName);
-      });
+      const result = await getItems(query, getGameData);
       res.send(result);
+    })
+  );
+
+  router.get(
+    '/generate_item_file',
+    wrap(async (req, res, next) => {
+      const file = await generateItemFile(getGameData, writeFile, pad);
+      res.send({ file });
+    })
+  );
+
+  router.get(
+    '/generate_monster_file',
+    wrap(async (req, res, next) => {
+      const file = await generateMonsterFile(getGameData, writeFile, pad);
+      res.send({ file });
     })
   );
 

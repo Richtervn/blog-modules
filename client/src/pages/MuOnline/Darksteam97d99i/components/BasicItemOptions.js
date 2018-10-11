@@ -21,7 +21,7 @@ export default ({ luck, skill, onChangeCheck, option, level, onChangeLevel, cust
       <div className="level-opt">
         <div className="form-inline">
           <label>Item Level :</label>
-          <select className="form-control" name="level" onChange={onChangeLevel} value={level}>
+          <select className="form-control" name="level" onChange={e => onChangeLevel(e)} value={level}>
             {itemLevel.map((lvl, i) => (
               <option value={lvl} key={i}>
                 {lvl}
@@ -31,7 +31,7 @@ export default ({ luck, skill, onChangeCheck, option, level, onChangeLevel, cust
         </div>
         <form className="form-inline">
           <label>Opt Level :</label>
-          <select className="form-control" name="option" onChange={onChangeLevel} value={option}>
+          <select className="form-control" name="option" onChange={e => onChangeLevel(e)} value={option}>
             {optLevel.map((lvl, i) => (
               <option value={lvl} key={i}>
                 {lvl}

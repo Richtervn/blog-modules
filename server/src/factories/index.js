@@ -1,4 +1,5 @@
 import clearExtension from './string/clearExtension';
+import pad from './string/pad';
 import toTitleCase from './string/toTitleCase';
 
 import commonService from './commonServices/mongoose';
@@ -20,6 +21,7 @@ import wrap from './utils/wrap';
 
 const factories = () => ({
   toTitleCase,
+  pad,
   clearExtension,
   commonService,
   jsonReader,

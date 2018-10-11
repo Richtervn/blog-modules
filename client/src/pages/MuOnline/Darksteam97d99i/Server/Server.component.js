@@ -13,6 +13,7 @@ import { QuestsEditor } from './QuestsEditor';
 import { ShopsEditor } from './ShopsEditor';
 import { WebQuestsEditor } from './WebQuestsEditor';
 import { MonstersSetBase } from './MonstersSetBase';
+import { UtilTools } from './UtilTools';
 
 import { serverPages } from './Server.module';
 const availableServerPages = _.pluck(serverPages, 'route');
@@ -44,6 +45,7 @@ class Server extends Component {
         {pageParam === 'monsters_set_base' && <MonstersSetBase />}
         {pageParam === 'monsters_list' && <MonstersList />}
         {pageParam === 'items_list' && <ItemsList />}
+        {pageParam === 'util_tools' && <UtilTools />}
       </Ds9799Page>
     );
   }

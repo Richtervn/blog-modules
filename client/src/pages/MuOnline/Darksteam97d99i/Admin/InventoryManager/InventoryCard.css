@@ -1,0 +1,114 @@
+#ds9799-admin-inventory {
+  display: flex;
+  flex-direction: column;
+}
+
+#ds9799-admin-inventory > .inventory-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 5px;
+}
+
+#ds9799-admin-inventory > .inventory-row > .inventory-box {
+  background-color: black;
+  border: solid 2px #7b7b7b;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#ds9799-admin-inventory > .inventory-row > .inventory-box.small {
+  height: 25px;
+  width: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#ds9799-admin-inventory > .inventory-row > .inventory-box.medium {
+  height: 80px;
+  width: 80px;
+}
+
+#ds9799-admin-inventory > .inventory-row > .inventory-box.large {
+  height: 120px;
+  width: 80px;
+}
+
+#ds9799-admin-inventory > .inventory-row > .inventory-box:hover {
+  background-color: #275a27;
+  border-color: #275a27;
+}
+
+#ds9799-admin-inventory > .inventory-row > .inventory-box.selected {
+  background-color: #275a27;
+  border-color: #02a502;
+}
+
+#ds9799-admin-inventory .inv {
+  margin: 5px;
+  border: solid 1px #7b7b7b;
+}
+
+#ds9799-admin-inventory .inv-row {
+  background-color: black;
+  display: flex;
+}
+
+#ds9799-admin-inventory .inv-col {
+  width: 12.5%;
+  height: 38.5px;
+  border: solid 1px #7b7b7b;
+  position: relative;
+  transition: all 0.2s;
+}
+
+#ds9799-admin-inventory .inv-col.hoverable {
+  cursor: pointer;
+}
+
+#ds9799-admin-inventory .inv-col.selected {
+  background-color: #275a27;
+  border-color: #02a502;
+}
+
+#ds9799-admin-inventory .inv-col.hoverable:hover {
+  background-color: #275a27;
+  border-color: #275a27;
+}
+
+.ds9799-admin-inventory-card-loader {
+  width: 400px;
+  height: 100%;
+}
+
+#ds9799-admin-inventory .img-item-wrapper {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  transition: all 0.2s;
+}
+
+#ds9799-admin-inventory .img-item-wrapper:hover {
+  border: solid 2px #275a27;
+  background-color: #275a27;
+}
+
+#ds9799-admin-inventory .img-item-wrapper.selected {
+  background-color: #275a27;
+  border: solid 2px #02a502;
+}
+
+#ds9799-admin-inventory .img-item-container {
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+}
