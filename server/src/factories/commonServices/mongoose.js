@@ -91,6 +91,9 @@ export default {
     if (!files[fileField]) {
       return null;
     }
+    if (files[fileField] == 'null') {
+      return null;
+    }
     const file = files[fileField];
     const fileExt = file.name.slice(file.name.lastIndexOf('.'), file.name.length);
     const fileName = `${moment().format('MMDDYYYYhhmmss')}${suffix}${fileExt}`;

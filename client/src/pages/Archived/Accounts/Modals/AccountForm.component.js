@@ -44,7 +44,18 @@ class AccountForm extends Component {
     const { edit, onEdit, onAdd, account } = this.props;
 
     if (edit) {
-      onEdit({ ...this.state.value, _id: account._id });
+      const formBody = {
+        _id: account._id,
+        SiteName: this.state.value.SiteName,
+        Username: this.state.value.Username,
+        Password: this.state.value.Password,
+        LogInMethod: this.state.value.LogInMethod,
+        Color: this.state.value.Color
+      };
+      if (this.state.value.Icon) {
+        formBody.Icon = this.state.value.Icon;
+      }
+      onEdit(formBody);
     } else {
       onAdd(this.state.value);
       this.setState({ value: this.initStateValue({ ...initialValue }) });

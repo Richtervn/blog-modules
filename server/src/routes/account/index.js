@@ -20,7 +20,7 @@ export default (Account, factories) => {
     wrap(async ({ body, files }, res, next) => {
       const icon = commonService.uploadImage(files, './public/Account', 'Icon');
       if (icon) body.Icon = icon;
-      const account = await commonService.update(Account, body, null, ['Url']);
+      const account = await commonService.update(Account, body, null, ['Icon']);
       res.send(account);
     })
   );
