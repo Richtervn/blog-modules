@@ -3,7 +3,7 @@ const dataPath = './src/features/muonline/darksteam97d99i/data/game';
 export default async (readMuServerFile, writeFile) => {
   const monsters = [];
   const lines = await readMuServerFile('./src/features/muonline/darksteam97d99i/data/source/Monster.txt');
-  lines.forEach(attributes => {
+  lines.filter(attributes => attributes && attributes[0] !== 'end').forEach(attributes => {
     const monster = {
       _id: attributes[0],
       isUsed: attributes[1],
