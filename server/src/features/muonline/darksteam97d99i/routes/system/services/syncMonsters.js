@@ -36,6 +36,6 @@ export default async (readMuServerFile, writeFile) => {
     };
     monsters.push(monster);
   });
-  await writeFile(`${dataPath}/Monsters.json`, JSON.stringify(data, null, 2));
+  await writeFile(`${dataPath}/Monsters.json`, JSON.stringify(monsters, null, 2));
   return;
 };

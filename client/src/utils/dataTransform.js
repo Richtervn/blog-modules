@@ -8,11 +8,15 @@ const replaceObjectData = (obj, apiHost) => {
 };
 
 export default async (response, apiHost) => {
-  let respData = await response.json();
-  if (respData instanceof Array) {
-    respData = respData.map(obj => replaceObjectData(obj, apiHost));
-  } else {
-    respData = replaceObjectData(respData, apiHost);
+  try {
+    let respData = await response.json();
+    if (respData instanceof Array) {
+      respData = respData.map(obj => replaceObjectData(obj, apiHost));
+    } else {
+      respData = replaceObjectData(respData, apiHost);
+    }
+    return respData;
+  } catch (e) {
+    return response;
   }
-  return respData;
 };

@@ -10,6 +10,7 @@ import FormGroupSelect from './FormGroupSelect';
 import FormGroupSelectId from './FormGroupSelectId';
 
 import InputGroupIcon from './InputGroupIcon';
+import UploadButton from './UploadButton';
 
 export {
   FormGroupArea,
@@ -22,5 +23,6 @@ export {
   FormGroupRow,
   FormGroupSelect,
   FormGroupSelectId,
-  InputGroupIcon
+  InputGroupIcon,
+  UploadButton
 };

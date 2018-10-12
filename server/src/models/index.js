@@ -16,8 +16,8 @@ export default {
   services: {
     models: {
       require: ['db'],
-      func: models,
-    },
+      func: models
+    }
   },
-  exports: ['models'],
+  exports: ['models']
 };

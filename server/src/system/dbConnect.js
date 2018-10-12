@@ -6,11 +6,9 @@ export default config => {
   Promise.promisifyAll(mongoose);
 
   mongoose.Promise = Promise;
-  mongoose.connect(
-    config.mongodbUrl,
-    { useNewUrlParser: true },
-  );
+  mongoose.connect(config.mongodbUrl, { useNewUrlParser: true });
   mongoose.set('useCreateIndex', true);
+  mongoose.set('useFindAndModify', false);
 
   const db = mongoose.connection;
 

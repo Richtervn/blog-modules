@@ -4,6 +4,7 @@ import express from 'express';
 import getItems from './services/getItems';
 import generateItemFile from './services/generateItemFile';
 import generateMonsterFile from './services/generateMonsterFile';
+import readEventItemBagFile from './services/readEventItemBagFile';
 import syncMonsters from './services/syncMonsters';
 import syncItems from './services/syncItems';
 
@@ -79,7 +80,7 @@ export default (models, methods, factories, helpers) => {
           return next(err);
         }
         await syncMonsters(readMuServerFile, writeFile);
-        res.sendStatus(200);
+        res.send({ done: true });
       });
     })
   );
@@ -92,7 +93,21 @@ export default (models, methods, factories, helpers) => {
           return next(err);
         }
         await syncItems(getGameData, readMuServerFile, writeFile);
-        res.sendStatus(200);
+        res.send({ done: true });
+      });
+    })
+  );
+
+  router.post(
+    '/read_event_item_bag_file',
+    wrap(async ({ files }, res, next) => {
+      const destination = `./src/features/muonline/darksteam97d99i/data/source/${files.file.name}`;
+      files.file.mv(destination, async err => {
+        if (err) {
+          return next(err);
+        }
+        const result = await readEventItemBagFile(files.file.name, getGameData, readMuServerFile, writeFile, pad);
+        res.send(result);
       });
     })
   );

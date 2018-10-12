@@ -184,6 +184,18 @@ export default {
     const data = commonPut('darksteam97d99i/system/game_setting', formBody);
     return data;
   },
+  syncMonsters({ formBody }) {
+    const data = commonPostMultiplePart('darksteam97d99i/system/sync_monsters', formBody);
+    return data;
+  },
+  syncItems({ formBody }) {
+    const data = commonPostMultiplePart('darksteam97d99i/system/sync_items', formBody);
+    return data;
+  },
+  readEventItemBagFile({ formBody }) {
+    const data = commonPostMultiplePart('darksteam97d99i/system/read_event_item_bag_file', formBody);
+    return data;
+  },
 
   /* User Services */
   login({ formBody }) {
