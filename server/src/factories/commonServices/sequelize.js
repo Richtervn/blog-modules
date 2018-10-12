@@ -18,6 +18,13 @@ export default {
     const record = await model.create(body);
     return record;
   },
+  checkExist: async (model, field, value) => {
+    const record = await model.findOne({ where: { [field]: value } });
+    if (record) {
+      return true;
+    }
+    return false;
+  },
   delete: async (model, id) => {
     const priKey = model.primaryKeyAttribute;
     await model.destroy({ where: { [priKey]: id } });

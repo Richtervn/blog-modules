@@ -94,7 +94,6 @@ export default (models, methods, factories, helpers) => {
   router.post(
     '/',
     wrap(async ({ body }, res, next) => {
-      console.log(body);
       const result = await commonSequelize.create(Banking, body);
       res.send(result);
     })

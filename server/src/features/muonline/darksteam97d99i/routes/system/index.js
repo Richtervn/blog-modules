@@ -4,11 +4,13 @@ import express from 'express';
 import getItems from './services/getItems';
 import generateItemFile from './services/generateItemFile';
 import generateMonsterFile from './services/generateMonsterFile';
+import syncMonsters from './services/syncMonsters';
+import syncItems from './services/syncItems';
 
 export default (models, methods, factories, helpers) => {
   const router = express.Router();
-  const { wrap, readFile, writeFile, pad } = factories;
-  const { getData, getGameData, syncItem, syncMonster } = helpers;
+  const { wrap, readFile, writeFile, pad, readMuServerFile } = factories;
+  const { getData, getGameData } = helpers;
 
   router.get(
     '/game_setting',
@@ -69,19 +71,29 @@ export default (models, methods, factories, helpers) => {
     })
   );
 
-  router.get(
-    '/sync_items',
-    wrap(async (req, res, next) => {
-      await syncItem(factories);
-      res.sendStatus(200);
+  router.post(
+    '/sync_monsters',
+    wrap(async ({ files }, res, next) => {
+      files.file.mv('./src/features/muonline/darksteam97d99i/data/source/Monster.txt', async err => {
+        if (err) {
+          return next(err);
+        }
+        await syncMonsters(readMuServerFile, writeFile);
+        res.sendStatus(200);
+      });
     })
   );
 
-  router.get(
-    '/sync_monsters',
-    wrap(async (req, res, next) => {
-      await syncMonster(factories);
-      res.sendStatus(200);
+  router.post(
+    '/sync_items',
+    wrap(async ({ files }, res, next) => {
+      files.file.mv('./src/features/muonline/darksteam97d99i/data/source/item.txt', async err => {
+        if (err) {
+          return next(err);
+        }
+        await syncItems(getGameData, readMuServerFile, writeFile);
+        res.sendStatus(200);
+      });
     })
   );
 

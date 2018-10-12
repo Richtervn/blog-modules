@@ -26,7 +26,7 @@ export default (models, methods, factories, helpers) => {
   router.post(
     '/register',
     wrap(async ({ body }, res, next) => {
-      const account = await regisUser(models, factories, helpers, body);
+      const account = await regisUser(models, factories, helpers, body, commonSequelize);
       res.send(account);
     })
   );
@@ -108,7 +108,7 @@ export default (models, methods, factories, helpers) => {
   router.post(
     '/',
     wrap(async ({ body }, res, next) => {
-      const account = await addUser(models, factories, helpers, body);
+      const account = await addUser(models, factories, helpers, body, commonSequelize);
       res.send(account);
     })
   );

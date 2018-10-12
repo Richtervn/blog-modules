@@ -1,8 +1,7 @@
 import _ from 'underscore';
 
-export default async (models, helpers, body) => {
+export default async (models, commonSequelize, body) => {
   const { AccountCharacter, Character } = models;
-  const { checkExist } = helpers;
   const updateForm = { ...body };
   updateForm.IsVip == true ? '1' : '0';
   updateForm.IsMarried == true ? '1' : '0';
@@ -10,7 +9,7 @@ export default async (models, helpers, body) => {
   const character = await Character.findOne({ where: { Name: updateForm.Name } });
 
   if (updateForm.Name !== character.Name) {
-    const isNameExist = checkExist(Character, 'Name', updateForm.Name);
+    const isNameExist = commonSequelize.checkExist(Character, 'Name', updateForm.Name);
     if (isNameExist) {
       return { message: 'Name has been taken' };
     }

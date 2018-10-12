@@ -1,12 +1,12 @@
-export default async (models, factories, helpers, body) => {
+export default async (models, factories, helpers, body, commonSequelize) => {
   const { MembInfo, ViCurInfo, MembCredits, Banking } = models;
   const { makeSmallDateTime } = factories;
-  const { getData, checkExist } = helpers;
+  const { getData } = helpers;
   const GameSetting = await getData('GameSetting');
 
   const [isUsernameExist, isEmailExist] = [
-    await checkExist(MembInfo, 'memb___id', body.Username),
-    await checkExist(MembInfo, 'mail_addr', body.Email)
+    await commonSequelize.checkExist(MembInfo, 'memb___id', body.Username),
+    await commonSequelize.checkExist(MembInfo, 'mail_addr', body.Email)
   ];
 
   if (isUsernameExist) return { message: 'Username is already exist' };

@@ -141,7 +141,7 @@ export default (models, methods, factories, helpers) => {
   router.post(
     '/',
     wrap(async ({ body }, res, next) => {
-      const character = await addCharacter(models, helpers, body);
+      const character = await addCharacter(models, commonSequelize, body);
       res.send(character);
     })
   );
@@ -149,7 +149,7 @@ export default (models, methods, factories, helpers) => {
   router.put(
     '/',
     wrap(async ({ body }, res, next) => {
-      const character = await editCharacter(models, helpers, body);
+      const character = await editCharacter(models, commonSequelize, body);
       res.send(character);
     })
   );

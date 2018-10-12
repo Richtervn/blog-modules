@@ -5,7 +5,7 @@ import saveMenu from './services/saveMenu';
 
 export default factories => {
   const router = express.Router();
-  const { readFile, writeFile, wrap } = factories;
+  const { readFile, writeFile, wrap, readMuServerFile } = factories;
 
   router.get(
     '/get_menu',
@@ -22,6 +22,11 @@ export default factories => {
       res.send(menu);
     })
   );
+
+  // router.get('/test', wrap(async(req, res, next) => {
+  //   
+  //   res.send(data);
+  // }))
 
   return router;
 };

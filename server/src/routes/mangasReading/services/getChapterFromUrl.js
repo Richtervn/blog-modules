@@ -60,7 +60,6 @@ export default url => {
     case 'truyentranh8.net': {
       let infoUrlFrags = urlFrags[1].split('-chap-');
       mangaAka = urlFragToAka(infoUrlFrags[0]);
-      console.log(mangaAka);
       chapter = infoUrlFrags[1];
       break;
     }
