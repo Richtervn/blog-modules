@@ -2,11 +2,13 @@ import Promise from 'bluebird';
 import fs from 'fs';
 import chalk from 'chalk';
 
-const ensureDirectoryExist = async directory =>
-  new Promise((resolve, reject) => {
+const ensureDirectoryExist = directory => {
+  return new Promise((resolve, reject) => {
     fs.stat(directory, (err, stats) => {
-      if (err && err.errno === 34) {
-        console.log(`${chalk.bold.red('[APP]')} Created missing folder ${directory}`);
+      if (err && err.errno === -2) {
+        console.log(
+          `${chalk.bold.red('[APP]')} Created missing folder ${directory}`,
+        );
         fs.mkdir(directory, () => {
           return resolve();
         });
@@ -15,6 +17,7 @@ const ensureDirectoryExist = async directory =>
       }
     });
   });
+};
 
 const ensureDiabloIIPath = async () => {
   await ensureDirectoryExist('./public/DiabloII');
@@ -51,9 +54,15 @@ const ensureMuOnlinePath = async () => {
   ensureDirectoryExist('./public/Mu Online/Darksteam97d99i/Web Shop');
 
   await ensureDirectoryExist('./public/Mu Online/Darksteam97d99i/Luxury Shop');
-  ensureDirectoryExist('./public/Mu Online/Darksteam97d99i/Luxury Shop/Consumable');
-  ensureDirectoryExist('./public/Mu Online/Darksteam97d99i/Luxury Shop/Exchange');
-  ensureDirectoryExist('./public/Mu Online/Darksteam97d99i/Luxury Shop/Receipt');
+  ensureDirectoryExist(
+    './public/Mu Online/Darksteam97d99i/Luxury Shop/Consumable',
+  );
+  ensureDirectoryExist(
+    './public/Mu Online/Darksteam97d99i/Luxury Shop/Exchange',
+  );
+  ensureDirectoryExist(
+    './public/Mu Online/Darksteam97d99i/Luxury Shop/Receipt',
+  );
 };
 
 const ensureStarcraftPath = async () => {
