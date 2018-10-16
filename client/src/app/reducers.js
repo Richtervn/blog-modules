@@ -20,7 +20,8 @@ import { reducer as contentMirror } from 'pages/Tools/ContentMirror';
 import { reducer as endedManga } from 'pages/Archived/EndedManga';
 import { reducer as accounts } from 'pages/Archived/Accounts';
 
-import { reducer as subscribe } from 'pages/Subscribe';
+import { reducer as mangaNews } from 'pages/Subscribe/MangaNews';
+import { reducer as rss } from 'pages/Subscribe/Rss';
 
 import {
   ds9799_admin,
@@ -61,10 +62,11 @@ export default combineReducers({
   flashGames,
   gamingHistory,
   mangasReading,
+  mangaNews,
   muOnline,
   music,
   projects,
+  rss,
   starcraft,
-  subscribe,
   yugiohPoc
 });

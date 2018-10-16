@@ -19,7 +19,7 @@ class BagItemsEditor extends Component {
         '// -------------------------------------',
         '',
         '// --------------------------------------------------------------------------------------------------------',
-        '// Category   Index  Level  Skill   Luck   Option',
+        '// [Category] [Index] [Level] [Skill] [Luck] [Option]',
         '// --------------------------------------------------------------------------------------------------------'
       ],
       category: 'Swords',
@@ -74,10 +74,10 @@ class BagItemsEditor extends Component {
     });
 
     line = pad(line, ' ', 15, itemId);
-    line = pad(line, ' ', 22, level);
-    line = pad(line, ' ', 29, skill ? '1' : '0');
-    line = pad(line, ' ', 37, luck ? '1' : '0');
-    line = pad(line, ' ', 44, option);
+    line = pad(line, ' ', 23, level);
+    line = pad(line, ' ', 31, skill ? '1' : '0');
+    line = pad(line, ' ', 39, luck ? '1' : '0');
+    line = pad(line, ' ', 46, option);
 
     data[category].forEach(item => {
       if (parseInt(item._id, 10) === parseInt(itemId, 10)) {
@@ -97,7 +97,7 @@ class BagItemsEditor extends Component {
     if (option) {
       itemDescription += ` +${option} options`;
     }
-    return pad(line, ' ', 52, `// ${itemDescription}`);
+    return pad(line, ' ', 55, `// ${itemDescription}`);
   }
 
   generate() {

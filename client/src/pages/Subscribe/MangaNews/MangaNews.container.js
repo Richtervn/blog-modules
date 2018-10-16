@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import MangaNews from './MangaNews.component';
 
-import { getMangaNews } from '../Subscribe.module';
+import { getMangaNews } from './MangaNews.module';
 
 export default connect(
-  ({ subscribe }) => ({
-    news: subscribe.mangaNews
+  ({ mangaNews }) => ({
+    news: mangaNews.mangaNews
   }),
   dispatch => ({
     onGetNews() {

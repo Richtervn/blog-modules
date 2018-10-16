@@ -1,5 +1,6 @@
 .form-array-wrapper {
   display: flex;
+  margin-bottom: 5px;
 }
 
 .form-array-wrapper > .btn {
@@ -10,7 +11,6 @@
 
 .form-array-btn {
   float: left;
-  margin-top: 5px;
   padding: 0 20px;
   font-size: 14px;
 }

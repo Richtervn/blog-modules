@@ -81,7 +81,9 @@ export default async (models, methods, GameSetting, query) => {
 
   if (RESET_AWARD_CREDITS) {
     const membCredit = await MembCredits.findOne({
-      memb___id: character.AccountID
+      where: {
+        memb___id: character.AccountID
+      }
     });
     const totalCredits = membCredit.credits + RESET_AWARD_CREDITS;
     [

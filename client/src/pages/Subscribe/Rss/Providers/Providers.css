@@ -1,0 +1,12 @@
+#rss-providers .add-provider-btn {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+#rss-providers > .providers {
+  padding-right: 10px;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  padding-bottom: 10px;
+}

@@ -1,6 +1,6 @@
 import { shuffleList, sortList } from './array';
 import { downloadFile } from './element';
-import { commonAddArray, commonFormChange, commonRemoveArray } from './form';
+import { commonAddArray, commonFormChange, commonRemoveArray, commonValidate } from './form';
 import { getClass, getExcText, getItemName, getItemImage, getItemOptions } from './mu';
 import { formatNumber } from './number';
 import { actionCreator, serviceCaller, serviceWrapper } from './service';
@@ -25,6 +25,7 @@ export {
   commonAddArray,
   commonFormChange,
   commonRemoveArray,
+  commonValidate,
   getClass,
   getExcText,
   getItemName,

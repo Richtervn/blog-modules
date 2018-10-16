@@ -70,6 +70,11 @@ export default (context, config, routes, MuApps, L2Apps) => {
     res.send(html);
   });
 
+  // app.get('/test', async (req, res) => {
+  //   console.log(app.routes);
+  //   res.send(ap.routes);
+  // });
+
   app.use((req, res, next) => {
     const err = new Error('Not found');
     err.status = 404;

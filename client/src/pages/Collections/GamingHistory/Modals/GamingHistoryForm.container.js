@@ -8,8 +8,8 @@ export default connect(
     game: gamingHistory.focusGame
   }),
   dispatch => ({
-    onAddGame(formBody) {
-      dispatch(addGame(formBody));
+    onAddGame(formBody, callback) {
+      dispatch(addGame(formBody, callback));
     },
     onEditGame(formBody) {
       dispatch(editGame(formBody));

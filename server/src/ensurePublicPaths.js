@@ -5,10 +5,8 @@ import chalk from 'chalk';
 const ensureDirectoryExist = directory => {
   return new Promise((resolve, reject) => {
     fs.stat(directory, (err, stats) => {
-      if (err && err.errno === -2) {
-        console.log(
-          `${chalk.bold.red('[APP]')} Created missing folder ${directory}`,
-        );
+      if (err) {
+        console.log(`${chalk.bold.red('[APP]')} Created missing folder ${directory}`);
         fs.mkdir(directory, () => {
           return resolve();
         });
@@ -22,7 +20,7 @@ const ensureDirectoryExist = directory => {
 const ensureDiabloIIPath = async () => {
   await ensureDirectoryExist('./public/DiabloII');
   ensureDirectoryExist('./public/DiabloII/Characters');
-  ensureDirectoryExist('./public/DiabloII/Survial Kits');
+  ensureDirectoryExist('./public/DiabloII/Survival Kits');
 
   await ensureDirectoryExist('./public/DiabloII/Mods');
   ensureDirectoryExist('./public/DiabloII/Mods/1.08');
@@ -54,15 +52,9 @@ const ensureMuOnlinePath = async () => {
   ensureDirectoryExist('./public/Mu Online/Darksteam97d99i/Web Shop');
 
   await ensureDirectoryExist('./public/Mu Online/Darksteam97d99i/Luxury Shop');
-  ensureDirectoryExist(
-    './public/Mu Online/Darksteam97d99i/Luxury Shop/Consumable',
-  );
-  ensureDirectoryExist(
-    './public/Mu Online/Darksteam97d99i/Luxury Shop/Exchange',
-  );
-  ensureDirectoryExist(
-    './public/Mu Online/Darksteam97d99i/Luxury Shop/Receipt',
-  );
+  ensureDirectoryExist('./public/Mu Online/Darksteam97d99i/Luxury Shop/Consumable');
+  ensureDirectoryExist('./public/Mu Online/Darksteam97d99i/Luxury Shop/Exchange');
+  ensureDirectoryExist('./public/Mu Online/Darksteam97d99i/Luxury Shop/Receipt');
 };
 
 const ensureStarcraftPath = async () => {
@@ -82,10 +74,11 @@ export default async () => {
   ensureDirectoryExist('./public/Account');
   ensureDiabloIIPath();
   ensureDirectoryExist('./public/Flash Games');
-  ensureDirectoryExist('./public/Gaming History');
   ensureDirectoryExist('./public/Mangas Reading');
   ensureDirectoryExist('./public/Music');
   ensureDirectoryExist('./public/Mangas Reading');
   ensureMuOnlinePath();
   ensureStarcraftPath();
+  await ensureDirectoryExist('./public/Gaming History');
+  ensureDirectoryExist('./public/Gaming History/Backgrounds');
 };

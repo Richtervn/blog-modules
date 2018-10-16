@@ -1,6 +1,6 @@
 {
   "name": "blog-modules-server",
-  "version": "2.5.1",
+  "version": "2.6.0",
   "description": "my-blog",
   "main": "index.js",
   "scripts": {
@@ -28,10 +28,11 @@
     "kue": "^0.11.6",
     "lyric-get": "^1.0.3",
     "moment": "^2.22.2",
-    "mongoose": "^5.3.2",
+    "mongoose": "^5.3.4",
     "mysql": "^2.14.1",
     "mysql2": "^1.4.2",
     "request": "^2.87.0",
+    "rss-parser": "^3.5.2",
     "sequelize": "^4.38.0",
     "socket.io": "^2.1.1",
     "tedious": "^2.0.0",

@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 
-import getMangaNews from '../routes/subscribe/services/getMangaNews';
+import getMangaNews from '../routes/mangaNews/services/getMangaNews';
 import getChapterFromUrl from '../routes/mangasReading/services/getChapterFromUrl';
 
 const getNewChapterLink = newManga => {

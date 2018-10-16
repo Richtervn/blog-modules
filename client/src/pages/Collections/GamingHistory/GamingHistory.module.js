@@ -35,7 +35,8 @@ export const getAboutContent = gameId => actionCreator(GET_ABOUT, services.getAb
 export const getGuide = id => actionCreator(GET_GUIDE, services.getGuide, { payload: { id } })();
 export const getOverview = id => actionCreator(GET_OVERVIEW, services.getOverview, { payload: { id } })();
 
-export const addGame = formBody => actionCreator(ADD_GAME, services.addGame, { payload: { formBody } })();
+export const addGame = (formBody, callback) =>
+  actionCreator(ADD_GAME, services.addGame, { payload: { formBody }, onAfterSuccess: callback })();
 export const addGuide = formBody => actionCreator(ADD_GUIDE, services.addGuide, { payload: { formBody } })();
 export const addOverview = formBody => actionCreator(ADD_OVERVIEW, services.addOverview, { payload: { formBody } })();
 
@@ -167,7 +168,10 @@ export default (state = initialState, action) => {
         overviews: state.overviews.filter(overview => overview._id !== parseInt(action.payload._id, 10).slice(0))
       };
     case `${DELETE_GUIDE}_SUCCESS`:
-      return { ...state, guides: state.guides.filter(guide => guide._id !== parseInt(action.payload._id, 10).slice(0)) };
+      return {
+        ...state,
+        guides: state.guides.filter(guide => guide._id !== parseInt(action.payload._id, 10).slice(0))
+      };
 
     case SET_FOCUS_GAME:
       return { ...state, focusGame: action.game };

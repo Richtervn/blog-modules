@@ -10,4 +10,5 @@
   border: solid 1px darkred;
   background: #dc3545 !important;
   text-align: center;
+  white-space: pre;
 }

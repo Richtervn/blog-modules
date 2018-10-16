@@ -8,8 +8,9 @@ import muOnlineRouter from './muOnline';
 import musicRouter from './music';
 import profileRouter from './profile';
 import projectsRouter from './projects';
+import rssRouter from './rss';
 import starcraftRouter from './starcraft';
-import subscribeRouter from './subscribe';
+import mangaNewsRouter from './mangaNews';
 import systemRouter from './system';
 import toolsRouter from './tools';
 import yugiohPocRouter from './yugiohPoc';
@@ -34,6 +35,7 @@ const routes = (models, factories) => {
     MuOnlineVersions,
     Music,
     Projects,
+    RssProviders,
     StarcraftCampaigns,
     StarcraftMaps,
     StarcraftMods,
@@ -53,13 +55,14 @@ const routes = (models, factories) => {
       GamingHistoryOverview,
       factories
     ),
+    manga_news: mangaNewsRouter(factories),
     mangas_reading: mangasReadingRouter(MangasReading, factories),
     mu_online: muOnlineRouter(MuOnlineCharacters, MuOnlineGuides, MuOnlineTools, MuOnlineVersions, factories),
     music: musicRouter(Music, factories),
     profile: profileRouter(factories),
     projects: projectsRouter(Projects, factories),
     starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories),
-    subscribe: subscribeRouter(factories),
+    rss: rssRouter(RssProviders, factories),
     system: systemRouter(factories),
     tools: toolsRouter(models, factories),
     yugioh_poc: yugiohPocRouter(YugiohPocMods, YugiohPocDecks, factories)

@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import fs from 'fs';
 import Promise from 'bluebird';
 import moment from 'moment';
@@ -18,6 +19,14 @@ export default {
       });
     }
     const schema = new model(docBody);
+    const error = schema.validateSync();
+    if (error && !_.isEmpty(error.errors)) {
+      let message = '';
+      Object.keys(error.errors).map(key => {
+        message += `${error.errors[key].message}\n`;
+      });
+      return { message };
+    }
     const doc = await schema.save();
     return doc;
   },

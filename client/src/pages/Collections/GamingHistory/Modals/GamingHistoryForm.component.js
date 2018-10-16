@@ -1,14 +1,16 @@
+import _ from 'underscore';
 import React, { Component } from 'react';
 
 import { hideModal } from 'common/Modal';
 import { ModalHeader, ModalFooter } from 'components/Modal';
 import { FormGroupRow, FormGroupArray, FormGroupRating } from 'components/FormTools';
 
-import { commonFormChange, commonAddArray, commonRemoveArray } from 'helpers';
+import { commonFormChange, commonAddArray, commonRemoveArray, commonValidate } from 'helpers';
 
 const initialValue = {
   Name: '',
-  file: null,
+  Image: null,
+  Background: null,
   Publishers: [''],
   Genres: [''],
   Periods: [''],
@@ -18,12 +20,8 @@ const initialValue = {
 class GamingHistoryForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: this.props.edit ? this.initStateValue(this.props.game) : this.initStateValue() };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleRating = this.handleRating.bind(this);
-    this.handleAddArray = this.handleAddArray.bind(this);
-    this.handleRemoveArray = this.handleRemoveArray.bind(this);
+    const { edit, game } = this.props;
+    this.state = { value: edit ? this.initStateValue(game) : this.initStateValue(), error: {} };
   }
 
   initStateValue(stateValue) {
@@ -34,15 +32,32 @@ class GamingHistoryForm extends Component {
   }
 
   handleSubmit() {
-    this.props.edit ? this.props.onEditGame(this.state.value) : this.props.onAddGame(this.state.value);
-    if(!this.props.edit){
-      this.setState({ value: this.initStateValue() });
+    const { edit, onEditGame, onAddGame } = this.props;
+    const error = commonValidate(this.state.value, edit ? ['Name'] : ['Name', 'Image', 'Background'], [
+      'Publishers',
+      'Genres',
+      'Periods'
+    ]);
+    if (!_.isEmpty(error)) {
+      this.setState({ error });
+      return;
+    }
+    if (!edit) {
+      onAddGame(this.state.value, () => this.setState({ value: this.initStateValue() }));
+    } else {
+      onEditGame(this.state.value);
     }
     hideModal();
   }
 
   handleChange(event, index) {
-    const formValue = commonFormChange(this.state.value, event, index, ['Publishers', 'Genres', 'Periods']);
+    const formValue = commonFormChange(
+      this.state.value,
+      event,
+      index,
+      ['Publishers', 'Genres', 'Periods'],
+      ['Image', 'Background']
+    );
     this.setState({
       value: { ...formValue }
     });
@@ -73,50 +88,69 @@ class GamingHistoryForm extends Component {
   }
 
   render() {
+    const { value, error } = this.state;
+    const { edit, game } = this.props;
     return [
       <ModalHeader
         key="gh_h"
         iconUrl="/images/icons/gamepad.png"
-        label={this.props.edit ? `Update ${this.props.game.Name}` : 'Add New Favorite Game'}
+        label={edit ? `Update ${game.Name}` : 'Add New Favorite Game'}
       />,
       <div key="gh_b" className="modal-body">
         <form className="text-right">
-          <FormGroupRow type="file" name="file" label="Cover Image" onChange={this.handleChange} />
+          <FormGroupRow
+            type="file"
+            name="Image"
+            label="Cover Image"
+            onChange={e => this.handleChange(e)}
+            error={error.file}
+          />
+          <FormGroupRow
+            type="file"
+            name="Background"
+            label="Background"
+            onChange={e => this.handleChange(e)}
+            error={error.file}
+          />
           <FormGroupRow
             type="text"
             label="Name"
             name="Name"
-            onChange={this.handleChange}
-            value={this.state.value.Name}
+            onChange={e => this.handleChange(e)}
+            value={value.Name}
+            error={error.Name}
           />
           <FormGroupArray
             type="text"
             label="Publishers"
-            arrayValues={this.state.value.Publishers}
-            onChange={this.handleChange}
+            arrayValues={value.Publishers}
+            onChange={(e, i) => this.handleChange(e, i)}
+            error={error.Publishers}
             name="Publishers"
-            onAdd={this.handleAddArray}
-            onRemove={this.handleRemoveArray}
+            onAdd={name => this.handleAddArray(name)}
+            onRemove={(name, i) => this.handleRemoveArray(name, i)}
           />
           <FormGroupArray
             type="text"
             label="Genres"
-            arrayValues={this.state.value.Genres}
-            onChange={this.handleChange}
+            arrayValues={value.Genres}
+            onChange={(e, i) => this.handleChange(e, i)}
+            error={error.Genres}
             name="Genres"
-            onAdd={this.handleAddArray}
-            onRemove={this.handleRemoveArray}
+            onAdd={name => this.handleAddArray(name)}
+            onRemove={(name, i) => this.handleRemoveArray(name, i)}
           />
           <FormGroupArray
             type="text"
             label="Periods"
             arrayValues={this.state.value.Periods}
-            onChange={this.handleChange}
+            onChange={(e, i) => this.handleChange(e, i)}
             name="Periods"
-            onAdd={this.handleAddArray}
-            onRemove={this.handleRemoveArray}
+            error={error.Periods}
+            onAdd={name => this.handleAddArray(name)}
+            onRemove={(name, i) => this.handleRemoveArray(name, i)}
           />
-          <FormGroupRating label="Rating" rating={this.state.value.Rating} onRating={this.handleRating} />
+          <FormGroupRating label="Rating" rating={value.Rating} onRating={v => this.handleRating(v)} />
         </form>
       </div>,
       <ModalFooter key="gh_f" onClickSubmit={() => this.handleSubmit()} />

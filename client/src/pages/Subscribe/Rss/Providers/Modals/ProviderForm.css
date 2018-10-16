@@ -1,0 +1,22 @@
+.rss-url-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.rss-url-label > label {
+  font-weight: 700;
+}
+
+.rss-url-label > button {
+  width: 50%;
+  padding: 0;
+}
+
+.rss-url-inputs > .inputs-wrapper {
+  margin-bottom: 10px;
+}
+
+.rss-url-inputs > .inputs-wrapper > .form-control {
+  margin-bottom: 5px;
+}

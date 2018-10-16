@@ -17,6 +17,7 @@ export MuOnlineVersions from './MuOnlineVersions';
 export Music from './Music';
 export PersonalDiary from './PersonalDiary';
 export Projects from './Projects';
+export RssProviders from './RssProviders';
 export StarcraftMaps from './StarcraftMaps';
 export StarcraftCampaigns from './StarcraftCampaigns';
 export StarcraftMods from './StarcraftMods';

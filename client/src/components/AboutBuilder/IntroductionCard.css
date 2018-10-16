@@ -18,18 +18,25 @@
 .introduction-card-info > .info-line > .info-key {
   width: 40%;
   font-weight: 600;
+  font-size: 14px;
 }
 
 .introduction-card-info > .info-line > .info-value {
   width: 60%;
-} 
+  font-size: 14px;
+}
 
 .introduction-card-info > .info-line > input {
   border: none;
+  font-size: 14px;
 }
 
 .introduction-card-info > .info-line > .info-key-input {
   width: 40%;
+}
+
+.introduction-card-info > .info-line > .info-value-input {
+  width: 60%;
 }
 
 .introduction-card-info > .btn {

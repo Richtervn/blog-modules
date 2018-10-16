@@ -105,6 +105,8 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
     wrap(async ({ body, files }, res, next) => {
       const coverUri = commonService.uploadImage(files, './public/Gaming History');
       if (coverUri) body.CoverUri = coverUri;
+      const background = commonService.uploadImage(files, './public/Gaming History/Backgrounds');
+      if (background) body.Background = background;
       const game = await commonService.create(GamingHistory, body, ['Periods', 'Genres', 'Publishers']);
       const gameAbout = await commonService.create(GamingHistoryAbout, { GameId: game._id });
       res.send(game);
@@ -114,8 +116,10 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   router.put(
     '/edit_game',
     wrap(async ({ body, files }, res, next) => {
-      const coverUri = commonService.uploadImage(files, './public/Gaming History');
+      const coverUri = commonService.uploadImage(files, './public/Gaming History', 'Image');
       if (coverUri) body.CoverUri = coverUri;
+      const background = commonService.uploadImage(files, './public/Gaming History/Backgrounds', 'Background');
+      if (background) body.BackgroundUri = background;
       const game = await commonService.update(GamingHistory, body, ['Periods', 'Genres', 'Publishers'], ['CoverUri']);
       res.send(game);
     })
@@ -124,7 +128,7 @@ export default (GamingHistory, GamingHistoryAbout, GamingHistoryGuide, GamingHis
   router.delete(
     '/delete_game/:id',
     wrap(async ({ params: { id } }, res, next) => {
-      const result = await commonService.delete(GamingHistory, id, ['CoverUri']);
+      const result = await commonService.delete(GamingHistory, id, ['CoverUri', 'Background']);
       res.send(result);
     })
   );

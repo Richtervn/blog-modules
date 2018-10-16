@@ -46,7 +46,7 @@ export const editGameSetting = formBody =>
 export const setActiveTab = tab => ({ type: SET_ACTIVE_TAB, tab });
 export const setUserPage = page => (dispatch, getState, socket) => {
   const action = () => ({ type: SET_USER_PAGE, page });
-  if (page === 'web_quest') {
+  if (page === 'web_quest' && getState().ds9799_webQuest.questList) {
     socket.emit('darksteam97d99i/CHECK_POINT_QUEST', 'WQ16');
   }
   dispatch(action());

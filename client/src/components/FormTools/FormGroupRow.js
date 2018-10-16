@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 
-class FormGroupRow extends Component {
+/* Must be a class to use ref */
+export default class FormGroupRow extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      changed: false
+    };
+  }
+
+  handleChange(e) {
+    if (!this.state.changed) {
+      this.setState({ changed: true });
+    }
+    this.props.onChange(e);
+  }
+
   render() {
-    const { name, label, type, placeholder, onChange, value, multiple, accept } = this.props;
+    const { name, label, type, placeholder, value, multiple, accept, error } = this.props;
+    const { changed } = this.state;
     const additionProps = {};
     if (type === 'file') {
       additionProps.onClick = e => (e.target.value = null);
       additionProps.accept = accept;
-      if(multiple) additionProps.multiple = true;
+      if (multiple) additionProps.multiple = true;
     }
     return (
       <div className="form-group row">
@@ -18,10 +35,13 @@ class FormGroupRow extends Component {
           <input
             ref={node => (this.inputNode = node)}
             type={type}
-            className="form-control form-control-sm"
+            className={classnames('form-control form-control-sm', {
+              'is-valid': changed && !error,
+              'is-invalid': error
+            })}
             id={`${name}Input`}
             placeholder={placeholder}
-            onChange={onChange}
+            onChange={e => this.handleChange(e)}
             name={name}
             value={value}
             {...additionProps}
@@ -31,5 +51,3 @@ class FormGroupRow extends Component {
     );
   }
 }
-
-export default FormGroupRow;

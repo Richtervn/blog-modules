@@ -1,5 +1,5 @@
 import { actionCreator } from 'helpers';
-import services from './Subscribe.services';
+import services from './MangaNews.services';
 
 const GET_MANGA_NEWS = 'subscribe/GET_MANGA_NEWS';
 

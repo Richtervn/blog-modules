@@ -72,7 +72,7 @@ class GamingHistory extends Component {
                     ))}
                   </div>
                   <div className="game-publishers">
-                    <i>{game.Publishers.join(', ')}</i>
+                    {game.Publishers.map((publisher, i) => <p key={i}>{publisher}</p>)}
                   </div>
                   <div className="game-rating">
                     <StarRating name={`ghr-${game._id}`} value={game.Rating} />

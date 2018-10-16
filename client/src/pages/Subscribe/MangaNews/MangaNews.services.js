@@ -4,7 +4,7 @@ const { commonGet } = serviceCaller;
 
 export default {
   getMangaNews() {
-    const data = commonGet('subscribe/manga');
+    const data = commonGet('manga_news');
     return data;
   }
 };

@@ -1,0 +1,29 @@
+#rss-providers-toolsbar {
+  display: flex;
+  margin: 10px 10px 0px 10px;
+  flex: 1;
+  justify-content: space-between;
+}
+
+#rss-providers-toolsbar .left-wrapper {
+  display: flex;
+  flex: 1;
+}
+
+#rss-providers-toolsbar .left-wrapper > .btn {
+  height: 35px;
+  width: 35px;
+  padding: 0;
+}
+
+#rss-providers-toolsbar .left-wrapper input {
+  margin-left: 5px;
+}
+
+#rss-providers-toolsbar .form-control {
+  height: 35px;
+}
+
+#rss-providers-toolsbar .search-input {
+  flex: 1;
+}

@@ -3,6 +3,7 @@ import Promise from 'bluebird';
 import { actionCreator } from 'helpers';
 import services from '../Darksteam97d99i.services';
 import { toastStrong, toastSuccess } from 'common/Toast';
+import { startQuestWorker } from './WebQuest/WebQuest.module';
 
 export const userPages = [
   { name: 'Dash Board', route: 'dashboard', icon: 'dashboard' },
@@ -40,8 +41,9 @@ const setCheckedUser = value => ({ type: SET_CHECKED_USER, value });
 export const login = formBody =>
   actionCreator(LOGIN, services.login, {
     payload: { formBody },
-    onBeforeSuccess: async ({ data, socket }) => {
+    onBeforeSuccess: async ({ data, socket, dispatch }) => {
       await socketInitialize(socket, data.memb___id);
+      dispatch(startQuestWorker())
     },
     onAfterSuccess: ({ payload, dispatch }) => {
       window.localStorage.setItem('ds9799User', JSON.stringify(payload.formBody));

@@ -23,8 +23,8 @@ class MangaNews extends Component {
             <section className="site-block" key={siteData.site}>
               <h1>New mangas on site {siteData.site}</h1>
               <div className="manga-list">
-                {siteData.data.map(manga => (
-                  <figure>
+                {siteData.data.map((manga, i) => (
+                  <figure key={i}>
                     <div className="manga-new-card">
                       <a className="img-wrap" href={manga.link} rel="noopener noreferrer" target="_blank">
                         <img src={manga.image} alt={manga.name} />
@@ -34,8 +34,9 @@ class MangaNews extends Component {
                           {manga.name}
                         </a>
                         <div className="list-chapters">
-                          {manga.chapters.map(chapter => (
+                          {manga.chapters.map((chapter, j) => (
                             <a
+                              key={j}
                               className="badge badge-info"
                               href={chapter.link}
                               rel="noopener noreferrer"

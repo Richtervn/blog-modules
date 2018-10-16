@@ -26,7 +26,7 @@ const questIcons = {
 
 class WebQuest extends Component {
   componentWillMount() {
-    this.props.onStartQuestWorker();
+    this.props.onGetQuestList();
   }
 
   render() {

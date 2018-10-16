@@ -6,7 +6,7 @@ export default factories => {
   const { wrap } = factories;
 
   router.get(
-    '/manga',
+    '/',
     wrap(async (req, res, next) => {
       const result = await getMangaNews();
       res.send(result);

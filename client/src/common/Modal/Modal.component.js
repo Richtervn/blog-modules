@@ -79,6 +79,8 @@ import {
 
 import { AccountForm } from 'pages/Archived/Accounts';
 
+import { ProviderForm, DeleteProviderConfirm } from 'pages/Subscribe/Rss';
+
 export default ({ name }) => {
   let additionProps = {};
   switch (name) {
@@ -196,6 +198,10 @@ export default ({ name }) => {
 
       {name === 'AddAccount' && <AccountForm />}
       {name === 'EditAccount' && <AccountForm edit />}
+
+      {name === 'AddRssProvider' && <ProviderForm />}
+      {name === 'EditRssProvider' && <ProviderForm edit />}
+      {name === 'DeleteRssProvider' && <DeleteProviderConfirm />}
     </Modal>
   );
 };
