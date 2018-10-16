@@ -48,11 +48,9 @@
   position: absolute;
   top: 7px;
   left: 6px;
-}
-
-.rss-provider-card .site-favicon img {
-  width: 16px;
-  height: 16px;
+  text-indent: -9999px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .rss-provider-card .info-row {

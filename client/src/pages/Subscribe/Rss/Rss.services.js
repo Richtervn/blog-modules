@@ -22,5 +22,9 @@ export default {
   getFeeds() {
     const data = commonGet('rss/feeds');
     return data;
+  },
+  getFeed(id) {
+    const data = commonGet('rss/feed', [id]);
+    return data;
   }
 };

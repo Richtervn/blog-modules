@@ -11,11 +11,15 @@ export default async (RssProviders, commonService) => {
       if (!provider) {
         return;
       }
-      let result = { provider: provider.Provider, site: provider.Site, feeds: [] };
+      let result = { _id: provider._id, provider: provider.Provider, site: provider.Site, feeds: [] };
       await Promise.all(
         provider.RssUrl.map(async rssUrl => {
-          let feed = await rssParser.parseURL(rssUrl.Url);
-          result.feeds.push({ category: rssUrl.Category, data: feed });
+          try {
+            let feed = await rssParser.parseURL(rssUrl.Url);
+            result.feeds.push({ category: rssUrl.Category, data: feed });
+          } catch (e) {
+            return;
+          }
           return;
         })
       );

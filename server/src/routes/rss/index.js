@@ -1,6 +1,7 @@
 import express from 'express';
 
 import getFeeds from './services/getFeeds';
+import getFeed from './services/getFeed';
 
 export default (RssProviers, factories) => {
   const router = express.Router();
@@ -11,6 +12,14 @@ export default (RssProviers, factories) => {
     wrap(async (req, res, next) => {
       const feeds = await getFeeds(RssProviers, commonService);
       res.send(feeds);
+    })
+  );
+
+  router.get(
+    '/feed/:id',
+    wrap(async ({ params: { id } }, res, next) => {
+      const feed = await getFeed(RssProviers, commonService, id);
+      res.send(feed);
     })
   );
 

@@ -1,0 +1,48 @@
+.rss-feed-item {
+  width: calc(50% - 5px);
+  padding: 10px 10px 25px 10px;
+  margin-bottom: 10px;
+  border: solid 1px rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+.rss-feed-item > .item-title {
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.rss-feed-item > .item-title > .title {
+  font-weight: 500;
+  color: #222;
+}
+
+.rss-feed-item .item-pub-date {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.rss-feed-item .item-content > .corner {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+
+.rss-feed-item .corner > a {
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.rss-feed-item .item-content > .content {
+  display: flex;
+  line-height: 1.2;
+  font-size: 14px;
+  align-items: center;
+}
+
+.rss-feed-item .content img {
+  margin-right: 5px;
+  max-width: 220px;
+}

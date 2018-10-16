@@ -1,0 +1,32 @@
+#rss-providers-list {
+  margin-top: 10px;
+  padding: 10px;
+  border: solid 1px rgba(0, 0, 0, 0.25);
+  height: calc(100vh - 110px);
+  overflow-y: auto;
+  line-height: 1.2;
+}
+
+#rss-providers-list .provider .favicon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  text-indent: -9999px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#rss-providers-list .title-wrap > .title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#rss-providers-list .subscribe-list {
+  margin-bottom: 10px;
+  padding-left: 30px;
+}
+
+#rss-providers-list .subscribe-item > .category {
+  font-size: 14px;
+  font-weight: 500;
+}
