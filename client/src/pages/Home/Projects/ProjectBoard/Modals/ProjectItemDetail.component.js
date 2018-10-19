@@ -234,7 +234,7 @@ class ProjectItemDetail extends Component {
           {value.SubTasks.map((subTask, i) => {
             if (editing) {
               return (
-                <div key={i} className="form-check sub-task-list">
+                <div key={i} className="sub-task-list">
                   <input
                     type="text"
                     value={subTask.Label}

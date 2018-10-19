@@ -1,4 +1,5 @@
 import { Schema } from 'mongoose';
+import { required } from '../validators';
 
 const SubTask = new Schema({
   Label: String,
@@ -19,11 +20,11 @@ const TagColor = new Schema({
 
 const Projects = new Schema(
   {
-    Name: String,
-    Technologies: [String],
+    Name: { type: String, required: required('Name'), unique: true },
+    Technologies: { type: [String], validate: required('Technologies', true) },
     StartTime: Date,
     EndTime: Date,
-    Color: String,
+    Color: { type: String, required: required('Color') },
     TagColor: [TagColor],
     Plans: [ProjectItem],
     Doing: [ProjectItem],

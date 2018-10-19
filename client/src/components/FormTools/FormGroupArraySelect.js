@@ -1,7 +1,8 @@
 import './FormGroupArray.css';
 import React from 'react';
+import classnames from 'classnames';
 
-export default ({ label, arrayValues, name, onChange, onRemove, onAdd, placeholder, options }) => (
+export default ({ label, arrayValues, name, onChange, onRemove, onAdd, placeholder, options, error }) => (
   <div className="form-group row">
     <label className="col-sm-3 col-form-label col-form-label-sm">
       <strong>{label}:</strong>
@@ -10,12 +11,15 @@ export default ({ label, arrayValues, name, onChange, onRemove, onAdd, placehold
       {arrayValues.map((arrayValue, index) => (
         <div key={index} className="form-array-wrapper">
           <select
-            className="form-control form-control-sm"
+            className={classnames('form-control form-control-sm', {
+              'is-valid': arrayValue && !error,
+              'is-invalid': error
+            })}
             onChange={e => onChange(e, index)}
             name={name}
-            value={arrayValue || 'default'}>
+            value={arrayValue || ''}>
             {placeholder && (
-              <option value="default" hidden disabled>
+              <option value="" hidden disabled>
                 {placeholder}
               </option>
             )}

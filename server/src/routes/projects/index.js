@@ -1,6 +1,5 @@
 import express from 'express';
 
-import addProject from './services/addProject';
 import addItem from './services/addItem';
 import editItem from './services/editItem';
 import getAllProjects from './services/getAllProjects';
@@ -31,7 +30,7 @@ export default (Projects, factories) => {
   router.post(
     '/add',
     wrap(async (req, res, next) => {
-      const project = await addProject(Projects, req.body);
+      const project = await commonService.create(Projects, req.body);
       res.send(project);
     })
   );

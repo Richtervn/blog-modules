@@ -1,12 +1,13 @@
 import './FormGroupChromeColor.css';
 import React, { Component } from 'react';
+import classnames from 'classnames';
 
 import { ChromePicker } from 'react-color';
 
 class FormGroupChromeColor extends Component {
   constructor(props) {
     super(props);
-    this.state = { color: this.props.color || '' };
+    this.state = { color: this.props.color || '', changed: false };
     this.handleChangeComplete = this.handleChangeComplete.bind(this);
   }
 
@@ -17,7 +18,7 @@ class FormGroupChromeColor extends Component {
     } else {
       colorString = color.hex;
     }
-    this.setState({ color: colorString });
+    this.setState({ color: colorString, changed: true });
     this.props.onChange({ target: { value: colorString, name: this.props.name } });
   }
 
@@ -28,7 +29,8 @@ class FormGroupChromeColor extends Component {
   }
 
   render() {
-    const { label } = this.props;
+    const { label, error } = this.props;
+    const { changed } = this.state;
 
     return (
       <div className="form-group row">
@@ -36,7 +38,14 @@ class FormGroupChromeColor extends Component {
           <strong>{label}:</strong>
         </label>
         <div className="col-sm-9">
-          <ChromePicker onChangeComplete={color => this.handleChangeComplete(color)} color={this.state.color} />
+          <ChromePicker
+            className={classnames({
+              'is-valid': changed && !error,
+              'is-invalid': error
+            })}
+            onChangeComplete={color => this.handleChangeComplete(color)}
+            color={this.state.color}
+          />
         </div>
       </div>
     );

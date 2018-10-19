@@ -1,3 +1,4 @@
+import _ from 'underscore';
 import moment from 'moment';
 import React, { Component } from 'react';
 
@@ -5,7 +6,7 @@ import { hideModal } from 'common/Modal';
 import { ModalHeader, ModalFooter } from 'components/Modal';
 import { FormGroupRow, FormGroupArray, FormGroupChromeColor } from 'components/FormTools';
 
-import { commonFormChange, commonAddArray, commonRemoveArray } from 'helpers';
+import { commonFormChange, commonAddArray, commonRemoveArray, commonValidate } from 'helpers';
 
 const initialValue = {
   Name: '',
@@ -19,11 +20,7 @@ const initialValue = {
 class ProjectForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: this.initStateValue() };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleAddArray = this.handleAddArray.bind(this);
-    this.handleRemoveArray = this.handleRemoveArray.bind(this);
+    this.state = { value: this.initStateValue(), error: {} };
   }
 
   initStateValue(stateValue) {
@@ -39,8 +36,19 @@ class ProjectForm extends Component {
   }
 
   handleSubmit() {
-    this.props.edit ? this.props.onEditProject(this.state.value) : this.props.onAddProject(this.state.value);
-    this.setState({ value: this.initStateValue() });
+    const { edit, onEditProject, onAddProject } = this.props;
+    const error = commonValidate(this.state.value, ['Name', 'Color'], ['Technologies']);
+    this.setState({ error });
+    if (!_.isEmpty(error)) {
+      return;
+    }
+
+    if (!edit) {
+      onAddProject(this.state.value, () => this.setState({ value: this.initStateValue() }));
+    } else {
+      onEditProject(this.state.value);
+    }
+
     hideModal();
   }
 
@@ -72,45 +80,49 @@ class ProjectForm extends Component {
   }
 
   render() {
+    const { value, error } = this.state;
     return [
-      <ModalHeader key="pj_h" iconUrl="/images/icons/project.png" label={'Add Project'} />,
+      <ModalHeader key="pj_h" iconUrl="/images/icons/project.png" label="Add Project" />,
       <div key="pj_b" className="modal-body">
         <form className="text-right">
           <FormGroupRow
             type="text"
             label="Name"
             name="Name"
-            onChange={this.handleChange}
-            value={this.state.value.Name}
+            error={error.Name}
+            onChange={e => this.handleChange(e)}
+            value={value.Name}
           />
           <FormGroupArray
             type="text"
             label="Technologies"
-            arrayValues={this.state.value.Technologies}
-            onChange={this.handleChange}
+            error={error.Technologies}
+            arrayValues={value.Technologies}
+            onChange={(e, i) => this.handleChange(e, i)}
             name="Technologies"
-            onAdd={this.handleAddArray}
-            onRemove={this.handleRemoveArray}
+            onAdd={name => this.handleAddArray(name)}
+            onRemove={(name, i) => this.handleRemoveArray(name, i)}
           />
           <FormGroupChromeColor
             label="Color"
-            onChange={this.handleChange}
+            onChange={e => this.handleChange(e)}
             name="Color"
-            color={this.state.value.Color}
+            error={error.Color}
+            color={value.Color}
           />
           <FormGroupRow
             type="date"
             label="Start Time"
             name="StartTime"
-            onChange={this.handleChange}
-            value={this.state.value.StartTime}
+            onChange={e => this.handleChange(e)}
+            value={value.StartTime}
           />
           <FormGroupRow
             type="date"
             label="End Time"
             name="EndTime"
-            onChange={this.handleChange}
-            value={this.state.value.EndTime}
+            onChange={e => this.handleChange(e)}
+            value={value.EndTime}
           />
         </form>
       </div>,

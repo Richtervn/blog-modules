@@ -2,6 +2,7 @@ import express from 'express';
 
 import getFeeds from './services/getFeeds';
 import getFeed from './services/getFeed';
+import testRss from './services/testRss';
 
 export default (RssProviers, factories) => {
   const router = express.Router();
@@ -58,6 +59,14 @@ export default (RssProviers, factories) => {
     '/provider/:id',
     wrap(async ({ params: { id } }, res, next) => {
       const result = await commonService.delete(RssProviers, id);
+      res.send(result);
+    })
+  );
+
+  router.get(
+    '/test_rss',
+    wrap(async ({ query }, res, next) => {
+      const result = await testRss(query.url);
       res.send(result);
     })
   );

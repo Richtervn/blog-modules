@@ -61,3 +61,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.project-board-content > .notice-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,8 +1,11 @@
 import './ProjectBoard.css';
+import _ from 'underscore';
 import React, { Component } from 'react';
 
 import { openModal } from 'common/Modal';
 import BoardColumn from './BoardColumn.container';
+
+import { getContrastColor } from 'helpers';
 
 const columns = [
   { key: 'Plans', label: 'Plans' },
@@ -14,7 +17,6 @@ const columns = [
 class ProjectBoard extends Component {
   render() {
     const { project } = this.props;
-
     return (
       <div className="row">
         <div className="project-board-header">
@@ -31,8 +33,15 @@ class ProjectBoard extends Component {
           </div>
         </div>
         <div className="project-board-content" style={{ backgroundColor: project.Color }}>
-          {columns.map((column, i) => <BoardColumn key={i} column={column} items={project[column.key]} />)}
+          {!_.isEmpty(project.TagColor) &&
+            columns.map((column, i) => <BoardColumn key={i} column={column} items={project[column.key]} />)}
+          {_.isEmpty(project.TagColor) && (
+            <div className="notice-wrapper">
+              <h4 style={{ color: getContrastColor(project.Color) }}>Start by adding tags</h4>
+            </div>
+          )}
         </div>
+        )}
       </div>
     );
   }

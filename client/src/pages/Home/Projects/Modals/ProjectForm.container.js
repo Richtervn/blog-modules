@@ -6,8 +6,8 @@ import { addProject, editProject } from '../Projects.module';
 const mapStateToProps = ({ projects }) => ({ project: projects.currentProject });
 
 const mapDispatchToProps = dispatch => ({
-  onAddProject(formBody) {
-    dispatch(addProject(formBody));
+  onAddProject(formBody, callback) {
+    dispatch(addProject(formBody, callback));
   },
   onEditProject(formBody) {
     dispatch(editProject(formBody));

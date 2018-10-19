@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom';
 import { AdminButtons } from 'components/Buttons';
 import { ProgressBar } from 'components/Other';
 
+import { getContrastColor } from 'helpers';
+
 const ProgressBadgesCard = ({
   col,
   label,
@@ -23,7 +25,7 @@ const ProgressBadgesCard = ({
 
   if (color) {
     styles.backgroundColor = color;
-    styles.color = 'white';
+    styles.color = getContrastColor(color);
   }
 
   return (

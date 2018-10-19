@@ -38,8 +38,8 @@ class GamingHistoryForm extends Component {
       'Genres',
       'Periods'
     ]);
+    this.setState({ error });
     if (!_.isEmpty(error)) {
-      this.setState({ error });
       return;
     }
     if (!edit) {

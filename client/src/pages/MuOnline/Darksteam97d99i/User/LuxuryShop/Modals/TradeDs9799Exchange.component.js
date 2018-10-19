@@ -61,7 +61,6 @@ class TradeExchange extends Component {
         count: this.state.value[characterName],
         memb___id: userId
       };
-      console.log(query);
       onTradeExchange(query);
     }
     if (type === 'all') {

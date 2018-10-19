@@ -100,11 +100,14 @@
   border: none;
   width: 95%;
   margin-top: -1px;
+  padding-left: 10px;
+  margin-bottom: 5px;
 }
 
 .sub-task-list > .btn {
   padding: 0 5px;
   margin-top: -4px;
+  margin-left: 5px;
 }
 
 .item-detail-view > .form-check {

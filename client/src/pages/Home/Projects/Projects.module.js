@@ -23,7 +23,13 @@ const MOVE_CARD_TO_LIST = 'projects/MOVE_CARD_TO_LIST';
 export const getProjects = actionCreator(GET_PROJECTS, services.getProjects);
 export const getProjectDetail = id =>
   actionCreator(GET_PROJECT_DETAIL, services.getProjectDetail, { payload: { id } })();
-export const addProject = formBody => actionCreator(ADD_PROJECT, services.addProject, { payload: { formBody } })();
+export const addProject = (formBody, callback) =>
+  actionCreator(ADD_PROJECT, services.addProject, {
+    payload: { formBody },
+    onAfterSuccess() {
+      callback();
+    }
+  })();
 export const editProject = formBody => actionCreator(EDIT_PROJECT, services.editProject, { payload: { formBody } })();
 export const deleteProject = id => actionCreator(DELETE_PROJECT, services.deleteProject, { payload: { id } })();
 export const updateSetting = formBody =>

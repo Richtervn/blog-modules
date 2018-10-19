@@ -8,6 +8,7 @@ import { actionCreator, serviceCaller, serviceWrapper } from './service';
 import {
   colorConverter,
   connectString,
+  getContrastColor,
   getFullName,
   getSimpleName,
   getStarcraftRaces,
@@ -37,6 +38,7 @@ export {
   serviceWrapper,
   colorConverter,
   connectString,
+  getContrastColor,
   getFullName,
   getSimpleName,
   getStarcraftRaces,
