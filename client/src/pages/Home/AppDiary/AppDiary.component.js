@@ -20,6 +20,9 @@ class AppDiary extends Component {
   }
 
   handleAddLog() {
+    if (!this.state.text) {
+      return;
+    }
     this.props.onAddLog({ text: this.state.text });
     this.setState({ text: '' });
   }
