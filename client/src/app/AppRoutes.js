@@ -7,6 +7,7 @@ import { NotFound } from 'pages/NotFound';
 import { MangasReading } from 'pages/Collections/MangasReading';
 import { Music } from 'pages/Collections/Music';
 import { GamingHistory } from 'pages/Collections/GamingHistory';
+import { Gallery } from 'pages/Collections/Gallery';
 
 import { FlashGames } from 'pages/FlashGames';
 import { Home } from 'pages/Home';
@@ -40,6 +41,7 @@ const AppRoutes = () => (
       <Route path="/home/:tab/:subPage?" component={Home} />
       <Route exact path="/mangas_reading" component={MangasReading} />
       <Route exact path="/ended_manga" component={EndedManga} />
+      <Route exact path="/gallery" component={Gallery} />
       <Route exact path="/accounts" component={Accounts} />
       <Route exact path="/icon_chooser" component={IconChooser} />
       <Route exact path="/code_playground" component={CodePlayground} />

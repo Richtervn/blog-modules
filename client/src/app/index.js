@@ -5,6 +5,8 @@ import './fetchIntercept';
 import './global.css';
 import './notifications';
 
+import 'lightbox-react/style.css';
+
 import React, { Component } from 'react';
 import { Router } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';

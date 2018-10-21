@@ -36,7 +36,7 @@ export default {
       await Promise.map(linkFields, field => deleteFile(doc[field]));
     }
     if (!doc) return { message: 'Not found' };
-    await model.remove({ _id: id }).exec();
+    await model.deleteOne({ _id: id });
     return { _id: doc._id };
   },
   getAll: async (model, options, sort) => {

@@ -33,6 +33,9 @@ export default async (MangasReading, factories, notificationHandler) => {
 
       const newChapter = parseFloat(chapter);
       const readingChapter = parseFloat(manga.Chapter);
+      if (isNaN(newChapter)) {
+        return;
+      }
 
       if (newChapter <= readingChapter) {
         return;

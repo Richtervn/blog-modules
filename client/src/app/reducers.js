@@ -6,6 +6,7 @@ import { reducer as flashGames } from 'pages/FlashGames';
 import { reducer as gamingHistory } from 'pages/Collections/GamingHistory';
 import { reducer as mangasReading } from 'pages/Collections/MangasReading';
 import { reducer as music } from 'pages/Collections/Music';
+import { reducer as gallery } from 'pages/Collections/Gallery';
 
 import { reducer as appDiary } from 'pages/Home/AppDiary';
 import { reducer as projects } from 'pages/Home/Projects';
@@ -60,6 +61,7 @@ export default combineReducers({
   ds9799_webShop,
   endedManga,
   flashGames,
+  gallery,
   gamingHistory,
   mangasReading,
   mangaNews,

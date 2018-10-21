@@ -74,6 +74,7 @@ export default async () => {
   ensureDirectoryExist('./public/Account');
   ensureDiabloIIPath();
   ensureDirectoryExist('./public/Flash Games');
+  ensureDirectoryExist('./public/Gallery');
   ensureDirectoryExist('./public/Mangas Reading');
   ensureDirectoryExist('./public/Music');
   ensureDirectoryExist('./public/Mangas Reading');

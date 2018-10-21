@@ -2,6 +2,7 @@ import accountRouter from './account';
 import appDiaryRouter from './appDiary';
 import diabloIIRouter from './diabloII';
 import flashGamesRouter from './flashGames';
+import galleryRouter from './gallery';
 import gamingHistoryRouter from './gamingHistory';
 import mangasReadingRouter from './mangasReading';
 import muOnlineRouter from './muOnline';
@@ -48,6 +49,7 @@ const routes = (models, factories) => {
     app_diary: appDiaryRouter(AppDiary, factories),
     diabloII: diabloIIRouter(DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories),
     flash_games: flashGamesRouter(FlashGames, factories),
+    gallery: galleryRouter(factories),
     gaming_history: gamingHistoryRouter(
       GamingHistory,
       GamingHistoryAbout,
