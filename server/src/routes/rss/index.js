@@ -66,6 +66,7 @@ export default (RssProviers, factories) => {
   router.get(
     '/test_rss',
     wrap(async ({ query }, res, next) => {
+      console.log(query.url);
       const result = await testRss(query.url);
       res.send(result);
     })
