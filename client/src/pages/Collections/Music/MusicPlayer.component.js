@@ -1,12 +1,14 @@
+/* Removed TitleScroller due to heavy load */
+
 import React, { Component } from 'react';
 import ReactPlayer from 'react-player';
-import { TitleScroller } from 'utils';
+// import { TitleScroller } from 'utils';
 
 class MusicPlayer extends Component {
-  constructor(props) {
-    super(props);
-    this.titleScroller = new TitleScroller(1000);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.titleScroller = new TitleScroller(1000);
+  // }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.isPlaying && !this.props.playList) {
@@ -17,25 +19,25 @@ class MusicPlayer extends Component {
       this.player.seekTo(nextProps.seek);
       return;
     }
-    if (!nextProps.isPlaying && this.props.isPlaying) {
-      this.titleScroller.stop();
-      return;
-    }
-    if (!this.props.isPlaying && nextProps.isPlaying) {
-      const isTitleScrolling = this.titleScroller.getStatus();
-      if (!isTitleScrolling) {
-        this.titleScroller.start();
-      }
-    }
+    // if (!nextProps.isPlaying && this.props.isPlaying) {
+    //   this.titleScroller.stop();
+    //   return;
+    // }
+    // if (!this.props.isPlaying && nextProps.isPlaying) {
+    //   const isTitleScrolling = this.titleScroller.getStatus();
+    //   if (!isTitleScrolling) {
+    //     this.titleScroller.start();
+    //   }
+    // }
   }
 
-  onScrollTitle(text) {
-    const { playList, currentSongIndex, isPlaying } = this.props;
-    this.titleScroller.setText(`${playList[currentSongIndex].Artist} - ${playList[currentSongIndex].Name}`);
-    if (isPlaying) {
-      this.titleScroller.start();
-    }
-  }
+  // onScrollTitle(text) {
+  //   const { playList, currentSongIndex, isPlaying } = this.props;
+  //   this.titleScroller.setText(`${playList[currentSongIndex].Artist} - ${playList[currentSongIndex].Name}`);
+  //   if (isPlaying) {
+  //     this.titleScroller.start();
+  //   }
+  // }
 
   render() {
     const {
@@ -63,7 +65,7 @@ class MusicPlayer extends Component {
         onDuration={duration => {
           onSetDuration(duration);
           onGetLyrics();
-          this.onScrollTitle();
+          // this.onScrollTitle();
         }}
         loop={isLoopSong}
       />

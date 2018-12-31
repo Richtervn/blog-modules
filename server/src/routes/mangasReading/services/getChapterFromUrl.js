@@ -53,7 +53,9 @@ export default url => {
       chapter = urlFrags[2].split('-')[1];
       break;
     }
+    // Ex: domain/aka-chap-3
     case 'mangak.info':
+    case 'truyentranh869.com':
     case 'truyentranhtam.com':
     case 'truyentranhth.net':
     case 'truyentranh8.org':

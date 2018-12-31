@@ -4,16 +4,16 @@
   "description": "my-blog",
   "main": "index.js",
   "scripts": {
-    "client:dev": "cd client && npm run start",
-    "server:dev": "cd server && npm run start",
-    "client:build": "cd client && npm run build",
-    "server:build": "cd server && npm run build",
-    "client:serve": "cd client && serve -s build",
-    "server:serve": "cd server && npm run serve",
-    "build": "start npm run client:build && start npm run server:build",
-    "serve": "start npm run client:serve && start npm run server:serve",
-    "dev": "start npm run client:dev && start npm run server:dev",
-    "start": "npm run client:build && npm run server:build && npm run serve"
+    "dev:client": "cd client && npm run start",
+    "dev:server": "cd server && npm run start",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "serve:client": "cd client && serve -s build",
+    "serve:server": "cd server && npm run serve",
+    "build": "start npm run build:client && start npm run build:server",
+    "serve": "start npm run serve:client && start npm run serve:server",
+    "dev": "start npm run dev:client && start npm run dev:server",
+    "start": "npm run build:client && npm run build:server && npm run serve"
   },
   "prettier": {
     "printWidth": 120,

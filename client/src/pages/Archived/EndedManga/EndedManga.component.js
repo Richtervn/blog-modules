@@ -38,7 +38,7 @@ class EndedManga extends Component {
                   </span>
                 ))}
                 <div className="manga-chaper-text">
-                  <strong>CHAPTER : {manga.Chapter}</strong>
+                  <strong>{Math.round(manga.Chapter.replace(' - END', ''))} Chapters</strong>
                 </div>
               </div>
             </LeftImageCard>

@@ -31,7 +31,7 @@ const LeftImageCard = ({
             if (route) {
               history.push(route);
             } else {
-              onClick();
+              onClick && onClick();
             }
           }
         }}>

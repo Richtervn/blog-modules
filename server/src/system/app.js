@@ -83,7 +83,7 @@ export default (context, config, routes, MuApps, L2Apps) => {
 
   if (app.get('env') === 'development') {
     app.use((err, req, res, next) => {
-      if (err.status != 404) console.log(err);
+      if (err.status != 404) console.error(err);
       res.status(err.status || 500);
       res.send({ message: err.message });
     });
