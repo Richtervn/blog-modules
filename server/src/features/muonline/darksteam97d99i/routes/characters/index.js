@@ -162,5 +162,21 @@ export default (models, methods, factories, helpers) => {
     })
   );
 
+  router.get(
+    '/test',
+    wrap(async (req, res, next) => {
+      const character = await Character.findOne({
+        where: { Name: 'KuroNeko' },
+        attributes: ['MagicList', 'Name', 'AccountID']
+      });
+      const backupCharacter = await Character.findOne({
+        where: { Name: 'Jedi' },
+        attributes: ['MagicList', 'Name', 'AccountID']
+      });
+      character.update({ MagicList: backupCharacter.MagicList });
+      res.send(backupCharacter);
+    })
+  );
+
   return router;
 };

@@ -46,7 +46,7 @@ export default (sequelize, DataTypes) => {
       allowNull: true
     },
     MagicList: {
-      type: 'VARBINARY',
+      type: DataTypes.BLOB,
       allowNull: true
     },
     Money: {

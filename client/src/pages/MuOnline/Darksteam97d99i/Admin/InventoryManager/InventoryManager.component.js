@@ -164,7 +164,7 @@ class InventoryManager extends Component {
                 exc6={exc6}
                 onChangeCheck={name => this.setState({ [name]: !this.state[name] })}
                 onSelectCategory={cat => this.setState({ category: cat })}
-                onChangeLevel={l => this.setState({ level: l })}
+                onChangeLevel={e => this.setState({ [e.target.name]: e.target.value })}
                 onSelectItem={id => this.setState({ itemId: id })}
               />
               <div className="feature">

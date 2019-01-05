@@ -33,7 +33,7 @@ export default ({
       onChangeCheck={name => onChangeCheck(name)}
       option={option}
       level={level}
-      onChangeLevel={e => onChangeLevel(e.target.value)}
+      onChangeLevel={e => onChangeLevel(e)}
     />
     <ExcItemOptions
       exc={{ exc1, exc2, exc3, exc4, exc5, exc6 }}
