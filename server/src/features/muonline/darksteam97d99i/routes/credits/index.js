@@ -8,7 +8,10 @@ export default (models, methods, factories, helpers) => {
   router.get(
     '/user_logs/:id',
     wrap(async ({ params: { id } }, res, next) => {
-      const logs = await commonSequelize.getAll(UserCreditsLog, { memb___id: id });
+      const logs = await commonSequelize.getAll(UserCreditsLog, null, {
+        where: { memb___id: id },
+        order: [['createdAt', 'DESC']]
+      });
       res.send(logs);
     })
   );

@@ -67,7 +67,10 @@ export default (models, methods, factories, helpers) => {
   router.get(
     '/banking_log/:id',
     wrap(async ({ params: { id } }, res, next) => {
-      const logs = await commonSequelize.getAll(UserBankingLog, { memb___id: id });
+      const logs = await commonSequelize.getAll(UserBankingLog, null, {
+        where: { memb___id: id },
+        order: [['createdAt', 'DESC']]
+      });
       res.send(logs);
     })
   );
@@ -75,7 +78,10 @@ export default (models, methods, factories, helpers) => {
   router.get(
     '/credits_log/:id',
     wrap(async ({ params: { id } }, res, next) => {
-      const logs = await commonSequelize.getAll(UserCreditsLog, { memb___id: id });
+      const logs = await commonSequelize.getAll(UserCreditsLog, null, {
+        where: { memb___id: id },
+        order: [['createdAt', 'DESC']]
+      });
       res.send(logs);
     })
   );

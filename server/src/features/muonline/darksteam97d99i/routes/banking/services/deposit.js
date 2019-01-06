@@ -18,7 +18,7 @@ export default async (models, query, GameSetting, bankProfitLog) => {
   banking.zen_balance = parseInt(banking.zen_balance);
   banking.loan_money = parseInt(banking.loan_money);
 
-  if (!isPercentage && amount < BANKING_DEPOSIT_FEE) {
+  if (!isPercentage && amount < BANKING_DEPOSIT_FEE.charge) {
     return { message: `Deposit amount is not enough to pay the fee` };
   }
 
@@ -27,11 +27,15 @@ export default async (models, query, GameSetting, bankProfitLog) => {
   }
 
   let charged = 0;
-  charged = isPercentage ? amount * charge : charge;
+  if (isPercentage) {
+    charged = amount * charge;
+  } else {
+    charged = charge;
+  }
 
   let realDeposit = amount - charged;
   let updateBankForm = {};
-  
+
   let indeptPaid = null;
   let bankingLogForm = {
     memb___id: character.AccountID,
@@ -45,7 +49,7 @@ export default async (models, query, GameSetting, bankProfitLog) => {
     bankingLogForm.indept_type = 'minus';
     if (banking.loan_money <= realDeposit) {
       updateBankForm.loan_money = 0;
-      updateBankForm.zen_balance = (realDeposit - banking.loan_money).toString();
+      updateBankForm.zen_balance = (realDeposit - banking.loan_money + banking.zen_balance).toString();
       indeptPaid = banking.loan_money;
       bankingLogForm.indept = banking.loan_money;
     } else {

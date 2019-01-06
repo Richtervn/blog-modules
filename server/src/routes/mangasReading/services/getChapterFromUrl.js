@@ -53,11 +53,18 @@ export default url => {
       chapter = urlFrags[2].split('-')[1];
       break;
     }
+    // Ex: domain/aka/truyen-tranh-aka-chap-3.html
+    case 'truyentranhth.net': {
+      let infoUrlFrags = urlFrags[1].split('-chap-');
+      mangaAka = urlFragToAka(infoUrlFrags[0].replace('truyen-tranh-', ''));
+      chapter = infoUrlFrags[1].replace('.html', '');
+      break;
+    }
+
     // Ex: domain/aka-chap-3
     case 'mangak.info':
     case 'truyentranh869.com':
     case 'truyentranhtam.com':
-    case 'truyentranhth.net':
     case 'truyentranh8.org':
     case 'truyentranh8.net': {
       let infoUrlFrags = urlFrags[1].split('-chap-');
