@@ -29,6 +29,10 @@
   right: 10px;
 }
 
+.rss-feed-item .readmore {
+  font-style: italic;
+}
+
 .rss-feed-item .corner > a {
   margin-left: 10px;
   font-size: 14px;

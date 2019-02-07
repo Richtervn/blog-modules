@@ -13,7 +13,7 @@ export default ({ item }) => (
       <div className="content" dangerouslySetInnerHTML={{ __html: item.content }} />
       <div className="corner">
         <div className="item-pub-date">{moment(item.isoDate).format('DD/MM/YYYY HH:mm:ss')}</div>
-        <a href={item.link} target="_blank" rel="noopener noreferrer" className="title">
+        <a href={item.link} target="_blank" rel="noopener noreferrer" className="readmore">
           Read more
         </a>
       </div>
