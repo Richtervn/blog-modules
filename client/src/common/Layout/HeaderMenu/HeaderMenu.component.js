@@ -20,6 +20,7 @@ const HeaderRowForm = ({
 
   return (
     <form
+      autocomplete="off"
       className="header-menu-input-wrapper"
       onSubmit={e => {
         e.preventDefault();

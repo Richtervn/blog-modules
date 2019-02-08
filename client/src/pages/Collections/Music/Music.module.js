@@ -156,6 +156,9 @@ export default (state = initialState, action) => {
 
     case TOGGLE_PLAY:
       state.isPlaying = !state.isPlaying;
+      if (!state.playList) {
+        return { ...state };
+      }
       return { ...ensureMediaState(state) };
 
     case TOGGLE_LOOP_LIST: {
