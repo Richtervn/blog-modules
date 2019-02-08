@@ -1,13 +1,13 @@
 import './BasicItemOptions.css';
 import React from 'react';
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 const optLevel = [0, 1, 2, 3, 4, 5, 6, 7];
 const itemLevel = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 export default ({ luck, skill, onChangeCheck, option, level, onChangeLevel, customClass = 'default' }) => {
   return (
-    <div className={classNames('ds9799-basic-item-opts', customClass)}>
+    <div className={classnames('ds9799-basic-item-opts', customClass)}>
       <div className="skill-luck">
         <label className="label">
           <input type="checkbox" className="check-box" onChange={() => onChangeCheck('luck')} checked={luck} />
