@@ -82,6 +82,20 @@ const initialState = {
   sort: {}
 };
 
+const ensureMediaState = state => {
+  if (state.isLoopSong) {
+    state.canNextSong = false;
+    state.canPreviousSong = false;
+  } else if (state.isLoopList) {
+    state.canNextSong = true;
+    state.canPreviousSong = true;
+  } else {
+    state.canNextSong = state.currentSongIndex < state.playList.length;
+    state.canPreviousSong = state.currentSongIndex > 0;
+  }
+  return state;
+};
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case `${ADD_SONGS}_START`:
@@ -123,70 +137,34 @@ export default (state = initialState, action) => {
       return { ...state, songs: action.payload.slice(0) };
 
     case NEXT_SONG: {
-      const stateWillChange = {};
-
-      if (!state.isLoopList) {
-        if (state.currentSongIndex + 1 >= state.playList.length) {
-          stateWillChange.canNextSong = false;
-        } else {
-          stateWillChange.currentSongIndex = state.currentSongIndex + 1;
-        }
+      if (state.isLoopList && state.currentSongIndex >= state.playList.length - 1) {
+        state.currentSongIndex = 0;
       } else {
-        if (state.currentSongIndex + 1 >= state.playList.length) {
-          stateWillChange.currentSongIndex = 0;
-        } else {
-          stateWillChange.currentSongIndex = state.currentSongIndex + 1;
-        }
+        state.currentSongIndex += 1;
       }
-      stateWillChange.canPreviousSong = true;
-      return { ...state, ...stateWillChange };
+      return { ...ensureMediaState(state) };
     }
 
     case PREVIOUS_SONG: {
-      const stateWillChange = {};
-      if (!state.isLoopList && state.currentSongIndex - 1 <= 0) {
-        stateWillChange.canPreviousSong = false;
-      }
-      if (!state.isLoopList) {
-        stateWillChange.currentSongIndex = state.currentSongIndex - 1;
+      if (state.isLoopList && state.currentSongIndex <= 0) {
+        state.currentSongIndex = state.playList.length - 1;
       } else {
-        stateWillChange.currentSongIndex = state.playList.length - 1;
+        state.currentSongIndex -= 1;
       }
-      return { ...state, ...stateWillChange };
+      return { ...ensureMediaState(state) };
     }
 
     case TOGGLE_PLAY:
-      return { ...state, isPlaying: !state.isPlaying };
+      state.isPlaying = !state.isPlaying;
+      return { ...ensureMediaState(state) };
+
     case TOGGLE_LOOP_LIST: {
-      const stateWillChange = {};
-      if (!state.isLoopList === true) {
-        stateWillChange.isLoopList = true;
-        stateWillChange.canNextSong = true;
-        stateWillChange.canPreviousSong = true;
-      } else {
-        stateWillChange.isLoopList = false;
-        stateWillChange.canNextSong = state.currentSongIndex + 1 <= state.playList.length - 1;
-        stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
-      }
-      return { ...state, ...stateWillChange };
+      state.isLoopList = !state.isLoopList;
+      return { ...ensureMediaState(state) };
     }
     case TOGGLE_LOOP_SONG: {
-      const stateWillChange = {};
-      if (!state.isLoopSong === true) {
-        stateWillChange.isLoopSong = true;
-        stateWillChange.canNextSong = false;
-        stateWillChange.canPreviousSong = false;
-      } else {
-        stateWillChange.isLoopSong = false;
-        if (!state.isLoopList) {
-          stateWillChange.canNextSong = state.currentSongIndex + 1 <= state.playList.length - 1;
-          stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
-        } else {
-          stateWillChange.canNextSong = true;
-          stateWillChange.canPreviousSong = true;
-        }
-      }
-      return { ...state, ...stateWillChange };
+      state.isLoopSong = !state.isLoopSong;
+      return { ...ensureMediaState(state) };
     }
     case SET_PLAYED_TIME:
       return { ...state, playedTime: action.playedTime };
@@ -199,106 +177,58 @@ export default (state = initialState, action) => {
 
     case SHUFFLE_LIST:
       shuffle(state.playList);
+      state.currentSongIndex = 0;
       toastSuccess('Playlist has been rearranged');
-      return { ...state, playList: state.playList.slice(0), currentSongIndex: 0 };
+      const nextState = ensureMediaState(state);
+      return { ...nextState, playList: nextState.playList.slice(0) };
 
     case PLAY_END: {
-      const stateWillChange = {};
-      if (state.isLoopSong) {
-        stateWillChange.currentSongIndex = state.currentSongIndex;
+      if (state.isLoopList && state.currentSongIndex >= state.playList.length - 1) {
+        state.currentSongIndex = 0;
+      } else if (state.currentSongIndex >= state.playList.length - 1) {
+        state.isPlaying = false;
       } else {
-        if (!state.isLoopList) {
-          if (state.currentSongIndex + 1 >= state.playList.length) {
-            stateWillChange.canNextSong = false;
-            stateWillChange.isPlaying = false;
-          } else {
-            stateWillChange.canNextSong = true;
-            stateWillChange.canPreviousSong = state.currentSongIndex > 0;
-            stateWillChange.currentSongIndex = state.currentSongIndex + 1;
-          }
-
-        } else {
-          stateWillChange.canNextSong = true;
-          stateWillChange.canPreviousSong = true;
-          if (state.currentSongIndex + 1 >= state.playList.length) {
-            stateWillChange.currentSongIndex = 0;
-          } else {
-            stateWillChange.currentSongIndex = state.currentSongIndex + 1;
-          }
-        }
+        state.currentSongIndex += 1;
       }
-      return { ...state, ...stateWillChange };
+      return { ...ensureMediaState(state) };
     }
 
     case REMOVE_FROM_LIST: {
-      const stateWillChange = {};
       state.playList = state.playList.filter(song => song._id !== action.songId);
-      if (!state.isLoopList) {
-        stateWillChange.canNextSong = state.currentSongIndex + 1 <= state.playList.length;
-        stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
-      } else {
-        stateWillChange.canNextSong = true;
-        stateWillChange.canPreviousSong = true;
-      }
-      return { ...state, ...stateWillChange };
+      return { ...ensureMediaState(state) };
     }
 
     case ADD_TO_LIST: {
-      const stateWillChange = {};
       const songList = _.pluck(state.playList, '_id');
       action.songs.forEach(song => {
         if (!_.contains(songList, song._id)) {
           state.playList.push(song);
         }
       });
-      if (!state.isLoopList) {
-        stateWillChange.canNextSong = state.currentSongIndex + 1 <= state.playList.length;
-        stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
-      } else {
-        stateWillChange.canNextSong = true;
-        stateWillChange.canPreviousSong = true;
-      }
-      stateWillChange.playList = state.playList.slice(0);
-      return { ...state, ...stateWillChange };
+      return { ...ensureMediaState(state) };
     }
 
     case `${DELETE_SONGS}_SUCCESS`: {
-      const stateWillChange = {};
-      stateWillChange.playList = state.playList.filter(song => !_.contains(action.payload.ids, song._id));
-      stateWillChange.songs = state.songs.filter(song => !_.contains(action.payload.ids, song._id));
-      if (!state.isLoopList) {
-        stateWillChange.canNextSong = state.currentSongIndex + 1 <= stateWillChange.playList.length;
-        stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
-      } else {
-        stateWillChange.canNextSong = stateWillChange.playList.length > 0;
-        stateWillChange.canPreviousSong = stateWillChange.playList.length > 0;
-      }
+      state.playList = state.playList.filter(song => !_.contains(action.payload.ids, song._id));
+      state.songs = state.songs.filter(song => !_.contains(action.payload.ids, song._id));
+      const nextState = ensureMediaState(state);
       return {
-        ...state,
-        ...stateWillChange,
-        playList: stateWillChange.playList.slice(0),
-        songs: stateWillChange.songs.slice(0)
+        ...nextState,
+        playList: nextState.playList.slice(0),
+        songs: nextState.songs.slice(0)
       };
     }
 
     case PLAY_SONGS: {
-      const stateWillChange = {};
       const willPlaySongIds = _.pluck(action.songs, '_id');
-      stateWillChange.playList = state.playList.filter(song => !_.contains(willPlaySongIds, song._id));
-      const songIndex = stateWillChange.playList.length;
-      stateWillChange.playList = stateWillChange.playList.concat(action.songs);
-      if (!state.isLoopList) {
-        stateWillChange.canNextSong = state.currentSongIndex + 1 <= stateWillChange.playList.length;
-        stateWillChange.canPreviousSong = state.currentSongIndex - 1 >= 0;
-      } else {
-        stateWillChange.canNextSong = stateWillChange.playList.length > 0;
-        stateWillChange.canPreviousSong = stateWillChange.playList.length > 0;
-      }
+      state.playList = state.playList.filter(song => !_.contains(willPlaySongIds, song._id));
+      const songIndex = state.playList.length;
+      state.playList = state.playList.concat(action.songs);
+      const nextState = ensureMediaState(state);
       return {
-        ...state,
-        ...stateWillChange,
+        ...nextState,
         currentSongIndex: songIndex,
-        playList: stateWillChange.playList.slice(0),
+        playList: nextState.playList.slice(0),
         isPlaying: true
       };
     }
