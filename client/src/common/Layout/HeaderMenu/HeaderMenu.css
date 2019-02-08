@@ -21,11 +21,7 @@
 
 .header-menu-input-wrapper {
   display: flex;
-}
-
-.header-menu-input-wrapper-next {
-  display: flex;
-  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .header-menu-input {
@@ -37,8 +33,4 @@
   line-height: 1.1;
   padding: 0;
   width: 35px;
-}
-
-.header-menu-mini-player {
-  margin-top: 10px;
 }
