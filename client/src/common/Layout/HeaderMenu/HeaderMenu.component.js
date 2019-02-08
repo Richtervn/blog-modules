@@ -1,5 +1,5 @@
 import './HeaderMenu.css';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import { validators } from 'helpers/form';
 
@@ -55,20 +55,21 @@ const HeaderRowForm = ({
 };
 
 export default ({ isShow, onQuickUpdateManga, onCrawlManga, onSaveNewMangaChapter, onAddAppDiary, onSelfHide }) => {
-  let wrapper = useRef(null);
+  let wrapper;
 
   const [mangaUrl, setMangaUrl] = useState('');
   const [crawlMangaUrl, setCrawlMangaUrl] = useState('');
   const [newChapterUrl, setNewChapterUrl] = useState('');
   const [appDiary, setAppDiary] = useState('');
 
+  const handleSelfHide = event => {
+    if (wrapper && !wrapper.contains(event.target)) {
+      event.stopImmediatePropagation();
+      onSelfHide();
+    }
+  };
+
   useEffect(() => {
-    const handleSelfHide = event => {
-      if (wrapper && !wrapper.contains(event.target)) {
-        event.stopImmediatePropagation();
-        onSelfHide();
-      }
-    };
     if (isShow) {
       document.addEventListener('click', handleSelfHide);
     }
