@@ -23,10 +23,5 @@ export default factories => {
     })
   );
 
-  // router.get('/test', wrap(async(req, res, next) => {
-  //   
-  //   res.send(data);
-  // }))
-
   return router;
 };

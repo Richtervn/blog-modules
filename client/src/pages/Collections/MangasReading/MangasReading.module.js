@@ -1,6 +1,7 @@
 import React from 'react';
 import { actionCreator } from 'helpers';
 import { toastError, toastSuccess } from 'common/Toast';
+import { openModal } from 'common/Modal';
 
 import services from './MangasReading.services';
 
@@ -13,13 +14,17 @@ const SEARCH_MANGA = 'mangasReading/SEARCH_MANGA';
 const SORT_MANGA = 'mangasReading/SORT_MANGA';
 const CRAWL_MANGA = 'mangasReading/CRAWL_MANGA';
 const MANUAL_SAVE_NEW_CHAPTER = 'mangasReading/MANUAL_SAVE_NEW_CHAPTER';
+const START_WORKER_LISTENER = 'mangasReading/START_WORKER_LISTENER';
+const CONFIRM_UNSAVED_MANGA = 'mangasReading/CONFIRM_UNSAVED_MANGA';
 
 const SET_FOCUS_MANGA = 'mangasReading/SET_FOCUS_MANGA';
 const SET_ACTIVE_VIEW = 'mangasReading/SET_ACTIVE_VIEW';
+const SET_UNSAVED_MANGAS = 'mangasReading/SET_UNSAVED_MANGAS';
 const CHANGE_ACTIVE_TOOL = 'mangasReading/CHANGE_ACTIVE_TOOL';
 const CHANGE_SEARCH_OPTION = 'mangasReading/CHANGE_SEARCH_OPTION';
 const CHANGE_SEARCH_VALUE = 'mangasReading/CHANGE_SEARCH_VALUE';
 
+export const setUnsavedMangas = unsaved => ({ type: SET_UNSAVED_MANGAS, unsaved });
 export const setFocusManga = id => ({ type: SET_FOCUS_MANGA, id });
 export const setActiveView = name => ({ type: SET_ACTIVE_VIEW, name });
 export const changeActiveTool = tool => ({ type: CHANGE_ACTIVE_TOOL, tool });
@@ -44,6 +49,24 @@ export const sortManga = query => actionCreator(SORT_MANGA, services.sort, { pay
 export const getMangas = () => actionCreator(GET_MANGAS, services.getMangas)();
 export const crawlManga = formBody => actionCreator(CRAWL_MANGA, services.crawl, { payload: { formBody } })();
 
+export const startWorkerListener = () =>
+  actionCreator(START_WORKER_LISTENER, (payload, { socket, dispatch }) => {
+    socket.on('appManga/unsaved', unsavedMangas => {
+      dispatch(setUnsavedMangas(unsavedMangas));
+      openModal('UnsavedMangas');
+    });
+  })();
+
+export const confirmUnsavedMangas = formBody =>
+  actionCreator(CONFIRM_UNSAVED_MANGA, services.confirmUnsavedMangas, {
+    payload: { formBody },
+    onAfterSuccess({ data, dispatch }) {
+      if (formBody.saved) {
+        dispatch({ type: `${ADD_MANGA}_SUCCESS`, payload: data });
+      }
+    }
+  })();
+
 const initialState = {
   mangas: null,
   focusManga: null,
@@ -54,7 +77,8 @@ const initialState = {
     value: ''
   },
   noSearchResult: false,
-  crawlManga: {}
+  crawlManga: {},
+  unsaved: []
 };
 
 export default (state = initialState, action) => {
@@ -187,6 +211,8 @@ export default (state = initialState, action) => {
       return { ...state, search: { option: action.option, value: '' } };
     case CHANGE_SEARCH_VALUE:
       return { ...state, search: { ...state.search, value: action.value } };
+    case SET_UNSAVED_MANGAS:
+      return { ...state, unsaved: action.unsaved };
 
     case `${SEARCH_MANGA}_FAIL`:
       toastError('No manga found');

@@ -13,6 +13,8 @@ import {
 
 import { MusicForm } from 'pages/Collections/Music';
 
+import { UnsavedMangas } from 'pages/Collections/MangasReading';
+
 import {
   GamingHistoryGuideDeleteConfirm,
   GamingHistoryGuideForm,
@@ -123,6 +125,8 @@ export default ({ name }) => {
       {name === 'ProjectItemDetail' && <ProjectItemDetail />}
 
       {name === 'AddSong' && <MusicForm />}
+
+      {name === 'UnsavedMangas' && <UnsavedMangas />}
 
       {name === 'AddGamingHistory' && <GamingHistoryForm />}
       {name === 'EditGamingHistory' && <GamingHistoryForm edit />}

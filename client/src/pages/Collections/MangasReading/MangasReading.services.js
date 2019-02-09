@@ -38,5 +38,9 @@ export default {
   manualSaveNewChapter({ url }) {
     const data = commonPut('mangas_reading/manual_save_new_chapter', url);
     return data;
+  },
+  confirmUnsavedMangas({ formBody }) {
+    const data = commonPost('mangas_reading/confirm_unsaved', formBody);
+    return data;
   }
 };

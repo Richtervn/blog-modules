@@ -4,6 +4,7 @@ class NotificationHandler {
     this.clientConnected = false;
 
     io.on('connection', client => {
+      client.join('worker');
       if (!this.clientConnected) {
         this.clientConnected = true;
         this.client = client;

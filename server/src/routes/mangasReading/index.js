@@ -3,14 +3,17 @@ import Promise from 'bluebird';
 import moment from 'moment';
 
 import arrangeManga from './services/arrangeManga';
-import crawl from './services/crawl';
+import crawl, { sites as crawlableSites } from './services/crawl';
 import quickUpdate from './services/quickUpdate';
 import sortManga from './services/sortManga';
 import manualSaveNewChapter from './services/manualSaveNewChapter';
+import saveHistory from './services/saveHistory';
 
-export default (MangasReading, factories) => {
+import { sites as subscriblableSites } from './services/getChapterFromUrl';
+
+export default (MangasReading, factories, socket) => {
   const router = express.Router();
-  const { wrap, commonService } = factories;
+  const { wrap, commonService, deleteFile } = factories;
 
   router.post(
     '/add_manga',
@@ -86,12 +89,44 @@ export default (MangasReading, factories) => {
   router.post(
     '/crawl',
     wrap(async ({ body }, res, next) => {
-      const form = await crawl(MangasReading, body);
+      const form = await crawl(body.url);
       if (!form) {
         return res.send({ message: 'Site is not supported yet' });
       }
       form.Status = 'OnGoing';
       const manga = await commonService.create(MangasReading, form, ['Aka', 'Authors', 'Genre']);
+      res.send(manga);
+    })
+  );
+
+  router.get(
+    '/supported_sites',
+    wrap(async (req, res, next) => {
+      res.send({
+        crawlable: crawlableSites,
+        subscribe: subscriblableSites
+      });
+    })
+  );
+
+  router.post(
+    '/history',
+    wrap(async ({ body }, res, next) => {
+      await saveHistory(body, MangasReading, socket);
+      res.sendStatus(200);
+    })
+  );
+
+  router.post(
+    '/confirm_unsaved',
+    wrap(async ({ body }, res, next) => {
+      const { maxChapter, maxChapterUrl, saved, ...formData } = body;
+      if (!saved) {
+        await deleteFile(body.CoverUri);
+        return res.send(body);
+      }
+      formData.Chapter = maxChapter;
+      const manga = await commonService.create(MangasReading, formData);
       res.send(manga);
     })
   );

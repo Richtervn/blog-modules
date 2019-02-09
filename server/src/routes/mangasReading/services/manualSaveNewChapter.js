@@ -1,7 +1,11 @@
 import getChapterFromUrl from './getChapterFromUrl';
 
 export default async (MangasReading, body) => {
-  const { mangaAka, chapter } = getChapterFromUrl(body.url);
+  const { mangaAka, chapter, message } = getChapterFromUrl(body.url);
+  if (message) {
+    return { message };
+  }
+
   let manga = await MangasReading.findOne({ Aka: mangaAka });
   if (!manga) return { message: 'This manga is not added to tracking' };
   if (parseFloat(chapter) <= parseFloat(manga.Chapter)) {

@@ -1,4 +1,12 @@
-import reducer, { quickUpdate, GET_MANGAS, getMangas, crawlManga, manualSaveNewChapter } from './MangasReading.module';
+import reducer, {
+  quickUpdate,
+  GET_MANGAS,
+  getMangas,
+  crawlManga,
+  manualSaveNewChapter,
+  startWorkerListener
+} from './MangasReading.module';
+import { UnsavedMangas } from './Modals';
 import MangasReading from './MangasReading.container';
 import ControlBar from './ControlBar.component';
 import MangasList from './MangasList.component';
@@ -12,5 +20,7 @@ export {
   quickUpdate,
   getMangas,
   crawlManga,
-  manualSaveNewChapter
+  manualSaveNewChapter,
+  startWorkerListener,
+  UnsavedMangas
 };

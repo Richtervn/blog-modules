@@ -27,7 +27,7 @@ export default ({
       onSetDefaultShowGroup(currentPage.activeGroup);
       onToggleMenuGroup(currentPage.activeGroup);
     }
-  }, [menuTree]);
+  });
 
   return <div className="page">{children}</div>;
 };

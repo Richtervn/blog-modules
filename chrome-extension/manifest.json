@@ -1,0 +1,14 @@
+{
+  "name": "Blog Module Extension",
+  "description": "Extension for Blog Module",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "persistent": false,
+    "scripts": ["script.js"]
+  },
+  "permissions": ["http://localhost:3000/*", "history"]
+}

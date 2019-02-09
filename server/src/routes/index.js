@@ -16,7 +16,7 @@ import systemRouter from './system';
 import toolsRouter from './tools';
 import yugiohPocRouter from './yugiohPoc';
 
-const routes = (models, factories) => {
+const routes = (models, factories, socket) => {
   const {
     Account,
     AppDiary,
@@ -58,7 +58,7 @@ const routes = (models, factories) => {
       factories
     ),
     manga_news: mangaNewsRouter(factories),
-    mangas_reading: mangasReadingRouter(MangasReading, factories),
+    mangas_reading: mangasReadingRouter(MangasReading, factories, socket),
     mu_online: muOnlineRouter(MuOnlineCharacters, MuOnlineGuides, MuOnlineTools, MuOnlineVersions, factories),
     music: musicRouter(Music, factories),
     profile: profileRouter(factories),
@@ -76,7 +76,7 @@ export default {
   description: 'Provide Routes',
   services: {
     routes: {
-      require: ['models', 'factories'],
+      require: ['models', 'factories', 'socket'],
       func: routes
     }
   },
