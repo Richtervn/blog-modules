@@ -1,6 +1,6 @@
 {
   "name": "blog-modules-client",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "private": true,
   "dependencies": {
     "bluebird": "^3.5.1",
