@@ -3,6 +3,7 @@ import Crawler from 'crawler';
 import moment from 'moment';
 
 import downloadImg from '../helpers/downloadImg';
+import urlFragToAka from '../helpers/urlFragToAka';
 
 export default url => {
   const crawler = new Crawler({ maxConnections: 1 });

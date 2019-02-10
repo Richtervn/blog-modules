@@ -40,7 +40,17 @@ export const changeSearchValue = value => ({
 export const addManga = formBody => actionCreator(ADD_MANGA, services.add, { payload: { formBody } })();
 export const editManga = formBody => actionCreator(UPDATE_MANGA, services.edit, { payload: { formBody } })();
 export const deleteManga = id => actionCreator(DELETE_MANGA, services.delete, { payload: { id } })();
-export const quickUpdate = url => actionCreator(QUICK_UPDATE, services.quickUpdate, { payload: { url } })();
+export const quickUpdate = url =>
+  actionCreator(QUICK_UPDATE, services.quickUpdate, {
+    payload: { url },
+    onAfterSuccess({ payload }) {
+      toastSuccess(() => (
+        <p>
+          Updated<strong>{` ${payload.Name} `}</strong>to chapter {payload.Chapter}
+        </p>
+      ));
+    }
+  })();
 export const manualSaveNewChapter = url =>
   actionCreator(MANUAL_SAVE_NEW_CHAPTER, services.manualSaveNewChapter, { payload: { url } })();
 export const searchManga = query =>
@@ -116,11 +126,6 @@ export default (state = initialState, action) => {
         activeView: 'Detail'
       };
     case `${QUICK_UPDATE}_SUCCESS`:
-      toastSuccess(() => (
-        <p>
-          Updated<strong>{` ${action.payload.Name} `}</strong>to chapter {action.payload.Chapter}
-        </p>
-      ));
       return {
         ...state,
         activeView: 'Detail',

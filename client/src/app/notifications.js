@@ -2,7 +2,7 @@ import socket from './socket';
 import config from './config';
 import store from './store';
 
-import { QUICK_UPDATE } from 'pages/MangasReading';
+import { QUICK_UPDATE } from 'pages/Collections/MangasReading';
 
 const Notification = window.Notification;
 

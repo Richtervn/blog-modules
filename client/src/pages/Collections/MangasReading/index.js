@@ -18,6 +18,7 @@ export {
   ControlBar,
   MangasList,
   GET_MANGAS,
+  QUICK_UPDATE,
   quickUpdate,
   getMangas,
   crawlManga,
