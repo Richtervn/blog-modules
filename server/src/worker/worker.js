@@ -2,9 +2,9 @@ import chalk from 'chalk';
 import { CronJob } from 'cron';
 import mangaNewDectector from './mangaNewDectector';
 import mangaCheckStatus from './mangaCheckStatus';
-import NotificationHandler from './NotificationHandler';
 
 export default ({ MangasReading }, factories, io) => {
+  const { NotificationHandler } = factories;
   const notificationHandler = new NotificationHandler(io);
 
   new CronJob({
@@ -16,7 +16,7 @@ export default ({ MangasReading }, factories, io) => {
       await mangaNewDectector(MangasReading, factories, notificationHandler);
     }
   });
-  
+
   new CronJob({
     cronTime: '0 0 1 * *',
     runOnInit: true,

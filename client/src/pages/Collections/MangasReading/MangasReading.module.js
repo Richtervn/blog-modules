@@ -52,8 +52,10 @@ export const crawlManga = formBody => actionCreator(CRAWL_MANGA, services.crawl,
 export const startWorkerListener = () =>
   actionCreator(START_WORKER_LISTENER, (payload, { socket, dispatch }) => {
     socket.on('appManga/unsaved', unsavedMangas => {
-      dispatch(setUnsavedMangas(unsavedMangas));
-      openModal('UnsavedMangas');
+      if (unsavedMangas.length > 0) {
+        dispatch(setUnsavedMangas(unsavedMangas));
+        openModal('UnsavedMangas', { backdrop: 'static', keyboard: false });
+      }
     });
   })();
 

@@ -3,9 +3,14 @@ import Modal from './Modal.container';
 
 import { setModalName } from 'pages/appControl';
 
-const openModal = name => {
+//options: { backdrop: 'static', keyboard: false }
+const openModal = (name, options) => {
   store.dispatch(setModalName(name));
-  window.$('#modal').modal('show');
+  if (!options) {
+    window.$('#modal').modal('show');
+  } else {
+    window.$('#modal').modal({ show: true, ...options });
+  }
 };
 
 const hideModal = () => {

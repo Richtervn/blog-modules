@@ -13,7 +13,7 @@ export default ({ unsavedMangas, onConfirm }) => {
     <div className="modal-header" key="usm-h">
       <div className="modal-label">Save this manga?</div>
     </div>,
-    <div className="modal-body"  key="usm-b">
+    <div className="modal-body" key="usm-b">
       <div className="card-content">
         <div className="text-center">
           <h4>{manga.Name}</h4>
@@ -56,17 +56,19 @@ export default ({ unsavedMangas, onConfirm }) => {
           </p>
         )}
 
-        <p>
-          <strong>Aka : </strong>
-          {manga.Aka.map((aka, i) => (
-            <span key={i} className="badge badge-warning mr-aka-tag">
-              {aka}
-            </span>
-          ))}
-        </p>
+        {manga.Aka && (
+          <p>
+            <strong>Aka : </strong>
+            {manga.Aka.map((aka, i) => (
+              <span key={i} className="badge badge-warning mr-aka-tag">
+                {aka}
+              </span>
+            ))}
+          </p>
+        )}
       </div>
     </div>,
-    <div className="modal-footer"  key="usm-f">
+    <div className="modal-footer" key="usm-f">
       <button
         className="btn btn-success"
         onClick={() => {

@@ -8,12 +8,12 @@ import quickUpdate from './services/quickUpdate';
 import sortManga from './services/sortManga';
 import manualSaveNewChapter from './services/manualSaveNewChapter';
 import saveHistory from './services/saveHistory';
-
 import { sites as subscriblableSites } from './services/getChapterFromUrl';
 
 export default (MangasReading, factories, socket) => {
   const router = express.Router();
-  const { wrap, commonService, deleteFile } = factories;
+  const { wrap, commonService, deleteFile, NotificationHandler } = factories;
+  const notificationHandler = new NotificationHandler(socket);
 
   router.post(
     '/add_manga',
@@ -112,7 +112,7 @@ export default (MangasReading, factories, socket) => {
   router.post(
     '/history',
     wrap(async ({ body }, res, next) => {
-      await saveHistory(body, MangasReading, socket);
+      await saveHistory(body, MangasReading, notificationHandler);
       res.sendStatus(200);
     })
   );

@@ -9,10 +9,9 @@ import getUrlFrags from '../helpers/getUrlFrags';
 
 let lastSync = 0;
 
-export default async (historyItems, MangasReading, socket) => {
-  // console.log(historyItems);
+export default async (historyItems, MangasReading, notificationHandler) => {
   let validItems = historyItems.filter(item => item.lastVisitTime > lastSync);
-  // console.log(validItems);
+
   validItems = validItems
     .map(item => {
       const info = getChapterFromUrl(item.url);
@@ -28,7 +27,7 @@ export default async (historyItems, MangasReading, socket) => {
       };
     })
     .filter(item => !!item);
-  // console.log(validItems);
+
   const groupedItems = _.groupBy(validItems, 'mangaAka');
   const mangaMap = {};
   const unsavedMangas = [];
@@ -41,15 +40,11 @@ export default async (historyItems, MangasReading, socket) => {
 
       if (!manga) {
         const groupedBySites = _.groupBy(groupedItems[mangaAka], 'site');
-        // console.log(groupedBySites);
         const crawlableSite = Object.keys(groupedBySites).filter(site => _.contains(crawlableSites, site))[0];
-        // console.log(crawlableSite);
 
         if (crawlableSite) {
           try {
-            // console.log(groupedBySites[crawlableSite][0].url);
             const data = await crawl(groupedBySites[crawlableSite][0].url);
-            // console.log(data);
             unsavedMangas.push({
               ...data,
               Authors: data.Authors ? data.Authors.split(',') : [],
@@ -59,7 +54,8 @@ export default async (historyItems, MangasReading, socket) => {
               maxChapterUrl: maxItem.url
             });
           } catch (e) {
-            // console.log(e);
+            console.log(e);
+            return e;
           }
         }
         return;
@@ -79,9 +75,7 @@ export default async (historyItems, MangasReading, socket) => {
   );
 
   if (unsavedMangas.length > 0) {
-    console.log('EMITTED');
-    console.log(unsavedMangas);
-    socket.to('worker').emit('appManga/unsaved', unsavedMangas);
+    notificationHandler.send('appManga/unsaved', unsavedMangas);
   }
 
   if (Object.keys(mangaMap).length < 1) {
@@ -95,7 +89,7 @@ export default async (historyItems, MangasReading, socket) => {
         { $set: { Chapter: mangaMap[mangaId] } },
         { new: true }
       );
-      socket.to('worker').emit('appManga/notification', {
+      notificationHandler.send('appManga/notification', {
         icon: `${result.CoverUri}`,
         body: `Updated ${result.Name} to chapter ${result.Chapter}`,
         title: 'Manga checker'
@@ -103,7 +97,6 @@ export default async (historyItems, MangasReading, socket) => {
     })
   );
 
-  // lastSync = Date.now();
-  lastSync = 0;
+  lastSync = Date.now();
   return;
 };

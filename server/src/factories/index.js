@@ -14,6 +14,7 @@ import makeSmallDateTime from './time/makeSmallDateTime';
 import makeSnoNumber from './time/makeSnoNumber';
 import readSnoNumber from './time/readSnoNumber';
 
+import NotificationHandler from './utils/NotificationHandler';
 import deleteFile from './utils/deleteFile';
 import emitToClient from './utils/emitToClient';
 import findSocket from './utils/findSocket';
@@ -23,6 +24,7 @@ import writeFile from './utils/writeFile';
 import wrap from './utils/wrap';
 
 const factories = () => ({
+  NotificationHandler,
   toTitleCase,
   pad,
   clearExtension,
