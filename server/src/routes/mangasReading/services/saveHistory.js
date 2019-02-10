@@ -92,7 +92,9 @@ export default async (historyItems, MangasReading, notificationHandler) => {
       notificationHandler.send('appManga/notification', {
         icon: `${result.CoverUri}`,
         body: `Updated ${result.Name} to chapter ${result.Chapter}`,
-        title: 'Manga checker'
+        title: 'Manga checker',
+        type: 'UPDATE_MANGAS_READING_CHAPTER',
+        data: JSON.parse(JSON.stringify(result))
       });
     })
   );

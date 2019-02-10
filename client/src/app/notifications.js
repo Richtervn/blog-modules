@@ -1,5 +1,8 @@
 import socket from './socket';
 import config from './config';
+import store from './store';
+
+import { QUICK_UPDATE } from 'pages/MangasReading';
 
 const Notification = window.Notification;
 
@@ -18,5 +21,8 @@ socket.on('appManga/notification', data => {
       e.stopImmediatePropagation();
       window.open(data.link, '_blank');
     };
+  }
+  if (data.type === 'UPDATE_MANGAS_READING_CHAPTER') {
+    store.dispatch({ type: `${QUICK_UPDATE}_SUCCESS`, payload: data.data });
   }
 });

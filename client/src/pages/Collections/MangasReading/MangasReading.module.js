@@ -7,7 +7,7 @@ import services from './MangasReading.services';
 
 const ADD_MANGA = 'mangasReading/ADD_MANGA';
 export const GET_MANGAS = 'mangasReading/GET_MANGAS';
-const QUICK_UPDATE = 'mangasReading/QUICK_UPDATE';
+export const QUICK_UPDATE = 'mangasReading/QUICK_UPDATE';
 const UPDATE_MANGA = 'mangasReading/UPDATE_MANGA';
 const DELETE_MANGA = 'mangasReading/DELETE_MANGA';
 const SEARCH_MANGA = 'mangasReading/SEARCH_MANGA';

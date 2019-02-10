@@ -5,6 +5,7 @@ const interval = 1000 * 60 * 60;
 const microsecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
 const oneWeekAgo = new Date().getTime() - microsecondsPerWeek;
 
+let lastSync = 0;
 let supportedSites = {};
 
 const getSupportedSites = () => {
@@ -21,7 +22,9 @@ function supportedSitesResponseHandler() {
   }
 }
 
-const checkMyHistory = () => {
+function checkMyHistory() {
+  console.log('SYNCING NOW');
+  lastSync = Date.now();
   chrome.history.search({ text: '', startTime: oneWeekAgo }, historyItems => {
     const validItems = historyItems.filter(item => {
       const url = item.url.slice(0);
@@ -43,17 +46,40 @@ const checkMyHistory = () => {
       xhr.send(JSON.stringify(validItems));
     }
   });
-};
+}
 
-const main = () => {
+function main() {
   if (!supportedSites.subscribe) {
     getSupportedSites();
     return;
   }
   checkMyHistory();
-};
+}
 
 main();
 setInterval(() => {
   main();
 }, interval);
+
+chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.msg == 'syncNow') {
+    main();
+    onTick();
+  }
+});
+
+function onTick() {
+  const ts = Date.now();
+  const passedTime = ts - lastSync;
+
+  const remainingTime = interval - passedTime;
+  const minutes = Math.floor(remainingTime / 60000);
+  const seconds = ((remainingTime % 60000) / 1000).toFixed(0);
+
+  const timer = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+  chrome.extension.sendMessage({ msg: 'timer', timer: timer });
+}
+
+setInterval(() => {
+  onTick();
+}, 1000);

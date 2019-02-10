@@ -1,6 +1,7 @@
 import reducer, {
   quickUpdate,
   GET_MANGAS,
+  QUICK_UPDATE,
   getMangas,
   crawlManga,
   manualSaveNewChapter,
