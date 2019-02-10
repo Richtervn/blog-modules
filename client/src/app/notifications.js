@@ -1,5 +1,5 @@
 import socket from './socket';
-import config from './config';
+import appConfig from './config';
 import store from './store';
 
 import { QUICK_UPDATE } from 'pages/Collections/MangasReading';
@@ -13,7 +13,7 @@ if (Notification.permission !== 'granted') {
 socket.on('appManga/notification', data => {
   const notification = new Notification(data.title, {
     body: data.body,
-    icon: data.icon.replace('./public', config.API_HOST)
+    icon: data.icon.replace('./public', appConfig.API_HOST)
   });
   if (data.link) {
     notification.onclick = e => {
@@ -23,6 +23,9 @@ socket.on('appManga/notification', data => {
     };
   }
   if (data.type === 'UPDATE_MANGAS_READING_CHAPTER') {
-    store.dispatch({ type: `${QUICK_UPDATE}_SUCCESS`, payload: data.data });
+    store.dispatch({
+      type: `${QUICK_UPDATE}_SUCCESS`,
+      payload: { ...data.data, CoverUri: data.data.CoverUri.replace('./public', appConfig.API_HOST) }
+    });
   }
 });
