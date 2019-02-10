@@ -1,7 +1,7 @@
 {
   "name": "Blog Module Extension",
   "description": "Extension for Blog Module",
-  "version": "1.0",
+  "version": "1.4",
   "manifest_version": 2,
   "browser_action": {
     "default_icon": "icon.png",
