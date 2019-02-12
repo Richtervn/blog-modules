@@ -6,6 +6,7 @@ import './global.css';
 import './notifications';
 
 import 'lightbox-react/style.css';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 import React, { Component } from 'react';
 import { Router } from 'react-router-dom';

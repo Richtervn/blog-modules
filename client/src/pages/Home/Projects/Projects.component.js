@@ -29,7 +29,7 @@ const Projects = ({
 }) => {
   useEffect(() => {
     onGetProjects();
-  });
+  }, []);
 
   useEffect(() => {
     if (!projects || !projectName) {

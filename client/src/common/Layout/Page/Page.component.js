@@ -27,7 +27,7 @@ export default ({
       onSetDefaultShowGroup(currentPage.activeGroup);
       onToggleMenuGroup(currentPage.activeGroup);
     }
-  });
+  }, [window.location.pathname]);
 
   return <div className="page">{children}</div>;
 };

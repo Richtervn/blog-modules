@@ -20,7 +20,7 @@ export default ({ match, onSetActiveTab, activeTab }) => {
     const tab = match.params.tab;
     const tabSource = homeTabs.find(tabSrc => tabSrc.route.indexOf(tab) !== -1);
     onSetActiveTab(tabSource.name);
-  });
+  }, [match]);
 
   return (
     <PageContainer>
