@@ -10,6 +10,7 @@ import {
   ProjectItemForm,
   ProjectSetting
 } from 'pages/Home/Projects/ProjectBoard';
+import { EventForm, EventDetails, EventDeleteConfirm } from 'pages/Home/Schelude';
 
 import { MusicForm } from 'pages/Collections/Music';
 
@@ -123,6 +124,10 @@ export default ({ name }) => {
       {name === 'ProjectSetting' && <ProjectSetting />}
       {name === 'AddProjectItem' && <ProjectItemForm />}
       {name === 'ProjectItemDetail' && <ProjectItemDetail />}
+      {name === 'AddEvent' && <EventForm />}
+      {name === 'EditEvent' && <EventForm edit />}
+      {name === 'DeleteEvent' && <EventDeleteConfirm />}
+      {name === 'EventDetails' && <EventDetails />}
 
       {name === 'AddSong' && <MusicForm />}
 

@@ -2,9 +2,16 @@
   width: 100%;
   height: calc(100vh - 90px);
   padding: 10px;
+  display: flex;
 }
 
-#schelude-page .calendar-container {
-  width: 100%;
+#schelude-page > .month-calendar {
   height: 100%;
+  width: 70%;
+}
+
+#schelude-page > .day-calendar {
+  width: 30%;
+  height: 100%;
+  padding-left: 10px;
 }

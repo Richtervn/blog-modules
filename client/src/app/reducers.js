@@ -10,6 +10,7 @@ import { reducer as gallery } from 'pages/Collections/Gallery';
 
 import { reducer as appDiary } from 'pages/Home/AppDiary';
 import { reducer as projects } from 'pages/Home/Projects';
+import { reducer as schelude } from 'pages/Home/Schelude';
 
 import { reducer as starcraft } from 'pages/Games/Starcraft';
 import { reducer as diabloII } from 'pages/Games/DiabloII';
@@ -69,6 +70,7 @@ export default combineReducers({
   music,
   projects,
   rss,
+  schelude,
   starcraft,
   yugiohPoc
 });

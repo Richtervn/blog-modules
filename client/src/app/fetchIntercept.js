@@ -4,6 +4,10 @@ import { dataTransform } from 'utils';
 
 fetchIntercept.register({
   request(url, config) {
+    // console.log(url);
+    if (url.indexOf('get-internal-source') !== -1) {
+      return [url, config];
+    }
     url = appConfig.API_HOST + url;
     if (config && config.method === 'POST') {
       config.headers = { 'Content-Type': 'application/json; charset=utf-8' };

@@ -18,7 +18,7 @@ export default class FormGroupRow extends Component {
   }
 
   render() {
-    const { name, label, type, placeholder, value, multiple, accept, error } = this.props;
+    const { name, label, type, placeholder, value, multiple, accept, error, disabled, readOnly } = this.props;
     const { changed } = this.state;
     const additionProps = {};
     if (type === 'file') {
@@ -44,6 +44,8 @@ export default class FormGroupRow extends Component {
             onChange={e => this.handleChange(e)}
             name={name}
             value={value}
+            disabled={disabled}
+            readOnly={readOnly}
             {...additionProps}
           />
         </div>

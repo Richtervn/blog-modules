@@ -10,6 +10,7 @@ import musicRouter from './music';
 import profileRouter from './profile';
 import projectsRouter from './projects';
 import rssRouter from './rss';
+import scheludeEventsRouter from './scheludeEvents'
 import starcraftRouter from './starcraft';
 import mangaNewsRouter from './mangaNews';
 import systemRouter from './system';
@@ -37,6 +38,7 @@ const routes = (models, factories, socket) => {
     Music,
     Projects,
     RssProviders,
+    ScheludeEvents,
     StarcraftCampaigns,
     StarcraftMaps,
     StarcraftMods,
@@ -65,6 +67,7 @@ const routes = (models, factories, socket) => {
     projects: projectsRouter(Projects, factories),
     starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories),
     rss: rssRouter(RssProviders, factories),
+    schelude_events: scheludeEventsRouter(ScheludeEvents, factories),
     system: systemRouter(factories),
     tools: toolsRouter(models, factories),
     yugioh_poc: yugiohPocRouter(YugiohPocMods, YugiohPocDecks, factories)

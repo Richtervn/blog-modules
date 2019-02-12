@@ -24,7 +24,7 @@ function supportedSitesResponseHandler() {
 
 function checkMyHistory() {
   console.log('SYNCING NOW');
-  lastSync = Date.now();
+
   chrome.history.search({ text: '', startTime: oneWeekAgo }, historyItems => {
     const validItems = historyItems.filter(item => {
       const url = item.url.slice(0);
@@ -49,6 +49,7 @@ function checkMyHistory() {
 }
 
 function main() {
+  lastSync = Date.now();
   if (!supportedSites.subscribe) {
     getSupportedSites();
     return;

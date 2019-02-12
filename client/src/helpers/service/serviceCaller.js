@@ -73,8 +73,11 @@ export default {
     return response;
   }),
 
-  commonDelete: serviceWrapper(async link => {
+  commonDelete: serviceWrapper(async (link, id) => {
     let apiLink = `/api/${link}`;
+    if (id) {
+      apiLink += `/${id}`;
+    }
     const response = await fetch(apiLink, { method: 'DELETE' });
     return response;
   })

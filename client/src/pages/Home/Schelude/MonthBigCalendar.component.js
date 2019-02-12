@@ -4,11 +4,10 @@ import React from 'react';
 import moment from 'moment';
 import BigCalendar from 'react-big-calendar';
 
-const localizer = BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
+const localizer = BigCalendar.momentLocalizer(moment);
 
 const ToolBar = props => {
   const { label, onNavigate } = props;
-  console.log(props);
   return (
     <div className="big-calendar-toolbar">
       <button className="nav-btn" onClick={() => onNavigate('PREV')} style={{ textAlign: 'left' }}>
@@ -22,15 +21,16 @@ const ToolBar = props => {
   );
 };
 
-export default ({ events = [] }) => (
+export default ({ events = [], onSelectSlot, onSelectEvent, selected }) => (
   <div className="month-big-calendar">
     <BigCalendar
-      onSelectSlot={slot => console.log(slot)}
+      selected={selected}
+      onSelectSlot={slot => onSelectSlot(slot)}
       events={events}
+      views={['month']}
       selectable={true}
       localizer={localizer}
-      startAccessor="start"
-      endAccessor="end"
+      onSelectEvent={onSelectEvent}
       components={{
         toolbar: ToolBar
       }}

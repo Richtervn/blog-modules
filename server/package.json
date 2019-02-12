@@ -4,7 +4,8 @@
   "description": "my-blog",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon",
+    "dev": "nodemon",
+    "start": "babel src --out-dir dist --copy-files && node dist/index",
     "build": "babel src --out-dir dist --copy-files",
     "serve": "node dist/index"
   },
