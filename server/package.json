@@ -45,6 +45,6 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "mongoose-auto-increment-reworked": "^1.2.1",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.10"
   }
 }
