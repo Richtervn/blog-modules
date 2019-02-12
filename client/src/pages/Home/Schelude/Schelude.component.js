@@ -1,20 +1,13 @@
 import './Schelude.css';
 import React, { Component } from 'react';
-import moment from 'moment';
+import BigCalendar from 'components/Other/BigCalendar';
 
-class Schelude extends Component {
-  constructor(props) {
-    super(props);
+// events={myEventsList}
 
-    console.log(moment().daysInMonth())
-    console.log(moment().month())
-    console.log(moment().day())
-    // startOf('month')
-  }
-
-  render() {
-    return <div id="schelude-page"></div>;
-  }
-}
-
-export default Schelude;
+export default () => (
+  <div id="schelude-page">
+    <div className="calendar-container">
+      <BigCalendar />
+    </div>
+  </div>
+);

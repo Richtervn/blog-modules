@@ -27,7 +27,7 @@ export default ({ feeds, onGetFeed, feedLoadingId }) => (
                       <img src={feed.data.image.url} alt={feed.data.image.title} />
                     </a>
                   )}
-                  <a className="title">{feed.data.title}</a>
+                  <div className="title">{feed.data.title}</div>
                 </div>
                 <div className="pub-date">{moment(feed.data.isoDate).format('DD/MM/YYYY HH:mm:ss')}</div>
               </div>

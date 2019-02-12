@@ -1,7 +1,7 @@
 import './Projects.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import moment from 'moment';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { TabLoader } from 'common/Loaders';
 import { openModal } from 'common/Modal';
@@ -18,19 +18,43 @@ const findMatchProject = (projects, projectName) => {
   return matchProject;
 };
 
-export default ({ projects, onGetProjects, onSetCurrentProject, projectOnBoard, onGetProjectDetail, projectName }) => {
-  if (!projects) {
+const Projects = ({
+  projects,
+  onGetProjects,
+  onSetCurrentProject,
+  projectOnBoard,
+  onGetProjectDetail,
+  projectName,
+  history
+}) => {
+  useEffect(() => {
     onGetProjects();
+  });
+
+  useEffect(() => {
+    if (!projects || !projectName) {
+      return;
+    }
+    const matchProject = findMatchProject(projects, projectName);
+    if (!matchProject) {
+      history.push('/404');
+      return;
+    }
+    if (!projectOnBoard || projectOnBoard._id !== matchProject._id) {
+      onGetProjectDetail(matchProject._id);
+    }
+  }, [projects, projectName]);
+
+  if (!projects) {
     return <TabLoader />;
   }
 
   if (projectName) {
     const matchProject = findMatchProject(projects, projectName);
-    if (!matchProject) return <Redirect to="/404" />;
     if (!projectOnBoard || projectOnBoard._id !== matchProject._id) {
-      onGetProjectDetail(matchProject._id);
       return <TabLoader />;
     }
+
     return (
       <div className="fit-container" id="tabProjects">
         <div className="container-fluid">
@@ -75,9 +99,16 @@ export default ({ projects, onGetProjects, onSetCurrentProject, projectOnBoard, 
               </div>
             </ProgressBadgesCard>
           ))}
-          <AddCardButton col={3} minHeight="200px" customClass="home-add-project-card" onClick={() => openModal('AddProject')} />
+          <AddCardButton
+            col={3}
+            minHeight="200px"
+            customClass="home-add-project-card"
+            onClick={() => openModal('AddProject')}
+          />
         </div>
       </div>
     </div>
   );
 };
+
+export default withRouter(Projects);

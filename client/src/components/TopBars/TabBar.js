@@ -16,11 +16,11 @@ export default ({ headers, onChangeTab, activeTab, customClass = 'default' }) =>
           </Link>
         )}
         {!header.route && (
-          <a
+          <button
             className={classNames('nav-link', { active: header.name === activeTab })}
             onClick={() => onChangeTab(header.name)}>
             <h6>{header.name}</h6>
-          </a>
+          </button>
         )}
       </li>
     ))}

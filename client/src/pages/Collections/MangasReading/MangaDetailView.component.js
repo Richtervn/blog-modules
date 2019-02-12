@@ -65,7 +65,7 @@ export default ({
       </p>
       {manga.ReadingUrl && (
         <p>
-          <a href={manga.ReadingUrl} target="_blank">
+          <a href={manga.ReadingUrl} target="_blank" rel="noopener noreferrer">
             Continue reading
           </a>
         </p>

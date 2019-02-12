@@ -67,7 +67,7 @@ class RatioBoard extends Component {
           <ul>
             {pages.map((page, i) => (
               <li key={i}>
-                <a href={page.href} target="_blank">
+                <a href={page.href} target="_blank" rel="noopener noreferrer">
                   {page.name}
                 </a>
               </li>
