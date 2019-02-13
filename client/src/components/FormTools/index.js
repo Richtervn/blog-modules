@@ -8,6 +8,7 @@ import FormGroupRating from './FormGroupRating';
 import FormGroupRow from './FormGroupRow';
 import FormGroupSelect from './FormGroupSelect';
 import FormGroupSelectId from './FormGroupSelectId';
+import FormGroupTwitterColor from './FormGroupTwitterColor';
 
 import InputGroupIcon from './InputGroupIcon';
 import UploadButton from './UploadButton';
@@ -23,6 +24,7 @@ export {
   FormGroupRow,
   FormGroupSelect,
   FormGroupSelectId,
+  FormGroupTwitterColor,
   InputGroupIcon,
   UploadButton
 };

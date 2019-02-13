@@ -1,5 +1,6 @@
 export Account from './Account';
 export AppDiary from './AppDiary';
+import DayEvents from './DayEvents';
 export DiabloIICharacters from './DiabloIICharacters';
 export DiabloIIMods from './DiabloIIMods';
 export DiabloIISurvivalKits from './DiabloIISurvivalKits';

@@ -15,10 +15,9 @@ const ToolBar = props => {
   );
 };
 
-export default ({ events = [], date, onSelectSlot, onSelectEvent, selected }) => (
+export default ({ events = [], date, onSelectSlot, onSelectEvent }) => (
   <div className="day-big-calendar">
     <BigCalendar
-      selected={selected}
       onSelectEvent={onSelectEvent}
       defaultView="day"
       onNavigate={() => null}

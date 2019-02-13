@@ -84,6 +84,8 @@ import { AccountForm } from 'pages/Archived/Accounts';
 
 import { ProviderForm, DeleteProviderConfirm } from 'pages/Subscribe/Rss';
 
+import { DayEventDeleteConfirm, DayEventDetails, DayEventsForm } from 'pages/Setting/DayEvents';
+
 export default ({ name }) => {
   let additionProps = {};
   switch (name) {
@@ -211,6 +213,11 @@ export default ({ name }) => {
       {name === 'AddRssProvider' && <ProviderForm />}
       {name === 'EditRssProvider' && <ProviderForm edit />}
       {name === 'DeleteRssProvider' && <DeleteProviderConfirm />}
+
+      {name === 'AddDayEvent' && <DayEventsForm />}
+      {name === 'EditDayEvent' && <DayEventsForm edit />}
+      {name === 'DayEventDetails' && <DayEventDetails />}
+      {name === 'DeleteDayEvent' && <DayEventDeleteConfirm />}
     </Modal>
   );
 };

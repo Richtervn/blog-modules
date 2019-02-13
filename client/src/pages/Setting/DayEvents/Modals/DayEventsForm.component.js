@@ -3,17 +3,19 @@ import moment from 'moment';
 
 import { hideModal } from 'common/Modal';
 import { ModalHeader, ModalFooter } from 'components/Modal';
-import { FormGroupRow, FormGroupArea, FormGroupTwitterColor } from 'components/FormTools';
+import { FormGroupRow, FormGroupArea, FormGroupTwitterColor, FormGroupSelect } from 'components/FormTools';
 
 export default ({ edit, event, onAddEvent, onEditEvent, timeValues }) => {
   const [state, setState] = useState({
     title: edit ? event.title : '',
     description: edit ? event.description : '',
-    url: edit ? event.url : '',
+    link: edit ? event.link : '',
     imageUrl: edit ? event.imageUrl : '',
     HTML: edit ? event.HTML : '',
     CSS: edit ? event.CSS : '',
     color: edit ? event.color : '',
+    priority: edit ? event.priority : '',
+    type: edit ? event.edit : 'ONE_TIME_SOLAR',
     start: edit ? moment(event.start) : moment(timeValues.start),
     end: edit ? moment(event.end) : moment(timeValues.end)
   });
@@ -49,8 +51,20 @@ export default ({ edit, event, onAddEvent, onEditEvent, timeValues }) => {
         <FormGroupRow
           type="text"
           label="Link"
-          value={state.url}
-          onChange={e => setState({ ...state, url: e.target.value })}
+          value={state.link}
+          onChange={e => setState({ ...state, link: e.target.value })}
+        />
+        <FormGroupRow
+          type="number"
+          label="Priority"
+          value={state.priority}
+          onChange={e => setState({ ...state, priority: e.target.value })}
+        />
+        <FormGroupSelect
+          options={['ONE_TIME_SOLAR', 'ONE_TIME_LUNAR', 'REPEATABLE_SOLAR', 'REPEATABLE_LUNAR']}
+          value={state.type}
+          onChange={e => setState({ ...state, type: e.target.value })}
+          label="Type"
         />
         <FormGroupRow
           type="text"
@@ -87,3 +101,7 @@ export default ({ edit, event, onAddEvent, onEditEvent, timeValues }) => {
     />
   ];
 };
+
+// lunarJd: Number,
+// lunarDate: String,
+// priority: Number

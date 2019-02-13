@@ -2,7 +2,7 @@ import { shuffleList, sortList } from './array';
 import { downloadFile } from './element';
 import { commonAddArray, commonFormChange, commonRemoveArray, commonValidate } from './form';
 import { getClass, getExcText, getItemName, getItemImage, getItemOptions } from './mu';
-import { formatNumber } from './number';
+import { formatNumber, padZero } from './number';
 import { actionCreator, serviceCaller, serviceWrapper } from './service';
 
 import {
@@ -33,6 +33,7 @@ export {
   getItemImage,
   getItemOptions,
   formatNumber,
+  padZero,
   actionCreator,
   serviceCaller,
   serviceWrapper,

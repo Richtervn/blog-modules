@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose';
 
-const ScheludeEvents = new Schema(
+const DayEvents = new Schema(
   {
     title: String,
     description: String,
@@ -8,11 +8,15 @@ const ScheludeEvents = new Schema(
     imageUrl: String,
     HTML: String,
     CSS: String,
+    type: String,
     start: Date,
     end: Date,
-    color: String
+    color: String,
+    lunarStart: String,
+    lunarEnd: String,
+    priority: Number
   },
   { timestamps: true }
 );
 
-export default ScheludeEvents;
+export default DayEvents;

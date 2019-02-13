@@ -27,6 +27,7 @@
   color: white;
   border: none;
   flex-grow: 1;
+  cursor: pointer;
 }
 
 .month-big-calendar .rbc-header {
@@ -42,8 +43,38 @@
 
 .month-big-calendar .rbc-day-bg {
   cursor: pointer;
+  position: relative;
+}
+
+.month-big-calendar .rbc-date-cell > a {
+  font-weight: 500;
+  color: #222;
+  pointer-events: none;
+}
+
+.month-big-calendar .rbc-date-cell:not(.rbc-current) > a:visited {
+  font-weight: 500!important;
+  color: #222!important;
+}
+
+.month-big-calendar .rbc-date-cell:not(.rbc-current) > a:active {
+  font-weight: 500!important;
+  color: #222!important;
+}
+
+.month-big-calendar .lunar-date {
+  position: absolute;
+  bottom: 2px;
+  left: 5px;
+  font-size: 10px;
+  font-style: italic;
+  color: #3d95e1;
 }
 
 .month-big-calendar .rbc-day-bg:hover {
   background: #cee4f5;
+}
+
+.test-clss {
+  background: red;
 }

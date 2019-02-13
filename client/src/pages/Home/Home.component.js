@@ -10,7 +10,6 @@ import { Schelude } from './Schelude';
 const homeTabs = [
   { name: 'Dashboard', route: '/home/dashboard' },
   { name: 'Schelude', route: '/home/schelude' },
-  { name: 'Weather', route: '/home/weather' },
   { name: 'Projects', route: '/home/projects' },
   { name: 'App Diary', route: '/home/app_diary' }
 ];

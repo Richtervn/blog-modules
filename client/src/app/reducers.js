@@ -25,6 +25,8 @@ import { reducer as accounts } from 'pages/Archived/Accounts';
 import { reducer as mangaNews } from 'pages/Subscribe/MangaNews';
 import { reducer as rss } from 'pages/Subscribe/Rss';
 
+import { reducer as dayEvents } from 'pages/Setting/DayEvents';
+
 import {
   ds9799_admin,
   ds9799_appControl,
@@ -46,6 +48,7 @@ export default combineReducers({
   appControl,
   appDiary,
   contentMirror,
+  dayEvents,
   diabloII,
   ds9799_admin,
   ds9799_appControl,

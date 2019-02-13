@@ -26,6 +26,7 @@ import { EndedManga } from 'pages/Archived/EndedManga';
 import { Accounts } from 'pages/Archived/Accounts';
 
 import { AppMenu } from 'pages/Setting/AppMenu';
+import { DayEvents } from 'pages/Setting/DayEvents';
 
 import { Darksteam97d99i } from 'pages/MuOnline/Darksteam97d99i';
 
@@ -47,6 +48,7 @@ const AppRoutes = () => (
       <Route exact path="/code_playground" component={CodePlayground} />
       <Route exact path="/music" component={Music} />
       <Route exact path="/app_menu" component={AppMenu} />
+      <Route exact path="/day_events" component={DayEvents} />
       <Route exact path="/guideline" component={Guideline} />
       <Route exact path="/yugioh!_poc" component={YugiohPoc} />
       <Route exact path="/manga_news" component={MangaNews} />

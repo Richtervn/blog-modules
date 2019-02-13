@@ -1,5 +1,6 @@
 import accountRouter from './account';
 import appDiaryRouter from './appDiary';
+import dayEventsRouter from './dayEvents';
 import diabloIIRouter from './diabloII';
 import flashGamesRouter from './flashGames';
 import galleryRouter from './gallery';
@@ -21,6 +22,7 @@ const routes = (models, factories, socket) => {
   const {
     Account,
     AppDiary,
+    DayEvents,
     DiabloIIMods,
     DiabloIICharacters,
     DiabloIITools,
@@ -49,6 +51,7 @@ const routes = (models, factories, socket) => {
   return {
     account: accountRouter(Account, factories),
     app_diary: appDiaryRouter(AppDiary, factories),
+    day_events: dayEventsRouter(DayEvents, factories),
     diabloII: diabloIIRouter(DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories),
     flash_games: flashGamesRouter(FlashGames, factories),
     gallery: galleryRouter(factories),

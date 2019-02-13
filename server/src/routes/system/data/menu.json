@@ -61,7 +61,8 @@
   },
   "Setting": {
     "items": [
-      "App Menu"
+      "App Menu",
+      "Day Events"
     ],
     "author": "Element Eighty - Broken Promises",
     "quote": "My mind has had enough",
@@ -87,7 +88,9 @@
   "Subscribe": {
     "items": [
       "Manga News",
-      "Rss"
+      "Rss",
+      "Weather",
+      "Google Map"
     ],
     "author": "Linkin Park - One More Light",
     "quote": "Who cares if one more light goes out?",
