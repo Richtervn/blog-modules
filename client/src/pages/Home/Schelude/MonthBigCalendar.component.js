@@ -3,7 +3,9 @@ import './MonthBigCalendar.css';
 import React, { useEffect } from 'react';
 import moment from 'moment';
 import BigCalendar from 'react-big-calendar';
-import { LunarDate } from 'utils';
+import { ContainerLoader } from 'common/Loaders';
+
+import { LunarDate, colorConverter } from 'utils';
 import { padZero } from 'helpers';
 
 const localizer = BigCalendar.momentLocalizer(moment);
@@ -63,6 +65,16 @@ const _renderLunarDate = (month, year) => {
   });
 };
 
+const _getStyle = (events, day) => {
+  const involvedEvents = events.filter(event => {
+    if(event.type === 'REPEATABLE_LUNAR'){
+      return true;
+    }
+    return false;
+  });
+  console.log(involvedEvents);
+};
+
 const ToolBar = ({ label, onNavigate, date }) => {
   useEffect(() => {
     const viewDate = moment(date);
@@ -82,7 +94,20 @@ const ToolBar = ({ label, onNavigate, date }) => {
   );
 };
 
-export default ({ events = [], onSelectSlot, onSelectEvent }) => {
+export default ({ events = [], onSelectSlot, onSelectEvent, dayEvents, onGetDayEvents }) => {
+  useEffect(() => {
+    onGetDayEvents();
+  }, []);
+
+  if (!dayEvents) {
+    return <ContainerLoader color="#222" />;
+  }
+
+  const transformDayEvents = dayEvents.map(event => {
+    event.eventType = 'yearly';
+    return event;
+  });
+
   return (
     <div className="month-big-calendar">
       <BigCalendar
@@ -91,9 +116,20 @@ export default ({ events = [], onSelectSlot, onSelectEvent }) => {
         }}
         dayPropGetter={day => {
           const additionClass = `smbc-${moment(day).format('DD-MM-YYYY')}`;
-          return { className: additionClass };
+          const style = _getStyle(transformDayEvents, day);
+          return { className: additionClass, style };
         }}
-        events={events}
+        events={events
+          .map(event => {
+            event.eventType = 'day';
+            return event;
+          })
+          .concat(transformDayEvents)}
+        eventPropGetter={event => {
+          if (event.color) {
+            return { style: { backgroundColor: event.color } };
+          }
+        }}
         views={['month']}
         selectable={true}
         localizer={localizer}

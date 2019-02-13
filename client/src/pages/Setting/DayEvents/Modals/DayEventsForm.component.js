@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 
 import { hideModal } from 'common/Modal';
 import { ModalHeader, ModalFooter } from 'components/Modal';
-import { FormGroupRow, FormGroupArea, FormGroupTwitterColor, FormGroupSelect } from 'components/FormTools';
+import { FormGroupRow, FormGroupArea, FormGroupSketchColor, FormGroupSelect } from 'components/FormTools';
 
 export default ({ edit, event, onAddEvent, onEditEvent, timeValues }) => {
   const [state, setState] = useState({
@@ -20,7 +20,17 @@ export default ({ edit, event, onAddEvent, onEditEvent, timeValues }) => {
     end: edit ? moment(event.end) : moment(timeValues.end)
   });
   const [error, setError] = useState({});
-  // useEffect()
+
+  useEffect(() => {
+    if (edit) {
+      return;
+    }
+    setState({
+      ...state,
+      start: edit ? moment(event.start) : moment(timeValues.start),
+      end: edit ? moment(event.end) : moment(timeValues.end)
+    });
+  }, [timeValues]);
 
   return [
     <ModalHeader
@@ -37,7 +47,7 @@ export default ({ edit, event, onAddEvent, onEditEvent, timeValues }) => {
           onChange={e => setState({ ...state, title: e.target.value })}
           error={error.title}
         />
-        <FormGroupTwitterColor
+        <FormGroupSketchColor
           label="Color"
           onChange={c => setState({ ...state, color: c })}
           color={state.color}
@@ -102,6 +112,4 @@ export default ({ edit, event, onAddEvent, onEditEvent, timeValues }) => {
   ];
 };
 
-// lunarJd: Number,
-// lunarDate: String,
-// priority: Number
+// #6e017b

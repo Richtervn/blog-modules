@@ -4,7 +4,7 @@ import moment from 'moment';
 import { TabLoader } from 'common/Loaders';
 import { openModal } from 'common/Modal';
 
-import MonthBigCalendar from './MonthBigCalendar.component';
+import MonthBigCalendar from './MonthBigCalendar.container';
 import DayBigCalendar from './DayBigCalendar.component';
 
 export default ({ events, onGetEvents, onSetTimeValues, selectedEvent, onSetSelectedEvent }) => {

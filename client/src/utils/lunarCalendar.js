@@ -18,6 +18,7 @@ class _LunarDate {
     this.year = yy;
     this.leap = leap;
     this.jd = jd;
+    this.fullString = `${dd}-${mm}-${yy}`;
   }
 }
 
