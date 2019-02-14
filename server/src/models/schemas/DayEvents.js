@@ -12,8 +12,6 @@ const DayEvents = new Schema(
     start: Date,
     end: Date,
     color: String,
-    lunarStart: String,
-    lunarEnd: String,
     priority: Number
   },
   { timestamps: true }

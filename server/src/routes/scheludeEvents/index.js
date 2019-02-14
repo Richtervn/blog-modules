@@ -7,8 +7,23 @@ export default (ScheludeEvents, factories) => {
   router.get(
     '/get_all',
     wrap(async (req, res, next) => {
-      const events = await commonService.getAll(ScheludeEvents);
+      const events = await commonService.getAll(ScheludeEvents, {
+        _id: true,
+        start: true,
+        end: true,
+        title: true,
+        color: true,
+        priority: true
+      });
       res.send(events);
+    })
+  );
+
+  router.get(
+    '/get_detail/:id',
+    wrap(async ({ params }, res, next) => {
+      const event = await commonService.getOne(ScheludeEvents, params.id);
+      res.send(event);
     })
   );
 

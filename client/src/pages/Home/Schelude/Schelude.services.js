@@ -7,6 +7,10 @@ export default {
     const data = commonGet('schelude_events/get_all');
     return data;
   },
+  getEventDetail({ id }) {
+    const data = commonGet('schelude_events/get_detail', [id]);
+    return data;
+  },
   editEvent({ formBody }) {
     const data = commonPut('schelude_events/edit', formBody);
     return data;

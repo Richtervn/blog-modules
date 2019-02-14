@@ -8,7 +8,7 @@ export default ({ deck, onDeleteDeck }) => (
     label={`Delete ${deck.Name}`}>
     <div className="alert alert-danger">
       <p>
-        Are you sure want to delete <strong>{deck.Name}</strong> ?
+        Are you sure you want to delete <strong>{deck.Name}</strong> ?
       </p>
     </div>
   </ModalDelete>

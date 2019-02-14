@@ -8,7 +8,7 @@ export default ({ provider, onDeleteProvider }) => (
     label={`Delete ${provider.Provider}`}>
     <div className="alert alert-danger">
       <p>
-        Are you sure want to delete <strong>{provider.Provider}</strong> ?
+        Are you sure you want to delete <strong>{provider.Provider}</strong> ?
       </p>
     </div>
   </ModalDelete>

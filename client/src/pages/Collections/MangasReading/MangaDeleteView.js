@@ -12,7 +12,7 @@ export default ({ manga, onSubmit }) => {
     <div id="mgr-delete-view">
       <div className="alert alert-danger" role="alert" style={{ margin: 0 }}>
         <p>
-          Are you really sure want to delete <strong>{manga.Name}</strong> ?
+          Are you sure you want to delete <strong>{manga.Name}</strong> ?
         </p>
         <p className="text-center">
           <img

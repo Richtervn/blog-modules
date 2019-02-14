@@ -8,7 +8,7 @@ export default ({ tool, onDeleteTool }) => (
     label={`Delete ${tool.Name}`}>
     <div className="alert alert-danger">
       <p>
-        Are you sure want to delete <strong>{tool.Name}</strong> ?
+        Are you sure you want to delete <strong>{tool.Name}</strong> ?
       </p>
     </div>
   </ModalDelete>

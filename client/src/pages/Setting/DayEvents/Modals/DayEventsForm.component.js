@@ -2,41 +2,110 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 
 import { hideModal } from 'common/Modal';
-import { ModalHeader, ModalFooter } from 'components/Modal';
+import { ModalHeader } from 'components/Modal';
+import { ModalLoader } from 'common/Loaders';
 import { FormGroupRow, FormGroupArea, FormGroupTwitterColor, FormGroupSelect } from 'components/FormTools';
 
-export default ({ edit, event, onAddEvent, onEditEvent, timeValues }) => {
+export default ({
+  edit,
+  onAddEvent,
+  onEditEvent,
+  timeValues,
+  onGetEventDetail,
+  eventDetail,
+  selectedEvent,
+  onDeleteEvent
+}) => {
   const [state, setState] = useState({
-    title: edit ? event.title : '',
-    description: edit ? event.description : '',
-    link: edit ? event.link : '',
-    imageUrl: edit ? event.imageUrl : '',
-    HTML: edit ? event.HTML : '',
-    CSS: edit ? event.CSS : '',
-    color: edit ? event.color : '',
-    priority: edit ? event.priority : '',
-    type: edit ? event.edit : 'ONE_TIME_SOLAR',
-    start: edit ? moment(event.start) : moment(timeValues.start),
-    end: edit ? moment(event.end) : moment(timeValues.end)
+    title: '',
+    description: '',
+    link: '',
+    imageUrl: '',
+    HTML: '',
+    CSS: '',
+    color: '',
+    priority: '',
+    type: 'ONE_TIME',
+    start: moment(timeValues.start),
+    end: moment(timeValues.end)
   });
   const [error, setError] = useState({});
+  const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
 
   useEffect(() => {
-    if (edit) {
+    if (edit && selectedEvent._id !== eventDetail._id) {
+      onGetEventDetail(selectedEvent._id);
       return;
     }
+  }, [edit, selectedEvent]);
+
+  useEffect(() => {
+    if (edit) return;
     setState({
       ...state,
-      start: edit ? moment(event.start) : moment(timeValues.start),
-      end: edit ? moment(event.end) : moment(timeValues.end)
+      start: moment(timeValues.start),
+      end: moment(timeValues.end)
     });
   }, [timeValues]);
+
+  useEffect(() => {
+    if (!edit) return;
+    setState({
+      title: eventDetail.title || '',
+      description: eventDetail.description || '',
+      link: eventDetail.link || '',
+      imageUrl: eventDetail.imageUrl || '',
+      HTML: eventDetail.HTML || '',
+      CSS: eventDetail.CSS || '',
+      color: eventDetail.color || '',
+      priority: eventDetail.priority || '',
+      type: eventDetail.type || 'ONE_TIME',
+      start: moment(eventDetail.start),
+      end: moment(eventDetail.end)
+    });
+  }, [eventDetail]);
+
+  if (isConfirmingDelete) {
+    return [
+      <ModalHeader key="def_h" iconUrl="/images/icons/calendar-icon.png" label={`Delete ${eventDetail.title}`} />,
+      <div key="def_b" className="modal-body">
+        <div className="alert alert-danger">
+          Are you sure you want to delete this event?
+          <br />
+          <b>{eventDetail.title}</b>
+        </div>
+      </div>,
+      <div className="modal-footer" key="def_f">
+        <button
+          className="btn btn-success"
+          onClick={() => {
+            onDeleteEvent(eventDetail._id);
+            hideModal();
+          }}>
+          Yes
+        </button>
+        <button className="btn btn-danger" onClick={() => setIsConfirmingDelete(false)}>
+          No
+        </button>
+      </div>
+    ];
+
+    // return (
+
+    //   <ModalDelete
+    //     iconUrl="/images/icons/calendar-icon.png"
+    //     label={`Delete ${eventDetail.title}`}
+    //     onClickSubmit={() => {}}
+    //     text={`Are you sure you want to delete this event ?`}
+    //   />
+    // );
+  }
 
   return [
     <ModalHeader
       key="gh_h"
       iconUrl="/images/icons/calendar-icon.png"
-      label={edit ? `Update ${event.title}` : 'Add New Event'}
+      label={edit ? `Update ${eventDetail.title}` : 'Add New Event'}
     />,
     <div key="gh_b" className="modal-body">
       <form className="text-right">
@@ -93,23 +162,31 @@ export default ({ edit, event, onAddEvent, onEditEvent, timeValues }) => {
         />
         <FormGroupRow type="text" label="End Time" value={state.end.format('DD/MM/YYYY hh:mm:ss')} disabled readOnly />
       </form>
+      {edit && selectedEvent._id !== eventDetail._id && <ModalLoader />}
     </div>,
-    <ModalFooter
-      key="gh_f"
-      onClickSubmit={() => {
-        const hasError = !state.title || !state.color;
-        setError({
-          title: !state.title,
-          color: !state.color
-        });
-        if (hasError) {
-          return;
-        }
-        edit ? onEditEvent({ ...state, _id: event._id }) : onAddEvent(state);
-        hideModal();
-      }}
-    />
+    <div className="modal-footer" key="gh_f">
+      <button
+        className="btn btn-success"
+        onClick={() => {
+          const hasError = !state.title || !state.color;
+          setError({
+            title: !state.title,
+            color: !state.color
+          });
+          if (hasError) {
+            return;
+          }
+          edit ? onEditEvent({ ...state, _id: eventDetail._id }) : onAddEvent(state);
+          hideModal();
+        }}>
+        Save
+      </button>
+      <button className="btn btn-danger" onClick={() => setIsConfirmingDelete(true)}>
+        Delete
+      </button>
+      <button className="btn btn-danger" data-dismiss="modal">
+        Close
+      </button>
+    </div>
   ];
 };
-
-// #6e017b

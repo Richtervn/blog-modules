@@ -1,19 +1,26 @@
 import './Schelude.css';
-import React, { useState, useEffect } from 'react';
-import moment from 'moment';
+import React, { useMemo } from 'react';
 import { TabLoader } from 'common/Loaders';
 import { openModal } from 'common/Modal';
 
 import MonthBigCalendar from './MonthBigCalendar.container';
-import DayBigCalendar from './DayBigCalendar.component';
+import DayBigCalendar from './DayBigCalendar.container';
 
-export default ({ events, onGetEvents, onSetTimeValues, selectedEvent, onSetSelectedEvent, dayEvents }) => {
-  useEffect(() => {
+export default ({
+  events,
+  dayEvents,
+  onGetEvents,
+  onSetTimeValues,
+  onSetSelectedEvent,
+  onSetSelectedDate,
+  onGetDayEvents
+}) => {
+  useMemo(() => {
     onGetEvents();
+    onGetDayEvents();
   }, []);
-  const [date, setDate] = useState(moment().toDate());
 
-  if (!events) {
+  if (!events || !dayEvents) {
     return <TabLoader />;
   }
 
@@ -21,10 +28,9 @@ export default ({ events, onGetEvents, onSetTimeValues, selectedEvent, onSetSele
     <div id="schelude-page">
       <div className="month-calendar">
         <MonthBigCalendar
-          // selected={selectedEvent}
           onSelectSlot={slot => {
             if (slot.action === 'click') {
-              setDate(moment(slot.start).toDate());
+              onSetSelectedDate(slot.start);
             }
             if (slot.action === 'select') {
               onSetTimeValues({ start: slot.start, end: slot.end });
@@ -41,10 +47,7 @@ export default ({ events, onGetEvents, onSetTimeValues, selectedEvent, onSetSele
       </div>
       <div className="day-calendar">
         <DayBigCalendar
-          dayEvents={dayEvents}
-          selected={selectedEvent}
           events={events}
-          date={date}
           onSelectSlot={slot => {
             if (slot.action === 'select') {
               onSetTimeValues({ start: slot.start, end: slot.end });
@@ -52,7 +55,6 @@ export default ({ events, onGetEvents, onSetTimeValues, selectedEvent, onSetSele
             }
           }}
           onSelectEvent={event => {
-            console.log(event);
             onSetSelectedEvent(event);
           }}
         />

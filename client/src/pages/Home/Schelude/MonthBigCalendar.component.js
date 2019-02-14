@@ -1,10 +1,9 @@
 import './MonthBigCalendar.css';
 
 import _ from 'underscore';
-import React, { useEffect } from 'react';
+import React, { useMemo } from 'react';
 import moment from 'moment';
 import BigCalendar from 'react-big-calendar';
-import { ContainerLoader } from 'common/Loaders';
 
 import { LunarDate } from 'utils';
 import { padZero, colorConverter } from 'helpers';
@@ -45,11 +44,24 @@ const getDaysInView = (month, year) => {
 };
 
 const _renderLunarDate = (slot, day) => {
-  const lunarDate = new LunarDate(moment(day, 'DD-MM-YYYY'));
+  if (slot.children.length > 0) {
+    let hasLunarDate = false;
+    for (let i = 0; i < slot.children.length; i++) {
+      if (slot.children[i].classList[0] === 'lunar-date') {
+        hasLunarDate = true;
+        break;
+      }
+    }
+    if (hasLunarDate) {
+      return;
+    }
+  }
+
+  const lunarDate = new LunarDate(moment(day, 'DD-MM-YYYY')).date;
   const container = document.createElement('DIV');
   container.className = 'lunar-date';
-  container.innerHTML = lunarDate.date.day;
-
+  container.innerHTML = `${lunarDate.day}/${lunarDate.month}`;
+  // console.log(slot.contains(container));
   slot.appendChild(container);
 };
 
@@ -125,108 +137,116 @@ const _renderDecorations = (daysInView, involvedEvents) =>
     }
   });
 
+const _renderEffects = (date, dayEvents) => {
+  const viewDate = moment(date);
+  const daysInView = getDaysInView(viewDate.get('month') + 1, viewDate.get('year'));
+  const daysInViewLunar = daysInView.map(day => new LunarDate(moment(day, 'DD-MM-YYYY')).date.fullString);
+
+  const firstDayInView = daysInView[0];
+  const lastDayInView = daysInView[daysInView.length - 1];
+
+  const firstDay = moment(firstDayInView, 'DD-MM-YYYY');
+  const lastDay = moment(lastDayInView, 'DD-MM-YYYY');
+
+  const involvedEvents = dayEvents.filter(event => {
+    if (event.type === 'ONE_TIME') {
+      const startTs = moment(event.start);
+      return firstDay.diff(startTs) <= 0 && lastDay.diff(startTs) >= 0;
+    }
+
+    if (event.type === 'REPEATABLE_LUNAR') {
+      const eventStartLunar = new LunarDate(event.start).date;
+      const eventEndLunar = new LunarDate(event.end).date;
+      const eventStartDate = eventStartLunar.fullString.slice(0, 5);
+      const eventEndDate = eventEndLunar.fullString.slice(0, 5);
+      const eventStartDay = daysInViewLunar.find(day => day.slice(0, 5) === eventStartDate);
+      const eventEndDay = daysInViewLunar.find(day => day.slice(0, 5) === eventEndDate);
+      if (eventStartDay || eventEndDay) {
+        return true;
+      }
+      //CASE: Event from month to month
+    }
+
+    if (event.type === 'REPEATABLE_SOLAR') {
+      const startTs = moment(event.start);
+      const endTs = moment(event.end);
+
+      const eventStartDate = `${startTs.get('date')}-${padZero(startTs.get('month') + 1)}`;
+      const eventStartDay = daysInView.find(day => day.slice(0, 5) === eventStartDate);
+      const eventEndDate = `${endTs.get('date')}-${padZero(endTs.get('month') + 1)}`;
+      const eventEndDay = daysInView.find(day => day.slice(0, 5) === eventEndDate);
+
+      if (eventStartDay || eventEndDay) {
+        return true;
+      }
+      //CASE: Event from month to month
+      const currentYear = viewDate.get('year');
+      const eventYearDiff = endTs.get('year') - startTs.get('year');
+      return (
+        (startTs
+          .clone()
+          .set('year', currentYear)
+          .diff(firstDay) <= 0 &&
+          endTs
+            .clone()
+            .set('year', currentYear + eventYearDiff)
+            .diff(firstDay) >= 0) ||
+        (startTs
+          .clone()
+          .set('year', currentYear + 1)
+          .diff(firstDay) <= 0 &&
+          endTs
+            .clone()
+            .set('year', currentYear + eventYearDiff + 1)
+            .diff(firstDay) >= 0) ||
+        (startTs
+          .clone()
+          .set('year', currentYear - 1)
+          .diff(firstDay) <= 0 &&
+          endTs
+            .clone()
+            .set('year', currentYear + eventYearDiff - 1)
+            .diff(firstDay) >= 0)
+      );
+    }
+    return false;
+  });
+
+  setTimeout(() => {
+    _renderDecorations(daysInView, involvedEvents);
+  }, 0);
+};
+
 const ToolBar = ({ label, onNavigate, date, dayEvents }) => {
-  useEffect(() => {
-    const viewDate = moment(date);
-    const daysInView = getDaysInView(viewDate.get('month') + 1, viewDate.get('year'));
-    const daysInViewLunar = daysInView.map(day => new LunarDate(moment(day, 'DD-MM-YYYY')).date.fullString);
-
-    const firstDayInView = daysInView[0];
-    const lastDayInView = daysInView[daysInView.length - 1];
-
-    const firstDay = moment(firstDayInView, 'DD-MM-YYYY');
-    const lastDay = moment(lastDayInView, 'DD-MM-YYYY');
-
-    const involvedEvents = dayEvents.filter(event => {
-      if (event.type === 'ONE_TIME') {
-        const startTs = moment(event.start);
-        return firstDay.diff(startTs) <= 0 && lastDay.diff(startTs) >= 0;
-      }
-
-      if (event.type === 'REPEATABLE_LUNAR') {
-        const eventStartLunar = new LunarDate(event.start).date;
-        const eventEndLunar = new LunarDate(event.end).date;
-        const eventStartDate = eventStartLunar.fullString.slice(0, 5);
-        const eventEndDate = eventEndLunar.fullString.slice(0, 5);
-        const eventStartDay = daysInViewLunar.find(day => day.slice(0, 5) === eventStartDate);
-        const eventEndDay = daysInViewLunar.find(day => day.slice(0, 5) === eventEndDate);
-        if (eventStartDay || eventEndDay) {
-          return true;
-        }
-        //CASE: Event from month to month
-      }
-
-      if (event.type === 'REPEATABLE_SOLAR') {
-        const startTs = moment(event.start);
-        const endTs = moment(event.end);
-
-        const eventStartDate = `${startTs.get('date')}-${padZero(startTs.get('month') + 1)}`;
-        const eventStartDay = daysInView.find(day => day.slice(0, 5) === eventStartDate);
-        const eventEndDate = `${endTs.get('date')}-${padZero(endTs.get('month') + 1)}`;
-        const eventEndDay = daysInView.find(day => day.slice(0, 5) === eventEndDate);
-
-        if (eventStartDay || eventEndDay) {
-          return true;
-        }
-        //CASE: Event from month to month
-        const currentYear = viewDate.get('year');
-        const eventYearDiff = endTs.get('year') - startTs.get('year');
-        return (
-          (startTs
-            .clone()
-            .set('year', currentYear)
-            .diff(firstDay) <= 0 &&
-            endTs
-              .clone()
-              .set('year', currentYear + eventYearDiff)
-              .diff(firstDay) >= 0) ||
-          (startTs
-            .clone()
-            .set('year', currentYear + 1)
-            .diff(firstDay) <= 0 &&
-            endTs
-              .clone()
-              .set('year', currentYear + eventYearDiff + 1)
-              .diff(firstDay) >= 0) ||
-          (startTs
-            .clone()
-            .set('year', currentYear - 1)
-            .diff(firstDay) <= 0 &&
-            endTs
-              .clone()
-              .set('year', currentYear + eventYearDiff - 1)
-              .diff(firstDay) >= 0)
-        );
-      }
-      return false;
-    });
-
-    setTimeout(() => {
-      _renderDecorations(daysInView, involvedEvents);
-    }, 0);
-  }, [label, dayEvents]);
+  useMemo(() => {
+    _renderEffects(date, dayEvents);
+  }, [label]);
 
   return (
     <div className="big-calendar-toolbar">
-      <button className="nav-btn" onClick={() => onNavigate('PREV')} style={{ textAlign: 'left' }}>
+      <button
+        className="nav-btn"
+        onClick={() => {
+          onNavigate('PREV');
+        }}
+        style={{ textAlign: 'left' }}>
         <i className="fa fa-2x fa-angle-left" />
       </button>
       <div className="label">{label}</div>
-      <button className="nav-btn" onClick={() => onNavigate('NEXT')} style={{ textAlign: 'right' }}>
+      <button
+        className="nav-btn"
+        onClick={() => {
+          onNavigate('NEXT');
+        }}
+        style={{ textAlign: 'right' }}>
         <i className="fa fa-2x fa-angle-right" />
       </button>
     </div>
   );
 };
 
-export default ({ events = [], onSelectSlot, onSelectEvent, dayEvents, onGetDayEvents }) => {
-  useEffect(() => {
-    onGetDayEvents();
-  }, []);
-
-  if (!dayEvents) {
-    return <ContainerLoader color="#222" />;
-  }
+export default ({ events = [], onSelectSlot, onSelectEvent, dayEvents }) => {
+  //TODO: Change REPEATABLE_EVENTS to current year
 
   const displayEvents = events
     .map(event => ({ ...event, eventType: 'schelude' }))
@@ -251,7 +271,9 @@ export default ({ events = [], onSelectSlot, onSelectEvent, dayEvents, onGetDayE
         views={['month']}
         selectable={true}
         localizer={localizer}
-        onSelectEvent={onSelectEvent}
+        onSelectEvent={event => {
+          onSelectEvent(event);
+        }}
         components={{
           toolbar: props => <ToolBar {...props} dayEvents={dayEvents} />
         }}

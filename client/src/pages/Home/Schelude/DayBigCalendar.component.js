@@ -15,7 +15,7 @@ const ToolBar = props => {
   );
 };
 
-export default ({ events = [], date, onSelectSlot, onSelectEvent, dayEvents = [] }) => {
+export default ({ events = [], selectedDate, onSelectSlot, onSelectEvent, dayEvents = [] }) => {
   if (!dayEvents) {
     return null;
   }
@@ -24,8 +24,6 @@ export default ({ events = [], date, onSelectSlot, onSelectEvent, dayEvents = []
   const displayEvents = events
     .map(event => ({ ...event, eventType: 'schelude' }))
     .concat(dayEvents.map(event => ({ ...event, eventType: 'day', allDay: true })));
-
-  console.log(displayEvents);
 
   return (
     <div className="day-big-calendar">
@@ -39,7 +37,7 @@ export default ({ events = [], date, onSelectSlot, onSelectEvent, dayEvents = []
         defaultView="day"
         onNavigate={() => null}
         views={['day']}
-        date={date}
+        date={selectedDate}
         onSelectSlot={slot => onSelectSlot(slot)}
         events={displayEvents}
         selectable={true}

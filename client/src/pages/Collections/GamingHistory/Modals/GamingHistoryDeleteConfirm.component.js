@@ -8,7 +8,7 @@ export default ({ game, onDeleteGame }) => (
     label={`Delete ${game.Name}`}>
     <div className="alert alert-danger">
       <p>
-        Are you sure want to delete <strong>{game.Name}</strong> ?
+        Are you sure you want to delete <strong>{game.Name}</strong> ?
       </p>
     </div>
   </ModalDelete>

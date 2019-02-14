@@ -7,7 +7,7 @@ export default ({ receipt, onBuyReceipt }) => [
   <ModalHeader key="br_h" iconUrl="/images/icons/luxury.png" label={`Buy ${receipt.name} receipt`} />,
   <div key="br_b" className="modal-body">
     <div className="ds9799-blr alert alert-info">
-      Are you sure want to buy <span>{receipt.name}</span> ?<br /> This will cost you{' '}
+      Are you sure you want to buy <span>{receipt.name}</span> ?<br /> This will cost you{' '}
       <span>{formatNumber(receipt.price)}</span> Credits
     </div>
   </div>,

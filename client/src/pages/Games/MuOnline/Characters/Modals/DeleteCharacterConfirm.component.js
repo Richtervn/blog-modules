@@ -8,7 +8,7 @@ export default ({ character, onDeleteCharacter }) => (
     label={`Delete ${character.Name}`}>
     <div className="alert alert-danger">
       <p>
-        Are you sure want to delete <strong>{character.Name}</strong> ?
+        Are you sure you want to delete <strong>{character.Name}</strong> ?
       </p>
     </div>
   </ModalDelete>

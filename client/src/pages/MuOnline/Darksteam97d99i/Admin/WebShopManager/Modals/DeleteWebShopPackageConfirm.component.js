@@ -8,7 +8,7 @@ export default ({ pack, onDeletePackage }) => (
     label={`Delete ${pack.name}`}>
     <div className="alert alert-danger">
       <p>
-        Are you sure want to delete <strong>{pack.name}</strong> ?
+        Are you sure you want to delete <strong>{pack.name}</strong> ?
       </p>
     </div>
   </ModalDelete>

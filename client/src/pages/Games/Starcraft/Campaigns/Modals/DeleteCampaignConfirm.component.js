@@ -8,7 +8,7 @@ export default ({ campaign, onDeleteCampaign }) => (
     label={`Delete ${campaign.Name}`}>
     <div className="alert alert-danger">
       <p>
-        Are you sure want to delete <strong>{campaign.Name}</strong> ?
+        Are you sure you want to delete <strong>{campaign.Name}</strong> ?
       </p>
     </div>
   </ModalDelete>

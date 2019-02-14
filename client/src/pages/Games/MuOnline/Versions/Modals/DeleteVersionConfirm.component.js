@@ -8,7 +8,7 @@ export default ({ version, onDeleteVersion }) => (
     label={`Delete ${version.Name}`}>
     <div className="alert alert-danger">
       <p>
-        Are you sure want to delete <strong>{version.Name}</strong> ?
+        Are you sure you want to delete <strong>{version.Name}</strong> ?
       </p>
     </div>
   </ModalDelete>

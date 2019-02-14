@@ -5,6 +5,7 @@ const GET_EVENTS = 'dayEvents/GET_EVENTS';
 const EDIT_EVENT = 'dayEvents/EDIT_EVENT';
 const DELETE_EVENT = 'dayEvents/DELETE_EVENT';
 const ADD_EVENT = 'dayEvents/ADD_EVENT';
+const GET_EVENT_DETAIL = 'dayEvents/GET_EVENT_DETAIL';
 
 const SET_TIME_VALUES = 'dayEvents/SET_TIME_VALUES';
 const SET_SELECTED_EVENT = 'dayEvents/SET_SELECTED_EVENT';
@@ -13,6 +14,7 @@ export const getEvents = () => actionCreator(GET_EVENTS, services.getEvents)();
 export const editEvent = formBody => actionCreator(EDIT_EVENT, services.editEvent, { payload: { formBody } })();
 export const addEvent = formBody => actionCreator(ADD_EVENT, services.addEvent, { payload: { formBody } })();
 export const deleteEvent = id => actionCreator(DELETE_EVENT, services.deleteEvent, { payload: { id } })();
+export const getEventDetail = id => actionCreator(GET_EVENT_DETAIL, services.getEventDetail, { payload: { id } })();
 
 export const setTimeValues = values => ({ type: SET_TIME_VALUES, values });
 export const setSelectedEvent = event => ({ type: SET_SELECTED_EVENT, event });
@@ -20,7 +22,8 @@ export const setSelectedEvent = event => ({ type: SET_SELECTED_EVENT, event });
 const initialState = {
   events: null,
   timeValues: {},
-  selectedEvent: {}
+  selectedEvent: {},
+  eventDetail: {}
 };
 
 export default (state = initialState, action) => {
@@ -41,6 +44,8 @@ export default (state = initialState, action) => {
     case `${DELETE_EVENT}_SUCCESS`:
       state.events = state.events.filter(event => parseInt(event._id) !== parseInt(action.payload._id));
       return { ...state, events: state.events.slice(0) };
+    case `${GET_EVENT_DETAIL}_SUCCESS`:
+      return { ...state, eventDetail: action.payload };
 
     case SET_TIME_VALUES:
       return { ...state, timeValues: action.values };

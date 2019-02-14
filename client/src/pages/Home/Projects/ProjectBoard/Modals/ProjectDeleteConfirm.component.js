@@ -8,7 +8,7 @@ export default ({ project, onDeleteProject }) => (
     label={`Delete ${project.Name}`}>
     <div className="alert alert-danger">
       <p>
-        Are you sure want to delete <strong>{project.Name}</strong> ?
+        Are you sure you want to delete <strong>{project.Name}</strong> ?
       </p>
     </div>
   </ModalDelete>

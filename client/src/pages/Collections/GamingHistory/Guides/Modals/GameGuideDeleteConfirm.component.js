@@ -8,7 +8,7 @@ export default ({ guide, onDeleteGuide }) => (
     label={`Delete ${guide.Title}`}>
     <div className="alert alert-danger">
       <p>
-        Are you sure want to delete <strong>{guide.Title}</strong> ?
+        Are you sure you want to delete <strong>{guide.Title}</strong> ?
       </p>
     </div>
   </ModalDelete>
