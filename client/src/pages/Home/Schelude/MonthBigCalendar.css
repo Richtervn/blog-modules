@@ -46,20 +46,20 @@
   position: relative;
 }
 
-.month-big-calendar .rbc-date-cell > a {
+.month-big-calendar a {
   font-weight: 500;
   color: #222;
   pointer-events: none;
 }
 
 .month-big-calendar .rbc-date-cell:not(.rbc-current) > a:visited {
-  font-weight: 500!important;
-  color: #222!important;
+  font-weight: 500 !important;
+  color: #222 !important;
 }
 
 .month-big-calendar .rbc-date-cell:not(.rbc-current) > a:active {
-  font-weight: 500!important;
-  color: #222!important;
+  font-weight: 500 !important;
+  color: #222 !important;
 }
 
 .month-big-calendar .lunar-date {

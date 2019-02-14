@@ -31,6 +31,11 @@ export default ({ events = [], date, onSelectSlot, onSelectEvent, dayEvents = []
     <div className="day-big-calendar">
       <BigCalendar
         onSelectEvent={onSelectEvent}
+        eventPropGetter={event => {
+          if (event.color) {
+            return { style: { backgroundColor: event.color } };
+          }
+        }}
         defaultView="day"
         onNavigate={() => null}
         views={['day']}
