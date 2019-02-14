@@ -15,21 +15,36 @@ const ToolBar = props => {
   );
 };
 
-export default ({ events = [], date, onSelectSlot, onSelectEvent }) => (
-  <div className="day-big-calendar">
-    <BigCalendar
-      onSelectEvent={onSelectEvent}
-      defaultView="day"
-      onNavigate={() => null}
-      views={['day']}
-      date={date}
-      onSelectSlot={slot => onSelectSlot(slot)}
-      events={events}
-      selectable={true}
-      localizer={localizer}
-      components={{
-        toolbar: ToolBar
-      }}
-    />
-  </div>
-);
+export default ({ events = [], date, onSelectSlot, onSelectEvent, dayEvents = [] }) => {
+  if (!dayEvents) {
+    return null;
+  }
+  // console.log(dayEvents);
+
+  const displayEvents = events
+    .map(event => ({ ...event, eventType: 'schelude' }))
+    .concat(dayEvents.map(event => ({ ...event, eventType: 'day', allDay: true })));
+
+  console.log(displayEvents);
+
+  return (
+    <div className="day-big-calendar">
+      <BigCalendar
+        onSelectEvent={onSelectEvent}
+        defaultView="day"
+        onNavigate={() => null}
+        views={['day']}
+        date={date}
+        onSelectSlot={slot => onSelectSlot(slot)}
+        events={displayEvents}
+        selectable={true}
+        localizer={localizer}
+        components={{
+          toolbar: ToolBar
+        }}
+        startAccessor="start"
+        endAccessor="end"
+      />
+    </div>
+  );
+};

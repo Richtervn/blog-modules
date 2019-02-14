@@ -1,4 +1,5 @@
 import { TK19, TK20, TK21, TK22 } from './lunarCalendar.data';
+import { padZero } from 'helpers';
 
 const INT = d => Math.floor(d); // Discard the fractional part of a number, e.g., INT(3.2) = 3
 const PI = Math.PI;
@@ -18,7 +19,7 @@ class _LunarDate {
     this.year = yy;
     this.leap = leap;
     this.jd = jd;
-    this.fullString = `${dd}-${mm}-${yy}`;
+    this.fullString = `${dd}-${padZero(mm)}-${yy}`;
   }
 }
 

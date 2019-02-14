@@ -1,12 +1,13 @@
 import './MonthBigCalendar.css';
 
+import _ from 'underscore';
 import React, { useEffect } from 'react';
 import moment from 'moment';
 import BigCalendar from 'react-big-calendar';
 import { ContainerLoader } from 'common/Loaders';
 
-import { LunarDate, colorConverter } from 'utils';
-import { padZero } from 'helpers';
+import { LunarDate } from 'utils';
+import { padZero, colorConverter } from 'helpers';
 
 const localizer = BigCalendar.momentLocalizer(moment);
 
@@ -43,8 +44,71 @@ const getDaysInView = (month, year) => {
   return prevMonthDays.concat(currentMonthDays).concat(nextMonthDays);
 };
 
-const _renderLunarDate = (month, year) => {
-  const daysInView = getDaysInView(month, year);
+const _renderLunarDate = (slot, day) => {
+  const lunarDate = new LunarDate(moment(day, 'DD-MM-YYYY'));
+  const container = document.createElement('DIV');
+  container.className = 'lunar-date';
+  container.innerHTML = lunarDate.date.day;
+
+  slot.appendChild(container);
+};
+
+const _renderDayEventBg = (slot, day, involvedEvents) => {
+  const dayTs = moment(day, 'DD-MM-YYYY');
+  // const dayLunar = new LunarDate(dayTs);
+
+  const occurredEvents = involvedEvents.filter(event => {
+    const startTs = moment(event.start);
+    const endTs = moment(event.end);
+
+    if (event.type === 'ONE_TIME') {
+      return dayTs.diff(startTs) >= 0 && dayTs.diff(endTs) < 0;
+    }
+
+    if (event.type === 'REPEATABLE_SOLAR') {
+      const currentYear = dayTs.get('year');
+      const eventYearDiff = endTs.get('year') - startTs.get('year');
+
+      return (
+        (startTs
+          .clone()
+          .set('year', currentYear)
+          .diff(dayTs) >= 0 &&
+          endTs
+            .clone()
+            .set('year', currentYear + eventYearDiff)
+            .diff(dayTs) <= 0) ||
+        (startTs
+          .clone()
+          .set('year', currentYear - 1)
+          .diff(dayTs) >= 0 &&
+          endTs
+            .clone()
+            .set('year', currentYear + eventYearDiff - 1)
+            .diff(dayTs) <= 0) ||
+        (startTs
+          .clone()
+          .set('year', currentYear + 1)
+          .diff(dayTs) >= 0 &&
+          endTs
+            .clone()
+            .set('year', currentYear + eventYearDiff + 1)
+            .diff(dayTs) <= 0)
+      );
+    }
+    if (event.type === 'REPEATABLE_LUNAR') {
+      //TODO
+    }
+
+    return false;
+  });
+  if (occurredEvents.length > 0) {
+    const highestPriorityEvent = _.max(occurredEvents, event => event.priority);
+    slot.style.backgroundColor = colorConverter.hexToRgba(highestPriorityEvent.color, 0.2);
+  }
+};
+
+const _renderDecorations = (daysInView, involvedEvents) =>
   daysInView.forEach(day => {
     const elems = document.getElementsByClassName(`smbc-${day}`);
     if (!elems) {
@@ -55,31 +119,92 @@ const _renderLunarDate = (month, year) => {
     if (!slot) {
       return;
     }
-
-    const lunarDate = new LunarDate(moment(day, 'DD-MM-YYYY'));
-    const container = document.createElement('DIV');
-    container.className = 'lunar-date';
-    container.innerHTML = lunarDate.date.day;
-
-    slot.appendChild(container);
-  });
-};
-
-const _getStyle = (events, day) => {
-  const involvedEvents = events.filter(event => {
-    if(event.type === 'REPEATABLE_LUNAR'){
-      return true;
+    _renderLunarDate(slot, day);
+    if (involvedEvents.length > 0) {
+      _renderDayEventBg(slot, day, involvedEvents);
     }
-    return false;
   });
-  console.log(involvedEvents);
-};
 
-const ToolBar = ({ label, onNavigate, date }) => {
+const ToolBar = ({ label, onNavigate, date, dayEvents }) => {
   useEffect(() => {
     const viewDate = moment(date);
-    setTimeout(() => _renderLunarDate(viewDate.get('month') + 1, viewDate.get('year')), 0);
-  }, [date]);
+    const daysInView = getDaysInView(viewDate.get('month') + 1, viewDate.get('year'));
+    const daysInViewLunar = daysInView.map(day => new LunarDate(moment(day, 'DD-MM-YYYY')).date.fullString);
+
+    const firstDayInView = daysInView[0];
+    const lastDayInView = daysInView[daysInView.length - 1];
+
+    const firstDay = moment(firstDayInView, 'DD-MM-YYYY');
+    const lastDay = moment(lastDayInView, 'DD-MM-YYYY');
+
+    const involvedEvents = dayEvents.filter(event => {
+      if (event.type === 'ONE_TIME') {
+        const startTs = moment(event.start);
+        return firstDay.diff(startTs) <= 0 && lastDay.diff(startTs) >= 0;
+      }
+
+      if (event.type === 'REPEATABLE_LUNAR') {
+        const eventStartLunar = new LunarDate(event.start).date;
+        const eventEndLunar = new LunarDate(event.end).date;
+        const eventStartDate = eventStartLunar.fullString.slice(0, 5);
+        const eventEndDate = eventEndLunar.fullString.slice(0, 5);
+        const eventStartDay = daysInViewLunar.find(day => day.slice(0, 5) === eventStartDate);
+        const eventEndDay = daysInViewLunar.find(day => day.slice(0, 5) === eventEndDate);
+        if (eventStartDay || eventEndDay) {
+          return true;
+        }
+        //CASE: Event from month to month
+      }
+
+      if (event.type === 'REPEATABLE_SOLAR') {
+        const startTs = moment(event.start);
+        const endTs = moment(event.end);
+
+        const eventStartDate = `${startTs.get('date')}-${padZero(startTs.get('month') + 1)}`;
+        const eventStartDay = daysInView.find(day => day.slice(0, 5) === eventStartDate);
+        const eventEndDate = `${endTs.get('date')}-${padZero(endTs.get('month') + 1)}`;
+        const eventEndDay = daysInView.find(day => day.slice(0, 5) === eventEndDate);
+
+        if (eventStartDay || eventEndDay) {
+          return true;
+        }
+        //CASE: Event from month to month
+        const currentYear = viewDate.get('year');
+        const eventYearDiff = endTs.get('year') - startTs.get('year');
+        return (
+          (startTs
+            .clone()
+            .set('year', currentYear)
+            .diff(firstDay) <= 0 &&
+            endTs
+              .clone()
+              .set('year', currentYear + eventYearDiff)
+              .diff(firstDay) >= 0) ||
+          (startTs
+            .clone()
+            .set('year', currentYear + 1)
+            .diff(firstDay) <= 0 &&
+            endTs
+              .clone()
+              .set('year', currentYear + eventYearDiff + 1)
+              .diff(firstDay) >= 0) ||
+          (startTs
+            .clone()
+            .set('year', currentYear - 1)
+            .diff(firstDay) <= 0 &&
+            endTs
+              .clone()
+              .set('year', currentYear + eventYearDiff - 1)
+              .diff(firstDay) >= 0)
+        );
+      }
+      return false;
+    });
+
+    setTimeout(() => {
+      _renderDecorations(daysInView, involvedEvents);
+    }, 0);
+  }, [label, dayEvents]);
 
   return (
     <div className="big-calendar-toolbar">
@@ -103,10 +228,9 @@ export default ({ events = [], onSelectSlot, onSelectEvent, dayEvents, onGetDayE
     return <ContainerLoader color="#222" />;
   }
 
-  const transformDayEvents = dayEvents.map(event => {
-    event.eventType = 'yearly';
-    return event;
-  });
+  const displayEvents = events
+    .map(event => ({ ...event, eventType: 'schelude' }))
+    .concat(dayEvents.map(event => ({ ...event, eventType: 'day' })));
 
   return (
     <div className="month-big-calendar">
@@ -116,15 +240,9 @@ export default ({ events = [], onSelectSlot, onSelectEvent, dayEvents, onGetDayE
         }}
         dayPropGetter={day => {
           const additionClass = `smbc-${moment(day).format('DD-MM-YYYY')}`;
-          const style = _getStyle(transformDayEvents, day);
-          return { className: additionClass, style };
+          return { className: additionClass };
         }}
-        events={events
-          .map(event => {
-            event.eventType = 'day';
-            return event;
-          })
-          .concat(transformDayEvents)}
+        events={displayEvents}
         eventPropGetter={event => {
           if (event.color) {
             return { style: { backgroundColor: event.color } };
@@ -134,7 +252,9 @@ export default ({ events = [], onSelectSlot, onSelectEvent, dayEvents, onGetDayE
         selectable={true}
         localizer={localizer}
         onSelectEvent={onSelectEvent}
-        components={{ toolbar: ToolBar }}
+        components={{
+          toolbar: props => <ToolBar {...props} dayEvents={dayEvents} />
+        }}
       />
     </div>
   );

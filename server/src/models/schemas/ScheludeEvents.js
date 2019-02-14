@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { Schema } from "mongoose";
 
 const ScheludeEvents = new Schema(
   {
@@ -10,7 +10,8 @@ const ScheludeEvents = new Schema(
     CSS: String,
     start: Date,
     end: Date,
-    color: String
+    color: String,
+    priority: Number
   },
   { timestamps: true }
 );

@@ -7,7 +7,7 @@ import { openModal } from 'common/Modal';
 import MonthBigCalendar from './MonthBigCalendar.container';
 import DayBigCalendar from './DayBigCalendar.component';
 
-export default ({ events, onGetEvents, onSetTimeValues, selectedEvent, onSetSelectedEvent }) => {
+export default ({ events, onGetEvents, onSetTimeValues, selectedEvent, onSetSelectedEvent, dayEvents }) => {
   useEffect(() => {
     onGetEvents();
   }, []);
@@ -41,6 +41,7 @@ export default ({ events, onGetEvents, onSetTimeValues, selectedEvent, onSetSele
       </div>
       <div className="day-calendar">
         <DayBigCalendar
+          dayEvents={dayEvents}
           selected={selectedEvent}
           events={events}
           date={date}

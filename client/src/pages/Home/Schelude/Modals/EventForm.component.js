@@ -14,6 +14,7 @@ export default ({ edit, event, onAddEvent, onEditEvent, timeValues }) => {
     HTML: edit ? event.HTML : '',
     CSS: edit ? event.CSS : '',
     color: edit ? event.color : '',
+    priority: edit ? event.priority : '',
     start: edit ? moment(event.start) : moment(timeValues.start),
     end: edit ? moment(event.end) : moment(timeValues.end)
   });
@@ -45,6 +46,12 @@ export default ({ edit, event, onAddEvent, onEditEvent, timeValues }) => {
           label="Description"
           value={state.description}
           onChange={e => setState({ ...state, description: e.target.value })}
+        />
+        <FormGroupRow
+          type="number"
+          label="Priority"
+          value={state.priority}
+          onChange={e => setState({ ...state, priority: e.target.value })}
         />
         <FormGroupRow
           type="text"
