@@ -1,0 +1,21 @@
+.event-details-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.event-details-header > .label-container {
+	display: flex;
+	align-items: center;
+}
+
+.event-details-header > .label-container > .modal-icon {
+	width: 30px;
+	height: 30px;
+}
+
+.event-details-header > .label-container > .label {
+	font-weight: 700;
+	margin-left: 10px;
+}

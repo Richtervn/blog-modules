@@ -7,6 +7,18 @@
   position: relative;
 }
 
+.mu-tool-detail.no-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mu-tool-detail.no-content > h1 {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.25);
+  font-style: italic;
+}
+
 .mu-tool-detail > .icon-wrapper {
   padding-bottom: 20px;
 }

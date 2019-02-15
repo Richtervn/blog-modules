@@ -1,6 +1,9 @@
 import moment from 'moment';
 import { actionCreator } from 'helpers';
+import { toastStrong, toastSuccess } from 'common/Toast';
+
 import services from './Schelude.services';
+import dayEVentServices from 'pages/Setting/DayEvents/DayEvents.services';
 
 const GET_EVENTS = 'schelude/GET_EVENTS';
 const EDIT_EVENT = 'schelude/EDIT_EVENT';
@@ -13,10 +16,39 @@ const SET_SELECTED_EVENT = 'schelude/SET_SELECTED_EVENT';
 const SET_SELECTED_DATE = 'schelude/SET_SELECTED_DATE';
 
 export const getEvents = () => actionCreator(GET_EVENTS, services.getEvents)();
-export const editEvent = formBody => actionCreator(EDIT_EVENT, services.editEvent, { payload: { formBody } })();
-export const addEvent = formBody => actionCreator(ADD_EVENT, services.addEvent, { payload: { formBody } })();
-export const deleteEvent = id => actionCreator(DELETE_EVENT, services.deleteEvent, { payload: { id } })();
-export const getEventDetail = id => actionCreator(GET_EVENT_DETAIL, services.getEventDetail, { payload: { id } })();
+export const editEvent = formBody =>
+  actionCreator(EDIT_EVENT, services.editEvent, {
+    payload: { formBody },
+    onAfterSuccess({ data }) {
+      toastStrong(data.title, null, 'updated successfully');
+    }
+  })();
+export const addEvent = formBody =>
+  actionCreator(ADD_EVENT, services.addEvent, {
+    payload: { formBody },
+    onAfterSuccess() {
+      toastSuccess('Added schelude event');
+    }
+  })();
+export const deleteEvent = id =>
+  actionCreator(DELETE_EVENT, services.deleteEvent, {
+    payload: { id },
+    onAfterSuccess() {
+      toastSuccess('Event removed');
+    }
+  })();
+export const getEventDetail = event =>
+  actionCreator(
+    GET_EVENT_DETAIL,
+    ({ event }) => {
+      if (event.eventType === 'day') {
+        return dayEVentServices.getEventDetail({ id: event._id });
+      } else {
+        return services.getEventDetail({ id: event._id });
+      }
+    },
+    { payload: { event } }
+  )();
 
 export const setTimeValues = values => ({ type: SET_TIME_VALUES, values });
 export const setSelectedEvent = event => ({ type: SET_SELECTED_EVENT, event });
@@ -36,18 +68,30 @@ export default (state = initialState, action) => {
       return { ...state, events: action.payload };
     case `${EDIT_EVENT}_SUCCESS`:
       state.events = state.events.map(event => {
-        if (parseInt(event._id) === parseInt(action.payload._id)) {
+        if (parseInt(event._id, 10) === parseInt(action.payload._id, 10)) {
           return action.payload;
         }
         return event;
       });
-      return { ...state, events: state.events.slice(0) };
+      if (parseInt(state.eventDetail._id, 10) === parseInt(action.payload._id, 10)) {
+        state.eventDetail = action.payload;
+      }
+      if (parseInt(state.selectedEvent._id, 10) === parseInt(action.payload._id, 10)) {
+        state.selectedEvent = action.payload;
+      }
+      return {
+        ...state,
+        events: state.events.slice(0),
+        eventDetail: { ...state.eventDetail },
+        selectedEvent: { ...state.selectedEvent }
+      };
+
     case `${ADD_EVENT}_SUCCESS`:
       state.events.push(action.payload);
       return { ...state, events: state.events.slice(0) };
     case `${DELETE_EVENT}_SUCCESS`:
       state.events = state.events.filter(event => parseInt(event._id) !== parseInt(action.payload._id));
-      return { ...state, events: state.events.slice(0) };
+      return { ...state, events: state.events.slice(0), eventDetail: {}, selectedEvent: {} };
     case `${GET_EVENT_DETAIL}_SUCCESS`:
       return { ...state, eventDetail: action.payload };
 

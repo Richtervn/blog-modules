@@ -1,0 +1,37 @@
+.event-detail .banner {
+	width: 100%;
+}
+
+.event-detail .banner img {
+	width: 100%;
+}
+
+.event-detail .no-content {
+	width: 100%;
+	border: solid 1px rgba(0, 0, 0, 0.125);
+	border-radius: 5px;
+	height: 150px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+
+.event-detail .no-content h1 {
+	font-size: 16px;
+	color: rgba(0, 0, 0, 0.25);
+	font-weight: 400;
+	font-style: italic;
+}
+
+.event-detail .description {
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+.event-detail .html-content {
+	margin-top: 10px;
+}
+
+.event-detail .event-link {
+	font-size: 14px;
+}

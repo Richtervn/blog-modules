@@ -173,7 +173,7 @@ export default (state = initialState, action) => {
       return { ...state, sortToolKey: action.sortKey, sortToolOption: action.sortOption };
 
     case `${GET_CHARACTERS}_SUCCESS`:
-      return { ...state, characters: action.payload, focusCharacter: action.payload[0]._id };
+      return { ...state, characters: action.payload, focusCharacter: action.payload[0] ? action.payload[0]._id : '' };
     case `${ADD_CHARACTER}_SUCCESS`:
       state.characters.push(action.payload);
       toastStrong('Added', action.payload.Name);
@@ -196,7 +196,11 @@ export default (state = initialState, action) => {
       return { ...state, sortCharacterKey: action.sortKey, sortCharacterOption: action.sortOption };
 
     case `${GET_SURVIVAL_KITS}_SUCCESS`:
-      return { ...state, survivalKits: action.payload, focusSurvivalKit: action.payload[0]._id };
+      return {
+        ...state,
+        survivalKits: action.payload,
+        focusSurvivalKit: action.payload[0] ? action.payload[0]._id : ''
+      };
     case `${ADD_SURVIVAL_KIT}_SUCCESS`:
       state.survivalKits.push(action.payload);
       toastStrong('Added', action.payload.Name);

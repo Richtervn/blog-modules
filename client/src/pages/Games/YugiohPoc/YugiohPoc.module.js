@@ -19,7 +19,16 @@ const SET_FOCUS_MOD = 'yugiohPoc/SET_FOCUS_MOD';
 const SET_FOCUS_DECK = 'yugiohPoc/SET_FOCUS_DECK';
 
 export const getMods = () => actionCreator(GET_MODS, services.getMods)();
-export const addMod = formBody => actionCreator(ADD_MOD, services.addMod, { payload: { formBody } })();
+export const addMod = formBody =>
+  actionCreator(ADD_MOD, services.addMod, {
+    payload: { formBody },
+    onAfterSuccess({ getState, dispatch, data }) {
+      const decks = getState().yugiohPoc.decks;
+      if (!decks) {
+        dispatch(getDecks(data._id));
+      }
+    }
+  })();
 export const editMod = formBody => actionCreator(EDIT_MOD, services.editMod, { payload: { formBody } })();
 export const searchMod = query => actionCreator(SEARCH_MOD, services.searchMod, { payload: { query } })();
 export const deleteMod = id => actionCreator(DELETE_MOD, services.deleteMod, { payload: { id } })();
@@ -45,7 +54,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case `${GET_MODS}_SUCCESS`:
-      return { ...state, mods: action.payload, focusMod: action.payload[0]._id };
+      return { ...state, mods: action.payload, focusMod: action.payload[0] ? action.payload[0]._id : '' };
     case `${ADD_MOD}_SUCCESS`:
       state.mods.push(action.payload);
       toastStrong(action.payload.Name, 'Added');

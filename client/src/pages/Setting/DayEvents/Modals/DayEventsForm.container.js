@@ -10,17 +10,17 @@ export default connect(
     eventDetail: dayEvents.eventDetail
   }),
   dispatch => ({
-    onAddEvent(formBody) {
-      dispatch(addEvent(formBody));
-    },
-    onGetEventDetail(id) {
-      dispatch(getEventDetail(id));
+    onGetEventDetail(event) {
+      dispatch(getEventDetail(event._id));
     },
     onEditEvent(formBody) {
       dispatch(editEvent(formBody));
     },
     onDeleteEvent(id) {
       dispatch(deleteEvent(id));
+    },
+    onAddEvent(formBody) {
+      dispatch(addEvent(formBody));
     }
   })
 )(DayEventsForm);

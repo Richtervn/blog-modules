@@ -37,11 +37,10 @@ export default ({
               openModal('AddEvent');
             }
           }}
-          // onSelectEvent={event => {
-          //   console.log(event);
-          //   console.log(selectedEvent);
-          //   onSetSelectedEvent(event);
-          // }}
+          onSelectEvent={event => {
+            onSetSelectedEvent(event);
+            openModal('EditEvent');
+          }}
           events={events}
         />
       </div>
@@ -56,6 +55,7 @@ export default ({
           }}
           onSelectEvent={event => {
             onSetSelectedEvent(event);
+            openModal('EventDetails');
           }}
         />
       </div>

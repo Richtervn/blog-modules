@@ -27,7 +27,7 @@ class Extra extends Component {
       );
     }
     return (
-      <div className="row">
+      <div className="row d2-extra-page">
         <div className="col">
           <div className="row">
             <InfoBoard data={data} />

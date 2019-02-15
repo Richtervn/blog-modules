@@ -10,7 +10,7 @@ import {
   ProjectItemForm,
   ProjectSetting
 } from 'pages/Home/Projects/ProjectBoard';
-import { EventForm, EventDetails, EventDeleteConfirm } from 'pages/Home/Schelude';
+import { EventDetails } from 'pages/Home/Schelude';
 
 import { MusicForm } from 'pages/Collections/Music';
 
@@ -84,7 +84,7 @@ import { AccountForm } from 'pages/Archived/Accounts';
 
 import { ProviderForm, DeleteProviderConfirm } from 'pages/Subscribe/Rss';
 
-import { DayEventDeleteConfirm, DayEventDetails, DayEventsForm } from 'pages/Setting/DayEvents';
+import { DayEventsForm } from 'pages/Setting/DayEvents';
 
 export default ({ name }) => {
   let additionProps = {};
@@ -126,10 +126,10 @@ export default ({ name }) => {
       {name === 'ProjectSetting' && <ProjectSetting />}
       {name === 'AddProjectItem' && <ProjectItemForm />}
       {name === 'ProjectItemDetail' && <ProjectItemDetail />}
-      {name === 'AddEvent' && <EventForm />}
-      {name === 'EditEvent' && <EventForm edit />}
-      {name === 'DeleteEvent' && <EventDeleteConfirm />}
-      {name === 'EventDetails' && <EventDetails />}
+
+      {name === 'AddEvent' && <EventDetails defaultView="Add" />}
+      {name === 'EventDetails' && <EventDetails defaultView="Detail" />}
+      {name === 'EditEvent' && <EventDetails defaultView="Edit" />}
 
       {name === 'AddSong' && <MusicForm />}
 
@@ -216,8 +216,6 @@ export default ({ name }) => {
 
       {name === 'AddDayEvent' && <DayEventsForm />}
       {name === 'EditDayEvent' && <DayEventsForm edit />}
-      {name === 'DayEventDetails' && <DayEventDetails />}
-      {name === 'DeleteDayEvent' && <DayEventDeleteConfirm />}
     </Modal>
   );
 };

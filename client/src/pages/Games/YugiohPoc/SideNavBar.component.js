@@ -35,6 +35,12 @@ export default ({ focusMod, mods, onGetDecks, onSetFocusMod, onSort, sortKey, so
               onRating={value => onEditMod({ _id: mod._id, Rating: value })}
             />
           ))}
+          {sortedMods.length === 0 && (
+            <div className="no-content-wrapper">
+              <i className="fa fa-long-arrow-up fa-2x" />
+              <div className="notice">Start by adding a mod</div>
+            </div>
+          )}
         </BasicSideBar>
       </div>
     </div>

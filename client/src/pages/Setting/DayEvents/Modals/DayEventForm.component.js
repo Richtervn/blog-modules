@@ -2,10 +2,19 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 
 import { hideModal } from 'common/Modal';
-import { ModalFooter } from 'components/Modal';
-import { FormGroupRow, FormGroupArea, FormGroupTwitterColor } from 'components/FormTools';
+import { ModalLoader } from 'common/Loaders';
+import { FormGroupRow, FormGroupArea, FormGroupTwitterColor, FormGroupSelect } from 'components/FormTools';
 
-export default ({ edit, eventDetail, onAddEvent, onEditEvent, timeValues, selectedEvent, onGetEventDetail }) => {
+export default ({
+  children,
+  edit,
+  onAddEvent,
+  onEditEvent,
+  timeValues,
+  eventDetail,
+  selectedEvent,
+  onGetEventDetail
+}) => {
   const [state, setState] = useState({
     title: '',
     description: '',
@@ -15,9 +24,11 @@ export default ({ edit, eventDetail, onAddEvent, onEditEvent, timeValues, select
     CSS: '',
     color: '',
     priority: '',
+    type: 'ONE_TIME',
     start: moment(timeValues.start),
     end: moment(timeValues.end)
   });
+  const [error, setError] = useState({});
 
   useEffect(() => {
     if (edit && selectedEvent._id && selectedEvent._id !== eventDetail._id) {
@@ -25,8 +36,6 @@ export default ({ edit, eventDetail, onAddEvent, onEditEvent, timeValues, select
       return;
     }
   }, [edit, selectedEvent]);
-
-  const [error, setError] = useState({});
 
   useEffect(() => {
     if (edit) return;
@@ -48,6 +57,7 @@ export default ({ edit, eventDetail, onAddEvent, onEditEvent, timeValues, select
       CSS: eventDetail.CSS || '',
       color: eventDetail.color || '',
       priority: eventDetail.priority || '',
+      type: eventDetail.type || 'ONE_TIME',
       start: moment(eventDetail.start),
       end: moment(eventDetail.end)
     });
@@ -75,16 +85,22 @@ export default ({ edit, eventDetail, onAddEvent, onEditEvent, timeValues, select
           onChange={e => setState({ ...state, description: e.target.value })}
         />
         <FormGroupRow
+          type="text"
+          label="Link"
+          value={state.link}
+          onChange={e => setState({ ...state, link: e.target.value })}
+        />
+        <FormGroupRow
           type="number"
           label="Priority"
           value={state.priority}
           onChange={e => setState({ ...state, priority: e.target.value })}
         />
-        <FormGroupRow
-          type="text"
-          label="Link"
-          value={state.link}
-          onChange={e => setState({ ...state, link: e.target.value })}
+        <FormGroupSelect
+          options={['ONE_TIME', 'REPEATABLE_SOLAR', 'REPEATABLE_LUNAR']}
+          value={state.type}
+          onChange={e => setState({ ...state, type: e.target.value })}
+          label="Type"
         />
         <FormGroupRow
           type="text"
@@ -103,21 +119,29 @@ export default ({ edit, eventDetail, onAddEvent, onEditEvent, timeValues, select
         />
         <FormGroupRow type="text" label="End Time" value={state.end.format('DD/MM/YYYY hh:mm:ss')} disabled readOnly />
       </form>
+      {edit && selectedEvent._id !== eventDetail._id && <ModalLoader />}
     </div>,
-    <ModalFooter
-      key="gh_f"
-      onClickSubmit={() => {
-        const hasError = !state.title || !state.color;
-        setError({
-          title: !state.title,
-          color: !state.color
-        });
-        if (hasError) {
-          return;
-        }
-        edit ? onEditEvent({ ...state, _id: eventDetail._id }) : onAddEvent(state);
-        hideModal();
-      }}
-    />
+    <div className="modal-footer" key="gh_f">
+      <button
+        className="btn btn-success"
+        onClick={() => {
+          const hasError = !state.title || !state.color;
+          setError({
+            title: !state.title,
+            color: !state.color
+          });
+          if (hasError) {
+            return;
+          }
+          edit ? onEditEvent({ ...state, _id: eventDetail._id }) : onAddEvent(state);
+          hideModal();
+        }}>
+        Save
+      </button>
+      {children}
+      <button className="btn btn-danger" data-dismiss="modal">
+        Close
+      </button>
+    </div>
   ];
 };

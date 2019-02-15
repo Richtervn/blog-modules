@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import './Tools.css';
+import React, { useEffect, useState } from 'react';
 import { sortList } from 'helpers';
 
 import { PageLoader, ColLoader } from 'common/Loaders';
@@ -9,76 +10,66 @@ import { SmallIconCard } from 'components/Cards';
 
 import ToolDetail from './ToolDetail.container';
 
-class Tools extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { didLoaded: false, isDetailLoading: false };
-  }
-
-  componentWillMount() {
-    const { tools, onGetTools } = this.props;
-    if (!tools) {
-      onGetTools();
+export default ({ tools, onGetTools, toolDetail, sortKey, sortOption, onSortTool, onSearchTool, onGetToolDetail }) => {
+  const [isLoading, setLoading] = useState(false);
+  useEffect(() => {
+    onGetTools();
+  }, []);
+  useEffect(() => {
+    if (!tools) return;
+    if (tools.length > 0) {
+      setLoading(true);
+      onGetToolDetail(tools[0]._id);
     }
-  }
+  }, [tools]);
+  useEffect(() => {
+    setLoading(false);
+  }, [toolDetail]);
 
-  componentWillReceiveProps(nextProps) {
-    const { onGetToolDetail, tools, toolDetail } = this.props;
-    if (nextProps.toolDetail._id !== toolDetail._id) {
-      this.setState({ isDetailLoading: false });
-    }
-    if (!this.state.didLoaded && !tools && nextProps.tools) {
-      onGetToolDetail(nextProps.tools[0]._id);
-      this.setState({ didLoaded: true });
-    }
-  }
-
-  render() {
-    const { tools, toolDetail, onGetToolDetail, sortKey, sortOption, onSortTool, onSearchTool } = this.props;
-    if (!tools) {
-      return (
-        <div className="row">
-          <PageLoader />
-        </div>
-      );
-    }
-
-    let sortedTools = sortList(tools, sortKey, sortOption);
+  if (!tools) {
     return (
       <div className="row">
-        <div className="col-3">
-          <div className="row">
-            <BasicSideBar
-              onSort={onSortTool}
-              onSearch={text => onSearchTool({ Name: text })}
-              customClass="mu-side-bar"
-              sortOptions={['Name', 'Rating']}
-              onClickAdd={() => openModal('AddMuOnlineTool')}>
-              {sortedTools.map(tool => (
-                <SmallIconCard
-                  key={tool._id}
-                  label={tool.Name}
-                  icon={tool.IconUrl}
-                  rating={tool.Rating}
-                  isActive={tool._id === toolDetail._id}
-                  customClass="mu-tool-card"
-                  downloadUrl={tool.ArchiveUri}
-                  onClick={() => {
-                    this.setState({ isDetailLoading: true });
-                    onGetToolDetail(tool._id);
-                  }}
-                />
-              ))}
-            </BasicSideBar>
-          </div>
-        </div>
-        <div className="col-9">
-          {this.state.isDetailLoading && <ColLoader />}
-          {!this.state.isDetailLoading && <ToolDetail />}
-        </div>
+        <PageLoader />
       </div>
     );
   }
-}
 
-export default Tools;
+  let sortedTools = sortList(tools, sortKey, sortOption);
+  return (
+    <div className="row">
+      <div className="col-3">
+        <div className="row">
+          <BasicSideBar
+            onSort={onSortTool}
+            onSearch={text => onSearchTool({ Name: text })}
+            customClass="mu-side-bar"
+            sortOptions={['Name', 'Rating']}
+            onClickAdd={() => openModal('AddMuOnlineTool')}>
+            {sortedTools.map(tool => (
+              <SmallIconCard
+                key={tool._id}
+                label={tool.Name}
+                icon={tool.IconUrl}
+                rating={tool.Rating}
+                isActive={tool._id === toolDetail._id}
+                customClass="mu-tool-card"
+                downloadUrl={tool.ArchiveUri}
+                onClick={() => {
+                  setLoading(true);
+                  onGetToolDetail(tool._id);
+                }}
+              />
+            ))}
+            {sortedTools.length === 0 && (
+              <div className="no-content-wrapper">
+                <i className="fa fa-long-arrow-up fa-2x" />
+                <div className="notice">Start by adding a tool</div>
+              </div>
+            )}
+          </BasicSideBar>
+        </div>
+      </div>
+      <div className="col-9">{isLoading ? <ColLoader /> : <ToolDetail />}</div>
+    </div>
+  );
+};
