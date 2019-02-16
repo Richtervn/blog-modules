@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import arrangeManga from './services/arrangeManga';
 import crawl, { sites as crawlableSites } from './services/crawl';
+import create from './services/create';
 import quickUpdate from './services/quickUpdate';
 import sortManga from './services/sortManga';
 import manualSaveNewChapter from './services/manualSaveNewChapter';
@@ -20,7 +21,7 @@ export default (MangasReading, factories, socket) => {
     wrap(async ({ files, body }, res, next) => {
       const coverUri = commonService.uploadImage(files, './public/Mangas Reading');
       if (coverUri) body.CoverUri = coverUri;
-      const manga = await commonService.create(MangasReading, body, ['Aka', 'Authors', 'Genre']);
+      const manga = await create(commonService, MangasReading, body);
       res.send(manga);
     })
   );
@@ -94,7 +95,7 @@ export default (MangasReading, factories, socket) => {
         return res.send({ message: 'Site is not supported yet' });
       }
       form.Status = 'OnGoing';
-      const manga = await commonService.create(MangasReading, form, ['Aka', 'Authors', 'Genre']);
+      const manga = await create(commonService, MangasReading, form);
       res.send(manga);
     })
   );
@@ -126,7 +127,7 @@ export default (MangasReading, factories, socket) => {
         return res.send(body);
       }
       formData.Chapter = maxChapter;
-      const manga = await commonService.create(MangasReading, formData);
+      const manga = await create(commonService, MangasReading, formData);
       res.send(manga);
     })
   );

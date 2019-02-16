@@ -46,8 +46,8 @@ export default (ScheludeEvents, factories) => {
   router.delete(
     '/remove/:id',
     wrap(async (req, res, next) => {
-      const id = await commonService.delete(ScheludeEvents, req.params.id);
-      res.send({ id });
+      const result = await commonService.delete(ScheludeEvents, req.params.id);
+      res.send(result);
     })
   );
 

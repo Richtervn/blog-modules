@@ -1,9 +1,10 @@
 import { Schema } from 'mongoose';
+import { required } from '../validators';
 
 const MangasReading = new Schema(
   {
-    Name: String,
-    Aka: [String],
+    Name: { type: String, required: required('Name'), unique: true },
+    Aka: { type: [String], validate: required('Aka', true) },
     Authors: [String],
     Introduce: String,
     Chapter: String,

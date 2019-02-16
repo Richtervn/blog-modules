@@ -13,11 +13,11 @@ export default connect(
 		onGetEventDetail(event) {
 			dispatch(getEventDetail(event));
 		},
-		onDeleteEvent(event) {
-			if (event.eventType === 'day') {
+		onDeleteEvent(event, type) {
+			if (type === 'day') {
 				dispatch(deleteDayEvent(event._id));
 			}
-			if (event.eventType === 'schelude') {
+			if (type === 'schelude') {
 				dispatch(deleteEvent(event._id));
 			}
 		}

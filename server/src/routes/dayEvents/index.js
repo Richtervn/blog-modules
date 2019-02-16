@@ -47,8 +47,8 @@ export default (DayEvents, factories) => {
   router.delete(
     '/remove/:id',
     wrap(async (req, res, next) => {
-      const id = await commonService.delete(DayEvents, req.params.id);
-      res.send({ id });
+      const result = await commonService.delete(DayEvents, req.params.id);
+      res.send(result);
     })
   );
 

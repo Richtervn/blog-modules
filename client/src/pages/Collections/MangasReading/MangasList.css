@@ -30,6 +30,11 @@
   cursor: pointer;
 }
 
+.mgr-genre-tag.ellipsis-tag {
+  pointer-events: none;
+  cursor: none;
+}
+
 .mgr-new-chapter {
   position: absolute;
   color: white;

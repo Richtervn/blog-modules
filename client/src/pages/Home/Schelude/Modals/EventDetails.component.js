@@ -72,7 +72,7 @@ const EventDetails = ({
 					<button
 						className="btn btn-success"
 						onClick={() => {
-							onDeleteEvent(eventDetail);
+							onDeleteEvent(eventDetail, selectedEvent.eventType);
 							hideModal();
 						}}>
 						Yes

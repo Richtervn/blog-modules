@@ -8,6 +8,7 @@ import { actionCreator, serviceCaller, serviceWrapper } from './service';
 import {
   colorConverter,
   connectString,
+  ellipsisText,
   getContrastColor,
   getFullName,
   getSimpleName,
@@ -39,6 +40,7 @@ export {
   serviceWrapper,
   colorConverter,
   connectString,
+  ellipsisText,
   getContrastColor,
   getFullName,
   getSimpleName,

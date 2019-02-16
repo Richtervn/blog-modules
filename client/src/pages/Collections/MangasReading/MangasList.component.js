@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import StarRating from 'react-star-rating-component';
 import { LeftImageCard } from 'components/Cards';
 
+import { ellipsisText } from 'helpers';
+
 class MangasList extends Component {
   componentDidUpdate(prevProps, prevState) {
     let willScroll = false;
@@ -63,6 +65,13 @@ class MangasList extends Component {
               if (manga.Status === 'Stone') {
                 customClass = 'gray-card';
               }
+              let isGenresOverlow = false;
+              const isOneLine = manga.Name.length <= 25;
+              if (!isOneLine && manga.Genre.length > 5) {
+                isGenresOverlow = true;
+                manga.Genre = manga.Genre.filter((genre, i) => i <= 5);
+              }
+
               return (
                 <LeftImageCard
                   customClass={customClass}
@@ -71,12 +80,11 @@ class MangasList extends Component {
                   imgUrl={manga.CoverUri}
                   onClick={() => onSetFocusManga(manga._id)}
                   isActive={manga._id === focusManga}>
-                  {manga.NewChapter &&
-                    parseFloat(manga.NewChapter) > parseFloat(manga.Chapter) && (
-                      <div className="mgr-new-chapter">{manga.NewChapter}</div>
-                    )}
+                  {manga.NewChapter && parseFloat(manga.NewChapter) > parseFloat(manga.Chapter) && (
+                    <div className="mgr-new-chapter">{manga.NewChapter}</div>
+                  )}
                   <div className="text-center">
-                    <strong>{manga.Name}</strong>
+                    <strong>{ellipsisText(manga.Name, 40)}</strong>
                     <br />
                     <StarRating
                       name={`mgr-${i}`}
@@ -98,6 +106,7 @@ class MangasList extends Component {
                         {genre}
                       </span>
                     ))}
+                    {isGenresOverlow && <span className="badge badge-info mgr-genre-tag ellipsis-tag">...</span>}
                     <div className="manga-chaper-text">
                       <strong>CHAPTER : {manga.Chapter}</strong>
                     </div>

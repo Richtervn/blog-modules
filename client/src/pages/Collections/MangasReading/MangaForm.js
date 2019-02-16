@@ -10,7 +10,8 @@ const initialState = {
   Introduce: '',
   Chapter: '',
   Genre: [''],
-  Rating: 0
+  Rating: 0,
+  NewChapter: ''
 };
 
 class MangaForm extends Component {
@@ -218,6 +219,18 @@ class MangaForm extends Component {
               onChange={this.handleChange}
               value={this.state.Chapter}
               name="Chapter"
+            />
+          </div>
+          <div className="form-group">
+            <label>
+              <strong>Lastest chapter:</strong>
+            </label>
+            <input
+              type="text"
+              className="form-control manga-form-input"
+              onChange={this.handleChange}
+              value={this.state.NewChapter}
+              name="NewChapter"
             />
           </div>
           <div className="form-group">

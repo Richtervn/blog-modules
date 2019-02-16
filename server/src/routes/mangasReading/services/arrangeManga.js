@@ -5,7 +5,7 @@ export default mangas => {
     let grade = 0;
     if (manga.Status) {
       if (manga.Status == 'Stone') {
-        grade -= 100;
+        grade -= 1000;
       }
       if (manga.Status == 'HasNew') {
         grade = grade + mangas.length + (parseFloat(manga.NewChapter) - parseFloat(manga.Chapter)) * 50;

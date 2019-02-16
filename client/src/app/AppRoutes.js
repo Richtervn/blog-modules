@@ -34,33 +34,36 @@ import { Guideline } from 'pages/Documentations/Guideline';
 
 import { MangaNews } from 'pages/Subscribe/MangaNews';
 import { Rss } from 'pages/Subscribe/Rss';
+import { Weather } from 'pages/Subscribe/Weather';
 
 const AppRoutes = () => (
   <Page>
     <Switch>
       <Route exact path="/" render={() => <Redirect to="/home/projects" />} />
-      <Route path="/home/:tab/:subPage?" component={Home} />
-      <Route exact path="/mangas_reading" component={MangasReading} />
+      <Route exact path="/accounts" component={Accounts} />
+      <Route exact path="/app_menu" component={AppMenu} />
+      <Route exact path="/code_playground" component={CodePlayground} />
+      <Route exact path="/components_viewer" component={ComponentsViewer} />
+      <Route exact path="/day_events" component={DayEvents} />
       <Route exact path="/ended_manga" component={EndedManga} />
       <Route exact path="/gallery" component={Gallery} />
-      <Route exact path="/accounts" component={Accounts} />
-      <Route exact path="/icon_chooser" component={IconChooser} />
-      <Route exact path="/code_playground" component={CodePlayground} />
-      <Route exact path="/music" component={Music} />
-      <Route exact path="/app_menu" component={AppMenu} />
-      <Route exact path="/day_events" component={DayEvents} />
       <Route exact path="/guideline" component={Guideline} />
-      <Route exact path="/yugioh!_poc" component={YugiohPoc} />
+      <Route exact path="/icon_chooser" component={IconChooser} />
       <Route exact path="/manga_news" component={MangaNews} />
+      <Route exact path="/mangas_reading" component={MangasReading} />
+      <Route exact path="/music" component={Music} />
       <Route exact path="/rss" render={() => <Redirect to="/rss/feeds" />} />
-      <Route path="/rss/:tab?" component={Rss} />
-      <Route path="/diablo_ii/:tab?/:subPage?" component={DiabloII} />
-      <Route path="/mu_online/:tab?/:subPage?" component={MuOnline} />
-      <Route path="/darksteam_97d99i/:tab?/:page?" component={Darksteam97d99i} />
-      <Route exact path="/components_viewer" component={ComponentsViewer} />
+      <Route exact path="/weather" component={Weather} />
+      <Route exact path="/yugioh!_poc" component={YugiohPoc} />
+
       <Route path="/content_mirror/:table?/:record?" component={ContentMirror} />
-      <Route path="/gaming_history/:game?/:tab?/:subPage?" component={GamingHistory} />
+      <Route path="/darksteam_97d99i/:tab?/:page?" component={Darksteam97d99i} />
+      <Route path="/diablo_ii/:tab?/:subPage?" component={DiabloII} />
       <Route path="/flash_games/:name" component={FlashGames} />
+      <Route path="/gaming_history/:game?/:tab?/:subPage?" component={GamingHistory} />
+      <Route path="/home/:tab/:subPage?" component={Home} />
+      <Route path="/mu_online/:tab?/:subPage?" component={MuOnline} />
+      <Route path="/rss/:tab?" component={Rss} />
       <Route path="/starcraft_broodwar/:tab?/:subPage?" component={Starcraft} />
       <Route path="/404" component={NotFound} />
       <Route path="*" component={NotFound} />

@@ -24,6 +24,7 @@ import { reducer as accounts } from 'pages/Archived/Accounts';
 
 import { reducer as mangaNews } from 'pages/Subscribe/MangaNews';
 import { reducer as rss } from 'pages/Subscribe/Rss';
+import { reducer as weather } from 'pages/Subscribe/Weather';
 
 import { reducer as dayEvents } from 'pages/Setting/DayEvents';
 
@@ -75,5 +76,6 @@ export default combineReducers({
   rss,
   schelude,
   starcraft,
+  weather,
   yugiohPoc
 });

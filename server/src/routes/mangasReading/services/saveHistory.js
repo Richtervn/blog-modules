@@ -86,7 +86,7 @@ export default async (historyItems, MangasReading, notificationHandler) => {
     Object.keys(mangaMap).map(async mangaId => {
       const result = await MangasReading.findOneAndUpdate(
         { _id: mangaId },
-        { $set: { Chapter: mangaMap[mangaId] } },
+        { $set: { Chapter: mangaMap[mangaId], Status: 'OnGoing' } },
         { new: true }
       );
       notificationHandler.send('appManga/notification', {
