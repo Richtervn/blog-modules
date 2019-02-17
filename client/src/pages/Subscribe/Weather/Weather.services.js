@@ -1,7 +1,7 @@
 import appConfig from 'app/config';
 
-// const accuHN = 353412;
-// const accuApiKey = appConfig.ACCU_WEATHER_API_KEY;
+const accuHN = 353412;
+const accuApiKey = appConfig.ACCU_WEATHER_API_KEY;
 const owmHN = 1581130;
 const owmAppId = appConfig.OPEN_WEATHER_APP_ID;
 
@@ -22,7 +22,11 @@ const parserOWMQuery = (query = {}) => {
   return { id: owmHN };
 };
 
-const makeRequest = async (url, query) => {
+const makeRequest = async (url, query, params) => {
+  if (params) {
+    params.forEach(param => (url += `/${param}`));
+  }
+
   for (let key in query) {
     url += url.indexOf('?') === -1 ? '?' : '&';
     url += `${key}=${query[key]}`;
@@ -30,8 +34,6 @@ const makeRequest = async (url, query) => {
   const response = await fetch(url, { method: 'GET' });
   return response;
 };
-
-// http://dataservice.accuweather.com/currentconditions/v1/353412?apikey=4DBMJElm9nnqf6kzb5qXgBXO2u0xWlGa&language=vi-vn&details=true
 
 export default {
   openWeatherMap: {
@@ -49,6 +51,24 @@ export default {
         APPID: owmAppId,
         units: 'metric'
       });
+      return data;
+    }
+  },
+  accuWeather: {
+    getCurrent(location = accuHN) {
+      const data = makeRequest(
+        'http://dataservice.accuweather.com/currentconditions/v1',
+        { apikey: accuApiKey, details: true },
+        [location]
+      );
+      return data;
+    },
+    getForecast(location = accuHN) {
+      const data = makeRequest(
+        'http://dataservice.accuweather.com/forecasts/v1/daily/5day',
+        { apikey: accuApiKey, details: true, metric: true },
+        [location]
+      );
       return data;
     }
   }

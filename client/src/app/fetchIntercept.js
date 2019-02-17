@@ -2,13 +2,18 @@ import appConfig from './config';
 import fetchIntercept from 'fetch-intercept';
 import { dataTransform } from 'utils';
 
+const whiteList = ['api.openweathermap.org', 'dataservice.accuweather.com', 'get-internal-source'];
+
 fetchIntercept.register({
   request(url, config) {
-    if (url.indexOf('api.openweathermap.org') !== -1) {
-      return [url, config];
+    let isWhiteListed = false;
+    for (let i = 0; i < whiteList.length; i++) {
+      if (url.indexOf(whiteList[i]) !== -1) {
+        isWhiteListed = true;
+        break;
+      }
     }
-
-    if (url.indexOf('get-internal-source') !== -1) {
+    if (isWhiteListed) {
       return [url, config];
     }
 

@@ -15,7 +15,7 @@ class IconChooser extends Component {
       selectedIcon: '',
       size: 'default',
       additionClass: 'default',
-      color: ''
+      color: {}
     };
     this.getIcons = this.getIcons.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -35,7 +35,13 @@ class IconChooser extends Component {
   }
 
   handleColorChange(color) {
-    this.setState({ color });
+    let colorString = '';
+    if (color.rgb.a !== 1) {
+      colorString = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
+    } else {
+      colorString = color.hex;
+    }
+    this.setState({ color: colorString });
   }
 
   getIcons() {
@@ -55,18 +61,9 @@ class IconChooser extends Component {
       let classes = `fa fa-${this.state.selectedIcon}`;
       if (this.state.size !== 'default') classes += ` fa-${this.state.size}`;
       if (this.state.additionClass !== 'default') classes += ` ${this.state.additionClass}`;
-      let colorString = '#000000';
-      if (this.state.color) {
-        const { color } = this.state;
-        if (color.rgb.a !== 1) {
-          colorString = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
-        } else {
-          colorString = color.hex;
-        }
-      }
 
       return (
-        <div className="selected-icon-box" style={{ color: colorString }}>
+        <div className="selected-icon-box" style={{ color: this.state.color }}>
           <i className={classes} />
         </div>
       );
@@ -134,7 +131,7 @@ class IconChooser extends Component {
                 </select>
               </div>
               <div className="icon-select-category">
-                <ChromePicker color={this.state.color} onChange={this.handleColorChange} />
+                <ChromePicker color={this.state.color} onChangeComplete={this.handleColorChange} />
               </div>
             </div>
           </div>

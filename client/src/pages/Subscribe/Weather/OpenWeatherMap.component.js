@@ -1,90 +1,154 @@
-/* eslint-disable */
 import './OpenWeatherMap.css';
-import React, { useEffect } from 'react';
-import currentData from './current.data';
+import React, { useEffect, useState } from 'react';
+import moment from 'moment';
+import classnames from 'classnames';
 
-// coord
-// coord.lon City geo location, longitude
-// coord.lat City geo location, latitude
-// weather (more info Weather condition codes)
-// weather.id Weather condition id
-// weather.main Group of weather parameters (Rain, Snow, Extreme etc.)
-// weather.description Weather condition within the group
-// weather.icon Weather icon id
+import { ContainerLoader } from 'common/Loaders';
+import { CircleProgress } from 'components/Other';
 
-// main
-// main.temp Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
-// main.pressure Atmospheric pressure (on the sea level, if there is no sea_level or grnd_level data), hPa
-// main.humidity Humidity, %
-// main.temp_min Minimum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
-// main.temp_max Maximum temperature at the moment. This is deviation from current temp that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
-// main.sea_level Atmospheric pressure on the sea level, hPa
-// main.grnd_level Atmospheric pressure on the ground level, hPa
-// wind
-// wind.speed Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
-// wind.deg Wind direction, degrees (meteorological)
-// clouds
-// clouds.all Cloudiness, %
-// rain
-// rain.1h Rain volume for the last 1 hour, mm
-// rain.3h Rain volume for the last 3 hours, mm
-// snow
-// snow.1h Snow volume for the last 1 hour, mm
-// snow.3h Snow volume for the last 3 hours, mm
-// dt Time of data calculation, unix, UTC
-// sys
-// sys.type Internal parameter
-// sys.id Internal parameter
-// sys.message Internal parameter
-// sys.country Country code (GB, JP etc.)
-// sys.sunrise Sunrise time, unix, UTC
-// sys.sunset Sunset time, unix, UTC
-// id City ID
-// name City name
-// cod Internal parameter
+export default ({ current, forecast, onGetCurrent, onGetForecast }) => {
+  const [isRefreshing, setRefreshing] = useState(false);
+  useEffect(() => {
+    onGetForecast();
+    onGetCurrent();
+  }, []);
+  useEffect(() => {
+    setRefreshing(false);
+  }, [forecast]);
 
-//***ForeCast****
-// code Internal parameter
-// message Internal parameter
-// city
-// city.id City ID
-// city.name City name
-// city.coord
-// city.coord.lat City geo location, latitude
-// city.coord.lon City geo location, longitude
-// city.country Country code (GB, JP etc.)
-// cnt Number of lines returned by this API call
-// list
-// list.dt Time of data forecasted, unix, UTC
-// list.main
-// list.main.temp Temperature. Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
-// list.main.temp_min Minimum temperature at the moment of calculation. This is deviation from 'temp' that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
-// list.main.temp_max Maximum temperature at the moment of calculation. This is deviation from 'temp' that is possible for large cities and megalopolises geographically expanded (use these parameter optionally). Unit Default: Kelvin, Metric: Celsius, Imperial: Fahrenheit.
-// list.main.pressure Atmospheric pressure on the sea level by default, hPa
-// list.main.sea_level Atmospheric pressure on the sea level, hPa
-// list.main.grnd_level Atmospheric pressure on the ground level, hPa
-// list.main.humidity Humidity, %
-// list.main.temp_kf Internal parameter
-// list.weather (more info Weather condition codes)
-// list.weather.id Weather condition id
-// list.weather.main Group of weather parameters (Rain, Snow, Extreme etc.)
-// list.weather.description Weather condition within the group
-// list.weather.icon Weather icon id
-// list.clouds
-// list.clouds.all Cloudiness, %
-// list.wind
-// list.wind.speed Wind speed. Unit Default: meter/sec, Metric: meter/sec, Imperial: miles/hour.
-// list.wind.deg Wind direction, degrees (meteorological)
-// list.rain
-// list.rain.3h Rain volume for last 3 hours, mm
-// list.snow
-// list.snow.3h Snow volume for last 3 hours
-// list.dt_txt Data/time of calculation, UTC
+  if (!current || !forecast) {
+    return (
+      <div id="owm-loader-container">
+        <ContainerLoader />
+      </div>
+    );
+  }
 
-export default ({ current = currentData, forecast, onGetCurrent, onGetForecast }) => {
-  // useEffect(() => {
-  //   onGetForecast();
-  // }, []);
-
-  return <div id="open-weather-map">.</div>;
+  return (
+    <div id="open-weather-map">
+      <div className="header">
+        <div className="city">
+          <div className="name">
+            {current.name} - {current.sys.country}
+          </div>
+          <div className="date">{moment(current.dt * 1000).format('DD/MM/YYYY')}</div>
+        </div>
+        <a className="site" href="https://openweathermap.org" target="_blank" rel="noopener noreferrer">
+          <img src="/images/icons/open-weather-map/site-logo.png" alt="OpenWeatherMap" />
+          <div className="name">Open Weather Map</div>
+        </a>
+        <button
+          onClick={() => {
+            setRefreshing(true);
+            onGetForecast();
+            onGetCurrent();
+          }}>
+          {moment(current.dt * 1000).format('HH:mm')}&nbsp;&nbsp;
+          <i className={classnames('fa fa-refresh', { 'fa-spin': isRefreshing })} />
+        </button>
+      </div>
+      <div className="content">
+        <div className="main-card">
+          <div className="icons">
+            {current.weather.map((w, i) => (
+              <img key={i} src={`/images/icons/open-weather-map/${w.icon}.png`} alt={w.description} />
+            ))}
+          </div>
+          <div className="temperature">
+            <div className="current-temp">{current.main.temp}°C</div>
+            <div className="temp-variant">
+              <div className="min">{current.main.temp_min}°C</div>
+              <div className="max">{current.main.temp_max}°C</div>
+            </div>
+          </div>
+        </div>
+        <div className="info-card">
+          <div className="info-row">
+            <div className="item">
+              <div style={{ width: '120px' }}>
+                <CircleProgress percentage={current.main.humidity} text={`${current.main.humidity}%`} />
+              </div>
+              <div className="label">Humidity</div>
+            </div>
+            <div className="item">
+              <div style={{ width: '120px' }}>
+                <CircleProgress percentage={current.clouds.all} text={`${current.clouds.all}%`} />
+              </div>
+              <div className="label">Cloud</div>
+            </div>
+            <div className="item">
+              <div className="pressure">
+                <div className="label">{current.main.pressure} hPa</div>
+              </div>
+              <div className="label">Atmospheric pressure</div>
+            </div>
+          </div>
+          <div className="info-row">
+            <div className="item">
+              <div className="visibility">
+                <div className="label">{current.visibility / 1000} km</div>
+              </div>
+              <div className="label">Visibility</div>
+            </div>
+            <div className="item">
+              <div className="wind">
+                <div className="label">{current.wind.speed} m/s</div>
+                <div className="label">{current.wind.deg}°</div>
+              </div>
+              <div className="label">Wind</div>
+            </div>
+            <div className="item">
+              <div className="rain">
+                <div className="label">{current.rain ? current.rain['3h'] : 0} mm</div>
+              </div>
+              <div className="label">Rain volume</div>
+            </div>
+          </div>
+        </div>
+        <div className="local-time">
+          <div className="local-time-card">
+            <div className="icons">
+              <img src="/images/icons/open-weather-map/sunrise.png" alt="sunrise" />
+              <img src="/images/icons/open-weather-map/sunset.png" alt="sunrise" />
+            </div>
+            <div className="local-icon-container">
+              <div className="layer1">
+                <div className="parabol" />
+              </div>
+              <div className="left dot" />
+              <div className="right dot" />
+            </div>
+            <div className="labels">
+              <div>{moment(current.sys.sunrise * 1000).format('HH:mm')}</div>
+              <div>{moment(current.sys.sunset * 1000).format('HH:mm')}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="footer">
+        {forecast.list.map((data, i) => (
+          <div className="forecast-item" key={i}>
+            <div className="timestamp">
+              <div className="time">{moment(data.dt_txt, 'YYYY-MM-DD HH:mm:ss').format('HH:mm')}</div>
+              <div className="date">{moment(data.dt_txt, 'YYYY-MM-DD HH:mm:ss').format('DD/MM')}</div>
+            </div>
+            <div className="forecast-content">
+              <div className="forecast-icons">
+                {data.weather.map((w, i) => (
+                  <img key={i} src={`/images/icons/open-weather-map/${w.icon}.png`} alt={w.description} />
+                ))}
+              </div>
+              <div className="forecast-temperature">
+                <div className="forecast-temp">{data.main.temp}°C</div>
+                <div className="forecast-temp-variant">
+                  <div className="min">{data.main.temp_min}°C</div>
+                  <div className="max">{data.main.temp_max}°C</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };

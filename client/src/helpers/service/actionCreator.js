@@ -2,6 +2,7 @@ import { toastError } from 'common/Toast';
 
 export default (type, process, options = {}) => {
   let {
+    allowMessage,
     payload,
     validate,
     preProcess,
@@ -55,7 +56,7 @@ export default (type, process, options = {}) => {
       try {
         let data = await process(payload, { dispatch, getState, socket });
 
-        if (data && data.message) {
+        if (data && data.message && !allowMessage) {
           return dispatch(actionFail(data.message));
         }
 

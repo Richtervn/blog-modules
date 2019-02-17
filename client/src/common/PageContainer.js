@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ children, backgroundUrl, overflow, center, opacity, backgroundColor }) => {
+export default ({ children, backgroundUrl, overflow, center, opacity, backgroundColor, id }) => {
   const styles = {
     width: 'calc(100vw - 200px)',
     height: 'calc(100vh - 45px)'

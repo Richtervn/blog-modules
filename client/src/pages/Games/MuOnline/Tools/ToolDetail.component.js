@@ -7,7 +7,7 @@ import { openModal } from 'common/Modal';
 import { AdminButtons } from 'components/Buttons';
 
 export default ({ tool }) => {
-  if (!tool._id) {
+  if (tool._id === undefined) {
     return (
       <div className="row">
         <div className="mu-tool-detail no-content">

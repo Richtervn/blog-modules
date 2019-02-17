@@ -6,7 +6,7 @@ import { getOpenWeatherMapForecast, getOpenWeatherMapCurrent } from './Weather.m
 export default connect(
   ({ weather }) => ({
     current: weather.openWeatherMap.current,
-    // forecast: weather.openWeatherMap.forecast
+    forecast: weather.openWeatherMap.forecast
   }),
   dispatch => ({
     onGetCurrent() {
