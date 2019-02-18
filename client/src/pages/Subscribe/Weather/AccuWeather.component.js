@@ -2,12 +2,10 @@ import './AccuWeather.css';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import classnames from 'classnames';
+
 import { ResponsiveContainer, AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
-
 import { CircleProgress } from 'components/Other';
-
-import currentData from './current.data';
-import forecastData from './forecast.data';
+import { ContainerLoader } from 'common/Loaders';
 
 const getThermometerProps = uvIndex => {
   if (uvIndex <= 4) {
@@ -59,12 +57,24 @@ const getTemperatureData = current => {
   return data;
 };
 
-export default ({ current = currentData[0], forecast = forecastData, onGetCurrent, onGetForecast }) => {
+export default ({ current, forecast, onGetCurrent, onGetForecast }) => {
   const [isRefreshing, setRefreshing] = useState(false);
-  // useEffect(() => {
-  //   onGetCurrent();
-  //   onGetForecast();
-  // }, [])
+
+  useEffect(() => {
+    onGetForecast();
+    onGetCurrent();
+  }, []);
+  useEffect(() => {
+    setRefreshing(false);
+  }, [forecast]);
+
+  if (!current || !forecast) {
+    return (
+      <div id="accu-loader-container">
+        <ContainerLoader />
+      </div>
+    );
+  }
 
   return (
     <div id="accu-weather">
@@ -237,6 +247,48 @@ export default ({ current = currentData[0], forecast = forecastData, onGetCurren
             </ResponsiveContainer>
           )}
         </div>
+      </div>
+      <div className="footer">
+        {forecast.DailyForecasts.map((data, i) => (
+          <div className="forecast-item" key={i}>
+            <div className="header">
+              <div className="date">{moment(data.Date).format('DD/MM')}</div>
+              <div className="time">
+                <div className="day">Day</div>
+                <div className="night">Night</div>
+              </div>
+            </div>
+            <div className="content">
+              <div className="weather day">
+                <div className="icon-wrapper">
+                  <img src={`/images/icons/accu-weather/${data.Day.Icon}.png`} alt={data.Day.LongPhrase} />
+                  <div className="weather-text">{data.Day.IconPhrase}</div>
+                </div>
+                <div className="weather-long-text">{data.Day.LongPhrase}</div>
+                <div className="rain-prob">Rain: {data.Day.RainProbability}%</div>
+              </div>
+              <div className="weather night">
+                <div className="icon-wrapper">
+                  <img src={`/images/icons/accu-weather/${data.Night.Icon}.png`} alt={data.Night.LongPhrase} />
+                  <div className="weather-text">{data.Night.IconPhrase}</div>
+                </div>
+                <div className="weather-long-text">{data.Night.LongPhrase}</div>
+                <div className="rain-prob">Rain: {data.Night.RainProbability}%</div>
+              </div>
+            </div>
+            <div className="info-lines">
+              <div className="temperature">
+                {data.Temperature.Minimum.Value}°C~{data.Temperature.Maximum.Value}°C
+              </div>
+              <div className="realfeel">
+                <div className="label">RealFeel®:</div>
+                <div className="temperature-info">
+                  {data.RealFeelTemperature.Minimum.Value}°C | {data.RealFeelTemperature.Maximum.Value}°C
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

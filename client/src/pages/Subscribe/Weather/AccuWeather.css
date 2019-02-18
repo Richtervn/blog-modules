@@ -11,6 +11,7 @@
   font-size: 16px;
   margin-top: -15px;
   justify-content: center;
+  align-items: center;
   font-style: italic;
 }
 
@@ -20,6 +21,7 @@
   font-size: 16px;
   margin-top: -15px;
   justify-content: center;
+  align-items: center;
   font-style: italic;
 }
 
@@ -140,10 +142,12 @@
 #accu-weather .item > .label {
   font-size: 14px;
   margin-top: 10px;
+  text-align: center;
 }
 
 #accu-weather .item > .sub {
-  font-size: 12px;
+  font-size: 10px;
+  text-align: center;
 }
 
 #accu-weather .rain,
@@ -206,4 +210,126 @@
   margin-bottom: 10px;
   font-weight: 500;
   font-size: 20px;
+}
+
+#accu-weather .footer {
+  display: flex;
+  overflow-x: auto;
+}
+
+#accu-weather .footer::-webkit-scrollbar {
+  height: 10px;
+}
+
+#accu-weather .footer::-webkit-scrollbar-track {
+  border-radius: 4px;
+  border: solid 1px #282854;
+}
+
+#accu-weather .footer::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #282854;
+}
+
+#accu-weather .forecast-item {
+  border-top: solid 1px rgba(255, 255, 255, 0.2);
+  border-left: solid 1px rgba(255, 255, 255, 0.2);
+  flex: 1;
+}
+
+#accu-weather .forecast-item > .header {
+  background-color: rgba(40, 40, 84, 0.5);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+}
+
+#accu-weather .forecast-item > .header > .date {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#accu-weather .forecast-item > .header > .time {
+  display: flex;
+}
+
+#accu-weather .forecast-item .time > .day {
+  border-right: solid 1px rgba(255, 255, 255, 0.2);
+  border-top: solid 1px rgba(255, 255, 255, 0.2);
+  flex: 1;
+  font-weight: 500;
+  text-align: center;
+}
+
+#accu-weather .forecast-item .time > .night {
+  border-top: solid 1px rgba(255, 255, 255, 0.2);
+  flex: 1;
+  font-weight: 500;
+  text-align: center;
+}
+
+#accu-weather .forecast-item > .content {
+  display: flex;
+}
+#accu-weather .forecast-item .weather {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+}
+
+#accu-weather .forecast-item .weather.day {
+  border-right: solid 1px rgba(255, 255, 255, 0.2);
+}
+
+#accu-weather .forecast-item .weather > .icon-wrapper {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#accu-weather .forecast-item .weather-text {
+  font-size: 12px;
+}
+
+#accu-weather .forecast-item .weather-long-text {
+  font-size: 10px;
+  padding: 5px;
+  height: 50px;
+  text-align: center;
+}
+
+#accu-weather .forecast-item .rain-prob {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+#accu-weather .info-lines > .temperature {
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#accu-weather .info-lines > .realfeel {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  align-items: baseline;
+}
+#accu-weather .info-lines > .realfeel > .label {
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+#accu-weather .info-lines > .realfeel > .temperature-info {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+#accu-loader-container {
+  width: 100%;
+  border: solid 1px rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  height: 500px;
 }

@@ -16,7 +16,10 @@ export const getAccuWeatherCurrent = () => actionCreator(GET_ACCU_WEATHER_CURREN
 export const getAccuWeatherForecast = () =>
   actionCreator(GET_ACCU_WEATHER_FORECAST, services.accuWeather.getForecast)();
 
-const initialState = { openWeatherMap: { current: null, forecast: null } };
+const initialState = {
+  openWeatherMap: { current: null, forecast: null },
+  accuWeather: { current: null, forecast: null }
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {

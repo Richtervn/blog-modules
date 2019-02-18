@@ -93,7 +93,7 @@ export default ({ current, forecast, onGetCurrent, onGetForecast }) => {
             <div className="item">
               <div className="wind">
                 <div className="label">{current.wind.speed} m/s</div>
-                <div className="label">{current.wind.deg}°</div>
+                {current.wind.deg !== undefined && <div className="label">{current.wind.deg}°</div>}
               </div>
               <div className="label">Wind</div>
             </div>

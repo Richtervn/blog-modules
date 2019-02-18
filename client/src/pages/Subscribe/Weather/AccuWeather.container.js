@@ -5,8 +5,8 @@ import { getAccuWeatherCurrent, getAccuWeatherForecast } from './Weather.module'
 
 export default connect(
   ({ weather }) => ({
-    // current: weather.accuWeather.current,
-    // forecast: weather.accuWeather.forecast
+    current: weather.accuWeather.current,
+    forecast: weather.accuWeather.forecast
   }),
   dispatch => ({
     onGetCurrent() {
