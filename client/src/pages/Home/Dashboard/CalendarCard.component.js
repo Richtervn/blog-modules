@@ -7,7 +7,7 @@ import { LunarDate } from 'utils';
 export default () => {
   const today = moment();
   const lunarDate = new LunarDate(today);
-  console.log(lunarDate);
+
   return (
     <div className="dashboard-calendar-card">
       <div className="header">

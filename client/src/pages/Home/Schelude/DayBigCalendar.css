@@ -2,6 +2,12 @@
   width: 100%;
   height: 100%;
 }
+.day-big-calendar .big-calendar-toolbar > button {
+  border: none;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+}
 
 .day-big-calendar .big-calendar-toolbar {
   background-color: #3d95e1;

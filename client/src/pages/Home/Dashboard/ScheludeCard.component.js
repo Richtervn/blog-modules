@@ -14,7 +14,8 @@ export default ({
   onGetDayEvents,
   onSetSelectedDate,
   onSetTimeValues,
-  onSetSelectedEvent
+  onSetSelectedEvent,
+  onSetDayValues
 }) => {
   useEffect(() => {
     if (!events) {
@@ -48,6 +49,7 @@ export default ({
           onSetSelectedEvent(event);
           openModal('EventDetails');
         }}
+        onSetTimeValues={values => onSetDayValues(values)}
       />
     </div>
   );

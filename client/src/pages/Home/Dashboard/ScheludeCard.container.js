@@ -3,7 +3,7 @@ import ScheludeCard from './ScheludeCard.component';
 import moment from 'moment';
 
 import { getEvents, setSelectedDate, setSelectedEvent, setTimeValues } from '../Schelude/Schelude.module';
-import { getEvents as getDayEvents } from 'pages/Setting/DayEvents/DayEvents.module';
+import { getEvents as getDayEvents, setTimeValues as setDayValues } from 'pages/Setting/DayEvents/DayEvents.module';
 
 export default connect(
   ({ schelude, dayEvents }) => ({
@@ -32,6 +32,9 @@ export default connect(
     },
     onSetSelectedEvent(event) {
       dispatch(setSelectedEvent(event));
+    },
+    onSetDayValues(values) {
+      dispatch(setDayValues(values));
     }
   })
 )(ScheludeCard);
