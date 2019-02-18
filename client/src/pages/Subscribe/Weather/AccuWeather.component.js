@@ -80,7 +80,7 @@ export default ({ current, forecast, onGetCurrent, onGetForecast, history }) => 
       <div className="header">
         <div className="city">
           <div className="name">Ha Noi - VN</div>
-          <div className="date">{moment(current.EpochTime * 1000).format('DD/MM/YYYY')}</div>
+          <div className="date">{moment(current.EpochTime * 1000).format('dddd DD/MM/YYYY')}</div>
         </div>
         <a
           className="site"
@@ -251,7 +251,7 @@ export default ({ current, forecast, onGetCurrent, onGetForecast, history }) => 
         {forecast.DailyForecasts.map((data, i) => (
           <div className="forecast-item" key={i}>
             <div className="header">
-              <div className="date">{moment(data.Date).format('DD/MM')}</div>
+              <div className="date">{moment(data.Date).format('ddd DD/MM')}</div>
               <div className="time">
                 <div className="day">Day</div>
                 <div className="night">Night</div>

@@ -31,7 +31,7 @@ export default ({ current, forecast, onGetCurrent, onGetForecast }) => {
           <div className="name">
             {current.name} - {current.sys.country}
           </div>
-          <div className="date">{moment(current.dt * 1000).format('DD/MM/YYYY')}</div>
+          <div className="date">{moment(current.dt * 1000).format('dddd DD/MM/YYYY')}</div>
         </div>
         <a className="site" href="https://openweathermap.org" target="_blank" rel="noopener noreferrer">
           <img src="/images/icons/open-weather-map/site-logo.png" alt="OpenWeatherMap" />
@@ -130,7 +130,7 @@ export default ({ current, forecast, onGetCurrent, onGetForecast }) => {
           <div className="forecast-item" key={i}>
             <div className="timestamp">
               <div className="time">{moment(data.dt_txt, 'YYYY-MM-DD HH:mm:ss').format('HH:mm')}</div>
-              <div className="date">{moment(data.dt_txt, 'YYYY-MM-DD HH:mm:ss').format('DD/MM')}</div>
+              <div className="date">{moment(data.dt_txt, 'YYYY-MM-DD HH:mm:ss').format('ddd DD/MM')}</div>
             </div>
             <div className="forecast-content">
               <div className="forecast-icons">

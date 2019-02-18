@@ -228,14 +228,15 @@
 }
 
 #open-weather-map .forecast-item {
-  width: 120px;
+  width: 140px;
   border-top: solid 1px rgba(255, 255, 255, 0.2);
   border-left: solid 1px rgba(255, 255, 255, 0.2);
 }
 
 #open-weather-map .forecast-item > .timestamp {
   display: flex;
-  width: 120px;
+  width: 140px;
+  justify-content: center;
   align-items: baseline;
   background-color: rgba(40, 40, 84, 0.5);
   padding: 5px;
