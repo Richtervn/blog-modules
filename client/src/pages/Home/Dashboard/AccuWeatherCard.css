@@ -1,0 +1,154 @@
+.accu-weather-card {
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  height: calc(100vh - 110px);
+}
+
+.accu-weather-card .overlay > .city {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 10px;
+  margin-left: 10px;
+  text-transform: uppercase;
+}
+.accu-weather-card .overlay > .date {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.accu-weather-card .increase {
+  display: flex;
+  color: #28a745;
+  font-size: 16px;
+  margin-top: -15px;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+}
+
+.accu-weather-card .decrease {
+  display: flex;
+  color: #dc3545;
+  font-size: 16px;
+  margin-top: -15px;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+}
+
+.accu-weather-card > .overlay {
+  height: calc(100vh - 110px);
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: solid 1px rgba(255, 255, 255, 0.125);
+  border-radius: 4px;
+  color: #fff;
+}
+
+.accu-weather-card .weather-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accu-weather-card .weather-wrapper > .weather-icon {
+  text-align: center;
+}
+
+.accu-weather-card .weather-icon > .weather-text {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.accu-weather-card .weather-wrapper > .current-temperature {
+  font-size: 50px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.accu-weather-card .weather-info {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.accu-weather-card.weather-info > .uv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.accu-weather-card .weather-info > .uv > i {
+  margin-right: 10px;
+}
+
+.accu-weather-card .info-row > .item {
+  flex: 1;
+  padding: 10px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.accu-weather-card .item > .label {
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.accu-weather-card .item > .sub {
+  font-size: 10px;
+  text-align: center;
+}
+
+.accu-weather-card .info-card > .info-row {
+  display: flex;
+}
+
+.accu-weather-card .rain,
+.accu-weather-card .wind,
+.accu-weather-card .visibility,
+.accu-weather-card .pressure {
+  width: 120px;
+  height: 120px;
+  border: solid 3px #fff;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.accu-weather-card .wind {
+  flex-direction: column;
+}
+
+.accu-weather-card .rain > .label,
+.accu-weather-card .visibility > .label,
+.accu-weather-card .pressure > .label {
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.accu-weather-card .wind > .label {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.accu-weather-card .pressure > .label > .fa {
+  margin-left: 5px;
+}
+
+.accu-weather-card .pressure > .label > .fa-angle-double-down {
+  color: #dc3545;
+}
+
+.accu-weather-card .pressure > .label > .fa-angle-double-up {
+  color: #dc3545;
+}

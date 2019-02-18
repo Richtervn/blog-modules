@@ -39,7 +39,7 @@ import { Weather } from 'pages/Subscribe/Weather';
 const AppRoutes = () => (
   <Page>
     <Switch>
-      <Route exact path="/" render={() => <Redirect to="/home/projects" />} />
+      <Route exact path="/" render={() => <Redirect to="/home/dashboard" />} />
       <Route exact path="/accounts" component={Accounts} />
       <Route exact path="/app_menu" component={AppMenu} />
       <Route exact path="/code_playground" component={CodePlayground} />

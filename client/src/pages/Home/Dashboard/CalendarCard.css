@@ -1,0 +1,139 @@
+.dashboard-calendar-card {
+  border-radius: 4px;
+  height: calc(100vh - 110px);
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  border: solid 1px rgba(0, 0, 0, 1);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-calendar-card .header {
+  font-weight: 700;
+  font-size: 18px;
+  background: #611f1f;
+  color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  height: 35px;
+}
+
+.dashboard-calendar-card .center-date {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 280px;
+  margin-bottom: 40px;
+}
+
+.dashboard-calendar-card .big-lunar-wrapper,
+.dashboard-calendar-card .big-date-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dashboard-calendar-card .big-date-wrapper > .big-date {
+  font-size: 180px;
+  -webkit-text-stroke: 2px #965757;
+  -webkit-text-fill-color: #c53232;
+  font-weight: 900;
+}
+
+.dashboard-calendar-card .big-date-wrapper > .week-day-name {
+  font-weight: 900;
+  font-size: 50px;
+  margin-top: -50px;
+}
+
+.dashboard-calendar-card .footer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.dashboard-calendar-card .footer > .local-text {
+  flex: 1;
+  font-size: 16px;
+  text-align: center;
+  font-style: italic;
+}
+
+.dashboard-calendar-card .header-sm {
+  font-size: 16px;
+  font-weight: 900;
+  color: #fff;
+  background-color: #611f1f;
+  text-align: center;
+  border-top: solid 1px #c53232;
+}
+
+.dashboard-calendar-card .lunar-date-row {
+  display: flex;
+  min-height: 210px;
+}
+
+.dashboard-calendar-card .lunar-date {
+  flex: 1;
+  border-right: solid 1px #c53232;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-calendar-card .zodiac-hours {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard-calendar-card .zodiac-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  font-size: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-calendar-card .zodiac-list > .zodiac-item {
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-calendar-card .zodiac-item > .zodiac-name {
+  font-weight: 700;
+}
+.dashboard-calendar-card .zodiac-item > .zodiac-solar {
+  font-style: italic;
+}
+
+.dashboard-calendar-card .big-lunar-wrapper {
+  flex: 1;
+}
+
+.dashboard-calendar-card .big-lunar-wrapper > .big-lunar {
+  font-size: 50px;
+  -webkit-text-stroke: 2px #965757;
+  -webkit-text-fill-color: #c53232;
+  font-weight: 900;
+}
+
+.dashboard-calendar-card .big-lunar-wrapper > .lunar-month {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: -15px;
+}
+
+.dashboard-calendar-card .big-lunar-wrapper > .day-name {
+  padding: 15px 10px;
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 500;
+}

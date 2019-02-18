@@ -6,6 +6,7 @@ import { TabBar } from 'components/TopBars';
 import { Projects } from './Projects';
 import { AppDiary } from './AppDiary';
 import { Schelude } from './Schelude';
+import { Dashboard } from './Dashboard';
 
 const homeTabs = [
   { name: 'Dashboard', route: '/home/dashboard' },
@@ -30,6 +31,7 @@ export default ({ match, onSetActiveTab, activeTab }) => {
         {activeTab === 'Projects' && <Projects projectName={match.params.subPage} />}
         {activeTab === 'App Diary' && <AppDiary />}
         {activeTab === 'Schelude' && <Schelude />}
+        {activeTab === 'Dashboard' && <Dashboard />}
       </div>
     </PageContainer>
   );

@@ -57,7 +57,7 @@ const getTemperatureData = current => {
   return data;
 };
 
-export default ({ current, forecast, onGetCurrent, onGetForecast }) => {
+export default ({ current, forecast, onGetCurrent, onGetForecast, history }) => {
   const [isRefreshing, setRefreshing] = useState(false);
   useEffect(() => {
     onGetForecast();

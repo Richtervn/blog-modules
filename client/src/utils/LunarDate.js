@@ -9,12 +9,24 @@ import {
   getGioHoangDao
 } from './lunarCalendar';
 
+const daysLocale = {
+  Mon: 'Thứ Hai',
+  Tue: 'Thứ Ba',
+  Wed: 'Thứ Tư',
+  Thu: 'Thứ Năm',
+  Fri: 'Thứ Sáu',
+  Sat: 'Thứ Bảy',
+  Sun: 'Chủ Nhật'
+};
+
+const monthsLocale = ['Giêng', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy', 'Tám', 'Chín', 'Mười', 'Một', 'Chạp'];
+
 export default class LunarDate {
   constructor(dateObj) {
-    const date = moment(dateObj);
-    this.year = date.get('year');
-    this.day = date.get('date');
-    this.month = date.get('month') + 1;
+    this.initialDate = moment(dateObj);
+    this.year = this.initialDate.get('year');
+    this.day = this.initialDate.get('date');
+    this.month = this.initialDate.get('month') + 1;
   }
 
   get juliusDate() {
@@ -27,6 +39,14 @@ export default class LunarDate {
       yearInfo = getYearInfo(this.year - 1);
     }
     return yearInfo;
+  }
+
+  get weekDay() {
+    return daysLocale[this.initialDate.format('ddd')];
+  }
+
+  get monthName() {
+    return monthsLocale[this.initialDate.get('month')];
   }
 
   get date() {

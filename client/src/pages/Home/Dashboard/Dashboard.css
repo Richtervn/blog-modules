@@ -1,0 +1,19 @@
+#dashboard-page {
+  width: 100%;
+  height: calc(100vh - 90px);
+  padding: 10px;
+  display: flex;
+}
+
+#dashboard-page .cards-row {
+  display: flex;
+  flex: 1;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+#dashboard-page .cards-row > .dashboard-item {
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 1;
+}

@@ -1,8 +1,8 @@
-import moment from 'moment';
 import { connect } from 'react-redux';
-import Schelude from './Schelude.component';
+import ScheludeCard from './ScheludeCard.component';
+import moment from 'moment';
 
-import { getEvents, setTimeValues, setSelectedEvent, setSelectedDate } from './Schelude.module';
+import { getEvents, setSelectedDate, setSelectedEvent, setTimeValues } from '../Schelude/Schelude.module';
 import { getEvents as getDayEvents } from 'pages/Setting/DayEvents/DayEvents.module';
 
 export default connect(
@@ -15,25 +15,23 @@ export default connect(
           isSelected: schelude.selectedEvent && event._id === schelude.selectedEvent._id
         }))
       : null,
-    selectedEvent: schelude.selectedEvent,
-    dayEvents: dayEvents.events,
-    selectedDate: schelude.selectedDate
+    dayEvents: dayEvents.events
   }),
   dispatch => ({
     onGetEvents() {
       dispatch(getEvents());
+    },
+    onGetDayEvents() {
+      dispatch(getDayEvents());
+    },
+    onSetSelectedDate(date) {
+      dispatch(setSelectedDate(date));
     },
     onSetTimeValues(values) {
       dispatch(setTimeValues(values));
     },
     onSetSelectedEvent(event) {
       dispatch(setSelectedEvent(event));
-    },
-    onSetSelectedDate(date) {
-      dispatch(setSelectedDate(date));
-    },
-    onGetDayEvents() {
-      dispatch(getDayEvents());
     }
   })
-)(Schelude);
+)(ScheludeCard);

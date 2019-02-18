@@ -13,7 +13,8 @@ export default ({
   onSetTimeValues,
   onSetSelectedEvent,
   onSetSelectedDate,
-  onGetDayEvents
+  onGetDayEvents,
+  selectedDate
 }) => {
   useMemo(() => {
     onGetEvents();
@@ -46,6 +47,7 @@ export default ({
       </div>
       <div className="day-calendar">
         <DayBigCalendar
+          selectedDate={selectedDate}
           events={events}
           onSelectSlot={slot => {
             if (slot.action === 'select') {

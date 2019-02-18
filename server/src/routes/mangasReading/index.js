@@ -110,10 +110,11 @@ export default (MangasReading, factories, socket) => {
     })
   );
 
+  const noSaveConfirmed = [];
   router.post(
     '/history',
     wrap(async ({ body }, res, next) => {
-      await saveHistory(body, MangasReading, notificationHandler);
+      await saveHistory(body, MangasReading, notificationHandler, noSaveConfirmed);
       res.sendStatus(200);
     })
   );
@@ -123,6 +124,7 @@ export default (MangasReading, factories, socket) => {
     wrap(async ({ body }, res, next) => {
       const { maxChapter, maxChapterUrl, saved, ...formData } = body;
       if (!saved) {
+        noSaveConfirmed.push(body.Name);
         await deleteFile(body.CoverUri);
         return res.send(body);
       }

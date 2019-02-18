@@ -9,7 +9,7 @@ import getUrlFrags from '../helpers/getUrlFrags';
 
 let lastSync = 0;
 
-export default async (historyItems, MangasReading, notificationHandler) => {
+export default async (historyItems, MangasReading, notificationHandler, noSaveConfirmed) => {
   let validItems = historyItems.filter(item => item.lastVisitTime > lastSync);
 
   validItems = validItems
@@ -45,14 +45,16 @@ export default async (historyItems, MangasReading, notificationHandler) => {
         if (crawlableSite) {
           try {
             const data = await crawl(groupedBySites[crawlableSite][0].url);
-            unsavedMangas.push({
-              ...data,
-              Authors: data.Authors ? data.Authors.split(',') : [],
-              Genre: data.Genre ? data.Genre.split(',') : [],
-              Aka: data.Aka.split(','),
-              maxChapter: maxItem.chapter,
-              maxChapterUrl: maxItem.url
-            });
+            if (!_.contains(noSaveConfirmed, data.Name)) {
+              unsavedMangas.push({
+                ...data,
+                Authors: data.Authors ? data.Authors.split(',') : [],
+                Genre: data.Genre ? data.Genre.split(',') : [],
+                Aka: data.Aka.split(','),
+                maxChapter: maxItem.chapter,
+                maxChapterUrl: maxItem.url
+              });
+            }
           } catch (e) {
             console.log(e);
             return e;
