@@ -8,6 +8,18 @@
   overflow-x: hidden;
 }
 
+.navigation-bar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.navigation-bar::-webkit-scrollbar-track {
+  background: #555555;
+}
+
+.navigation-bar::-webkit-scrollbar-thumb {
+  background: #063852;
+}
+
 .menu-item-button {
   width: 200px;
   background-color: #555555;
@@ -20,3 +32,6 @@
 .menu-item-button:hover {
   background-color: #1995ad;
 }
+
+
+

@@ -78,12 +78,11 @@ class Mods extends Component {
         </div>
         <div className="col-9">
           {this.state.isDetailLoading && <ContainerLoader />}
-          {!this.state.isDetailLoading &&
-            !modDetail._id && (
-              <div className="flex-center d2-zero-notice">
-                <div className="notice">No mod selected</div>
-              </div>
-            )}
+          {!this.state.isDetailLoading && !modDetail._id && (
+            <div className="flex-center d2-zero-notice">
+              <div className="notice">No mod selected</div>
+            </div>
+          )}
           {!this.state.isDetailLoading && modDetail._id && <ModDetail />}
         </div>
       </div>

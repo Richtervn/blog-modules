@@ -59,7 +59,6 @@ const getTemperatureData = current => {
 
 export default ({ current, forecast, onGetCurrent, onGetForecast }) => {
   const [isRefreshing, setRefreshing] = useState(false);
-
   useEffect(() => {
     onGetForecast();
     onGetCurrent();
@@ -88,7 +87,7 @@ export default ({ current, forecast, onGetCurrent, onGetForecast }) => {
           href="https://https://www.accuweather.com/en/vn/vietnam-weather"
           target="_blank"
           rel="noopener noreferrer">
-          <img src="/images/icons/accu-weather/site-logo.png" alt="OpenWeatherMap" />
+          <img src="/images/icons/accu-weather/site-logo.png" alt="AccuWeather" />
           <div className="name">Accu Weather</div>
         </a>
         <button

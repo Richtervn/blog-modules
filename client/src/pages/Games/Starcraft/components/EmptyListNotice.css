@@ -1,0 +1,15 @@
+.sc-empty-list-notice {
+	color: rgba(0, 204, 0, 0.7);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	padding-bottom: 50px;
+}
+
+.sc-empty-list-notice > .notice {
+	font-size: 14px;
+	margin-top: 10px;
+	font-style: italic;
+}

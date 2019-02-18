@@ -7,6 +7,7 @@ import FeedItem from './FeedItem.component';
 
 export default ({ feeds, onGetFeed, feedLoadingId }) => (
   <div id="rss-feeds-list">
+    {feeds.length < 1 && <div className="no-feeds">No feeds available</div>}
     {feeds.map((provider, i) => (
       <div className="row" key={i}>
         <div className="feed-provider" id={`${provider.provider}`}>
@@ -31,7 +32,11 @@ export default ({ feeds, onGetFeed, feedLoadingId }) => (
                 </div>
                 <div className="pub-date">{moment(feed.data.isoDate).format('DD/MM/YYYY HH:mm:ss')}</div>
               </div>
-              <div className="items">{feed.data.items.map((item, k) => <FeedItem item={item} key={k} />)}</div>
+              <div className="items">
+                {feed.data.items.map((item, k) => (
+                  <FeedItem item={item} key={k} />
+                ))}
+              </div>
             </div>
           ))}
         </div>

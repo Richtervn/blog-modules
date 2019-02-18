@@ -50,3 +50,25 @@
 .mgr-btn-nav-bar.pull-left > .btn {
   margin-right: 2px;
 }
+
+@media screen and (max-width: 1400px) {
+  .mgr-btn-nav-bar {
+    display: flex;
+  }
+
+  .mgr-btn-nav-bar > .btn {
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mgr-btn-nav-bar > .btn > .fa {
+    font-size: 16px;
+  }
+  .mgr-btn-nav-bar > .btn > .fa-fw {
+    width: unset;
+  }
+}

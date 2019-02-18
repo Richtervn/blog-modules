@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { PageLoader, ContainerLoader } from 'common/Loaders';
-import { FeatureBox, FeatureCard, FeatureView, FeatureDetail } from '../components';
+import { FeatureBox, FeatureCard, FeatureView, FeatureDetail, EmptyListNotice } from '../components';
 
 import { openModal } from 'common/Modal';
 
@@ -48,6 +48,7 @@ class Campaigns extends Component {
             onSort={onSortCampaign}
           />
           <div className="sc-card-list">
+            {campaigns.length < 1 && <EmptyListNotice />}
             {campaigns.map(campaign => (
               <FeatureCard
                 key={campaign._id}
@@ -69,27 +70,25 @@ class Campaigns extends Component {
         </FeatureView>
         <FeatureView col={8}>
           {this.state.isDetailLoading && <ContainerLoader />}
-          {!this.state.isDetailLoading &&
-            !campaignDetail._id && (
-              <div className="flex-center sc-zero-notice">
-                <div className="notice">No campaign selected</div>
-              </div>
-            )}
-          {!this.state.isDetailLoading &&
-            campaignDetail._id && (
-              <FeatureDetail
-                title={campaignDetail.Name}
-                rating={campaignDetail.Rating}
-                matchup={campaignDetail.Matchup}
-                description={campaignDetail.Description}
-                version={campaignDetail.Version}
-                htmlBind={campaignDetail.HTML || '<div><i>No content</i></div>'}
-                cssBind={campaignDetail.CSS}
-                onEditBindClick={() => history.push(`/content_mirror/StarcraftCampaigns/${campaignDetail._id}`)}
-                onEditClick={() => openModal('EditStarcraftCampaign')}
-                onDeleteClick={() => openModal('DeleteStarcraftCampaign')}
-              />
-            )}
+          {!this.state.isDetailLoading && !campaignDetail._id && (
+            <div className="flex-center sc-zero-notice">
+              <div className="notice">No campaign selected</div>
+            </div>
+          )}
+          {!this.state.isDetailLoading && campaignDetail._id && (
+            <FeatureDetail
+              title={campaignDetail.Name}
+              rating={campaignDetail.Rating}
+              matchup={campaignDetail.Matchup}
+              description={campaignDetail.Description}
+              version={campaignDetail.Version}
+              htmlBind={campaignDetail.HTML || '<div><i>No content</i></div>'}
+              cssBind={campaignDetail.CSS}
+              onEditBindClick={() => history.push(`/content_mirror/StarcraftCampaigns/${campaignDetail._id}`)}
+              onEditClick={() => openModal('EditStarcraftCampaign')}
+              onDeleteClick={() => openModal('DeleteStarcraftCampaign')}
+            />
+          )}
         </FeatureView>
       </div>
     );

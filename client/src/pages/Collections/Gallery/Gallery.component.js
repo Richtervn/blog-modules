@@ -27,13 +27,20 @@ export default class Gallery extends Component {
     }
     const { isOpen, photoIndex, images, albumName } = this.state;
     return (
-      <PageContainer>
-        <div className="row" id="gallery-page">
+      <PageContainer backgroundUrl="/images/backgrounds/gallery.jpg" opacity={5}>
+        <div id="gallery-page">
+          {gallery.length < 1 && (
+            <div className="no-galleries-wrapper">
+              <div className="no-galleries">No galleries available</div>
+            </div>
+          )}
           {gallery.map(album => (
             <div
               className="album-wrapper"
               key={album.album}
-              onClick={() => this.setState({ isOpen: true, photoIndex: 0, images: album.images, albumName: album.album })}>
+              onClick={() =>
+                this.setState({ isOpen: true, photoIndex: 0, images: album.images, albumName: album.album })
+              }>
               <div className="album" style={{ backgroundImage: `url("${album.images[0]}")` }}>
                 <div className="info">
                   <div className="name">{album.album}</div>

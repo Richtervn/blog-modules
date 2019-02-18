@@ -18,7 +18,14 @@ const getProgress = (duration, played) => {
   if (!duration || !played) {
     return 0;
   }
-  return played / duration * 100;
+  return (played / duration) * 100;
+};
+
+const getTitleStyle = () => {
+  if (window.screen.width < 1400) {
+    return { width: '145px' };
+  }
+  return {};
 };
 
 export default ({
@@ -55,7 +62,9 @@ export default ({
           <img src="/images/icons/drum-kit.jpg" alt="Music Avatar" />
         </div>
         <div className="playing-info">
-          <div className="song-title">{currentSong ? currentSong.Name : 'Music can be played anywhere'}</div>
+          <div className="song-title" style={getTitleStyle()}>
+            {currentSong ? currentSong.Name : 'Music can be played anywhere'}
+          </div>
           <div className="song-artist">
             <i>{currentSong ? currentSong.Artist : 'Life will be more beautiful'}</i>
           </div>

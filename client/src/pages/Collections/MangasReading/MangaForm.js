@@ -105,7 +105,7 @@ class MangaForm extends Component {
     if (this.props.edit && !this.props.manga) {
       return (
         <div className="card-content manga-form">
-          <i>No current selected manga</i>
+          <div className="no-manga">No selected manga</div>
         </div>
       );
     }
@@ -117,12 +117,7 @@ class MangaForm extends Component {
             <label>
               <strong>Cover:</strong>
             </label>
-            <input
-              type="file"
-              className="form-control manga-form-input"
-              onChange={this.handleChange}
-              name="file"
-            />
+            <input type="file" className="form-control manga-form-input" onChange={this.handleChange} name="file" />
           </div>
           <div className="form-group">
             <label>
@@ -163,7 +158,8 @@ class MangaForm extends Component {
               onClick={() => this.handleAdd('Aka')}>
               <span>
                 <i className="fa fa-plus" />
-              </span>&nbsp; Add Aka
+              </span>
+              &nbsp; Add Aka
             </button>
           </div>
           <div className="form-group">
@@ -194,7 +190,8 @@ class MangaForm extends Component {
               onClick={() => this.handleAdd('Authors')}>
               <span>
                 <i className="fa fa-plus" />
-              </span>&nbsp; Add Author
+              </span>
+              &nbsp; Add Author
             </button>
           </div>
           <div className="form-group">
@@ -260,7 +257,8 @@ class MangaForm extends Component {
               onClick={() => this.handleAdd('Genre')}>
               <span>
                 <i className="fa fa-plus" />
-              </span>&nbsp; Add Genre
+              </span>
+              &nbsp; Add Genre
             </button>
           </div>
           <div className="form-group">
@@ -279,22 +277,16 @@ class MangaForm extends Component {
         </form>
       </div>,
       <div key="mg-ff" className="card-footer text-center" style={{ padding: '5px' }}>
-        <button
-          className="btn btn-primary manga-control-form-btn"
-          onClick={() => this.handleSubmit()}>
+        <button className="btn btn-primary manga-control-form-btn" onClick={() => this.handleSubmit()}>
           Submit
         </button>
         {!this.props.manga && (
-          <button
-            className="btn btn-danger manga-control-form-btn"
-            onClick={() => this.handleClear()}>
+          <button className="btn btn-danger manga-control-form-btn" onClick={() => this.handleClear()}>
             Clear
           </button>
         )}
         {this.props.manga && (
-          <button
-            className="btn btn-danger manga-control-form-btn"
-            onClick={() => this.handleUndo()}>
+          <button className="btn btn-danger manga-control-form-btn" onClick={() => this.handleUndo()}>
             Undo
           </button>
         )}

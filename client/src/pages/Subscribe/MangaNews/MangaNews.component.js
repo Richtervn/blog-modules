@@ -1,5 +1,7 @@
 import './MangaNews.css';
 import React, { Component } from 'react';
+import { ellipsisText } from 'helpers';
+
 import { PageLoader } from 'common/Loaders';
 import PageContainer from 'common/PageContainer';
 
@@ -31,7 +33,7 @@ class MangaNews extends Component {
                       </a>
                       <div className="content">
                         <a href={manga.link} className="manga-name">
-                          {manga.name}
+                          {ellipsisText(manga.name, window.screen.width < 1400 ? 45 : 70)}
                         </a>
                         <div className="list-chapters">
                           {manga.chapters.map((chapter, j) => (

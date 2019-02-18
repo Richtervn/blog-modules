@@ -97,3 +97,11 @@
 .music-table-options > .btn > .fa {
   font-size: 18px;
 }
+
+.music-table-body > .no-songs {
+  text-align: center;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.75);
+  font-style: italic;
+  padding: 5px;
+}

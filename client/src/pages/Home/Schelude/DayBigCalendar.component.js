@@ -42,9 +42,7 @@ export default ({ events = [], selectedDate, onSelectSlot, onSelectEvent, dayEve
         events={displayEvents}
         selectable={true}
         localizer={localizer}
-        components={{
-          toolbar: ToolBar
-        }}
+        components={{ toolbar: ToolBar }}
         startAccessor="start"
         endAccessor="end"
       />

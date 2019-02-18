@@ -2,7 +2,7 @@ import './Maps.css';
 import _ from 'underscore';
 import React, { Component } from 'react';
 import { PageLoader } from 'common/Loaders';
-import { FeatureBox, FeatureCard, FeatureView, FeatureDetail } from '../components';
+import { FeatureBox, FeatureCard, FeatureView, FeatureDetail, EmptyListNotice } from '../components';
 
 import { openModal } from 'common/Modal';
 
@@ -39,6 +39,7 @@ class Maps extends Component {
         <FeatureView col={4}>
           <FeatureBox onAddClick={() => openModal('AddStarcraftMap')} onSearch={onSearchMap} onSort={onSortMap} />
           <div className="sc-card-list">
+            {maps.length < 1 && <EmptyListNotice />}
             {maps.map((scmap, i) => (
               <FeatureCard
                 key={i}

@@ -6,7 +6,8 @@ import AccuWeather from './AccuWeather.container';
 
 const backgrounds = [
   { codes: [1, 2, 3, 4, 5, 6], url: '/images/backgrounds/sunny.jpg' },
-  { codes: [12, 13, 14, 16, 17], url: '/images/backgrounds/light-rain.jpg' }
+  { codes: [12, 13, 14, 16, 17], url: '/images/backgrounds/light-rain.jpg' },
+  { codes: [33, 34, 35, 36], url: '/images/backgrounds/clear-night.jpg' }
 ];
 
 const getBackground = weatherCode => {

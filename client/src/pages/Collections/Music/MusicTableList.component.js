@@ -154,6 +154,7 @@ class MusicTableList extends Component {
           </div>
         </div>
         <div className="music-table-body">
+          {songs.length < 1 && <div className="no-songs">No songs available</div>}
           {songs.map((song, i) => (
             <div
               className={`music-table-row ${_.contains(selectedSongsId, song._id) ? 'selected' : ''}`}

@@ -1,9 +1,19 @@
 .ended-mangas-row {
-  max-height: calc(100vh - 45px);
-  overflow-y: auto;
-  padding-left: 10px;
+	height: calc(100vh - 45px);
+	overflow-y: auto;
+	padding-left: 10px;
 }
 
 .mgr-genre-tag.no-hover {
-  pointer-events:none;
+	pointer-events: none;
+}
+
+.ended-mangas-row .mangas-list-start-view {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	color: rgba(255, 255, 255, 0.5);
+	font-style: italic;
 }

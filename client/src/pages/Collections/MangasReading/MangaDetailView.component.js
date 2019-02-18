@@ -35,7 +35,7 @@ export default ({
   if (!manga) {
     return (
       <div className="card-content manga-detail-view">
-        <i>No manga selected</i>
+        <div className="no-manga">No selected manga</div>
       </div>
     );
   }

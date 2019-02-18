@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { PageLoader, ContainerLoader } from 'common/Loaders';
-import { FeatureBox, FeatureCard, FeatureView, FeatureDetail } from '../components';
+import { FeatureBox, FeatureCard, FeatureView, FeatureDetail, EmptyListNotice } from '../components';
 
 import { openModal } from 'common/Modal';
 
@@ -44,6 +44,7 @@ class Mods extends Component {
         <FeatureView col={4}>
           <FeatureBox onAddClick={() => openModal('AddStarcraftMod')} onSearch={onSearchMod} onSort={onSortMod} />
           <div className="sc-card-list">
+            {mods.length < 1 && <EmptyListNotice />}
             {mods.map(mod => (
               <FeatureCard
                 key={mod._id}
@@ -65,27 +66,25 @@ class Mods extends Component {
         </FeatureView>
         <FeatureView col={8}>
           {this.state.isDetailLoading && <ContainerLoader />}
-          {!this.state.isDetailLoading &&
-            !modDetail._id && (
-              <div className="flex-center sc-zero-notice">
-                <div className="notice">No mod selected</div>
-              </div>
-            )}
-          {!this.state.isDetailLoading &&
-            modDetail._id && (
-              <FeatureDetail
-                title={modDetail.Name}
-                rating={modDetail.Rating}
-                matchup={modDetail.Matchup}
-                description={modDetail.Description}
-                version={modDetail.Version}
-                htmlBind={modDetail.HTML || '<div><i>No content</i></div>'}
-                cssBind={modDetail.CSS}
-                onEditBindClick={() => history.push(`/content_mirror/StarcraftMods/${modDetail._id}`)}
-                onEditClick={() => openModal('EditStarcraftMod')}
-                onDeleteClick={() => openModal('DeleteStarcraftMod')}
-              />
-            )}
+          {!this.state.isDetailLoading && !modDetail._id && (
+            <div className="flex-center sc-zero-notice">
+              <div className="notice">No mod selected</div>
+            </div>
+          )}
+          {!this.state.isDetailLoading && modDetail._id && (
+            <FeatureDetail
+              title={modDetail.Name}
+              rating={modDetail.Rating}
+              matchup={modDetail.Matchup}
+              description={modDetail.Description}
+              version={modDetail.Version}
+              htmlBind={modDetail.HTML || '<div><i>No content</i></div>'}
+              cssBind={modDetail.CSS}
+              onEditBindClick={() => history.push(`/content_mirror/StarcraftMods/${modDetail._id}`)}
+              onEditClick={() => openModal('EditStarcraftMod')}
+              onDeleteClick={() => openModal('DeleteStarcraftMod')}
+            />
+          )}
         </FeatureView>
       </div>
     );

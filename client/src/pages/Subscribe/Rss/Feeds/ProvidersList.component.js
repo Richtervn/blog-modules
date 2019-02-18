@@ -3,6 +3,7 @@ import React from 'react';
 
 export default ({ providers }) => (
   <div id="rss-providers-list">
+    {providers.length < 1 && <div className="no-providers">No providers</div>}
     {providers.map(provider => (
       <div className="provider" key={provider._id}>
         <div className="title-wrap">
