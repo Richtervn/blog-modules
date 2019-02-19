@@ -167,7 +167,7 @@
   color: #dc3545;
 }
 
-@media screen and (max-height: 800px) {
+@media screen and (max-width: 1400px) {
   .accu-weather-card .rain,
   .accu-weather-card .wind,
   .accu-weather-card .visibility,

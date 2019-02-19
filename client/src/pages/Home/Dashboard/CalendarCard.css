@@ -140,7 +140,7 @@
   font-weight: 500;
 }
 
-@media screen and (max-height: 800px) {
+@media screen and (max-width: 1400px) {
   .dashboard-calendar-card .lunar-date-row {
     min-height: 180px;
   }

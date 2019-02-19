@@ -61,13 +61,12 @@ const _renderLunarDate = (slot, day) => {
   const container = document.createElement('DIV');
   container.className = 'lunar-date';
   container.innerHTML = `${lunarDate.day}/${lunarDate.month}`;
-  // console.log(slot.contains(container));
   slot.appendChild(container);
 };
 
 const _renderDayEventBg = (slot, day, involvedEvents) => {
   const dayTs = moment(day, 'DD-MM-YYYY');
-  // const dayLunar = new LunarDate(dayTs);
+  const dayLunarTs = new LunarDate(dayTs).date;
 
   const occurredEvents = involvedEvents.filter(event => {
     const startTs = moment(event.start);
@@ -76,7 +75,7 @@ const _renderDayEventBg = (slot, day, involvedEvents) => {
     if (event.type === 'ONE_TIME') {
       return dayTs.diff(startTs) >= 0 && dayTs.diff(endTs) < 0;
     }
-
+    console.log(slot);
     if (event.type === 'REPEATABLE_SOLAR') {
       const currentYear = dayTs.get('year');
       const eventYearDiff = endTs.get('year') - startTs.get('year');
@@ -108,8 +107,13 @@ const _renderDayEventBg = (slot, day, involvedEvents) => {
             .diff(dayTs) <= 0)
       );
     }
+
     if (event.type === 'REPEATABLE_LUNAR') {
-      //TODO
+      //One day only
+      const currentLunarDay = new LunarDate(dayTs).date;
+      if (currentLunarDay.day === dayLunarTs.day && currentLunarDay.month === dayLunarTs.month) {
+        return true;
+      }
     }
 
     return false;
@@ -148,7 +152,7 @@ const _renderEffects = (date, dayEvents) => {
   const firstDay = moment(firstDayInView, 'DD-MM-YYYY');
   const lastDay = moment(lastDayInView, 'DD-MM-YYYY');
 
-  const involvedEvents = dayEvents.filter(event => {
+  const involvedEvents = dayEvents.slice(0).filter(event => {
     if (event.type === 'ONE_TIME') {
       const startTs = moment(event.start);
       return firstDay.diff(startTs) <= 0 && lastDay.diff(startTs) >= 0;
@@ -171,9 +175,9 @@ const _renderEffects = (date, dayEvents) => {
       const startTs = moment(event.start);
       const endTs = moment(event.end);
 
-      const eventStartDate = `${startTs.get('date')}-${padZero(startTs.get('month') + 1)}`;
+      const eventStartDate = `${padZero(startTs.get('date'))}-${padZero(startTs.get('month') + 1)}`;
       const eventStartDay = daysInView.find(day => day.slice(0, 5) === eventStartDate);
-      const eventEndDate = `${endTs.get('date')}-${padZero(endTs.get('month') + 1)}`;
+      const eventEndDate = `${padZero(endTs.get('date'))}-${padZero(endTs.get('month') + 1)}`;
       const eventEndDay = daysInView.find(day => day.slice(0, 5) === eventEndDate);
 
       if (eventStartDay || eventEndDay) {
@@ -246,11 +250,21 @@ const ToolBar = ({ label, onNavigate, date, dayEvents }) => {
 };
 
 export default ({ events = [], onSelectSlot, onSelectEvent, dayEvents }) => {
-  //TODO: Change REPEATABLE_EVENTS to current year
+  // Set current year for reatable day_events
+  const currentYearDayEvents = dayEvents.map(event => {
+    const starTs = moment(event.start);
+    const endTs = moment(event.end);
+    if (['REPEATABLE_SOLAR', 'REPEATABLE_LUNAR'].includes(event.type)) {
+      const eventYearDiff = endTs.get('year') - starTs.get('year');
+      const currentYear = moment().get('year');
+      return { ...event, start: starTs.set('year', currentYear), end: endTs.set('year', currentYear + eventYearDiff) };
+    }
+    return event;
+  });
 
   const displayEvents = events
     .map(event => ({ ...event, eventType: 'schelude' }))
-    .concat(dayEvents.map(event => ({ ...event, eventType: 'day' })));
+    .concat(currentYearDayEvents.map(event => ({ ...event, eventType: 'day' })));
 
   return (
     <div className="month-big-calendar">

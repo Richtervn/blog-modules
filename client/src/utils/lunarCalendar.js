@@ -249,7 +249,7 @@ export const getDayName = lunarDate => {
   };
 };
 
-export const getCanHour0 = jdn => CAN[((jdn - 1) * 2) % 10];
+export const getCanHour0 = jdn => CAN[((jdn - 1) * 2) % 10] + ' ' + CHI[0];
 
 const GIO_HD = ['110100101100', '001101001011', '110011010010', '101100110100', '001011001101', '010010110011'];
 export const getGioHoangDao = jd => {

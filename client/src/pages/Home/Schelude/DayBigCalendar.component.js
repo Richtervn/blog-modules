@@ -54,7 +54,7 @@ export default ({ events = [], selectedDate, onSelectSlot, onSelectEvent, dayEve
               onRedirecting={() => {
                 onSetTimeValues({
                   start: moment(selectedDate).startOf('day'),
-                  end: moment(selectedDate).startOf('day')
+                  end: moment(selectedDate).endOf('day')
                 });
                 openModal('AddDayEvent');
               }}

@@ -71,13 +71,13 @@ const AccuWeatherCard = ({ weather, onGetWeather, history }) => {
         <div className="info-card">
           <div className="info-row">
             <div className="item">
-              <div style={{ width: window.screen.height < 800 ? '100px' : '120px' }}>
+              <div style={{ width: window.screen.width < 1400 ? '100px' : '120px' }}>
                 <CircleProgress percentage={weather.RelativeHumidity} text={`${weather.RelativeHumidity}%`} />
               </div>
               <div className="label">Humidity</div>
             </div>
             <div className="item">
-              <div style={{ width: window.screen.height < 800 ? '100px' : '120px' }}>
+              <div style={{ width: window.screen.width < 1400 ? '100px' : '120px' }}>
                 <CircleProgress percentage={weather.CloudCover} text={`${weather.CloudCover}%`} />
               </div>
               <div className="label">Cloud</div>

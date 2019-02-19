@@ -23,7 +23,7 @@ export default () => {
         <div className="local-text">
           Tiết {lunarDate.solarTerm}
           <br />
-          Giờ {lunarDate.canHour}
+          Giờ đầu: {lunarDate.canHour}
         </div>
         <div className="lunar-date-row">
           <div className="lunar-date">

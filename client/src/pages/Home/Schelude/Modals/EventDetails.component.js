@@ -29,6 +29,12 @@ const EventDetails = ({
 		setView(defaultView);
 	}, [defaultView]);
 
+	useEffect(() => {
+		if (selectedEvent._id && selectedEvent._id !== eventDetail._id) {
+			onGetEventDetail(selectedEvent);
+		}
+	}, [selectedEvent]);
+
 	return [
 		<div key="ed_h" className="modal-header">
 			<div className="event-details-header">
