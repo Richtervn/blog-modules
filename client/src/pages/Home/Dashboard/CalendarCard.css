@@ -139,3 +139,20 @@
   font-style: italic;
   font-weight: 500;
 }
+
+@media screen and (max-height: 800px) {
+  .dashboard-calendar-card .lunar-date-row {
+    min-height: 180px;
+  }
+
+  .dashboard-calendar-card .big-date-wrapper > .big-date {
+    font-size: 150px;
+  }
+  .dashboard-calendar-card .big-date-wrapper > .week-day-name {
+    font-size: 40px;
+    margin-top: -50px;
+  }
+  .dashboard-calendar-card .center-date {
+    height: 210px;
+  }
+}

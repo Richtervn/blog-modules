@@ -24,7 +24,7 @@ const AccuWeatherCard = ({ weather, onGetWeather, history }) => {
   if (!weather) {
     return (
       <div className="accu-weather-card">
-        <ContainerLoader color="#222"/>
+        <ContainerLoader color="#222" />
       </div>
     );
   }
@@ -71,13 +71,13 @@ const AccuWeatherCard = ({ weather, onGetWeather, history }) => {
         <div className="info-card">
           <div className="info-row">
             <div className="item">
-              <div style={{ width: '120px' }}>
+              <div style={{ width: window.screen.height < 800 ? '100px' : '120px' }}>
                 <CircleProgress percentage={weather.RelativeHumidity} text={`${weather.RelativeHumidity}%`} />
               </div>
               <div className="label">Humidity</div>
             </div>
             <div className="item">
-              <div style={{ width: '120px' }}>
+              <div style={{ width: window.screen.height < 800 ? '100px' : '120px' }}>
                 <CircleProgress percentage={weather.CloudCover} text={`${weather.CloudCover}%`} />
               </div>
               <div className="label">Cloud</div>
