@@ -71,7 +71,7 @@ const routes = (models, factories, socket) => {
     starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories),
     rss: rssRouter(RssProviders, factories),
     schelude_events: scheludeEventsRouter(ScheludeEvents, factories),
-    system: systemRouter(factories),
+    system: systemRouter(models, factories),
     tools: toolsRouter(models, factories),
     yugioh_poc: yugiohPocRouter(YugiohPocMods, YugiohPocDecks, factories)
   };
