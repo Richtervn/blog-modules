@@ -1,0 +1,5578 @@
+[
+  {
+    "Id": 1,
+    "Name": "Ba Đình",
+    "Type": "Quận",
+    "LatiLongTude": "21 02 08N, 105 49 38E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 2,
+    "Name": "Hoàn Kiếm",
+    "Type": "Quận",
+    "LatiLongTude": "21 01 53N, 105 51 09E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 3,
+    "Name": "Tây Hồ",
+    "Type": "Quận",
+    "LatiLongTude": "21 04 10N, 105 49 07E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 4,
+    "Name": "Long Biên",
+    "Type": "Quận",
+    "LatiLongTude": "21 02 21N, 105 53 07E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 5,
+    "Name": "Cầu Giấy",
+    "Type": "Quận",
+    "LatiLongTude": "21 01 52N, 105 47 20E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 6,
+    "Name": "Đống Đa",
+    "Type": "Quận",
+    "LatiLongTude": "21 00 56N, 105 49 06E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 7,
+    "Name": "Hai Bà Trưng",
+    "Type": "Quận",
+    "LatiLongTude": "21 00 27N, 105 51 35E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 8,
+    "Name": "Hoàng Mai",
+    "Type": "Quận",
+    "LatiLongTude": "20 58 33N, 105 51 22E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 9,
+    "Name": "Thanh Xuân",
+    "Type": "Quận",
+    "LatiLongTude": "20 59 44N, 105 48 56E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 16,
+    "Name": "Sóc Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "21 16 55N, 105 49 46E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 17,
+    "Name": "Đông Anh",
+    "Type": "Huyện",
+    "LatiLongTude": "21 08 16N, 105 49 38E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 18,
+    "Name": "Gia Lâm",
+    "Type": "Huyện",
+    "LatiLongTude": "21 01 28N, 105 56 54E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 19,
+    "Name": "Từ Liêm",
+    "Type": "Huyện",
+    "LatiLongTude": "21 02 39N, 105 45 32E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 20,
+    "Name": "Thanh Trì",
+    "Type": "Huyện",
+    "LatiLongTude": "20 56 32N, 105 50 55E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 24,
+    "Name": "Hà Giang",
+    "Type": "Thị Xã",
+    "LatiLongTude": "22 46 23N, 105 02 39E",
+    "isAvailable": true,
+    "ProvinceId": 2
+  },
+  {
+    "Id": 26,
+    "Name": "Đồng Văn",
+    "Type": "Huyện",
+    "LatiLongTude": "23 14 34N, 105 15 48E",
+    "isAvailable": true,
+    "ProvinceId": 2
+  },
+  {
+    "Id": 27,
+    "Name": "Mèo Vạc",
+    "Type": "Huyện",
+    "LatiLongTude": "23 09 10N, 105 26 38E",
+    "isAvailable": true,
+    "ProvinceId": 2
+  },
+  {
+    "Id": 28,
+    "Name": "Yên Minh",
+    "Type": "Huyện",
+    "LatiLongTude": "23 04 20N, 105 10 13E",
+    "isAvailable": true,
+    "ProvinceId": 2
+  },
+  {
+    "Id": 29,
+    "Name": "Quản Bạ",
+    "Type": "Huyện",
+    "LatiLongTude": "23 04 03N, 104 58 05E",
+    "isAvailable": true,
+    "ProvinceId": 2
+  },
+  {
+    "Id": 30,
+    "Name": "Vị Xuyên",
+    "Type": "Huyện",
+    "LatiLongTude": "22 45 50N, 104 56 26E",
+    "isAvailable": true,
+    "ProvinceId": 2
+  },
+  {
+    "Id": 31,
+    "Name": "Bắc Mê",
+    "Type": "Huyện",
+    "LatiLongTude": "22 45 48N, 105 16 26E",
+    "isAvailable": true,
+    "ProvinceId": 2
+  },
+  {
+    "Id": 32,
+    "Name": "Hoàng Su Phì",
+    "Type": "Huyện",
+    "LatiLongTude": "22 41 37N, 104 40 06E",
+    "isAvailable": true,
+    "ProvinceId": 2
+  },
+  {
+    "Id": 33,
+    "Name": "Xín Mần",
+    "Type": "Huyện",
+    "LatiLongTude": "22 38 05N, 104 28 35E",
+    "isAvailable": true,
+    "ProvinceId": 2
+  },
+  {
+    "Id": 34,
+    "Name": "Bắc Quang",
+    "Type": "Huyện",
+    "LatiLongTude": "22 23 42N, 104 55 06E",
+    "isAvailable": true,
+    "ProvinceId": 2
+  },
+  {
+    "Id": 35,
+    "Name": "Quang Bình",
+    "Type": "Huyện",
+    "LatiLongTude": "22 23 07N, 104 37 11E",
+    "isAvailable": true,
+    "ProvinceId": 2
+  },
+  {
+    "Id": 40,
+    "Name": "Cao Bằng",
+    "Type": "Thị Xã",
+    "LatiLongTude": "22 39 20N, 106 15 20E",
+    "isAvailable": true,
+    "ProvinceId": 4
+  },
+  {
+    "Id": 42,
+    "Name": "Bảo Lâm",
+    "Type": "Huyện",
+    "LatiLongTude": "22 52 37N, 105 27 28E",
+    "isAvailable": true,
+    "ProvinceId": 4
+  },
+  {
+    "Id": 43,
+    "Name": "Bảo Lạc",
+    "Type": "Huyện",
+    "LatiLongTude": "22 52 31N, 105 42 41E",
+    "isAvailable": true,
+    "ProvinceId": 4
+  },
+  {
+    "Id": 44,
+    "Name": "Thông Nông",
+    "Type": "Huyện",
+    "LatiLongTude": "22 49 09N, 105 57 05E",
+    "isAvailable": true,
+    "ProvinceId": 4
+  },
+  {
+    "Id": 45,
+    "Name": "Hà Quảng",
+    "Type": "Huyện",
+    "LatiLongTude": "22 53 42N, 106 06 32E",
+    "isAvailable": true,
+    "ProvinceId": 4
+  },
+  {
+    "Id": 46,
+    "Name": "Trà Lĩnh",
+    "Type": "Huyện",
+    "LatiLongTude": "22 48 14N, 106 19 47E",
+    "isAvailable": true,
+    "ProvinceId": 4
+  },
+  {
+    "Id": 47,
+    "Name": "Trùng Khánh",
+    "Type": "Huyện",
+    "LatiLongTude": "22 49 31N, 106 33 58E",
+    "isAvailable": true,
+    "ProvinceId": 4
+  },
+  {
+    "Id": 48,
+    "Name": "Hạ Lang",
+    "Type": "Huyện",
+    "LatiLongTude": "22 42 37N, 106 41 42E",
+    "isAvailable": true,
+    "ProvinceId": 4
+  },
+  {
+    "Id": 49,
+    "Name": "Quảng Uyên",
+    "Type": "Huyện",
+    "LatiLongTude": "22 40 15N, 106 27 42E",
+    "isAvailable": true,
+    "ProvinceId": 4
+  },
+  {
+    "Id": 50,
+    "Name": "Phục Hoà",
+    "Type": "Huyện",
+    "LatiLongTude": "22 33 52N, 106 30 02E",
+    "isAvailable": true,
+    "ProvinceId": 4
+  },
+  {
+    "Id": 51,
+    "Name": "Hoà An",
+    "Type": "Huyện",
+    "LatiLongTude": "22 41 20N, 106 02 05E",
+    "isAvailable": true,
+    "ProvinceId": 4
+  },
+  {
+    "Id": 52,
+    "Name": "Nguyên Bình",
+    "Type": "Huyện",
+    "LatiLongTude": "22 38 52N, 105 57 02E",
+    "isAvailable": true,
+    "ProvinceId": 4
+  },
+  {
+    "Id": 53,
+    "Name": "Thạch An",
+    "Type": "Huyện",
+    "LatiLongTude": "22 28 51N, 106 19 51E",
+    "isAvailable": true,
+    "ProvinceId": 4
+  },
+  {
+    "Id": 58,
+    "Name": "Bắc Kạn",
+    "Type": "Thị Xã",
+    "LatiLongTude": "22 08 00N, 105 51 10E",
+    "isAvailable": true,
+    "ProvinceId": 6
+  },
+  {
+    "Id": 60,
+    "Name": "Pác Nặm",
+    "Type": "Huyện",
+    "LatiLongTude": "22 35 46N, 105 40 25E",
+    "isAvailable": true,
+    "ProvinceId": 6
+  },
+  {
+    "Id": 61,
+    "Name": "Ba Bể",
+    "Type": "Huyện",
+    "LatiLongTude": "22 23 54N, 105 43 30E",
+    "isAvailable": true,
+    "ProvinceId": 6
+  },
+  {
+    "Id": 62,
+    "Name": "Ngân Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "22 25 50N, 106 01 00E",
+    "isAvailable": true,
+    "ProvinceId": 6
+  },
+  {
+    "Id": 63,
+    "Name": "Bạch Thông",
+    "Type": "Huyện",
+    "LatiLongTude": "22 12 04N, 105 51 01E",
+    "isAvailable": true,
+    "ProvinceId": 6
+  },
+  {
+    "Id": 64,
+    "Name": "Chợ Đồn",
+    "Type": "Huyện",
+    "LatiLongTude": "22 11 18N, 105 34 43E",
+    "isAvailable": true,
+    "ProvinceId": 6
+  },
+  {
+    "Id": 65,
+    "Name": "Chợ Mới",
+    "Type": "Huyện",
+    "LatiLongTude": "21 57 56N, 105 51 29E",
+    "isAvailable": true,
+    "ProvinceId": 6
+  },
+  {
+    "Id": 66,
+    "Name": "Na Rì",
+    "Type": "Huyện",
+    "LatiLongTude": "22 09 48N, 106 05 09E",
+    "isAvailable": true,
+    "ProvinceId": 6
+  },
+  {
+    "Id": 70,
+    "Name": "Tuyên Quang",
+    "Type": "Thị Xã",
+    "LatiLongTude": "21 49 40N, 105 13 12E",
+    "isAvailable": true,
+    "ProvinceId": 8
+  },
+  {
+    "Id": 72,
+    "Name": "Nà Hang",
+    "Type": "Huyện",
+    "LatiLongTude": "22 28 34N, 105 21 03E",
+    "isAvailable": true,
+    "ProvinceId": 8
+  },
+  {
+    "Id": 73,
+    "Name": "Chiêm Hóa",
+    "Type": "Huyện",
+    "LatiLongTude": "22 12 49N, 105 14 32E",
+    "isAvailable": true,
+    "ProvinceId": 8
+  },
+  {
+    "Id": 74,
+    "Name": "Hàm Yên",
+    "Type": "Huyện",
+    "LatiLongTude": "22 05 46N, 105 00 13E",
+    "isAvailable": true,
+    "ProvinceId": 8
+  },
+  {
+    "Id": 75,
+    "Name": "Yên Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "21 51 53N, 105 18 14E",
+    "isAvailable": true,
+    "ProvinceId": 8
+  },
+  {
+    "Id": 76,
+    "Name": "Sơn Dương",
+    "Type": "Huyện",
+    "LatiLongTude": "21 40 22N, 105 22 57E",
+    "isAvailable": true,
+    "ProvinceId": 8
+  },
+  {
+    "Id": 80,
+    "Name": "Lào Cai",
+    "Type": "Thành Phố",
+    "LatiLongTude": "22 25 07N, 103 58 43E",
+    "isAvailable": true,
+    "ProvinceId": 10
+  },
+  {
+    "Id": 82,
+    "Name": "Bát Xát",
+    "Type": "Huyện",
+    "LatiLongTude": "22 35 50N, 103 44 49E",
+    "isAvailable": true,
+    "ProvinceId": 10
+  },
+  {
+    "Id": 83,
+    "Name": "Mường Khương",
+    "Type": "Huyện",
+    "LatiLongTude": "22 41 05N, 104 08 26E",
+    "isAvailable": true,
+    "ProvinceId": 10
+  },
+  {
+    "Id": 84,
+    "Name": "Si Ma Cai",
+    "Type": "Huyện",
+    "LatiLongTude": "22 39 46N, 104 16 05E",
+    "isAvailable": true,
+    "ProvinceId": 10
+  },
+  {
+    "Id": 85,
+    "Name": "Bắc Hà",
+    "Type": "Huyện",
+    "LatiLongTude": "22 30 08N, 104 18 54E",
+    "isAvailable": true,
+    "ProvinceId": 10
+  },
+  {
+    "Id": 86,
+    "Name": "Bảo Thắng",
+    "Type": "Huyện",
+    "LatiLongTude": "22 22 47N, 104 10 00E",
+    "isAvailable": true,
+    "ProvinceId": 10
+  },
+  {
+    "Id": 87,
+    "Name": "Bảo Yên",
+    "Type": "Huyện",
+    "LatiLongTude": "22 17 38N, 104 25 02E",
+    "isAvailable": true,
+    "ProvinceId": 10
+  },
+  {
+    "Id": 88,
+    "Name": "Sa Pa",
+    "Type": "Huyện",
+    "LatiLongTude": "22 18 54N, 103 54 18E",
+    "isAvailable": true,
+    "ProvinceId": 10
+  },
+  {
+    "Id": 89,
+    "Name": "Văn Bàn",
+    "Type": "Huyện",
+    "LatiLongTude": "22 03 48N, 104 10 59E",
+    "isAvailable": true,
+    "ProvinceId": 10
+  },
+  {
+    "Id": 94,
+    "Name": "Điện Biên Phủ",
+    "Type": "Thành Phố",
+    "LatiLongTude": "21 24 52N, 103 02 31E",
+    "isAvailable": true,
+    "ProvinceId": 11
+  },
+  {
+    "Id": 95,
+    "Name": "Mường Lay",
+    "Type": "Thị Xã",
+    "LatiLongTude": "22 01 47N, 103 07 10E",
+    "isAvailable": true,
+    "ProvinceId": 11
+  },
+  {
+    "Id": 96,
+    "Name": "Mường Nhé",
+    "Type": "Huyện",
+    "LatiLongTude": "22 06 11N, 102 30 54E",
+    "isAvailable": true,
+    "ProvinceId": 11
+  },
+  {
+    "Id": 97,
+    "Name": "Mường Chà",
+    "Type": "Huyện",
+    "LatiLongTude": "21 50 31N, 103 03 15E",
+    "isAvailable": true,
+    "ProvinceId": 11
+  },
+  {
+    "Id": 98,
+    "Name": "Tủa Chùa",
+    "Type": "Huyện",
+    "LatiLongTude": "21 58 19N, 103 23 01E",
+    "isAvailable": true,
+    "ProvinceId": 11
+  },
+  {
+    "Id": 99,
+    "Name": "Tuần Giáo",
+    "Type": "Huyện",
+    "LatiLongTude": "21 38 03N, 103 21 06E",
+    "isAvailable": true,
+    "ProvinceId": 11
+  },
+  {
+    "Id": 100,
+    "Name": "Điện Biên",
+    "Type": "Huyện",
+    "LatiLongTude": "21 15 19N, 103 03 19E",
+    "isAvailable": true,
+    "ProvinceId": 11
+  },
+  {
+    "Id": 101,
+    "Name": "Điện Biên Đông",
+    "Type": "Huyện",
+    "LatiLongTude": "21 14 07N, 103 15 19E",
+    "isAvailable": true,
+    "ProvinceId": 11
+  },
+  {
+    "Id": 102,
+    "Name": "Mường Ảng",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 11
+  },
+  {
+    "Id": 104,
+    "Name": "Lai Châu",
+    "Type": "Thị Xã",
+    "LatiLongTude": "22 23 15N, 103 24 22E",
+    "isAvailable": true,
+    "ProvinceId": 12
+  },
+  {
+    "Id": 106,
+    "Name": "Tam Đường",
+    "Type": "Huyện",
+    "LatiLongTude": "22 20 16N, 103 32 53E",
+    "isAvailable": true,
+    "ProvinceId": 12
+  },
+  {
+    "Id": 107,
+    "Name": "Mường Tè",
+    "Type": "Huyện",
+    "LatiLongTude": "22 24 16N, 102 43 11E",
+    "isAvailable": true,
+    "ProvinceId": 12
+  },
+  {
+    "Id": 108,
+    "Name": "Sìn Hồ",
+    "Type": "Huyện",
+    "LatiLongTude": "22 17 21N, 103 18 12E",
+    "isAvailable": true,
+    "ProvinceId": 12
+  },
+  {
+    "Id": 109,
+    "Name": "Phong Thổ",
+    "Type": "Huyện",
+    "LatiLongTude": "22 38 24N, 103 22 38E",
+    "isAvailable": true,
+    "ProvinceId": 12
+  },
+  {
+    "Id": 110,
+    "Name": "Than Uyên",
+    "Type": "Huyện",
+    "LatiLongTude": "21 59 35N, 103 45 30E",
+    "isAvailable": true,
+    "ProvinceId": 12
+  },
+  {
+    "Id": 111,
+    "Name": "Tân Uyên",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 12
+  },
+  {
+    "Id": 116,
+    "Name": "Sơn La",
+    "Type": "Thành Phố",
+    "LatiLongTude": "21 20 39N, 103 54 52E",
+    "isAvailable": true,
+    "ProvinceId": 14
+  },
+  {
+    "Id": 118,
+    "Name": "Quỳnh Nhai",
+    "Type": "Huyện",
+    "LatiLongTude": "21 46 34N, 103 39 02E",
+    "isAvailable": true,
+    "ProvinceId": 14
+  },
+  {
+    "Id": 119,
+    "Name": "Thuận Châu",
+    "Type": "Huyện",
+    "LatiLongTude": "21 24 54N, 103 39 46E",
+    "isAvailable": true,
+    "ProvinceId": 14
+  },
+  {
+    "Id": 120,
+    "Name": "Mường La",
+    "Type": "Huyện",
+    "LatiLongTude": "21 31 38N, 104 02 48E",
+    "isAvailable": true,
+    "ProvinceId": 14
+  },
+  {
+    "Id": 121,
+    "Name": "Bắc Yên",
+    "Type": "Huyện",
+    "LatiLongTude": "21 13 23N, 104 22 09E",
+    "isAvailable": true,
+    "ProvinceId": 14
+  },
+  {
+    "Id": 122,
+    "Name": "Phù Yên",
+    "Type": "Huyện",
+    "LatiLongTude": "21 13 33N, 104 41 51E",
+    "isAvailable": true,
+    "ProvinceId": 14
+  },
+  {
+    "Id": 123,
+    "Name": "Mộc Châu",
+    "Type": "Huyện",
+    "LatiLongTude": "20 49 21N, 104 43 10E",
+    "isAvailable": true,
+    "ProvinceId": 14
+  },
+  {
+    "Id": 124,
+    "Name": "Yên Châu",
+    "Type": "Huyện",
+    "LatiLongTude": "20 59 33N, 104 19 51E",
+    "isAvailable": true,
+    "ProvinceId": 14
+  },
+  {
+    "Id": 125,
+    "Name": "Mai Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "21 10 08N, 103 59 36E",
+    "isAvailable": true,
+    "ProvinceId": 14
+  },
+  {
+    "Id": 126,
+    "Name": "Sông Mã",
+    "Type": "Huyện",
+    "LatiLongTude": "21 06 04N, 103 43 56E",
+    "isAvailable": true,
+    "ProvinceId": 14
+  },
+  {
+    "Id": 127,
+    "Name": "Sốp Cộp",
+    "Type": "Huyện",
+    "LatiLongTude": "20 52 46N, 103 30 38E",
+    "isAvailable": true,
+    "ProvinceId": 14
+  },
+  {
+    "Id": 132,
+    "Name": "Yên Bái",
+    "Type": "Thành Phố",
+    "LatiLongTude": "21 44 28N, 104 53 42E",
+    "isAvailable": true,
+    "ProvinceId": 15
+  },
+  {
+    "Id": 133,
+    "Name": "Nghĩa Lộ",
+    "Type": "Thị Xã",
+    "LatiLongTude": "21 35 58N, 104 29 22E",
+    "isAvailable": true,
+    "ProvinceId": 15
+  },
+  {
+    "Id": 135,
+    "Name": "Lục Yên",
+    "Type": "Huyện",
+    "LatiLongTude": "22 06 44N, 104 43 12E",
+    "isAvailable": true,
+    "ProvinceId": 15
+  },
+  {
+    "Id": 136,
+    "Name": "Văn Yên",
+    "Type": "Huyện",
+    "LatiLongTude": "21 55 55N, 104 33 51E",
+    "isAvailable": true,
+    "ProvinceId": 15
+  },
+  {
+    "Id": 137,
+    "Name": "Mù Cang Chải",
+    "Type": "Huyện",
+    "LatiLongTude": "21 48 22N, 104 09 01E",
+    "isAvailable": true,
+    "ProvinceId": 15
+  },
+  {
+    "Id": 138,
+    "Name": "Trấn Yên",
+    "Type": "Huyện",
+    "LatiLongTude": "21 42 20N, 104 48 56E",
+    "isAvailable": true,
+    "ProvinceId": 15
+  },
+  {
+    "Id": 139,
+    "Name": "Trạm Tấu",
+    "Type": "Huyện",
+    "LatiLongTude": "21 30 40N, 104 28 03E",
+    "isAvailable": true,
+    "ProvinceId": 15
+  },
+  {
+    "Id": 140,
+    "Name": "Văn Chấn",
+    "Type": "Huyện",
+    "LatiLongTude": "21 34 15N, 104 35 19E",
+    "isAvailable": true,
+    "ProvinceId": 15
+  },
+  {
+    "Id": 141,
+    "Name": "Yên Bình",
+    "Type": "Huyện",
+    "LatiLongTude": "21 52 24N, 104 55 16E",
+    "isAvailable": true,
+    "ProvinceId": 15
+  },
+  {
+    "Id": 148,
+    "Name": "Hòa Bình",
+    "Type": "Thành Phố",
+    "LatiLongTude": "20 50 36N, 105 19 20E",
+    "isAvailable": true,
+    "ProvinceId": 17
+  },
+  {
+    "Id": 150,
+    "Name": "Đà Bắc",
+    "Type": "Huyện",
+    "LatiLongTude": "20 55 58N, 105 04 52E",
+    "isAvailable": true,
+    "ProvinceId": 17
+  },
+  {
+    "Id": 151,
+    "Name": "Kỳ Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "20 54 06N, 105 23 18E",
+    "isAvailable": true,
+    "ProvinceId": 17
+  },
+  {
+    "Id": 152,
+    "Name": "Lương Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "20 53 16N, 105 30 55E",
+    "isAvailable": true,
+    "ProvinceId": 17
+  },
+  {
+    "Id": 153,
+    "Name": "Kim Bôi",
+    "Type": "Huyện",
+    "LatiLongTude": "20 40 34N, 105 32 15E",
+    "isAvailable": true,
+    "ProvinceId": 17
+  },
+  {
+    "Id": 154,
+    "Name": "Cao Phong",
+    "Type": "Huyện",
+    "LatiLongTude": "20 41 23N, 105 17 48E",
+    "isAvailable": true,
+    "ProvinceId": 17
+  },
+  {
+    "Id": 155,
+    "Name": "Tân Lạc",
+    "Type": "Huyện",
+    "LatiLongTude": "20 36 44N, 105 15 03E",
+    "isAvailable": true,
+    "ProvinceId": 17
+  },
+  {
+    "Id": 156,
+    "Name": "Mai Châu",
+    "Type": "Huyện",
+    "LatiLongTude": "20 40 56N, 104 59 46E",
+    "isAvailable": true,
+    "ProvinceId": 17
+  },
+  {
+    "Id": 157,
+    "Name": "Lạc Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "20 29 59N, 105 24 57E",
+    "isAvailable": true,
+    "ProvinceId": 17
+  },
+  {
+    "Id": 158,
+    "Name": "Yên Thủy",
+    "Type": "Huyện",
+    "LatiLongTude": "20 25 42N, 105 37 59E",
+    "isAvailable": true,
+    "ProvinceId": 17
+  },
+  {
+    "Id": 159,
+    "Name": "Lạc Thủy",
+    "Type": "Huyện",
+    "LatiLongTude": "20 29 12N, 105 44 06E",
+    "isAvailable": true,
+    "ProvinceId": 17
+  },
+  {
+    "Id": 164,
+    "Name": "Thái Nguyên",
+    "Type": "Thành Phố",
+    "LatiLongTude": "21 33 20N, 105 48 26E",
+    "isAvailable": true,
+    "ProvinceId": 19
+  },
+  {
+    "Id": 165,
+    "Name": "Sông Công",
+    "Type": "Thị Xã",
+    "LatiLongTude": "21 29 14N, 105 48 47E",
+    "isAvailable": true,
+    "ProvinceId": 19
+  },
+  {
+    "Id": 167,
+    "Name": "Định Hóa",
+    "Type": "Huyện",
+    "LatiLongTude": "21 53 50N, 105 38 01E",
+    "isAvailable": true,
+    "ProvinceId": 19
+  },
+  {
+    "Id": 168,
+    "Name": "Phú Lương",
+    "Type": "Huyện",
+    "LatiLongTude": "21 45 57N, 105 43 22E",
+    "isAvailable": true,
+    "ProvinceId": 19
+  },
+  {
+    "Id": 169,
+    "Name": "Đồng Hỷ",
+    "Type": "Huyện",
+    "LatiLongTude": "21 41 10N, 105 55 43E",
+    "isAvailable": true,
+    "ProvinceId": 19
+  },
+  {
+    "Id": 170,
+    "Name": "Võ Nhai",
+    "Type": "Huyện",
+    "LatiLongTude": "21 47 14N, 106 02 29E",
+    "isAvailable": true,
+    "ProvinceId": 19
+  },
+  {
+    "Id": 171,
+    "Name": "Đại Từ",
+    "Type": "Huyện",
+    "LatiLongTude": "21 36 17N, 105 37 28E",
+    "isAvailable": true,
+    "ProvinceId": 19
+  },
+  {
+    "Id": 172,
+    "Name": "Phổ Yên",
+    "Type": "Huyện",
+    "LatiLongTude": "21 27 08N, 105 45 19E",
+    "isAvailable": true,
+    "ProvinceId": 19
+  },
+  {
+    "Id": 173,
+    "Name": "Phú Bình",
+    "Type": "Huyện",
+    "LatiLongTude": "21 29 36N, 105 57 42E",
+    "isAvailable": true,
+    "ProvinceId": 19
+  },
+  {
+    "Id": 178,
+    "Name": "Lạng Sơn",
+    "Type": "Thành Phố",
+    "LatiLongTude": "21 51 19N, 106 44 50E",
+    "isAvailable": true,
+    "ProvinceId": 20
+  },
+  {
+    "Id": 180,
+    "Name": "Tràng Định",
+    "Type": "Huyện",
+    "LatiLongTude": "22 18 09N, 106 26 32E",
+    "isAvailable": true,
+    "ProvinceId": 20
+  },
+  {
+    "Id": 181,
+    "Name": "Bình Gia",
+    "Type": "Huyện",
+    "LatiLongTude": "22 03 56N, 106 19 01E",
+    "isAvailable": true,
+    "ProvinceId": 20
+  },
+  {
+    "Id": 182,
+    "Name": "Văn Lãng",
+    "Type": "Huyện",
+    "LatiLongTude": "22 01 59N, 106 34 17E",
+    "isAvailable": true,
+    "ProvinceId": 20
+  },
+  {
+    "Id": 183,
+    "Name": "Cao Lộc",
+    "Type": "Huyện",
+    "LatiLongTude": "21 53 05N, 106 50 34E",
+    "isAvailable": true,
+    "ProvinceId": 20
+  },
+  {
+    "Id": 184,
+    "Name": "Văn Quan",
+    "Type": "Huyện",
+    "LatiLongTude": "21 51 04N, 106 33 04E",
+    "isAvailable": true,
+    "ProvinceId": 20
+  },
+  {
+    "Id": 185,
+    "Name": "Bắc Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "21 48 57N, 106 15 28E",
+    "isAvailable": true,
+    "ProvinceId": 20
+  },
+  {
+    "Id": 186,
+    "Name": "Hữu Lũng",
+    "Type": "Huyện",
+    "LatiLongTude": "21 34 33N, 106 20 33E",
+    "isAvailable": true,
+    "ProvinceId": 20
+  },
+  {
+    "Id": 187,
+    "Name": "Chi Lăng",
+    "Type": "Huyện",
+    "LatiLongTude": "21 40 05N, 106 37 24E",
+    "isAvailable": true,
+    "ProvinceId": 20
+  },
+  {
+    "Id": 188,
+    "Name": "Lộc Bình",
+    "Type": "Huyện",
+    "LatiLongTude": "21 40 41N, 106 58 12E",
+    "isAvailable": true,
+    "ProvinceId": 20
+  },
+  {
+    "Id": 189,
+    "Name": "Đình Lập",
+    "Type": "Huyện",
+    "LatiLongTude": "21 32 07N, 107 07 25E",
+    "isAvailable": true,
+    "ProvinceId": 20
+  },
+  {
+    "Id": 193,
+    "Name": "Hạ Long",
+    "Type": "Thành Phố",
+    "LatiLongTude": "20 52 24N, 107 05 23E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 194,
+    "Name": "Móng Cái",
+    "Type": "Thành Phố",
+    "LatiLongTude": "21 26 31N, 107 55 09E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 195,
+    "Name": "Cẩm Phả",
+    "Type": "Thị Xã",
+    "LatiLongTude": "21 03 42N, 107 17 22E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 196,
+    "Name": "Uông Bí",
+    "Type": "Thị Xã",
+    "LatiLongTude": "21 04 33N, 106 45 07E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 198,
+    "Name": "Bình Liêu",
+    "Type": "Huyện",
+    "LatiLongTude": "21 33 07N, 107 26 24E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 199,
+    "Name": "Tiên Yên",
+    "Type": "Huyện",
+    "LatiLongTude": "21 22 24N, 107 22 50E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 200,
+    "Name": "Đầm Hà",
+    "Type": "Huyện",
+    "LatiLongTude": "21 21 23N, 107 34 32E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 201,
+    "Name": "Hải Hà",
+    "Type": "Huyện",
+    "LatiLongTude": "21 25 50N, 107 41 26E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 202,
+    "Name": "Ba Chẽ",
+    "Type": "Huyện",
+    "LatiLongTude": "21 15 40N, 107 09 52E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 203,
+    "Name": "Vân Đồn",
+    "Type": "Huyện",
+    "LatiLongTude": "20 56 17N, 107 28 02E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 204,
+    "Name": "Hoành Bồ",
+    "Type": "Huyện",
+    "LatiLongTude": "21 06 30N, 107 02 43E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 205,
+    "Name": "Đông Triều",
+    "Type": "Huyện",
+    "LatiLongTude": "21 07 10N, 106 34 36E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 206,
+    "Name": "Yên Hưng",
+    "Type": "Huyện",
+    "LatiLongTude": "20 55 40N, 106 51 05E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 207,
+    "Name": "Cô Tô",
+    "Type": "Huyện",
+    "LatiLongTude": "21 05 01N, 107 49 10E",
+    "isAvailable": true,
+    "ProvinceId": 22
+  },
+  {
+    "Id": 213,
+    "Name": "Bắc Giang",
+    "Type": "Thành Phố",
+    "LatiLongTude": "21 17 36N, 106 11 18E",
+    "isAvailable": true,
+    "ProvinceId": 24
+  },
+  {
+    "Id": 215,
+    "Name": "Yên Thế",
+    "Type": "Huyện",
+    "LatiLongTude": "21 31 29N, 106 09 27E",
+    "isAvailable": true,
+    "ProvinceId": 24
+  },
+  {
+    "Id": 216,
+    "Name": "Tân Yên",
+    "Type": "Huyện",
+    "LatiLongTude": "21 23 23N, 106 05 55E",
+    "isAvailable": true,
+    "ProvinceId": 24
+  },
+  {
+    "Id": 217,
+    "Name": "Lạng Giang",
+    "Type": "Huyện",
+    "LatiLongTude": "21 21 58N, 106 15 21E",
+    "isAvailable": true,
+    "ProvinceId": 24
+  },
+  {
+    "Id": 218,
+    "Name": "Lục Nam",
+    "Type": "Huyện",
+    "LatiLongTude": "21 18 16N, 106 29 24E",
+    "isAvailable": true,
+    "ProvinceId": 24
+  },
+  {
+    "Id": 219,
+    "Name": "Lục Ngạn",
+    "Type": "Huyện",
+    "LatiLongTude": "21 26 15N, 106 39 09E",
+    "isAvailable": true,
+    "ProvinceId": 24
+  },
+  {
+    "Id": 220,
+    "Name": "Sơn Động",
+    "Type": "Huyện",
+    "LatiLongTude": "21 19 42N, 106 51 09E",
+    "isAvailable": true,
+    "ProvinceId": 24
+  },
+  {
+    "Id": 221,
+    "Name": "Yên Dũng",
+    "Type": "Huyện",
+    "LatiLongTude": "21 12 22N, 106 14 12E",
+    "isAvailable": true,
+    "ProvinceId": 24
+  },
+  {
+    "Id": 222,
+    "Name": "Việt Yên",
+    "Type": "Huyện",
+    "LatiLongTude": "21 16 16N, 106 04 59E",
+    "isAvailable": true,
+    "ProvinceId": 24
+  },
+  {
+    "Id": 223,
+    "Name": "Hiệp Hòa",
+    "Type": "Huyện",
+    "LatiLongTude": "21 15 51N, 105 57 30E",
+    "isAvailable": true,
+    "ProvinceId": 24
+  },
+  {
+    "Id": 227,
+    "Name": "Việt Trì",
+    "Type": "Thành Phố",
+    "LatiLongTude": "21 19 01N, 105 23 35E",
+    "isAvailable": true,
+    "ProvinceId": 25
+  },
+  {
+    "Id": 228,
+    "Name": "Phú Thọ",
+    "Type": "Thị Xã",
+    "LatiLongTude": "21 24 54N, 105 13 46E",
+    "isAvailable": true,
+    "ProvinceId": 25
+  },
+  {
+    "Id": 230,
+    "Name": "Đoan Hùng",
+    "Type": "Huyện",
+    "LatiLongTude": "21 36 56N, 105 08 42E",
+    "isAvailable": true,
+    "ProvinceId": 25
+  },
+  {
+    "Id": 231,
+    "Name": "Hạ Hoà",
+    "Type": "Huyện",
+    "LatiLongTude": "21 35 13N, 105 00 22E",
+    "isAvailable": true,
+    "ProvinceId": 25
+  },
+  {
+    "Id": 232,
+    "Name": "Thanh Ba",
+    "Type": "Huyện",
+    "LatiLongTude": "21 27 04N, 105 09 10E",
+    "isAvailable": true,
+    "ProvinceId": 25
+  },
+  {
+    "Id": 233,
+    "Name": "Phù Ninh",
+    "Type": "Huyện",
+    "LatiLongTude": "21 26 59N, 105 18 13E",
+    "isAvailable": true,
+    "ProvinceId": 25
+  },
+  {
+    "Id": 234,
+    "Name": "Yên Lập",
+    "Type": "Huyện",
+    "LatiLongTude": "21 22 21N, 105 01 25E",
+    "isAvailable": true,
+    "ProvinceId": 25
+  },
+  {
+    "Id": 235,
+    "Name": "Cẩm Khê",
+    "Type": "Huyện",
+    "LatiLongTude": "21 23 04N, 105 05 25E",
+    "isAvailable": true,
+    "ProvinceId": 25
+  },
+  {
+    "Id": 236,
+    "Name": "Tam Nông",
+    "Type": "Huyện",
+    "LatiLongTude": "21 18 24N, 105 14 59E",
+    "isAvailable": true,
+    "ProvinceId": 25
+  },
+  {
+    "Id": 237,
+    "Name": "Lâm Thao",
+    "Type": "Huyện",
+    "LatiLongTude": "21 19 37N, 105 18 09E",
+    "isAvailable": true,
+    "ProvinceId": 25
+  },
+  {
+    "Id": 238,
+    "Name": "Thanh Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "21 08 32N, 105 04 40E",
+    "isAvailable": true,
+    "ProvinceId": 25
+  },
+  {
+    "Id": 239,
+    "Name": "Thanh Thuỷ",
+    "Type": "Huyện",
+    "LatiLongTude": "21 07 26N, 105 17 18E",
+    "isAvailable": true,
+    "ProvinceId": 25
+  },
+  {
+    "Id": 240,
+    "Name": "Tân Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 25
+  },
+  {
+    "Id": 243,
+    "Name": "Vĩnh Yên",
+    "Type": "Thành Phố",
+    "LatiLongTude": "21 18 26N, 105 35 33E",
+    "isAvailable": true,
+    "ProvinceId": 26
+  },
+  {
+    "Id": 244,
+    "Name": "Phúc Yên",
+    "Type": "Thị Xã",
+    "LatiLongTude": "21 18 55N, 105 43 54E",
+    "isAvailable": true,
+    "ProvinceId": 26
+  },
+  {
+    "Id": 246,
+    "Name": "Lập Thạch",
+    "Type": "Huyện",
+    "LatiLongTude": "21 24 45N, 105 25 39E",
+    "isAvailable": true,
+    "ProvinceId": 26
+  },
+  {
+    "Id": 247,
+    "Name": "Tam Dương",
+    "Type": "Huyện",
+    "LatiLongTude": "21 21 40N, 105 33 36E",
+    "isAvailable": true,
+    "ProvinceId": 26
+  },
+  {
+    "Id": 248,
+    "Name": "Tam Đảo",
+    "Type": "Huyện",
+    "LatiLongTude": "21 27 34N, 105 35 09E",
+    "isAvailable": true,
+    "ProvinceId": 26
+  },
+  {
+    "Id": 249,
+    "Name": "Bình Xuyên",
+    "Type": "Huyện",
+    "LatiLongTude": "21 19 48N, 105 39 43E",
+    "isAvailable": true,
+    "ProvinceId": 26
+  },
+  {
+    "Id": 250,
+    "Name": "Mê Linh",
+    "Type": "Huyện",
+    "LatiLongTude": "21 10 53N, 105 42 05E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 251,
+    "Name": "Yên Lạc",
+    "Type": "Huyện",
+    "LatiLongTude": "21 13 17N, 105 34 44E",
+    "isAvailable": true,
+    "ProvinceId": 26
+  },
+  {
+    "Id": 252,
+    "Name": "Vĩnh Tường",
+    "Type": "Huyện",
+    "LatiLongTude": "21 14 58N, 105 29 37E",
+    "isAvailable": true,
+    "ProvinceId": 26
+  },
+  {
+    "Id": 253,
+    "Name": "Sông Lô",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 26
+  },
+  {
+    "Id": 256,
+    "Name": "Bắc Ninh",
+    "Type": "Thành Phố",
+    "LatiLongTude": "21 10 48N, 106 03 58E",
+    "isAvailable": true,
+    "ProvinceId": 27
+  },
+  {
+    "Id": 258,
+    "Name": "Yên Phong",
+    "Type": "Huyện",
+    "LatiLongTude": "21 12 40N, 105 59 36E",
+    "isAvailable": true,
+    "ProvinceId": 27
+  },
+  {
+    "Id": 259,
+    "Name": "Quế Võ",
+    "Type": "Huyện",
+    "LatiLongTude": "21 08 44N, 106 11 06E",
+    "isAvailable": true,
+    "ProvinceId": 27
+  },
+  {
+    "Id": 260,
+    "Name": "Tiên Du",
+    "Type": "Huyện",
+    "LatiLongTude": "21 07 37N, 106 02 19E",
+    "isAvailable": true,
+    "ProvinceId": 27
+  },
+  {
+    "Id": 261,
+    "Name": "Từ Sơn",
+    "Type": "Thị Xã",
+    "LatiLongTude": "21 07 12N, 105 57 26E",
+    "isAvailable": true,
+    "ProvinceId": 27
+  },
+  {
+    "Id": 262,
+    "Name": "Thuận Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "21 02 24N, 106 04 10E",
+    "isAvailable": true,
+    "ProvinceId": 27
+  },
+  {
+    "Id": 263,
+    "Name": "Gia Bình",
+    "Type": "Huyện",
+    "LatiLongTude": "21 03 55N, 106 12 53E",
+    "isAvailable": true,
+    "ProvinceId": 27
+  },
+  {
+    "Id": 264,
+    "Name": "Lương Tài",
+    "Type": "Huyện",
+    "LatiLongTude": "21 01 33N, 106 13 28E",
+    "isAvailable": true,
+    "ProvinceId": 27
+  },
+  {
+    "Id": 268,
+    "Name": "Hà Đông",
+    "Type": "Quận",
+    "LatiLongTude": "20 57 25N, 105 45 21E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 269,
+    "Name": "Sơn Tây",
+    "Type": "Thị Xã",
+    "LatiLongTude": "21 05 51N, 105 28 27E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 271,
+    "Name": "Ba Vì",
+    "Type": "Huyện",
+    "LatiLongTude": "21 09 40N, 105 22 43E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 272,
+    "Name": "Phúc Thọ",
+    "Type": "Huyện",
+    "LatiLongTude": "21 06 32N, 105 34 52E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 273,
+    "Name": "Đan Phượng",
+    "Type": "Huyện",
+    "LatiLongTude": "21 07 13N, 105 40 49E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 274,
+    "Name": "Hoài Đức",
+    "Type": "Huyện",
+    "LatiLongTude": "21 01 25N, 105 42 03E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 275,
+    "Name": "Quốc Oai",
+    "Type": "Huyện",
+    "LatiLongTude": "20 58 45N, 105 36 43E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 276,
+    "Name": "Thạch Thất",
+    "Type": "Huyện",
+    "LatiLongTude": "21 02 17N, 105 33 05E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 277,
+    "Name": "Chương Mỹ",
+    "Type": "Huyện",
+    "LatiLongTude": "20 52 46N, 105 39 01E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 278,
+    "Name": "Thanh Oai",
+    "Type": "Huyện",
+    "LatiLongTude": "20 51 44N, 105 46 18E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 279,
+    "Name": "Thường Tín",
+    "Type": "Huyện",
+    "LatiLongTude": "20 49 59N, 105 22 19E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 280,
+    "Name": "Phú Xuyên",
+    "Type": "Huyện",
+    "LatiLongTude": "20 43 37N, 105 53 43E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 281,
+    "Name": "Ứng Hòa",
+    "Type": "Huyện",
+    "LatiLongTude": "20 42 41N, 105 47 58E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 282,
+    "Name": "Mỹ Đức",
+    "Type": "Huyện",
+    "LatiLongTude": "20 41 53N, 105 43 31E",
+    "isAvailable": true,
+    "ProvinceId": 1
+  },
+  {
+    "Id": 288,
+    "Name": "Hải Dương",
+    "Type": "Thành Phố",
+    "LatiLongTude": "20 56 14N, 106 18 21E",
+    "isAvailable": true,
+    "ProvinceId": 30
+  },
+  {
+    "Id": 290,
+    "Name": "Chí Linh",
+    "Type": "Huyện",
+    "LatiLongTude": "21 07 47N, 106 23 46E",
+    "isAvailable": true,
+    "ProvinceId": 30
+  },
+  {
+    "Id": 291,
+    "Name": "Nam Sách",
+    "Type": "Huyện",
+    "LatiLongTude": "21 00 15N, 106 20 26E",
+    "isAvailable": true,
+    "ProvinceId": 30
+  },
+  {
+    "Id": 292,
+    "Name": "Kinh Môn",
+    "Type": "Huyện",
+    "LatiLongTude": "21 00 04N, 106 30 23E",
+    "isAvailable": true,
+    "ProvinceId": 30
+  },
+  {
+    "Id": 293,
+    "Name": "Kim Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "20 55 40N, 106 30 33E",
+    "isAvailable": true,
+    "ProvinceId": 30
+  },
+  {
+    "Id": 294,
+    "Name": "Thanh Hà",
+    "Type": "Huyện",
+    "LatiLongTude": "20 53 19N, 106 25 43E",
+    "isAvailable": true,
+    "ProvinceId": 30
+  },
+  {
+    "Id": 295,
+    "Name": "Cẩm Giàng",
+    "Type": "Huyện",
+    "LatiLongTude": "20 57 05N, 106 12 29E",
+    "isAvailable": true,
+    "ProvinceId": 30
+  },
+  {
+    "Id": 296,
+    "Name": "Bình Giang",
+    "Type": "Huyện",
+    "LatiLongTude": "20 52 36N, 106 11 24E",
+    "isAvailable": true,
+    "ProvinceId": 30
+  },
+  {
+    "Id": 297,
+    "Name": "Gia Lộc",
+    "Type": "Huyện",
+    "LatiLongTude": "20 51 01N, 106 17 34E",
+    "isAvailable": true,
+    "ProvinceId": 30
+  },
+  {
+    "Id": 298,
+    "Name": "Tứ Kỳ",
+    "Type": "Huyện",
+    "LatiLongTude": "20 49 05N, 106 24 05E",
+    "isAvailable": true,
+    "ProvinceId": 30
+  },
+  {
+    "Id": 299,
+    "Name": "Ninh Giang",
+    "Type": "Huyện",
+    "LatiLongTude": "20 45 13N, 106 20 09E",
+    "isAvailable": true,
+    "ProvinceId": 30
+  },
+  {
+    "Id": 300,
+    "Name": "Thanh Miện",
+    "Type": "Huyện",
+    "LatiLongTude": "20 46 02N, 106 12 26E",
+    "isAvailable": true,
+    "ProvinceId": 30
+  },
+  {
+    "Id": 303,
+    "Name": "Hồng Bàng",
+    "Type": "Quận",
+    "LatiLongTude": "20 52 37N, 106 38 32E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 304,
+    "Name": "Ngô Quyền",
+    "Type": "Quận",
+    "LatiLongTude": "20 51 13N, 106 41 57E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 305,
+    "Name": "Lê Chân",
+    "Type": "Quận",
+    "LatiLongTude": "20 50 12N, 106 40 30E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 306,
+    "Name": "Hải An",
+    "Type": "Quận",
+    "LatiLongTude": "20 49 38N, 106 45 57E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 307,
+    "Name": "Kiến An",
+    "Type": "Quận",
+    "LatiLongTude": "20 48 26N, 106 38 03E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 308,
+    "Name": "Đồ Sơn",
+    "Type": "Quận",
+    "LatiLongTude": "20 42 41N, 106 44 54E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 309,
+    "Name": "Kinh Dương",
+    "Type": "Quận",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 311,
+    "Name": "Thuỷ Nguyên",
+    "Type": "Huyện",
+    "LatiLongTude": "20 56 36N, 106 39 38E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 312,
+    "Name": "An Dương",
+    "Type": "Huyện",
+    "LatiLongTude": "20 53 06N, 106 35 36E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 313,
+    "Name": "An Lão",
+    "Type": "Huyện",
+    "LatiLongTude": "20 47 54N, 106 33 19E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 314,
+    "Name": "Kiến Thụy",
+    "Type": "Huyện",
+    "LatiLongTude": "20 45 13N, 106 41 47E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 315,
+    "Name": "Tiên Lãng",
+    "Type": "Huyện",
+    "LatiLongTude": "20 42 23N, 106 36 03E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 316,
+    "Name": "Vĩnh Bảo",
+    "Type": "Huyện",
+    "LatiLongTude": "20 40 56N, 106 29 57E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 317,
+    "Name": "Cát Hải",
+    "Type": "Huyện",
+    "LatiLongTude": "20 47 09N, 106 58 07E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 318,
+    "Name": "Bạch Long Vĩ",
+    "Type": "Huyện",
+    "LatiLongTude": "20 08 41N, 107 42 51E",
+    "isAvailable": true,
+    "ProvinceId": 31
+  },
+  {
+    "Id": 323,
+    "Name": "Hưng Yên",
+    "Type": "Thành Phố",
+    "LatiLongTude": "20 39 38N, 106 03 08E",
+    "isAvailable": true,
+    "ProvinceId": 33
+  },
+  {
+    "Id": 325,
+    "Name": "Văn Lâm",
+    "Type": "Huyện",
+    "LatiLongTude": "20 58 31N, 106 02 51E",
+    "isAvailable": true,
+    "ProvinceId": 33
+  },
+  {
+    "Id": 326,
+    "Name": "Văn Giang",
+    "Type": "Huyện",
+    "LatiLongTude": "20 55 51N, 105 57 14E",
+    "isAvailable": true,
+    "ProvinceId": 33
+  },
+  {
+    "Id": 327,
+    "Name": "Yên Mỹ",
+    "Type": "Huyện",
+    "LatiLongTude": "20 53 45N, 106 01 21E",
+    "isAvailable": true,
+    "ProvinceId": 33
+  },
+  {
+    "Id": 328,
+    "Name": "Mỹ Hào",
+    "Type": "Huyện",
+    "LatiLongTude": "20 55 35N, 106 05 34E",
+    "isAvailable": true,
+    "ProvinceId": 33
+  },
+  {
+    "Id": 329,
+    "Name": "Ân Thi",
+    "Type": "Huyện",
+    "LatiLongTude": "20 48 49N, 106 05 30E",
+    "isAvailable": true,
+    "ProvinceId": 33
+  },
+  {
+    "Id": 330,
+    "Name": "Khoái Châu",
+    "Type": "Huyện",
+    "LatiLongTude": "20 49 53N, 105 58 28E",
+    "isAvailable": true,
+    "ProvinceId": 33
+  },
+  {
+    "Id": 331,
+    "Name": "Kim Động",
+    "Type": "Huyện",
+    "LatiLongTude": "20 44 47N, 106 01 47E",
+    "isAvailable": true,
+    "ProvinceId": 33
+  },
+  {
+    "Id": 332,
+    "Name": "Tiên Lữ",
+    "Type": "Huyện",
+    "LatiLongTude": "20 40 05N, 106 07 59E",
+    "isAvailable": true,
+    "ProvinceId": 33
+  },
+  {
+    "Id": 333,
+    "Name": "Phù Cừ",
+    "Type": "Huyện",
+    "LatiLongTude": "20 42 51N, 106 11 30E",
+    "isAvailable": true,
+    "ProvinceId": 33
+  },
+  {
+    "Id": 336,
+    "Name": "Thái Bình",
+    "Type": "Thành Phố",
+    "LatiLongTude": "20 26 45N, 106 19 56E",
+    "isAvailable": true,
+    "ProvinceId": 34
+  },
+  {
+    "Id": 338,
+    "Name": "Quỳnh Phụ",
+    "Type": "Huyện",
+    "LatiLongTude": "20 38 57N, 106 21 16E",
+    "isAvailable": true,
+    "ProvinceId": 34
+  },
+  {
+    "Id": 339,
+    "Name": "Hưng Hà",
+    "Type": "Huyện",
+    "LatiLongTude": "20 35 38N, 106 12 42E",
+    "isAvailable": true,
+    "ProvinceId": 34
+  },
+  {
+    "Id": 340,
+    "Name": "Đông Hưng",
+    "Type": "Huyện",
+    "LatiLongTude": "20 32 50N, 106 20 15E",
+    "isAvailable": true,
+    "ProvinceId": 34
+  },
+  {
+    "Id": 341,
+    "Name": "Thái Thụy",
+    "Type": "Huyện",
+    "LatiLongTude": "20 32 33N, 106 32 32E",
+    "isAvailable": true,
+    "ProvinceId": 34
+  },
+  {
+    "Id": 342,
+    "Name": "Tiền Hải",
+    "Type": "Huyện",
+    "LatiLongTude": "20 21 05N, 106 32 45E",
+    "isAvailable": true,
+    "ProvinceId": 34
+  },
+  {
+    "Id": 343,
+    "Name": "Kiến Xương",
+    "Type": "Huyện",
+    "LatiLongTude": "20 23 52N, 106 25 22E",
+    "isAvailable": true,
+    "ProvinceId": 34
+  },
+  {
+    "Id": 344,
+    "Name": "Vũ Thư",
+    "Type": "Huyện",
+    "LatiLongTude": "20 25 29N, 106 16 43E",
+    "isAvailable": true,
+    "ProvinceId": 34
+  },
+  {
+    "Id": 347,
+    "Name": "Phủ Lý",
+    "Type": "Thành Phố",
+    "LatiLongTude": "20 32 19N, 105 54 55E",
+    "isAvailable": true,
+    "ProvinceId": 35
+  },
+  {
+    "Id": 349,
+    "Name": "Duy Tiên",
+    "Type": "Huyện",
+    "LatiLongTude": "20 37 33N, 105 58 01E",
+    "isAvailable": true,
+    "ProvinceId": 35
+  },
+  {
+    "Id": 350,
+    "Name": "Kim Bảng",
+    "Type": "Huyện",
+    "LatiLongTude": "20 34 19N, 105 50 41E",
+    "isAvailable": true,
+    "ProvinceId": 35
+  },
+  {
+    "Id": 351,
+    "Name": "Thanh Liêm",
+    "Type": "Huyện",
+    "LatiLongTude": "20 27 31N, 105 55 09E",
+    "isAvailable": true,
+    "ProvinceId": 35
+  },
+  {
+    "Id": 352,
+    "Name": "Bình Lục",
+    "Type": "Huyện",
+    "LatiLongTude": "20 29 23N, 106 02 52E",
+    "isAvailable": true,
+    "ProvinceId": 35
+  },
+  {
+    "Id": 353,
+    "Name": "Lý Nhân",
+    "Type": "Huyện",
+    "LatiLongTude": "20 32 55N, 106 04 48E",
+    "isAvailable": true,
+    "ProvinceId": 35
+  },
+  {
+    "Id": 356,
+    "Name": "Nam Định",
+    "Type": "Thành Phố",
+    "LatiLongTude": "20 25 07N, 106 09 54E",
+    "isAvailable": true,
+    "ProvinceId": 36
+  },
+  {
+    "Id": 358,
+    "Name": "Mỹ Lộc",
+    "Type": "Huyện",
+    "LatiLongTude": "20 27 21N, 106 07 56E",
+    "isAvailable": true,
+    "ProvinceId": 36
+  },
+  {
+    "Id": 359,
+    "Name": "Vụ Bản",
+    "Type": "Huyện",
+    "LatiLongTude": "20 22 57N, 106 05 35E",
+    "isAvailable": true,
+    "ProvinceId": 36
+  },
+  {
+    "Id": 360,
+    "Name": "Ý Yên",
+    "Type": "Huyện",
+    "LatiLongTude": "20 19 48N, 106 01 55E",
+    "isAvailable": true,
+    "ProvinceId": 36
+  },
+  {
+    "Id": 361,
+    "Name": "Nghĩa Hưng",
+    "Type": "Huyện",
+    "LatiLongTude": "20 05 37N, 106 08 59E",
+    "isAvailable": true,
+    "ProvinceId": 36
+  },
+  {
+    "Id": 362,
+    "Name": "Nam Trực",
+    "Type": "Huyện",
+    "LatiLongTude": "20 20 08N, 106 12 54E",
+    "isAvailable": true,
+    "ProvinceId": 36
+  },
+  {
+    "Id": 363,
+    "Name": "Trực Ninh",
+    "Type": "Huyện",
+    "LatiLongTude": "20 14 42N, 106 12 45E",
+    "isAvailable": true,
+    "ProvinceId": 36
+  },
+  {
+    "Id": 364,
+    "Name": "Xuân Trường",
+    "Type": "Huyện",
+    "LatiLongTude": "20 17 53N, 106 21 43E",
+    "isAvailable": true,
+    "ProvinceId": 36
+  },
+  {
+    "Id": 365,
+    "Name": "Giao Thủy",
+    "Type": "Huyện",
+    "LatiLongTude": "20 14 45N, 106 28 39E",
+    "isAvailable": true,
+    "ProvinceId": 36
+  },
+  {
+    "Id": 366,
+    "Name": "Hải Hậu",
+    "Type": "Huyện",
+    "LatiLongTude": "20 06 26N, 106 16 29E",
+    "isAvailable": true,
+    "ProvinceId": 36
+  },
+  {
+    "Id": 369,
+    "Name": "Ninh Bình",
+    "Type": "Thành Phố",
+    "LatiLongTude": "20 14 45N, 105 58 24E",
+    "isAvailable": true,
+    "ProvinceId": 37
+  },
+  {
+    "Id": 370,
+    "Name": "Tam Điệp",
+    "Type": "Thị Xã",
+    "LatiLongTude": "20 09 42N, 103 52 43E",
+    "isAvailable": true,
+    "ProvinceId": 37
+  },
+  {
+    "Id": 372,
+    "Name": "Nho Quan",
+    "Type": "Huyện",
+    "LatiLongTude": "20 18 46N, 105 42 48E",
+    "isAvailable": true,
+    "ProvinceId": 37
+  },
+  {
+    "Id": 373,
+    "Name": "Gia Viễn",
+    "Type": "Huyện",
+    "LatiLongTude": "20 19 50N, 105 52 20E",
+    "isAvailable": true,
+    "ProvinceId": 37
+  },
+  {
+    "Id": 374,
+    "Name": "Hoa Lư",
+    "Type": "Huyện",
+    "LatiLongTude": "20 15 04N, 105 55 52E",
+    "isAvailable": true,
+    "ProvinceId": 37
+  },
+  {
+    "Id": 375,
+    "Name": "Yên Khánh",
+    "Type": "Huyện",
+    "LatiLongTude": "20 11 26N, 106 04 33E",
+    "isAvailable": true,
+    "ProvinceId": 37
+  },
+  {
+    "Id": 376,
+    "Name": "Kim Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "20 02 07N, 106 05 27E",
+    "isAvailable": true,
+    "ProvinceId": 37
+  },
+  {
+    "Id": 377,
+    "Name": "Yên Mô",
+    "Type": "Huyện",
+    "LatiLongTude": "20 07 45N, 105 59 45E",
+    "isAvailable": true,
+    "ProvinceId": 37
+  },
+  {
+    "Id": 380,
+    "Name": "Thanh Hóa",
+    "Type": "Thành Phố",
+    "LatiLongTude": "19 48 26N, 105 47 37E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 381,
+    "Name": "Bỉm Sơn",
+    "Type": "Thị Xã",
+    "LatiLongTude": "20 05 21N, 105 51 48E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 382,
+    "Name": "Sầm Sơn",
+    "Type": "Thị Xã",
+    "LatiLongTude": "19 45 11N, 105 54 03E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 384,
+    "Name": "Mường Lát",
+    "Type": "Huyện",
+    "LatiLongTude": "20 30 42N, 104 37 27E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 385,
+    "Name": "Quan Hóa",
+    "Type": "Huyện",
+    "LatiLongTude": "20 29 15N, 104 56 35E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 386,
+    "Name": "Bá Thước",
+    "Type": "Huyện",
+    "LatiLongTude": "20 22 48N, 105 14 50E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 387,
+    "Name": "Quan Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "20 15 17N, 104 51 58E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 388,
+    "Name": "Lang Chánh",
+    "Type": "Huyện",
+    "LatiLongTude": "20 08 58N, 105 07 40E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 389,
+    "Name": "Ngọc Lặc",
+    "Type": "Huyện",
+    "LatiLongTude": "20 04 08N, 105 22 39E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 390,
+    "Name": "Cẩm Thủy",
+    "Type": "Huyện",
+    "LatiLongTude": "20 12 20N, 105 27 22E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 391,
+    "Name": "Thạch Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "21 12 41N, 105 36 38E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 392,
+    "Name": "Hà Trung",
+    "Type": "Huyện",
+    "LatiLongTude": "20 03 20N, 105 51 20E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 393,
+    "Name": "Vĩnh Lộc",
+    "Type": "Huyện",
+    "LatiLongTude": "20 02 29N, 105 39 28E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 394,
+    "Name": "Yên Định",
+    "Type": "Huyện",
+    "LatiLongTude": "20 00 31N, 105 37 44E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 395,
+    "Name": "Thọ Xuân",
+    "Type": "Huyện",
+    "LatiLongTude": "19 55 39N, 105 29 14E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 396,
+    "Name": "Thường Xuân",
+    "Type": "Huyện",
+    "LatiLongTude": "19 54 55N, 105 10 46E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 397,
+    "Name": "Triệu Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "19 48 11N, 105 34 03E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 398,
+    "Name": "Thiệu Hoá",
+    "Type": "Huyện",
+    "LatiLongTude": "19 53 56N, 105 40 57E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 399,
+    "Name": "Hoằng Hóa",
+    "Type": "Huyện",
+    "LatiLongTude": "19 51 59N, 105 51 34E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 400,
+    "Name": "Hậu Lộc",
+    "Type": "Huyện",
+    "LatiLongTude": "19 56 02N, 105 53 19E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 401,
+    "Name": "Nga Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "20 00 16N, 105 59 26E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 402,
+    "Name": "Như Xuân",
+    "Type": "Huyện",
+    "LatiLongTude": "19 5 55N, 105 20 22E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 403,
+    "Name": "Như Thanh",
+    "Type": "Huyện",
+    "LatiLongTude": "19 35 19N, 105 33 09E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 404,
+    "Name": "Nông Cống",
+    "Type": "Huyện",
+    "LatiLongTude": "19 36 58N, 105 40 54E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 405,
+    "Name": "Đông Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "19 47 44N, 105 42 19E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 406,
+    "Name": "Quảng Xương",
+    "Type": "Huyện",
+    "LatiLongTude": "19 40 53N, 105 48 01E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 407,
+    "Name": "Tĩnh Gia",
+    "Type": "Huyện",
+    "LatiLongTude": "19 27 13N, 105 43 38E",
+    "isAvailable": true,
+    "ProvinceId": 38
+  },
+  {
+    "Id": 412,
+    "Name": "Vinh",
+    "Type": "Thành Phố",
+    "LatiLongTude": "18 41 06N, 105 42 05E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 413,
+    "Name": "Cửa Lò",
+    "Type": "Thị Xã",
+    "LatiLongTude": "18 47 26N, 105 43 31E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 414,
+    "Name": "Thái Hoà",
+    "Type": "Thị Xã",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 415,
+    "Name": "Quế Phong",
+    "Type": "Huyện",
+    "LatiLongTude": "19 42 25N, 104 54 21E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 416,
+    "Name": "Quỳ Châu",
+    "Type": "Huyện",
+    "LatiLongTude": "19 32 16N, 105 03 18E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 417,
+    "Name": "Kỳ Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "19 24 36N, 104 09 45E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 418,
+    "Name": "Tương Dương",
+    "Type": "Huyện",
+    "LatiLongTude": "19 19 15N, 104 35 41E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 419,
+    "Name": "Nghĩa Đàn",
+    "Type": "Huyện",
+    "LatiLongTude": "19 21 19N, 105 26 33E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 420,
+    "Name": "Quỳ Hợp",
+    "Type": "Huyện",
+    "LatiLongTude": "19 19 24N, 105 09 12E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 421,
+    "Name": "Quỳnh Lưu",
+    "Type": "Huyện",
+    "LatiLongTude": "19 14 01N, 105 37 00E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 422,
+    "Name": "Con Cuông",
+    "Type": "Huyện",
+    "LatiLongTude": "19 03 50N, 107 47 15E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 423,
+    "Name": "Tân Kỳ",
+    "Type": "Huyện",
+    "LatiLongTude": "19 06 11N, 105 14 14E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 424,
+    "Name": "Anh Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "18 58 04N, 105 04 30E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 425,
+    "Name": "Diễn Châu",
+    "Type": "Huyện",
+    "LatiLongTude": "19 01 20N, 105 34 13E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 426,
+    "Name": "Yên Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "19 01 25N, 105 26 17E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 427,
+    "Name": "Đô Lương",
+    "Type": "Huyện",
+    "LatiLongTude": "18 55 00N, 105 21 03E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 428,
+    "Name": "Thanh Chương",
+    "Type": "Huyện",
+    "LatiLongTude": "18 44 11N, 105 12 59E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 429,
+    "Name": "Nghi Lộc",
+    "Type": "Huyện",
+    "LatiLongTude": "18 47 41N, 105 31 30E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 430,
+    "Name": "Nam Đàn",
+    "Type": "Huyện",
+    "LatiLongTude": "18 40 28N, 105 30 32E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 431,
+    "Name": "Hưng Nguyên",
+    "Type": "Huyện",
+    "LatiLongTude": "18 41 13N, 105 37 41E",
+    "isAvailable": true,
+    "ProvinceId": 40
+  },
+  {
+    "Id": 436,
+    "Name": "Hà Tĩnh",
+    "Type": "Thành Phố",
+    "LatiLongTude": "18 21 20N, 105 54 00E",
+    "isAvailable": true,
+    "ProvinceId": 42
+  },
+  {
+    "Id": 437,
+    "Name": "Hồng Lĩnh",
+    "Type": "Thị Xã",
+    "LatiLongTude": "18 32 05N, 105 42 40E",
+    "isAvailable": true,
+    "ProvinceId": 42
+  },
+  {
+    "Id": 439,
+    "Name": "Hương Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "18 26 47N, 105 19 36E",
+    "isAvailable": true,
+    "ProvinceId": 42
+  },
+  {
+    "Id": 440,
+    "Name": "Đức Thọ",
+    "Type": "Huyện",
+    "LatiLongTude": "18 29 23N, 105 36 39E",
+    "isAvailable": true,
+    "ProvinceId": 42
+  },
+  {
+    "Id": 441,
+    "Name": "Vũ Quang",
+    "Type": "Huyện",
+    "LatiLongTude": "18 19 30N, 105 26 38E",
+    "isAvailable": true,
+    "ProvinceId": 42
+  },
+  {
+    "Id": 442,
+    "Name": "Nghi Xuân",
+    "Type": "Huyện",
+    "LatiLongTude": "18 38 46N, 105 46 17E",
+    "isAvailable": true,
+    "ProvinceId": 42
+  },
+  {
+    "Id": 443,
+    "Name": "Can Lộc",
+    "Type": "Huyện",
+    "LatiLongTude": "18 26 39N, 105 46 13E",
+    "isAvailable": true,
+    "ProvinceId": 42
+  },
+  {
+    "Id": 444,
+    "Name": "Hương Khê",
+    "Type": "Huyện",
+    "LatiLongTude": "18 11 36N, 105 41 24E",
+    "isAvailable": true,
+    "ProvinceId": 42
+  },
+  {
+    "Id": 445,
+    "Name": "Thạch Hà",
+    "Type": "Huyện",
+    "LatiLongTude": "18 19 29N, 105 52 43E",
+    "isAvailable": true,
+    "ProvinceId": 42
+  },
+  {
+    "Id": 446,
+    "Name": "Cẩm Xuyên",
+    "Type": "Huyện",
+    "LatiLongTude": "18 11 32N, 106 00 04E",
+    "isAvailable": true,
+    "ProvinceId": 42
+  },
+  {
+    "Id": 447,
+    "Name": "Kỳ Anh",
+    "Type": "Huyện",
+    "LatiLongTude": "18 05 15N, 106 15 49E",
+    "isAvailable": true,
+    "ProvinceId": 42
+  },
+  {
+    "Id": 448,
+    "Name": "Lộc Hà",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 42
+  },
+  {
+    "Id": 450,
+    "Name": "Đồng Hới",
+    "Type": "Thành Phố",
+    "LatiLongTude": "17 26 53N, 106 35 15E",
+    "isAvailable": true,
+    "ProvinceId": 44
+  },
+  {
+    "Id": 452,
+    "Name": "Minh Hóa",
+    "Type": "Huyện",
+    "LatiLongTude": "17 44 03N, 105 51 45E",
+    "isAvailable": true,
+    "ProvinceId": 44
+  },
+  {
+    "Id": 453,
+    "Name": "Tuyên Hóa",
+    "Type": "Huyện",
+    "LatiLongTude": "17 54 04N, 105 58 17E",
+    "isAvailable": true,
+    "ProvinceId": 44
+  },
+  {
+    "Id": 454,
+    "Name": "Quảng Trạch",
+    "Type": "Huyện",
+    "LatiLongTude": "17 50 04N, 106 22 24E",
+    "isAvailable": true,
+    "ProvinceId": 44
+  },
+  {
+    "Id": 455,
+    "Name": "Bố Trạch",
+    "Type": "Huyện",
+    "LatiLongTude": "17 29 13N, 106 06 54E",
+    "isAvailable": true,
+    "ProvinceId": 44
+  },
+  {
+    "Id": 456,
+    "Name": "Quảng Ninh",
+    "Type": "Huyện",
+    "LatiLongTude": "17 15 15N, 106 32 31E",
+    "isAvailable": true,
+    "ProvinceId": 44
+  },
+  {
+    "Id": 457,
+    "Name": "Lệ Thủy",
+    "Type": "Huyện",
+    "LatiLongTude": "17 07 35N, 106 41 47E",
+    "isAvailable": true,
+    "ProvinceId": 44
+  },
+  {
+    "Id": 461,
+    "Name": "Đông Hà",
+    "Type": "Thành Phố",
+    "LatiLongTude": "16 48 12N, 107 05 12E",
+    "isAvailable": true,
+    "ProvinceId": 45
+  },
+  {
+    "Id": 462,
+    "Name": "Quảng Trị",
+    "Type": "Thị Xã",
+    "LatiLongTude": "16 44 37N, 107 11 20E",
+    "isAvailable": true,
+    "ProvinceId": 45
+  },
+  {
+    "Id": 464,
+    "Name": "Vĩnh Linh",
+    "Type": "Huyện",
+    "LatiLongTude": "17 01 35N, 106 53 49E",
+    "isAvailable": true,
+    "ProvinceId": 45
+  },
+  {
+    "Id": 465,
+    "Name": "Hướng Hóa",
+    "Type": "Huyện",
+    "LatiLongTude": "16 42 19N, 106 40 14E",
+    "isAvailable": true,
+    "ProvinceId": 45
+  },
+  {
+    "Id": 466,
+    "Name": "Gio Linh",
+    "Type": "Huyện",
+    "LatiLongTude": "16 54 49N, 106 56 16E",
+    "isAvailable": true,
+    "ProvinceId": 45
+  },
+  {
+    "Id": 467,
+    "Name": "Đa Krông",
+    "Type": "Huyện",
+    "LatiLongTude": "16 33 58N, 106 55 49E",
+    "isAvailable": true,
+    "ProvinceId": 45
+  },
+  {
+    "Id": 468,
+    "Name": "Cam Lộ",
+    "Type": "Huyện",
+    "LatiLongTude": "16 47 09N, 106 57 52E",
+    "isAvailable": true,
+    "ProvinceId": 45
+  },
+  {
+    "Id": 469,
+    "Name": "Triệu Phong",
+    "Type": "Huyện",
+    "LatiLongTude": "16 46 32N, 107 09 12E",
+    "isAvailable": true,
+    "ProvinceId": 45
+  },
+  {
+    "Id": 470,
+    "Name": "Hải Lăng",
+    "Type": "Huyện",
+    "LatiLongTude": "16 41 07N, 107 13 34E",
+    "isAvailable": true,
+    "ProvinceId": 45
+  },
+  {
+    "Id": 471,
+    "Name": "Cồn Cỏ",
+    "Type": "Huyện",
+    "LatiLongTude": "19 09 39N, 107 19 58E",
+    "isAvailable": true,
+    "ProvinceId": 45
+  },
+  {
+    "Id": 474,
+    "Name": "Huế",
+    "Type": "Thành Phố",
+    "LatiLongTude": "16 27 16N, 107 34 29E",
+    "isAvailable": true,
+    "ProvinceId": 46
+  },
+  {
+    "Id": 476,
+    "Name": "Phong Điền",
+    "Type": "Huyện",
+    "LatiLongTude": "16 32 42N, 106 16 37E",
+    "isAvailable": true,
+    "ProvinceId": 46
+  },
+  {
+    "Id": 477,
+    "Name": "Quảng Điền",
+    "Type": "Huyện",
+    "LatiLongTude": "16 35 21N, 107 29 31E",
+    "isAvailable": true,
+    "ProvinceId": 46
+  },
+  {
+    "Id": 478,
+    "Name": "Phú Vang",
+    "Type": "Huyện",
+    "LatiLongTude": "16 27 20N, 107 42 28E",
+    "isAvailable": true,
+    "ProvinceId": 46
+  },
+  {
+    "Id": 479,
+    "Name": "Hương Thủy",
+    "Type": "Huyện",
+    "LatiLongTude": "16 19 27N, 107 37 26E",
+    "isAvailable": true,
+    "ProvinceId": 46
+  },
+  {
+    "Id": 480,
+    "Name": "Hương Trà",
+    "Type": "Huyện",
+    "LatiLongTude": "16 25 49N, 107 28 37E",
+    "isAvailable": true,
+    "ProvinceId": 46
+  },
+  {
+    "Id": 481,
+    "Name": "A Lưới",
+    "Type": "Huyện",
+    "LatiLongTude": "16 13 59N, 107 16 12E",
+    "isAvailable": true,
+    "ProvinceId": 46
+  },
+  {
+    "Id": 482,
+    "Name": "Phú Lộc",
+    "Type": "Huyện",
+    "LatiLongTude": "16 17 16N, 107 55 25E",
+    "isAvailable": true,
+    "ProvinceId": 46
+  },
+  {
+    "Id": 483,
+    "Name": "Nam Đông",
+    "Type": "Huyện",
+    "LatiLongTude": "16 07 11N, 107 41 25E",
+    "isAvailable": true,
+    "ProvinceId": 46
+  },
+  {
+    "Id": 490,
+    "Name": "Liên Chiểu",
+    "Type": "Quận",
+    "LatiLongTude": "16 07 26N, 108 07 04E",
+    "isAvailable": true,
+    "ProvinceId": 48
+  },
+  {
+    "Id": 491,
+    "Name": "Thanh Khê",
+    "Type": "Quận",
+    "LatiLongTude": "16 03 28N, 108 11 00E",
+    "isAvailable": true,
+    "ProvinceId": 48
+  },
+  {
+    "Id": 492,
+    "Name": "Hải Châu",
+    "Type": "Quận",
+    "LatiLongTude": "16 03 38N, 108 11 46E",
+    "isAvailable": true,
+    "ProvinceId": 48
+  },
+  {
+    "Id": 493,
+    "Name": "Sơn Trà",
+    "Type": "Quận",
+    "LatiLongTude": "16 06 13N, 108 16 26E",
+    "isAvailable": true,
+    "ProvinceId": 48
+  },
+  {
+    "Id": 494,
+    "Name": "Ngũ Hành Sơn",
+    "Type": "Quận",
+    "LatiLongTude": "16 00 30N, 108 15 09E",
+    "isAvailable": true,
+    "ProvinceId": 48
+  },
+  {
+    "Id": 495,
+    "Name": "Cẩm Lệ",
+    "Type": "Quận",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 48
+  },
+  {
+    "Id": 497,
+    "Name": "Hoà Vang",
+    "Type": "Huyện",
+    "LatiLongTude": "16 03 59N, 108 01 57E",
+    "isAvailable": true,
+    "ProvinceId": 48
+  },
+  {
+    "Id": 498,
+    "Name": "Hoàng Sa",
+    "Type": "Huyện",
+    "LatiLongTude": "16 21 36N, 111 57 01E",
+    "isAvailable": true,
+    "ProvinceId": 48
+  },
+  {
+    "Id": 502,
+    "Name": "Tam Kỳ",
+    "Type": "Thành Phố",
+    "LatiLongTude": "15 34 37N, 108 29 52E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 503,
+    "Name": "Hội An",
+    "Type": "Thành Phố",
+    "LatiLongTude": "15 53 20N, 108 20 42E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 504,
+    "Name": "Tây Giang",
+    "Type": "Huyện",
+    "LatiLongTude": "15 53 46N, 107 25 52E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 505,
+    "Name": "Đông Giang",
+    "Type": "Huyện",
+    "LatiLongTude": "15 54 44N, 107 47 06E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 506,
+    "Name": "Đại Lộc",
+    "Type": "Huyện",
+    "LatiLongTude": "15 50 10N, 107 58 27E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 507,
+    "Name": "Điện Bàn",
+    "Type": "Huyện",
+    "LatiLongTude": "15 54 15N, 108 13 38E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 508,
+    "Name": "Duy Xuyên",
+    "Type": "Huyện",
+    "LatiLongTude": "15 47 58N, 108 13 27E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 509,
+    "Name": "Quế Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "15 41 03N, 108 05 34E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 510,
+    "Name": "Nam Giang",
+    "Type": "Huyện",
+    "LatiLongTude": "15 36 37N, 107 33 52E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 511,
+    "Name": "Phước Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "15 23 17N, 107 50 22E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 512,
+    "Name": "Hiệp Đức",
+    "Type": "Huyện",
+    "LatiLongTude": "15 31 09N, 108 05 56E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 513,
+    "Name": "Thăng Bình",
+    "Type": "Huyện",
+    "LatiLongTude": "15 42 29N, 108 22 04E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 514,
+    "Name": "Tiên Phước",
+    "Type": "Huyện",
+    "LatiLongTude": "15 29 30N, 108 15 28E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 515,
+    "Name": "Bắc Trà My",
+    "Type": "Huyện",
+    "LatiLongTude": "15 08 00N, 108 05 32E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 516,
+    "Name": "Nam Trà My",
+    "Type": "Huyện",
+    "LatiLongTude": "15 16 40N, 108 12 15E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 517,
+    "Name": "Núi Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "15 26 53N, 108 34 49E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 518,
+    "Name": "Phú Ninh",
+    "Type": "Huyện",
+    "LatiLongTude": "15 30 43N, 108 24 43E",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 519,
+    "Name": "Nông Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 49
+  },
+  {
+    "Id": 522,
+    "Name": "Quảng Ngãi",
+    "Type": "Thành Phố",
+    "LatiLongTude": "15 07 17N, 108 48 24E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 524,
+    "Name": "Bình Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "15 18 45N, 108 45 35E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 525,
+    "Name": "Trà Bồng",
+    "Type": "Huyện",
+    "LatiLongTude": "15 13 30N, 108 29 57E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 526,
+    "Name": "Tây Trà",
+    "Type": "Huyện",
+    "LatiLongTude": "15 11 13N, 108 22 23E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 527,
+    "Name": "Sơn Tịnh",
+    "Type": "Huyện",
+    "LatiLongTude": "15 11 49N, 108 45 03E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 528,
+    "Name": "Tư Nghĩa",
+    "Type": "Huyện",
+    "LatiLongTude": "15 05 25N, 108 45 23E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 529,
+    "Name": "Sơn Hà",
+    "Type": "Huyện",
+    "LatiLongTude": "14 58 35N, 108 29 09E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 530,
+    "Name": "Sơn Tây",
+    "Type": "Huyện",
+    "LatiLongTude": "14 58 11N, 108 21 22E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 531,
+    "Name": "Minh Long",
+    "Type": "Huyện",
+    "LatiLongTude": "14 56 49N, 108 40 19E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 532,
+    "Name": "Nghĩa Hành",
+    "Type": "Huyện",
+    "LatiLongTude": "14 58 06N, 108 46 05E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 533,
+    "Name": "Mộ Đức",
+    "Type": "Huyện",
+    "LatiLongTude": "11 59 13N, 108 52 21E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 534,
+    "Name": "Đức Phổ",
+    "Type": "Huyện",
+    "LatiLongTude": "14 44 59N, 108 56 58E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 535,
+    "Name": "Ba Tơ",
+    "Type": "Huyện",
+    "LatiLongTude": "14 42 52N, 108 43 44E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 536,
+    "Name": "Lý Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "15 22 50N, 109 06 56E",
+    "isAvailable": true,
+    "ProvinceId": 51
+  },
+  {
+    "Id": 540,
+    "Name": "Qui Nhơn",
+    "Type": "Thành Phố",
+    "LatiLongTude": "13 47 15N, 109 12 48E",
+    "isAvailable": true,
+    "ProvinceId": 52
+  },
+  {
+    "Id": 542,
+    "Name": "An Lão",
+    "Type": "Huyện",
+    "LatiLongTude": "14 32 10N, 108 47 52E",
+    "isAvailable": true,
+    "ProvinceId": 52
+  },
+  {
+    "Id": 543,
+    "Name": "Hoài Nhơn",
+    "Type": "Huyện",
+    "LatiLongTude": "14 30 56N, 109 01 56E",
+    "isAvailable": true,
+    "ProvinceId": 52
+  },
+  {
+    "Id": 544,
+    "Name": "Hoài Ân",
+    "Type": "Huyện",
+    "LatiLongTude": "14 20 51N, 108 54 04E",
+    "isAvailable": true,
+    "ProvinceId": 52
+  },
+  {
+    "Id": 545,
+    "Name": "Phù Mỹ",
+    "Type": "Huyện",
+    "LatiLongTude": "14 14 41N, 109 05 43E",
+    "isAvailable": true,
+    "ProvinceId": 52
+  },
+  {
+    "Id": 546,
+    "Name": "Vĩnh Thạnh",
+    "Type": "Huyện",
+    "LatiLongTude": "14 14 26N, 108 44 08E",
+    "isAvailable": true,
+    "ProvinceId": 52
+  },
+  {
+    "Id": 547,
+    "Name": "Tây Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "13 56 47N, 108 53 06E",
+    "isAvailable": true,
+    "ProvinceId": 52
+  },
+  {
+    "Id": 548,
+    "Name": "Phù Cát",
+    "Type": "Huyện",
+    "LatiLongTude": "14 03 48N, 109 03 57E",
+    "isAvailable": true,
+    "ProvinceId": 52
+  },
+  {
+    "Id": 549,
+    "Name": "An Nhơn",
+    "Type": "Huyện",
+    "LatiLongTude": "13 51 28N, 109 04 02E",
+    "isAvailable": true,
+    "ProvinceId": 52
+  },
+  {
+    "Id": 550,
+    "Name": "Tuy Phước",
+    "Type": "Huyện",
+    "LatiLongTude": "13 46 30N, 109 05 38E",
+    "isAvailable": true,
+    "ProvinceId": 52
+  },
+  {
+    "Id": 551,
+    "Name": "Vân Canh",
+    "Type": "Huyện",
+    "LatiLongTude": "13 40 35N, 108 57 52E",
+    "isAvailable": true,
+    "ProvinceId": 52
+  },
+  {
+    "Id": 555,
+    "Name": "Tuy Hòa",
+    "Type": "Thành Phố",
+    "LatiLongTude": "13 05 42N, 109 15 50E",
+    "isAvailable": true,
+    "ProvinceId": 54
+  },
+  {
+    "Id": 557,
+    "Name": "Sông Cầu",
+    "Type": "Thị Xã",
+    "LatiLongTude": "13 31 40N, 109 12 39E",
+    "isAvailable": true,
+    "ProvinceId": 54
+  },
+  {
+    "Id": 558,
+    "Name": "Đồng Xuân",
+    "Type": "Huyện",
+    "LatiLongTude": "13 24 59N, 108 56 46E",
+    "isAvailable": true,
+    "ProvinceId": 54
+  },
+  {
+    "Id": 559,
+    "Name": "Tuy An",
+    "Type": "Huyện",
+    "LatiLongTude": "13 15 19N, 109 12 21E",
+    "isAvailable": true,
+    "ProvinceId": 54
+  },
+  {
+    "Id": 560,
+    "Name": "Sơn Hòa",
+    "Type": "Huyện",
+    "LatiLongTude": "13 12 16N, 108 57 17E",
+    "isAvailable": true,
+    "ProvinceId": 54
+  },
+  {
+    "Id": 561,
+    "Name": "Sông Hinh",
+    "Type": "Huyện",
+    "LatiLongTude": "12 54 19N, 108 53 38E",
+    "isAvailable": true,
+    "ProvinceId": 54
+  },
+  {
+    "Id": 562,
+    "Name": "Tây Hoà",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 54
+  },
+  {
+    "Id": 563,
+    "Name": "Phú Hoà",
+    "Type": "Huyện",
+    "LatiLongTude": "13 04 07N, 109 11 24E",
+    "isAvailable": true,
+    "ProvinceId": 54
+  },
+  {
+    "Id": 564,
+    "Name": "Đông Hoà",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 54
+  },
+  {
+    "Id": 568,
+    "Name": "Nha Trang",
+    "Type": "Thành Phố",
+    "LatiLongTude": "12 15 40N, 109 10 40E",
+    "isAvailable": true,
+    "ProvinceId": 56
+  },
+  {
+    "Id": 569,
+    "Name": "Cam Ranh",
+    "Type": "Thị Xã",
+    "LatiLongTude": "11 59 05N, 108 08 17E",
+    "isAvailable": true,
+    "ProvinceId": 56
+  },
+  {
+    "Id": 570,
+    "Name": "Cam Lâm",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 56
+  },
+  {
+    "Id": 571,
+    "Name": "Vạn Ninh",
+    "Type": "Huyện",
+    "LatiLongTude": "12 43 10N, 109 11 18E",
+    "isAvailable": true,
+    "ProvinceId": 56
+  },
+  {
+    "Id": 572,
+    "Name": "Ninh Hòa",
+    "Type": "Huyện",
+    "LatiLongTude": "12 32 54N, 109 06 11E",
+    "isAvailable": true,
+    "ProvinceId": 56
+  },
+  {
+    "Id": 573,
+    "Name": "Khánh Vĩnh",
+    "Type": "Huyện",
+    "LatiLongTude": "12 17 50N, 108 51 56E",
+    "isAvailable": true,
+    "ProvinceId": 56
+  },
+  {
+    "Id": 574,
+    "Name": "Diên Khánh",
+    "Type": "Huyện",
+    "LatiLongTude": "12 13 19N, 109 02 16E",
+    "isAvailable": true,
+    "ProvinceId": 56
+  },
+  {
+    "Id": 575,
+    "Name": "Khánh Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "12 02 17N, 108 53 47E",
+    "isAvailable": true,
+    "ProvinceId": 56
+  },
+  {
+    "Id": 576,
+    "Name": "Trường Sa",
+    "Type": "Huyện",
+    "LatiLongTude": "9 07 27N, 114 15 00E",
+    "isAvailable": true,
+    "ProvinceId": 56
+  },
+  {
+    "Id": 582,
+    "Name": "Phan Rang-Tháp Chàm",
+    "Type": "Thành Phố",
+    "LatiLongTude": "11 36 11N, 108 58 34E",
+    "isAvailable": true,
+    "ProvinceId": 58
+  },
+  {
+    "Id": 584,
+    "Name": "Bác Ái",
+    "Type": "Huyện",
+    "LatiLongTude": "11 54 45N, 108 51 29E",
+    "isAvailable": true,
+    "ProvinceId": 58
+  },
+  {
+    "Id": 585,
+    "Name": "Ninh Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "11 42 36N, 108 44 55E",
+    "isAvailable": true,
+    "ProvinceId": 58
+  },
+  {
+    "Id": 586,
+    "Name": "Ninh Hải",
+    "Type": "Huyện",
+    "LatiLongTude": "11 42 46N, 109 05 41E",
+    "isAvailable": true,
+    "ProvinceId": 58
+  },
+  {
+    "Id": 587,
+    "Name": "Ninh Phước",
+    "Type": "Huyện",
+    "LatiLongTude": "11 28 56N, 108 50 34E",
+    "isAvailable": true,
+    "ProvinceId": 58
+  },
+  {
+    "Id": 588,
+    "Name": "Thuận Bắc",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 58
+  },
+  {
+    "Id": 589,
+    "Name": "Thuận Nam",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 58
+  },
+  {
+    "Id": 593,
+    "Name": "Phan Thiết",
+    "Type": "Thành Phố",
+    "LatiLongTude": "10 54 16N, 108 03 44E",
+    "isAvailable": true,
+    "ProvinceId": 60
+  },
+  {
+    "Id": 594,
+    "Name": "La Gi",
+    "Type": "Thị Xã",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 60
+  },
+  {
+    "Id": 595,
+    "Name": "Tuy Phong",
+    "Type": "Huyện",
+    "LatiLongTude": "11 20 26N, 108 41 15E",
+    "isAvailable": true,
+    "ProvinceId": 60
+  },
+  {
+    "Id": 596,
+    "Name": "Bắc Bình",
+    "Type": "Huyện",
+    "LatiLongTude": "11 15 52N, 108 21 33E",
+    "isAvailable": true,
+    "ProvinceId": 60
+  },
+  {
+    "Id": 597,
+    "Name": "Hàm Thuận Bắc",
+    "Type": "Huyện",
+    "LatiLongTude": "11 09 18N, 108 03 07E",
+    "isAvailable": true,
+    "ProvinceId": 60
+  },
+  {
+    "Id": 598,
+    "Name": "Hàm Thuận Nam",
+    "Type": "Huyện",
+    "LatiLongTude": "10 56 20N, 107 54 38E",
+    "isAvailable": true,
+    "ProvinceId": 60
+  },
+  {
+    "Id": 599,
+    "Name": "Tánh Linh",
+    "Type": "Huyện",
+    "LatiLongTude": "11 08 26N, 107 41 22E",
+    "isAvailable": true,
+    "ProvinceId": 60
+  },
+  {
+    "Id": 600,
+    "Name": "Đức Linh",
+    "Type": "Huyện",
+    "LatiLongTude": "11 11 43N, 107 31 34E",
+    "isAvailable": true,
+    "ProvinceId": 60
+  },
+  {
+    "Id": 601,
+    "Name": "Hàm Tân",
+    "Type": "Huyện",
+    "LatiLongTude": "10 44 41N, 107 41 33E",
+    "isAvailable": true,
+    "ProvinceId": 60
+  },
+  {
+    "Id": 602,
+    "Name": "Phú Quí",
+    "Type": "Huyện",
+    "LatiLongTude": "10 33 13N, 108 57 46E",
+    "isAvailable": true,
+    "ProvinceId": 60
+  },
+  {
+    "Id": 608,
+    "Name": "Kon Tum",
+    "Type": "Thành Phố",
+    "LatiLongTude": "14 20 32N, 107 58 04E",
+    "isAvailable": true,
+    "ProvinceId": 62
+  },
+  {
+    "Id": 610,
+    "Name": "Đắk Glei",
+    "Type": "Huyện",
+    "LatiLongTude": "15 08 13N, 107 44 03E",
+    "isAvailable": true,
+    "ProvinceId": 62
+  },
+  {
+    "Id": 611,
+    "Name": "Ngọc Hồi",
+    "Type": "Huyện",
+    "LatiLongTude": "14 44 23N, 107 38 49E",
+    "isAvailable": true,
+    "ProvinceId": 62
+  },
+  {
+    "Id": 612,
+    "Name": "Đắk Tô",
+    "Type": "Huyện",
+    "LatiLongTude": "14 46 49N, 107 55 36E",
+    "isAvailable": true,
+    "ProvinceId": 62
+  },
+  {
+    "Id": 613,
+    "Name": "Kon Plông",
+    "Type": "Huyện",
+    "LatiLongTude": "14 48 13N, 108 20 05E",
+    "isAvailable": true,
+    "ProvinceId": 62
+  },
+  {
+    "Id": 614,
+    "Name": "Kon Rẫy",
+    "Type": "Huyện",
+    "LatiLongTude": "14 32 56N, 108 13 09E",
+    "isAvailable": true,
+    "ProvinceId": 62
+  },
+  {
+    "Id": 615,
+    "Name": "Đắk Hà",
+    "Type": "Huyện",
+    "LatiLongTude": "14 36 50N, 107 59 55E",
+    "isAvailable": true,
+    "ProvinceId": 62
+  },
+  {
+    "Id": 616,
+    "Name": "Sa Thầy",
+    "Type": "Huyện",
+    "LatiLongTude": "14 16 02N, 107 36 30E",
+    "isAvailable": true,
+    "ProvinceId": 62
+  },
+  {
+    "Id": 617,
+    "Name": "Tu Mơ Rông",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 62
+  },
+  {
+    "Id": 622,
+    "Name": "Pleiku",
+    "Type": "Thành Phố",
+    "LatiLongTude": "13 57 42N, 107 58 03E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 623,
+    "Name": "An Khê",
+    "Type": "Thị Xã",
+    "LatiLongTude": "14 01 24N, 108 41 29E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 624,
+    "Name": "Ayun Pa",
+    "Type": "Thị Xã",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 625,
+    "Name": "Kbang",
+    "Type": "Huyện",
+    "LatiLongTude": "14 18 08N, 108 29 17E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 626,
+    "Name": "Đăk Đoa",
+    "Type": "Huyện",
+    "LatiLongTude": "14 07 02N, 108 09 36E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 627,
+    "Name": "Chư Păh",
+    "Type": "Huyện",
+    "LatiLongTude": "14 13 30N, 107 56 33E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 628,
+    "Name": "Ia Grai",
+    "Type": "Huyện",
+    "LatiLongTude": "13 59 25N, 107 43 16E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 629,
+    "Name": "Mang Yang",
+    "Type": "Huyện",
+    "LatiLongTude": "13 57 26N, 108 18 37E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 630,
+    "Name": "Kông Chro",
+    "Type": "Huyện",
+    "LatiLongTude": "13 45 47N, 108 36 04E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 631,
+    "Name": "Đức Cơ",
+    "Type": "Huyện",
+    "LatiLongTude": "13 46 16N, 107 38 26E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 632,
+    "Name": "Chư Prông",
+    "Type": "Huyện",
+    "LatiLongTude": "13 35 39N, 107 47 36E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 633,
+    "Name": "Chư Sê",
+    "Type": "Huyện",
+    "LatiLongTude": "13 37 04N, 108 06 56E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 634,
+    "Name": "Đăk Pơ",
+    "Type": "Huyện",
+    "LatiLongTude": "13 55 47N, 108 36 16E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 635,
+    "Name": "Ia Pa",
+    "Type": "Huyện",
+    "LatiLongTude": "13 31 37N, 108 30 34E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 637,
+    "Name": "Krông Pa",
+    "Type": "Huyện",
+    "LatiLongTude": "13 14 13N, 108 39 12E",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 638,
+    "Name": "Phú Thiện",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 639,
+    "Name": "Chư Pưh",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 64
+  },
+  {
+    "Id": 643,
+    "Name": "Buôn Ma Thuột",
+    "Type": "Thành Phố",
+    "LatiLongTude": "12 39 43N, 108 10 40E",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 644,
+    "Name": "Buôn Hồ",
+    "Type": "Thị Xã",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 645,
+    "Name": "Ea H'leo",
+    "Type": "Huyện",
+    "LatiLongTude": "13 13 52N, 108 12 30E",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 646,
+    "Name": "Ea Súp",
+    "Type": "Huyện",
+    "LatiLongTude": "13 10 59N, 107 46 49E",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 647,
+    "Name": "Buôn Đôn",
+    "Type": "Huyện",
+    "LatiLongTude": "12 52 45N, 107 45 20E",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 648,
+    "Name": "Cư M'gar",
+    "Type": "Huyện",
+    "LatiLongTude": "12 53 47N, 108 04 16E",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 649,
+    "Name": "Krông Búk",
+    "Type": "Huyện",
+    "LatiLongTude": "12 56 27N, 108 13 54E",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 650,
+    "Name": "Krông Năng",
+    "Type": "Huyện",
+    "LatiLongTude": "12 59 41N, 108 23 42E",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 651,
+    "Name": "Ea Kar",
+    "Type": "Huyện",
+    "LatiLongTude": "12 48 17N, 108 32 42E",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 652,
+    "Name": "M'đrắk",
+    "Type": "Huyện",
+    "LatiLongTude": "12 42 14N, 108 47 09E",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 653,
+    "Name": "Krông Bông",
+    "Type": "Huyện",
+    "LatiLongTude": "12 27 08N, 108 27 01E",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 654,
+    "Name": "Krông Pắc",
+    "Type": "Huyện",
+    "LatiLongTude": "12 41 20N, 108 18 42E",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 655,
+    "Name": "Krông A Na",
+    "Type": "Huyện",
+    "LatiLongTude": "12 31 51N, 108 05 03E",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 656,
+    "Name": "Lắk",
+    "Type": "Huyện",
+    "LatiLongTude": "12 19 20N, 108 12 17E",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 657,
+    "Name": "Cư Kuin",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 66
+  },
+  {
+    "Id": 660,
+    "Name": "Gia Nghĩa",
+    "Type": "Thị Xã",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 67
+  },
+  {
+    "Id": 661,
+    "Name": "Đắk Glong",
+    "Type": "Huyện",
+    "LatiLongTude": "12 01 53N, 107 50 37E",
+    "isAvailable": true,
+    "ProvinceId": 67
+  },
+  {
+    "Id": 662,
+    "Name": "Cư Jút",
+    "Type": "Huyện",
+    "LatiLongTude": "12 40 56N, 107 44 44E",
+    "isAvailable": true,
+    "ProvinceId": 67
+  },
+  {
+    "Id": 663,
+    "Name": "Đắk Mil",
+    "Type": "Huyện",
+    "LatiLongTude": "12 31 08N, 107 42 24E",
+    "isAvailable": true,
+    "ProvinceId": 67
+  },
+  {
+    "Id": 664,
+    "Name": "Krông Nô",
+    "Type": "Huyện",
+    "LatiLongTude": "12 22 16N, 107 53 49E",
+    "isAvailable": true,
+    "ProvinceId": 67
+  },
+  {
+    "Id": 665,
+    "Name": "Đắk Song",
+    "Type": "Huyện",
+    "LatiLongTude": "12 14 04N, 107 36 30E",
+    "isAvailable": true,
+    "ProvinceId": 67
+  },
+  {
+    "Id": 666,
+    "Name": "Đắk R'lấp",
+    "Type": "Huyện",
+    "LatiLongTude": "12 02 30N, 107 25 59E",
+    "isAvailable": true,
+    "ProvinceId": 67
+  },
+  {
+    "Id": 667,
+    "Name": "Tuy Đức",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 67
+  },
+  {
+    "Id": 672,
+    "Name": "Đà Lạt",
+    "Type": "Thành Phố",
+    "LatiLongTude": "11 54 33N, 108 27 08E",
+    "isAvailable": true,
+    "ProvinceId": 68
+  },
+  {
+    "Id": 673,
+    "Name": "Bảo Lộc",
+    "Type": "Thị Xã",
+    "LatiLongTude": "11 32 48N, 107 47 37E",
+    "isAvailable": true,
+    "ProvinceId": 68
+  },
+  {
+    "Id": 674,
+    "Name": "Đam Rông",
+    "Type": "Huyện",
+    "LatiLongTude": "12 02 35N, 108 10 26E",
+    "isAvailable": true,
+    "ProvinceId": 68
+  },
+  {
+    "Id": 675,
+    "Name": "Lạc Dương",
+    "Type": "Huyện",
+    "LatiLongTude": "12 08 30N, 108 27 48E",
+    "isAvailable": true,
+    "ProvinceId": 68
+  },
+  {
+    "Id": 676,
+    "Name": "Lâm Hà",
+    "Type": "Huyện",
+    "LatiLongTude": "11 55 26N, 108 11 31E",
+    "isAvailable": true,
+    "ProvinceId": 68
+  },
+  {
+    "Id": 677,
+    "Name": "Đơn Dương",
+    "Type": "Huyện",
+    "LatiLongTude": "11 48 26N, 108 32 48E",
+    "isAvailable": true,
+    "ProvinceId": 68
+  },
+  {
+    "Id": 678,
+    "Name": "Đức Trọng",
+    "Type": "Huyện",
+    "LatiLongTude": "11 41 50N, 108 18 58E",
+    "isAvailable": true,
+    "ProvinceId": 68
+  },
+  {
+    "Id": 679,
+    "Name": "Di Linh",
+    "Type": "Huyện",
+    "LatiLongTude": "11 31 10N, 108 05 23E",
+    "isAvailable": true,
+    "ProvinceId": 68
+  },
+  {
+    "Id": 680,
+    "Name": "Bảo Lâm",
+    "Type": "Huyện",
+    "LatiLongTude": "11 38 31N, 107 43 25E",
+    "isAvailable": true,
+    "ProvinceId": 68
+  },
+  {
+    "Id": 681,
+    "Name": "Đạ Huoai",
+    "Type": "Huyện",
+    "LatiLongTude": "11 27 11N, 107 38 08E",
+    "isAvailable": true,
+    "ProvinceId": 68
+  },
+  {
+    "Id": 682,
+    "Name": "Đạ Tẻh",
+    "Type": "Huyện",
+    "LatiLongTude": "11 33 46N, 107 32 00E",
+    "isAvailable": true,
+    "ProvinceId": 68
+  },
+  {
+    "Id": 683,
+    "Name": "Cát Tiên",
+    "Type": "Huyện",
+    "LatiLongTude": "11 39 38N, 107 23 27E",
+    "isAvailable": true,
+    "ProvinceId": 68
+  },
+  {
+    "Id": 688,
+    "Name": "Phước Long",
+    "Type": "Thị Xã",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 70
+  },
+  {
+    "Id": 689,
+    "Name": "Đồng Xoài",
+    "Type": "Thị Xã",
+    "LatiLongTude": "11 31 01N, 106 50 21E",
+    "isAvailable": true,
+    "ProvinceId": 70
+  },
+  {
+    "Id": 690,
+    "Name": "Bình Long",
+    "Type": "Thị Xã",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 70
+  },
+  {
+    "Id": 691,
+    "Name": "Bù Gia Mập",
+    "Type": "Huyện",
+    "LatiLongTude": "11 56 57N, 106 59 21E",
+    "isAvailable": true,
+    "ProvinceId": 70
+  },
+  {
+    "Id": 692,
+    "Name": "Lộc Ninh",
+    "Type": "Huyện",
+    "LatiLongTude": "11 49 28N, 106 35 11E",
+    "isAvailable": true,
+    "ProvinceId": 70
+  },
+  {
+    "Id": 693,
+    "Name": "Bù Đốp",
+    "Type": "Huyện",
+    "LatiLongTude": "11 59 08N, 106 49 54E",
+    "isAvailable": true,
+    "ProvinceId": 70
+  },
+  {
+    "Id": 694,
+    "Name": "Hớn Quản",
+    "Type": "Huyện",
+    "LatiLongTude": "11 37 37N, 106 36 02E",
+    "isAvailable": true,
+    "ProvinceId": 70
+  },
+  {
+    "Id": 695,
+    "Name": "Đồng Phù",
+    "Type": "Huyện",
+    "LatiLongTude": "11 28 45N, 106 57 07E",
+    "isAvailable": true,
+    "ProvinceId": 70
+  },
+  {
+    "Id": 696,
+    "Name": "Bù Đăng",
+    "Type": "Huyện",
+    "LatiLongTude": "11 46 09N, 107 14 14E",
+    "isAvailable": true,
+    "ProvinceId": 70
+  },
+  {
+    "Id": 697,
+    "Name": "Chơn Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "11 28 45N, 106 39 26E",
+    "isAvailable": true,
+    "ProvinceId": 70
+  },
+  {
+    "Id": 703,
+    "Name": "Tây Ninh",
+    "Type": "Thị Xã",
+    "LatiLongTude": "11 21 59N, 106 07 47E",
+    "isAvailable": true,
+    "ProvinceId": 72
+  },
+  {
+    "Id": 705,
+    "Name": "Tân Biên",
+    "Type": "Huyện",
+    "LatiLongTude": "11 35 14N, 105 57 53E",
+    "isAvailable": true,
+    "ProvinceId": 72
+  },
+  {
+    "Id": 706,
+    "Name": "Tân Châu",
+    "Type": "Huyện",
+    "LatiLongTude": "11 34 49N, 106 17 48E",
+    "isAvailable": true,
+    "ProvinceId": 72
+  },
+  {
+    "Id": 707,
+    "Name": "Dương Minh Châu",
+    "Type": "Huyện",
+    "LatiLongTude": "11 22 04N, 106 16 58E",
+    "isAvailable": true,
+    "ProvinceId": 72
+  },
+  {
+    "Id": 708,
+    "Name": "Châu Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "11 19 02N, 106 00 15E",
+    "isAvailable": true,
+    "ProvinceId": 72
+  },
+  {
+    "Id": 709,
+    "Name": "Hòa Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "11 15 31N, 106 08 44E",
+    "isAvailable": true,
+    "ProvinceId": 72
+  },
+  {
+    "Id": 710,
+    "Name": "Gò Dầu",
+    "Type": "Huyện",
+    "LatiLongTude": "11 09 39N, 106 14 42E",
+    "isAvailable": true,
+    "ProvinceId": 72
+  },
+  {
+    "Id": 711,
+    "Name": "Bến Cầu",
+    "Type": "Huyện",
+    "LatiLongTude": "11 07 50N, 106 08 25E",
+    "isAvailable": true,
+    "ProvinceId": 72
+  },
+  {
+    "Id": 712,
+    "Name": "Trảng Bàng",
+    "Type": "Huyện",
+    "LatiLongTude": "11 06 18N, 106 23 12E",
+    "isAvailable": true,
+    "ProvinceId": 72
+  },
+  {
+    "Id": 718,
+    "Name": "Thủ Dầu Một",
+    "Type": "Thị Xã",
+    "LatiLongTude": "11 00 01N, 106 38 56E",
+    "isAvailable": true,
+    "ProvinceId": 74
+  },
+  {
+    "Id": 720,
+    "Name": "Dầu Tiếng",
+    "Type": "Huyện",
+    "LatiLongTude": "11 19 07N, 106 26 59E",
+    "isAvailable": true,
+    "ProvinceId": 74
+  },
+  {
+    "Id": 721,
+    "Name": "Bến Cát",
+    "Type": "Huyện",
+    "LatiLongTude": "11 12 42N, 106 36 28E",
+    "isAvailable": true,
+    "ProvinceId": 74
+  },
+  {
+    "Id": 722,
+    "Name": "Phú Giáo",
+    "Type": "Huyện",
+    "LatiLongTude": "11 20 21N, 106 47 48E",
+    "isAvailable": true,
+    "ProvinceId": 74
+  },
+  {
+    "Id": 723,
+    "Name": "Tân Uyên",
+    "Type": "Huyện",
+    "LatiLongTude": "11 06 31N, 106 49 02E",
+    "isAvailable": true,
+    "ProvinceId": 74
+  },
+  {
+    "Id": 724,
+    "Name": "Dĩ An",
+    "Type": "Huyện",
+    "LatiLongTude": "10 55 03N, 106 47 09E",
+    "isAvailable": true,
+    "ProvinceId": 74
+  },
+  {
+    "Id": 725,
+    "Name": "Thuận An",
+    "Type": "Huyện",
+    "LatiLongTude": "10 55 58N, 106 41 59E",
+    "isAvailable": true,
+    "ProvinceId": 74
+  },
+  {
+    "Id": 731,
+    "Name": "Biên Hòa",
+    "Type": "Thành Phố",
+    "LatiLongTude": "10 56 31N, 106 50 50E",
+    "isAvailable": true,
+    "ProvinceId": 75
+  },
+  {
+    "Id": 732,
+    "Name": "Long Khánh",
+    "Type": "Thị Xã",
+    "LatiLongTude": "10 56 24N, 107 14 29E",
+    "isAvailable": true,
+    "ProvinceId": 75
+  },
+  {
+    "Id": 734,
+    "Name": "Tân Phú",
+    "Type": "Huyện",
+    "LatiLongTude": "11 22 51N, 107 21 35E",
+    "isAvailable": true,
+    "ProvinceId": 75
+  },
+  {
+    "Id": 735,
+    "Name": "Vĩnh Cửu",
+    "Type": "Huyện",
+    "LatiLongTude": "11 14 31N, 107 00 06E",
+    "isAvailable": true,
+    "ProvinceId": 75
+  },
+  {
+    "Id": 736,
+    "Name": "Định Quán",
+    "Type": "Huyện",
+    "LatiLongTude": "11 12 41N, 107 17 03E",
+    "isAvailable": true,
+    "ProvinceId": 75
+  },
+  {
+    "Id": 737,
+    "Name": "Trảng Bom",
+    "Type": "Huyện",
+    "LatiLongTude": "10 58 39N, 107 00 52E",
+    "isAvailable": true,
+    "ProvinceId": 75
+  },
+  {
+    "Id": 738,
+    "Name": "Thống Nhất",
+    "Type": "Huyện",
+    "LatiLongTude": "10 58 29N, 107 09 26E",
+    "isAvailable": true,
+    "ProvinceId": 75
+  },
+  {
+    "Id": 739,
+    "Name": "Cẩm Mỹ",
+    "Type": "Huyện",
+    "LatiLongTude": "10 47 05N, 107 14 36E",
+    "isAvailable": true,
+    "ProvinceId": 75
+  },
+  {
+    "Id": 740,
+    "Name": "Long Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "10 47 38N, 106 59 42E",
+    "isAvailable": true,
+    "ProvinceId": 75
+  },
+  {
+    "Id": 741,
+    "Name": "Xuân Lộc",
+    "Type": "Huyện",
+    "LatiLongTude": "10 55 39N, 107 24 21E",
+    "isAvailable": true,
+    "ProvinceId": 75
+  },
+  {
+    "Id": 742,
+    "Name": "Nhơn Trạch",
+    "Type": "Huyện",
+    "LatiLongTude": "10 39 18N, 106 53 18E",
+    "isAvailable": true,
+    "ProvinceId": 75
+  },
+  {
+    "Id": 747,
+    "Name": "Vũng Tầu",
+    "Type": "Thành Phố",
+    "LatiLongTude": "10 24 08N, 107 07 05E",
+    "isAvailable": true,
+    "ProvinceId": 77
+  },
+  {
+    "Id": 748,
+    "Name": "Bà Rịa",
+    "Type": "Thị Xã",
+    "LatiLongTude": "10 30 33N, 107 10 47E",
+    "isAvailable": true,
+    "ProvinceId": 77
+  },
+  {
+    "Id": 750,
+    "Name": "Châu Đức",
+    "Type": "Huyện",
+    "LatiLongTude": "10 39 23N, 107 15 08E",
+    "isAvailable": true,
+    "ProvinceId": 77
+  },
+  {
+    "Id": 751,
+    "Name": "Xuyên Mộc",
+    "Type": "Huyện",
+    "LatiLongTude": "10 37 46N, 107 29 39E",
+    "isAvailable": true,
+    "ProvinceId": 77
+  },
+  {
+    "Id": 752,
+    "Name": "Long Điền",
+    "Type": "Huyện",
+    "LatiLongTude": "10 26 47N, 107 12 53E",
+    "isAvailable": true,
+    "ProvinceId": 77
+  },
+  {
+    "Id": 753,
+    "Name": "Đất Đỏ",
+    "Type": "Huyện",
+    "LatiLongTude": "10 28 40N, 107 18 27E",
+    "isAvailable": true,
+    "ProvinceId": 77
+  },
+  {
+    "Id": 754,
+    "Name": "Tân Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "10 34 50N, 107 05 06E",
+    "isAvailable": true,
+    "ProvinceId": 77
+  },
+  {
+    "Id": 755,
+    "Name": "Côn Đảo",
+    "Type": "Huyện",
+    "LatiLongTude": "8 42 25N, 106 36 05E",
+    "isAvailable": true,
+    "ProvinceId": 77
+  },
+  {
+    "Id": 760,
+    "Name": "1",
+    "Type": "Quận",
+    "LatiLongTude": "10 46 34N, 106 41 45E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 761,
+    "Name": "12",
+    "Type": "Quận",
+    "LatiLongTude": "10 51 43N, 106 39 32E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 762,
+    "Name": "Thủ Đức",
+    "Type": "Quận",
+    "LatiLongTude": "10 51 20N, 106 45 05E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 763,
+    "Name": "9",
+    "Type": "Quận",
+    "LatiLongTude": "10 49 49N, 106 49 03E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 764,
+    "Name": "Gò Vấp",
+    "Type": "Quận",
+    "LatiLongTude": "10 50 12N, 106 39 52E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 765,
+    "Name": "Bình Thạnh",
+    "Type": "Quận",
+    "LatiLongTude": "10 48 46N, 106 42 57E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 766,
+    "Name": "Tân Bình",
+    "Type": "Quận",
+    "LatiLongTude": "10 48 13N, 106 39 03E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 767,
+    "Name": "Tân Phú",
+    "Type": "Quận",
+    "LatiLongTude": "10 47 32N, 106 37 31E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 768,
+    "Name": "Phú Nhuận",
+    "Type": "Quận",
+    "LatiLongTude": "10 48 06N, 106 40 39E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 769,
+    "Name": "2",
+    "Type": "Quận",
+    "LatiLongTude": "10 46 51N, 106 45 25E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 770,
+    "Name": "3",
+    "Type": "Quận",
+    "LatiLongTude": "10 46 48N, 106 40 46E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 771,
+    "Name": "10",
+    "Type": "Quận",
+    "LatiLongTude": "10 46 25N, 106 40 02E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 772,
+    "Name": "11",
+    "Type": "Quận",
+    "LatiLongTude": "10 46 01N, 106 38 44E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 773,
+    "Name": "4",
+    "Type": "Quận",
+    "LatiLongTude": "10 45 42N, 106 42 09E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 774,
+    "Name": "5",
+    "Type": "Quận",
+    "LatiLongTude": "10 45 24N, 106 40 00E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 775,
+    "Name": "6",
+    "Type": "Quận",
+    "LatiLongTude": "10 44 46N, 106 38 10E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 776,
+    "Name": "8",
+    "Type": "Quận",
+    "LatiLongTude": "10 43 24N, 106 37 40E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 777,
+    "Name": "Bình Tân",
+    "Type": "Quận",
+    "LatiLongTude": "10 46 16N, 106 35 26E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 778,
+    "Name": "7",
+    "Type": "Quận",
+    "LatiLongTude": "10 44 19N, 106 43 35E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 783,
+    "Name": "Củ Chi",
+    "Type": "Huyện",
+    "LatiLongTude": "11 02 17N, 106 30 20E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 784,
+    "Name": "Hóc Môn",
+    "Type": "Huyện",
+    "LatiLongTude": "10 52 42N, 106 35 33E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 785,
+    "Name": "Bình Chánh",
+    "Type": "Huyện",
+    "LatiLongTude": "10 45 01N, 106 30 45E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 786,
+    "Name": "Nhà Bè",
+    "Type": "Huyện",
+    "LatiLongTude": "10 39 06N, 106 43 35E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 787,
+    "Name": "Cần Giờ",
+    "Type": "Huyện",
+    "LatiLongTude": "10 30 43N, 106 52 50E",
+    "isAvailable": true,
+    "ProvinceId": 79
+  },
+  {
+    "Id": 794,
+    "Name": "Tân An",
+    "Type": "Thành Phố",
+    "LatiLongTude": "10 31 36N, 106 24 06E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 796,
+    "Name": "Tân Hưng",
+    "Type": "Huyện",
+    "LatiLongTude": "10 49 05N, 105 39 26E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 797,
+    "Name": "Vĩnh Hưng",
+    "Type": "Huyện",
+    "LatiLongTude": "10 52 54N, 105 45 58E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 798,
+    "Name": "Mộc Hóa",
+    "Type": "Huyện",
+    "LatiLongTude": "10 47 09N, 105 57 56E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 799,
+    "Name": "Tân Thạnh",
+    "Type": "Huyện",
+    "LatiLongTude": "10 37 44N, 105 57 07E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 800,
+    "Name": "Thạnh Hóa",
+    "Type": "Huyện",
+    "LatiLongTude": "10 41 37N, 106 11 08E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 801,
+    "Name": "Đức Huệ",
+    "Type": "Huyện",
+    "LatiLongTude": "10 51 57N, 106 15 48E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 802,
+    "Name": "Đức Hòa",
+    "Type": "Huyện",
+    "LatiLongTude": "10 53 04N, 106 23 58E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 803,
+    "Name": "Bến Lức",
+    "Type": "Huyện",
+    "LatiLongTude": "10 41 40N, 106 26 28E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 804,
+    "Name": "Thủ Thừa",
+    "Type": "Huyện",
+    "LatiLongTude": "10 39 41N, 106 20 12E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 805,
+    "Name": "Tân Trụ",
+    "Type": "Huyện",
+    "LatiLongTude": "10 31 47N, 106 30 06E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 806,
+    "Name": "Cần Đước",
+    "Type": "Huyện",
+    "LatiLongTude": "10 32 21N, 106 36 33E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 807,
+    "Name": "Cần Giuộc",
+    "Type": "Huyện",
+    "LatiLongTude": "10 34 43N, 106 38 35E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 808,
+    "Name": "Châu Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "10 27 52N, 106 30 00E",
+    "isAvailable": true,
+    "ProvinceId": 80
+  },
+  {
+    "Id": 815,
+    "Name": "Mỹ Tho",
+    "Type": "Thành Phố",
+    "LatiLongTude": "10 22 14N, 106 21 52E",
+    "isAvailable": true,
+    "ProvinceId": 82
+  },
+  {
+    "Id": 816,
+    "Name": "Gò Công",
+    "Type": "Thị Xã",
+    "LatiLongTude": "10 21 55N, 106 40 24E",
+    "isAvailable": true,
+    "ProvinceId": 82
+  },
+  {
+    "Id": 818,
+    "Name": "Tân Phước",
+    "Type": "Huyện",
+    "LatiLongTude": "10 30 36N, 106 13 02E",
+    "isAvailable": true,
+    "ProvinceId": 82
+  },
+  {
+    "Id": 819,
+    "Name": "Cái Bè",
+    "Type": "Huyện",
+    "LatiLongTude": "10 24 21N, 105 56 01E",
+    "isAvailable": true,
+    "ProvinceId": 82
+  },
+  {
+    "Id": 820,
+    "Name": "Cai Lậy",
+    "Type": "Huyện",
+    "LatiLongTude": "10 24 20N, 106 06 05E",
+    "isAvailable": true,
+    "ProvinceId": 82
+  },
+  {
+    "Id": 821,
+    "Name": "Châu Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "20 25 21N, 106 16 57E",
+    "isAvailable": true,
+    "ProvinceId": 82
+  },
+  {
+    "Id": 822,
+    "Name": "Chợ Gạo",
+    "Type": "Huyện",
+    "LatiLongTude": "10 23 45N, 106 26 53E",
+    "isAvailable": true,
+    "ProvinceId": 82
+  },
+  {
+    "Id": 823,
+    "Name": "Gò Công Tây",
+    "Type": "Huyện",
+    "LatiLongTude": "10 19 55N, 106 35 02E",
+    "isAvailable": true,
+    "ProvinceId": 82
+  },
+  {
+    "Id": 824,
+    "Name": "Gò Công Đông",
+    "Type": "Huyện",
+    "LatiLongTude": "10 20 42N, 106 42 54E",
+    "isAvailable": true,
+    "ProvinceId": 82
+  },
+  {
+    "Id": 825,
+    "Name": "Tân Phú Đông",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 82
+  },
+  {
+    "Id": 829,
+    "Name": "Bến Tre",
+    "Type": "Thành Phố",
+    "LatiLongTude": "10 14 17N, 106 22 26E",
+    "isAvailable": true,
+    "ProvinceId": 83
+  },
+  {
+    "Id": 831,
+    "Name": "Châu Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "10 17 24N, 106 17 45E",
+    "isAvailable": true,
+    "ProvinceId": 83
+  },
+  {
+    "Id": 832,
+    "Name": "Chợ Lách",
+    "Type": "Huyện",
+    "LatiLongTude": "10 13 26N, 106 09 08E",
+    "isAvailable": true,
+    "ProvinceId": 83
+  },
+  {
+    "Id": 833,
+    "Name": "Mỏ Cày Nam",
+    "Type": "Huyện",
+    "LatiLongTude": "10 06 56N, 106 19 40E",
+    "isAvailable": true,
+    "ProvinceId": 83
+  },
+  {
+    "Id": 834,
+    "Name": "Giồng Trôm",
+    "Type": "Huyện",
+    "LatiLongTude": "10 08 46N, 106 28 12E",
+    "isAvailable": true,
+    "ProvinceId": 83
+  },
+  {
+    "Id": 835,
+    "Name": "Bình Đại",
+    "Type": "Huyện",
+    "LatiLongTude": "10 09 56N, 106 37 46E",
+    "isAvailable": true,
+    "ProvinceId": 83
+  },
+  {
+    "Id": 836,
+    "Name": "Ba Tri",
+    "Type": "Huyện",
+    "LatiLongTude": "10 04 08N, 106 35 10E",
+    "isAvailable": true,
+    "ProvinceId": 83
+  },
+  {
+    "Id": 837,
+    "Name": "Thạnh Phú",
+    "Type": "Huyện",
+    "LatiLongTude": "9 55 53N, 106 32 45E",
+    "isAvailable": true,
+    "ProvinceId": 83
+  },
+  {
+    "Id": 838,
+    "Name": "Mỏ Cày Bắc",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 83
+  },
+  {
+    "Id": 842,
+    "Name": "Trà Vinh",
+    "Type": "Thị Xã",
+    "LatiLongTude": "9 57 09N, 106 20 39E",
+    "isAvailable": true,
+    "ProvinceId": 84
+  },
+  {
+    "Id": 844,
+    "Name": "Càng Long",
+    "Type": "Huyện",
+    "LatiLongTude": "9 58 18N, 106 12 52E",
+    "isAvailable": true,
+    "ProvinceId": 84
+  },
+  {
+    "Id": 845,
+    "Name": "Cầu Kè",
+    "Type": "Huyện",
+    "LatiLongTude": "9 51 23N, 106 03 33E",
+    "isAvailable": true,
+    "ProvinceId": 84
+  },
+  {
+    "Id": 846,
+    "Name": "Tiểu Cần",
+    "Type": "Huyện",
+    "LatiLongTude": "9 48 37N, 106 12 06E",
+    "isAvailable": true,
+    "ProvinceId": 84
+  },
+  {
+    "Id": 847,
+    "Name": "Châu Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "9 52 57N, 106 24 12E",
+    "isAvailable": true,
+    "ProvinceId": 84
+  },
+  {
+    "Id": 848,
+    "Name": "Cầu Ngang",
+    "Type": "Huyện",
+    "LatiLongTude": "9 47 14N, 106 29 19E",
+    "isAvailable": true,
+    "ProvinceId": 84
+  },
+  {
+    "Id": 849,
+    "Name": "Trà Cú",
+    "Type": "Huyện",
+    "LatiLongTude": "9 42 06N, 106 16 24E",
+    "isAvailable": true,
+    "ProvinceId": 84
+  },
+  {
+    "Id": 850,
+    "Name": "Duyên Hải",
+    "Type": "Huyện",
+    "LatiLongTude": "9 39 58N, 106 26 23E",
+    "isAvailable": true,
+    "ProvinceId": 84
+  },
+  {
+    "Id": 855,
+    "Name": "Vĩnh Long",
+    "Type": "Thành Phố",
+    "LatiLongTude": "10 15 09N, 105 56 08E",
+    "isAvailable": true,
+    "ProvinceId": 86
+  },
+  {
+    "Id": 857,
+    "Name": "Long Hồ",
+    "Type": "Huyện",
+    "LatiLongTude": "10 13 58N, 105 55 47E",
+    "isAvailable": true,
+    "ProvinceId": 86
+  },
+  {
+    "Id": 858,
+    "Name": "Mang Thít",
+    "Type": "Huyện",
+    "LatiLongTude": "10 10 58N, 106 05 13E",
+    "isAvailable": true,
+    "ProvinceId": 86
+  },
+  {
+    "Id": 859,
+    "Name": "Vũng Liêm",
+    "Type": "Huyện",
+    "LatiLongTude": "10 03 32N, 106 10 35E",
+    "isAvailable": true,
+    "ProvinceId": 86
+  },
+  {
+    "Id": 860,
+    "Name": "Tam Bình",
+    "Type": "Huyện",
+    "LatiLongTude": "10 03 58N, 105 58 03E",
+    "isAvailable": true,
+    "ProvinceId": 86
+  },
+  {
+    "Id": 861,
+    "Name": "Bình Minh",
+    "Type": "Huyện",
+    "LatiLongTude": "10 05 45N, 105 47 21E",
+    "isAvailable": true,
+    "ProvinceId": 86
+  },
+  {
+    "Id": 862,
+    "Name": "Trà Ôn",
+    "Type": "Huyện",
+    "LatiLongTude": "9 59 20N, 105 57 56E",
+    "isAvailable": true,
+    "ProvinceId": 86
+  },
+  {
+    "Id": 863,
+    "Name": "Bình Tân",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 86
+  },
+  {
+    "Id": 866,
+    "Name": "Cao Lãnh",
+    "Type": "Thành Phố",
+    "LatiLongTude": "10 27 38N, 105 37 21E",
+    "isAvailable": true,
+    "ProvinceId": 87
+  },
+  {
+    "Id": 867,
+    "Name": "Sa Đéc",
+    "Type": "Thị Xã",
+    "LatiLongTude": "10 19 22N, 105 44 31E",
+    "isAvailable": true,
+    "ProvinceId": 87
+  },
+  {
+    "Id": 868,
+    "Name": "Hồng Ngự",
+    "Type": "Thị Xã",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 87
+  },
+  {
+    "Id": 869,
+    "Name": "Tân Hồng",
+    "Type": "Huyện",
+    "LatiLongTude": "10 52 48N, 105 29 21E",
+    "isAvailable": true,
+    "ProvinceId": 87
+  },
+  {
+    "Id": 870,
+    "Name": "Hồng Ngự",
+    "Type": "Huyện",
+    "LatiLongTude": "10 48 13N, 105 19 00E",
+    "isAvailable": true,
+    "ProvinceId": 87
+  },
+  {
+    "Id": 871,
+    "Name": "Tam Nông",
+    "Type": "Huyện",
+    "LatiLongTude": "10 44 06N, 105 30 58E",
+    "isAvailable": true,
+    "ProvinceId": 87
+  },
+  {
+    "Id": 872,
+    "Name": "Tháp Mười",
+    "Type": "Huyện",
+    "LatiLongTude": "10 33 36N, 105 47 13E",
+    "isAvailable": true,
+    "ProvinceId": 87
+  },
+  {
+    "Id": 873,
+    "Name": "Cao Lãnh",
+    "Type": "Huyện",
+    "LatiLongTude": "10 29 03N, 105 41 40E",
+    "isAvailable": true,
+    "ProvinceId": 87
+  },
+  {
+    "Id": 874,
+    "Name": "Thanh Bình",
+    "Type": "Huyện",
+    "LatiLongTude": "10 36 38N, 105 28 51E",
+    "isAvailable": true,
+    "ProvinceId": 87
+  },
+  {
+    "Id": 875,
+    "Name": "Lấp Vò",
+    "Type": "Huyện",
+    "LatiLongTude": "10 21 27N, 105 36 06E",
+    "isAvailable": true,
+    "ProvinceId": 87
+  },
+  {
+    "Id": 876,
+    "Name": "Lai Vung",
+    "Type": "Huyện",
+    "LatiLongTude": "10 14 43N, 105 38 40E",
+    "isAvailable": true,
+    "ProvinceId": 87
+  },
+  {
+    "Id": 877,
+    "Name": "Châu Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "10 13 27N, 105 48 38E",
+    "isAvailable": true,
+    "ProvinceId": 87
+  },
+  {
+    "Id": 883,
+    "Name": "Long Xuyên",
+    "Type": "Thành Phố",
+    "LatiLongTude": "10 22 22N, 105 25 33E",
+    "isAvailable": true,
+    "ProvinceId": 89
+  },
+  {
+    "Id": 884,
+    "Name": "Châu Đốc",
+    "Type": "Thị Xã",
+    "LatiLongTude": "10 41 20N, 105 05 15E",
+    "isAvailable": true,
+    "ProvinceId": 89
+  },
+  {
+    "Id": 886,
+    "Name": "An Phú",
+    "Type": "Huyện",
+    "LatiLongTude": "10 50 12N, 105 05 33E",
+    "isAvailable": true,
+    "ProvinceId": 89
+  },
+  {
+    "Id": 887,
+    "Name": "Tân Châu",
+    "Type": "Thị Xã",
+    "LatiLongTude": "10 49 11N, 105 11 18E",
+    "isAvailable": true,
+    "ProvinceId": 89
+  },
+  {
+    "Id": 888,
+    "Name": "Phú Tân",
+    "Type": "Huyện",
+    "LatiLongTude": "10 40 26N, 105 14 40E",
+    "isAvailable": true,
+    "ProvinceId": 89
+  },
+  {
+    "Id": 889,
+    "Name": "Châu Phú",
+    "Type": "Huyện",
+    "LatiLongTude": "10 34 12N, 105 12 13E",
+    "isAvailable": true,
+    "ProvinceId": 89
+  },
+  {
+    "Id": 890,
+    "Name": "Tịnh Biên",
+    "Type": "Huyện",
+    "LatiLongTude": "10 33 30N, 105 00 17E",
+    "isAvailable": true,
+    "ProvinceId": 89
+  },
+  {
+    "Id": 891,
+    "Name": "Tri Tôn",
+    "Type": "Huyện",
+    "LatiLongTude": "10 24 41N, 104 56 58E",
+    "isAvailable": true,
+    "ProvinceId": 89
+  },
+  {
+    "Id": 892,
+    "Name": "Châu Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "10 25 39N, 105 15 31E",
+    "isAvailable": true,
+    "ProvinceId": 89
+  },
+  {
+    "Id": 893,
+    "Name": "Chợ Mới",
+    "Type": "Huyện",
+    "LatiLongTude": "10 27 23N, 105 26 57E",
+    "isAvailable": true,
+    "ProvinceId": 89
+  },
+  {
+    "Id": 894,
+    "Name": "Thoại Sơn",
+    "Type": "Huyện",
+    "LatiLongTude": "10 16 45N, 105 15 59E",
+    "isAvailable": true,
+    "ProvinceId": 89
+  },
+  {
+    "Id": 899,
+    "Name": "Rạch Giá",
+    "Type": "Thành Phố",
+    "LatiLongTude": "10 01 35N, 105 06 20E",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 900,
+    "Name": "Hà Tiên",
+    "Type": "Thị Xã",
+    "LatiLongTude": "10 22 54N, 104 30 10E",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 902,
+    "Name": "Kiên Lương",
+    "Type": "Huyện",
+    "LatiLongTude": "10 20 21N, 104 39 46E",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 903,
+    "Name": "Hòn Đất",
+    "Type": "Huyện",
+    "LatiLongTude": "10 14 20N, 104 55 57E",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 904,
+    "Name": "Tân Hiệp",
+    "Type": "Huyện",
+    "LatiLongTude": "10 05 18N, 105 14 04E",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 905,
+    "Name": "Châu Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "9 57 37N, 105 10 16E",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 906,
+    "Name": "Giồng Giềng",
+    "Type": "Huyện",
+    "LatiLongTude": "9 56 05N, 105 22 06E",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 907,
+    "Name": "Gò Quao",
+    "Type": "Huyện",
+    "LatiLongTude": "9 43 17N, 105 17 06E",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 908,
+    "Name": "An Biên",
+    "Type": "Huyện",
+    "LatiLongTude": "9 48 37N, 105 03 18E",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 909,
+    "Name": "An Minh",
+    "Type": "Huyện",
+    "LatiLongTude": "9 40 24N, 104 59 05E",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 910,
+    "Name": "Vĩnh Thuận",
+    "Type": "Huyện",
+    "LatiLongTude": "9 33 25N, 105 11 30E",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 911,
+    "Name": "Phú Quốc",
+    "Type": "Huyện",
+    "LatiLongTude": "10 13 44N, 103 57 25E",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 912,
+    "Name": "Kiên Hải",
+    "Type": "Huyện",
+    "LatiLongTude": "9 48 31N, 104 37 48E",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 913,
+    "Name": "U Minh Thượng",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 914,
+    "Name": "Giang Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 91
+  },
+  {
+    "Id": 916,
+    "Name": "Ninh Kiều",
+    "Type": "Quận",
+    "LatiLongTude": "10 01 58N, 105 45 34E",
+    "isAvailable": true,
+    "ProvinceId": 92
+  },
+  {
+    "Id": 917,
+    "Name": "Ô Môn",
+    "Type": "Quận",
+    "LatiLongTude": "10 07 28N, 105 37 51E",
+    "isAvailable": true,
+    "ProvinceId": 92
+  },
+  {
+    "Id": 918,
+    "Name": "Bình Thuỷ",
+    "Type": "Quận",
+    "LatiLongTude": "10 03 42N, 105 43 17E",
+    "isAvailable": true,
+    "ProvinceId": 92
+  },
+  {
+    "Id": 919,
+    "Name": "Cái Răng",
+    "Type": "Quận",
+    "LatiLongTude": "9 59 57N, 105 46 56E",
+    "isAvailable": true,
+    "ProvinceId": 92
+  },
+  {
+    "Id": 923,
+    "Name": "Thốt Nốt",
+    "Type": "Quận",
+    "LatiLongTude": "10 14 23N, 105 32 02E",
+    "isAvailable": true,
+    "ProvinceId": 92
+  },
+  {
+    "Id": 924,
+    "Name": "Vĩnh Thạnh",
+    "Type": "Huyện",
+    "LatiLongTude": "10 11 35N, 105 22 45E",
+    "isAvailable": true,
+    "ProvinceId": 92
+  },
+  {
+    "Id": 925,
+    "Name": "Cờ Đỏ",
+    "Type": "Huyện",
+    "LatiLongTude": "10 02 48N, 105 29 46E",
+    "isAvailable": true,
+    "ProvinceId": 92
+  },
+  {
+    "Id": 926,
+    "Name": "Phong Điền",
+    "Type": "Huyện",
+    "LatiLongTude": "9 59 57N, 105 39 35E",
+    "isAvailable": true,
+    "ProvinceId": 92
+  },
+  {
+    "Id": 927,
+    "Name": "Thới Lai",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 92
+  },
+  {
+    "Id": 930,
+    "Name": "Vị Thanh",
+    "Type": "Thị Xã",
+    "LatiLongTude": "9 45 15N, 105 24 50E",
+    "isAvailable": true,
+    "ProvinceId": 93
+  },
+  {
+    "Id": 931,
+    "Name": "Ngã Bảy",
+    "Type": "Thị Xã",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 93
+  },
+  {
+    "Id": 932,
+    "Name": "Châu Thành A",
+    "Type": "Huyện",
+    "LatiLongTude": "9 55 50N, 105 38 31E",
+    "isAvailable": true,
+    "ProvinceId": 93
+  },
+  {
+    "Id": 933,
+    "Name": "Châu Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "9 55 22N, 105 48 37E",
+    "isAvailable": true,
+    "ProvinceId": 93
+  },
+  {
+    "Id": 934,
+    "Name": "Phụng Hiệp",
+    "Type": "Huyện",
+    "LatiLongTude": "9 47 20N, 105 43 29E",
+    "isAvailable": true,
+    "ProvinceId": 93
+  },
+  {
+    "Id": 935,
+    "Name": "Vị Thuỷ",
+    "Type": "Huyện",
+    "LatiLongTude": "9 48 05N, 105 32 13E",
+    "isAvailable": true,
+    "ProvinceId": 93
+  },
+  {
+    "Id": 936,
+    "Name": "Long Mỹ",
+    "Type": "Huyện",
+    "LatiLongTude": "9 40 47N, 105 30 53E",
+    "isAvailable": true,
+    "ProvinceId": 93
+  },
+  {
+    "Id": 941,
+    "Name": "Sóc Trăng",
+    "Type": "Thành Phố",
+    "LatiLongTude": "9 36 39N, 105 59 00E",
+    "isAvailable": true,
+    "ProvinceId": 94
+  },
+  {
+    "Id": 942,
+    "Name": "Châu Thành",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 94
+  },
+  {
+    "Id": 943,
+    "Name": "Kế Sách",
+    "Type": "Huyện",
+    "LatiLongTude": "9 49 30N, 105 57 25E",
+    "isAvailable": true,
+    "ProvinceId": 94
+  },
+  {
+    "Id": 944,
+    "Name": "Mỹ Tú",
+    "Type": "Huyện",
+    "LatiLongTude": "9 38 21N, 105 49 52E",
+    "isAvailable": true,
+    "ProvinceId": 94
+  },
+  {
+    "Id": 945,
+    "Name": "Cù Lao Dung",
+    "Type": "Huyện",
+    "LatiLongTude": "9 37 36N, 106 12 13E",
+    "isAvailable": true,
+    "ProvinceId": 94
+  },
+  {
+    "Id": 946,
+    "Name": "Long Phú",
+    "Type": "Huyện",
+    "LatiLongTude": "9 34 38N, 106 06 07E",
+    "isAvailable": true,
+    "ProvinceId": 94
+  },
+  {
+    "Id": 947,
+    "Name": "Mỹ Xuyên",
+    "Type": "Huyện",
+    "LatiLongTude": "9 28 16N, 105 55 51E",
+    "isAvailable": true,
+    "ProvinceId": 94
+  },
+  {
+    "Id": 948,
+    "Name": "Ngã Năm",
+    "Type": "Huyện",
+    "LatiLongTude": "9 31 38N, 105 37 22E",
+    "isAvailable": true,
+    "ProvinceId": 94
+  },
+  {
+    "Id": 949,
+    "Name": "Thạnh Trị",
+    "Type": "Huyện",
+    "LatiLongTude": "9 28 05N, 105 43 02E",
+    "isAvailable": true,
+    "ProvinceId": 94
+  },
+  {
+    "Id": 950,
+    "Name": "Vĩnh Châu",
+    "Type": "Huyện",
+    "LatiLongTude": "9 20 50N, 105 59 58E",
+    "isAvailable": true,
+    "ProvinceId": 94
+  },
+  {
+    "Id": 951,
+    "Name": "Trần Đề",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 94
+  },
+  {
+    "Id": 954,
+    "Name": "Bạc Liêu",
+    "Type": "Thị Xã",
+    "LatiLongTude": "9 16 05N, 105 45 08E",
+    "isAvailable": true,
+    "ProvinceId": 95
+  },
+  {
+    "Id": 956,
+    "Name": "Hồng Dân",
+    "Type": "Huyện",
+    "LatiLongTude": "9 30 37N, 105 24 25E",
+    "isAvailable": true,
+    "ProvinceId": 95
+  },
+  {
+    "Id": 957,
+    "Name": "Phước Long",
+    "Type": "Huyện",
+    "LatiLongTude": "9 23 13N, 105 24 41E",
+    "isAvailable": true,
+    "ProvinceId": 95
+  },
+  {
+    "Id": 958,
+    "Name": "Vĩnh Lợi",
+    "Type": "Huyện",
+    "LatiLongTude": "9 16 51N, 105 40 54E",
+    "isAvailable": true,
+    "ProvinceId": 95
+  },
+  {
+    "Id": 959,
+    "Name": "Giá Rai",
+    "Type": "Huyện",
+    "LatiLongTude": "9 15 51N, 105 23 18E",
+    "isAvailable": true,
+    "ProvinceId": 95
+  },
+  {
+    "Id": 960,
+    "Name": "Đông Hải",
+    "Type": "Huyện",
+    "LatiLongTude": "9 08 11N, 105 24 42E",
+    "isAvailable": true,
+    "ProvinceId": 95
+  },
+  {
+    "Id": 961,
+    "Name": "Hoà Bình",
+    "Type": "Huyện",
+    "LatiLongTude": "",
+    "isAvailable": true,
+    "ProvinceId": 95
+  },
+  {
+    "Id": 964,
+    "Name": "Cà Mau",
+    "Type": "Thành Phố",
+    "LatiLongTude": "9 10 33N, 105 11 11E",
+    "isAvailable": true,
+    "ProvinceId": 96
+  },
+  {
+    "Id": 966,
+    "Name": "U Minh",
+    "Type": "Huyện",
+    "LatiLongTude": "9 22 30N, 104 57 00E",
+    "isAvailable": true,
+    "ProvinceId": 96
+  },
+  {
+    "Id": 967,
+    "Name": "Thới Bình",
+    "Type": "Huyện",
+    "LatiLongTude": "9 22 50N, 105 07 35E",
+    "isAvailable": true,
+    "ProvinceId": 96
+  },
+  {
+    "Id": 968,
+    "Name": "Trần Văn Thời",
+    "Type": "Huyện",
+    "LatiLongTude": "9 07 36N, 104 57 27E",
+    "isAvailable": true,
+    "ProvinceId": 96
+  },
+  {
+    "Id": 969,
+    "Name": "Cái Nước",
+    "Type": "Huyện",
+    "LatiLongTude": "9 00 31N, 105 03 23E",
+    "isAvailable": true,
+    "ProvinceId": 96
+  },
+  {
+    "Id": 970,
+    "Name": "Đầm Dơi",
+    "Type": "Huyện",
+    "LatiLongTude": "8 57 48N, 105 13 56E",
+    "isAvailable": true,
+    "ProvinceId": 96
+  },
+  {
+    "Id": 971,
+    "Name": "Năm Căn",
+    "Type": "Huyện",
+    "LatiLongTude": "8 46 59N, 104 58 20E",
+    "isAvailable": true,
+    "ProvinceId": 96
+  },
+  {
+    "Id": 972,
+    "Name": "Phú Tân",
+    "Type": "Huyện",
+    "LatiLongTude": "8 52 47N, 104 53 35E",
+    "isAvailable": true,
+    "ProvinceId": 96
+  },
+  {
+    "Id": 973,
+    "Name": "Ngọc Hiển",
+    "Type": "Huyện",
+    "LatiLongTude": "8 40 47N, 104 57 58E",
+    "isAvailable": true,
+    "ProvinceId": 96
+  }
+]

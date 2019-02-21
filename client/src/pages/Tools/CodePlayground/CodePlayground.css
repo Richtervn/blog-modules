@@ -1,0 +1,40 @@
+#code-playground-page {
+	width: calc(100vw - 200px);
+	height: calc(100vh - 45px);
+}
+
+#code-playground-page > .playground {
+	height: calc(100vh - 40px);
+	display: flex;
+}
+
+#code-playground-page > .playground > .editor {
+	height: 100%;
+}
+
+#code-playground-page .editor .CodeMirror {
+	height: calc(100vh - 85px);
+	overflow-y: auto;
+}
+
+#code-playground-page .editor .ReactCodeMirror {
+	width: calc((100vw - 200px) / 2);
+}
+
+#code-playground-page > .playground > .previewer {
+	width: calc((100vw - 200px) / 2);
+}
+
+#code-playground-page .terminal-base {
+	height: 100%;
+	min-height: 100%;
+}
+
+#code-playground-page .sc-EHOje.dMFuoo {
+	height: 172px;
+	overflow-y: auto;
+}
+
+.sc-EHOje.dMFuoo::-webkit-scrollbar {
+	display: none;
+}

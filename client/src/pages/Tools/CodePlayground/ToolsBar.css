@@ -1,0 +1,44 @@
+.code-playground-toolsbar {
+	display: flex;
+	justify-content: space-between;
+	background-color: #043833;
+	color: white;
+	border-bottom: solid 2px #338878;
+}
+
+.code-playground-toolsbar > .files {
+	display: flex;
+}
+
+.code-playground-toolsbar > .files > .file {
+	width: 100px;
+	text-align: center;
+	font-weight: 600;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.code-playground-toolsbar > .files > .file.active {
+	background-color: #338878;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	border: solid 1px #338878;
+}
+
+.code-playground-toolsbar > .features {
+	padding: 5px;
+}
+
+.code-playground-toolsbar > .features > .feature {
+	border: solid 1px #338878;
+	margin-left: 5px;
+	border-radius: 4px;
+	background: none;
+	color: rgba(255,255,255,0.5);
+}
+
+.code-playground-toolsbar > .features > .active {
+	background: #338878;
+	color: white;
+	border-color: #222; 
+}

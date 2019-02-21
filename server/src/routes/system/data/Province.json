@@ -1,0 +1,443 @@
+[
+  {
+    "Id": 1,
+    "Name": "Hà Nội",
+    "Type": "Thành Phố",
+    "TelephoneCode": 4,
+    "isAvailable": true
+  },
+  {
+    "Id": 2,
+    "Name": "Hà Giang",
+    "Type": "Tỉnh",
+    "TelephoneCode": 219,
+    "isAvailable": true
+  },
+  {
+    "Id": 4,
+    "Name": "Cao Bằng",
+    "Type": "Tỉnh",
+    "TelephoneCode": 710,
+    "isAvailable": true
+  },
+  {
+    "Id": 6,
+    "Name": "Bắc Kạn",
+    "Type": "Tỉnh",
+    "TelephoneCode": 281,
+    "isAvailable": true
+  },
+  {
+    "Id": 8,
+    "Name": "Tuyên Quang",
+    "Type": "Tỉnh",
+    "TelephoneCode": 27,
+    "isAvailable": true
+  },
+  {
+    "Id": 10,
+    "Name": "Lào Cai",
+    "Type": "Tỉnh",
+    "TelephoneCode": 63,
+    "isAvailable": true
+  },
+  {
+    "Id": 11,
+    "Name": "Điện Biên",
+    "Type": "Tỉnh",
+    "TelephoneCode": 61,
+    "isAvailable": true
+  },
+  {
+    "Id": 12,
+    "Name": "Lai Châu",
+    "Type": "Tỉnh",
+    "TelephoneCode": 231,
+    "isAvailable": true
+  },
+  {
+    "Id": 14,
+    "Name": "Sơn La",
+    "Type": "Tỉnh",
+    "TelephoneCode": 22,
+    "isAvailable": true
+  },
+  {
+    "Id": 15,
+    "Name": "Yên Bái",
+    "Type": "Tỉnh",
+    "TelephoneCode": 29,
+    "isAvailable": true
+  },
+  {
+    "Id": 17,
+    "Name": "Hòa Bình",
+    "Type": "Tỉnh",
+    "TelephoneCode": 321,
+    "isAvailable": true
+  },
+  {
+    "Id": 19,
+    "Name": "Thái Nguyên",
+    "Type": "Tỉnh",
+    "TelephoneCode": 280,
+    "isAvailable": true
+  },
+  {
+    "Id": 20,
+    "Name": "Lạng Sơn",
+    "Type": "Tỉnh",
+    "TelephoneCode": 25,
+    "isAvailable": true
+  },
+  {
+    "Id": 22,
+    "Name": "Quảng Ninh",
+    "Type": "Tỉnh",
+    "TelephoneCode": 33,
+    "isAvailable": true
+  },
+  {
+    "Id": 24,
+    "Name": "Bắc Giang",
+    "Type": "Tỉnh",
+    "TelephoneCode": 781,
+    "isAvailable": true
+  },
+  {
+    "Id": 25,
+    "Name": "Phú Thọ",
+    "Type": "Tỉnh",
+    "TelephoneCode": 210,
+    "isAvailable": true
+  },
+  {
+    "Id": 26,
+    "Name": "Vĩnh Phúc",
+    "Type": "Tỉnh",
+    "TelephoneCode": 211,
+    "isAvailable": true
+  },
+  {
+    "Id": 27,
+    "Name": "Bắc Ninh",
+    "Type": "Tỉnh",
+    "TelephoneCode": 241,
+    "isAvailable": true
+  },
+  {
+    "Id": 30,
+    "Name": "Hải Dương",
+    "Type": "Tỉnh",
+    "TelephoneCode": 320,
+    "isAvailable": true
+  },
+  {
+    "Id": 31,
+    "Name": "Hải Phòng",
+    "Type": "Thành Phố",
+    "TelephoneCode": 31,
+    "isAvailable": true
+  },
+  {
+    "Id": 33,
+    "Name": "Hưng Yên",
+    "Type": "Tỉnh",
+    "TelephoneCode": 8,
+    "isAvailable": true
+  },
+  {
+    "Id": 34,
+    "Name": "Thái Bình",
+    "Type": "Tỉnh",
+    "TelephoneCode": 36,
+    "isAvailable": true
+  },
+  {
+    "Id": 35,
+    "Name": "Hà Nam",
+    "Type": "Tỉnh",
+    "TelephoneCode": 351,
+    "isAvailable": true
+  },
+  {
+    "Id": 36,
+    "Name": "Nam Định",
+    "Type": "Tỉnh",
+    "TelephoneCode": 350,
+    "isAvailable": true
+  },
+  {
+    "Id": 37,
+    "Name": "Ninh Bình",
+    "Type": "Tỉnh",
+    "TelephoneCode": 30,
+    "isAvailable": true
+  },
+  {
+    "Id": 38,
+    "Name": "Thanh Hóa",
+    "Type": "Tỉnh",
+    "TelephoneCode": 37,
+    "isAvailable": true
+  },
+  {
+    "Id": 40,
+    "Name": "Nghệ An",
+    "Type": "Tỉnh",
+    "TelephoneCode": 38,
+    "isAvailable": true
+  },
+  {
+    "Id": 42,
+    "Name": "Hà Tĩnh",
+    "Type": "Tỉnh",
+    "TelephoneCode": 39,
+    "isAvailable": true
+  },
+  {
+    "Id": 44,
+    "Name": "Quảng Bình",
+    "Type": "Tỉnh",
+    "TelephoneCode": 52,
+    "isAvailable": true
+  },
+  {
+    "Id": 45,
+    "Name": "Quảng Trị",
+    "Type": "Tỉnh",
+    "TelephoneCode": 53,
+    "isAvailable": true
+  },
+  {
+    "Id": 46,
+    "Name": "Thừa Thiên Huế",
+    "Type": "Tỉnh",
+    "TelephoneCode": 54,
+    "isAvailable": true
+  },
+  {
+    "Id": 48,
+    "Name": "Đà Nẵng",
+    "Type": "Thành Phố",
+    "TelephoneCode": 511,
+    "isAvailable": true
+  },
+  {
+    "Id": 49,
+    "Name": "Quảng Nam",
+    "Type": "Tỉnh",
+    "TelephoneCode": 510,
+    "isAvailable": true
+  },
+  {
+    "Id": 51,
+    "Name": "Quảng Ngãi",
+    "Type": "Tỉnh",
+    "TelephoneCode": 55,
+    "isAvailable": true
+  },
+  {
+    "Id": 52,
+    "Name": "Bình Định",
+    "Type": "Tỉnh",
+    "TelephoneCode": 650,
+    "isAvailable": true
+  },
+  {
+    "Id": 54,
+    "Name": "Phú Yên",
+    "Type": "Tỉnh",
+    "TelephoneCode": 57,
+    "isAvailable": true
+  },
+  {
+    "Id": 56,
+    "Name": "Khánh Hòa",
+    "Type": "Tỉnh",
+    "TelephoneCode": 58,
+    "isAvailable": true
+  },
+  {
+    "Id": 58,
+    "Name": "Ninh Thuận",
+    "Type": "Tỉnh",
+    "TelephoneCode": 68,
+    "isAvailable": true
+  },
+  {
+    "Id": 60,
+    "Name": "Bình Thuận",
+    "Type": "Tỉnh",
+    "TelephoneCode": 62,
+    "isAvailable": true
+  },
+  {
+    "Id": 62,
+    "Name": "Kon Tum",
+    "Type": "Tỉnh",
+    "TelephoneCode": 60,
+    "isAvailable": true
+  },
+  {
+    "Id": 64,
+    "Name": "Gia Lai",
+    "Type": "Tỉnh",
+    "TelephoneCode": 59,
+    "isAvailable": true
+  },
+  {
+    "Id": 66,
+    "Name": "Đắk Lắk",
+    "Type": "Tỉnh",
+    "TelephoneCode": 500,
+    "isAvailable": true
+  },
+  {
+    "Id": 67,
+    "Name": "Đắk Nông",
+    "Type": "Tỉnh",
+    "TelephoneCode": 501,
+    "isAvailable": true
+  },
+  {
+    "Id": 68,
+    "Name": "Lâm Đồng",
+    "Type": "Tỉnh",
+    "TelephoneCode": 20,
+    "isAvailable": true
+  },
+  {
+    "Id": 70,
+    "Name": "Bình Phước",
+    "Type": "Tỉnh",
+    "TelephoneCode": 651,
+    "isAvailable": true
+  },
+  {
+    "Id": 72,
+    "Name": "Tây Ninh",
+    "Type": "Tỉnh",
+    "TelephoneCode": 66,
+    "isAvailable": true
+  },
+  {
+    "Id": 74,
+    "Name": "Bình Dương",
+    "Type": "Tỉnh",
+    "TelephoneCode": 56,
+    "isAvailable": true
+  },
+  {
+    "Id": 75,
+    "Name": "Đồng Nai",
+    "Type": "Tỉnh",
+    "TelephoneCode": 67,
+    "isAvailable": true
+  },
+  {
+    "Id": 77,
+    "Name": "Bà Rịa - Vũng Tàu",
+    "Type": "Tỉnh",
+    "TelephoneCode": 64,
+    "isAvailable": true
+  },
+  {
+    "Id": 79,
+    "Name": "Hồ Chí Minh",
+    "Type": "Thành Phố",
+    "TelephoneCode": 711,
+    "isAvailable": true
+  },
+  {
+    "Id": 80,
+    "Name": "Long An",
+    "Type": "Tỉnh",
+    "TelephoneCode": 72,
+    "isAvailable": true
+  },
+  {
+    "Id": 82,
+    "Name": "Tiền Giang",
+    "Type": "Tỉnh",
+    "TelephoneCode": 73,
+    "isAvailable": true
+  },
+  {
+    "Id": 83,
+    "Name": "Bến Tre",
+    "Type": "Tỉnh",
+    "TelephoneCode": 75,
+    "isAvailable": true
+  },
+  {
+    "Id": 84,
+    "Name": "Trà Vinh",
+    "Type": "Tỉnh",
+    "TelephoneCode": 74,
+    "isAvailable": true
+  },
+  {
+    "Id": 86,
+    "Name": "Vĩnh Long",
+    "Type": "Tỉnh",
+    "TelephoneCode": 70,
+    "isAvailable": true
+  },
+  {
+    "Id": 87,
+    "Name": "Đồng Tháp",
+    "Type": "Tỉnh",
+    "TelephoneCode": 230,
+    "isAvailable": true
+  },
+  {
+    "Id": 89,
+    "Name": "An Giang",
+    "Type": "Tỉnh",
+    "TelephoneCode": 76,
+    "isAvailable": true
+  },
+  {
+    "Id": 91,
+    "Name": "Kiên Giang",
+    "Type": "Tỉnh",
+    "TelephoneCode": 77,
+    "isAvailable": true
+  },
+  {
+    "Id": 92,
+    "Name": "Cần Thơ",
+    "Type": "Thành Phố",
+    "TelephoneCode": 26,
+    "isAvailable": true
+  },
+  {
+    "Id": 93,
+    "Name": "Hậu Giang",
+    "Type": "Tỉnh",
+    "TelephoneCode": 218,
+    "isAvailable": true
+  },
+  {
+    "Id": 94,
+    "Name": "Sóc Trăng",
+    "Type": "Tỉnh",
+    "TelephoneCode": 79,
+    "isAvailable": true
+  },
+  {
+    "Id": 95,
+    "Name": "Bạc Liêu",
+    "Type": "Tỉnh",
+    "TelephoneCode": 240,
+    "isAvailable": true
+  },
+  {
+    "Id": 96,
+    "Name": "Cà Mau",
+    "Type": "Tỉnh",
+    "TelephoneCode": 780,
+    "isAvailable": true
+  }
+]
