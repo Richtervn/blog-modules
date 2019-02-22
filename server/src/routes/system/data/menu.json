@@ -1,91 +1,72 @@
 {
+  "Archived": {
+    "items": ["Ended Manga", "Accounts"],
+    "author": "Linkin Park - In The End",
+    "quote": "But in the end. It doesn't even matter",
+    "icon": "archive"
+  },
   "Collections": {
-    "items": [
-      "Mangas Reading",
-      "Music",
-      "Gaming History",
-      "Gallery"
-    ],
+    "items": ["Mangas Reading", "Music", "Gaming History", "Gallery"],
     "author": "Avantasia - In Quest For",
     "quote": "You're in quest for more to find the core. Your journey still ain't over",
     "icon": "book"
   },
-  "Games": {
-    "items": [
-      "Starcraft Broodwar",
-      "YugiOh! PoC",
-      "Mu Online",
-      "Diablo II"
-    ],
-    "author": "DJ GEX - Gaming is not a crime",
-    "quote": "Gaming is not a crime",
-    "icon": "suitcase"
+  "Documentations": {
+    "items": ["Guideline"],
+    "author": "After Forever - Empty Memories",
+    "quote": "Times changed forever that night. Leaving only empty memories",
+    "icon": "bookmark"
   },
   "Flash Games": {
     "items": [],
     "author": "Linkin Park - Points of Authority",
     "quote": "You want to share what you have been through"
   },
-  "Mu Online": {
-    "items": [
-      "Darksteam 97d99i"
-    ],
-    "author": "Metallica - For Whom The Bell Tolls",
-    "quote": "Take a look to the sky just before you die",
-    "icon": "gift"
+  "Games": {
+    "items": ["Starcraft Broodwar", "YugiOh! PoC", "Mu Online", "Diablo II"],
+    "author": "DJ GEX - Gaming is not a crime",
+    "quote": "Gaming is not a crime",
+    "icon": "suitcase"
+  },
+  "Library": {
+    "items": [],
+    "author": "Metallica - For Whom The Bell Tools",
+    "quote": "Gone insane from the pain that they surely know",
+    "icon": "university"
   },
   "Lineage II": {
-    "items": [
-      "Freya Portable"
-    ],
+    "items": ["Freya Portable"],
     "author": "Within Temptation - Restless",
     "quote": "You're the ghost haunting through her heart",
     "icon": "briefcase"
   },
+  "Mu Online": {
+    "items": ["Darksteam 97d99i"],
+    "author": "Metallica - For Whom The Bell Tolls",
+    "quote": "Take a look to the sky just before you die",
+    "icon": "gift"
+  },
+  "Notebook": {
+    "items": [],
+    "author": "Within Temptation - Restless",
+    "quote": "All my life I gave to you",
+    "icon": "pencil-square-o"
+  },
   "Tools": {
-    "items": [
-      "Components Viewer",
-      "Content Mirror",
-      "Icon Chooser",
-      "Code Playground"
-    ],
+    "items": ["Components Viewer", "Content Mirror", "Icon Chooser", "Code Playground"],
     "author": "Ozzy Osbourne - Dreamer",
     "quote": "I'm just a dreamer who dreams of better days",
     "icon": "wrench"
   },
   "Setting": {
-    "items": [
-      "App Menu",
-      "Day Events"
-    ],
+    "items": ["App Menu", "Day Events"],
     "author": "Element Eighty - Broken Promises",
     "quote": "My mind has had enough",
     "icon": "gears"
   },
-  "Archived": {
-    "items": [
-      "Ended Manga",
-      "Accounts"
-    ],
-    "author": "Linkin Park - In The End",
-    "quote": "But in the end. It doesn't even matter",
-    "icon": "archive"
-  },
-  "Documentations": {
-    "items": [
-      "Guideline"
-    ],
-    "author": "After Forever - Empty Memories",
-    "quote": "Times changed forever that night. Leaving only empty memories",
-    "icon": "bookmark"
-  },
+
   "Subscribe": {
-    "items": [
-      "Manga News",
-      "Rss",
-      "Weather",
-      "Google Map"
-    ],
+    "items": ["Manga News", "Rss", "Weather", "Google Map"],
     "author": "Linkin Park - One More Light",
     "quote": "Who cares if one more light goes out?",
     "icon": "rss"

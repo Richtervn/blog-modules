@@ -6,6 +6,7 @@ import ArticleView from './ArticleView';
 import BackgroundTextCard from './BackgroundTextCard';
 import ButtonsNavBar from './ButtonsNavBar';
 import ContentCard from './ContentCard';
+import FlatBar from './FlatBar';
 import InfoHeaderCard from './InfoHeaderCard';
 import IntroductionCard from './IntroductionCard';
 import LeftImageCard from './LeftImageCard';
@@ -14,7 +15,9 @@ import LeftPngCardTrans from './LeftPngCardTrans';
 import MenuGroup from './MenuGroup';
 import MenuItem from './MenuItem';
 import ProgressBadgesCard from './ProgressBadgesCard';
+import RoundBorderBar from './RoundBorderBar';
 import SmallIconCard from './SmallIconCard';
+import TabBar from './TabBar';
 import TextPriorityCard from './TextPriorityCard';
 
 const documentations = {
@@ -24,6 +27,7 @@ const documentations = {
   BackgroundTextCard,
   ButtonsNavBar,
   ContentCard,
+  FlatBar,
   InfoHeaderCard,
   IntroductionCard,
   LeftImageCard,
@@ -32,7 +36,9 @@ const documentations = {
   MenuGroup,
   MenuItem,
   ProgressBadgesCard,
+  RoundBorderBar,
   SmallIconCard,
+  TabBar,
   TextPriorityCard
 };
 

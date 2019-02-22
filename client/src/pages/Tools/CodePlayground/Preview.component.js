@@ -1,16 +1,15 @@
 /* eslint-disable */
-
 import './Preview.css';
 import React, { useEffect } from 'react';
 import classnames from 'classnames';
 
-const scriptRegexp = /<script\b[^>]*>([\s\S]*?)<\/script>/gm;
+import { regexp } from 'helpers';
 
-export default ({ isShowConsole, html, css }) => {
+export default ({ isShowConsole, isFullscreen, html, css }) => {
 	useEffect(() => {
 		const scripts = [];
 		let match;
-		while ((match = scriptRegexp.exec(html))) {
+		while ((match = regexp.script.exec(html))) {
 			scripts.push(match[1]);
 		}
 
@@ -23,9 +22,10 @@ export default ({ isShowConsole, html, css }) => {
 		});
 	}, [html]);
 	return (
-		<div className={classnames('code-playground-preview', { 'show-console': isShowConsole })}>
+		<div className={classnames('code-playground-preview', { 'show-console': isShowConsole, fullscreen: isFullscreen })}>
 			<div className="content-view" dangerouslySetInnerHTML={{ __html: html }} />
 			<style>{css}</style>
 		</div>
 	);
 };
+
