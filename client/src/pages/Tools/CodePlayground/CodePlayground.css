@@ -28,11 +28,19 @@
 #code-playground-page .terminal-base {
 	height: 100%;
 	min-height: 100%;
+	max-width: 100%;
+	width: 100%;
 }
 
 #code-playground-page .sc-EHOje.dMFuoo {
 	height: 172px;
 	overflow-y: auto;
+}
+#code-playground-page .sc-EHOje.dMFuoo,
+#code-playground-page .sc-jTzLTM.lfnIny,
+#code-playground-page .sc-bxivhb.hdqhPL {
+	width: 100%;
+	max-width: 100%;
 }
 
 .sc-EHOje.dMFuoo::-webkit-scrollbar {
