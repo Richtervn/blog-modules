@@ -20,9 +20,15 @@
 #code-playground-page .editor .ReactCodeMirror {
 	width: calc((100vw - 200px) / 2);
 }
+#code-playground-page .editor.fullscreen .ReactCodeMirror {
+	width: calc(100vw - 200px);
+}
 
 #code-playground-page > .playground > .previewer {
 	width: calc((100vw - 200px) / 2);
+}
+#code-playground-page > .playground > .previewer.fullscreen {
+	width: calc(100vw - 200px);
 }
 
 #code-playground-page .terminal-base {

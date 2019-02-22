@@ -1,3 +1,9 @@
 .code-playground-preview.show-console {
 	height: calc(100vh - 300px);
+	overflow-y: auto;
+}
+
+.code-playground-preview.fullscreen {
+	height: calc(100vh - 85px);
+	overflow-y: auto;
 }

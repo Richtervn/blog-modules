@@ -1,15 +1,14 @@
-/* eslint-disable */
 import './CodePlayground.css';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/css/css';
 import 'codemirror/mode/jsx/jsx';
 
-import CodeMirror from 'react-codemirror';
-
-import moment from 'moment';
 import React, { useState, useRef } from 'react';
 
+import CodeMirror from 'react-codemirror';
 import Terminal from 'terminal-in-react';
+import classnames from 'classnames';
+
 import ToolsBar from './ToolsBar.component';
 import Preview from './Preview.component';
 
@@ -51,46 +50,64 @@ export default () => {
             CSS: values.CSS
           });
           try {
+            /* eslint-disable-next-line */
             window.eval(values.JS);
           } catch (e) {
             console.log(e.message);
           }
         }}
+        isCodeFullScreen={isCodeFullScreen}
+        isPreviewFullscreen={isPreviewFullscreen}
         onToggleConsole={() => setIsShowConsole(!isShowConsole)}
-        onToggleCode={() => setIsCodeFullScreen(!isCodeFullScreen)}
-        onTogglePreview={() => setIsPreviewFullscreen(!isPreviewFullscreen)}
+        onToggleCode={() => {
+          setIsCodeFullScreen(!isCodeFullScreen);
+          setIsPreviewFullscreen(false);
+        }}
+        onTogglePreview={() => {
+          setIsPreviewFullscreen(!isPreviewFullscreen);
+          setIsCodeFullScreen(false);
+        }}
       />
       <div className="playground">
-        <div className="editor">
-          <CodeMirror
-            options={{
-              lineNumbers: true,
-              readOnly: false,
-              mode: modes[activeFile],
-              theme: 'base16-dark',
-              lineWrapping: true,
-              indentUnit: 2,
-              smartIndent: true,
-              tabSize: 2,
-              indentWithTabs: true
-            }}
-            value={values[activeFile]}
-            ref={editor}
-            onChange={code => setValues({ ...values, [activeFile]: code })}
-          />
-        </div>
-        <div className="previewer">
-          <Preview isShowConsole={isShowConsole} css={previewValues.CSS} html={previewValues.HTML} />
-          {isShowConsole && (
-            <Terminal
-              watchConsoleLogging
-              color="#01ca01"
-              backgroundColor="black"
-              barColor="black"
-              style={{ fontWeight: '500', fontSize: '14px' }}
+        {!isPreviewFullscreen && (
+          <div className={classnames('editor', { fullscreen: isCodeFullScreen })}>
+            <CodeMirror
+              options={{
+                lineNumbers: true,
+                readOnly: false,
+                mode: modes[activeFile],
+                theme: 'base16-dark',
+                lineWrapping: true,
+                indentUnit: 2,
+                smartIndent: true,
+                tabSize: 2,
+                indentWithTabs: true
+              }}
+              value={values[activeFile]}
+              ref={editor}
+              onChange={code => setValues({ ...values, [activeFile]: code })}
             />
-          )}
-        </div>
+          </div>
+        )}
+        {!isCodeFullScreen && (
+          <div className={classnames('previewer', { fullscreen: isPreviewFullscreen })}>
+            <Preview
+              isShowConsole={isShowConsole}
+              css={previewValues.CSS}
+              html={previewValues.HTML}
+              isFullscreen={isPreviewFullscreen}
+            />
+            {isShowConsole && !isPreviewFullscreen && (
+              <Terminal
+                watchConsoleLogging
+                color="#01ca01"
+                backgroundColor="black"
+                barColor="black"
+                style={{ fontWeight: '500', fontSize: '14px' }}
+              />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
