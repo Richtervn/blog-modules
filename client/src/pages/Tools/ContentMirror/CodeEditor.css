@@ -6,5 +6,4 @@
 
 .cm-code-editor .CodeMirror {
   height: calc(100vh - 85px);
-  width: 700px;
 }

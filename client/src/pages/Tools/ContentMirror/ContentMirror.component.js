@@ -26,17 +26,9 @@ export default ({ match: { params }, tables, onGetTables, isShareView }) => {
         <ToolsBar params={params} />
       </div>
       <div className="row">
-        {isShareView && (
-          <div className="col">
-            <div className="row">
-              <CodeEditor />
-            </div>
-          </div>
-        )}
-        <div className="col">
-          <div className="row">
-            <ContentViewer />
-          </div>
+        <div className="content-mirror-wrapper">
+          {isShareView && <CodeEditor />}
+          <ContentViewer />
         </div>
       </div>
     </PageContainer>
