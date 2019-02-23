@@ -72,6 +72,7 @@ const ensureYugiohPocPath = async () => {
 
 export default async () => {
   ensureDirectoryExist('./public/Account');
+  ensureDirectoryExist('./public/Books');
   ensureDiabloIIPath();
   ensureDirectoryExist('./public/Flash Games');
   ensureDirectoryExist('./public/Gallery');
@@ -82,4 +83,6 @@ export default async () => {
   ensureStarcraftPath();
   await ensureDirectoryExist('./public/Gaming History');
   ensureDirectoryExist('./public/Gaming History/Backgrounds');
+  await ensureDirectoryExist('./public/tmp');
+  ensureDirectoryExist('./public/tmp/Youtube MP3');
 };

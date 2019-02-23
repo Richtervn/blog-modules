@@ -36,6 +36,8 @@ import { MangaNews } from 'pages/Subscribe/MangaNews';
 import { Rss } from 'pages/Subscribe/Rss';
 import { Weather } from 'pages/Subscribe/Weather';
 
+import { YoutubeMP3 } from 'pages/Ultilities/YoutubeMP3';
+
 const AppRoutes = () => (
   <Page>
     <Switch>
@@ -55,6 +57,7 @@ const AppRoutes = () => (
       <Route exact path="/rss" render={() => <Redirect to="/rss/feeds" />} />
       <Route exact path="/weather" component={Weather} />
       <Route exact path="/yugioh!_poc" component={YugiohPoc} />
+      <Route exact path="/youtube_mp3" component={YoutubeMP3} />
 
       <Route path="/content_mirror/:table?/:record?" component={ContentMirror} />
       <Route path="/darksteam_97d99i/:tab?/:page?" component={Darksteam97d99i} />

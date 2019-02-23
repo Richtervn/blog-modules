@@ -28,6 +28,8 @@ import { reducer as weather } from 'pages/Subscribe/Weather';
 
 import { reducer as dayEvents } from 'pages/Setting/DayEvents';
 
+import { reducer as youtubeMP3 } from 'pages/Ultilities/YoutubeMP3';
+
 import {
   ds9799_admin,
   ds9799_appControl,
@@ -77,5 +79,6 @@ export default combineReducers({
   schelude,
   starcraft,
   weather,
-  yugiohPoc
+  yugiohPoc,
+  youtubeMP3
 });

@@ -2,6 +2,7 @@ import { MongooseAutoIncrementID } from 'mongoose-auto-increment-reworked';
 import * as schemas from './schemas';
 
 const models = db => {
+  if (!db) return;
   const dbModels = {};
   for (let key in schemas) {
     schemas[key].plugin(MongooseAutoIncrementID.plugin, { modelName: key });

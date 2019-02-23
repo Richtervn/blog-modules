@@ -28,6 +28,14 @@ export default ({
     return null;
   }
   const router = appRouter(menuTree);
+  const _renderAddBtn = modalName => (
+    <div className="text-center">
+      <button className="menu-item-button" onClick={() => openModal(modalName)}>
+        <i className="fa fa-plus-square" />
+      </button>
+    </div>
+  );
+
   return (
     <div className="navigation-bar">
       {Object.keys(menuTree).map((group, i) => (
@@ -55,13 +63,9 @@ export default ({
               isActive={activeItem === item}
             />
           ))}
-          {group === 'Flash Games' && (
-            <div className="text-center">
-              <button className="menu-item-button" onClick={() => openModal('FlashGame')}>
-                <i className="fa fa-plus-square" />
-              </button>
-            </div>
-          )}
+          {group === 'Flash Games' && _renderAddBtn('FlashGame')}
+          {group === 'Library' && _renderAddBtn('AddLibraryBookshelf')}
+          {group === 'Notebook' && _renderAddBtn('AddNoteBook')}
         </MenuGroup>
       ))}
     </div>

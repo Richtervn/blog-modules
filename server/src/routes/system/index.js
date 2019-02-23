@@ -24,6 +24,7 @@ export default (models, factories) => {
   router.post(
     '/save_menu',
     wrap(async ({ body }, res, next) => {
+      body["Flash Games"].items = [];
       const menu = await saveMenu(body, readFile, writeFile);
       res.send(menu);
     })
@@ -43,10 +44,3 @@ export default (models, factories) => {
 
   return router;
 };
-// "items": [
-//   "Sonny 1",
-//   "Sonny 2",
-//   "Stormy Castle",
-//   "Kingdom Rush",
-//   "Kingdom Rush 2"
-// ],

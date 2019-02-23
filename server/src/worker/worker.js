@@ -3,7 +3,10 @@ import { CronJob } from 'cron';
 import mangaNewDectector from './mangaNewDectector';
 import mangaCheckStatus from './mangaCheckStatus';
 
-export default ({ MangasReading }, factories, io) => {
+export default (models, factories, io) => {
+  if (!models) return;
+
+  const { MangasReading } = models;
   const { NotificationHandler } = factories;
   const notificationHandler = new NotificationHandler(io);
 

@@ -1,5 +1,6 @@
 export Account from './Account';
 export AppDiary from './AppDiary';
+export BookShelves from './BookShelves';
 export DayEvents from './DayEvents';
 export DiabloIICharacters from './DiabloIICharacters';
 export DiabloIIMods from './DiabloIIMods';
@@ -16,6 +17,7 @@ export MuOnlineGuides from './MuOnlineGuides';
 export MuOnlineTools from './MuOnlineTools';
 export MuOnlineVersions from './MuOnlineVersions';
 export Music from './Music';
+export NoteBooks from './NoteBooks';
 export PersonalDiary from './PersonalDiary';
 export Projects from './Projects';
 export RssProviders from './RssProviders';

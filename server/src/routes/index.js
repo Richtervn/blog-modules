@@ -1,5 +1,6 @@
 import accountRouter from './account';
 import appDiaryRouter from './appDiary';
+import bookShelvesRouter from './bookShelves';
 import dayEventsRouter from './dayEvents';
 import diabloIIRouter from './diabloII';
 import flashGamesRouter from './flashGames';
@@ -8,20 +9,25 @@ import gamingHistoryRouter from './gamingHistory';
 import mangasReadingRouter from './mangasReading';
 import muOnlineRouter from './muOnline';
 import musicRouter from './music';
+import notebookRouter from './notebook';
 import profileRouter from './profile';
 import projectsRouter from './projects';
 import rssRouter from './rss';
-import scheludeEventsRouter from './scheludeEvents'
+import scheludeEventsRouter from './scheludeEvents';
 import starcraftRouter from './starcraft';
 import mangaNewsRouter from './mangaNews';
 import systemRouter from './system';
 import toolsRouter from './tools';
+import utilsRouter from './utils';
 import yugiohPocRouter from './yugiohPoc';
 
 const routes = (models, factories, socket) => {
+  if(!models) return {};
+
   const {
     Account,
     AppDiary,
+    BookShelves,
     DayEvents,
     DiabloIIMods,
     DiabloIICharacters,
@@ -38,6 +44,7 @@ const routes = (models, factories, socket) => {
     MuOnlineTools,
     MuOnlineVersions,
     Music,
+    Notebook,
     Projects,
     RssProviders,
     ScheludeEvents,
@@ -51,6 +58,7 @@ const routes = (models, factories, socket) => {
   return {
     account: accountRouter(Account, factories),
     app_diary: appDiaryRouter(AppDiary, factories),
+    book_shelves: bookShelvesRouter(BookShelves, factories),
     day_events: dayEventsRouter(DayEvents, factories),
     diabloII: diabloIIRouter(DiabloIICharacters, DiabloIIMods, DiabloIITools, DiabloIISurvivalKits, factories),
     flash_games: flashGamesRouter(FlashGames, factories),
@@ -66,6 +74,7 @@ const routes = (models, factories, socket) => {
     mangas_reading: mangasReadingRouter(MangasReading, factories, socket),
     mu_online: muOnlineRouter(MuOnlineCharacters, MuOnlineGuides, MuOnlineTools, MuOnlineVersions, factories),
     music: musicRouter(Music, factories),
+    notebook: notebookRouter(Notebook, factories),
     profile: profileRouter(factories),
     projects: projectsRouter(Projects, factories),
     starcraft: starcraftRouter(StarcraftMaps, StarcraftCampaigns, StarcraftMods, factories),
@@ -73,6 +82,7 @@ const routes = (models, factories, socket) => {
     schelude_events: scheludeEventsRouter(ScheludeEvents, factories),
     system: systemRouter(models, factories),
     tools: toolsRouter(models, factories),
+    utils: utilsRouter(factories),
     yugioh_poc: yugiohPocRouter(YugiohPocMods, YugiohPocDecks, factories)
   };
 };
