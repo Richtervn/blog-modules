@@ -1,6 +1,6 @@
 import { serviceCaller } from 'helpers';
 
-const { commonGet, commonPost } = serviceCaller;
+const { commonPost } = serviceCaller;
 
 export default {
   downloadMP3(formBody) {

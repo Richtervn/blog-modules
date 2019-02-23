@@ -6,5 +6,6 @@ export default connect(({ contentMirror }) => ({
   htmlCode: contentMirror.htmlCode,
   background: contentMirror.background,
   opacity: contentMirror.opacity,
-  collection: contentMirror.collectionValue
+  collection: contentMirror.collectionValue,
+  isFullscreen: !contentMirror.isShareView
 }))(ContentViewer);

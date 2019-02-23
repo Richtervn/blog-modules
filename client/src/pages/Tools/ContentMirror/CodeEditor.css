@@ -1,9 +1,14 @@
 .cm-code-editor {
-  width: 100%;
+  width: calc((100vw - 200px) / 2);
   height: calc(100vh - 85px);
-  overflow: auto;
+}
+
+.cm-code-editor .ReactCodeMirror {
+  width: calc((100vw - 200px) / 2);
+  height: calc(100vh - 85px);
 }
 
 .cm-code-editor .CodeMirror {
   height: calc(100vh - 85px);
 }
+

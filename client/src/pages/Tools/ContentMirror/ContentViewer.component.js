@@ -1,5 +1,6 @@
 import './ContentViewer.css';
 import React from 'react';
+import classnames from 'classnames';
 
 const getAdditionClass = collection => {
   let additionClass = '';
@@ -16,7 +17,7 @@ const getAdditionClass = collection => {
   return additionClass;
 };
 
-export default ({ htmlCode, cssCode, background, opacity, collection }) => {
+export default ({ htmlCode, cssCode, background, opacity, collection, isFullscreen }) => {
   const styles = {};
   if (background !== 'default') {
     styles.background = `url('/images/backgrounds/${background}')`;
@@ -26,7 +27,7 @@ export default ({ htmlCode, cssCode, background, opacity, collection }) => {
     overlayStyle.background = `rgba(0, 0, 0, ${opacity})`;
   }
   return (
-    <div style={styles} className="cm-content-viewer">
+    <div style={styles} className={classnames('cm-content-viewer', { fullscreen: isFullscreen })}>
       <div style={overlayStyle} className="overlay">
         <div className={`content-view ${getAdditionClass(collection)}`}>
           <div dangerouslySetInnerHTML={{ __html: htmlCode }} />

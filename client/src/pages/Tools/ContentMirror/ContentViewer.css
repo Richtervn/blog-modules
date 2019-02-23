@@ -1,12 +1,20 @@
 .cm-content-viewer {
-  width: 100%;
+  width: calc((100vw - 200px) / 2);
   background-size: cover !important;
 }
 
+.cm-content-viewer.fullscreen {
+  width: calc(100vw - 200px);
+}
+
 .cm-content-viewer > .overlay {
-  width: 100%;
+  width: calc((100vw - 200px) / 2);
   height: calc(100vh - 85px);
   overflow-y: auto;
+}
+
+.cm-content-viewer.fullscreen > .overlay {
+  width: calc(100vw - 200px);
 }
 
 .content-view.sc-content-viewer {
