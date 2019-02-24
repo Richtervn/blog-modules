@@ -8,15 +8,11 @@ import districts from './data/Province';
 export default (models, factories) => {
   const router = express.Router();
   const { readFile, writeFile, wrap, readMuServerFile, commonService } = factories;
-  const { FlashGames } = models;
 
   router.get(
     '/get_menu',
     wrap(async (req, res, next) => {
-      const [menu, flashGames] = [await getMenu(readFile), await commonService.getAll(FlashGames)];
-      flashGames.forEach(flashGame => {
-        menu['Flash Games'].items.push(flashGame.Name);
-      });
+      const menu = await getMenu(readFile, models, commonService);
       res.send(menu);
     })
   );
@@ -24,8 +20,10 @@ export default (models, factories) => {
   router.post(
     '/save_menu',
     wrap(async ({ body }, res, next) => {
-      body["Flash Games"].items = [];
-      const menu = await saveMenu(body, readFile, writeFile);
+      const dynamicItemsCategory = ['Flash Games', 'Notebook', 'Library'];
+      dynamicItemsCategory.forEach(category => (body[category].items = []));
+      await saveMenu(body, readFile, writeFile);
+      const menu = await getMenu(readFile, models, commonService);
       res.send(menu);
     })
   );
@@ -33,12 +31,14 @@ export default (models, factories) => {
   router.get(
     '/test',
     wrap(async (req, res, next) => {
-      res.send(districts.map((district, i) => {
-        return {
-          name: district.Name,
-          order: i
-        }
-      }));
+      res.send(
+        districts.map((district, i) => {
+          return {
+            name: district.Name,
+            order: i
+          };
+        })
+      );
     })
   );
 
