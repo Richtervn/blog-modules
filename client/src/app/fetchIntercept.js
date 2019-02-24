@@ -2,7 +2,12 @@ import appConfig from './config';
 import fetchIntercept from 'fetch-intercept';
 import { dataTransform } from 'utils';
 
-const whiteListedRequests = ['api.openweathermap.org', 'dataservice.accuweather.com', 'get-internal-source'];
+const whiteListedRequests = [
+  'api.openweathermap.org',
+  'dataservice.accuweather.com',
+  'get-internal-source',
+  appConfig.API_HOST
+];
 const whiteListedResponses = ['api/utils/downloaded_mp3'];
 
 fetchIntercept.register({

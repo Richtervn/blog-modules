@@ -1,16 +1,29 @@
-import './Library.css';
 import React, { useEffect } from 'react';
 import { getFullName } from 'helpers';
 
 import PageContainer from 'common/PageContainer';
+import { PageLoader } from 'common/Loaders';
 
-export default ({ match, onGetBookshelf }) => {
+import SideBar from './SideBar.container';
+import PDFViewer from './PDFViewer.container';
+
+export default ({ match, bookshelf, onGetBookshelf }) => {
+  const bookshelfTitle = getFullName(match.params.bookShelf);
+
   useEffect(() => {
-    onGetBookshelf(getFullName(match.params.bookShelf));
+    onGetBookshelf(bookshelfTitle);
   }, [match.params.bookShelf]);
+
+  if (decodeURIComponent(getFullName(bookshelfTitle)) !== bookshelf.Title) {
+    return <PageLoader />;
+  }
+
   return (
     <PageContainer backgroundColor="#525659">
-      <div className="row">.</div>
+      <div className="row">
+        <SideBar />
+        <PDFViewer />
+      </div>
     </PageContainer>
   );
 };

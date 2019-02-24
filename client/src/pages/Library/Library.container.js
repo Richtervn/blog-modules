@@ -4,7 +4,7 @@ import Library from './Library.component';
 import { getBookshelf } from './Library.module';
 
 export default connect(
-  null,
+  ({ library }) => ({ bookshelf: library.bookshelf }),
   dispatch => ({
     onGetBookshelf(title) {
       dispatch(getBookshelf(title));

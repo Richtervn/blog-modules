@@ -1,0 +1,7 @@
+.library-pdf-viewer {
+  flex: 1;
+}
+
+#pdf-viewer-iframe {
+  border: none;
+}

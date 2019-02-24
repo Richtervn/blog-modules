@@ -15,7 +15,6 @@ export default (BookShelves, factories) => {
   router.get(
     '/book_shelf/:title',
     wrap(async ({ params }, res, next) => {
-      console.log(params.title);
       const bookShelve = await commonService.getOneByParam(BookShelves, { Title: params.title });
       res.send(bookShelve);
     })
@@ -59,7 +58,11 @@ export default (BookShelves, factories) => {
       const bookUrl = commonService.uploadArchive(files, './public/Books');
       if (bookUrl) body.FileUrl = bookUrl;
       const bookShelf = await commonService.getOne(BookShelves, body.shelfId);
-      bookShelf.books.push({
+
+      if (!bookShelf) {
+        return res.send({ message: "Can't find bookshelf" });
+      }
+      bookShelf.Books.push({
         Label: body.Label,
         Author: body.Author,
         PublishDate: body.PublishDate,
@@ -75,7 +78,7 @@ export default (BookShelves, factories) => {
     wrap(async ({ files, body }, res, next) => {
       const bookUrl = commonService.uploadArchive(files, './public/Books');
       const bookShelf = await commonService.getOne(BookShelves, body.shelfId);
-      const book = bookShelf.books.find(oldBook => oldBook.id == body._id);
+      const book = bookShelf.Books.find(oldBook => oldBook.id == body._id);
       if (!book) {
         return res.send({ message: "Can't find this book" });
       }
@@ -86,7 +89,7 @@ export default (BookShelves, factories) => {
       if (body.Author) book.Author = body.Author;
       if (body.Label) book.Label = body.Label;
       if (body.PublishDate) book.PublishDate = body.PublishDate;
-      bookShelf.books = bookShelf.books.map(oldBook => {
+      bookShelf.Books = bookShelf.Books.map(oldBook => {
         if (oldBook.id == body._id) return book;
         return oldBook;
       });
@@ -102,12 +105,12 @@ export default (BookShelves, factories) => {
       if (!bookShelf) {
         return res.send({ message: "Can't find book shelf" });
       }
-      const book = bookShelf.books.find(oldBook => oldBook.id == params.id);
+      const book = bookShelf.Books.find(oldBook => oldBook.id == params.id);
       if (!book) {
         return res.send({ message: "Can't find this book" });
       }
       if (bookUrl) deleteFile(book.FileUrl);
-      bookShelf.books = bookShelf.books.map(oldBook => {
+      bookShelf.Books = bookShelf.Books.map(oldBook => {
         if (oldBook.id == params.id) return book;
         return oldBook;
       });
