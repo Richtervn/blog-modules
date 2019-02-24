@@ -64,7 +64,7 @@ export default ({
             />
           ))}
           {group === 'Flash Games' && _renderAddBtn('FlashGame')}
-          {group === 'Library' && _renderAddBtn('AddLibraryBookshelf')}
+          {group === 'Library' && _renderAddBtn('AddBookshelf')}
           {group === 'Notebook' && _renderAddBtn('AddNoteBook')}
         </MenuGroup>
       ))}

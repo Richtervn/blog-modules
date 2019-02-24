@@ -86,6 +86,8 @@ import { ProviderForm, DeleteProviderConfirm } from 'pages/Subscribe/Rss';
 
 import { DayEventsForm } from 'pages/Setting/DayEvents';
 
+import { BookshelfForm } from 'pages/Library';
+
 export default ({ name }) => {
   let additionProps = {};
   switch (name) {
@@ -216,6 +218,9 @@ export default ({ name }) => {
 
       {name === 'AddDayEvent' && <DayEventsForm />}
       {name === 'EditDayEvent' && <DayEventsForm edit />}
+
+      {name === 'AddBookshelf' && <BookshelfForm />}
+      {name === 'EditBookshelf' && <BookshelfForm edit />}
     </Modal>
   );
 };

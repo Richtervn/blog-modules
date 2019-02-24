@@ -1,4 +1,5 @@
-import reducer, { ADD_BOOKSHELF, EDIT_BOOKSHELF } from './Library.module';
+import reducer from './Library.module';
 import { BookshelfForm } from './Modals';
+import Library from './Library.container';
 
-export { reducer, ADD_BOOKSHELF, EDIT_BOOKSHELF, BookshelfForm };
+export { reducer, BookshelfForm, Library };

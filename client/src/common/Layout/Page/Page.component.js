@@ -19,6 +19,9 @@ export default ({
     const router = appRouter(menuTree);
     const currentPage = router.decode(window.location.pathname);
 
+    if (!currentPage.activeGroup || !currentPage.activeItem) {
+      return;
+    }
     if (activeItem !== currentPage.activeItem) {
       onSetActiveItem(currentPage.activeItem);
     }

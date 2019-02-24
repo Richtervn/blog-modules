@@ -15,7 +15,7 @@ export default ({ edit, bookshelf, onAdd, onEdit }) => {
     <ModalHeader
       key="bs_h"
       iconUrl="/images/icons/bookshelf.png"
-      label={edit ? 'Add Bookshelf' : `Edit ${bookshelf.Title}`}
+      label={edit ? `Edit ${bookshelf.Title}` : 'Add Bookshelf'}
     />,
     <div key="bs_b" className="modal-body">
       <form className="text-right">

@@ -1,33 +1,26 @@
 import { combineReducers } from 'redux';
 
 import { reducer as appControl } from 'pages/appControl';
-import { reducer as flashGames } from 'pages/FlashGames';
-
+import { reducer as endedManga } from 'pages/Archived/EndedManga';
+import { reducer as accounts } from 'pages/Archived/Accounts';
 import { reducer as gamingHistory } from 'pages/Collections/GamingHistory';
 import { reducer as mangasReading } from 'pages/Collections/MangasReading';
 import { reducer as music } from 'pages/Collections/Music';
 import { reducer as gallery } from 'pages/Collections/Gallery';
-
-import { reducer as appDiary } from 'pages/Home/AppDiary';
-import { reducer as projects } from 'pages/Home/Projects';
-import { reducer as schelude } from 'pages/Home/Schelude';
-
+import { reducer as flashGames } from 'pages/FlashGames';
 import { reducer as starcraft } from 'pages/Games/Starcraft';
 import { reducer as diabloII } from 'pages/Games/DiabloII';
 import { reducer as yugiohPoc } from 'pages/Games/YugiohPoc';
 import { reducer as muOnline } from 'pages/Games/MuOnline';
-
-import { reducer as contentMirror } from 'pages/Tools/ContentMirror';
-
-import { reducer as endedManga } from 'pages/Archived/EndedManga';
-import { reducer as accounts } from 'pages/Archived/Accounts';
-
+import { reducer as appDiary } from 'pages/Home/AppDiary';
+import { reducer as projects } from 'pages/Home/Projects';
+import { reducer as schelude } from 'pages/Home/Schelude';
+import { reducer as library } from 'pages/Library';
 import { reducer as mangaNews } from 'pages/Subscribe/MangaNews';
 import { reducer as rss } from 'pages/Subscribe/Rss';
 import { reducer as weather } from 'pages/Subscribe/Weather';
-
 import { reducer as dayEvents } from 'pages/Setting/DayEvents';
-
+import { reducer as contentMirror } from 'pages/Tools/ContentMirror';
 import { reducer as youtubeMP3 } from 'pages/Ultilities/YoutubeMP3';
 
 import {
@@ -70,6 +63,7 @@ export default combineReducers({
   flashGames,
   gallery,
   gamingHistory,
+  library,
   mangasReading,
   mangaNews,
   muOnline,

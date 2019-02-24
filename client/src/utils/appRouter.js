@@ -1,13 +1,15 @@
 export default appTree => {
-  const appRouter = {};
+  const appRoutes = {};
   Object.keys(appTree).forEach(group => {
-    appRouter[group] = [];
+    appRoutes[group] = [];
     appTree[group].items.forEach(item => {
-      let path = '/' + item.replace(/ /g, '_').toLowerCase();
-      if (group === 'Flash Games') {
-        path = '/flash_games' + path;
-      }
-      appRouter[group].push({
+      let path = '/' + encodeURIComponent(item.replace(/ /g, '_').toLowerCase());
+
+      if (group === 'Flash Games') path = `/flash_games${path}`;
+      if (group === 'Library') path = `/library${path}`;
+      if (group === 'Notebook') path = `/notebook${path}`;
+
+      appRoutes[group].push({
         item: item,
         path: path
       });
@@ -17,25 +19,28 @@ export default appTree => {
   return {
     encode(group, item) {
       let path = null;
-      appRouter[group].forEach(router => {
-        if (router.item === item) {
-          path = router.path;
-        }
-      });
+      const route = appRoutes[group].find(r => r.item === item);
+      if (route) {
+        path = route.path;
+      }
       return path;
     },
     decode(path) {
-      const pathFrags = path.split('/');
-      const pathStrict = `/${pathFrags[1]}`
       let result = {};
-      Object.keys(appRouter).forEach(group => {
-        appRouter[group].forEach(router => {
-          if (router.path === pathStrict) {
-            result.activeGroup = group;
-            result.activeItem = router.item;
-          }
-        });
+
+      const pathStrict = path
+        .split('/')
+        .filter((frags, i) => i <= 2)
+        .join('/');
+        
+      Object.keys(appRoutes).forEach(group => {
+        const route = appRoutes[group].find(r => r.path === pathStrict);
+        if (route) {
+          result.activeGroup = group;
+          result.activeItem = route.item;
+        }
       });
+
       return result;
     }
   };

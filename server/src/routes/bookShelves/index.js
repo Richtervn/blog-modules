@@ -15,8 +15,9 @@ export default (BookShelves, factories) => {
   router.get(
     '/book_shelf/:title',
     wrap(async ({ params }, res, next) => {
+      console.log(params.title);
       const bookShelve = await commonService.getOneByParam(BookShelves, { Title: params.title });
-      res.send(books);
+      res.send(bookShelve);
     })
   );
 
@@ -101,13 +102,13 @@ export default (BookShelves, factories) => {
       if (!bookShelf) {
         return res.send({ message: "Can't find book shelf" });
       }
-      const book = bookShelf.books.find(oldBook => oldBook.id == params._id);
+      const book = bookShelf.books.find(oldBook => oldBook.id == params.id);
       if (!book) {
         return res.send({ message: "Can't find this book" });
       }
       if (bookUrl) deleteFile(book.FileUrl);
       bookShelf.books = bookShelf.books.map(oldBook => {
-        if (oldBook.id == params._id) return book;
+        if (oldBook.id == params.id) return book;
         return oldBook;
       });
       await bookShelf.save();

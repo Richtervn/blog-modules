@@ -4,33 +4,29 @@ import { Page } from 'common/Layout';
 
 import { NotFound } from 'pages/NotFound';
 
+import { EndedManga } from 'pages/Archived/EndedManga';
+import { Accounts } from 'pages/Archived/Accounts';
 import { MangasReading } from 'pages/Collections/MangasReading';
 import { Music } from 'pages/Collections/Music';
 import { GamingHistory } from 'pages/Collections/GamingHistory';
 import { Gallery } from 'pages/Collections/Gallery';
 
+import { Darksteam97d99i } from 'pages/MuOnline/Darksteam97d99i';
 import { FlashGames } from 'pages/FlashGames';
-import { Home } from 'pages/Home';
-
-import { ComponentsViewer } from 'pages/Tools/ComponentsViewer';
-import { ContentMirror } from 'pages/Tools/ContentMirror';
-import { IconChooser } from 'pages/Tools/IconChooser';
-import { CodePlayground } from 'pages/Tools/CodePlayground';
-
+import { Guideline } from 'pages/Documentations/Guideline';
 import { Starcraft } from 'pages/Games/Starcraft';
 import { DiabloII } from 'pages/Games/DiabloII';
 import { YugiohPoc } from 'pages/Games/YugiohPoc';
 import { MuOnline } from 'pages/Games/MuOnline';
-
-import { EndedManga } from 'pages/Archived/EndedManga';
-import { Accounts } from 'pages/Archived/Accounts';
+import { Home } from 'pages/Home';
+import { Library } from 'pages/Library';
 
 import { AppMenu } from 'pages/Setting/AppMenu';
 import { DayEvents } from 'pages/Setting/DayEvents';
-
-import { Darksteam97d99i } from 'pages/MuOnline/Darksteam97d99i';
-
-import { Guideline } from 'pages/Documentations/Guideline';
+import { ComponentsViewer } from 'pages/Tools/ComponentsViewer';
+import { ContentMirror } from 'pages/Tools/ContentMirror';
+import { IconChooser } from 'pages/Tools/IconChooser';
+import { CodePlayground } from 'pages/Tools/CodePlayground';
 
 import { MangaNews } from 'pages/Subscribe/MangaNews';
 import { Rss } from 'pages/Subscribe/Rss';
@@ -65,9 +61,11 @@ const AppRoutes = () => (
       <Route path="/flash_games/:name" component={FlashGames} />
       <Route path="/gaming_history/:game?/:tab?/:subPage?" component={GamingHistory} />
       <Route path="/home/:tab/:subPage?" component={Home} />
+      <Route path="/library/:bookShelf" component={Library} />
       <Route path="/mu_online/:tab?/:subPage?" component={MuOnline} />
       <Route path="/rss/:tab?" component={Rss} />
       <Route path="/starcraft_broodwar/:tab?/:subPage?" component={Starcraft} />
+
       <Route path="/404" component={NotFound} />
       <Route path="*" component={NotFound} />
     </Switch>
