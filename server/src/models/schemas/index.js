@@ -17,7 +17,7 @@ export MuOnlineGuides from './MuOnlineGuides';
 export MuOnlineTools from './MuOnlineTools';
 export MuOnlineVersions from './MuOnlineVersions';
 export Music from './Music';
-export NoteBooks from './NoteBooks';
+export Notebooks from './Notebooks';
 export PersonalDiary from './PersonalDiary';
 export Projects from './Projects';
 export RssProviders from './RssProviders';
