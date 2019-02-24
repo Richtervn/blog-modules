@@ -22,14 +22,19 @@ class AppMenu extends Component {
 
   initState(menuTree) {
     if (!menuTree) return null;
+    const dynamicItemsGroup = ['Flash Games', 'Notebook', 'Library'];
     const newState = Object.keys(menuTree).map(group => {
-      return {
+      const groupItem = {
         groupName: group,
-        items: menuTree[group].items.slice(0),
         quote: menuTree[group].quote,
         author: menuTree[group].author,
         icon: menuTree[group].icon
       };
+      if (!dynamicItemsGroup.includes(group)) {
+        groupItem.items = menuTree[group].items.slice(0);
+      }
+
+      return groupItem;
     });
     return newState;
   }
@@ -143,15 +148,17 @@ class AppMenu extends Component {
                 onChange={e => this.handleChange(e, i)}
                 value={this.state.menuTree[i].icon}
               />
-              <FormGroupArray
-                label="Items"
-                type="text"
-                name="item"
-                arrayValues={this.state.menuTree[i].items}
-                onChange={(e, index) => this.handleChange(e, i, index)}
-                onRemove={(name, index) => this.handleRemoveItem(name, i, index)}
-                onAdd={() => this.handleAddItem(i)}
-              />
+              {this.state.menuTree[i].items && (
+                <FormGroupArray
+                  label="Items"
+                  type="text"
+                  name="item"
+                  arrayValues={this.state.menuTree[i].items}
+                  onChange={(e, index) => this.handleChange(e, i, index)}
+                  onRemove={(name, index) => this.handleRemoveItem(name, i, index)}
+                  onAdd={() => this.handleAddItem(i)}
+                />
+              )}
             </div>
           ])}
 

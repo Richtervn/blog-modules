@@ -1,6 +1,7 @@
 import _ from 'underscore';
 import { actionCreator } from 'helpers';
 import { ADD_GAME } from 'pages/FlashGames';
+import { ADD_BOOKSHELF, EDIT_BOOKSHELF } from 'pages/Library';
 
 import services from './appControl.services';
 
@@ -69,6 +70,8 @@ export default (state = initialState, action) => {
       return { ...state, openedGroups };
     }
 
+    case `${ADD_BOOKSHELF}_SUCCESS`:
+    case `${EDIT_BOOKSHELF}_SUCCESS`:
     case `${ADD_GAME}_SUCCESS`:
       return { ...state, menuTree: { ...action.payload.menu } };
 
