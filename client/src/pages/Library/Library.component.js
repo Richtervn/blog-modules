@@ -21,8 +21,8 @@ export default ({ match, bookshelf, onGetBookshelf }) => {
   return (
     <PageContainer backgroundColor="#525659">
       <div className="row">
-        <SideBar />
         <PDFViewer />
+        <SideBar />
       </div>
     </PageContainer>
   );

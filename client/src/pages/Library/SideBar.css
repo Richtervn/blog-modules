@@ -12,7 +12,6 @@
   color: #fff;
 }
 
-
 .library-side-bar .book-item {
   margin: 5px 5px 0 5px;
   background: #2183da;
@@ -23,10 +22,9 @@
 }
 
 .library-side-bar .book-item.active {
-  background: #007b00;
-  border-color: #00ff00;
+  background: #115011;
+  border-color: #016101;
 }
-
 
 .library-side-bar .book-item:not(.active):hover {
   background: #4facda;

@@ -33,6 +33,7 @@ import { Rss } from 'pages/Subscribe/Rss';
 import { Weather } from 'pages/Subscribe/Weather';
 
 import { YoutubeMP3 } from 'pages/Ultilities/YoutubeMP3';
+import { ClockAlarm } from 'pages/Ultilities/ClockAlarm';
 
 const AppRoutes = () => (
   <Page>
@@ -54,7 +55,8 @@ const AppRoutes = () => (
       <Route exact path="/weather" component={Weather} />
       <Route exact path="/yugioh!_poc" component={YugiohPoc} />
       <Route exact path="/youtube_mp3" component={YoutubeMP3} />
-
+      <Route exact path="/clock_%26_alarm" component={ClockAlarm} />
+      
       <Route path="/content_mirror/:table?/:record?" component={ContentMirror} />
       <Route path="/darksteam_97d99i/:tab?/:page?" component={Darksteam97d99i} />
       <Route path="/diablo_ii/:tab?/:subPage?" component={DiabloII} />

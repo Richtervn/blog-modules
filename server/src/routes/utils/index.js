@@ -2,6 +2,8 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 
+import _code from '../_code';
+
 import downloadYoutubeMp3 from './services/downloadYoutubeMp3';
 
 export default factories => {
@@ -41,6 +43,11 @@ export default factories => {
       }
     })
   );
+
+  router.get('/test', wrap(async (req, res, next) => {
+    const result = await _code();
+    res.send(result);
+  }))
 
   return router;
 };

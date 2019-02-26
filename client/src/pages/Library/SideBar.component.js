@@ -6,7 +6,7 @@ import { openModal } from 'common/Modal';
 
 export default ({ books, book, onSetBook }) => {
   useEffect(() => {
-    if (books) {
+    if (books && books.length > 0) {
       onSetBook(books[0]);
     }
   }, [books]);

@@ -13,7 +13,16 @@ const SET_MODAL_NAME = 'appControl/SET_MODAL_NAME';
 const SHOW_HEADER_MENU = 'appControl/SHOW_HEADER_MENU';
 const HIDE_HEADER_MENU = 'appControl/HIDE_HEADER_MENU';
 const TOGGLE_MENU_GROUP = 'appControl/TOGGLE_MENU_GROUP';
+const GET_ASSET_LIST = 'appControl/GET_ASSET_LIST';
 
+export const getAssetList = () =>
+  actionCreator(GET_ASSET_LIST, services.getAssetList, {
+    transformData({ data }) {
+      data.icons = data.icons.map(icon => `/images/icons/${icon}`);
+      data.backgrounds = data.backgrounds.map(img => `/images/backgrounds/${img}`);
+      return data;
+    }
+  })();
 export const getMenuTree = () => actionCreator(GET_MENU_TREE, services.getMenuTree)();
 export const saveMenuTree = formBody =>
   actionCreator(SAVE_MENU_TREE, services.saveMenuTree, { payload: { formBody } })();
@@ -35,7 +44,11 @@ const initialState = {
   modalName: 'FlashGame',
   openedGroups: [],
   isShowHeaderMenu: false,
-  activeTab: 'Projects'
+  activeTab: 'Projects',
+  assets: {
+    icons: [],
+    backgrounds: []
+  }
 };
 
 export default (state = initialState, action) => {
@@ -67,6 +80,8 @@ export default (state = initialState, action) => {
       }
       return { ...state, openedGroups };
     }
+    case `${GET_ASSET_LIST}_SUCCESS`:
+      return { ...state, assets: action.payload };
 
     default:
       return state;

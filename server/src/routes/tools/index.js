@@ -47,22 +47,5 @@ export default (models, factories) => {
     })
   );
 
-  // let queue
-  // router.get('/create_queue', (req, res, next) => {
-  //   queue = kue.createQueue({
-  //     redis: 'redis://localhost'
-  //   });
-  //   queue.process('test', (job, done) => {
-  //     console.log('done');
-  //   })
-  //   console.log(queue);
-  //   res.sendStatus(200);
-  // });
-
-  // router.get('/create_job', (req, res, next) => {
-  //   queue.create('test', { data: 'dcm' }).save();
-  //   res.sendStatus(200);
-  // })
-
   return router;
 };

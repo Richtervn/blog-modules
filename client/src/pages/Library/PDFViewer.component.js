@@ -4,8 +4,10 @@ import React from 'react';
 import appConfig from 'app/config';
 
 export default ({ book }) => {
-  if (!book.FileUrl) {
-    return null;
+  if (!book || !book.FileUrl) {
+    return <div className="library-pdf-viewer initial-message">
+      <h1>There's nothing here yet!</h1>
+    </div>;
   }
   return (
     <div className="library-pdf-viewer">
