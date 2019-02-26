@@ -28,13 +28,8 @@ export default appTree => {
     decode(path) {
       let result = {};
 
-      const pathStrict = path
-        .split('/')
-        .filter((frags, i) => i <= 2)
-        .join('/');
-        
       Object.keys(appRoutes).forEach(group => {
-        const route = appRoutes[group].find(r => r.path === pathStrict);
+        const route = appRoutes[group].find(r => path.indexOf(r.path) !== -1);
         if (route) {
           result.activeGroup = group;
           result.activeItem = route.item;

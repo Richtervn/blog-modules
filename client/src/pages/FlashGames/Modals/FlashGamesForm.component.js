@@ -1,71 +1,66 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import { withRouter } from 'react-router-dom';
 import { ModalHeader, ModalFooter } from 'components/Modal';
 import { FormGroupRow, FormGroupArea } from 'components/FormTools';
 import { commonFormChange } from 'helpers';
 import { hideModal } from 'common/Modal';
 
-const initialFormValue = {
-  Name: '',
-  File: '',
-  Width: 0,
-  Height: 0,
-  Guide: ''
+const FlashGamesForm = ({ edit, game, onAddGame, onEditGame, history }) => {
+  const [value, setValue] = useState({
+    Name: '',
+    File: null,
+    Width: 0,
+    Height: 0,
+    Guide: ''
+  });
+  useEffect(() => {
+    if (edit) {
+      setValue({
+        Name: game.Name,
+        Width: game.Width || 0,
+        Height: game.Height || 0,
+        Guide: game.Guide || '',
+        File: null
+      });
+    }
+  }, [game]);
+
+  const handleChange = e => {
+    const valueState = commonFormChange(value, e);
+    setValue(valueState);
+  };
+
+  const { Name, Width, Height, Guide } = value;
+
+  return [
+    <ModalHeader
+      key="fg_h"
+      iconUrl="/images/icons/gamepad.png"
+      label={edit ? `Edit ${game.Name}` : 'Add Flash Game'}
+    />,
+    <div key="fg_b" className="modal-body">
+      <form className="text-right">
+        <FormGroupRow type="file" name="File" onChange={e => handleChange(e)} label="SWF File" />
+        <FormGroupRow type="text" name="Name" onChange={e => handleChange(e)} label="Name" value={Name} />
+        <FormGroupRow type="number" name="Width" onChange={e => handleChange(e)} label="Width" value={Width} />
+        <FormGroupRow type="number" name="Height" onChange={e => handleChange(e)} label="Height" value={Height} />
+        <FormGroupArea name="Guide" onChange={e => handleChange(e)} label="Guide" value={Guide} />
+      </form>
+    </div>,
+    <ModalFooter
+      key="fg_f"
+      onClickSubmit={() => {
+        edit
+          ? onEditGame({ ...value, _id: game._id }, () => {
+              if (value.Name !== game.Name) {
+                history.push('/flash_game/');
+              }
+            })
+          : onAddGame(value);
+        hideModal();
+      }}
+    />
+  ];
 };
 
-class FlashGamesForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = this.props.edit ? this.getDefaultState(this.props.game) : this.getDefaultState(initialFormValue);
-    this.handleChange = this.handleChange.bind(this);
-    this.getDefaultState = this.getDefaultState.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  getDefaultState(gameState) {
-    const formState = { ...gameState };
-    formState.Width = gameState.Width || 0;
-    formState.Height = gameState.Height || 0;
-    formState.Guide = gameState.Guide || '';
-    return { value: gameState };
-  }
-
-  handleChange(event) {
-    const valueState = commonFormChange(this.state.value, event);
-    this.setState({ value: valueState });
-  }
-
-  handleSubmit() {
-    const { edit, onAddGame, onEditGame } = this.props;
-    edit ? onEditGame(this.state.value) : onAddGame(this.state.value);
-    hideModal();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.edit) {
-      this.setState(this.getDefaultState(nextProps.game));
-    }
-  }
-
-  render() {
-    const { Name, Width, Height, Guide } = this.state.value;
-    return [
-      <ModalHeader
-        key="fg_h"
-        iconUrl="/images/icons/gamepad.png"
-        label={this.props.edit ? `Edit ${this.props.game.Name}` : 'Add Flash Game'}
-      />,
-      <div key="fg_b" className="modal-body">
-        <form className="text-right">
-          <FormGroupRow type="file" name="File" onChange={this.handleChange} label="SWF File" />
-          <FormGroupRow type="text" name="Name" onChange={this.handleChange} label="Name" value={Name} />
-          <FormGroupRow type="number" name="Width" onChange={this.handleChange} label="Width" value={Width} />
-          <FormGroupRow type="number" name="Height" onChange={this.handleChange} label="Height" value={Height} />
-          <FormGroupArea name="Guide" onChange={this.handleChange} label="Guide" value={Guide} />
-        </form>
-      </div>,
-      <ModalFooter key="fg_f" onClickSubmit={() => this.handleSubmit()} />
-    ];
-  }
-}
-
-export default FlashGamesForm;
+export default withRouter(FlashGamesForm);

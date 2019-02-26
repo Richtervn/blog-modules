@@ -10,8 +10,8 @@ const mapDispatchToProps = dispatch => ({
   onAddGame(formBody) {
     dispatch(addGame(formBody));
   },
-  onEditGame(formBody) {
-    dispatch(editGame(formBody));
+  onEditGame(formBody, callback) {
+    dispatch(editGame(formBody, callback));
   }
 });
 

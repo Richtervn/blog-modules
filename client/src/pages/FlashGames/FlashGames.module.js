@@ -18,11 +18,12 @@ export const addGame = formBody =>
       dispatch(getMenuTree());
     }
   })();
-export const editGame = formBody =>
+export const editGame = (formBody, callback) =>
   actionCreator(EDIT_GAME, services.editGame, {
     payload: { formBody },
     onAfterSuccess({ dispatch }) {
       dispatch(getMenuTree());
+      callback();
     }
   })();
 

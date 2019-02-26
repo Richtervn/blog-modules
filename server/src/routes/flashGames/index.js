@@ -29,7 +29,7 @@ export default (FlashGames, factories) => {
   router.put(
     '/edit_game',
     wrap(async ({ files, body }, res, next) => {
-      const game = await commonService.findOne(FlashGames, body._id);
+      const game = await commonService.getOne(FlashGames, body._id);
       const uri = commonService.uploadArchive(files, './public/Flash Games', 'File');
       if (uri) body.Uri = uri;
       const menu = await editMenu('Flash Games', game.Name, body.Name, readFile, writeFile);
