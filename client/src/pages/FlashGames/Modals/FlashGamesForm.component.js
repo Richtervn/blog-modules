@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { ModalHeader, ModalFooter } from 'components/Modal';
 import { FormGroupRow, FormGroupArea } from 'components/FormTools';
-import { commonFormChange } from 'helpers';
+import { commonFormChange, connectString } from 'helpers';
 import { hideModal } from 'common/Modal';
 
 const FlashGamesForm = ({ edit, game, onAddGame, onEditGame, history }) => {
@@ -53,7 +53,7 @@ const FlashGamesForm = ({ edit, game, onAddGame, onEditGame, history }) => {
         edit
           ? onEditGame({ ...value, _id: game._id }, () => {
               if (value.Name !== game.Name) {
-                history.push('/flash_game/');
+                history.push(`/flash_game/${connectString(value.Name, ' ', '_')}`);
               }
             })
           : onAddGame(value);
