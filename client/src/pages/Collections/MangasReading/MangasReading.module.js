@@ -43,10 +43,10 @@ export const deleteManga = id => actionCreator(DELETE_MANGA, services.delete, { 
 export const quickUpdate = url =>
   actionCreator(QUICK_UPDATE, services.quickUpdate, {
     payload: { url },
-    onAfterSuccess({ payload }) {
+    onAfterSuccess({ data }) {
       toastSuccess(() => (
         <p>
-          Updated<strong>{` ${payload.Name} `}</strong>to chapter {payload.Chapter}
+          Updated<strong>{` ${data.Name} `}</strong>to chapter {data.Chapter}
         </p>
       ));
     }
