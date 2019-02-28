@@ -1,5 +1,5 @@
 import './Page.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { appRouter } from 'utils';
 
 export default ({
@@ -12,23 +12,29 @@ export default ({
   onSetDefaultShowGroup,
   onToggleMenuGroup
 }) => {
+  const router = useMemo(() => {
+    if (!menuTree) {
+      return;
+    }
+    return appRouter(menuTree);
+  }, [menuTree]);
+
   useEffect(() => {
     if (!menuTree) {
       return;
     }
 
-    const router = appRouter(menuTree);
+    if (window.location.pathname.indexOf('/home/') !== -1) {
+      if (activeGroup) onSetActiveGroup('');
+      if (activeItem) onSetActiveItem('');
+      return;
+    }
+
     const currentPage = router.decode(window.location.pathname);
-
-    // if (window.location.pathname.indexOf('/home/')) {
-    //   if (currentPage && currentPage.activeGroup) onSetActiveGroup('');
-    //   if (currentPage && currentPage.activeItem) onSetActiveItem('');
-    //   return;
-    // }
-
     if (!currentPage.activeGroup || !currentPage.activeItem) {
       return;
     }
+
     if (activeItem !== currentPage.activeItem) {
       onSetActiveItem(currentPage.activeItem);
     }

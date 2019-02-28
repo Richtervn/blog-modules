@@ -130,6 +130,9 @@ export default url => {
       chapter = infoUrlFrags[1];
       break;
     }
+    default: {
+      return { message: 'Site is not supported' };
+    }
   }
 
   return { mangaAka, chapter };

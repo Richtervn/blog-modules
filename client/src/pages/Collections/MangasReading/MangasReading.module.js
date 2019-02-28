@@ -37,7 +37,17 @@ export const changeSearchValue = value => ({
   value
 });
 
-export const addManga = formBody => actionCreator(ADD_MANGA, services.add, { payload: { formBody } })();
+export const addManga = formBody =>
+  actionCreator(ADD_MANGA, services.add, {
+    payload: { formBody },
+    onAfterSuccess({ data }) {
+      toastSuccess(() => (
+        <p>
+          <strong>{`${data.Name} `}</strong>has been added to your list!
+        </p>
+      ));
+    }
+  })();
 export const editManga = formBody => actionCreator(UPDATE_MANGA, services.edit, { payload: { formBody } })();
 export const deleteManga = id => actionCreator(DELETE_MANGA, services.delete, { payload: { id } })();
 export const quickUpdate = url =>
@@ -110,15 +120,7 @@ export default (state = initialState, action) => {
 
     case `${CRAWL_MANGA}_SUCCESS`:
     case `${ADD_MANGA}_SUCCESS`:
-      if (state.mangas) {
-        state.mangas.unshift(action.payload);
-      }
-
-      toastSuccess(() => (
-        <p>
-          <strong>{`${action.payload.Name} `}</strong>has been added to your list!
-        </p>
-      ));
+      if (state.mangas) state.mangas.unshift(action.payload);
       return {
         ...state,
         mangas: state.mangas ? state.mangas.slice(0) : null,
