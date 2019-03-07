@@ -75,7 +75,6 @@ const _renderDayEventBg = (slot, day, involvedEvents) => {
     if (event.type === 'ONE_TIME') {
       return dayTs.diff(startTs) >= 0 && dayTs.diff(endTs) < 0;
     }
-    console.log(slot);
     if (event.type === 'REPEATABLE_SOLAR') {
       const currentYear = dayTs.get('year');
       const eventYearDiff = endTs.get('year') - startTs.get('year');

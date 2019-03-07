@@ -1,3 +1,4 @@
+/* eslint-disable */
 import './ClockAlarm.css';
 import React, { useEffect, useState } from 'react';
 

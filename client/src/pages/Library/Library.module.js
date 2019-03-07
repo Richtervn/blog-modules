@@ -51,6 +51,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case `${GET_BOOKSHELF}_START`:
+      return { ...state, books: [], book: {} };
     case `${GET_BOOKSHELF}_SUCCESS`:
       return {
         ...state,
@@ -58,16 +60,9 @@ export default (state = initialState, action) => {
         bookshelf: { _id: action.payload._id, Title: action.payload.Title }
       };
     case `${ADD_BOOK}_SUCCESS`:
-      state.books.push(action.payload);
-      return { ...state, books: state.books.slice(0) };
+      return { ...state, books: action.payload.books };
     case `${EDIT_BOOK}_SUCCESS`:
-      state.books = state.books.map(book => {
-        if (parseInt(book._id, 10) === parseInt(action.payload._id, 10)) {
-          return action.payload;
-        }
-        return book;
-      });
-      return { ...state, books: state.books.slice(0) };
+      return { ...state, books: action.payload.books };
     case `${DELETE_BOOK}_SUCCESS`:
       state.books = state.books.filter(book => parseInt(book._id, 10) !== parseInt(action.payload._id, 10));
       return { ...state, books: state.books.slice(0) };

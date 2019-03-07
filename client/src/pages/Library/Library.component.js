@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { getFullName } from 'helpers';
 
 import PageContainer from 'common/PageContainer';
 import { PageLoader } from 'common/Loaders';
@@ -7,14 +6,13 @@ import { PageLoader } from 'common/Loaders';
 import SideBar from './SideBar.container';
 import PDFViewer from './PDFViewer.container';
 
-export default ({ match, bookshelf, onGetBookshelf }) => {
-  const bookshelfTitle = getFullName(match.params.bookShelf);
-
+export default ({ bookshelf, onGetBookshelf, bookshelfName }) => {
   useEffect(() => {
-    onGetBookshelf(bookshelfTitle);
-  }, [match.params.bookShelf]);
+    if (!bookshelfName) return;
+    onGetBookshelf(encodeURIComponent(bookshelfName));
+  }, [bookshelfName]);
 
-  if (decodeURIComponent(getFullName(bookshelfTitle)) !== bookshelf.Title) {
+  if (bookshelfName !== bookshelf.Title) {
     return <PageLoader />;
   }
 

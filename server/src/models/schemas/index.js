@@ -1,4 +1,5 @@
 export Account from './Account';
+export Alarm from './Alarm';
 export AppDiary from './AppDiary';
 export BookShelves from './BookShelves';
 export DayEvents from './DayEvents';

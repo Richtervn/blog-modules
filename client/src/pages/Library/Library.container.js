@@ -4,7 +4,7 @@ import Library from './Library.component';
 import { getBookshelf } from './Library.module';
 
 export default connect(
-  ({ library }) => ({ bookshelf: library.bookshelf }),
+  ({ library, appControl }) => ({ bookshelf: library.bookshelf, bookshelfName: appControl.activeItem }),
   dispatch => ({
     onGetBookshelf(title) {
       dispatch(getBookshelf(title));

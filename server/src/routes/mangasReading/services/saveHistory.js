@@ -68,11 +68,17 @@ export default async (historyItems, MangasReading, notificationHandler, noSaveCo
       }
 
       if (!mangaMap[manga._id]) {
-        mangaMap[manga._id] = maxItem.chapter;
+        mangaMap[manga._id] = { chapter: maxItem.chapter, url: maxItem.url };
         return;
       }
 
-      mangaMap[manga._id] = Math.max(parseFloat(mangaMap[manga._id]), parseFloat(maxItem.chapter));
+      const currentChapter = parseFloat(mangaMap[manga._id].chapter);
+      const detectedChapter = parseFloat(maxItem.chapter);
+      const maxChapter = Math.max(currentChapter, detectedChapter);
+      mangaMap[manga._id] = {
+        chapter: maxChapter,
+        url: maxChapter == detectedChapter ? maxItem.url : mangaMap[manga._id].url
+      };
     })
   );
 
@@ -88,7 +94,7 @@ export default async (historyItems, MangasReading, notificationHandler, noSaveCo
     Object.keys(mangaMap).map(async mangaId => {
       const result = await MangasReading.findOneAndUpdate(
         { _id: mangaId },
-        { $set: { Chapter: mangaMap[mangaId], Status: 'OnGoing' } },
+        { $set: { Chapter: mangaMap[mangaId].chapter, Status: 'OnGoing', ReadingUrl: mangaMap[mangaId].url } },
         { new: true }
       );
       notificationHandler.send('appManga/notification', {

@@ -5,3 +5,13 @@
 #pdf-viewer-iframe {
   border: none;
 }
+
+.library-pdf-viewer.initial-message h1 {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 24px;
+}
