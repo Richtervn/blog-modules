@@ -184,4 +184,8 @@
   .accu-weather-card .item > .label {
     margin-top: 5px;
   }
+  .accu-weather-card .date,
+  .accu-weather-card .city {
+    display: inline-block;
+  }
 }
