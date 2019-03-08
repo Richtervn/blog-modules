@@ -15,32 +15,28 @@ export default (type, process, options = {}) => {
     toast
   } = options;
 
-  if (!toast) {
-    toast = true;
-  }
+  if (!toast) toast = true;
 
   const actionStart = () => ({ type: `${type}_START`, payload });
-  const actionSuccess = data => ({ type: `${type}_SUCCESS`, payload: data, params: { ...payload } });
+  const actionSuccess = data => ({
+    type: `${type}_SUCCESS`,
+    payload: data,
+    params: { ...payload }
+  });
   const actionFail = error => {
-    if (toast) {
-      toastError(error);
-    }
+    if (toast) toastError(error);
     return { type: `${type}_FAIL`, error };
   };
 
   const action = () => {
     return async (dispatch, getState, socket) => {
-      if (onBeforeStart) {
-        await onBeforeStart({ payload, dispatch, getState, socket });
-      }
-      dispatch(actionStart());
-      if (onAfterStart) {
-        await onAfterStart({ payload, dispatch, getState, socket });
-      }
+      if (onBeforeStart) await onBeforeStart({ payload, dispatch, getState, socket });
 
-      if (transformPayload) {
+      dispatch(actionStart());
+      if (onAfterStart) await onAfterStart({ payload, dispatch, getState, socket });
+
+      if (transformPayload)
         payload = await transformPayload({ payload, dispatch, getState, socket });
-      }
 
       if (validate) {
         const isValid = validate({ payload, dispatch, getState, socket });
@@ -49,27 +45,15 @@ export default (type, process, options = {}) => {
         }
       }
 
-      if (preProcess) {
-        await preProcess({ payload, dispatch, getState, socket });
-      }
+      if (preProcess) await preProcess({ payload, dispatch, getState, socket });
 
       try {
         let data = await process(payload, { dispatch, getState, socket });
-
-        if (data && data.message && !allowMessage) {
-          return dispatch(actionFail(data.message));
-        }
-
-        if (transformData) {
-          data = transformData({ payload, data, getState });
-        }
-        if (onBeforeSuccess) {
-          await onBeforeSuccess({ payload, data, dispatch, getState, socket });
-        }
+        if (data && data.message && !allowMessage) return dispatch(actionFail(data.message));
+        if (transformData) data = transformData({ payload, data, getState });
+        if (onBeforeSuccess) await onBeforeSuccess({ payload, data, dispatch, getState, socket });
         dispatch(actionSuccess(data));
-        if (onAfterSuccess) {
-          await onAfterSuccess({ payload, data, dispatch, getState, socket });
-        }
+        if (onAfterSuccess) await onAfterSuccess({ payload, data, dispatch, getState, socket });
       } catch (e) {
         console.log(e);
         return dispatch(actionFail(e.message));

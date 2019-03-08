@@ -17,18 +17,38 @@ export const setFocusProvider = id => ({ type: SET_FOCUS_PROVIDER, payload: id }
 
 export const getFeeds = () => actionCreator(GET_FEEDS, services.getFeeds)();
 export const getFeed = id => actionCreator(GET_FEED, services.getFeed, { payload: id })();
-export const getProviders = query => actionCreator(GET_PROVIDERS, services.getProviders, { payload: { query } })();
+export const getProviders = query =>
+  actionCreator(GET_PROVIDERS, services.getProviders, { payload: { query } })();
 export const addProvider = (formBody, callback) =>
   actionCreator(ADD_PROVIDER, services.addProvider, {
     payload: formBody,
-    onAfterSuccess() {
+    onAfterSuccess({ data }) {
+      toastStrong(data.Provider, 'Added');
       callback();
     }
   })();
-export const editProvider = formBody => actionCreator(EDIT_PROVIDER, services.editProvider, { payload: formBody })();
-export const deleteProvider = id => actionCreator(DELETE_PROVIDER, services.deleteProvider, { payload: id })();
+export const editProvider = formBody =>
+  actionCreator(EDIT_PROVIDER, services.editProvider, {
+    payload: formBody,
+    onAfterSuccess({ data }) {
+      toastStrong(data.Provider, 'Edited');
+    }
+  })();
+export const deleteProvider = id =>
+  actionCreator(DELETE_PROVIDER, services.deleteProvider, {
+    payload: id,
+    onAfterSuccess() {
+      toastSuccess('Provider removed');
+    }
+  })();
 
-const initialState = { activeTab: 'Feeds', providers: null, feeds: null, focusProvider: null, feedLoadingId: null };
+const initialState = {
+  activeTab: 'Feeds',
+  providers: null,
+  feeds: null,
+  focusProvider: null,
+  feedLoadingId: null
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -41,11 +61,9 @@ export default (state = initialState, action) => {
     case `${GET_PROVIDERS}_SUCCESS`:
       return { ...state, providers: action.payload };
     case `${ADD_PROVIDER}_SUCCESS`:
-      toastStrong(action.payload.Provider, 'Added');
       state.providers.push(action.payload);
       return { ...state, providers: state.providers.slice(0) };
     case `${EDIT_PROVIDER}_SUCCESS`:
-      toastStrong(action.payload.Provider, 'Edited');
       state.providers = state.providers.map(provider => {
         if (parseInt(provider._id, 10) === parseInt(action.payload._id, 10)) {
           return action.payload;
@@ -54,8 +72,7 @@ export default (state = initialState, action) => {
       });
       return { ...state, providers: state.providers.slice(0) };
     case `${DELETE_PROVIDER}_SUCCESS`:
-      toastSuccess('Provider removed');
-      state.provider = state.provider.filter(
+      state.providers = state.providers.filter(
         provider => parseInt(provider._id, 10) !== parseInt(action.payload._id, 10)
       );
       return { ...state, providers: state.providers.slice(0) };
