@@ -109,8 +109,8 @@ const _renderDayEventBg = (slot, day, involvedEvents) => {
 
     if (event.type === 'REPEATABLE_LUNAR') {
       //One day only
-      const currentLunarDay = new LunarDate(dayTs).date;
-      if (currentLunarDay.day === dayLunarTs.day && currentLunarDay.month === dayLunarTs.month) {
+      const eventStatTs = new LunarDate(startTs).data;
+      if (dayLunarTs.day === eventStatTs.day && dayLunarTs.month === eventStatTs.month) {
         return true;
       }
     }
@@ -143,7 +143,9 @@ const _renderDecorations = (daysInView, involvedEvents) =>
 const _renderEffects = (date, dayEvents) => {
   const viewDate = moment(date);
   const daysInView = getDaysInView(viewDate.get('month') + 1, viewDate.get('year'));
-  const daysInViewLunar = daysInView.map(day => new LunarDate(moment(day, 'DD-MM-YYYY')).date.fullString);
+  const daysInViewLunar = daysInView.map(
+    day => new LunarDate(moment(day, 'DD-MM-YYYY')).date.fullString
+  );
 
   const firstDayInView = daysInView[0];
   const lastDayInView = daysInView[daysInView.length - 1];
@@ -256,7 +258,11 @@ export default ({ events = [], onSelectSlot, onSelectEvent, dayEvents }) => {
     if (['REPEATABLE_SOLAR', 'REPEATABLE_LUNAR'].includes(event.type)) {
       const eventYearDiff = endTs.get('year') - starTs.get('year');
       const currentYear = moment().get('year');
-      return { ...event, start: starTs.set('year', currentYear), end: endTs.set('year', currentYear + eventYearDiff) };
+      return {
+        ...event,
+        start: starTs.set('year', currentYear),
+        end: endTs.set('year', currentYear + eventYearDiff)
+      };
     }
     return event;
   });
