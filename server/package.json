@@ -7,7 +7,8 @@
     "dev": "nodemon",
     "start": "babel src --out-dir dist --copy-files && node dist/index",
     "build": "babel src --out-dir dist --copy-files",
-    "serve": "node dist/index"
+    "serve": "node dist/index",
+    "service": "pm2 start dist/index.js --name Blog-Modules-Server"
   },
   "author": "VuPham",
   "license": "ISC",
