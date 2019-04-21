@@ -37,10 +37,16 @@ export default (Music, factories) => {
           .trim();
         record.Rating = body.Rating;
         record.Genre = body.Genre;
+
         records.push(record);
       }
       const results = [];
       await Promise.map(records, async rec => {
+        try {
+          rec.Lyrics = await getLyric({ Artist: record.Artist, Name: record.Name });
+        } catch (e) {
+          // do nothing
+        }
         const result = await commonService.create(Music, rec);
         results.push(result);
       });

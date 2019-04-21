@@ -35,6 +35,8 @@ import { Weather } from 'pages/Subscribe/Weather';
 import { YoutubeMP3 } from 'pages/Ultilities/YoutubeMP3';
 import { ClockAlarm } from 'pages/Ultilities/ClockAlarm';
 
+import { WordResolver } from 'pages/Cheating/WordResolver';
+
 const AppRoutes = () => (
   <Page>
     <Switch>
@@ -56,7 +58,8 @@ const AppRoutes = () => (
       <Route exact path="/yugioh!_poc" component={YugiohPoc} />
       <Route exact path="/youtube_mp3" component={YoutubeMP3} />
       <Route exact path="/clock_%26_alarm" component={ClockAlarm} />
-      
+      <Route exact path="/word_resolver" component={WordResolver} />
+
       <Route path="/content_mirror/:table?/:record?" component={ContentMirror} />
       <Route path="/darksteam_97d99i/:tab?/:page?" component={Darksteam97d99i} />
       <Route path="/diablo_ii/:tab?/:subPage?" component={DiabloII} />

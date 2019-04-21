@@ -8,9 +8,12 @@ import React, { useState, useRef } from 'react';
 import CodeMirror from 'react-codemirror';
 import Terminal from 'terminal-in-react';
 import classnames from 'classnames';
+import moment from 'moment';
 
 import ToolsBar from './ToolsBar.component';
 import Preview from './Preview.component';
+
+window.moment = moment;
 
 const modes = {
   HTML: 'jsx',

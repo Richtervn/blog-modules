@@ -28,9 +28,9 @@
     "icon": "bookmark"
   },
   "Flash Games": {
-    "items": [],
     "author": "Linkin Park - Points of Authority",
-    "quote": "You want to share what you have been through"
+    "quote": "You want to share what you have been through",
+    "items": []
   },
   "Games": {
     "items": [
@@ -44,10 +44,10 @@
     "icon": "suitcase"
   },
   "Library": {
-    "items": [],
     "author": "Metallica - For Whom The Bell Tools",
     "quote": "Gone insane from the pain that they surely know",
-    "icon": "university"
+    "icon": "university",
+    "items": []
   },
   "Lineage II": {
     "items": [
@@ -66,10 +66,10 @@
     "icon": "gift"
   },
   "Notebook": {
-    "items": [],
     "author": "Within Temptation - Restless",
     "quote": "All my life I gave to you",
-    "icon": "pencil-square-o"
+    "icon": "pencil-square-o",
+    "items": []
   },
   "Tools": {
     "items": [
@@ -111,5 +111,13 @@
     "author": "Guns N' Roses - There was a time",
     "quote": "If I could go back in time to the place in my soul. There, all alone.",
     "icon": "cubes"
+  },
+  "Cheating": {
+    "items": [
+      "Word Resolver"
+    ],
+    "author": "12 Stones - 3 Leaf Loser",
+    "quote": "Paint a perfect of everything I thought that this would be",
+    "icon": "user-secret"
   }
 }

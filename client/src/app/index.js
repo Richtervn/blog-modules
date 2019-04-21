@@ -19,6 +19,11 @@ import store from './store';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import getTheme from 'theme';
+
 import { ToastContainer } from 'react-toastify';
 import { Modal } from 'common/Modal';
 import { HeaderBar, NavigationBar, HeaderMenu } from 'common/Layout';
@@ -29,23 +34,33 @@ import AppRoutes from './AppRoutes';
 const newHistory = createBrowserHistory();
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.theme = createMuiTheme(getTheme());
+  }
+
   render() {
     return (
       <Provider store={store}>
-        <Router history={newHistory}>
-          <div className="container-fluid">
-            <HeaderBar />
-            <HeaderMenu />
-            <div className="row">
-              <NavigationBar />
-              <AppRoutes />
-            </div>
-            <ToastContainer autoClose={1500} closeButton={false} />
-            <Modal />
-            <MusicPlayer />
-            <LyricsBox />
-          </div>
-        </Router>
+        <ThemeProvider theme={this.theme}>
+          <MuiThemeProvider theme={this.theme}>
+            <CssBaseline />
+            <Router history={newHistory}>
+              <div className="container-fluid">
+                <HeaderBar />
+                <HeaderMenu />
+                <div className="row">
+                  <NavigationBar />
+                  <AppRoutes />
+                </div>
+                <ToastContainer autoClose={1500} closeButton={false} />
+                <Modal />
+                <MusicPlayer />
+                <LyricsBox />
+              </div>
+            </Router>
+          </MuiThemeProvider>
+        </ThemeProvider>
       </Provider>
     );
   }

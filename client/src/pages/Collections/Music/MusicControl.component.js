@@ -87,7 +87,9 @@ export default ({
       <div className="play-progress">
         <div className="progress">
           <div
-            className={`progress-bar progress-bar-striped ${progress < 100 ? 'progress-bar-animated' : ''} bg-info`}
+            className={`progress-bar progress-bar-striped ${
+              progress < 100 ? 'progress-bar-animated' : ''
+            } bg-info`}
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -116,7 +118,10 @@ export default ({
           </button>
         </div>
         <div className="media-feature">
-          <button className="btn btn-control" disabled={!canPreviousSong} onClick={() => onPreviousSong()}>
+          <button
+            className="btn btn-control"
+            disabled={!canPreviousSong}
+            onClick={() => onPreviousSong()}>
             <i className="fa fa-step-backward" />
           </button>
           <button className="btn btn-play" onClick={() => onTogglePlay()} disabled={!currentSong}>
@@ -139,7 +144,9 @@ export default ({
         {playList.map((song, i) => (
           <div
             key={i}
-            className={`play-list-row ${song._id === currentSong._id ? 'playing' : ''}`}
+            className={`play-list-row ${
+              song && currentSong && song._id === currentSong._id ? 'playing' : ''
+            }`}
             onClick={() => onPlaySong(i)}>
             <div className="song-icon">
               <i className="fa fa-music" />

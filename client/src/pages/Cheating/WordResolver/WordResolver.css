@@ -1,0 +1,109 @@
+#word-resolver-page {
+  display: flex;
+  padding: 10px;
+  height: 100%;
+}
+
+#word-resolver-page .word-input {
+  width: 400px;
+  border: solid 1px rgba(255, 255, 255, 0.125);
+}
+
+#word-resolver-page .input-bar {
+  border-bottom: solid 1px rgba(255, 255, 255, 0.125);
+  padding: 10px;
+  display: flex;
+}
+
+#word-resolver-page .input-bar input[type='text'] {
+  flex: 1;
+  border-radius: 5px;
+  padding: 5px;
+  border: solid 1px rgba(255, 255, 255, 0.125);
+}
+
+#word-resolver-page .input-bar input[type='number'] {
+  width: 80px;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: solid 1px rgba(255, 255, 255, 0.125);
+}
+
+#word-resolver-page .input-bar button {
+  margin-left: 10px;
+}
+
+#word-resolver-page .input-bar input:focus {
+  box-shadow: 0 0 3pt 2pt rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+#word-resolver-page .inputed-words {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  grid-gap: 10px;
+}
+
+#word-resolver-page .word-input .feature {
+  text-align: center;
+}
+#word-resolver-page .word-input .feature button {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  width: 200px;
+}
+
+
+#word-resolver-page .inputed-words > .character {
+  height: 50px;
+  border: solid 1px black;
+  background: white;
+  color: black;
+  font-weight: 700;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#word-resolver-page .inputed-words > .character:hover {
+  background: red;
+  color: white;
+}
+
+#word-resolver-page .found-words .found-words-container {
+  display: flex;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+#word-resolver-page .found-words .result {
+  height: 50px;
+  border: solid 1px black;
+  background: white;
+  color: black;
+  font-weight: 700;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+#word-resolver-page .found-words .result:hover {
+  background: red;
+  color: white;
+}
