@@ -102,6 +102,7 @@ export default () => {
             />
             {isShowConsole && !isPreviewFullscreen && (
               <Terminal
+                commands={{ vcl: () => alert('pass roi') }}
                 watchConsoleLogging
                 color="#01ca01"
                 backgroundColor="black"

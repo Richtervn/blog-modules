@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import BookshelfForm from './BookshelfForm.component';
+import BookshelfForm from './BookShelfForm.component';
 
 import { addBookshelf, editBookshelf } from '../Library.module';
 
