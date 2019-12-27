@@ -26,7 +26,7 @@
     "express-session": "^1.15.6",
     "express-winston": "^2.6.0",
     "flat-ioc": "^1.1.1",
-    "handlebars": "^4.1.0",
+    "handlebars": "^4.3.0",
     "horizon-youtube-mp3": "^1.9.1",
     "kue": "^0.11.6",
     "lyric-get": "^1.0.3",
