@@ -15,7 +15,7 @@ export default () => {
         }
         const $ = res.$;
         const results = [];
-        const cards = $('.media.mainpage-manga');
+        const cards = $('.card');
 
         for (let i = 0; i < cards.length; i++) {
           if (!cards[i].children) {
@@ -23,48 +23,54 @@ export default () => {
           }
 
           const mangaNew = {};
-          for (let j = 0; j < cards[i].children.length; j++) {
-            const elem = cards[i].children[j];
-            if (!elem.attribs) {
-              continue;
+
+          const aTag = cards[i].children.find(child => child.name === 'a');
+          if (aTag) {
+            mangaNew.link = aTag.attribs.href;
+            mangaNew.name = aTag.attribs.title;
+            const imageTag = aTag.children.find(child => child.name === 'img');
+            if (imageTag) {
+              mangaNew.image = imageTag.attribs.src;
             }
+          }
 
-            if (elem.attribs.class == 'media-left cover-manga') {
-              const imgContainer = elem.children.filter(child => child.name == 'a')[0];
-              mangaNew.link = imgContainer.attribs.href;
-              const imgElem = imgContainer.children.filter(child => child.name == 'img')[0];
-              mangaNew.image = imgElem.attribs.src;
-            }
+          const cardBody = cards[i].children.find(
+            child => child.attribs && child.attribs.class === 'card-body'
+          );
+          if (!cardBody) {
+            continue;
+          }
 
-            if (elem.attribs.class == 'media-body') {
-              elem.children.forEach(child => {
-                if (child.name == 'a') {
-                  mangaNew.name = child.attribs.title;
-                }
-                if (child.attribs && child.attribs.class == 'row') {
-                  mangaNew.chapters = [];
-                  const infoContainer = child.children
-                    .filter(gchild => gchild.attribs && gchild.attribs.class == 'col-xs-6')
-                    .map(
-                      gchild =>
-                        gchild.children.filter(schild => schild.attribs && schild.attribs.class == 'hotup-list')[0]
-                    )[0];
+          const chapterWrapper = cardBody.children.find(
+            child => child.attribs && child.attribs.class === 'card-chapter-hp'
+          );
+          if (!chapterWrapper) {
+            continue;
+          }
 
-                  infoContainer.children
-                    .filter(schild => schild.name == 'a')
-                    .forEach(schild => {
-                      mangaNew.chapters.push({
-                        name: schild.children[0].data.trim(),
-                        link: schild.attribs.href
-                      });
-                    });
+          const chapterList = chapterWrapper.children.find(
+            child => child.attribs && child.attribs.class === 'list-chapter'
+          );
+          if (!chapterList) {
+            continue;
+          }
+
+          mangaNew.chapters = [];
+          chapterList.children
+            .filter(child => child.name === 'li')
+            .forEach(liTag => {
+              liTag.children.forEach(child => {
+                if (child.name === 'a') {
+                  mangaNew.chapters.push({
+                    name: child.children[0].data.trim(),
+                    link: child.attribs.href
+                  });
                 }
               });
-            }
+            });
 
-            if (!_.isEmpty(mangaNew.chapters)) {
-              results.push(mangaNew);
-            }
+          if (!_.isEmpty(mangaNew.chapters)) {
+            results.push(mangaNew);
           }
         }
         return resolve(results);

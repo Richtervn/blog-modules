@@ -40,7 +40,9 @@ export default async (historyItems, MangasReading, notificationHandler, noSaveCo
 
       if (!manga) {
         const groupedBySites = _.groupBy(groupedItems[mangaAka], 'site');
-        const crawlableSite = Object.keys(groupedBySites).filter(site => _.contains(crawlableSites, site))[0];
+        const crawlableSite = Object.keys(groupedBySites).filter(site =>
+          _.contains(crawlableSites, site)
+        )[0];
 
         if (crawlableSite) {
           try {
@@ -94,7 +96,13 @@ export default async (historyItems, MangasReading, notificationHandler, noSaveCo
     Object.keys(mangaMap).map(async mangaId => {
       const result = await MangasReading.findOneAndUpdate(
         { _id: mangaId },
-        { $set: { Chapter: mangaMap[mangaId].chapter, Status: 'OnGoing', ReadingUrl: mangaMap[mangaId].url } },
+        {
+          $set: {
+            Chapter: mangaMap[mangaId].chapter,
+            Status: 'OnGoing',
+            ReadingUrl: mangaMap[mangaId].url
+          }
+        },
         { new: true }
       );
       notificationHandler.send('appManga/notification', {

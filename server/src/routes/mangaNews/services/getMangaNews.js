@@ -1,16 +1,16 @@
 import getTruyenTranhNet from '../crawlers/getTruyenTranhNet';
 import getThichTruyenTranhCom from '../crawlers/getThichTruyenTranhCom';
-import getNetTruyenCom from '../crawlers/getNetTruyenCom';
+import getNetTruyenMoiCom from '../crawlers/getNetTruyenMoiCom';
 
 export default async () => {
-  const [nettruyenData, truyentranhnetData, thichtruyentranhData] = [
-    await getNetTruyenCom(),
+  const [nettruyenmoiData, truyentranhnetData, thichtruyentranhData] = [
+    await getNetTruyenMoiCom(),
     await getTruyenTranhNet(),
     await getThichTruyenTranhCom()
   ];
 
   return [
-    { site: 'nettruyen.com', data: nettruyenData },
+    { site: 'nettruyenmoi.com', data: nettruyenmoiData },
     { site: 'truyentranh.net', data: truyentranhnetData },
     { site: 'thichtruyentranh.com', data: thichtruyentranhData }
   ];

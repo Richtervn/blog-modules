@@ -97,7 +97,7 @@ export default url => {
     }
 
     case 'truyenchon.com':
-    case 'nettruyen.com': {
+    case 'nettruyenmoi.com': {
       if (!urlFrags[2] || !urlFrags[3]) return { message };
 
       mangaAka = urlFragToAka(urlFrags[2]);
@@ -152,7 +152,7 @@ export const sites = [
   'truyentranh8.net',
   'truyenqq.com',
   'truyenchon.com',
-  'nettruyen.com',
+  'nettruyenmoi.com',
   'vuidoctruyen.com',
   'vuidu.com',
   'otakusan.net'

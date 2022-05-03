@@ -1,6 +1,6 @@
 {
   "port": 3000,
-  "mongodbUrl": "mongodb://localhost/BlogModules",
+  "mongodbUrl": "mongodb+srv://richtervn:tuanvu123@cluster0.u2oza.gcp.mongodb.net/BlogModules?retryWrites=true&w=majority",
   "muDatabase": "mssql://sa:123456@127.0.0.1:1433/MuOnline",
   "l2Database": {
     "dialect": "mysql",

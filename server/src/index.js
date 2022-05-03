@@ -1,4 +1,4 @@
-import 'babel-polyfill';
+// import 'babel-polyfill';
 
 import ensurePublicPaths from './ensurePublicPaths';
 import Container from 'flat-ioc';

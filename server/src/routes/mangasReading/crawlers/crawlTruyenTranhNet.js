@@ -12,10 +12,7 @@ export default url => {
   return new Promise((resolve, reject) => {
     let form = {};
 
-    const urlFrags = url
-      .replace('http://', '')
-      .replace('https://', '')
-      .split('/');
+    const urlFrags = url.replace('http://', '').replace('https://', '').split('/');
 
     const requestUrl = url
       .split('/')
@@ -30,9 +27,10 @@ export default url => {
         }
         const $ = res.$;
         try {
-          let name = $('.title-manga').text();
+          let name = $('.detail-manga-title').text();
           if (name) {
             form.Name = name
+              .trim()
               .split(' ')
               .map(text => toTitleCase(text))
               .join(' ');
@@ -42,7 +40,7 @@ export default url => {
 
           form.Aka = [urlFragToAka(urlFrags[1])];
 
-          const imgSrc = $('.media-left > img').attr('src');
+          const imgSrc = $('.card-img').attr('src');
           if (!imgSrc) {
             return reject({ message: 'Failed to crawl cover image' });
           }
@@ -52,38 +50,51 @@ export default url => {
           form.CoverUri = filepath;
           form.Chapter = '1';
 
-          let detail = $('.description-update').text();
+          let detail = $('.detail-manga-intro').text();
           if (!detail) {
             return reject({ message: 'Failed to crawl manga detail' });
           }
 
-          detail = detail
-            .replace(/\r/g, '')
-            .trim()
-            .split('\n')
-            .map(txt => txt.trim());
-
-          detail.forEach((text, i) => {
-            if (text.indexOf('Tên khác') !== -1) {
-              const akas = detail[i + 1]
-                .replace(/;/g, ',')
-                .split(',')
-                .concat(form.Aka);
-              form.Aka = _.uniq(akas);
-            }
-            if (text.indexOf('Thể loại') !== -1) {
-              form.Genre = detail[i + 1].replace(/;/g, ',');
-            }
-            if (text.indexOf('Tác giả') !== -1) {
-              const authors = text.replace('Tác giả:', '').trim();
-              form.Authors = authors.replace(/;/g, ',');
-            }
-          });
-
-          form.Aka = form.Aka.join(',');
-          form.Introduce = $('.manga-content p:nth-of-type(2)').text();
+          form.Introduce = detail.trim();
           form.ReadingUrl = url;
           form.Rating = 3;
+
+          const genres = [];
+          const genresElem = $('.detail-manga-category')[0];
+          if (genresElem) {
+            genresElem.children
+              .filter(child => child.name === 'a')
+              .forEach(aTag => {
+                if (aTag.children && aTag.children[0]) {
+                  genres.push(aTag.children[0].data.trim());
+                }
+              });
+          }
+          form.Genre = genres.join(',');
+
+          const infoList = $('.detail-banner-info > ul')[0];
+          form.Authors = '';
+          if (infoList) {
+            const infoItem = infoList.children
+              .filter(child => child.name === 'li')
+              .filter(liTag => !liTag.attribs.class);
+            if (infoItem) {
+              const infoText = $(infoItem).text();
+              const infoFrags = infoText
+                .split('\n')
+                .map(l => l.trim())
+                .filter(Boolean);
+              const authorTitleIndex = infoFrags.indexOf('Tác giả:');
+              if (authorTitleIndex != -1) {
+                const author = infoFrags[authorTitleIndex + 1];
+                if (author !== 'Đang Cập Nhật...') {
+                  form.Authors = author;
+                }
+              }
+            }
+          }
+
+          form.Aka = form.Aka.join(',');
 
           return resolve(form);
         } catch (e) {

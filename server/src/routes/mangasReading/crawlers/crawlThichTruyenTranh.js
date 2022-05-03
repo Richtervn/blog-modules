@@ -10,10 +10,7 @@ export default url => {
   return new Promise((resolve, reject) => {
     let form = { Authors: [], Genre: [], Aka: [], Rating: 3 };
 
-    const urlFrags = url
-      .replace('http://', '')
-      .replace('https://', '')
-      .split('/');
+    const urlFrags = url.replace('http://', '').replace('https://', '').split('/');
 
     crawler.direct({
       uri: url,

@@ -6,3 +6,4 @@ server/public
 server/node_modules
 server/libs
 client-old/
+node_modules

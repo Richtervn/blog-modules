@@ -2,7 +2,7 @@ import getSite from '../helpers/getSite';
 
 import crawlTruyenTranhNet from '../crawlers/crawlTruyenTranhNet';
 import crawlThichTruyenTranh from '../crawlers/crawlThichTruyenTranh';
-import crawlNetTruyenCom from '../crawlers/crawlNetTruyenCom';
+import crawlNetTruyenMoiCom from '../crawlers/crawlNetTruyenMoiCom';
 
 export default async url => {
   const siteUrl = getSite(url);
@@ -12,8 +12,8 @@ export default async url => {
     case 'truyentranh.net':
       form = await crawlTruyenTranhNet(url);
       return form;
-    case 'nettruyen.com':
-      form = await crawlNetTruyenCom(url);
+    case 'nettruyenmoi.com':
+      form = await crawlNetTruyenMoiCom(url);
       return form;
     case 'thichtruyentranh.com':
       form = await crawlThichTruyenTranh(url);
@@ -23,4 +23,4 @@ export default async url => {
   }
 };
 
-export const sites = ['truyentranh.net', 'nettruyen.com', 'thichtruyentranh.com'];
+export const sites = ['truyentranh.net', 'nettruyenmoi.com', 'thichtruyentranh.com'];
