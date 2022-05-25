@@ -53,7 +53,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "serve": "serve -s build",
+    "serve": "serve -s build -l 9001",
     "service": "pm2 serve build 9000 --name Blog-Modules-Client"
   },
   "browserslist": [

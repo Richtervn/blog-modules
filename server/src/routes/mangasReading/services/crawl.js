@@ -12,7 +12,7 @@ export default async url => {
     case 'truyentranh.net':
       form = await crawlTruyenTranhNet(url);
       return form;
-    case 'nettruyenmoi.com':
+    case 'nettruyenco.com':
       form = await crawlNetTruyenMoiCom(url);
       return form;
     case 'thichtruyentranh.com':
@@ -23,4 +23,4 @@ export default async url => {
   }
 };
 
-export const sites = ['truyentranh.net', 'nettruyenmoi.com', 'thichtruyentranh.com'];
+export const sites = ['truyentranh.net', 'nettruyenco.com', 'thichtruyentranh.com'];

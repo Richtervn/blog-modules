@@ -3,18 +3,14 @@ import Promise from 'bluebird';
 
 const puppeteer = require('puppeteer-extra');
 const cheerio = require('cheerio');
-
-// add stealth plugin and use defaults (all evasion techniques)
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
-
-// import Crawler from 'crawler';
 
 export default () => {
   return new Promise(async (resolve, reject) => {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
-    await page.goto('http://www.nettruyenmoi.com', { waitUntil: 'networkidle2' });
+    await page.goto('http://www.nettruyenco.com', { waitUntil: 'networkidle2' });
 
     const content = await page.content();
     const $ = cheerio.load(content);

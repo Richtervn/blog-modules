@@ -59,6 +59,7 @@ export default url => {
       const filepath = `./public/Mangas Reading/${filename}`;
 
       await downloadImg(imgSrc, filepath);
+      console.log('downloading', imgSrc, filepath);
 
       form.CoverUri = filepath;
       form.Chapter = '1';

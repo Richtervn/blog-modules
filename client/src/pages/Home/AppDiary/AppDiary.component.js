@@ -35,7 +35,7 @@ export default ({ logs, onAddLog, onGetLogs }) => {
         if (e.key === 'Enter') handleAddLog();
       }}>
       <div className="app-diary-time-line">
-        <Timeline items={logs} />
+        <Timeline items={logs} format="hh:mm a" />
         <div id="bottom-placeholder" />
       </div>
       <div className="app-diary-feature">

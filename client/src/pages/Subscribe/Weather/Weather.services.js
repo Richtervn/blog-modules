@@ -5,6 +5,8 @@ const accuApiKey = appConfig.ACCU_WEATHER_API_KEY;
 const owmHN = 1581130;
 const owmAppId = appConfig.OPEN_WEATHER_APP_ID;
 
+console.log(appConfig);
+
 const parserOWMQuery = (query = {}) => {
   const { lat, lon, cityId, cityName, zipCode } = query;
   if (lat && lon) {

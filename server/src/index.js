@@ -1,7 +1,9 @@
-// import 'babel-polyfill';
-
 import ensurePublicPaths from './ensurePublicPaths';
 import Container from 'flat-ioc';
+
+if (process.env.NODE_ENV === 'production') {
+  require('babel-polyfill');
+}
 
 ensurePublicPaths();
 

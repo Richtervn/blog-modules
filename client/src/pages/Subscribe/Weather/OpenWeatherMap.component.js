@@ -33,7 +33,11 @@ export default ({ current, forecast, onGetCurrent, onGetForecast }) => {
           </div>
           <div className="date">{moment(current.dt * 1000).format('dddd DD/MM/YYYY')}</div>
         </div>
-        <a className="site" href="https://openweathermap.org" target="_blank" rel="noopener noreferrer">
+        <a
+          className="site"
+          href="https://openweathermap.org"
+          target="_blank"
+          rel="noopener noreferrer">
           <img src="/images/icons/open-weather-map/site-logo.png" alt="OpenWeatherMap" />
           <div className="name">Open Weather Map</div>
         </a>
@@ -51,7 +55,11 @@ export default ({ current, forecast, onGetCurrent, onGetForecast }) => {
         <div className="main-card">
           <div className="icons">
             {current.weather.map((w, i) => (
-              <img key={i} src={`/images/icons/open-weather-map/${w.icon}.png`} alt={w.description} />
+              <img
+                key={i}
+                src={`/images/icons/open-weather-map/${w.icon}.png`}
+                alt={w.description}
+              />
             ))}
           </div>
           <div className="temperature">
@@ -66,7 +74,10 @@ export default ({ current, forecast, onGetCurrent, onGetForecast }) => {
           <div className="info-row">
             <div className="item">
               <div style={{ width: '120px' }}>
-                <CircleProgress percentage={current.main.humidity} text={`${current.main.humidity}%`} />
+                <CircleProgress
+                  percentage={current.main.humidity}
+                  text={`${current.main.humidity}%`}
+                />
               </div>
               <div className="label">Humidity</div>
             </div>
@@ -129,13 +140,21 @@ export default ({ current, forecast, onGetCurrent, onGetForecast }) => {
         {forecast.list.map((data, i) => (
           <div className="forecast-item" key={i}>
             <div className="timestamp">
-              <div className="time">{moment(data.dt_txt, 'YYYY-MM-DD HH:mm:ss').format('HH:mm')}</div>
-              <div className="date">{moment(data.dt_txt, 'YYYY-MM-DD HH:mm:ss').format('ddd DD/MM')}</div>
+              <div className="time">
+                {moment(data.dt_txt, 'YYYY-MM-DD HH:mm:ss').format('HH:mm')}
+              </div>
+              <div className="date">
+                {moment(data.dt_txt, 'YYYY-MM-DD HH:mm:ss').format('ddd DD/MM')}
+              </div>
             </div>
             <div className="forecast-content">
               <div className="forecast-icons">
                 {data.weather.map((w, i) => (
-                  <img key={i} src={`/images/icons/open-weather-map/${w.icon}.png`} alt={w.description} />
+                  <img
+                    key={i}
+                    src={`/images/icons/open-weather-map/${w.icon}.png`}
+                    alt={w.description}
+                  />
                 ))}
               </div>
               <div className="forecast-temperature">

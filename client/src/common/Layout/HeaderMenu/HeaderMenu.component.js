@@ -20,7 +20,7 @@ const HeaderRowForm = ({
 
   return (
     <form
-      autocomplete="off"
+      autoComplete="off"
       className="header-menu-input-wrapper"
       onSubmit={e => {
         e.preventDefault();
@@ -30,7 +30,10 @@ const HeaderRowForm = ({
       }}>
       <input
         type="text"
-        className={classnames('form-control header-menu-input', { 'is-valid': changed && !error, 'is-invalid': error })}
+        className={classnames('form-control header-menu-input', {
+          'is-valid': changed && !error,
+          'is-invalid': error
+        })}
         value={value}
         onChange={e => {
           if (!changed) {
@@ -48,14 +51,24 @@ const HeaderRowForm = ({
         }}
         placeholder={placeholder}
       />
-      <button className={classnames('btn', buttonClass, 'header-menu-btn')} disabled={disabled} type="submit">
+      <button
+        className={classnames('btn', buttonClass, 'header-menu-btn')}
+        disabled={disabled}
+        type="submit">
         <i className={classnames('fa', iconClass)} />
       </button>
     </form>
   );
 };
 
-export default ({ isShow, onQuickUpdateManga, onCrawlManga, onSaveNewMangaChapter, onAddAppDiary, onSelfHide }) => {
+export default ({
+  isShow,
+  onQuickUpdateManga,
+  onCrawlManga,
+  onSaveNewMangaChapter,
+  onAddAppDiary,
+  onSelfHide
+}) => {
   let wrapper;
 
   const [mangaUrl, setMangaUrl] = useState('');

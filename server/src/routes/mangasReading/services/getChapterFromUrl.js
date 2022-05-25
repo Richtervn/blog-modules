@@ -97,6 +97,7 @@ export default url => {
     }
 
     case 'truyenchon.com':
+    case 'nettruyenco.com':
     case 'nettruyenmoi.com': {
       if (!urlFrags[2] || !urlFrags[3]) return { message };
 
@@ -152,7 +153,7 @@ export const sites = [
   'truyentranh8.net',
   'truyenqq.com',
   'truyenchon.com',
-  'nettruyenmoi.com',
+  'nettruyenco.com',
   'vuidoctruyen.com',
   'vuidu.com',
   'otakusan.net'

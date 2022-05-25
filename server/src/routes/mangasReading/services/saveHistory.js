@@ -10,6 +10,7 @@ import getUrlFrags from '../helpers/getUrlFrags';
 let lastSync = 0;
 
 export default async (historyItems, MangasReading, notificationHandler, noSaveConfirmed) => {
+  console.log(historyItems);
   let validItems = historyItems.filter(item => item.lastVisitTime > lastSync);
 
   validItems = validItems
