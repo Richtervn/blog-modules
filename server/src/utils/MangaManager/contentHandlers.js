@@ -29,7 +29,7 @@ export const fromElement =
     if (!elem) {
       return;
     }
-    result = await applyPlugins(elem, plugins, context);
+    const result = await applyPlugins(elem, plugins, context);
     return result;
   };
 

@@ -27,13 +27,11 @@ manager.register('http://www.nettruyenco.com', {
     Name: fromElement('.title-detail', ['text']),
     CoverUri: fromElement('.col-image > img', ['src', 'appendUrlProtocol']),
     Aka: fromElement('.othername > .col-xs-8', ['text', replace(/ - /g, ',')]),
-    Authors: fromElement('.author > .col-xs-8', [
-      'text',
-      replace('Đang cập nhật', ''),
-      replace(/ - /g, ',')
-    ]),
+    Authors: fromElement('.author > .col-xs-8', ['text', replace('Đang cập nhật', ''), replace(/ - /g, ',')]),
     Genre: fromElement('.kind > .col-xs-8', ['text', replace(/ - /g, ',')]),
-    Introduce: fromElement('.detail-content > p', ['text'])
+    Introduce: fromElement('.detail-content > p', ['text']),
+    NewChapter: fromElement('.chapter:first', ['text', replace('Chapter ', '')]),
+    NewChapterUrl: fromElement('.chapter > a:first', ['href'])
   },
   subscribe: {
     query: 'figure.clearfix',

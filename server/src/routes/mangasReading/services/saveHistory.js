@@ -1,16 +1,13 @@
 import _ from 'underscore';
 import Promise from 'bluebird';
 
-import crawl, { sites as crawlableSites } from './crawl';
-import getChapterFromUrl, { sites as subscriblableSites } from './getChapterFromUrl';
-
 import getSite from '../helpers/getSite';
 import getUrlFrags from '../helpers/getUrlFrags';
+import mangaManager from '../../../utils/MangaManager';
 
 let lastSync = 0;
 
 export default async (historyItems, MangasReading, notificationHandler, noSaveConfirmed) => {
-  console.log(historyItems);
   let validItems = historyItems.filter(item => item.lastVisitTime > lastSync);
 
   validItems = validItems
@@ -41,13 +38,11 @@ export default async (historyItems, MangasReading, notificationHandler, noSaveCo
 
       if (!manga) {
         const groupedBySites = _.groupBy(groupedItems[mangaAka], 'site');
-        const crawlableSite = Object.keys(groupedBySites).filter(site =>
-          _.contains(crawlableSites, site)
-        )[0];
+        const crawlableSite = Object.keys(groupedBySites).filter(site => _.contains(crawlableSites, site))[0];
 
         if (crawlableSite) {
           try {
-            const data = await crawl(groupedBySites[crawlableSite][0].url);
+            const data = await mangaManager.getDetails(groupedBySites[crawlableSite][0].url);
             if (!_.contains(noSaveConfirmed, data.Name)) {
               unsavedMangas.push({
                 ...data,

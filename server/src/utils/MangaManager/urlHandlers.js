@@ -25,3 +25,9 @@ export const sliceToIndex = pathnameIndex => urlString => {
     .join('/');
   return url.toString();
 };
+
+export const takePart = pathnameIndex => urlString => {
+  const url = new URL(urlString);
+  const result = url.pathname.split('/')[pathnameIndex];
+  return result || '';
+};

@@ -1,4 +1,5 @@
 import Promise from 'bluebird';
+import { getDomainName } from './utils';
 
 class MangaManager {
   constructor() {
@@ -12,13 +13,16 @@ class MangaManager {
   }
 
   register(url, option) {
-    const siteUrl = new URL(url);
-    this.sites[siteUrl.origin] = option;
+    const domainName = getDomainName(url);
+    this.sites[domainName] = option;
+  }
+
+  getSupportedSites() {
+    return this.sites.map(site => getDomainName(site));
   }
 
   getSiteInfo(url) {
-    const siteUrl = new URL(url);
-    const siteInfo = this.sites[siteUrl.origin];
+    this.sites[getDomainName(url)];
     if (!siteInfo) {
       throw new Error('Site not registered!');
     }
@@ -42,8 +46,7 @@ class MangaManager {
     if (siteInfo.getSubscribeUrl) {
       return siteInfo.getSubscribeUrl(url);
     }
-    const siteUrl = new URL(url);
-    return siteUrl.origin;
+    return getDomainName(url);
   }
 
   async crawl(url) {
@@ -60,7 +63,7 @@ class MangaManager {
     return result;
   }
 
-  async crawlDetails(url) {
+  async getDetails(url) {
     const titleUrl = this.getTitleUrl(url);
     const { $ } = await this.crawl(titleUrl);
     const { detailsHandlers } = this.getSiteInfo(url);
@@ -79,7 +82,7 @@ class MangaManager {
     return result;
   }
 
-  async getNewMangas(url) {
+  async getNews(url) {
     const { subscribe } = this.getSiteInfo(url);
     if (!subscribe) {
       throw new Error('Subscribe method is not implemented!');
@@ -103,6 +106,32 @@ class MangaManager {
       results.push(result);
     }
     return results;
+  }
+
+  getChapterFromUrl(url) {
+    const siteInfo = this.getSiteInfo(url);
+    if (Array.isArray(siteInfo.getChapterFromUrl)) {
+      return this._applyPlugins(url, siteInfo.getChapterFromUrl);
+    } else {
+      return siteInfo.getChapterFromUrl(url);
+    }
+  }
+
+  getAkaFromUrl(url) {
+    const siteInfo = this.getSiteInfo(url);
+    if (Array.isArray(siteInfo.getAkaFromUrl)) {
+      return this._applyPlugins(url, siteInfo.getAkaFromUrl);
+    } else {
+      return siteInfo.getAkaFromUrl(url);
+    }
+  }
+
+  _applyPlugins(source, plugins) {
+    let result = source;
+    for (const plugin of plugins) {
+      result = plugin(result);
+    }
+    return result;
   }
 }
 

@@ -1,15 +1,14 @@
 import express from 'express';
-import Promise from 'bluebird';
 import moment from 'moment';
 
 import arrangeManga from './services/arrangeManga';
-import crawl, { sites as crawlableSites } from './services/crawl';
 import create from './services/create';
 import quickUpdate from './services/quickUpdate';
 import sortManga from './services/sortManga';
 import manualSaveNewChapter from './services/manualSaveNewChapter';
 import saveHistory from './services/saveHistory';
-import { sites as subscriblableSites } from './services/getChapterFromUrl';
+import mangaManager from '../../utils/MangaManager';
+import downloadImg from './helpers/downloadImg';
 
 export default (MangasReading, factories, socket) => {
   const router = express.Router();
@@ -90,11 +89,14 @@ export default (MangasReading, factories, socket) => {
   router.post(
     '/crawl',
     wrap(async ({ body }, res, next) => {
-      const form = await crawl(body.url);
+      const form = await mangaManager.getDetails(body.url);
       if (!form) {
         return res.send({ message: 'Site is not supported yet' });
       }
       form.Status = 'OnGoing';
+      const filename = `${moment().format('MMDDYYYYhhmmss')}.jpg`;
+      const filepath = `./public/Mangas Reading/${filename}`;
+      form.CoverUri = await downloadImg(form.CoverUri, filepath);
       const manga = await create(commonService, MangasReading, form);
       res.send(manga);
     })
@@ -103,9 +105,11 @@ export default (MangasReading, factories, socket) => {
   router.get(
     '/supported_sites',
     wrap(async (req, res, next) => {
+      const supportedSites = mangaManager.getSupportedSites();
+
       res.send({
-        crawlable: crawlableSites,
-        subscribe: subscriblableSites
+        crawlable: supportedSites,
+        subscribe: supportedSites
       });
     })
   );
@@ -125,9 +129,11 @@ export default (MangasReading, factories, socket) => {
       const { maxChapter, maxChapterUrl, saved, ...formData } = body;
       if (!saved) {
         noSaveConfirmed.push(body.Name);
-        await deleteFile(body.CoverUri);
         return res.send(body);
       }
+      const filename = `${moment().format('MMDDYYYYhhmmss')}.jpg`;
+      const filepath = `./public/Mangas Reading/${filename}`;
+      formData.CoverUri = await downloadImg(formData.CoverUri, filepath);
       formData.Chapter = maxChapter;
       const manga = await create(commonService, MangasReading, formData);
       res.send(manga);
